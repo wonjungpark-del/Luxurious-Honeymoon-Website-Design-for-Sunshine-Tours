@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>오아후 - 선샤인투어</title>
+    <meta name="description" content="오아후의 프리미엄 리조트를 소개합니다.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Noto+Serif+KR:wght@400;600;700&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css" rel="stylesheet">
+    <link href="/static/css/style.css" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <nav class="container">
+            <div class="logo"><a href="/">☀️ 선샤인투어</a></div>
+            <ul class="nav-links">
+                <li class="nav-dropdown">
+                    <a href="#destinations">여행지 <i class="fas fa-chevron-down"></i></a>
+                    <div class="dropdown-content">
+                        <a href="/thailand-phuket">🇹🇭 태국</a>
+                        <a href="/bali">🇮🇩 발리</a>
+                        <a href="/maldives">🇲🇻 몰디브</a>
+                        <a href="/oahu">🇺🇸 하와이</a>
+                        <a href="/boracay">🇵🇭 필리핀</a>
+                    </div>
+                </li>
+                <li><a href="/reviews">후기</a></li>
+                <li><a href="/inquiry">문의하기</a></li>
+                <li><a href="/admin">관리자</a></li>
+            </ul>
+        </nav>
+    </header>
+    <section class="hero" style="background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('https://images.unsplash.com/photo-1542259009477-d625272157b7?w=1600&h=900&fit=crop') center/cover;">
+        <div class="hero-content">
+            <h1>🇺🇸 오아후</h1>
+            <p>태평양의 심장, 하와이의 수도</p>
+        </div>
+    </section>
+    <section class="container" style="padding: 3rem 0;">
+        <div class="card"><div class="card-content">
+            <h2 class="section-title">오아후 소개</h2>
+            <p style="line-height: 1.8; color: #555; font-size: 1.1rem;">호놀룰루가 위치한 하와이의 중심지입니다. 와이키키 비치, 다이아몬드 헤드 등 유명 관광지와 쇼핑, 문화를 모두 즐길 수 있는 완벽한 여행지입니다.</p>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 2rem; margin-top: 2rem;">
+                <div><h3 style="color: var(--primary-color);"><i class="fas fa-map-marker-alt"></i> 위치</h3><p>미국 하와이 오아후 섬</p></div>
+                <div><h3 style="color: var(--primary-color);"><i class="fas fa-plane"></i> 비행시간</h3><p>인천 출발 약 9시간</p></div>
+                <div><h3 style="color: var(--primary-color);"><i class="fas fa-clock"></i> 시차</h3><p>한국보다 19시간 느림</p></div>
+                <div><h3 style="color: var(--primary-color);"><i class="fas fa-sun"></i> 베스트 시즌</h3><p>연중 내내</p></div>
+            </div>
+        </div></div>
+    </section>
+    <section class="container">
+        <h2 class="section-title">오아후 추천 리조트</h2>
+        <p class="section-subtitle">곧 선샤인투어가 엄선한 프리미엄 리조트를 소개해드립니다</p>
+        <div class="card"><div class="card-content" style="text-align: center; padding: 4rem 2rem;">
+            <i class="fas fa-hotel" style="font-size: 4rem; color: var(--primary-color); margin-bottom: 1.5rem;"></i>
+            <h3 style="font-size: 1.5rem; margin-bottom: 1rem;">리조트 정보 준비 중</h3>
+            <p style="color: #777; font-size: 1.1rem; margin-bottom: 2rem;">오아후의 최고급 리조트 정보를 곧 업데이트 예정입니다.</p>
+            <a href="/inquiry" class="btn btn-primary" style="font-size: 1.1rem; padding: 1rem 2.5rem;"><i class="fas fa-comments"></i> 상담 신청하기</a>
+        </div></div>
+    </section>
+    <section class="container" style="margin: 5rem auto;">
+        <div class="card" style="background: linear-gradient(135deg, var(--primary-color) 0%, #b8975e 100%); color: white;">
+            <div class="card-content" style="text-align: center; padding: 3rem;">
+                <h2 style="font-size: 2rem; margin-bottom: 1rem; color: white;">오아후 허니문 문의하기</h2>
+                <p style="font-size: 1.2rem; margin-bottom: 2rem; opacity: 0.9;">20년 경력의 전문가가 맞춤형 오아후 여행을 설계해드립니다</p>
+                <a href="/inquiry" class="btn btn-secondary" style="background: white; color: var(--primary-color); font-size: 1.1rem; padding: 1rem 2.5rem;">지금 상담 신청하기 <i class="fas fa-arrow-right"></i></a>
+            </div>
+        </div>
+    </section>
+    <footer>
+        <div class="container"><div class="footer-content">
+            <div class="footer-section"><h3>선샤인투어</h3><p>프리미엄 허니문 & 해외 여행 전문</p></div>
+            <div class="footer-section"><h3>연락처</h3><p><i class="fas fa-phone"></i> 02-1234-5678</p></div>
+        </div><div class="footer-bottom"><p>&copy; 2024 선샤인투어. All rights reserved.</p></div></div>
+    </footer>
+</body>
+</html>
