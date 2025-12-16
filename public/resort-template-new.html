@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>아야나 - 발리 럭셔리 리조트 | 선샤인투어</title>
-    <meta name="description" content="인도네시아 발리의 럭셔리 리조트 아야나(AYANA). 프리미엄 허니문 여행을 위한 완벽한 선택.">
+    <title>{{RESORT_NAME_KO}} - {{REGION_NAME_KO}} {{CATEGORY}} 리조트 | 선샤인투어</title>
+    <meta name="description" content="{{COUNTRY}} {{REGION_NAME_KO}}의 {{CATEGORY}} 리조트 {{RESORT_NAME_KO}}({{RESORT_NAME_EN}}). 프리미엄 허니문 여행을 위한 완벽한 선택.">
     
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -512,15 +512,15 @@
 
     <!-- Hero Section with Main Image -->
     <section class="resort-hero">
-        <img src="/static/images/resorts/bali/bali-resort02-01.webp" alt="아야나" class="hero-image" id="heroImage">
+        <img src="{{MAIN_IMAGE}}" alt="{{RESORT_NAME_KO}}" class="hero-image" id="heroImage">
         <div class="hero-overlay"></div>
         <div class="hero-content">
-            <span class="resort-category-badge">럭셔리</span>
-            <h1 class="hero-title">아야나</h1>
-            <p class="hero-subtitle">AYANA</p>
+            <span class="resort-category-badge">{{CATEGORY}}</span>
+            <h1 class="hero-title">{{RESORT_NAME_KO}}</h1>
+            <p class="hero-subtitle">{{RESORT_NAME_EN}}</p>
             <p class="hero-location">
                 <i class="fas fa-map-marker-alt"></i> 
-                인도네시아 · 발리 (Bali)
+                {{COUNTRY}} · {{REGION_NAME_KO}} ({{REGION_NAME_EN}})
             </p>
         </div>
     </section>
@@ -543,7 +543,7 @@
                         리조트 소개
                     </h2>
                     <div class="description-text">
-                        세계적인 명성의 럭셔리 리조트로, 최상급 서비스와 프라이빗한 공간을 제공합니다. 허니문 커플을 위한 로맨틱한 분위기와 함께 잊지 못할 추억을 선사합니다. 전용 풀빌라, 고급 스파, 미슐랭 스타 셰프의 요리를 경험하실 수 있습니다.
+                        {{DESCRIPTION}}
                     </div>
                 </div>
 
@@ -599,14 +599,14 @@
                         <div class="info-label">
                             <i class="fas fa-tag"></i> 리조트 등급
                         </div>
-                        <div class="info-value">럭셔리</div>
+                        <div class="info-value">{{CATEGORY}}</div>
                     </div>
                     
                     <div class="info-item">
                         <div class="info-label">
                             <i class="fas fa-map-marker-alt"></i> 위치
                         </div>
-                        <div class="info-value">발리, 인도네시아</div>
+                        <div class="info-value">{{REGION_NAME_KO}}, {{COUNTRY}}</div>
                     </div>
                     
                     <div class="info-item">
@@ -671,13 +671,7 @@
     <script>
         // Image gallery data
         const images = [
-            "/static/images/resorts/bali/bali-resort02-01.webp",
-            "/static/images/resorts/bali/bali-resort02-02.webp",
-            "/static/images/resorts/bali/bali-resort02-03.webp",
-            "/static/images/resorts/bali/bali-resort02-04.webp",
-            "/static/images/resorts/bali/bali-resort02-05.webp",
-            "/static/images/resorts/bali/bali-resort02-06.webp",
-            "/static/images/resorts/bali/bali-resort02-07.webp"
+            {{IMAGE_ARRAY}}
         ];
         
         let currentImageIndex = 0;
