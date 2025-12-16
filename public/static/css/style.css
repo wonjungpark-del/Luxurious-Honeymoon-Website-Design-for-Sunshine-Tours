@@ -79,6 +79,31 @@ nav {
   color: var(--primary-color);
 }
 
+.logo a {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.logo img {
+  height: 40px;
+  width: auto;
+  object-fit: contain;
+  transition: transform 0.3s ease;
+}
+
+.logo a:hover img {
+  transform: scale(1.05);
+}
+
+.logo span {
+  font-family: 'Noto Serif KR', serif;
+  font-weight: 700;
+  font-size: 1.3rem;
+  letter-spacing: -0.5px;
+  color: var(--secondary-color);
+}
+
 .nav-links {
   display: flex;
   list-style: none;
@@ -541,6 +566,15 @@ footer {
   
   .nav-links.active {
     display: flex;
+  }
+  
+  /* 모바일용 로고 크기 조정 */
+  .logo a img {
+    height: 32px !important;
+  }
+  
+  .logo a span {
+    font-size: 1.1rem !important;
   }
   
   .hero {
