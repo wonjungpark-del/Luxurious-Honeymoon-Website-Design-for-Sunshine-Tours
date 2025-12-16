@@ -16,17 +16,23 @@
 ## 🚀 URL 정보
 
 ### ✨ 프로덕션 (Cloudflare Pages)
-- **메인 페이지**: https://e6fde030.sunshinetour.pages.dev
-- **태국 카오락**: https://e6fde030.sunshinetour.pages.dev/thailand-khao-lak
-- **태국 코사무이**: https://e6fde030.sunshinetour.pages.dev/thailand-koh-samui
-- **태국 푸켓**: https://e6fde030.sunshinetour.pages.dev/thailand-phuket
-- **태국 끄라비**: https://e6fde030.sunshinetour.pages.dev/thailand-krabi
-- **태국 파타야**: https://e6fde030.sunshinetour.pages.dev/thailand-pattaya
-- **태국 후아힌**: https://e6fde030.sunshinetour.pages.dev/thailand-hua-hin
-- **후기 목록**: https://e6fde030.sunshinetour.pages.dev/reviews
-- **후기 작성**: https://e6fde030.sunshinetour.pages.dev/review-write
-- **문의하기**: https://e6fde030.sunshinetour.pages.dev/inquiry
-- **관리자 페이지**: https://e6fde030.sunshinetour.pages.dev/admin
+- **메인 페이지**: https://5d6b3e24.sunshinetour.pages.dev
+
+#### 지역 페이지 (30개)
+- **태국 (6)**: [카오락](https://5d6b3e24.sunshinetour.pages.dev/thailand-khao-lak), [코사무이](https://5d6b3e24.sunshinetour.pages.dev/thailand-koh-samui), [푸켓](https://5d6b3e24.sunshinetour.pages.dev/thailand-phuket), [끄라비](https://5d6b3e24.sunshinetour.pages.dev/thailand-krabi), [파타야](https://5d6b3e24.sunshinetour.pages.dev/thailand-pattaya), [후아힌](https://5d6b3e24.sunshinetour.pages.dev/thailand-hua-hin)
+- **인도네시아 (2)**: [발리](https://5d6b3e24.sunshinetour.pages.dev/bali), [롬복](https://5d6b3e24.sunshinetour.pages.dev/lombok)
+- **필리핀 (3)**: [보라카이](https://5d6b3e24.sunshinetour.pages.dev/boracay), [세부/보홀](https://5d6b3e24.sunshinetour.pages.dev/cebu-bohol), [팔라완](https://5d6b3e24.sunshinetour.pages.dev/palawan)
+- **하와이 (3)**: [오아후](https://5d6b3e24.sunshinetour.pages.dev/oahu), [마우이](https://5d6b3e24.sunshinetour.pages.dev/maui), [빅아일랜드](https://5d6b3e24.sunshinetour.pages.dev/bigisland)
+- **남태평양 (4)**: [피지](https://5d6b3e24.sunshinetour.pages.dev/fiji), [괌](https://5d6b3e24.sunshinetour.pages.dev/guam), [사이판](https://5d6b3e24.sunshinetour.pages.dev/saipan), [호주](https://5d6b3e24.sunshinetour.pages.dev/australia)
+- **몰디브 (1)**: [몰디브](https://5d6b3e24.sunshinetour.pages.dev/maldives)
+- **유럽 (8)**: [파리](https://5d6b3e24.sunshinetour.pages.dev/paris), [로마](https://5d6b3e24.sunshinetour.pages.dev/rome), [스페인](https://5d6b3e24.sunshinetour.pages.dev/spain), [스위스](https://5d6b3e24.sunshinetour.pages.dev/switzerland), [프라하](https://5d6b3e24.sunshinetour.pages.dev/prague), [비엔나](https://5d6b3e24.sunshinetour.pages.dev/vienna), [크로아티아](https://5d6b3e24.sunshinetour.pages.dev/croatia), [터키](https://5d6b3e24.sunshinetour.pages.dev/turkey)
+- **기타 (3)**: [칸쿤](https://5d6b3e24.sunshinetour.pages.dev/cancun), [다낭](https://5d6b3e24.sunshinetour.pages.dev/danang), [모리셔스](https://5d6b3e24.sunshinetour.pages.dev/mauritius)
+
+#### 시스템 페이지
+- **후기 목록**: https://5d6b3e24.sunshinetour.pages.dev/reviews
+- **후기 작성**: https://5d6b3e24.sunshinetour.pages.dev/review-write
+- **문의하기**: https://5d6b3e24.sunshinetour.pages.dev/inquiry
+- **관리자 페이지**: https://5d6b3e24.sunshinetour.pages.dev/admin
 
 ### 개발 서버 (Sandbox)
 - **메인 페이지**: https://3000-izlo14af8bw6i0urlswzu-5c13a017.sandbox.novita.ai
@@ -303,23 +309,31 @@ npm run git:commit "커밋 메시지"
 ### ✅ 완료된 기능
 1. ✅ 프로젝트 환경 설정 (Hono + Cloudflare Pages)
 2. ✅ D1 데이터베이스 스키마 설계 및 마이그레이션
-3. ✅ Hono 백엔드 RESTful API 구축
+3. ✅ Hono 백엔드 RESTful API 구축 (Regions, Resorts, Reviews, Inquiries)
 4. ✅ 메인 페이지 (홈페이지)
 5. ✅ 후기 시스템 (작성/목록/필터링)
 6. ✅ 문의 시스템 (폼/제출)
 7. ✅ 관리자 페이지 (대시보드/후기관리/문의관리)
 8. ✅ 샘플 데이터 생성 및 시딩
-9. ✅ **태국 6개 지역 페이지** (카오락, 코사무이, 푸켓, 끄라비, 파타야, 후아힌)
+9. ✅ **30개 지역 페이지 완성**
+   - 태국 6개 (카오락, 코사무이, 푸켓, 끄라비, 파타야, 후아힌)
+   - 인도네시아 2개 (발리, 롬복)
+   - 필리핀 3개 (보라카이, 세부/보홀, 팔라완)
+   - 하와이 3개 (오아후, 마우이, 빅아일랜드)
+   - 남태평양 4개 (피지, 괌, 사이판, 호주)
+   - 몰디브 1개
+   - 유럽 8개 (파리, 로마, 스페인, 스위스, 프라하, 비엔나, 크로아티아, 터키)
+   - 기타 3개 (칸쿤, 다낭, 모리셔스)
 10. ✅ **Cloudflare Pages 프로덕션 배포 완료**
 11. ✅ Git 버전 관리 및 커밋
 
 ### 🚧 진행 중인 작업
-없음
+없음 - 모든 주요 페이지 개발 완료
 
 ### 📝 향후 개발 계획
-1. **나머지 지역 페이지 개발** (발리, 몰디브, 보라카이, 하와이 등 30개 페이지)
-2. **이미지 최적화** (Google Drive 이미지 다운로드 및 Cloudflare R2 업로드)
-3. **리조트 상세 페이지** 개발 (각 리조트별 전용 페이지)
+1. **이미지 최적화** (Google Drive 이미지 다운로드 및 Cloudflare R2 업로드)
+2. **리조트 상세 페이지** 개발 (각 리조트별 전용 페이지)
+3. **지역별 리조트 데이터 추가** (현재는 태국만 리조트 데이터 보유)
 4. **검색 기능** (지역/리조트 통합 검색)
 5. **페이지네이션** (후기/문의 목록)
 6. **SEO 최적화** (메타 태그, 구조화 데이터)
@@ -400,9 +414,9 @@ npm run db:reset
 ---
 
 **최종 업데이트**: 2024년 12월 16일  
-**버전**: 1.0.0  
-**개발 상태**: ✅ **프로덕션 배포 완료**  
-**프로덕션 URL**: https://e6fde030.sunshinetour.pages.dev  
+**버전**: 2.0.0  
+**개발 상태**: ✅ **프로덕션 배포 완료 (30개 지역 페이지)**  
+**프로덕션 URL**: https://5d6b3e24.sunshinetour.pages.dev  
 **Cloudflare Project**: sunshinetour  
 
 ---
@@ -411,7 +425,12 @@ npm run db:reset
 
 모든 페이지와 API가 정상적으로 작동합니다:
 - ✅ 메인 페이지 (index.html)
-- ✅ 태국 6개 지역 페이지
+- ✅ **30개 지역 페이지** (전 세계 주요 허니문 여행지)
+  - 아시아/태평양: 태국 6개, 인도네시아 2개, 필리핀 3개, 하와이 3개, 남태평양 4개
+  - 인도양: 몰디브, 모리셔스
+  - 유럽: 8개국
+  - 아메리카: 칸쿤
+  - 베트남: 다낭
 - ✅ 후기 시스템 (목록/작성)
 - ✅ 문의 시스템
 - ✅ 관리자 페이지
