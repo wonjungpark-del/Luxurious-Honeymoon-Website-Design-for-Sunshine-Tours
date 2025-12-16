@@ -4,6 +4,8 @@ import { serveStatic } from 'hono/cloudflare-workers'
 
 type Bindings = {
   DB: D1Database;
+  IMAGES: R2Bucket;
+  R2_PUBLIC_URL: string;
 }
 
 const app = new Hono<{ Bindings: Bindings }>()
@@ -13,6 +15,84 @@ app.use('/api/*', cors())
 
 // 정적 파일 제공
 app.use('/static/*', serveStatic({ root: './' }))
+
+// ===================================
+// API 엔드포인트 - Image Upload (이미지 업로드)
+// ===================================
+
+// 이미지 업로드 (최대 5장)
+app.post('/api/upload', async (c) => {
+  try {
+    const { IMAGES } = c.env
+    const formData = await c.req.formData()
+    const files = formData.getAll('images') as File[]
+    
+    if (!files || files.length === 0) {
+      return c.json({
+        success: false,
+        error: '이미지를 선택해주세요.'
+      }, 400)
+    }
+    
+    if (files.length > 5) {
+      return c.json({
+        success: false,
+        error: '최대 5장까지 업로드 가능합니다.'
+      }, 400)
+    }
+    
+    const uploadedUrls: string[] = []
+    
+    for (const file of files) {
+      // 파일 크기 체크 (10MB 제한)
+      if (file.size > 10 * 1024 * 1024) {
+        return c.json({
+          success: false,
+          error: '각 파일은 10MB 이하여야 합니다.'
+        }, 400)
+      }
+      
+      // 이미지 파일인지 체크
+      if (!file.type.startsWith('image/')) {
+        return c.json({
+          success: false,
+          error: '이미지 파일만 업로드 가능합니다.'
+        }, 400)
+      }
+      
+      // 고유 파일명 생성 (타임스탬프 + 랜덤)
+      const timestamp = Date.now()
+      const random = Math.random().toString(36).substring(2, 8)
+      const ext = file.name.split('.').pop() || 'jpg'
+      const fileName = `reviews/${timestamp}-${random}.${ext}`
+      
+      // R2에 업로드
+      const arrayBuffer = await file.arrayBuffer()
+      await IMAGES.put(fileName, arrayBuffer, {
+        httpMetadata: {
+          contentType: file.type
+        }
+      })
+      
+      // Public URL 생성 (환경변수에서 가져오기)
+      const baseUrl = c.env.R2_PUBLIC_URL || 'https://pub-d0131c5bb5bf458eaada30b9c50ce106.r2.dev'
+      const publicUrl = `${baseUrl}/${fileName}`
+      uploadedUrls.push(publicUrl)
+    }
+    
+    return c.json({
+      success: true,
+      urls: uploadedUrls,
+      count: uploadedUrls.length
+    })
+  } catch (error) {
+    console.error('Error uploading images:', error)
+    return c.json({
+      success: false,
+      error: '이미지 업로드 중 오류가 발생했습니다.'
+    }, 500)
+  }
+})
 
 // ===================================
 // API 엔드포인트 - Regions (지역)

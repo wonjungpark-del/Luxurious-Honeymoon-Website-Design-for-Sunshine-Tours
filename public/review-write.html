@@ -108,11 +108,15 @@
                 </div>
 
                 <div class="form-group">
-                    <label class="form-label">이미지 URL (선택)</label>
-                    <input type="url" id="image_url" class="form-input" placeholder="https://example.com/image.jpg">
-                    <p style="color: var(--text-light); font-size: 0.9rem; margin-top: 0.5rem;">
-                        <i class="fas fa-info-circle"></i> 여행 사진 URL을 입력하시면 후기에 이미지가 표시됩니다.
-                    </p>
+                    <label class="form-label">여행 사진 업로드 (선택, 최대 5장)</label>
+                    <div style="border: 2px dashed #ddd; border-radius: 8px; padding: 2rem; text-align: center; cursor: pointer; transition: all 0.3s;" id="upload-area">
+                        <input type="file" id="image_files" accept="image/*" multiple style="display: none;">
+                        <i class="fas fa-cloud-upload-alt" style="font-size: 3rem; color: var(--primary-color); margin-bottom: 1rem;"></i>
+                        <p style="color: var(--text-primary); font-weight: 600; margin-bottom: 0.5rem;">사진을 여기에 드래그하거나 클릭하여 업로드</p>
+                        <p style="color: var(--text-light); font-size: 0.9rem;">JPG, PNG, WebP 지원 · 각 파일 최대 10MB · 최대 5장</p>
+                    </div>
+                    <div id="image-preview-container" style="display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 1rem; margin-top: 1rem;"></div>
+                    <p id="upload-status" style="color: var(--text-light); font-size: 0.9rem; margin-top: 0.5rem;"></p>
                 </div>
 
                 <div id="message-container" style="margin-bottom: 1rem;"></div>
@@ -169,9 +173,47 @@
     </footer>
 
     <!-- Scripts -->
+    <style>
+        #upload-area:hover {
+            border-color: var(--primary-color);
+            background-color: #f9f9f9;
+        }
+        .image-preview-item {
+            position: relative;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+        .image-preview-item img {
+            width: 100%;
+            height: 150px;
+            object-fit: cover;
+        }
+        .image-preview-item .remove-btn {
+            position: absolute;
+            top: 8px;
+            right: 8px;
+            background: rgba(255, 0, 0, 0.8);
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 30px;
+            height: 30px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background 0.3s;
+        }
+        .image-preview-item .remove-btn:hover {
+            background: rgba(255, 0, 0, 1);
+        }
+    </style>
     <script>
         const API_BASE = '/api';
         let selectedRating = 0;
+        let selectedFiles = [];
+        let uploadedImageUrls = [];
         
         // 여행지 한글 매핑
         const destinationMap = {
@@ -207,6 +249,36 @@
             const starContainer = stars[0].parentElement;
             starContainer.addEventListener('mouseleave', updateStars);
             
+            // 이미지 업로드 영역 설정
+            const uploadArea = document.getElementById('upload-area');
+            const imageInput = document.getElementById('image_files');
+            
+            uploadArea.addEventListener('click', () => imageInput.click());
+            
+            imageInput.addEventListener('change', (e) => {
+                handleFileSelect(e.target.files);
+            });
+            
+            // 드래그 앤 드롭
+            uploadArea.addEventListener('dragover', (e) => {
+                e.preventDefault();
+                uploadArea.style.borderColor = 'var(--primary-color)';
+                uploadArea.style.backgroundColor = '#f9f9f9';
+            });
+            
+            uploadArea.addEventListener('dragleave', (e) => {
+                e.preventDefault();
+                uploadArea.style.borderColor = '#ddd';
+                uploadArea.style.backgroundColor = 'white';
+            });
+            
+            uploadArea.addEventListener('drop', (e) => {
+                e.preventDefault();
+                uploadArea.style.borderColor = '#ddd';
+                uploadArea.style.backgroundColor = 'white';
+                handleFileSelect(e.dataTransfer.files);
+            });
+            
             // 폼 제출
             document.getElementById('review-form').addEventListener('submit', handleSubmit);
             
@@ -232,6 +304,132 @@
             ratingText.textContent = selectedRating > 0 ? ratingTexts[selectedRating] : '';
         }
         
+        function handleFileSelect(files) {
+            const fileArray = Array.from(files);
+            
+            // 파일 개수 체크
+            if (selectedFiles.length + fileArray.length > 5) {
+                alert('최대 5장까지 업로드 가능합니다.');
+                return;
+            }
+            
+            // 이미지 파일만 필터링
+            const imageFiles = fileArray.filter(file => file.type.startsWith('image/'));
+            
+            if (imageFiles.length !== fileArray.length) {
+                alert('이미지 파일만 업로드 가능합니다.');
+            }
+            
+            selectedFiles = [...selectedFiles, ...imageFiles];
+            displayImagePreviews();
+        }
+        
+        function displayImagePreviews() {
+            const container = document.getElementById('image-preview-container');
+            container.innerHTML = '';
+            
+            selectedFiles.forEach((file, index) => {
+                const reader = new FileReader();
+                reader.onload = (e) => {
+                    const preview = document.createElement('div');
+                    preview.className = 'image-preview-item';
+                    preview.innerHTML = `
+                        <img src="${e.target.result}" alt="Preview">
+                        <button type="button" class="remove-btn" onclick="removeImage(${index})">
+                            <i class="fas fa-times"></i>
+                        </button>
+                    `;
+                    container.appendChild(preview);
+                };
+                reader.readAsDataURL(file);
+            });
+            
+            document.getElementById('upload-status').textContent = 
+                `${selectedFiles.length}장의 이미지가 선택되었습니다. (최대 5장)`;
+        }
+        
+        function removeImage(index) {
+            selectedFiles.splice(index, 1);
+            displayImagePreviews();
+        }
+        
+        // 이미지 압축 함수
+        async function compressImage(file, maxWidth = 1920, quality = 0.8) {
+            return new Promise((resolve) => {
+                const reader = new FileReader();
+                reader.onload = (e) => {
+                    const img = new Image();
+                    img.onload = () => {
+                        const canvas = document.createElement('canvas');
+                        let width = img.width;
+                        let height = img.height;
+                        
+                        // 리사이징
+                        if (width > maxWidth) {
+                            height = (height * maxWidth) / width;
+                            width = maxWidth;
+                        }
+                        
+                        canvas.width = width;
+                        canvas.height = height;
+                        
+                        const ctx = canvas.getContext('2d');
+                        ctx.drawImage(img, 0, 0, width, height);
+                        
+                        // WebP로 변환 (지원하지 않으면 JPEG)
+                        canvas.toBlob((blob) => {
+                            resolve(new File([blob], file.name.replace(/\.[^.]+$/, '.webp'), {
+                                type: 'image/webp'
+                            }));
+                        }, 'image/webp', quality);
+                    };
+                    img.src = e.target.result;
+                };
+                reader.readAsDataURL(file);
+            });
+        }
+        
+        // 이미지 업로드 함수
+        async function uploadImages() {
+            if (selectedFiles.length === 0) {
+                return [];
+            }
+            
+            const statusEl = document.getElementById('upload-status');
+            statusEl.innerHTML = '<i class="fas fa-spinner fa-spin"></i> 이미지 압축 및 업로드 중...';
+            
+            try {
+                // 이미지 압축
+                const compressedFiles = await Promise.all(
+                    selectedFiles.map(file => compressImage(file))
+                );
+                
+                // FormData 생성
+                const formData = new FormData();
+                compressedFiles.forEach(file => {
+                    formData.append('images', file);
+                });
+                
+                // 업로드
+                const response = await fetch(`${API_BASE}/upload`, {
+                    method: 'POST',
+                    body: formData
+                });
+                
+                const result = await response.json();
+                
+                if (result.success) {
+                    statusEl.innerHTML = `<i class="fas fa-check-circle" style="color: green;"></i> ${result.count}장의 이미지가 업로드되었습니다.`;
+                    return result.urls;
+                } else {
+                    throw new Error(result.error);
+                }
+            } catch (error) {
+                statusEl.innerHTML = `<i class="fas fa-exclamation-triangle" style="color: red;"></i> 이미지 업로드 실패: ${error.message}`;
+                throw error;
+            }
+        }
+        
         async function handleSubmit(e) {
             e.preventDefault();
             
@@ -252,18 +450,25 @@
             submitBtn.disabled = true;
             submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> 제출 중...';
             
-            const formData = {
-                destination: document.getElementById('destination').value,
-                destination_kr: destinationMap[document.getElementById('destination').value] || '기타',
-                rating: selectedRating,
-                title: document.getElementById('title').value,
-                content: document.getElementById('content').value,
-                author_name: document.getElementById('author_name').value,
-                travel_date: document.getElementById('travel_date').value,
-                image_url: document.getElementById('image_url').value
-            };
-            
             try {
+                // 이미지 업로드 (있는 경우)
+                let imageUrls = [];
+                if (selectedFiles.length > 0) {
+                    imageUrls = await uploadImages();
+                }
+                
+                const formData = {
+                    destination: document.getElementById('destination').value,
+                    destination_kr: destinationMap[document.getElementById('destination').value] || '기타',
+                    rating: selectedRating,
+                    title: document.getElementById('title').value,
+                    content: document.getElementById('content').value,
+                    author_name: document.getElementById('author_name').value,
+                    travel_date: document.getElementById('travel_date').value,
+                    image_url: imageUrls.length > 0 ? imageUrls[0] : '', // 첫 번째 이미지만 저장
+                    image_urls: imageUrls // 전체 이미지 URL 배열
+                };
+                
                 const response = await fetch(`${API_BASE}/reviews`, {
                     method: 'POST',
                     headers: {
@@ -284,6 +489,8 @@
                     // 폼 초기화
                     document.getElementById('review-form').reset();
                     selectedRating = 0;
+                    selectedFiles = [];
+                    displayImagePreviews();
                     updateStars();
                     
                     // 3초 후 후기 목록으로 이동
