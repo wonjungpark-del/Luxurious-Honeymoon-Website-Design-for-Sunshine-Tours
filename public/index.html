@@ -4,389 +4,462 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>선샤인투어 - 프리미엄 허니문 & 해외 여행 전문</title>
-    <meta name="description" content="선샤인투어는 프리미엄 허니문과 해외 여행을 전문으로 하는 여행사입니다.">
-    <meta name="keywords" content="허니문, 신혼여행, 해외여행, 리조트, 태국, 발리, 몰디브, 하와이">
+    <meta name="description" content="몰디브, 발리, 유럽, 하와이 등 전 세계 227개 프리미엄 리조트 허니문 & 해외여행 전문. 27년 경력의 여행 전문가가 설계하는 맞춤형 신혼여행과 특별한 휴가를 경험하세요.">
+    <meta name="keywords" content="허니문, 신혼여행, 해외여행, 몰디브, 발리, 유럽여행, 하와이, 칸쿤, 모리셔스, 프리미엄 리조트, 선샤인투어">
+    
+    <!-- Open Graph (소셜 미디어) -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="선샤인투어 - 프리미엄 허니문 & 해외 여행 전문">
+    <meta property="og:description" content="전 세계 227개 프리미엄 리조트와 함께하는 특별한 여행">
+    <meta property="og:site_name" content="선샤인투어">
+    <meta property="og:locale" content="ko_KR">
+    
+    <!-- 검색엔진 최적화 -->
+    <meta name="robots" content="index, follow">
+    <meta name="author" content="선샤인투어">
     
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Noto+Serif+KR:wght@400;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@300;400;600;700&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     
     <!-- Font Awesome -->
-    <link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
     
     <!-- Custom CSS -->
-    <link href="/static/css/style.css" rel="stylesheet">
+    <link rel="stylesheet" href="/static/css/style.css">
 </head>
 <body>
-    <!-- Header & Navigation -->
-    <header>
-        <nav class="container">
-            <div class="logo">
-                <a href="/" style="display: flex; align-items: center; gap: 12px;">
-                    <img src="/static/images/logo-sunrise.png" alt="Sunshine Tour" style="height: 40px; width: auto; object-fit: contain;">
-                    <span style="font-family: 'Montserrat', sans-serif; font-weight: 700; font-size: 1.3rem; letter-spacing: 0.5px;">SUNSHINE TOUR</span>
+    <!-- Navigation -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <a href="index.html">
+                    <div class="text-logo" style="display: flex; align-items: center; gap: 10px;">
+                        <i class="fas fa-sun" style="font-size: 32px; color: #C9A96E;"></i>
+                        <div style="display: flex; flex-direction: column; line-height: 1.2;">
+                            <span style="font-family: 'Montserrat', sans-serif; font-size: 20px; font-weight: 700; color: #C9A96E; letter-spacing: 1px;">SUNSHINE</span>
+                            <span style="font-family: 'Montserrat', sans-serif; font-size: 10px; font-weight: 400; color: #7A7A7A; letter-spacing: 2px;">TOUR</span>
+                        </div>
+                    </div>
                 </a>
             </div>
-            <ul class="nav-links">
-                <li class="nav-dropdown">
-                    <a href="#destinations">Destinations <i class="fas fa-chevron-down"></i></a>
-                    <div class="dropdown-content">
-                        <a href="/thailand-khao-lak">🇹🇭 태국 카오락</a>
-                        <a href="/thailand-koh-samui">🇹🇭 태국 코사무이</a>
-                        <a href="/thailand-phuket">🇹🇭 태국 푸켓</a>
-                        <a href="/thailand-krabi">🇹🇭 태국 끄라비</a>
-                        <a href="/thailand-pattaya">🇹🇭 태국 파타야</a>
-                        <a href="/thailand-hua-hin">🇹🇭 태국 후아힌</a>
-                    </div>
-                </li>
-                <li><a href="/reviews">Reviews</a></li>
-                <li><a href="/inquiry">Contact</a></li>
-                <li><a href="/admin">Admin</a></li>
+            <ul class="nav-menu" id="nav-menu">
+                <li><a href="#home" class="nav-link">Home</a></li>
+                <li><a href="#destinations" class="nav-link">Destinations</a></li>
+                <li><a href="/reviews" class="nav-link">Reviews</a></li>
+                <li><a href="#about" class="nav-link">About</a></li>
+                <li><a href="#contact" class="nav-link">Contact</a></li>
             </ul>
-            <button class="mobile-menu-btn">
+            <div class="nav-toggle" id="nav-toggle">
                 <i class="fas fa-bars"></i>
-            </button>
-        </nav>
-    </header>
+            </div>
+        </div>
+    </nav>
 
     <!-- Hero Section -->
-    <section class="hero" style="background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url('/static/images/hero-honeymoon-korean.jpg'); background-size: cover; background-position: center;">
+    <section class="hero" id="home">
+        <div class="hero-overlay"></div>
+        <div class="hero-video-container">
+            <img src="https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?w=2000&q=80" alt="Luxury Honeymoon Resort with Infinity Pool" class="hero-image">
+        </div>
         <div class="hero-content">
-            <h1>당신만의 특별한 여행</h1>
-            <p>프리미엄 허니문 & 해외 여행 전문</p>
-            <div style="display: flex; gap: 1rem; justify-content: center;">
-                <a href="#destinations" class="btn btn-primary">여행지 둘러보기</a>
-                <a href="/inquiry" class="btn btn-secondary">상담 신청</a>
+            <h1 class="hero-title">당신만의 특별한<br>허니문을 시작하세요</h1>
+            <p class="hero-description">신혼부부를 위한 프라이빗 럭셔리 여행</p>
+            <a href="#destinations" class="hero-btn">여행지 둘러보기</a>
+        </div>
+        <div class="scroll-indicator">
+            <div class="scroll-line"></div>
+        </div>
+    </section>
+
+    <!-- Introduction Section -->
+    <section class="intro-section" id="about">
+        <div class="container">
+            <div class="intro-content">
+                <span class="section-label">ABOUT US</span>
+                <h2 class="section-title">프라이빗한 여행의 시작</h2>
+                <p class="intro-text">
+                    선샤인투어는 신혼부부만을 위한 특별한 여행을 만듭니다.<br>
+                    각 커플의 취향과 스타일에 맞춘 맞춤형 여행 경험을 제공하며,<br>
+                    평생 기억에 남을 로맨틱한 순간을 선사합니다.
+                </p>
             </div>
         </div>
     </section>
 
-    <!-- About Section -->
-    <section class="container">
-        <h2 class="section-title" style="text-align: center;">선샤인투어를 선택하는 이유</h2>
-        <p class="section-subtitle" style="text-align: center;">20년 경력의 전문가가 만드는 완벽한 여행</p>
-        
-        <div class="card-grid">
-            <div class="card">
-                <div class="card-content" style="text-align: center;">
-                    <i class="fas fa-award" style="font-size: 3rem; color: var(--primary-color); margin-bottom: 1rem;"></i>
-                    <h3 class="card-title">20년 경력</h3>
-                    <p class="card-description">허니문 및 해외 여행 전문<br>20년 경력의 노하우</p>
-                </div>
+    <!-- Destinations Section -->
+    <section class="destinations" id="destinations">
+        <div class="container-fluid">
+            <div class="section-header">
+                <span class="section-label">DESTINATIONS</span>
+                <h2 class="section-title">꿈꾸던 그곳으로</h2>
             </div>
-            <div class="card">
-                <div class="card-content" style="text-align: center;">
-                    <i class="fas fa-heart" style="font-size: 3rem; color: var(--primary-color); margin-bottom: 1rem;"></i>
-                    <h3 class="card-title">맞춤 상담</h3>
-                    <p class="card-description">고객 한 분 한 분께<br>맞춤형 여행 플랜 제공</p>
+            
+            <div class="destinations-grid">
+                <!-- Destination 1: Thailand -->
+                <div class="destination-card" data-destination="thailand">
+                    <div class="destination-image-wrapper">
+                        <img src="https://images.unsplash.com/photo-1552465011-b4e21bf6e79a?q=80&w=2070" alt="Thailand" class="destination-image">
+                        <div class="destination-overlay">
+                            <div class="destination-content">
+                                <h3 class="destination-name">Thailand</h3>
+                                <p class="destination-subtitle">태국</p>
+                                <a href="/thailand-phuket" class="destination-btn">자세히 보기</a>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-            </div>
-            <div class="card">
-                <div class="card-content" style="text-align: center;">
-                    <i class="fas fa-shield-alt" style="font-size: 3rem; color: var(--primary-color); margin-bottom: 1rem;"></i>
-                    <h3 class="card-title">안전 보장</h3>
-                    <p class="card-description">여행자 보험 및<br>24시간 긴급 지원 서비스</p>
+
+                <!-- Destination 2: Bali -->
+                <div class="destination-card" data-destination="bali">
+                    <div class="destination-image-wrapper">
+                        <img src="https://images.unsplash.com/photo-1537996194471-e657df975ab4?q=80&w=2038" alt="Bali" class="destination-image">
+                        <div class="destination-overlay">
+                            <div class="destination-content">
+                                <h3 class="destination-name">Bali</h3>
+                                <p class="destination-subtitle">발리</p>
+                                <a href="/bali" class="destination-btn">자세히 보기</a>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-            </div>
-            <div class="card">
-                <div class="card-content" style="text-align: center;">
-                    <i class="fas fa-star" style="font-size: 3rem; color: var(--primary-color); margin-bottom: 1rem;"></i>
-                    <h3 class="card-title">최고의 리조트</h3>
-                    <p class="card-description">엄선된 프리미엄 리조트만을<br>제공합니다</p>
+
+                <!-- Destination 3: Hawaii -->
+                <div class="destination-card" data-destination="hawaii">
+                    <div class="destination-image-wrapper">
+                        <img src="https://images.unsplash.com/photo-1542259009477-d625272157b7?q=80&w=2069" alt="Hawaii" class="destination-image">
+                        <div class="destination-overlay">
+                            <div class="destination-content">
+                                <h3 class="destination-name">Hawaii</h3>
+                                <p class="destination-subtitle">하와이</p>
+                                <a href="/maui" class="destination-btn">자세히 보기</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Destination 4: Cancun -->
+                <div class="destination-card" data-destination="cancun">
+                    <div class="destination-image-wrapper">
+                        <img src="https://images.unsplash.com/photo-1568402102990-bc541580b59f?q=80&w=2070" alt="Cancun Beach" class="destination-image">
+                        <div class="destination-overlay">
+                            <div class="destination-content">
+                                <h3 class="destination-name">Cancun</h3>
+                                <p class="destination-subtitle">칸쿤</p>
+                                <a href="/cancun" class="destination-btn">자세히 보기</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Destination 5: Philippines -->
+                <div class="destination-card" data-destination="philippines">
+                    <div class="destination-image-wrapper">
+                        <img src="https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?q=80&w=2070" alt="Philippines Beach Resort" class="destination-image">
+                        <div class="destination-overlay">
+                            <div class="destination-content">
+                                <h3 class="destination-name">Philippines</h3>
+                                <p class="destination-subtitle">필리핀</p>
+                                <a href="/cebu-bohol" class="destination-btn">자세히 보기</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Destination 6: Maldives -->
+                <div class="destination-card" data-destination="maldives">
+                    <div class="destination-image-wrapper">
+                        <img src="https://images.unsplash.com/photo-1514282401047-d79a71a590e8?q=80&w=2065" alt="Maldives" class="destination-image">
+                        <div class="destination-overlay">
+                            <div class="destination-content">
+                                <h3 class="destination-name">Maldives</h3>
+                                <p class="destination-subtitle">몰디브</p>
+                                <a href="/maldives" class="destination-btn">자세히 보기</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Destination 7: South Pacific -->
+                <div class="destination-card" data-destination="southpacific">
+                    <div class="destination-image-wrapper">
+                        <img src="https://images.unsplash.com/photo-1559827260-dc66d52bef19?q=80&w=2070" alt="South Pacific" class="destination-image">
+                        <div class="destination-overlay">
+                            <div class="destination-content">
+                                <h3 class="destination-name">South Pacific</h3>
+                                <p class="destination-subtitle">남태평양</p>
+                                <a href="/thailand-phuket" class="destination-btn">자세히 보기</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Destination 8: Europe -->
+                <div class="destination-card" data-destination="europe">
+                    <div class="destination-image-wrapper">
+                        <img src="https://images.unsplash.com/photo-1502602898657-3e91760cbb34?q=80&w=2073" alt="Europe" class="destination-image">
+                        <div class="destination-overlay">
+                            <div class="destination-content">
+                                <h3 class="destination-name">Europe</h3>
+                                <p class="destination-subtitle">유럽</p>
+                                <a href="/thailand-krabi" class="destination-btn">자세히 보기</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Destination 9: Mauritius -->
+                <div class="destination-card" data-destination="mauritius">
+                    <div class="destination-image-wrapper">
+                        <img src="https://images.unsplash.com/photo-1609137144813-7d9921338f24?q=80&w=2074" alt="Mauritius" class="destination-image">
+                        <div class="destination-overlay">
+                            <div class="destination-content">
+                                <h3 class="destination-name">Mauritius</h3>
+                                <p class="destination-subtitle">모리셔스</p>
+                                <a href="/thailand-khao-lak" class="destination-btn">자세히 보기</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Destination 10: Da Nang -->
+                <div class="destination-card" data-destination="danang">
+                    <div class="destination-image-wrapper">
+                        <img src="https://images.unsplash.com/photo-1559592413-7cec4d0cae2b?q=80&w=2071" alt="Da Nang" class="destination-image">
+                        <div class="destination-overlay">
+                            <div class="destination-content">
+                                <h3 class="destination-name">Da Nang</h3>
+                                <p class="destination-subtitle">다낭</p>
+                                <a href="/thailand-koh-samui" class="destination-btn">자세히 보기</a>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Popular Destinations -->
-    <section class="container" id="destinations">
-        <h2 class="section-title" style="text-align: center;">인기 여행지</h2>
-        <p class="section-subtitle" style="text-align: center;">가장 많은 사랑을 받는 허니문 여행지</p>
-        
-        <div class="card-grid">
-            <div class="card">
-                <img src="https://images.unsplash.com/photo-1552465011-b4e21bf6e79a?w=500&h=300&fit=crop" alt="태국" class="card-image">
-                <div class="card-content">
-                    <h3 class="card-title"><i class="fas fa-umbrella-beach" style="color: #C9A96E; margin-right: 0.5rem;"></i>태국</h3>
-                    <p class="card-description">아름다운 해변과 럭셔리 리조트의 천국</p>
-                    <a href="/thailand-phuket" class="btn btn-primary" style="width: 100%; margin-top: 1rem;">자세히 보기</a>
-                </div>
+    <!-- Why Choose Us Section -->
+    <section class="why-section">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-label">WHY CHOOSE US</span>
+                <h2 class="section-title">선샤인투어만의 특별함</h2>
             </div>
-            <div class="card">
-                <img src="https://images.unsplash.com/photo-1537996194471-e657df975ab4?w=500&h=300&fit=crop" alt="발리" class="card-image">
-                <div class="card-content">
-                    <h3 class="card-title"><i class="fas fa-spa" style="color: #C9A96E; margin-right: 0.5rem;"></i>발리</h3>
-                    <p class="card-description">신들의 섬, 로맨틱한 허니문의 성지</p>
-                    <a href="/bali" class="btn btn-primary" style="width: 100%; margin-top: 1rem;">자세히 보기</a>
+            
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-gem"></i>
+                    </div>
+                    <h3 class="feature-title">프리미엄 큐레이션</h3>
+                    <p class="feature-description">엄선된 럭셔리 숙소와 프라이빗 경험만을 제공합니다</p>
                 </div>
-            </div>
-            <div class="card">
-                <img src="https://images.unsplash.com/photo-1514282401047-d79a71a590e8?w=500&h=300&fit=crop" alt="몰디브" class="card-image">
-                <div class="card-content">
-                    <h3 class="card-title"><i class="fas fa-water" style="color: #C9A96E; margin-right: 0.5rem;"></i>몰디브</h3>
-                    <p class="card-description">일생에 한 번은 꼭 가야 할 천국의 섬</p>
-                    <a href="/maldives" class="btn btn-primary" style="width: 100%; margin-top: 1rem;">자세히 보기</a>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-user-shield"></i>
+                    </div>
+                    <h3 class="feature-title">1:1 맞춤 서비스</h3>
+                    <p class="feature-description">전담 매니저가 여행 전 과정을 세심하게 케어합니다</p>
                 </div>
-            </div>
-            <div class="card">
-                <img src="https://images.unsplash.com/photo-1542259009477-d625272157b7?w=500&h=300&fit=crop" alt="하와이" class="card-image">
-                <div class="card-content">
-                    <h3 class="card-title"><i class="fas fa-sun" style="color: #C9A96E; margin-right: 0.5rem;"></i>하와이</h3>
-                    <p class="card-description">태평양의 낙원, 완벽한 휴양지</p>
-                    <a href="/maui" class="btn btn-primary" style="width: 100%; margin-top: 1rem;">자세히 보기</a>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-heart"></i>
+                    </div>
+                    <h3 class="feature-title">로맨틱 경험</h3>
+                    <p class="feature-description">특별한 순간을 위한 서프라이즈 이벤트를 준비합니다</p>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Reviews Section -->
-    <section class="container" style="background-color: #f9f9f9; padding: 5rem 0;" id="reviews">
-        <h2 class="section-title">고객 후기</h2>
-        <p class="section-subtitle" id="reviews-subtitle">선샤인투어와 함께한 행복한 순간들</p>
-        
-        <div id="reviews-container" style="margin-top: 3rem;">
-            <div style="text-align: center; padding: 3rem 0;">
-                <div style="display: inline-block; width: 50px; height: 50px; border: 5px solid #f3f3f3; border-top: 5px solid #C9A96E; border-radius: 50%; animation: spin 1s linear infinite;"></div>
-                <p style="margin-top: 1rem; color: #95a5a6;">후기를 불러오는 중...</p>
+    <section class="reviews-section" id="reviews">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-label">REVIEWS</span>
+                <h2 class="section-title">여행 후기</h2>
+                <p class="section-description">선샤인투어와 함께한 특별한 허니문 이야기</p>
             </div>
-        </div>
-        
-        <div style="text-align: center; margin-top: 3rem;">
-            <a href="/reviews" class="btn btn-primary">모든 후기 보기</a>
+            
+            <div class="reviews-grid" id="main-reviews-grid">
+                <!-- 후기 카드들이 JavaScript로 동적 로드됩니다 -->
+                <div class="loading-message">
+                    <i class="fas fa-spinner fa-spin"></i>
+                    <p>후기를 불러오는 중...</p>
+                </div>
+            </div>
+            
+            <div class="reviews-more">
+                <a href="/reviews" class="reviews-more-btn">더 많은 후기 보기</a>
+            </div>
         </div>
     </section>
-    
-    <style>
-        @keyframes spin {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
-        }
-        
-        .review-card {
-            background: white;
-            border-radius: 12px;
-            padding: 2rem;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-            transition: transform 0.3s, box-shadow 0.3s;
-        }
-        
-        .review-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 4px 16px rgba(0,0,0,0.15);
-        }
-        
-        .review-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 1rem;
-        }
-        
-        .review-author {
-            font-weight: 700;
-            color: #2c3e50;
-            font-size: 1.1rem;
-        }
-        
-        .review-rating {
-            color: #ffd700;
-            font-size: 1.2rem;
-        }
-        
-        .review-destination {
-            display: inline-block;
-            background: #C9A96E;
-            color: white;
-            padding: 0.3rem 1rem;
-            border-radius: 20px;
-            font-size: 0.9rem;
-            margin-bottom: 0.5rem;
-        }
-        
-        .review-title {
-            font-size: 1.2rem;
-            font-weight: 700;
-            color: #2c3e50;
-            margin: 0.5rem 0;
-        }
-        
-        .review-content {
-            color: #555;
-            line-height: 1.7;
-            margin: 1rem 0;
-            display: -webkit-box;
-            -webkit-line-clamp: 3;
-            -webkit-box-orient: vertical;
-            overflow: hidden;
-        }
-        
-        .review-date {
-            color: #95a5a6;
-            font-size: 0.9rem;
-        }
-        
-        .review-image {
-            width: 100%;
-            height: 200px;
-            object-fit: cover;
-            border-radius: 8px;
-            margin-bottom: 1rem;
-        }
-        
-        .reviews-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
-            gap: 2rem;
-            margin-top: 2rem;
-        }
-        
-        @media (max-width: 768px) {
-            .reviews-grid {
-                grid-template-columns: 1fr;
-            }
-        }
-    </style>
 
     <!-- Contact Section -->
-    <section class="container">
-        <h2 class="section-title">문의하기</h2>
-        <p class="section-subtitle">궁금하신 점이 있으시면 언제든지 연락주세요</p>
-        
-        <div class="card-grid" style="max-width: 800px; margin: 0 auto;">
-            <div class="card">
-                <div class="card-content" style="text-align: center;">
-                    <i class="fas fa-phone" style="font-size: 3rem; color: var(--primary-color); margin-bottom: 1rem;"></i>
-                    <h3 class="card-title">전화 문의</h3>
-                    <p class="card-description">평일 09:00 - 18:00</p>
-                    <a href="tel:02-1234-5678" style="color: var(--primary-color); font-size: 1.3rem; font-weight: 700;">02-1234-5678</a>
+    <section class="contact-section" id="contact">
+        <div class="container">
+            <div class="contact-content">
+                <div class="contact-info">
+                    <span class="section-label">CONTACT</span>
+                    <h2 class="section-title">문의하기</h2>
+                    <p class="contact-description">
+                        당신만의 특별한 허니문을 계획해보세요.<br>
+                        전문 상담사가 친절하게 안내해드립니다.
+                    </p>
+                    
+                    <div class="contact-details">
+                        <div class="contact-item">
+                            <i class="fas fa-phone"></i>
+                            <div>
+                                <h4>전화 문의</h4>
+                                <p>02-318-8021</p>
+                            </div>
+                        </div>
+                        
+                        <div class="contact-item">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <div>
+                                <h4>주소</h4>
+                                <p>서울특별시 성북구 보문로30길 71, 2층 7호</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-cta">
+                        <a href="/inquiry" class="contact-btn">
+                            <i class="fas fa-edit"></i>
+                            온라인 문의하기
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="contact-image">
+                    <img src="https://images.unsplash.com/photo-1469371670807-013ccf25f16a?q=80&w=2070" alt="Contact us">
                 </div>
             </div>
-            <div class="card">
-                <div class="card-content" style="text-align: center;">
-                    <i class="fas fa-envelope" style="font-size: 3rem; color: var(--primary-color); margin-bottom: 1rem;"></i>
-                    <h3 class="card-title">이메일 문의</h3>
-                    <p class="card-description">24시간 접수 가능</p>
-                    <a href="mailto:info@sunshinetour.com" style="color: var(--primary-color); font-size: 1.1rem; font-weight: 700;">info@sunshinetour.com</a>
-                </div>
-            </div>
-        </div>
-        
-        <div style="text-align: center; margin-top: 3rem;">
-            <a href="/inquiry" class="btn btn-primary" style="font-size: 1.2rem; padding: 1.2rem 3rem;">온라인 상담 신청</a>
         </div>
     </section>
 
     <!-- Footer -->
-    <footer>
+    <footer class="footer">
         <div class="container">
             <div class="footer-content">
-                <div class="footer-section">
-                    <h3>선샤인투어</h3>
-                    <p>프리미엄 허니문 & 해외 여행 전문</p>
-                    <p>20년 경력의 전문가가 만드는 완벽한 여행</p>
+                <div class="footer-brand">
+                    <h3>SUNSHINE TOUR</h3>
+                    <p>프라이빗 허니문 전문 여행사</p>
                 </div>
-                <div class="footer-section">
-                    <h3>여행지</h3>
-                    <p><a href="/thailand-khao-lak">태국 카오락</a></p>
-                    <p><a href="/thailand-phuket">태국 푸켓</a></p>
-                    <p><a href="/thailand-koh-samui">태국 코사무이</a></p>
-                    <p><a href="/thailand-krabi">태국 끄라비</a></p>
-                </div>
-                <div class="footer-section">
-                    <h3>고객 지원</h3>
-                    <p><a href="/reviews">고객 후기</a></p>
-                    <p><a href="/inquiry">문의하기</a></p>
-                    <p><a href="/admin">관리자</a></p>
-                </div>
-                <div class="footer-section">
-                    <h3>연락처</h3>
-                    <p><i class="fas fa-phone"></i> 02-1234-5678</p>
-                    <p><i class="fas fa-envelope"></i> info@sunshinetour.com</p>
-                    <p><i class="fas fa-map-marker-alt"></i> 서울특별시 강남구</p>
+                
+                <div class="footer-info">
+                    <p>서울특별시 성북구 보문로30길 71, 2층 7호</p>
+                    <p>TEL: 02-318-8021</p>
+                    <p class="copyright">© 2024 Sunshine Tour. All rights reserved.</p>
                 </div>
             </div>
-            <div class="footer-bottom">
-                <p>&copy; 2024 선샤인투어. All rights reserved.</p>
-            </div>
+        </div>
+        
+        <!-- Admin Access Button -->
+        <div class="admin-access">
+            <a href="/admin" class="admin-btn" title="관리자 페이지">
+                <i class="fas fa-user-shield"></i>
+                <span>Admin</span>
+            </a>
         </div>
     </footer>
 
-    <!-- Scripts -->
+    <!-- JavaScript -->
     <script src="/static/js/main.js"></script>
     
     <script>
-        // Load approved reviews
+        console.log('%c선샤인투어 - Sunshine Tour', 'color: #C9A96E; font-size: 24px; font-weight: bold;');
+        console.log('%c프라이빗 허니문 전문 여행사', 'color: #7A7A7A; font-size: 14px;');
+        console.log('%cTEL: 02-318-8021', 'color: #2C2C2C; font-size: 12px;');
+
+        // Load approved reviews from API
         async function loadReviews() {
             try {
                 const response = await fetch('/api/reviews?status=approved');
                 const result = await response.json();
                 
+                const reviewsGrid = document.getElementById('main-reviews-grid');
+                
                 if (result.success && result.data.length > 0) {
                     const reviews = result.data;
-                    
-                    // Update subtitle with count
-                    document.getElementById('reviews-subtitle').textContent = 
-                        `선샤인투어와 함께한 행복한 순간들 (총 ${reviews.length}개의 후기)`;
                     
                     // Show only first 6 reviews (or featured reviews)
                     const displayReviews = reviews
                         .sort((a, b) => b.is_featured - a.is_featured)
                         .slice(0, 6);
                     
-                    const container = document.getElementById('reviews-container');
-                    container.innerHTML = `
-                        <div class="reviews-grid">
-                            ${displayReviews.map(review => {
-                                const stars = '⭐'.repeat(review.rating);
-                                const date = new Date(review.created_at).toLocaleDateString('ko-KR', {
-                                    year: 'numeric',
-                                    month: 'long',
-                                    day: 'numeric'
-                                });
-                                
-                                return `
-                                    <div class="review-card ${review.is_featured ? 'featured' : ''}">
-                                        ${review.image_url ? `<img src="${review.image_url}" alt="${review.title}" class="review-image">` : ''}
-                                        <span class="review-destination">${review.destination_kr || review.destination}</span>
-                                        ${review.is_featured ? '<span class="review-destination" style="background: #ffd700; color: #000; margin-left: 0.5rem;">⭐ 추천</span>' : ''}
-                                        <h3 class="review-title">${review.title}</h3>
-                                        <div class="review-header">
-                                            <span class="review-author">${review.author_name}</span>
-                                            <span class="review-rating">${stars}</span>
+                    reviewsGrid.innerHTML = displayReviews.map(review => {
+                        const stars = '⭐'.repeat(review.rating);
+                        const date = new Date(review.created_at).toLocaleDateString('ko-KR', {
+                            year: 'numeric',
+                            month: 'long'
+                        });
+                        
+                        return `
+                            <div class="review-card">
+                                ${review.image_url ? `
+                                    <div class="review-image-wrapper">
+                                        <img src="${review.image_url}" alt="${review.title}" class="review-image">
+                                        <div class="review-badges-overlay">
+                                            <span class="review-destination-badge">${review.destination_kr || review.destination}</span>
                                         </div>
-                                        <p class="review-content">${review.content}</p>
-                                        <p class="review-date">여행일: ${review.travel_date || '-'} | 작성일: ${date}</p>
                                     </div>
-                                `;
-                            }).join('')}
-                        </div>
-                    `;
+                                ` : `
+                                    <div class="review-card-header">
+                                        <span class="review-destination-badge">${review.destination_kr || review.destination}</span>
+                                    </div>
+                                `}
+                                <div class="review-card-content">
+                                    <div class="review-rating">${stars}</div>
+                                    <h3 class="review-title">${review.title}</h3>
+                                    <p class="review-text">${review.content}</p>
+                                    <div class="review-meta">
+                                        <span class="review-author">${review.author_name}</span>
+                                        <span class="review-date">${date}</span>
+                                    </div>
+                                </div>
+                            </div>
+                        `;
+                    }).join('');
                 } else {
-                    // No reviews yet
-                    document.getElementById('reviews-container').innerHTML = `
-                        <div style="text-align: center; padding: 3rem 0;">
-                            <i class="fas fa-comments" style="font-size: 4rem; color: #ddd; margin-bottom: 1rem;"></i>
-                            <p style="color: #95a5a6; font-size: 1.1rem;">아직 등록된 후기가 없습니다.</p>
-                            <p style="color: #95a5a6;">첫 번째 후기를 남겨주세요!</p>
+                    reviewsGrid.innerHTML = `
+                        <div class="no-reviews-message">
+                            <i class="fas fa-comments"></i>
+                            <p>아직 등록된 후기가 없습니다.<br>첫 번째 후기를 남겨주세요!</p>
                         </div>
                     `;
-                    document.getElementById('reviews-subtitle').textContent = 
-                        '선샤인투어와 함께한 행복한 순간들 (총 0개의 후기)';
                 }
             } catch (error) {
                 console.error('Error loading reviews:', error);
-                document.getElementById('reviews-container').innerHTML = `
-                    <div style="text-align: center; padding: 3rem 0;">
-                        <i class="fas fa-exclamation-circle" style="font-size: 4rem; color: #e74c3c; margin-bottom: 1rem;"></i>
-                        <p style="color: #e74c3c;">후기를 불러오는데 실패했습니다.</p>
+                document.getElementById('main-reviews-grid').innerHTML = `
+                    <div class="error-message">
+                        <i class="fas fa-exclamation-circle"></i>
+                        <p>후기를 불러오는데 실패했습니다.</p>
                     </div>
                 `;
             }
         }
         
-        // Load reviews when page loads
-        document.addEventListener('DOMContentLoaded', loadReviews);
+        // Mobile menu toggle
+        document.addEventListener('DOMContentLoaded', () => {
+            const navToggle = document.getElementById('nav-toggle');
+            const navMenu = document.getElementById('nav-menu');
+            
+            if (navToggle && navMenu) {
+                navToggle.addEventListener('click', () => {
+                    navMenu.classList.toggle('active');
+                });
+            }
+            
+            // Load reviews
+            loadReviews();
+        });
     </script>
 </body>
 </html>
