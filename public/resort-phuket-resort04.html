@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>센타라 빌라스 - 푸켓 프리미엄 리조트 | 선샤인투어</title>
+    <meta name="description" content="태국 푸켓의 프리미엄 리조트 센타라 빌라스(Centara Villas). 프리미엄 허니문 여행을 위한 완벽한 선택.">
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Noto+Serif+KR:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css" rel="stylesheet">
+    
+    <!-- Custom CSS -->
+    <link href="/static/css/style.css" rel="stylesheet">
+    
+    <style>
+        /* 리조트 상세 페이지 스타일 */
+        .resort-hero {
+            position: relative;
+            height: 500px;
+            background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url('/static/images/resorts/phuket/phuket-resort04-01.webp');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            text-align: center;
+        }
+        
+        .resort-hero-content {
+            max-width: 800px;
+            padding: 2rem;
+        }
+        
+        .resort-category {
+            display: inline-block;
+            padding: 0.5rem 1.5rem;
+            background: rgba(201, 169, 110, 0.9);
+            border-radius: 20px;
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+            font-weight: 500;
+        }
+        
+        .resort-hero h1 {
+            font-size: 3rem;
+            margin-bottom: 0.5rem;
+            font-weight: 700;
+        }
+        
+        .resort-hero p {
+            font-size: 1.2rem;
+            opacity: 0.9;
+        }
+        
+        .breadcrumb {
+            padding: 1.5rem 0;
+            background: #f8f9fa;
+        }
+        
+        .breadcrumb-inner {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+        
+        .breadcrumb a {
+            color: #C9A96E;
+            text-decoration: none;
+            margin: 0 0.5rem;
+        }
+        
+        .breadcrumb a:hover {
+            text-decoration: underline;
+        }
+        
+        .resort-content {
+            max-width: 1200px;
+            margin: 3rem auto;
+            padding: 0 2rem;
+        }
+        
+        .resort-section {
+            margin-bottom: 4rem;
+        }
+        
+        .resort-section h2 {
+            font-size: 2rem;
+            margin-bottom: 2rem;
+            color: #2C2C2C;
+            border-bottom: 3px solid #C9A96E;
+            padding-bottom: 0.5rem;
+        }
+        
+        .facilities-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+        
+        .facility-item {
+            display: flex;
+            align-items: center;
+            padding: 1.5rem;
+            background: #f8f9fa;
+            border-radius: 10px;
+            transition: all 0.3s ease;
+        }
+        
+        .facility-item:hover {
+            background: #C9A96E;
+            color: white;
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .facility-icon {
+            font-size: 2rem;
+            margin-right: 1rem;
+            color: #C9A96E;
+        }
+        
+        .facility-item:hover .facility-icon {
+            color: white;
+        }
+        
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+        
+        .gallery-item {
+            position: relative;
+            aspect-ratio: 4/3;
+            overflow: hidden;
+            border-radius: 10px;
+            cursor: pointer;
+        }
+        
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+        
+        .gallery-item:hover img {
+            transform: scale(1.1);
+        }
+        
+        .cta-section {
+            background: linear-gradient(135deg, #C9A96E 0%, #B8935E 100%);
+            color: white;
+            padding: 3rem 2rem;
+            text-align: center;
+            border-radius: 15px;
+            margin-top: 3rem;
+        }
+        
+        .cta-section h3 {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+        
+        .cta-section p {
+            font-size: 1.1rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+        }
+        
+        .cta-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        
+        .btn-cta {
+            padding: 1rem 2.5rem;
+            font-size: 1.1rem;
+            border: none;
+            border-radius: 30px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+        }
+        
+        .btn-primary {
+            background: white;
+            color: #C9A96E;
+        }
+        
+        .btn-primary:hover {
+            background: #2C2C2C;
+            color: white;
+        }
+        
+        .btn-secondary {
+            background: transparent;
+            color: white;
+            border: 2px solid white;
+        }
+        
+        .btn-secondary:hover {
+            background: white;
+            color: #C9A96E;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="/" class="nav-logo">
+                <i class="fas fa-sun"></i>
+                선샤인투어
+            </a>
+            <ul class="nav-menu">
+                <li><a href="/">홈</a></li>
+                <li><a href="/thailand-phuket">푸켓</a></li>
+                <li><a href="/reviews">후기</a></li>
+                <li><a href="/inquiry">문의하기</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="resort-hero">
+        <div class="resort-hero-content">
+            <div class="resort-category">프리미엄</div>
+            <h1>센타라 빌라스</h1>
+            <p>Centara Villas</p>
+            <p><i class="fas fa-map-marker-alt"></i> 태국 · 푸켓 (Phuket)</p>
+        </div>
+    </section>
+
+    <!-- Breadcrumb -->
+    <div class="breadcrumb">
+        <div class="breadcrumb-inner">
+            <a href="/"><i class="fas fa-home"></i> 홈</a> / 
+            <a href="/thailand-phuket">푸켓</a> / 
+            <span>센타라 빌라스</span>
+        </div>
+    </div>
+
+    <!-- Content -->
+    <div class="resort-content">
+        <!-- About Section -->
+        <section class="resort-section">
+            <h2><i class="fas fa-info-circle"></i> 리조트 소개</h2>
+            <p style="font-size: 1.1rem; line-height: 1.8; color: #555;">
+                태국 푸켓에 위치한 프리미엄 리조트 <strong>센타라 빌라스 (Centara Villas)</strong>는 
+                프리미엄 허니문 여행객들을 위한 완벽한 휴양지입니다. 
+                편안한 휴식과 다양한 액티비티를 제공합니다.
+            </p>
+        </section>
+
+        <!-- Facilities Section -->
+        <section class="resort-section">
+            <h2><i class="fas fa-concierge-bell"></i> 주요 시설</h2>
+            <div class="facilities-grid">
+                <div class="facility-item">
+                    <div class="facility-icon">
+                        <i class="fas fa-swimming-pool"></i>
+                    </div>
+                    <div class="facility-name">수영장</div>
+                </div>
+                <div class="facility-item">
+                    <div class="facility-icon">
+                        <i class="fas fa-utensils"></i>
+                    </div>
+                    <div class="facility-name">레스토랑 & 바</div>
+                </div>
+                <div class="facility-item">
+                    <div class="facility-icon">
+                        <i class="fas fa-spa"></i>
+                    </div>
+                    <div class="facility-name">스파 시설</div>
+                </div>
+                <div class="facility-item">
+                    <div class="facility-icon">
+                        <i class="fas fa-dumbbell"></i>
+                    </div>
+                    <div class="facility-name">피트니스</div>
+                </div>
+                <div class="facility-item">
+                    <div class="facility-icon">
+                        <i class="fas fa-umbrella-beach"></i>
+                    </div>
+                    <div class="facility-name">해변 액세스</div>
+                </div>
+                <div class="facility-item">
+                    <div class="facility-icon">
+                        <i class="fas fa-wifi"></i>
+                    </div>
+                    <div class="facility-name">무료 WiFi</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Gallery Section -->
+        <section class="resort-section">
+            <h2><i class="fas fa-images"></i> 갤러리</h2>
+            <div class="gallery-grid">
+                <div class="gallery-item">
+                    <img src="/static/images/resorts/phuket/phuket-resort04-01.webp" alt="센타라 빌라스" loading="lazy">
+                </div>
+                <div class="gallery-item">
+                    <img src="/static/images/resorts/phuket/phuket-resort04-02.webp" alt="센타라 빌라스" loading="lazy">
+                </div>
+                <div class="gallery-item">
+                    <img src="/static/images/resorts/phuket/phuket-resort04-03.webp" alt="센타라 빌라스" loading="lazy">
+                </div>
+                <div class="gallery-item">
+                    <img src="/static/images/resorts/phuket/phuket-resort04-04.webp" alt="센타라 빌라스" loading="lazy">
+                </div>
+                <div class="gallery-item">
+                    <img src="/static/images/resorts/phuket/phuket-resort04-05.webp" alt="센타라 빌라스" loading="lazy">
+                </div>
+                <div class="gallery-item">
+                    <img src="/static/images/resorts/phuket/phuket-resort04-06.webp" alt="센타라 빌라스" loading="lazy">
+                </div>
+                <div class="gallery-item">
+                    <img src="/static/images/resorts/phuket/phuket-resort04-07.webp" alt="센타라 빌라스" loading="lazy">
+                </div>
+            </div>
+        </section>
+
+        <!-- CTA Section -->
+        <section class="cta-section">
+            <h3><i class="fas fa-calendar-check"></i> 지금 예약하세요</h3>
+            <p>센타라 빌라스에서 특별한 허니문을 시작하세요</p>
+            <div class="cta-buttons">
+                <a href="/inquiry" class="btn-cta btn-primary">
+                    <i class="fas fa-envelope"></i> 상담 문의하기
+                </a>
+                <a href="/thailand-phuket" class="btn-cta btn-secondary">
+                    <i class="fas fa-map-marked-alt"></i> 푸켓 더보기
+                </a>
+            </div>
+        </section>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3><i class="fas fa-sun"></i> 선샤인투어</h3>
+                <p>프리미엄 허니문 & 해외 여행 전문</p>
+            </div>
+            <div class="footer-section">
+                <h4>연락처</h4>
+                <p><i class="fas fa-phone"></i> 02-1234-5678</p>
+                <p><i class="fas fa-envelope"></i> info@sunshinetour.com</p>
+            </div>
+            <div class="footer-section">
+                <h4>주요 지역</h4>
+                <p><a href="/thailand-khao-lak">태국</a></p>
+                <p><a href="/bali">발리</a></p>
+                <p><a href="/maldives">몰디브</a></p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2024 선샤인투어. All rights reserved.</p>
+        </div>
+    </footer>
+</body>
+</html>
