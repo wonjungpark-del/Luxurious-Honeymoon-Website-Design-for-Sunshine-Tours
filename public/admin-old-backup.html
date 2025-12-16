@@ -1,0 +1,639 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>관리자 페이지 - 선샤인투어</title>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Noto+Serif+KR:wght@400;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css" rel="stylesheet">
+    
+    <!-- Custom CSS -->
+    <link href="/static/css/style.css" rel="stylesheet">
+    <link href="/static/css/admin.css" rel="stylesheet">
+</head>
+<body>
+    <!-- Login Screen -->
+    <div id="login-screen" class="login-container">
+        <div class="login-box">
+            <h1 class="login-title"><img src="/static/images/logo-sunrise.png" alt="Sunshine Tour" style="height: 50px; margin-bottom: 1rem;"><br><span style="font-family: 'Montserrat', sans-serif; font-weight: 700; font-size: 1.5rem; letter-spacing: 0.5px;">SUNSHINE TOUR</span><br>Admin Login</h1>
+            <form id="login-form">
+                <div class="form-group">
+                    <label class="form-label">비밀번호</label>
+                    <input type="password" id="admin-password" class="form-input" placeholder="관리자 비밀번호를 입력하세요" required>
+                </div>
+                <div id="login-message"></div>
+                <button type="submit" class="btn btn-primary" style="width: 100%; margin-top: 1rem;">
+                    <i class="fas fa-sign-in-alt"></i> 로그인
+                </button>
+                <a href="/" class="btn" style="width: 100%; margin-top: 0.5rem; background-color: #ccc; text-align: center; display: block;">
+                    <i class="fas fa-home"></i> 메인으로
+                </a>
+            </form>
+            <p style="text-align: center; margin-top: 1rem; color: var(--text-light); font-size: 0.9rem;">
+                <i class="fas fa-info-circle"></i> 기본 비밀번호: admin1234
+            </p>
+        </div>
+    </div>
+
+    <!-- Admin Dashboard -->
+    <div id="admin-dashboard" style="display: none;">
+        <div class="admin-container">
+            <!-- Header -->
+            <div class="admin-header">
+                <div>
+                    <h1 class="admin-title">☀️ 선샤인투어 관리자</h1>
+                </div>
+                <button class="admin-logout" onclick="logout()">
+                    <i class="fas fa-sign-out-alt"></i> 로그아웃
+                </button>
+            </div>
+
+            <!-- Statistics -->
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <h3>전체 후기</h3>
+                    <div class="stat-value" id="stat-reviews">0</div>
+                </div>
+                <div class="stat-card">
+                    <h3>승인 대기</h3>
+                    <div class="stat-value" id="stat-pending-reviews" style="color: #FF9800;">0</div>
+                </div>
+                <div class="stat-card">
+                    <h3>전체 문의</h3>
+                    <div class="stat-value" id="stat-inquiries">0</div>
+                </div>
+                <div class="stat-card">
+                    <h3>대기 중</h3>
+                    <div class="stat-value" id="stat-pending-inquiries" style="color: #FF9800;">0</div>
+                </div>
+            </div>
+
+            <!-- Tabs -->
+            <div class="admin-tabs">
+                <button class="tab-btn active" data-tab="reviews">
+                    <i class="fas fa-star"></i> 후기 관리
+                </button>
+                <button class="tab-btn" data-tab="inquiries">
+                    <i class="fas fa-envelope"></i> 문의 관리
+                </button>
+                <button class="tab-btn" data-tab="resorts">
+                    <i class="fas fa-hotel"></i> 리조트 관리
+                </button>
+                <button class="tab-btn" data-tab="regions">
+                    <i class="fas fa-map-marked-alt"></i> 지역 관리
+                </button>
+            </div>
+
+            <!-- Tab Contents -->
+            
+            <!-- Reviews Tab -->
+            <div id="reviews-tab" class="tab-content active">
+                <div class="filter-section">
+                    <div class="filter-group">
+                        <div class="form-group" style="margin-bottom: 0;">
+                            <label class="form-label">상태 필터</label>
+                            <select id="reviews-status-filter" class="form-select" onchange="loadReviews()">
+                                <option value="">전체</option>
+                                <option value="pending">승인 대기</option>
+                                <option value="approved">승인됨</option>
+                                <option value="rejected">거부됨</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="admin-table" id="reviews-table-container">
+                    <div class="loading">
+                        <div class="spinner"></div>
+                        <p>데이터를 불러오는 중...</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Inquiries Tab -->
+            <div id="inquiries-tab" class="tab-content">
+                <div class="filter-section">
+                    <div class="filter-group">
+                        <div class="form-group" style="margin-bottom: 0;">
+                            <label class="form-label">상태 필터</label>
+                            <select id="inquiries-status-filter" class="form-select" onchange="loadInquiries()">
+                                <option value="">전체</option>
+                                <option value="pending">대기 중</option>
+                                <option value="processing">처리 중</option>
+                                <option value="completed">완료</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="admin-table" id="inquiries-table-container">
+                    <div class="loading">
+                        <div class="spinner"></div>
+                        <p>데이터를 불러오는 중...</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Resorts Tab -->
+            <div id="resorts-tab" class="tab-content">
+                <button class="btn btn-primary" style="margin-bottom: 1rem;" onclick="openResortModal()">
+                    <i class="fas fa-plus"></i> 새 리조트 추가
+                </button>
+
+                <div class="admin-table" id="resorts-table-container">
+                    <div class="loading">
+                        <div class="spinner"></div>
+                        <p>데이터를 불러오는 중...</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Regions Tab -->
+            <div id="regions-tab" class="tab-content">
+                <button class="btn btn-primary" style="margin-bottom: 1rem;" onclick="openRegionModal()">
+                    <i class="fas fa-plus"></i> 새 지역 추가
+                </button>
+
+                <div class="admin-table" id="regions-table-container">
+                    <div class="loading">
+                        <div class="spinner"></div>
+                        <p>데이터를 불러오는 중...</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal for Details -->
+    <div id="detail-modal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 class="modal-title" id="modal-title">상세 정보</h2>
+                <button class="modal-close" onclick="closeModal()">&times;</button>
+            </div>
+            <div class="modal-body" id="modal-body"></div>
+            <div class="modal-footer">
+                <button class="btn" onclick="closeModal()">닫기</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const API_BASE = '/api';
+        const ADMIN_PASSWORD = 'admin1234';
+        let isLoggedIn = false;
+
+        // Login
+        document.getElementById('login-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const password = document.getElementById('admin-password').value;
+            const messageDiv = document.getElementById('login-message');
+            
+            if (password === ADMIN_PASSWORD) {
+                isLoggedIn = true;
+                document.getElementById('login-screen').style.display = 'none';
+                document.getElementById('admin-dashboard').style.display = 'block';
+                loadStatistics();
+                loadReviews();
+            } else {
+                messageDiv.innerHTML = `
+                    <div class="error-message">
+                        <i class="fas fa-exclamation-triangle"></i> 비밀번호가 올바르지 않습니다.
+                    </div>
+                `;
+            }
+        });
+
+        // Logout
+        function logout() {
+            isLoggedIn = false;
+            document.getElementById('admin-dashboard').style.display = 'none';
+            document.getElementById('login-screen').style.display = 'flex';
+            document.getElementById('admin-password').value = '';
+        }
+
+        // Tab Switching
+        document.querySelectorAll('.tab-btn').forEach(btn => {
+            btn.addEventListener('click', function() {
+                const tabName = this.dataset.tab;
+                
+                // Remove active class from all tabs and contents
+                document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+                document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
+                
+                // Add active class to clicked tab and content
+                this.classList.add('active');
+                document.getElementById(tabName + '-tab').classList.add('active');
+                
+                // Load data for the tab
+                switch(tabName) {
+                    case 'reviews':
+                        loadReviews();
+                        break;
+                    case 'inquiries':
+                        loadInquiries();
+                        break;
+                    case 'resorts':
+                        loadResorts();
+                        break;
+                    case 'regions':
+                        loadRegions();
+                        break;
+                }
+            });
+        });
+
+        // Load Statistics
+        async function loadStatistics() {
+            try {
+                const [reviewsRes, inquiriesRes] = await Promise.all([
+                    fetch(`${API_BASE}/reviews`),
+                    fetch(`${API_BASE}/inquiries`)
+                ]);
+                
+                const reviews = await reviewsRes.json();
+                const inquiries = await inquiriesRes.json();
+                
+                if (reviews.success) {
+                    document.getElementById('stat-reviews').textContent = reviews.data.length;
+                    document.getElementById('stat-pending-reviews').textContent = 
+                        reviews.data.filter(r => r.status === 'pending').length;
+                }
+                
+                if (inquiries.success) {
+                    document.getElementById('stat-inquiries').textContent = inquiries.data.length;
+                    document.getElementById('stat-pending-inquiries').textContent = 
+                        inquiries.data.filter(i => i.status === 'pending').length;
+                }
+            } catch (error) {
+                console.error('Error loading statistics:', error);
+            }
+        }
+
+        // Load Reviews
+        async function loadReviews() {
+            const container = document.getElementById('reviews-table-container');
+            const status = document.getElementById('reviews-status-filter').value;
+            
+            try {
+                let url = `${API_BASE}/reviews`;
+                if (status) url += `?status=${status}`;
+                
+                const response = await fetch(url);
+                const result = await response.json();
+                
+                if (result.success && result.data.length > 0) {
+                    container.innerHTML = `
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>여행지</th>
+                                    <th>제목</th>
+                                    <th>작성자</th>
+                                    <th>별점</th>
+                                    <th>상태</th>
+                                    <th>작성일</th>
+                                    <th>액션</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                ${result.data.map(review => `
+                                    <tr>
+                                        <td>${escapeHtml(review.destination_kr)}</td>
+                                        <td>${escapeHtml(review.title)}</td>
+                                        <td>${escapeHtml(review.author_name)}</td>
+                                        <td>${'⭐'.repeat(review.rating)}</td>
+                                        <td>${getStatusBadge(review.status)}</td>
+                                        <td>${formatDate(review.created_at)}</td>
+                                        <td>
+                                            <div class="action-buttons">
+                                                <button class="action-btn btn-view" onclick="viewReview('${review.id}')">
+                                                    <i class="fas fa-eye"></i> 보기
+                                                </button>
+                                                ${review.status === 'pending' ? `
+                                                    <button class="action-btn btn-approve" onclick="updateReviewStatus('${review.id}', 'approved')">
+                                                        <i class="fas fa-check"></i> 승인
+                                                    </button>
+                                                    <button class="action-btn btn-reject" onclick="updateReviewStatus('${review.id}', 'rejected')">
+                                                        <i class="fas fa-times"></i> 거부
+                                                    </button>
+                                                ` : ''}
+                                                <button class="action-btn btn-delete" onclick="deleteReview('${review.id}')">
+                                                    <i class="fas fa-trash"></i> 삭제
+                                                </button>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                `).join('')}
+                            </tbody>
+                        </table>
+                    `;
+                } else {
+                    container.innerHTML = '<p style="text-align: center; padding: 2rem; color: var(--text-light);">후기가 없습니다.</p>';
+                }
+            } catch (error) {
+                console.error('Error loading reviews:', error);
+                container.innerHTML = '<div class="error-message">데이터를 불러오는데 실패했습니다.</div>';
+            }
+        }
+
+        // View Review
+        async function viewReview(id) {
+            try {
+                const response = await fetch(`${API_BASE}/reviews/${id}`);
+                const result = await response.json();
+                
+                if (result.success) {
+                    const review = result.data;
+                    document.getElementById('modal-title').textContent = '후기 상세';
+                    document.getElementById('modal-body').innerHTML = `
+                        <div style="line-height: 1.8;">
+                            <p><strong>여행지:</strong> ${escapeHtml(review.destination_kr)}</p>
+                            <p><strong>제목:</strong> ${escapeHtml(review.title)}</p>
+                            <p><strong>별점:</strong> ${'⭐'.repeat(review.rating)}</p>
+                            <p><strong>작성자:</strong> ${escapeHtml(review.author_name)}</p>
+                            <p><strong>여행 시기:</strong> ${escapeHtml(review.travel_date)}</p>
+                            <p><strong>상태:</strong> ${getStatusBadge(review.status)}</p>
+                            <p><strong>작성일:</strong> ${formatDate(review.created_at)}</p>
+                            ${review.image_url ? `<p><strong>이미지:</strong><br><img src="${review.image_url}" class="image-preview" onerror="this.style.display='none'"></p>` : ''}
+                            <p><strong>내용:</strong></p>
+                            <p style="white-space: pre-wrap; background-color: #f5f5f5; padding: 1rem; border-radius: 8px;">${escapeHtml(review.content)}</p>
+                        </div>
+                    `;
+                    openModal();
+                }
+            } catch (error) {
+                console.error('Error viewing review:', error);
+                alert('후기 정보를 불러오는데 실패했습니다.');
+            }
+        }
+
+        // Update Review Status
+        async function updateReviewStatus(id, status) {
+            if (!confirm(`이 후기를 ${status === 'approved' ? '승인' : '거부'}하시겠습니까?`)) return;
+            
+            try {
+                const response = await fetch(`${API_BASE}/reviews/${id}`, {
+                    method: 'PATCH',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ status })
+                });
+                
+                const result = await response.json();
+                
+                if (result.success) {
+                    alert(`후기가 ${status === 'approved' ? '승인' : '거부'}되었습니다.`);
+                    loadReviews();
+                    loadStatistics();
+                } else {
+                    throw new Error(result.error);
+                }
+            } catch (error) {
+                console.error('Error updating review:', error);
+                alert('상태 변경에 실패했습니다.');
+            }
+        }
+
+        // Delete Review
+        async function deleteReview(id) {
+            if (!confirm('정말로 이 후기를 삭제하시겠습니까?')) return;
+            
+            try {
+                const response = await fetch(`${API_BASE}/reviews/${id}`, {
+                    method: 'DELETE'
+                });
+                
+                const result = await response.json();
+                
+                if (result.success) {
+                    alert('후기가 삭제되었습니다.');
+                    loadReviews();
+                    loadStatistics();
+                } else {
+                    throw new Error(result.error);
+                }
+            } catch (error) {
+                console.error('Error deleting review:', error);
+                alert('삭제에 실패했습니다.');
+            }
+        }
+
+        // Load Inquiries
+        async function loadInquiries() {
+            const container = document.getElementById('inquiries-table-container');
+            const status = document.getElementById('inquiries-status-filter').value;
+            
+            try {
+                let url = `${API_BASE}/inquiries`;
+                if (status) url += `?status=${status}`;
+                
+                const response = await fetch(url);
+                const result = await response.json();
+                
+                if (result.success && result.data.length > 0) {
+                    container.innerHTML = `
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>이름</th>
+                                    <th>연락처</th>
+                                    <th>여행지</th>
+                                    <th>제목</th>
+                                    <th>상태</th>
+                                    <th>문의일</th>
+                                    <th>액션</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                ${result.data.map(inquiry => `
+                                    <tr>
+                                        <td>${escapeHtml(inquiry.name)}</td>
+                                        <td>${escapeHtml(inquiry.phone)}</td>
+                                        <td>${escapeHtml(inquiry.destination)}</td>
+                                        <td>${escapeHtml(inquiry.subject)}</td>
+                                        <td>${getInquiryStatusBadge(inquiry.status)}</td>
+                                        <td>${formatDate(inquiry.created_at)}</td>
+                                        <td>
+                                            <div class="action-buttons">
+                                                <button class="action-btn btn-view" onclick="viewInquiry('${inquiry.id}')">
+                                                    <i class="fas fa-eye"></i> 보기
+                                                </button>
+                                                <button class="action-btn btn-edit" onclick="updateInquiryStatus('${inquiry.id}')">
+                                                    <i class="fas fa-edit"></i> 상태변경
+                                                </button>
+                                                <button class="action-btn btn-delete" onclick="deleteInquiry('${inquiry.id}')">
+                                                    <i class="fas fa-trash"></i> 삭제
+                                                </button>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                `).join('')}
+                            </tbody>
+                        </table>
+                    `;
+                } else {
+                    container.innerHTML = '<p style="text-align: center; padding: 2rem; color: var(--text-light);">문의가 없습니다.</p>';
+                }
+            } catch (error) {
+                console.error('Error loading inquiries:', error);
+                container.innerHTML = '<div class="error-message">데이터를 불러오는데 실패했습니다.</div>';
+            }
+        }
+
+        // View Inquiry
+        async function viewInquiry(id) {
+            try {
+                const response = await fetch(`${API_BASE}/inquiries/${id}`);
+                const result = await response.json();
+                
+                if (result.success) {
+                    const inquiry = result.data;
+                    document.getElementById('modal-title').textContent = '문의 상세';
+                    document.getElementById('modal-body').innerHTML = `
+                        <div style="line-height: 1.8;">
+                            <p><strong>이름:</strong> ${escapeHtml(inquiry.name)}</p>
+                            <p><strong>이메일:</strong> ${escapeHtml(inquiry.email)}</p>
+                            <p><strong>연락처:</strong> ${escapeHtml(inquiry.phone)}</p>
+                            <p><strong>여행지:</strong> ${escapeHtml(inquiry.destination)}</p>
+                            <p><strong>예산:</strong> ${escapeHtml(inquiry.budget)}</p>
+                            <p><strong>인원:</strong> ${inquiry.travelers}명</p>
+                            <p><strong>출발 희망일:</strong> ${escapeHtml(inquiry.departure_date || '-')}</p>
+                            <p><strong>여행 기간:</strong> ${escapeHtml(inquiry.duration || '-')}</p>
+                            <p><strong>제목:</strong> ${escapeHtml(inquiry.subject)}</p>
+                            <p><strong>상태:</strong> ${getInquiryStatusBadge(inquiry.status)}</p>
+                            <p><strong>문의일:</strong> ${formatDate(inquiry.created_at)}</p>
+                            <p><strong>내용:</strong></p>
+                            <p style="white-space: pre-wrap; background-color: #f5f5f5; padding: 1rem; border-radius: 8px;">${escapeHtml(inquiry.message)}</p>
+                        </div>
+                    `;
+                    openModal();
+                }
+            } catch (error) {
+                console.error('Error viewing inquiry:', error);
+                alert('문의 정보를 불러오는데 실패했습니다.');
+            }
+        }
+
+        // Update Inquiry Status
+        async function updateInquiryStatus(id) {
+            const status = prompt('상태를 선택하세요:\npending (대기 중)\nprocessing (처리 중)\ncompleted (완료)');
+            
+            if (!status || !['pending', 'processing', 'completed'].includes(status)) {
+                alert('올바른 상태를 입력하세요.');
+                return;
+            }
+            
+            try {
+                const response = await fetch(`${API_BASE}/inquiries/${id}`, {
+                    method: 'PATCH',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ status })
+                });
+                
+                const result = await response.json();
+                
+                if (result.success) {
+                    alert('상태가 변경되었습니다.');
+                    loadInquiries();
+                    loadStatistics();
+                } else {
+                    throw new Error(result.error);
+                }
+            } catch (error) {
+                console.error('Error updating inquiry:', error);
+                alert('상태 변경에 실패했습니다.');
+            }
+        }
+
+        // Delete Inquiry
+        async function deleteInquiry(id) {
+            if (!confirm('정말로 이 문의를 삭제하시겠습니까?')) return;
+            
+            try {
+                const response = await fetch(`${API_BASE}/inquiries/${id}`, {
+                    method: 'DELETE'
+                });
+                
+                const result = await response.json();
+                
+                if (result.success) {
+                    alert('문의가 삭제되었습니다.');
+                    loadInquiries();
+                    loadStatistics();
+                } else {
+                    throw new Error(result.error);
+                }
+            } catch (error) {
+                console.error('Error deleting inquiry:', error);
+                alert('삭제에 실패했습니다.');
+            }
+        }
+
+        // Load Resorts (placeholder)
+        function loadResorts() {
+            document.getElementById('resorts-table-container').innerHTML = '<p style="text-align: center; padding: 2rem;">리조트 관리 기능은 개발 중입니다.</p>';
+        }
+
+        // Load Regions (placeholder)
+        function loadRegions() {
+            document.getElementById('regions-table-container').innerHTML = '<p style="text-align: center; padding: 2rem;">지역 관리 기능은 개발 중입니다.</p>';
+        }
+
+        // Modal Functions
+        function openModal() {
+            document.getElementById('detail-modal').classList.add('active');
+        }
+
+        function closeModal() {
+            document.getElementById('detail-modal').classList.remove('active');
+        }
+
+        // Helper Functions
+        function getStatusBadge(status) {
+            const badges = {
+                'pending': '<span class="status-badge status-pending">승인 대기</span>',
+                'approved': '<span class="status-badge status-approved">승인됨</span>',
+                'rejected': '<span class="status-badge status-rejected">거부됨</span>'
+            };
+            return badges[status] || status;
+        }
+
+        function getInquiryStatusBadge(status) {
+            const badges = {
+                'pending': '<span class="status-badge status-pending">대기 중</span>',
+                'processing': '<span class="status-badge status-processing">처리 중</span>',
+                'completed': '<span class="status-badge status-completed">완료</span>'
+            };
+            return badges[status] || status;
+        }
+
+        function formatDate(timestamp) {
+            const date = new Date(timestamp);
+            return date.toLocaleDateString('ko-KR', {
+                year: 'numeric',
+                month: '2-digit',
+                day: '2-digit',
+                hour: '2-digit',
+                minute: '2-digit'
+            });
+        }
+
+        function escapeHtml(text) {
+            const map = {
+                '&': '&amp;',
+                '<': '&lt;',
+                '>': '&gt;',
+                '"': '&quot;',
+                "'": '&#039;'
+            };
+            return String(text).replace(/[&<>"']/g, m => map[m]);
+        }
+    </script>
+</body>
+</html>

@@ -20,12 +20,13 @@ app.use('/static/*', serveStatic({ root: './' }))
 // API 엔드포인트 - Image Upload (이미지 업로드)
 // ===================================
 
-// 이미지 업로드 (최대 5장)
+// 이미지 업로드 (관리자용 - 최대 10장)
 app.post('/api/upload', async (c) => {
   try {
     const { IMAGES } = c.env
     const formData = await c.req.formData()
     const files = formData.getAll('images') as File[]
+    const type = formData.get('type') as string || 'reviews' // reviews, resorts, regions
     
     if (!files || files.length === 0) {
       return c.json({
@@ -34,10 +35,11 @@ app.post('/api/upload', async (c) => {
       }, 400)
     }
     
-    if (files.length > 5) {
+    const maxFiles = type === 'reviews' ? 5 : 10
+    if (files.length > maxFiles) {
       return c.json({
         success: false,
-        error: '최대 5장까지 업로드 가능합니다.'
+        error: `최대 ${maxFiles}장까지 업로드 가능합니다.`
       }, 400)
     }
     
@@ -64,7 +66,7 @@ app.post('/api/upload', async (c) => {
       const timestamp = Date.now()
       const random = Math.random().toString(36).substring(2, 8)
       const ext = file.name.split('.').pop() || 'jpg'
-      const fileName = `reviews/${timestamp}-${random}.${ext}`
+      const fileName = `${type}/${timestamp}-${random}.${ext}`
       
       // R2에 업로드
       const arrayBuffer = await file.arrayBuffer()
