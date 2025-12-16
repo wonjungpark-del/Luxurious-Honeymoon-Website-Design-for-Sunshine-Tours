@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>후기 작성 - 선샤인투어</title>
+    <meta name="description" content="선샤인투어와 함께한 여행 경험을 공유해주세요.">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Noto+Serif+KR:wght@400;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css" rel="stylesheet">
+    
+    <!-- Custom CSS -->
+    <link href="/static/css/style.css" rel="stylesheet">
+</head>
+<body>
+    <!-- Header & Navigation -->
+    <header>
+        <nav class="container">
+            <div class="logo">
+                <a href="/">☀️ 선샤인투어</a>
+            </div>
+            <ul class="nav-links">
+                <li class="nav-dropdown">
+                    <a href="#destinations">여행지 <i class="fas fa-chevron-down"></i></a>
+                    <div class="dropdown-content">
+                        <a href="/destinations/thailand">🇹🇭 태국</a>
+                        <a href="/destinations/bali">🇮🇩 발리</a>
+                        <a href="/destinations/maldives">🇲🇻 몰디브</a>
+                        <a href="/destinations/hawaii">🇺🇸 하와이</a>
+                        <a href="/destinations/philippines">🇵🇭 필리핀</a>
+                        <a href="/destinations/europe">🇪🇺 유럽</a>
+                    </div>
+                </li>
+                <li><a href="/reviews">후기</a></li>
+                <li><a href="/inquiry">문의하기</a></li>
+                <li><a href="/admin">관리자</a></li>
+            </ul>
+            <button class="mobile-menu-btn">
+                <i class="fas fa-bars"></i>
+            </button>
+        </nav>
+    </header>
+
+    <!-- Page Header -->
+    <section style="background: linear-gradient(135deg, var(--primary-color), var(--secondary-color)); padding: 4rem 0; color: white; text-align: center;">
+        <div class="container">
+            <h1 style="font-size: 2.5rem; margin-bottom: 1rem;">후기 작성</h1>
+            <p style="font-size: 1.2rem;">선샤인투어와 함께한 특별한 여행 경험을 공유해주세요</p>
+        </div>
+    </section>
+
+    <!-- Review Form -->
+    <section class="container" style="margin-top: 3rem; margin-bottom: 5rem;">
+        <div style="max-width: 800px; margin: 0 auto; background-color: white; padding: 3rem; border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.1);">
+            <form id="review-form">
+                <div class="form-group">
+                    <label class="form-label">여행지 선택 <span style="color: red;">*</span></label>
+                    <select id="destination" class="form-select" required>
+                        <option value="">여행지를 선택해주세요</option>
+                        <option value="thailand">🇹🇭 태국</option>
+                        <option value="bali">🇮🇩 발리</option>
+                        <option value="maldives">🇲🇻 몰디브</option>
+                        <option value="hawaii">🇺🇸 하와이</option>
+                        <option value="philippines">🇵🇭 필리핀</option>
+                        <option value="europe">🇪🇺 유럽</option>
+                        <option value="southpacific">🌊 남태평양</option>
+                        <option value="cancun">🇲🇽 칸쿤</option>
+                        <option value="other">✈️ 기타</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">별점 <span style="color: red;">*</span></label>
+                    <div style="display: flex; gap: 0.5rem; font-size: 2rem;">
+                        <span class="star" data-rating="1">☆</span>
+                        <span class="star" data-rating="2">☆</span>
+                        <span class="star" data-rating="3">☆</span>
+                        <span class="star" data-rating="4">☆</span>
+                        <span class="star" data-rating="5">☆</span>
+                    </div>
+                    <input type="hidden" id="rating" name="rating" required>
+                    <p id="rating-text" style="color: var(--text-light); margin-top: 0.5rem;"></p>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">제목 <span style="color: red;">*</span></label>
+                    <input type="text" id="title" class="form-input" placeholder="후기 제목을 입력해주세요" required>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">후기 내용 <span style="color: red;">*</span></label>
+                    <textarea id="content" class="form-textarea" rows="8" placeholder="여행 경험을 자세히 작성해주세요. 리조트, 음식, 관광지 등 다양한 정보를 공유해주시면 다른 고객분들께 큰 도움이 됩니다." required></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">작성자명 <span style="color: red;">*</span></label>
+                    <input type="text" id="author_name" class="form-input" placeholder="예: 김** (개인정보 보호를 위해 일부 마스킹 권장)" required>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">여행 시기 <span style="color: red;">*</span></label>
+                    <input type="text" id="travel_date" class="form-input" placeholder="예: 2024년 11월" required>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">이미지 URL (선택)</label>
+                    <input type="url" id="image_url" class="form-input" placeholder="https://example.com/image.jpg">
+                    <p style="color: var(--text-light); font-size: 0.9rem; margin-top: 0.5rem;">
+                        <i class="fas fa-info-circle"></i> 여행 사진 URL을 입력하시면 후기에 이미지가 표시됩니다.
+                    </p>
+                </div>
+
+                <div id="message-container" style="margin-bottom: 1rem;"></div>
+
+                <div style="display: flex; gap: 1rem;">
+                    <button type="submit" class="btn btn-primary" style="flex: 1;">
+                        <i class="fas fa-paper-plane"></i> 후기 제출하기
+                    </button>
+                    <a href="/reviews" class="btn" style="flex: 1; background-color: #ccc; text-align: center; line-height: 1;">
+                        <i class="fas fa-times"></i> 취소
+                    </a>
+                </div>
+
+                <p style="color: var(--text-light); font-size: 0.9rem; margin-top: 1rem; text-align: center;">
+                    <i class="fas fa-shield-alt"></i> 제출하신 후기는 관리자 승인 후 게시됩니다.
+                </p>
+            </form>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>선샤인투어</h3>
+                    <p>프리미엄 허니문 & 해외 여행 전문</p>
+                    <p>20년 경력의 전문가가 만드는 완벽한 여행</p>
+                </div>
+                <div class="footer-section">
+                    <h3>여행지</h3>
+                    <p><a href="/destinations/thailand">태국</a></p>
+                    <p><a href="/destinations/bali">발리</a></p>
+                    <p><a href="/destinations/maldives">몰디브</a></p>
+                    <p><a href="/destinations/hawaii">하와이</a></p>
+                </div>
+                <div class="footer-section">
+                    <h3>고객 지원</h3>
+                    <p><a href="/reviews">고객 후기</a></p>
+                    <p><a href="/inquiry">문의하기</a></p>
+                    <p><a href="/admin">관리자</a></p>
+                </div>
+                <div class="footer-section">
+                    <h3>연락처</h3>
+                    <p><i class="fas fa-phone"></i> 02-1234-5678</p>
+                    <p><i class="fas fa-envelope"></i> info@sunshinetour.com</p>
+                    <p><i class="fas fa-map-marker-alt"></i> 서울특별시 강남구</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 선샤인투어. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script>
+        const API_BASE = '/api';
+        let selectedRating = 0;
+        
+        // 여행지 한글 매핑
+        const destinationMap = {
+            'thailand': '태국',
+            'bali': '발리',
+            'maldives': '몰디브',
+            'hawaii': '하와이',
+            'philippines': '필리핀',
+            'europe': '유럽',
+            'southpacific': '남태평양',
+            'cancun': '칸쿤',
+            'other': '기타'
+        };
+        
+        document.addEventListener('DOMContentLoaded', () => {
+            // 별점 선택 기능
+            const stars = document.querySelectorAll('.star');
+            stars.forEach(star => {
+                star.addEventListener('click', () => {
+                    selectedRating = parseInt(star.dataset.rating);
+                    document.getElementById('rating').value = selectedRating;
+                    updateStars();
+                });
+                
+                star.addEventListener('mouseover', () => {
+                    const rating = parseInt(star.dataset.rating);
+                    stars.forEach((s, i) => {
+                        s.textContent = i < rating ? '⭐' : '☆';
+                    });
+                });
+            });
+            
+            const starContainer = stars[0].parentElement;
+            starContainer.addEventListener('mouseleave', updateStars);
+            
+            // 폼 제출
+            document.getElementById('review-form').addEventListener('submit', handleSubmit);
+            
+            // 모바일 메뉴
+            const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+            const navLinks = document.querySelector('.nav-links');
+            if (mobileMenuBtn) {
+                mobileMenuBtn.addEventListener('click', () => {
+                    navLinks.classList.toggle('active');
+                });
+            }
+        });
+        
+        function updateStars() {
+            const stars = document.querySelectorAll('.star');
+            const ratingText = document.getElementById('rating-text');
+            
+            stars.forEach((star, i) => {
+                star.textContent = i < selectedRating ? '⭐' : '☆';
+            });
+            
+            const ratingTexts = ['', '별로예요', '그저 그래요', '좋아요', '아주 좋아요', '최고예요!'];
+            ratingText.textContent = selectedRating > 0 ? ratingTexts[selectedRating] : '';
+        }
+        
+        async function handleSubmit(e) {
+            e.preventDefault();
+            
+            const messageContainer = document.getElementById('message-container');
+            const submitBtn = e.target.querySelector('button[type="submit"]');
+            
+            // 별점 검증
+            if (selectedRating === 0) {
+                messageContainer.innerHTML = `
+                    <div class="error-message">
+                        <i class="fas fa-exclamation-triangle"></i> 별점을 선택해주세요.
+                    </div>
+                `;
+                return;
+            }
+            
+            // 버튼 비활성화
+            submitBtn.disabled = true;
+            submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> 제출 중...';
+            
+            const formData = {
+                destination: document.getElementById('destination').value,
+                destination_kr: destinationMap[document.getElementById('destination').value] || '기타',
+                rating: selectedRating,
+                title: document.getElementById('title').value,
+                content: document.getElementById('content').value,
+                author_name: document.getElementById('author_name').value,
+                travel_date: document.getElementById('travel_date').value,
+                image_url: document.getElementById('image_url').value
+            };
+            
+            try {
+                const response = await fetch(`${API_BASE}/reviews`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(formData)
+                });
+                
+                const result = await response.json();
+                
+                if (result.success) {
+                    messageContainer.innerHTML = `
+                        <div class="success-message">
+                            <i class="fas fa-check-circle"></i> 후기가 성공적으로 제출되었습니다! 관리자 승인 후 게시됩니다.
+                        </div>
+                    `;
+                    
+                    // 폼 초기화
+                    document.getElementById('review-form').reset();
+                    selectedRating = 0;
+                    updateStars();
+                    
+                    // 3초 후 후기 목록으로 이동
+                    setTimeout(() => {
+                        window.location.href = '/reviews';
+                    }, 3000);
+                } else {
+                    throw new Error(result.error || '후기 제출에 실패했습니다.');
+                }
+            } catch (error) {
+                console.error('Error submitting review:', error);
+                messageContainer.innerHTML = `
+                    <div class="error-message">
+                        <i class="fas fa-exclamation-triangle"></i> ${error.message}
+                    </div>
+                `;
+                
+                // 버튼 활성화
+                submitBtn.disabled = false;
+                submitBtn.innerHTML = '<i class="fas fa-paper-plane"></i> 후기 제출하기';
+            }
+        }
+    </script>
+</body>
+</html>
