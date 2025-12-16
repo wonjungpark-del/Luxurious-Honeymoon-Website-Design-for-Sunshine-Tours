@@ -141,14 +141,14 @@
     </section>
 
     <!-- Reviews Section -->
-    <section class="container" style="background-color: #f9f9f9; padding: 5rem 0;">
+    <section class="container" style="background-color: #f9f9f9; padding: 5rem 0;" id="reviews">
         <h2 class="section-title">고객 후기</h2>
-        <p class="section-subtitle">선샤인투어와 함께한 행복한 순간들</p>
+        <p class="section-subtitle" id="reviews-subtitle">선샤인투어와 함께한 행복한 순간들</p>
         
-        <div id="reviews-container">
-            <div class="loading">
-                <div class="spinner"></div>
-                <p>후기를 불러오는 중...</p>
+        <div id="reviews-container" style="margin-top: 3rem;">
+            <div style="text-align: center; padding: 3rem 0;">
+                <div style="display: inline-block; width: 50px; height: 50px; border: 5px solid #f3f3f3; border-top: 5px solid #C9A96E; border-radius: 50%; animation: spin 1s linear infinite;"></div>
+                <p style="margin-top: 1rem; color: #95a5a6;">후기를 불러오는 중...</p>
             </div>
         </div>
         
@@ -156,6 +156,97 @@
             <a href="/reviews" class="btn btn-primary">모든 후기 보기</a>
         </div>
     </section>
+    
+    <style>
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        
+        .review-card {
+            background: white;
+            border-radius: 12px;
+            padding: 2rem;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        
+        .review-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 4px 16px rgba(0,0,0,0.15);
+        }
+        
+        .review-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+        
+        .review-author {
+            font-weight: 700;
+            color: #2c3e50;
+            font-size: 1.1rem;
+        }
+        
+        .review-rating {
+            color: #ffd700;
+            font-size: 1.2rem;
+        }
+        
+        .review-destination {
+            display: inline-block;
+            background: #C9A96E;
+            color: white;
+            padding: 0.3rem 1rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .review-title {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: #2c3e50;
+            margin: 0.5rem 0;
+        }
+        
+        .review-content {
+            color: #555;
+            line-height: 1.7;
+            margin: 1rem 0;
+            display: -webkit-box;
+            -webkit-line-clamp: 3;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+        
+        .review-date {
+            color: #95a5a6;
+            font-size: 0.9rem;
+        }
+        
+        .review-image {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 8px;
+            margin-bottom: 1rem;
+        }
+        
+        .reviews-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+        
+        @media (max-width: 768px) {
+            .reviews-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
 
     <!-- Contact Section -->
     <section class="container">
@@ -223,5 +314,79 @@
 
     <!-- Scripts -->
     <script src="/static/js/main.js"></script>
+    
+    <script>
+        // Load approved reviews
+        async function loadReviews() {
+            try {
+                const response = await fetch('/api/reviews?status=approved');
+                const result = await response.json();
+                
+                if (result.success && result.data.length > 0) {
+                    const reviews = result.data;
+                    
+                    // Update subtitle with count
+                    document.getElementById('reviews-subtitle').textContent = 
+                        `선샤인투어와 함께한 행복한 순간들 (총 ${reviews.length}개의 후기)`;
+                    
+                    // Show only first 6 reviews (or featured reviews)
+                    const displayReviews = reviews
+                        .sort((a, b) => b.is_featured - a.is_featured)
+                        .slice(0, 6);
+                    
+                    const container = document.getElementById('reviews-container');
+                    container.innerHTML = `
+                        <div class="reviews-grid">
+                            ${displayReviews.map(review => {
+                                const stars = '⭐'.repeat(review.rating);
+                                const date = new Date(review.created_at).toLocaleDateString('ko-KR', {
+                                    year: 'numeric',
+                                    month: 'long',
+                                    day: 'numeric'
+                                });
+                                
+                                return `
+                                    <div class="review-card ${review.is_featured ? 'featured' : ''}">
+                                        ${review.image_url ? `<img src="${review.image_url}" alt="${review.title}" class="review-image">` : ''}
+                                        <span class="review-destination">${review.destination_kr || review.destination}</span>
+                                        ${review.is_featured ? '<span class="review-destination" style="background: #ffd700; color: #000; margin-left: 0.5rem;">⭐ 추천</span>' : ''}
+                                        <h3 class="review-title">${review.title}</h3>
+                                        <div class="review-header">
+                                            <span class="review-author">${review.author_name}</span>
+                                            <span class="review-rating">${stars}</span>
+                                        </div>
+                                        <p class="review-content">${review.content}</p>
+                                        <p class="review-date">여행일: ${review.travel_date || '-'} | 작성일: ${date}</p>
+                                    </div>
+                                `;
+                            }).join('')}
+                        </div>
+                    `;
+                } else {
+                    // No reviews yet
+                    document.getElementById('reviews-container').innerHTML = `
+                        <div style="text-align: center; padding: 3rem 0;">
+                            <i class="fas fa-comments" style="font-size: 4rem; color: #ddd; margin-bottom: 1rem;"></i>
+                            <p style="color: #95a5a6; font-size: 1.1rem;">아직 등록된 후기가 없습니다.</p>
+                            <p style="color: #95a5a6;">첫 번째 후기를 남겨주세요!</p>
+                        </div>
+                    `;
+                    document.getElementById('reviews-subtitle').textContent = 
+                        '선샤인투어와 함께한 행복한 순간들 (총 0개의 후기)';
+                }
+            } catch (error) {
+                console.error('Error loading reviews:', error);
+                document.getElementById('reviews-container').innerHTML = `
+                    <div style="text-align: center; padding: 3rem 0;">
+                        <i class="fas fa-exclamation-circle" style="font-size: 4rem; color: #e74c3c; margin-bottom: 1rem;"></i>
+                        <p style="color: #e74c3c;">후기를 불러오는데 실패했습니다.</p>
+                    </div>
+                `;
+            }
+        }
+        
+        // Load reviews when page loads
+        document.addEventListener('DOMContentLoaded', loadReviews);
+    </script>
 </body>
 </html>
