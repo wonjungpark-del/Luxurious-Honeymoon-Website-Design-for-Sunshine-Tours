@@ -1,0 +1,560 @@
+/* ===================================
+   Destination Page Styles
+   =================================== */
+
+/* Destination Hero */
+.destination-hero {
+    position: relative;
+    height: 80vh;
+    min-height: 600px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    margin-top: 80px;
+}
+
+.destination-hero-image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.destination-hero-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: brightness(0.7);
+}
+
+.destination-hero-content {
+    position: relative;
+    z-index: 2;
+    text-align: center;
+    color: var(--color-white);
+    animation: fadeInUp 1s ease-out;
+}
+
+.destination-label {
+    display: block;
+    font-family: var(--font-secondary);
+    font-size: 0.75rem;
+    font-weight: 400;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--color-primary);
+    margin-bottom: 20px;
+}
+
+.destination-hero-title {
+    font-family: var(--font-secondary);
+    font-size: 6rem;
+    font-weight: 700;
+    letter-spacing: 2px;
+    margin-bottom: 15px;
+}
+
+.destination-hero-subtitle {
+    font-size: 1.8rem;
+    font-weight: 300;
+    opacity: 0.95;
+}
+
+/* Thailand Regions Section */
+.thailand-regions {
+    padding: 100px 0;
+    background-color: var(--color-white);
+}
+
+.regions-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 40px;
+    margin-top: 60px;
+}
+
+.region-card {
+    position: relative;
+    background: linear-gradient(135deg, var(--color-cream) 0%, var(--color-white) 100%);
+    border-radius: 15px;
+    padding: 40px 30px;
+    text-align: center;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    border: 2px solid var(--color-light-gray);
+    overflow: hidden;
+}
+
+.region-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-gold) 100%);
+    opacity: 0;
+    transition: all 0.4s ease;
+    z-index: 0;
+}
+
+.region-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 40px rgba(201, 169, 110, 0.3);
+    border-color: var(--color-primary);
+}
+
+.region-card:hover::before {
+    left: 0;
+    opacity: 0.05;
+}
+
+.region-card.featured {
+    background: linear-gradient(135deg, var(--color-beige) 0%, var(--color-cream) 100%);
+    border: 2px solid var(--color-primary);
+    box-shadow: 0 8px 25px rgba(201, 169, 110, 0.2);
+}
+
+.featured-badge {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-gold) 100%);
+    color: var(--color-white);
+    padding: 6px 15px;
+    border-radius: 20px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 1px;
+    z-index: 1;
+}
+
+.region-icon {
+    position: relative;
+    z-index: 1;
+    width: 80px;
+    height: 80px;
+    margin: 0 auto 25px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-gold) 100%);
+    border-radius: 50%;
+    transition: all 0.4s ease;
+}
+
+.region-card:hover .region-icon {
+    transform: rotateY(360deg);
+}
+
+.region-icon i {
+    font-size: 2rem;
+    color: var(--color-white);
+}
+
+.region-name {
+    position: relative;
+    z-index: 1;
+    font-size: 1.8rem;
+    font-weight: 600;
+    margin-bottom: 15px;
+    color: var(--color-dark);
+    font-family: var(--font-primary);
+}
+
+.region-description {
+    position: relative;
+    z-index: 1;
+    font-size: 1rem;
+    line-height: 1.7;
+    color: var(--color-gray);
+    font-weight: 300;
+}
+
+/* Destination Intro */
+.destination-intro {
+    padding: 120px 0;
+    background-color: var(--color-cream);
+}
+
+.intro-wrapper {
+    max-width: 900px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.destination-section-title {
+    font-size: 3rem;
+    font-weight: 600;
+    margin-bottom: 40px;
+    letter-spacing: -1px;
+}
+
+.destination-description {
+    font-size: 1.2rem;
+    line-height: 2.2;
+    color: var(--color-gray);
+    font-weight: 300;
+}
+
+/* Photo Gallery */
+.photo-gallery {
+    padding: 0;
+    background-color: var(--color-white);
+}
+
+.gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0;
+}
+
+.gallery-item {
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+}
+
+.gallery-item.large {
+    grid-column: span 2;
+    grid-row: span 2;
+    aspect-ratio: 1 / 1;
+}
+
+.gallery-item.medium {
+    grid-column: span 2;
+    aspect-ratio: 2 / 1;
+}
+
+.gallery-item.small {
+    grid-column: span 1;
+    aspect-ratio: 1 / 1;
+}
+
+.gallery-image-wrapper {
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+
+.gallery-image-wrapper img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.gallery-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+        to bottom,
+        rgba(0, 0, 0, 0) 0%,
+        rgba(0, 0, 0, 0.9) 100%
+    );
+    display: flex;
+    align-items: flex-end;
+    padding: 40px;
+    opacity: 0;
+    transition: var(--transition-smooth);
+}
+
+.gallery-text {
+    transform: translateY(30px);
+    transition: var(--transition-smooth);
+}
+
+.gallery-text h3 {
+    font-size: 1.8rem;
+    font-weight: 600;
+    color: var(--color-white);
+    margin-bottom: 15px;
+    letter-spacing: -0.5px;
+}
+
+.gallery-text p {
+    font-size: 1rem;
+    line-height: 1.7;
+    color: rgba(255, 255, 255, 0.9);
+    font-weight: 300;
+}
+
+.gallery-item:hover .gallery-image-wrapper img {
+    transform: scale(1.1);
+}
+
+.gallery-item:hover .gallery-overlay {
+    opacity: 1;
+}
+
+.gallery-item:hover .gallery-text {
+    transform: translateY(0);
+}
+
+/* Highlights Section */
+.highlights-section {
+    padding: 120px 0;
+    background-color: var(--color-beige);
+}
+
+.highlights-title {
+    font-size: 3rem;
+    font-weight: 600;
+    text-align: center;
+    margin-bottom: 80px;
+    letter-spacing: -1px;
+}
+
+.highlights-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 50px;
+}
+
+.highlight-item {
+    text-align: center;
+}
+
+.highlight-icon {
+    font-size: 3rem;
+    color: var(--color-primary);
+    margin-bottom: 30px;
+}
+
+.highlight-item h3 {
+    font-size: 1.3rem;
+    font-weight: 600;
+    margin-bottom: 15px;
+    color: var(--color-dark);
+}
+
+.highlight-item p {
+    font-size: 1rem;
+    line-height: 1.7;
+    color: var(--color-gray);
+    font-weight: 300;
+}
+
+/* CTA Section */
+.cta-section {
+    padding: 120px 0;
+    background: linear-gradient(
+        135deg,
+        rgba(201, 169, 110, 0.1) 0%,
+        rgba(212, 175, 55, 0.1) 100%
+    );
+}
+
+.cta-content {
+    text-align: center;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.cta-content h2 {
+    font-size: 2.8rem;
+    font-weight: 600;
+    margin-bottom: 25px;
+    line-height: 1.3;
+    letter-spacing: -1px;
+}
+
+.cta-content p {
+    font-size: 1.2rem;
+    color: var(--color-gray);
+    margin-bottom: 50px;
+    font-weight: 300;
+}
+
+.cta-btn {
+    display: inline-block;
+    padding: 20px 60px;
+    background-color: var(--color-primary);
+    color: var(--color-white);
+    text-decoration: none;
+    font-family: var(--font-secondary);
+    font-size: 0.95rem;
+    font-weight: 500;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    border-radius: 2px;
+    transition: var(--transition-smooth);
+    box-shadow: 0 10px 30px rgba(201, 169, 110, 0.3);
+}
+
+.cta-btn:hover {
+    background-color: var(--color-gold);
+    transform: translateY(-3px);
+    box-shadow: 0 15px 40px rgba(201, 169, 110, 0.4);
+}
+
+/* ===================================
+   Responsive Design
+   =================================== */
+
+@media (max-width: 1024px) {
+    .regions-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 30px;
+    }
+    
+    .gallery-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .gallery-item.large,
+    .gallery-item.medium,
+    .gallery-item.small {
+        grid-column: span 1;
+        grid-row: span 1;
+        aspect-ratio: 1 / 1;
+    }
+    
+    .highlights-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 40px;
+    }
+    
+    .destination-hero-title {
+        font-size: 4.5rem;
+    }
+    
+    .destination-section-title,
+    .highlights-title {
+        font-size: 2.5rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .thailand-regions {
+        padding: 60px 0;
+    }
+    
+    .regions-grid {
+        grid-template-columns: 1fr;
+        gap: 25px;
+        margin-top: 40px;
+    }
+    
+    .region-card {
+        padding: 35px 25px;
+    }
+    
+    .region-icon {
+        width: 70px;
+        height: 70px;
+        margin-bottom: 20px;
+    }
+    
+    .region-icon i {
+        font-size: 1.8rem;
+    }
+    
+    .region-name {
+        font-size: 1.5rem;
+    }
+    
+    .region-description {
+        font-size: 0.95rem;
+    }
+    
+    .destination-hero {
+        height: 60vh;
+        min-height: 500px;
+        margin-top: 80px;
+    }
+    
+    .destination-hero-title {
+        font-size: 3.5rem;
+    }
+    
+    .destination-hero-subtitle {
+        font-size: 1.4rem;
+    }
+    
+    .destination-intro {
+        padding: 80px 0;
+    }
+    
+    .destination-section-title,
+    .highlights-title {
+        font-size: 2rem;
+    }
+    
+    .destination-description {
+        font-size: 1.1rem;
+    }
+    
+    .gallery-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .gallery-overlay {
+        padding: 30px;
+    }
+    
+    .gallery-text h3 {
+        font-size: 1.5rem;
+    }
+    
+    .gallery-text p {
+        font-size: 0.95rem;
+    }
+    
+    .highlights-section {
+        padding: 80px 0;
+    }
+    
+    .highlights-grid {
+        grid-template-columns: 1fr;
+        gap: 40px;
+    }
+    
+    .highlights-title {
+        margin-bottom: 50px;
+    }
+    
+    .cta-section {
+        padding: 80px 0;
+    }
+    
+    .cta-content h2 {
+        font-size: 2rem;
+    }
+    
+    .cta-content p {
+        font-size: 1.1rem;
+    }
+    
+    .cta-btn {
+        padding: 18px 45px;
+        font-size: 0.85rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .destination-hero-title {
+        font-size: 2.5rem;
+    }
+    
+    .destination-hero-subtitle {
+        font-size: 1.2rem;
+    }
+    
+    .destination-section-title,
+    .highlights-title {
+        font-size: 1.8rem;
+    }
+    
+    .gallery-overlay {
+        padding: 25px;
+    }
+    
+    .cta-content h2 {
+        font-size: 1.8rem;
+    }
+}
