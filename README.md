@@ -1,492 +1,261 @@
-# ☀️ 선샤인투어 - 프리미엄 허니문 & 해외 여행 전문
+# SUNSHINE TOUR - 프리미엄 허니문 & 해외 여행 전문
 
-## 📋 프로젝트 개요
+## 프로젝트 개요
+- **프로젝트명**: Sunshine Tour (선샤인투어)
+- **목적**: 프리미엄 허니문 및 해외 여행 전문 웹사이트
+- **주요 기능**: 지역별 리조트 안내, 관리자 페이지를 통한 DB 기반 컨텐츠 관리, 이미지 업로드
 
-선샤인투어는 프리미엄 허니문 및 해외 여행을 전문으로 하는 여행사의 공식 홈페이지입니다. Cloudflare Pages와 Hono 프레임워크를 사용하여 구축된 현대적이고 빠른 웹 애플리케이션입니다.
+## 🌐 URL
+- **샌드박스**: https://3000-izlo14af8bw6i0urlswzu-5c13a017.sandbox.novita.ai
+- **프로덕션**: https://1f696e70.sunshinetour.pages.dev (배포 예정)
+- **GitHub**: https://github.com/사용자명/webapp (예정)
 
-### 주요 특징
-- ✅ **15개 지역** 페이지 (태국, 발리, 몰디브, 하와이, 필리핀, 칸쿤, 유럽, 남태평양, 다낭, 모리셔스)
-- ✅ **12개 지역에 리조트 카드 통합 (Phase D 완료)** - 지역 페이지에서 바로 리조트 확인 가능
-- ✅ **52개 리조트 상세 페이지** (초럭셔리 1개, 럭셔리 26개, 프리미엄 23개, 리조트 2개)
-- ✅ **421장의 최적화된 이미지** (83장 지역 이미지 + 338장 리조트 이미지)
-- ✅ 리조트 카드: 이미지, 카테고리 배지, 호버 효과, 상세보기 링크
-- ✅ 리조트별 갤러리, 시설 정보, 예약 CTA
-- ✅ 고객 후기 시스템 (작성/조회/관리)
-- ✅ 온라인 문의 시스템
-- ✅ 관리자 대시보드
-- ✅ 반응형 디자인 (Mobile/Tablet/Desktop)
-- ✅ D1 데이터베이스 연동
-- ✅ RESTful API
-- ✅ WebP 이미지 최적화 (평균 164KB)
+## ✨ 완료된 기능
 
-## 🚀 URL 정보
+### 1. 메인 페이지
+- ✅ 프리미엄 디자인 (골드 색상 + Montserrat 폰트)
+- ✅ 커스텀 로고 (태양 떠오르는 디자인 + SUNSHINE TOUR)
+- ✅ 영어 네비게이션 (Destinations, Reviews, Contact, Admin)
+- ✅ 한국인 모델 허니문 히어로 이미지 (얼굴 선명하게 보임)
+- ✅ 지역별 드롭다운 메뉴
 
-### ✨ 프로덕션 (Cloudflare Pages)
-- **메인 페이지**: https://1f696e70.sunshinetour.pages.dev
+### 2. 지역 페이지 (Region Pages)
+- ✅ 12개 지역 페이지 자동 생성
+  - 태국: 카오락, 코사무이, 푸켓, 끄라비, 파타야
+  - 인도네시아: 발리, 롬복
+  - 몰디브
+  - 멕시코: 칸쿤
+  - 미국(하와이): 마우이, 오아후, 빅아일랜드
+- ✅ 각 지역별 히어로 섹션 + 지역 설명
+- ✅ 지역 내 모든 리조트 리스트 표시 (개별 리조트 페이지 삭제됨)
+- ✅ 각 리조트마다:
+  - 메인 이미지 (500px)
+  - 카테고리 뱃지 (럭셔리/프리미엄/스탠다드)
+  - 리조트 설명 (4줄 제한)
+  - 4-6개 주요 특징
+  - 사진 갤러리 (썸네일 클릭시 모달로 확대)
+  - 상담 신청 버튼
 
-#### 지역 페이지 (15개)
-- **태국 (6)**: [카오락](https://1f696e70.sunshinetour.pages.dev/thailand-khao-lak), [코사무이](https://1f696e70.sunshinetour.pages.dev/thailand-koh-samui), [푸켓](https://1f696e70.sunshinetour.pages.dev/thailand-phuket), [끄라비](https://1f696e70.sunshinetour.pages.dev/thailand-krabi), [파타야](https://1f696e70.sunshinetour.pages.dev/thailand-pattaya), [후아힌](https://1f696e70.sunshinetour.pages.dev/thailand-hua-hin)
-- **발리**: [발리](https://1f696e70.sunshinetour.pages.dev/bali)
-- **몰디브**: [몰디브](https://1f696e70.sunshinetour.pages.dev/maldives)
-- **하와이 (3)**: [오아후](https://1f696e70.sunshinetour.pages.dev/oahu), [마우이](https://1f696e70.sunshinetour.pages.dev/maui), [빅아일랜드](https://1f696e70.sunshinetour.pages.dev/bigisland)
-- **필리핀**: [보라카이](https://1f696e70.sunshinetour.pages.dev/boracay)
-- **유럽**: [파리](https://1f696e70.sunshinetour.pages.dev/paris)
-- **남태평양**: [피지](https://1f696e70.sunshinetour.pages.dev/fiji)
-- **베트남**: [다낭](https://1f696e70.sunshinetour.pages.dev/danang)
-- **멕시코**: [칸쿤](https://1f696e70.sunshinetour.pages.dev/cancun)
-- **모리셔스**: [모리셔스](https://1f696e70.sunshinetour.pages.dev/mauritius)
+### 3. DB 기반 관리 시스템 ⭐ NEW
+- ✅ Cloudflare D1 Database 연동
+- ✅ 관리자 로그인 (비밀번호: admin1234)
+- ✅ 지역 관리
+  - 지역 목록 조회 (12개 지역)
+  - 지역 추가/수정/삭제 API
+  - 지역 정보: 코드, 국가, 한글명, 영문명, 설명, 이미지 URL
+- ✅ 리조트 관리
+  - 리조트 목록 조회 (8개 리조트)
+  - 리조트 추가/수정/삭제 API
+  - 리조트 정보: 지역ID, 한글명, 영문명, 카테고리, 설명, 메인 이미지, 갤러리 이미지, 특징
+- ✅ 이미지 업로드 API (R2 Storage 연동)
+  - 드래그 앤 드롭 지원
+  - 최대 10장 업로드 (각 10MB 제한)
+  - 자동 이미지 최적화 (클라이언트 사이드)
+  - 업로드 타입: regions, resorts, reviews
 
-#### 리조트 상세 페이지 (52개)
-- **태국 카오락 (7)**: [JW 메리어트](https://1f696e70.sunshinetour.pages.dev/resort-khao-lak-resort01), [라벨라](https://1f696e70.sunshinetour.pages.dev/resort-khao-lak-resort02), [로빈슨 클럽](https://1f696e70.sunshinetour.pages.dev/resort-khao-lak-resort03), 등
-- **몰디브 (9)**: [길리랑칸푸시](https://1f696e70.sunshinetour.pages.dev/resort-maldives-resort01), [소네바 자니](https://1f696e70.sunshinetour.pages.dev/resort-maldives-resort04), 등
-- **태국 푸켓 (6)**: [노보텔 까말라](https://1f696e70.sunshinetour.pages.dev/resort-phuket-resort01), 등
-- **태국 코사무이 (5)**: [더사란](https://1f696e70.sunshinetour.pages.dev/resort-koh-samui-resort01), 등
-- **기타 25개 리조트**: 칸쿤, 발리, 하와이, 끄라비, 파타야, 롬복 등
+### 4. 기타 페이지
+- ✅ 후기 페이지 (reviews.html)
+- ✅ 문의 페이지 (inquiry.html)
+- ✅ 모든 페이지 통일된 로고 + 영어 네비게이션
 
-#### 시스템 페이지
-- **후기 목록**: https://1f696e70.sunshinetour.pages.dev/reviews
-- **후기 작성**: https://1f696e70.sunshinetour.pages.dev/review-write
-- **문의하기**: https://1f696e70.sunshinetour.pages.dev/inquiry
-- **관리자 페이지**: https://1f696e70.sunshinetour.pages.dev/admin
+## 📊 데이터 구조
 
-### 개발 서버 (Sandbox)
-- **메인 페이지**: https://3000-izlo14af8bw6i0urlswzu-5c13a017.sandbox.novita.ai
-- **후기 목록**: https://3000-izlo14af8bw6i0urlswzu-5c13a017.sandbox.novita.ai/reviews
-- **후기 작성**: https://3000-izlo14af8bw6i0urlswzu-5c13a017.sandbox.novita.ai/review-write
-- **문의하기**: https://3000-izlo14af8bw6i0urlswzu-5c13a017.sandbox.novita.ai/inquiry
-- **관리자 페이지**: https://3000-izlo14af8bw6i0urlswzu-5c13a017.sandbox.novita.ai/admin
+### Database Schema
 
-### API 엔드포인트
-- `GET /api/regions` - 지역 목록 조회
-- `GET /api/resorts?region_id={id}` - 리조트 목록 조회
-- `GET /api/reviews?status=approved` - 승인된 후기 조회
+#### regions (지역)
+```sql
+- id: TEXT PRIMARY KEY
+- code: TEXT (khao-lak, koh-samui, bali, maldives 등)
+- country: TEXT (태국, 인도네시아, 몰디브 등)
+- name_ko: TEXT (한글 지역명)
+- name_en: TEXT (영문 지역명)
+- description: TEXT (지역 설명)
+- image_url: TEXT (지역 대표 이미지)
+- display_order: INTEGER (표시 순서)
+- is_active: INTEGER (활성화 여부)
+- created_at: INTEGER (생성 시간)
+- updated_at: INTEGER (수정 시간)
+```
+
+#### resorts (리조트)
+```sql
+- id: TEXT PRIMARY KEY
+- region_id: TEXT (지역 ID - FK)
+- name_ko: TEXT (한글 리조트명)
+- name_en: TEXT (영문 리조트명)
+- category: TEXT (luxury/premium/standard)
+- description: TEXT (리조트 설명)
+- main_image_url: TEXT (메인 이미지)
+- gallery_images: TEXT (JSON 배열)
+- features: TEXT (JSON 배열 - 특징)
+- display_order: INTEGER (표시 순서)
+- is_active: INTEGER (활성화 여부)
+- created_at: INTEGER (생성 시간)
+- updated_at: INTEGER (수정 시간)
+```
+
+#### reviews (후기)
+```sql
+- id, destination, title, content, rating, author_name, travel_date, image_url, status, is_featured
+```
+
+#### inquiries (문의)
+```sql
+- id, name, email, phone, destination, budget, travelers, departure_date, duration, subject, message, status
+```
+
+### Storage Services
+- **D1 Database**: SQLite 기반 지역/리조트/후기/문의 데이터
+- **R2 Storage**: 이미지 파일 저장 (sunshinetour-images 버킷)
+
+## 📋 API 엔드포인트
+
+### Regions API
+- `GET /api/regions` - 지역 목록 조회 (쿼리: country, is_active)
+- `GET /api/regions/:id` - 지역 상세 조회
+- `POST /api/regions` - 지역 추가
+- `PUT /api/regions/:id` - 지역 수정
+- `DELETE /api/regions/:id` - 지역 삭제
+
+### Resorts API
+- `GET /api/resorts` - 리조트 목록 조회 (쿼리: region_id, is_active)
+- `GET /api/resorts/:id` - 리조트 상세 조회
+- `POST /api/resorts` - 리조트 추가
+- `PUT /api/resorts/:id` - 리조트 수정
+- `DELETE /api/resorts/:id` - 리조트 삭제
+
+### Reviews API
+- `GET /api/reviews` - 후기 목록 조회
+- `GET /api/reviews/:id` - 후기 상세 조회
 - `POST /api/reviews` - 후기 작성
+- `PATCH /api/reviews/:id` - 후기 상태 변경
+- `DELETE /api/reviews/:id` - 후기 삭제
+
+### Inquiries API
 - `GET /api/inquiries` - 문의 목록 조회
+- `GET /api/inquiries/:id` - 문의 상세 조회
 - `POST /api/inquiries` - 문의 작성
+- `PATCH /api/inquiries/:id` - 문의 상태 변경
+- `DELETE /api/inquiries/:id` - 문의 삭제
 
-## 📊 데이터베이스 구조
+### Upload API
+- `POST /api/upload` - 이미지 업로드 (FormData, 최대 10장, 각 10MB)
 
-### Tables
+## 🚀 사용 방법
 
-#### 1. regions (지역)
-| 필드 | 타입 | 설명 |
-|------|------|------|
-| id | TEXT | 고유 ID |
-| code | TEXT | 지역 코드 |
-| country | TEXT | 국가 코드 |
-| name_ko | TEXT | 지역명 (한글) |
-| name_en | TEXT | 지역명 (영문) |
-| description | TEXT | 설명 |
-| image_url | TEXT | 대표 이미지 URL |
-| display_order | INTEGER | 표시 순서 |
-| is_active | BOOLEAN | 활성화 여부 |
+### 관리자 페이지 접속
+1. `/admin` 페이지 접속
+2. 비밀번호 입력: `admin1234`
+3. 대시보드에서 지역/리조트 관리
 
-#### 2. resorts (리조트)
-| 필드 | 타입 | 설명 |
-|------|------|------|
-| id | TEXT | 고유 ID |
-| region_id | TEXT | 지역 ID (FK) |
-| name_ko | TEXT | 리조트명 (한글) |
-| name_en | TEXT | 리조트명 (영문) |
-| category | TEXT | 카테고리 |
-| description | TEXT | 설명 |
-| main_image_url | TEXT | 메인 이미지 URL |
-| gallery_images | TEXT | 갤러리 이미지 (JSON) |
-| features | TEXT | 특징 (JSON) |
-| display_order | INTEGER | 표시 순서 |
+### 지역 추가
+1. "지역 관리" 탭 선택
+2. "새 지역 추가" 버튼 클릭
+3. 지역 정보 입력 (코드, 국가, 한글명, 영문명, 설명)
+4. 이미지 업로드 (드래그 앤 드롭)
+5. 저장 버튼 클릭
 
-#### 3. reviews (후기)
-| 필드 | 타입 | 설명 |
-|------|------|------|
-| id | TEXT | 고유 ID |
-| destination | TEXT | 여행지 코드 |
-| destination_kr | TEXT | 여행지명 (한글) |
-| title | TEXT | 제목 |
-| content | TEXT | 내용 |
-| rating | INTEGER | 별점 (1-5) |
-| author_name | TEXT | 작성자명 |
-| travel_date | TEXT | 여행 일자 |
-| image_url | TEXT | 이미지 URL |
-| status | TEXT | 상태 (pending/approved/rejected) |
+### 리조트 추가
+1. "리조트 관리" 탭 선택
+2. "새 리조트 추가" 버튼 클릭
+3. 리조트 정보 입력 (지역 선택, 한글명, 영문명, 카테고리, 설명)
+4. 메인 이미지 업로드
+5. 갤러리 이미지 업로드 (최대 10장)
+6. 특징 추가 (4-7개 권장)
+7. 저장 버튼 클릭
 
-#### 4. inquiries (문의)
-| 필드 | 타입 | 설명 |
-|------|------|------|
-| id | TEXT | 고유 ID |
-| name | TEXT | 이름 |
-| email | TEXT | 이메일 |
-| phone | TEXT | 전화번호 |
-| destination | TEXT | 희망 여행지 |
-| budget | TEXT | 예산 |
-| travelers | INTEGER | 인원 |
-| departure_date | TEXT | 출발 희망일 |
-| duration | TEXT | 여행 기간 |
-| subject | TEXT | 제목 |
-| message | TEXT | 내용 |
-| status | TEXT | 상태 (pending/processing/completed) |
+### 이미지 업로드
+- 드래그 앤 드롭으로 간편 업로드
+- 자동으로 최적화 (800KB 이하로 압축)
+- R2 Storage에 자동 저장
+- Public URL 자동 생성
 
-## 💻 기술 스택
+## 🛠️ 배포 상태
+- **플랫폼**: Cloudflare Pages
+- **상태**: ✅ 샌드박스 테스트 완료 / ❌ 프로덕션 배포 대기
+- **기술 스택**: 
+  - Frontend: HTML + TailwindCSS + Vanilla JS
+  - Backend: Hono + TypeScript
+  - Database: Cloudflare D1 (SQLite)
+  - Storage: Cloudflare R2
+  - Deployment: Cloudflare Pages + Wrangler
+- **마지막 업데이트**: 2024-12-16
 
-### Frontend
-- HTML5, CSS3, JavaScript (Vanilla)
-- Google Fonts (Montserrat, Noto Serif KR)
-- Font Awesome 6.4.0
-- 반응형 디자인
+## 🔧 개발 환경 실행
 
-### Backend
-- Hono 4.11.1 (Web Framework)
-- Cloudflare Pages
-- Cloudflare D1 (SQLite Database)
-
-### Development Tools
-- Vite 6.3.5 (Build Tool)
-- Wrangler 4.4.0 (Cloudflare CLI)
-- PM2 (Process Manager)
-- Git
-
-## 📁 프로젝트 구조
-
-```
-webapp/
-├── src/
-│   └── index.tsx              # Hono 백엔드 애플리케이션
-├── public/                    # 정적 파일
-│   ├── static/
-│   │   ├── css/
-│   │   │   ├── style.css      # 메인 스타일시트
-│   │   │   └── admin.css      # 관리자 스타일
-│   │   ├── js/
-│   │   │   └── main.js        # 메인 JavaScript
-│   │   └── images/            # 최적화된 이미지 파일
-│   │       ├── regions/       # 지역 이미지 (83장)
-│   │       │   ├── thailand/  # 태국 7장
-│   │       │   ├── bali/      # 발리 9장
-│   │       │   └── ...        # 기타 지역
-│   │       └── resorts/       # 리조트 이미지 (338장)
-│   │           ├── khao-lak/  # 카오락 리조트 46장
-│   │           ├── maldives/  # 몰디브 리조트 59장
-│   │           └── ...        # 기타 리조트
-│   ├── reviews.html           # 후기 목록
-│   ├── review-write.html      # 후기 작성
-│   ├── inquiry.html           # 문의하기
-│   ├── admin.html             # 관리자 페이지
-│   ├── thailand-khao-lak.html # 태국 지역 페이지들
-│   ├── bali.html              # 발리 페이지
-│   └── ...                    # 기타 지역 페이지 (15개)
-├── migrations/                # 데이터베이스 마이그레이션
-│   └── 0001_initial_schema.sql
-├── seed.sql                   # 샘플 데이터
-├── ecosystem.config.cjs       # PM2 설정
-├── wrangler.jsonc             # Cloudflare 설정
-├── package.json
-└── README.md
-```
-
-## 🚀 로컬 개발 환경 설정
-
-### 1. 의존성 설치
+### 로컬 개발
 ```bash
-cd /home/user/webapp
-npm install
-```
-
-### 2. 데이터베이스 초기화
-```bash
-# 데이터베이스 리셋 (스키마 + 샘플 데이터)
-npm run db:reset
-
-# 또는 수동으로
+# DB 마이그레이션 (최초 1회)
 npm run db:migrate:local
-npm run db:seed
-```
 
-### 3. 개발 서버 시작
-```bash
+# 샘플 데이터 로드
+npx wrangler d1 execute sunshinetour-db --local --file=./seed-data.sql
+
 # 빌드
 npm run build
 
-# PM2로 서버 시작
+# 개발 서버 시작 (PM2)
 pm2 start ecosystem.config.cjs
 
-# 서버 상태 확인
-pm2 list
-
-# 로그 확인
-pm2 logs sunshinetour --nostream
-```
-
-### 4. 서버 테스트
-```bash
-# 메인 페이지 테스트
+# 서비스 URL 확인
 curl http://localhost:3000
-
-# API 테스트
-curl http://localhost:3000/api/regions
-curl http://localhost:3000/api/reviews?status=approved
 ```
 
-## 📝 주요 기능
-
-### 1. 메인 페이지 (/)
-- 히어로 섹션
-- 회사 소개
-- 인기 여행지 4개 표시
-- 최신 승인된 후기 3개 표시
-- 연락처 정보
-
-### 2. 후기 시스템
-- **후기 목록** (/reviews)
-  - 승인된 후기만 표시
-  - 여행지별 필터링
-  - 별점별 필터링
-  - 카드 형식 레이아웃
-  
-- **후기 작성** (/review-write)
-  - 여행지 선택
-  - 별점 선택 (1-5점)
-  - 제목, 내용, 작성자, 여행 시기 입력
-  - 이미지 URL (선택)
-  - 제출 후 승인 대기 상태
-
-### 3. 문의 시스템 (/inquiry)
-- 이름, 연락처, 이메일 입력
-- 희망 여행지 선택
-- 예산, 인원, 출발일, 기간 선택
-- 문의 제목 및 내용 작성
-- 제출 후 관리자 확인
-
-### 4. 관리자 페이지 (/admin)
-- **로그인**: 비밀번호 `admin1234`
-- **대시보드**
-  - 전체 후기/문의 통계
-  - 승인 대기 건수
-- **후기 관리**
-  - 상태별 필터링
-  - 상세 보기
-  - 승인/거부/삭제
-- **문의 관리**
-  - 상태별 필터링
-  - 상세 보기
-  - 상태 변경 (대기/처리중/완료)
-  - 삭제
-
-## 🎨 디자인 컨셉
-
-### 컬러 스킴
-- **Primary**: #C9A96E (골드)
-- **Secondary**: #2C2C2C (다크 그레이)
-- **Accent**: #7A7A7A (미디엄 그레이)
-- **Background**: #FFFFFF (화이트)
-
-### 폰트
-- **영문 헤드라인**: Montserrat
-- **한글 본문**: Noto Serif KR
-
-### 디자인 스타일
-- 럭셔리하고 프리미엄한 느낌
-- 깔끔하고 모던한 레이아웃
-- 이미지 중심의 비주얼
-
-## 📱 반응형 디자인
-
-- **Desktop**: 1200px 이상
-- **Tablet**: 768px ~ 1199px
-- **Mobile**: 767px 이하
-
-## 🔧 개발 명령어
-
+### 프로덕션 배포
 ```bash
-# 개발 서버 시작
-npm run dev
+# DB 마이그레이션 (프로덕션)
+npm run db:migrate:prod
 
-# 프로덕션 빌드
-npm run build
+# 샘플 데이터 로드 (프로덕션 - 선택사항)
+npx wrangler d1 execute sunshinetour-db --file=./seed-data.sql
 
-# PM2로 개발 서버 시작
-pm2 start ecosystem.config.cjs
-
-# PM2 상태 확인
-pm2 list
-
-# PM2 로그 확인
-pm2 logs --nostream
-
-# PM2 재시작
-pm2 restart sunshinetour
-
-# PM2 중지
-pm2 stop sunshinetour
-
-# 포트 정리
-npm run clean-port
-
-# 데이터베이스 리셋
-npm run db:reset
-
-# 데이터베이스 콘솔
-npm run db:console:local
-
-# Git 커밋
-npm run git:commit "커밋 메시지"
+# 프로덕션 배포
+npm run deploy
 ```
 
-## 📊 현재 구현 상태
+## 📝 아직 구현되지 않은 기능
+- ❌ 관리자 페이지 UI 개선 (현재 기본 디자인)
+- ❌ 관리자 페이지에서 지역별 리조트 미리보기
+- ❌ 이미지 썸네일 자동 생성
+- ❌ 리조트 통계 대시보드
+- ❌ 후기 관리 UI
+- ❌ 문의 관리 UI
+- ❌ 이메일 알림 시스템
+- ❌ 프로덕션 배포 및 커스텀 도메인 설정
 
-### ✅ 완료된 기능
-1. ✅ 프로젝트 환경 설정 (Hono + Cloudflare Pages)
-2. ✅ D1 데이터베이스 스키마 설계 및 마이그레이션
-3. ✅ Hono 백엔드 RESTful API 구축 (Regions, Resorts, Reviews, Inquiries)
-4. ✅ 메인 페이지 (홈페이지)
-5. ✅ 후기 시스템 (작성/목록/필터링)
-6. ✅ 문의 시스템 (폼/제출)
-7. ✅ 관리자 페이지 (대시보드/후기관리/문의관리)
-8. ✅ 샘플 데이터 생성 및 시딩
-9. ✅ **15개 지역 페이지 완성 (Phase B 완료)**
-   - 태국 6개 (카오락, 코사무이, 푸켓, 끄라비, 파타야, 후아힌)
-   - 발리, 몰디브, 하와이 3개, 필리핀, 유럽, 남태평양, 다낭, 칸쿤, 모리셔스
-   - 각 페이지: 히어로 이미지, 여행 정보, 4가지 하이라이트, 상세 설명
-10. ✅ **이미지 최적화 완료 (Phase B 완료)**
-   - 83장 지역 이미지 (WebP, 평균 300KB)
-   - 338장 리조트 이미지 (WebP, 평균 164KB)
-   - 총 421장 이미지 최적화
-11. ✅ **52개 프리미엄 리조트 이미지 추가**
-   - 12개 지역 (태국, 발리, 몰디브, 하와이, 칸쿤, 롬복)
-   - 몰디브 59장, 카오락 46장, 푸켓 42장 등
-12. ✅ **52개 리조트 상세 페이지 개발 (Phase C 완료)**
-   - 히어로 섹션 (배경 이미지 + 리조트명 + 카테고리)
-   - 리조트 소개 (위치, 카테고리별 맞춤 설명)
-   - 주요 시설 (카테고리별 6개 시설, 호버 효과)
-   - 갤러리 (전체 이미지, 그리드 레이아웃)
-   - 예약 CTA (문의하기 + 지역 페이지 링크)
-   - Breadcrumb 네비게이션
-13. ✅ **Cloudflare Pages 프로덕션 배포 완료**
-14. ✅ Git 버전 관리 및 커밋
+## 📌 다음 단계 추천
+1. **관리자 UI 개선**: 현재 admin 페이지 디자인을 프리미엄 스타일로 업그레이드
+2. **지역 페이지 동적 생성**: DB 데이터를 기반으로 지역 페이지 자동 렌더링
+3. **이미지 최적화**: R2에서 이미지 썸네일 자동 생성 기능 추가
+4. **후기/문의 관리**: 관리자 페이지에서 후기 승인 및 문의 답변 기능
+5. **프로덕션 배포**: Cloudflare Pages에 배포 및 커스텀 도메인 연결
+6. **SEO 최적화**: 메타 태그 및 구조화된 데이터 추가
 
-### 🚧 진행 중인 작업
-없음 - Phase D (지역-리조트 통합) 완료
-
-### 📝 향후 개발 계획
-2. **검색 기능** (지역/리조트 통합 검색)
-3. **페이지네이션** (후기/문의 목록)
-4. **SEO 최적화** (메타 태그, 구조화 데이터)
-5. **커스텀 도메인** 연결 (예: sunshinetour.co.kr)
-6. **관리자 인증 강화** (JWT 토큰 기반 인증)
-7. **R2 Storage 통합** (이미지 CDN 최적화)
-8. **리조트 비교 기능** (여러 리조트 비교)
-9. **예약 시스템 통합** (실시간 예약 가능 여부)
-
-## 🔐 관리자 정보
-
-- **관리자 비밀번호**: `admin1234`
-- **관리자 페이지**: /admin
-
-⚠️ **보안 주의**: 프로덕션 환경에서는 반드시 비밀번호를 변경하고, 더 강력한 인증 시스템을 도입해야 합니다.
-
-## 📧 연락처
-
-- **전화**: 02-1234-5678
-- **이메일**: info@sunshinetour.com
-- **주소**: 서울특별시 강남구
-
-## 📄 라이선스
-
-Copyright © 2024 선샤인투어. All rights reserved.
-
-## 🚀 배포 가이드
-
-### Cloudflare Pages 배포 (프로덕션)
-
-#### 1. 빌드
-```bash
-cd /home/user/webapp
-npm run build
+## 📄 파일 구조
 ```
-
-#### 2. 배포
-```bash
-npx wrangler pages deploy dist --project-name sunshinetour --branch main
+webapp/
+├── src/
+│   └── index.tsx           # Hono 백엔드 (API 엔드포인트)
+├── public/
+│   ├── index.html          # 메인 페이지
+│   ├── admin.html          # 관리자 페이지 (DB 기반)
+│   ├── reviews.html        # 후기 페이지
+│   ├── inquiry.html        # 문의 페이지
+│   ├── thailand-khao-lak.html  # 지역 페이지들...
+│   └── static/
+│       ├── css/style.css
+│       └── images/
+│           ├── logo-sunrise.png
+│           ├── hero-honeymoon-korean.jpg
+│           └── resorts/      # 지역별 리조트 이미지
+├── migrations/
+│   └── 0001_initial_schema.sql  # DB 스키마
+├── seed-data.sql           # 샘플 데이터 (12 지역 + 8 리조트)
+├── wrangler.jsonc          # Cloudflare 설정
+├── package.json            # Dependencies
+└── ecosystem.config.cjs    # PM2 설정
 ```
-
-#### 3. 데이터베이스 마이그레이션 (최초 1회)
-```bash
-# 프로덕션 D1 데이터베이스에 스키마 적용
-npx wrangler d1 migrations apply sunshinetour-db
-
-# 샘플 데이터 삽입
-npx wrangler d1 execute sunshinetour-db --file=./seed.sql
-```
-
-#### 4. 환경 변수 설정 (필요시)
-```bash
-npx wrangler pages secret put SECRET_KEY --project-name sunshinetour
-```
-
-### 데이터베이스 관리
-
-```bash
-# 로컬 데이터베이스 조회
-npm run db:console:local
-
-# 프로덕션 데이터베이스 조회
-npm run db:console:prod
-
-# 로컬 데이터베이스 리셋
-npm run db:reset
-```
-
-## 📊 데이터베이스 정보
-
-- **D1 Database ID**: `7646dcd9-9995-459e-9f14-ba3dea2c1832`
-- **Database Name**: `sunshinetour-db`
-- **Binding**: `DB`
-
-### 현재 데이터 통계
-- **지역**: 15개 (태국 6, 발리, 몰디브, 하와이 3, 필리핀, 유럽, 남태평양, 다낭, 칸쿤, 모리셔스)
-- **이미지**: 421장 (지역 83장 + 리조트 338장)
-- **리조트**: 52개 (12개 지역)
-  - 몰디브 9개, 카오락 7개, 푸켓 6개, 코사무이 5개, 칸쿤 5개 등
-- **후기**: 5개 (샘플 데이터)
-- **문의**: 3개 (샘플 데이터)
 
 ---
 
-**최종 업데이트**: 2024년 12월 16일  
-**버전**: 3.1.0 (Phase D 완료 - 지역-리조트 통합)  
-**개발 상태**: ✅ **프로덕션 배포 완료 (15개 지역 + 52개 리조트 상세 페이지 + 12개 지역에 리조트 카드 통합 + 421장 이미지)**  
-**프로덕션 URL**: https://1f696e70.sunshinetour.pages.dev  
-**Cloudflare Project**: sunshinetour  
-**로컬 테스트**: ✅ 모든 리조트 카드 정상 작동 확인 (CDN 캐시 반영 대기 중)  
-
----
-
-## 🎉 Phase D 완료! (지역-리조트 통합)
-
-모든 지역 페이지, 리조트 상세 페이지, 지역-리조트 카드 통합, 이미지 최적화가 완료되었습니다:
-- ✅ 메인 페이지 (index.html)
-- ✅ **15개 지역 페이지** (전 세계 주요 허니문 여행지)
-  - 각 페이지: 히어로 이미지, 여행 정보, 4가지 하이라이트, 상세 설명
-  - **12개 지역에 리조트 카드 섹션 추가 (Phase D)** - 카테고리별 정렬, 호버 효과, 상세보기 링크
-  - 태국 6개, 발리, 몰디브, 하와이 3개, 필리핀, 유럽, 남태평양, 다낭, 칸쿤, 모리셔스
-- ✅ **52개 리조트 상세 페이지** (Phase C 신규 추가)
-  - 카테고리: 초럭셔리 1개, 럭셔리 26개, 프리미엄 23개, 리조트 2개
-  - 각 페이지: 히어로 이미지, 리조트 소개, 6개 주요 시설, 전체 갤러리, 예약 CTA
-  - URL 패턴: /resort-{region}-resort{XX}.html
-- ✅ **421장 최적화 이미지** (모두 WebP 포맷)
-  - 83장 지역 이미지 (평균 300KB, 최대 568KB)
-  - 338장 리조트 이미지 (평균 164KB, 12개 지역 52개 리조트)
-- ✅ 후기 시스템 (목록/작성)
-- ✅ 문의 시스템
-- ✅ 관리자 페이지
-- ✅ RESTful API (regions, resorts, reviews, inquiries)
-
-### 📊 이미지 최적화 통계
-| 지역 | 리조트 수 | 이미지 수 | 평균 크기 | 총 크기 |
-|------|----------|----------|----------|---------|
-| 몰디브 | 9 | 59장 | 151.5KB | 8.73MB |
-| 카오락 | 7 | 46장 | 159.6KB | 7.17MB |
-| 푸켓 | 6 | 42장 | 191.5KB | 7.86MB |
-| 오아후 | 4 | 35장 | 160.8KB | 5.50MB |
-| 코사무이 | 5 | 35장 | 173.2KB | 5.92MB |
-| 칸쿤 | 5 | 31장 | 148.6KB | 4.50MB |
-| 발리 | 4 | 28장 | 172.7KB | 4.72MB |
-| **전체** | **52개** | **338장** | **164.2KB** | **54.20MB** |
+**💡 프로젝트 특징**: 정적 HTML 파일 기반에서 DB 기반 CMS로 전환하여 관리자가 웹 브라우저에서 직접 지역과 리조트를 추가/수정/삭제할 수 있는 시스템으로 업그레이드되었습니다.
