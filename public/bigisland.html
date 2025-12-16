@@ -3,98 +3,442 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>빅아일랜드 - 선샤인투어</title>
-    <meta name="description" content="빅아일랜드의 프리미엄 리조트를 소개합니다.">
+    <title>빅아일랜드 리조트 - 선샤인투어</title>
+    <meta name="description" content="하와이 빅아일랜드의 프리미엄 리조트를 만나보세요.">
+    
+    <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Noto+Serif+KR:wght@400;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome -->
     <link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css" rel="stylesheet">
+    
+    <!-- Custom CSS -->
     <link href="/static/css/style.css" rel="stylesheet">
-
+    
     <style>
-        .resorts-section {
-            padding: 60px 0;
-            background: linear-gradient(to bottom, #f8f9fa, #ffffff);
+        /* Region Page Styles */
+        .region-hero {
+            position: relative;
+            height: 60vh;
+            min-height: 400px;
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
-        .category-title {
-            font-size: 1.8rem;
-            color: #2c3e50;
-            margin: 40px 0 24px 0;
-            padding-bottom: 12px;
-            border-bottom: 3px solid #ff6b35;
+        
+        .hero-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to bottom, rgba(0,0,0,0.3), rgba(0,0,0,0.5));
         }
-        .resorts-grid {
+        
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            text-align: center;
+            color: white;
+            max-width: 800px;
+            padding: 2rem;
+        }
+        
+        .hero-content h1 {
+            font-size: 3.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+        
+        .hero-content p {
+            font-size: 1.5rem;
+            margin-bottom: 2rem;
+            opacity: 0.95;
+        }
+        
+        /* Region Info Section */
+        .region-info {
+            background: white;
+            padding: 3rem 2rem;
+            margin: 3rem auto;
+            max-width: 1200px;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+        }
+        
+        .region-description {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: #444;
+            margin-bottom: 2rem;
+        }
+        
+        .region-meta {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-            gap: 30px;
-            margin-bottom: 40px;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            padding: 2rem;
+            background: #f8f9fa;
+            border-radius: 8px;
+            margin: 2rem 0;
         }
+        
+        .meta-item {
+            text-align: center;
+        }
+        
+        .meta-label {
+            color: var(--primary-color);
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            font-size: 1rem;
+        }
+        
+        .meta-value {
+            color: #2C2C2C;
+            font-size: 1rem;
+        }
+        
+        /* Resorts Section */
+        .resorts-section {
+            max-width: 1200px;
+            margin: 4rem auto;
+            padding: 0 2rem;
+        }
+        
+        .section-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+        
+        .section-header h2 {
+            font-size: 2.5rem;
+            color: #2C2C2C;
+            margin-bottom: 1rem;
+        }
+        
+        .section-header p {
+            font-size: 1.1rem;
+            color: #666;
+        }
+        
+        /* Resort Card */
         .resort-card {
             background: white;
             border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+            margin-bottom: 3rem;
             overflow: hidden;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
             transition: all 0.3s ease;
         }
+        
         .resort-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+            box-shadow: 0 8px 24px rgba(0,0,0,0.12);
         }
-        .resort-card a {
-            text-decoration: none;
-            color: inherit;
+        
+        .resort-layout {
+            display: grid;
+            grid-template-columns: 500px 1fr;
+            gap: 0;
         }
-        .resort-image {
+        
+        /* Main Image Section */
+        .resort-main-image {
             position: relative;
-            height: 200px;
+            height: 400px;
             overflow: hidden;
+            cursor: pointer;
         }
-        .resort-image img {
+        
+        .resort-main-image img {
             width: 100%;
             height: 100%;
             object-fit: cover;
             transition: transform 0.3s ease;
         }
-        .resort-card:hover .resort-image img {
-            transform: scale(1.1);
+        
+        .resort-card:hover .resort-main-image img {
+            transform: scale(1.05);
         }
-        .resort-badge {
+        
+        .resort-category-badge {
             position: absolute;
-            top: 12px;
-            right: 12px;
-            background: rgba(255, 107, 53, 0.9);
+            top: 1rem;
+            left: 1rem;
+            padding: 0.5rem 1rem;
+            background: rgba(201, 169, 110, 0.95);
             color: white;
-            padding: 6px 12px;
             border-radius: 20px;
             font-size: 0.85rem;
             font-weight: 600;
+            letter-spacing: 0.5px;
+            z-index: 2;
         }
+        
+        .view-gallery-btn {
+            position: absolute;
+            bottom: 1rem;
+            right: 1rem;
+            padding: 0.75rem 1.5rem;
+            background: rgba(255, 255, 255, 0.95);
+            color: #C9A96E;
+            border: none;
+            border-radius: 25px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            z-index: 2;
+        }
+        
+        .view-gallery-btn:hover {
+            background: white;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+        }
+        
+        /* Resort Info Section */
         .resort-info {
-            padding: 20px;
-        }
-        .resort-info h4 {
-            font-size: 1.3rem;
-            color: #2c3e50;
-            margin: 0 0 8px 0;
-        }
-        .resort-name-en {
-            color: #7f8c8d;
-            font-size: 0.95rem;
-            margin: 0 0 12px 0;
-        }
-        .resort-meta {
+            padding: 2rem;
             display: flex;
-            gap: 15px;
-            color: #95a5a6;
-            font-size: 0.9rem;
+            flex-direction: column;
+            justify-content: space-between;
         }
-        .resort-meta i {
-            margin-right: 5px;
+        
+        .resort-header {
+            margin-bottom: 1.5rem;
+        }
+        
+        .resort-name-ko {
+            font-size: 2rem;
+            font-weight: 700;
+            color: #2C2C2C;
+            margin-bottom: 0.5rem;
+        }
+        
+        .resort-name-en {
+            font-size: 1.2rem;
+            color: #888;
+            font-weight: 400;
+        }
+        
+        .resort-description {
+            font-size: 1.05rem;
+            line-height: 1.7;
+            color: #555;
+            margin-bottom: 1.5rem;
+        }
+        
+        /* Features (Highlights) */
+        .resort-features {
+            margin-bottom: 1.5rem;
+        }
+        
+        .features-title {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: #C9A96E;
+            margin-bottom: 1rem;
+        }
+        
+        .features-list {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 0.75rem;
+        }
+        
+        .feature-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.95rem;
+            color: #444;
+        }
+        
+        .feature-item i {
+            color: #C9A96E;
+            font-size: 1rem;
+        }
+        
+        /* Action Buttons */
+        .resort-actions {
+            display: flex;
+            gap: 1rem;
+            margin-top: auto;
+        }
+        
+        .btn-inquiry {
+            flex: 1;
+            padding: 1rem;
+            background: linear-gradient(135deg, #C9A96E 0%, #B8935E 100%);
+            color: white;
+            text-align: center;
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+        
+        .btn-inquiry:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(201, 169, 110, 0.4);
+        }
+        
+        /* Gallery Thumbnails (below resort card) */
+        .resort-gallery {
+            display: none;
+            grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+            gap: 1rem;
+            padding: 1.5rem;
+            background: #f8f9fa;
+            border-top: 1px solid #e0e0e0;
+        }
+        
+        .resort-gallery.show {
+            display: grid;
+        }
+        
+        .gallery-thumb {
+            aspect-ratio: 4/3;
+            border-radius: 8px;
+            overflow: hidden;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .gallery-thumb:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+        }
+        
+        .gallery-thumb img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        /* Image Modal */
+        .image-modal {
+            display: none;
+            position: fixed;
+            z-index: 9999;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.95);
+        }
+        
+        .modal-content-wrapper {
+            position: relative;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem;
+        }
+        
+        .modal-image {
+            max-width: 90%;
+            max-height: 90%;
+            object-fit: contain;
+            border-radius: 8px;
+        }
+        
+        .modal-close {
+            position: absolute;
+            top: 2rem;
+            right: 2rem;
+            color: white;
+            font-size: 3rem;
+            font-weight: 300;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            z-index: 10000;
+        }
+        
+        .modal-close:hover {
+            color: #C9A96E;
+            transform: rotate(90deg);
+        }
+        
+        .modal-nav {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(201, 169, 110, 0.8);
+            color: white;
+            border: none;
+            padding: 1.5rem 1rem;
+            font-size: 2rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border-radius: 4px;
+        }
+        
+        .modal-nav:hover {
+            background: rgba(201, 169, 110, 1);
+        }
+        
+        .modal-prev { left: 2rem; }
+        .modal-next { right: 2rem; }
+        
+        .modal-counter {
+            position: absolute;
+            bottom: 2rem;
+            left: 50%;
+            transform: translateX(-50%);
+            color: white;
+            font-size: 1.1rem;
+            background: rgba(0,0,0,0.6);
+            padding: 0.75rem 1.5rem;
+            border-radius: 25px;
+        }
+        
+        /* Responsive */
+        @media (max-width: 968px) {
+            .resort-layout {
+                grid-template-columns: 1fr;
+            }
+            
+            .resort-main-image {
+                height: 300px;
+            }
+            
+            .features-list {
+                grid-template-columns: 1fr;
+            }
+            
+            .hero-content h1 {
+                font-size: 2.5rem;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .hero-content h1 {
+                font-size: 2rem;
+            }
+            
+            .hero-content p {
+                font-size: 1.2rem;
+            }
+            
+            .resort-name-ko {
+                font-size: 1.5rem;
+            }
+            
+            .gallery-thumb {
+                min-width: 120px;
+            }
         }
     </style>
-
 </head>
 <body>
+    <!-- Header & Navigation -->
     <header>
         <nav class="container">
             <div class="logo">
@@ -107,91 +451,266 @@
                 <li class="nav-dropdown">
                     <a href="#destinations">Destinations <i class="fas fa-chevron-down"></i></a>
                     <div class="dropdown-content">
-                        <a href="/thailand-phuket">🇹🇭 태국</a>
-                        <a href="/bali">🇮🇩 발리</a>
-                        <a href="/maldives">🇲🇻 몰디브</a>
-                        <a href="/oahu">🇺🇸 하와이</a>
-                        <a href="/boracay">🇵🇭 필리핀</a>
+                        <a href="/thailand-khao-lak">🇹🇭 태국 카오락</a>
+                        <a href="/thailand-koh-samui">🇹🇭 태국 코사무이</a>
+                        <a href="/thailand-phuket">🇹🇭 태국 푸켓</a>
+                        <a href="/thailand-krabi">🇹🇭 태국 끄라비</a>
+                        <a href="/thailand-pattaya">🇹🇭 태국 파타야</a>
+                        <a href="/thailand-hua-hin">🇹🇭 태국 후아힌</a>
                     </div>
                 </li>
                 <li><a href="/reviews">Reviews</a></li>
                 <li><a href="/inquiry">Contact</a></li>
                 <li><a href="/admin">Admin</a></li>
             </ul>
+            <button class="mobile-menu-btn">
+                <i class="fas fa-bars"></i>
+            </button>
         </nav>
     </header>
-    <section class="hero" style="background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('https://images.unsplash.com/photo-1540202047672-c6d00621b169?w=1600&h=900&fit=crop') center/cover;">
-        <div class="hero-content">
-            <h1>🇺🇸 빅아일랜드</h1>
-            <p>활화산과 검은 모래 해변의 신비</p>
-        </div>
-    </section>
-    <section class="container" style="padding: 3rem 0;">
-        <div class="card"><div class="card-content">
-            <h2 class="section-title">빅아일랜드 소개</h2>
-            <p style="line-height: 1.8; color: #555; font-size: 1.1rem;">하와이에서 가장 큰 섬으로 활화산, 용암 지대, 검은 모래 해변 등 독특한 자연 경관을 자랑합니다. 모험을 즐기는 신혼부부에게 추천합니다.</p>
-            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 2rem; margin-top: 2rem;">
-                <div><h3 style="color: var(--primary-color);"><i class="fas fa-map-marker-alt"></i> 위치</h3><p>미국 하와이 빅아일랜드</p></div>
-                <div><h3 style="color: var(--primary-color);"><i class="fas fa-plane"></i> 비행시간</h3><p>인천 출발 약 10시간</p></div>
-                <div><h3 style="color: var(--primary-color);"><i class="fas fa-clock"></i> 시차</h3><p>한국보다 19시간 느림</p></div>
-                <div><h3 style="color: var(--primary-color);"><i class="fas fa-sun"></i> 베스트 시즌</h3><p>연중 내내</p></div>
-            </div>
-        </div></div>
-    </section>
-    <section class="container">
-        <h2 class="section-title">빅아일랜드 추천 리조트</h2>
-        <p class="section-subtitle">곧 선샤인투어가 엄선한 프리미엄 리조트를 소개해드립니다</p>
-        <div class="card"><div class="card-content" style="text-align: center; padding: 4rem 2rem;">
-            <i class="fas fa-hotel" style="font-size: 4rem; color: var(--primary-color); margin-bottom: 1.5rem;"></i>
-            <h3 style="font-size: 1.5rem; margin-bottom: 1rem;">리조트 정보 준비 중</h3>
-            <p style="color: #777; font-size: 1.1rem; margin-bottom: 2rem;">빅아일랜드의 최고급 리조트 정보를 곧 업데이트 예정입니다.</p>
-            <a href="/inquiry" class="btn btn-primary" style="font-size: 1.1rem; padding: 1rem 2.5rem;"><i class="fas fa-comments"></i> 상담 신청하기</a>
-        </div></div>
-    </section>
-    <section class="container" style="margin: 5rem auto;">
-        <div class="card" style="background: linear-gradient(135deg, var(--primary-color) 0%, #b8975e 100%); color: white;">
-            <div class="card-content" style="text-align: center; padding: 3rem;">
-                <h2 style="font-size: 2rem; margin-bottom: 1rem; color: white;">빅아일랜드 허니문 문의하기</h2>
-                <p style="font-size: 1.2rem; margin-bottom: 2rem; opacity: 0.9;">20년 경력의 전문가가 맞춤형 빅아일랜드 여행을 설계해드립니다</p>
-                <a href="/inquiry" class="btn btn-secondary" style="background: white; color: var(--primary-color); font-size: 1.1rem; padding: 1rem 2.5rem;">지금 상담 신청하기 <i class="fas fa-arrow-right"></i></a>
-            </div>
-        </div>
-    </section>
-    
-    <!-- Resorts Section -->
-    <section class="resorts-section">
-        <div class="container">
-            <h2 style="text-align: center; font-size: 2.5rem; margin-bottom: 50px;">
-                <i class="fas fa-hotel"></i> 빅아일랜드 추천 리조트
-            </h2>
-            <h3 class="category-title">프리미엄</h3>
-<div class="resorts-grid">
 
-                <div class="resort-card">
-                    <a href="/resort-bigisland-resort01.html">
-                        <div class="resort-image">
-                            <img src="/static/images/resorts/bigisland/bigisland-resort01-01.webp" alt="쉐라톤 코나" loading="lazy">
-                            <div class="resort-badge">프리미엄</div>
-                        </div>
-                        <div class="resort-info">
-                            <h4>쉐라톤 코나</h4>
-                            <p class="resort-name-en">Sheraton Kona</p>
-                            <div class="resort-meta">
-                                <span><i class="fas fa-images"></i> 7장</span>
+    <!-- Hero Section -->
+    <section class="region-hero" style="background-image: url('/static/images/regions/bigisland/bigisland-01.webp');">
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+            <h1>🌴 빅아일랜드</h1>
+            <p>프리미엄 허니문 여행지</p>
+            <a href="#resorts" class="btn btn-primary">리조트 둘러보기</a>
+        </div>
+    </section>
+
+    <!-- Region Information -->
+    <div class="container">
+        <div class="region-info">
+            <h2 class="section-title">빅아일랜드 소개</h2>
+            <div class="region-description">
+                세계적인 수준의 리조트와 아름다운 자연 경관이 어우러진 최고의 허니문 여행지입니다.
+            </div>
+            
+            <div class="region-meta">
+                
+        <div class="meta-item">
+            <div class="meta-label"><i class="fas fa-plane-departure"></i> 비행시간</div>
+            <div class="meta-value">문의 주세요</div>
+        </div>
+        <div class="meta-item">
+            <div class="meta-label"><i class="fas fa-sun"></i> 여행 최적기</div>
+            <div class="meta-value">연중</div>
+        </div>
+    
+            </div>
+        </div>
+    </div>
+
+    <!-- Resorts Section -->
+    <section class="resorts-section" id="resorts">
+        <div class="section-header">
+            <h2>추천 리조트</h2>
+            <p>빅아일랜드의 엄선된 프리미엄 리조트를 만나보세요</p>
+        </div>
+        
+        <div id="resortsContainer">
+            <!-- Resorts will be loaded here -->
+        </div>
+    </section>
+
+    <!-- Image Modal -->
+    <div id="imageModal" class="image-modal">
+        <span class="modal-close" onclick="closeModal()">&times;</span>
+        <div class="modal-content-wrapper">
+            <button class="modal-nav modal-prev" onclick="changeModalImage(-1)">
+                <i class="fas fa-chevron-left"></i>
+            </button>
+            <img id="modalImage" class="modal-image" src="" alt="">
+            <button class="modal-nav modal-next" onclick="changeModalImage(1)">
+                <i class="fas fa-chevron-right"></i>
+            </button>
+            <div class="modal-counter">
+                <span id="currentImageIndex">1</span> / <span id="totalImages">0</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer style="background-color: #2C2C2C; color: white; padding: 3rem 2rem; margin-top: 4rem;">
+        <div class="container" style="max-width: 1200px; margin: 0 auto; text-align: center;">
+            <p style="margin-bottom: 1rem; font-size: 1.1rem;">
+                <i class="fas fa-phone"></i> 02-1234-5678 | 
+                <i class="fas fa-envelope"></i> info@sunshinetour.com
+            </p>
+            <p style="opacity: 0.8; font-size: 0.9rem;">
+                &copy; 2024 Sunshine Tour. All rights reserved.
+            </p>
+        </div>
+    </footer>
+
+    <script>
+        // Resort data from mapping file
+        const resortData = [
+        {
+                "name_ko": "쉐라톤 코나",
+                "name_en": "Sheraton Kona",
+                "category": "프리미엄",
+                "description": "프리미엄급 시설과 서비스를 합리적인 가격으로 제공하는 리조트입니다. 편안한 휴식과 다양한 액티비티를 동시에 즐길 수 있습니다.",
+                "images": [
+                        "/static/images/resorts/bigisland/bigisland-resort01-01.webp",
+                        "/static/images/resorts/bigisland/bigisland-resort01-02.webp",
+                        "/static/images/resorts/bigisland/bigisland-resort01-03.webp",
+                        "/static/images/resorts/bigisland/bigisland-resort01-04.webp",
+                        "/static/images/resorts/bigisland/bigisland-resort01-05.webp",
+                        "/static/images/resorts/bigisland/bigisland-resort01-06.webp",
+                        "/static/images/resorts/bigisland/bigisland-resort01-07.webp"
+                ],
+                "features": [
+                        "인피니티 풀",
+                        "스파 & 웰니스",
+                        "고급 레스토랑",
+                        "무료 Wi-Fi",
+                        "피트니스 센터",
+                        "룸서비스"
+                ]
+        }
+];
+        
+        let currentModalImages = [];
+        let currentImageIndex = 0;
+        
+        // Render resorts
+        function renderResorts() {
+            const container = document.getElementById('resortsContainer');
+            container.innerHTML = '';
+            
+            resortData.forEach((resort, index) => {
+                const resortCard = createResortCard(resort, index);
+                container.appendChild(resortCard);
+            });
+        }
+        
+        // Create resort card
+        function createResortCard(resort, index) {
+            const card = document.createElement('div');
+            card.className = 'resort-card';
+            card.id = `resort-${index}`;
+            
+            const mainImage = resort.images[0];
+            const galleryImages = resort.images.slice(1);
+            
+            card.innerHTML = `
+                <div class="resort-layout">
+                    <div class="resort-main-image" onclick="openGallery(${index}, 0)">
+                        <img src="${mainImage}" alt="${resort.name_ko}">
+                        <div class="resort-category-badge">${resort.category}</div>
+                        <button class="view-gallery-btn" onclick="event.stopPropagation(); toggleGallery(${index})">
+                            <i class="fas fa-images"></i> 사진 ${resort.images.length}장
+                        </button>
+                    </div>
+                    
+                    <div class="resort-info">
+                        <div>
+                            <div class="resort-header">
+                                <h3 class="resort-name-ko">${resort.name_ko}</h3>
+                                <div class="resort-name-en">${resort.name_en}</div>
+                            </div>
+                            
+                            <p class="resort-description">${resort.description}</p>
+                            
+                            <div class="resort-features">
+                                <div class="features-title"><i class="fas fa-star"></i> 주요 특징</div>
+                                <div class="features-list">
+                                    ${resort.features.map(f => `
+                                        <div class="feature-item">
+                                            <i class="fas fa-check-circle"></i>
+                                            <span>${f}</span>
+                                        </div>
+                                    `).join('')}
+                                </div>
                             </div>
                         </div>
-                    </a>
+                        
+                        <div class="resort-actions">
+                            <a href="/inquiry" class="btn-inquiry">
+                                <i class="fas fa-envelope"></i> 상담 신청
+                            </a>
+                        </div>
+                    </div>
                 </div>
+                
+                <div class="resort-gallery" id="gallery-${index}">
+                    ${resort.images.map((img, imgIndex) => `
+                        <div class="gallery-thumb" onclick="openGallery(${index}, ${imgIndex})">
+                            <img src="${img}" alt="${resort.name_ko} ${imgIndex + 1}">
+                        </div>
+                    `).join('')}
+                </div>
+            `;
             
-</div>
-        </div>
-    </section>
-
-    <footer>
-        <div class="container"><div class="footer-content">
-            <div class="footer-section"><h3>선샤인투어</h3><p>프리미엄 허니문 & 해외 여행 전문</p></div>
-            <div class="footer-section"><h3>연락처</h3><p><i class="fas fa-phone"></i> 02-1234-5678</p></div>
-        </div><div class="footer-bottom"><p>&copy; 2024 선샤인투어. All rights reserved.</p></div></div>
-    </footer>
+            return card;
+        }
+        
+        // Toggle gallery visibility
+        function toggleGallery(resortIndex) {
+            const gallery = document.getElementById(`gallery-${resortIndex}`);
+            gallery.classList.toggle('show');
+        }
+        
+        // Open image in modal
+        function openGallery(resortIndex, imageIndex) {
+            currentModalImages = resortData[resortIndex].images;
+            currentImageIndex = imageIndex;
+            
+            const modal = document.getElementById('imageModal');
+            const modalImage = document.getElementById('modalImage');
+            
+            modal.style.display = 'block';
+            modalImage.src = currentModalImages[imageIndex];
+            updateModalCounter();
+            
+            document.body.style.overflow = 'hidden';
+        }
+        
+        // Close modal
+        function closeModal() {
+            document.getElementById('imageModal').style.display = 'none';
+            document.body.style.overflow = 'auto';
+        }
+        
+        // Change image in modal
+        function changeModalImage(direction) {
+            currentImageIndex += direction;
+            
+            if (currentImageIndex < 0) {
+                currentImageIndex = currentModalImages.length - 1;
+            } else if (currentImageIndex >= currentModalImages.length) {
+                currentImageIndex = 0;
+            }
+            
+            document.getElementById('modalImage').src = currentModalImages[currentImageIndex];
+            updateModalCounter();
+        }
+        
+        // Update modal counter
+        function updateModalCounter() {
+            document.getElementById('currentImageIndex').textContent = currentImageIndex + 1;
+            document.getElementById('totalImages').textContent = currentModalImages.length;
+        }
+        
+        // Keyboard navigation
+        document.addEventListener('keydown', (e) => {
+            const modal = document.getElementById('imageModal');
+            if (modal.style.display === 'block') {
+                if (e.key === 'Escape') closeModal();
+                else if (e.key === 'ArrowLeft') changeModalImage(-1);
+                else if (e.key === 'ArrowRight') changeModalImage(1);
+            }
+        });
+        
+        // Mobile menu
+        document.querySelector('.mobile-menu-btn')?.addEventListener('click', function() {
+            document.querySelector('.nav-links').classList.toggle('active');
+        });
+        
+        // Initialize
+        document.addEventListener('DOMContentLoaded', renderResorts);
+    </script>
 </body>
 </html>
