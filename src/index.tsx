@@ -12,7 +12,7 @@ const app = new Hono<{ Bindings: Bindings }>()
 app.use('/api/*', cors())
 
 // 정적 파일 제공
-app.use('/static/*', serveStatic({ root: './public' }))
+app.use('/static/*', serveStatic({ root: './' }))
 
 // ===================================
 // API 엔드포인트 - Regions (지역)

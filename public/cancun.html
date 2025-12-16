@@ -7,6 +7,89 @@
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Noto+Serif+KR:wght@400;600;700&display=swap" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css" rel="stylesheet">
     <link href="/static/css/style.css" rel="stylesheet">
+
+    <style>
+        .resorts-section {
+            padding: 60px 0;
+            background: linear-gradient(to bottom, #f8f9fa, #ffffff);
+        }
+        .category-title {
+            font-size: 1.8rem;
+            color: #2c3e50;
+            margin: 40px 0 24px 0;
+            padding-bottom: 12px;
+            border-bottom: 3px solid #ff6b35;
+        }
+        .resorts-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+        .resort-card {
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+        }
+        .resort-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+        }
+        .resort-card a {
+            text-decoration: none;
+            color: inherit;
+        }
+        .resort-image {
+            position: relative;
+            height: 200px;
+            overflow: hidden;
+        }
+        .resort-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+        .resort-card:hover .resort-image img {
+            transform: scale(1.1);
+        }
+        .resort-badge {
+            position: absolute;
+            top: 12px;
+            right: 12px;
+            background: rgba(255, 107, 53, 0.9);
+            color: white;
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+        }
+        .resort-info {
+            padding: 20px;
+        }
+        .resort-info h4 {
+            font-size: 1.3rem;
+            color: #2c3e50;
+            margin: 0 0 8px 0;
+        }
+        .resort-name-en {
+            color: #7f8c8d;
+            font-size: 0.95rem;
+            margin: 0 0 12px 0;
+        }
+        .resort-meta {
+            display: flex;
+            gap: 15px;
+            color: #95a5a6;
+            font-size: 0.9rem;
+        }
+        .resort-meta i {
+            margin-right: 5px;
+        }
+    </style>
+
 </head>
 <body>
     <header><nav class="container"><div class="logo"><a href="/">☀️ 선샤인투어</a></div><ul class="nav-links"><li><a href="/reviews">후기</a></li><li><a href="/inquiry">문의하기</a></li></ul></nav></header>
@@ -75,6 +158,107 @@
         </div>
     </section>
     <section class="container"><h2 class="section-title">칸쿤 추천 리조트</h2><p class="section-subtitle">곧 선샤인투어가 엄선한 프리미엄 리조트를 소개해드립니다</p><div class="card"><div class="card-content" style="text-align: center; padding: 4rem 2rem;"><i class="fas fa-hotel" style="font-size: 4rem; color: var(--primary-color); margin-bottom: 1.5rem;"></i><h3 style="font-size: 1.5rem; margin-bottom: 1rem;">리조트 정보 준비 중</h3><a href="/inquiry" class="btn btn-primary"><i class="fas fa-comments"></i> 상담 신청하기</a></div></div></section>
+    
+    <!-- Resorts Section -->
+    <section class="resorts-section">
+        <div class="container">
+            <h2 style="text-align: center; font-size: 2.5rem; margin-bottom: 50px;">
+                <i class="fas fa-hotel"></i> 칸쿤 추천 리조트
+            </h2>
+            <h3 class="category-title">럭셔리</h3>
+<div class="resorts-grid">
+
+                <div class="resort-card">
+                    <a href="/resort-cancun-resort02.html">
+                        <div class="resort-image">
+                            <img src="/static/images/resorts/cancun/cancun-resort02-01.webp" alt="문 팰리스" loading="lazy">
+                            <div class="resort-badge">럭셔리</div>
+                        </div>
+                        <div class="resort-info">
+                            <h4>문 팰리스</h4>
+                            <p class="resort-name-en">Moon Palace</p>
+                            <div class="resort-meta">
+                                <span><i class="fas fa-images"></i> 3장</span>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+            
+
+                <div class="resort-card">
+                    <a href="/resort-cancun-resort03.html">
+                        <div class="resort-image">
+                            <img src="/static/images/resorts/cancun/cancun-resort03-01.webp" alt="시크릿 더 바인" loading="lazy">
+                            <div class="resort-badge">럭셔리</div>
+                        </div>
+                        <div class="resort-info">
+                            <h4>시크릿 더 바인</h4>
+                            <p class="resort-name-en">Secrets The Vine</p>
+                            <div class="resort-meta">
+                                <span><i class="fas fa-images"></i> 7장</span>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+            
+
+                <div class="resort-card">
+                    <a href="/resort-cancun-resort04.html">
+                        <div class="resort-image">
+                            <img src="/static/images/resorts/cancun/cancun-resort04-01.webp" alt="파라디수스" loading="lazy">
+                            <div class="resort-badge">럭셔리</div>
+                        </div>
+                        <div class="resort-info">
+                            <h4>파라디수스</h4>
+                            <p class="resort-name-en">Paradisus</p>
+                            <div class="resort-meta">
+                                <span><i class="fas fa-images"></i> 7장</span>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+            
+</div>
+<h3 class="category-title">프리미엄</h3>
+<div class="resorts-grid">
+
+                <div class="resort-card">
+                    <a href="/resort-cancun-resort01.html">
+                        <div class="resort-image">
+                            <img src="/static/images/resorts/cancun/cancun-resort01-01.webp" alt="멜로디 메이커" loading="lazy">
+                            <div class="resort-badge">프리미엄</div>
+                        </div>
+                        <div class="resort-info">
+                            <h4>멜로디 메이커</h4>
+                            <p class="resort-name-en">Melody Maker</p>
+                            <div class="resort-meta">
+                                <span><i class="fas fa-images"></i> 7장</span>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+            
+
+                <div class="resort-card">
+                    <a href="/resort-cancun-resort05.html">
+                        <div class="resort-image">
+                            <img src="/static/images/resorts/cancun/cancun-resort05-01.webp" alt="하얏트 지바" loading="lazy">
+                            <div class="resort-badge">프리미엄</div>
+                        </div>
+                        <div class="resort-info">
+                            <h4>하얏트 지바</h4>
+                            <p class="resort-name-en">Hyatt Ziva</p>
+                            <div class="resort-meta">
+                                <span><i class="fas fa-images"></i> 7장</span>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+            
+</div>
+        </div>
+    </section>
+
     <footer><div class="container"><div class="footer-content"><div class="footer-section"><h3>선샤인투어</h3><p>02-1234-5678</p></div></div><div class="footer-bottom"><p>&copy; 2024 선샤인투어</p></div></div></footer>
 </body>
 </html>

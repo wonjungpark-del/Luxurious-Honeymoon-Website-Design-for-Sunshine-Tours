@@ -1,0 +1,17 @@
+{
+  "version": 1,
+  "include": [
+    "/api/*"
+  ],
+  "exclude": [
+    "/static/*",
+    "/*.html",
+    "/resort-*.html",
+    "/thailand-*.html",
+    "/*.css",
+    "/*.js",
+    "/*.webp",
+    "/*.jpg",
+    "/*.png"
+  ]
+}

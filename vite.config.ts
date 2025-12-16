@@ -11,5 +11,13 @@ export default defineConfig({
       entry: 'src/index.tsx'
     })
   ],
-  publicDir: 'public'
+  publicDir: 'public',
+  build: {
+    rollupOptions: {
+      input: {
+        // Ensure static HTML files are included
+      }
+    },
+    copyPublicDir: true
+  }
 })
