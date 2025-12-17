@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>롬복 롬복 리조트 추천 | 프라이빗 비치 허니문 - 선샤인투어</title>
+    <meta name="description" content="롬복 롬복 프라이빗 비치 리조트 전문. 한적한 자연 속 럭셔리 허니문, 27년 신뢰의 선샤인투어가 추천하는 롬복 최고급 리조트.">
+    <meta name="keywords" content="롬복, 롬복 리조트, 롬복 롬복, 롬복 허니문, 롬복 프라이빗 비치, 롬복 리조트, 선샤인투어, 롬복 여행, 안다만해, 롬복 호텔">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@300;400;600;700&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/static/css/style.css">
+    <link rel="stylesheet" href="/static/css/destination.css">
+    <link rel="stylesheet" href="/static/css/region.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <a href="/index.html">
+                    <div class="logo-wrapper">
+                        <div class="text-logo" style="display: flex; align-items: center; gap: 10px;">
+                            <i class="fas fa-sun" style="font-size: 32px; color: #C9A96E;"></i>
+                            <div style="display: flex; flex-direction: column; line-height: 1.2;">
+                                <span style="font-family: 'Montserrat', sans-serif; font-size: 20px; font-weight: 700; color: #C9A96E; letter-spacing: 1px;">SUNSHINE</span>
+                                <span style="font-family: 'Montserrat', sans-serif; font-size: 10px; font-weight: 400; color: #7A7A7A; letter-spacing: 2px;">TOUR</span>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            <ul class="nav-menu" id="nav-menu">
+                <li><a href="/index.html#home" class="nav-link">Home</a></li>
+                <li><a href="/index.html#destinations" class="nav-link">Destinations</a></li>
+                <li><a href="/reviews" class="nav-link">Reviews</a></li>
+                <li><a href="/index.html#about" class="nav-link">About</a></li>
+                <li><a href="/index.html#contact" class="nav-link">Contact</a></li>
+            </ul>
+            <div class="nav-toggle" id="nav-toggle">
+                <i class="fas fa-bars"></i>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Breadcrumb -->
+    <section class="breadcrumb">
+        <div class="container">
+            <ul class="breadcrumb-list">
+                <li><a href="/index.html">Home</a></li>
+                <li><i class="fas fa-chevron-right"></i></li>
+                <li><a href="/destination-thailand.html">Lombok</a></li>
+                <li><i class="fas fa-chevron-right"></i></li>
+                <li class="current">롬복</li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- Page Header -->
+    <section class="destination-intro">
+        <div class="container">
+            <div class="intro-wrapper">
+                <span class="section-label">KHAO LAK RESORTS</span>
+                <h1 class="destination-section-title">롬복 리조트</h1>
+                <p class="destination-description">
+                    한적하고 평화로운 롬복은 롬복 남부의 숨겨진 보석입니다.<br>
+                    프라이빗 비치와 열대 우림으로 둘러싸인 럭셔리 리조트에서<br>
+                    진정한 휴식과 로맨스를 경험하세요.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Resort List -->
+    <section class="resort-list">
+        <div class="container">
+            <!-- Resorts will be loaded dynamically from database -->
+            <div id="resorts-container">
+                <div class="loading-resorts">
+                    <i class="fas fa-spinner fa-spin"></i>
+                    <p>리조트 정보를 불러오는 중...</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Info Section -->
+    <section class="info-section">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-label">WHY KHAO LAK</span>
+                <h2 class="section-title">롬복을 선택해야 하는 이유</h2>
+            </div>
+            
+            <div class="info-grid">
+                <div class="info-card">
+                    <div class="info-icon">
+                        <i class="fas fa-user-secret"></i>
+                    </div>
+                    <h3 class="info-title">프라이빗한 분위기</h3>
+                    <p class="info-text">푸켓보다 한적하고 조용하여 진정한 휴식을 원하는 커플에게 완벽합니다.</p>
+                </div>
+                
+                <div class="info-card">
+                    <div class="info-icon">
+                        <i class="fas fa-elephant"></i>
+                    </div>
+                    <h3 class="info-title">자연 체험</h3>
+                    <p class="info-text">코끼리 캠프, 국립공원, 스노클링 등 다양한 자연 액티비티를 즐길 수 있습니다.</p>
+                </div>
+                
+                <div class="info-card">
+                    <div class="info-icon">
+                        <i class="fas fa-gem"></i>
+                    </div>
+                    <h3 class="info-title">럭셔리 리조트</h3>
+                    <p class="info-text">세계적인 5성급 리조트들이 모여있어 최상의 서비스를 경험할 수 있습니다.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <div class="container">
+            <div class="cta-content">
+                <h2>롬복에서 특별한 허니문을 시작하세요</h2>
+                <p>전문 상담사가 여러분의 완벽한 여행을 계획해드립니다</p>
+                <a href="/inquiry" class="cta-btn">문의하기</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <h3>SUNSHINE TOUR</h3>
+                    <p>프라이빗 허니문 전문 여행사</p>
+                </div>
+                
+                <div class="footer-info">
+                    <p>서울특별시 성북구 보문로30길 71, 2층 7호</p>
+                    <p>TEL: 02-318-8021</p>
+                    <p class="copyright">© 2024 Sunshine Tour. All rights reserved.</p>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Admin Access Button -->
+        <div class="admin-access">
+            <a href="/admin" class="admin-btn" title="관리자 페이지">
+                <i class="fas fa-user-shield"></i>
+                <span>Admin</span>
+            </a>
+        </div>
+    </footer>
+
+    <!-- Lightbox Modal -->
+    <div id="lightbox-modal" class="lightbox-modal">
+        <div class="lightbox-content">
+            <span class="lightbox-close">&times;</span>
+            <span class="lightbox-nav lightbox-prev">&#10094;</span>
+            <img id="lightbox-img" src="" alt="">
+            <span class="lightbox-nav lightbox-next">&#10095;</span>
+            <div class="lightbox-caption" id="lightbox-caption"></div>
+        </div>
+    </div>
+
+    <!-- JavaScript -->
+    <script src="/static/js/main.js"></script>
+    <script>
+        // Load resorts for Lombok region
+        const REGION_ID = 'region-lombok';
+        
+        async function loadResorts() {
+            try {
+                const response = await fetch(`/api/resorts?region_id=${REGION_ID}&is_active=true`);
+                const result = await response.json();
+                
+                const container = document.getElementById('resorts-container');
+                
+                if (result.success && result.data.length > 0) {
+                    const resorts = result.data;
+                    
+                    container.innerHTML = resorts.map(resort => {
+                        // Parse features and gallery
+                        let features = [];
+                        try {
+                            features = resort.features ? JSON.parse(resort.features) : [];
+                        } catch (e) {
+                            console.error('Error parsing features:', e);
+                        }
+                        
+                        let gallery = [];
+                        try {
+                            gallery = resort.gallery_images ? JSON.parse(resort.gallery_images) : [];
+                        } catch (e) {
+                            console.error('Error parsing gallery:', e);
+                        }
+                        
+                        // Category badge
+                        const categoryLabels = {
+                            'luxury': '럭셔리',
+                            'premium': '프리미엄',
+                            'standard': '스탠다드'
+                        };
+                        
+                        return `
+                            <div class="resort-card">
+                                <div class="resort-content-wrapper">
+                                    <div class="resort-header">
+                                        <div class="resort-image">
+                                            <img src="${resort.main_image_url || 'https://images.unsplash.com/photo-1571896349842-33c89424de2d?q=80&w=2080'}" alt="${resort.name_kr}">
+                                            ${resort.category ? `<div class="resort-badge">${categoryLabels[resort.category] || resort.category}</div>` : ''}
+                                        </div>
+                                        <div class="resort-info">
+                                            <div class="resort-category">${categoryLabels[resort.category] || 'RESORT'}</div>
+                                            <h2 class="resort-name">${resort.name_kr}</h2>
+                                            <p class="resort-description">${resort.description_kr || resort.description || ''}</p>
+                                            ${features.length > 0 ? `
+                                                <div class="resort-features">
+                                                    ${features.slice(0, 4).map(feature => `
+                                                        <div class="feature-item">
+                                                            <i class="fas fa-check-circle"></i>
+                                                            <span>${feature}</span>
+                                                        </div>
+                                                    `).join('')}
+                                                </div>
+                                            ` : ''}
+                                            <a href="/inquiry" class="resort-cta">상담 신청하기</a>
+                                        </div>
+                                    </div>
+                                    ${gallery.length > 0 ? `
+                                        <div class="resort-gallery">
+                                            ${gallery.slice(0, 6).map((img, index) => `
+                                                <div class="gallery-item" onclick="openLightbox('${img}', '${resort.name_kr} - 이미지 ${index + 1}')">
+                                                    <img src="${img}" alt="${resort.name_kr} - 이미지 ${index + 1}">
+                                                    <div class="gallery-overlay">
+                                                        <i class="fas fa-search-plus"></i>
+                                                    </div>
+                                                </div>
+                                            `).join('')}
+                                        </div>
+                                    ` : ''}
+                                </div>
+                            </div>
+                        `;
+                    }).join('');
+                } else {
+                    container.innerHTML = `
+                        <div class="no-resorts">
+                            <i class="fas fa-hotel"></i>
+                            <p>현재 등록된 리조트가 없습니다.<br>곧 멋진 리조트들을 소개해드리겠습니다.</p>
+                        </div>
+                    `;
+                }
+            } catch (error) {
+                console.error('Error loading resorts:', error);
+                document.getElementById('resorts-container').innerHTML = `
+                    <div class="error-resorts">
+                        <i class="fas fa-exclamation-circle"></i>
+                        <p>리조트 정보를 불러오는데 실패했습니다.<br>잠시 후 다시 시도해주세요.</p>
+                    </div>
+                `;
+            }
+        }
+        
+        // Lightbox functionality
+        function openLightbox(imgSrc, caption) {
+            const modal = document.getElementById('lightbox-modal');
+            const img = document.getElementById('lightbox-img');
+            const captionText = document.getElementById('lightbox-caption');
+            
+            modal.classList.add('active');
+            img.src = imgSrc;
+            captionText.textContent = caption;
+            
+            // Store current image for navigation
+            window.currentLightboxImg = imgSrc;
+        }
+        
+        function closeLightbox() {
+            const modal = document.getElementById('lightbox-modal');
+            modal.classList.remove('active');
+        }
+        
+        // Event listeners
+        document.addEventListener('DOMContentLoaded', () => {
+            // Load resorts
+            loadResorts();
+            
+            // Lightbox close button
+            const closeBtn = document.querySelector('.lightbox-close');
+            if (closeBtn) {
+                closeBtn.addEventListener('click', closeLightbox);
+            }
+            
+            // Close on background click
+            const modal = document.getElementById('lightbox-modal');
+            if (modal) {
+                modal.addEventListener('click', (e) => {
+                    if (e.target === modal) {
+                        closeLightbox();
+                    }
+                });
+            }
+            
+            // ESC key to close
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'Escape') {
+                    closeLightbox();
+                }
+            });
+        });
+    </script>
+</body>
+</html>
