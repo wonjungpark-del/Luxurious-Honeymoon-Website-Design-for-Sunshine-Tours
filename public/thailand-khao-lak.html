@@ -179,11 +179,11 @@
     <script src="/static/js/main.js"></script>
     <script>
         // Load resorts for Khao Lak region
-        const REGION_CODE = 'khao-lak';
+        const REGION_ID = 'region-thailand-khao-lak';
         
         async function loadResorts() {
             try {
-                const response = await fetch(`/api/resorts?region_code=${REGION_CODE}&is_active=1`);
+                const response = await fetch(`/api/resorts?region_id=${REGION_ID}&is_active=true`);
                 const result = await response.json();
                 
                 const container = document.getElementById('resorts-container');
