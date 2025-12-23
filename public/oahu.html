@@ -534,11 +534,11 @@
             const regionId = container.dataset.region;
             
             try {
-                const response = await fetch(`/api/resorts?region=${regionId}`);
+                const response = await fetch(`/api/resorts?region_id=${regionId}`);
                 const data = await response.json();
                 
-                if (data.resorts && data.resorts.length > 0) {
-                    container.innerHTML = data.resorts.map((resort, index) => createResortCard(resort, index)).join('');
+                if (data.success && data.data && data.data.length > 0) {
+                    container.innerHTML = data.data.map((resort, index) => createResortCard(resort, index)).join('');
                     initializeLightbox();
                 } else {
                     container.innerHTML = '<p>리조트 정보를 불러올 수 없습니다.</p>';
