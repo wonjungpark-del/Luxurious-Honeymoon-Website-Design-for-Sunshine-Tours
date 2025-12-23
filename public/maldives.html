@@ -4,336 +4,140 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>몰디브 리조트 - 선샤인투어</title>
-    <meta name="description" content="몰디브 몰디브의 프리미엄 리조트를 만나보세요.">
+    <meta name="description" content="몰디브의 프라이빗 비치 리조트. 인도양의 천국, 수상 빌라와 산호초의 낙원.">
     
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Noto+Serif+KR:wght@400;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@300;400;600;700&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     
     <!-- Font Awesome -->
-    <link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
     
     <!-- Custom CSS -->
-    <link href="/static/css/style.css" rel="stylesheet">
-    
+    <link rel="stylesheet" href="/static/css/style.css">
+    <link rel="stylesheet" href="/static/css/destination.css">
     <style>
-        /* Region Page Styles */
-        .region-hero {
-            position: relative;
-            height: 60vh;
-            min-height: 400px;
-            background-size: cover;
-            background-position: center;
-            display: flex;
-            align-items: center;
-            justify-content: center;
+        /* Maldives Resort Specific Styles */
+        .resort-list {
+            padding: 100px 0;
+            background-color: var(--color-white);
         }
         
-        .hero-overlay {
+        .resort-card {
+            background: var(--color-white);
+            border-radius: 15px;
+            overflow: hidden;
+            margin-bottom: 60px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+            transition: all 0.4s ease;
+        }
+        
+        .resort-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 50px rgba(201, 169, 110, 0.2);
+        }
+        
+        .resort-content-wrapper {
+            display: flex;
+            flex-direction: column;
+            gap: 0;
+        }
+        
+        .resort-header {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 0;
+        }
+        
+        .resort-image {
+            position: relative;
+            height: 400px;
+            overflow: hidden;
+        }
+        
+        .resort-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.6s ease;
+        }
+        
+        .resort-card:hover .resort-image img {
+            transform: scale(1.05);
+        }
+        
+        .resort-badge {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-gold) 100%);
+            color: var(--color-white);
+            padding: 8px 20px;
+            border-radius: 25px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            letter-spacing: 1px;
+            z-index: 10;
+        }
+        
+        /* Resort Gallery */
+        .resort-gallery {
+            display: grid;
+            grid-template-columns: repeat(6, 1fr);
+            gap: 0;
+            border-top: 1px solid var(--color-light-gray);
+        }
+        
+        .gallery-item {
+            position: relative;
+            height: 180px;
+            overflow: hidden;
+            cursor: pointer;
+            border-right: 1px solid var(--color-light-gray);
+        }
+        
+        .gallery-item:last-child {
+            border-right: none;
+        }
+        
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: all 0.4s ease;
+        }
+        
+        .gallery-item:hover img {
+            transform: scale(1.1);
+            filter: brightness(0.8);
+        }
+        
+        .gallery-overlay {
             position: absolute;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            background: linear-gradient(to bottom, rgba(0,0,0,0.3), rgba(0,0,0,0.5));
-        }
-        
-        .hero-content {
-            position: relative;
-            z-index: 2;
-            text-align: center;
-            color: white;
-            max-width: 800px;
-            padding: 2rem;
-        }
-        
-        .hero-content h1 {
-            font-size: 3.5rem;
-            font-weight: 700;
-            margin-bottom: 1rem;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
-        }
-        
-        .hero-content p {
-            font-size: 1.5rem;
-            margin-bottom: 2rem;
-            opacity: 0.95;
-        }
-        
-        /* Region Info Section */
-        .region-info {
-            background: white;
-            padding: 3rem 2rem;
-            margin: 3rem auto;
-            max-width: 1200px;
-            border-radius: 12px;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
-        }
-        
-        .region-description {
-            font-size: 1.1rem;
-            line-height: 1.8;
-            color: #444;
-            margin-bottom: 2rem;
-        }
-        
-        .region-meta {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 1.5rem;
-            padding: 2rem;
-            background: #f8f9fa;
-            border-radius: 8px;
-            margin: 2rem 0;
-        }
-        
-        .meta-item {
-            text-align: center;
-        }
-        
-        .meta-label {
-            color: var(--primary-color);
-            font-weight: 600;
-            margin-bottom: 0.5rem;
-            font-size: 1rem;
-        }
-        
-        .meta-value {
-            color: #2C2C2C;
-            font-size: 1rem;
-        }
-        
-        /* Resorts Section */
-        .resorts-section {
-            max-width: 1200px;
-            margin: 4rem auto;
-            padding: 0 2rem;
-        }
-        
-        .section-header {
-            text-align: center;
-            margin-bottom: 3rem;
-        }
-        
-        .section-header h2 {
-            font-size: 2.5rem;
-            color: #2C2C2C;
-            margin-bottom: 1rem;
-        }
-        
-        .section-header p {
-            font-size: 1.1rem;
-            color: #666;
-        }
-        
-        /* Resort Card */
-        .resort-card {
-            background: white;
-            border-radius: 12px;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
-            margin-bottom: 3rem;
-            overflow: hidden;
-            transition: all 0.3s ease;
-        }
-        
-        .resort-card:hover {
-            box-shadow: 0 8px 24px rgba(0,0,0,0.12);
-        }
-        
-        .resort-layout {
-            display: grid;
-            grid-template-columns: 500px 1fr;
-            gap: 0;
-        }
-        
-        /* Main Image Section */
-        .resort-main-image {
-            position: relative;
-            height: 400px;
-            overflow: hidden;
-            cursor: pointer;
-        }
-        
-        .resort-main-image img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: transform 0.3s ease;
-        }
-        
-        .resort-card:hover .resort-main-image img {
-            transform: scale(1.05);
-        }
-        
-        .resort-category-badge {
-            position: absolute;
-            top: 1rem;
-            left: 1rem;
-            padding: 0.5rem 1rem;
-            background: rgba(201, 169, 110, 0.95);
-            color: white;
-            border-radius: 20px;
-            font-size: 0.85rem;
-            font-weight: 600;
-            letter-spacing: 0.5px;
-            z-index: 2;
-        }
-        
-        .view-gallery-btn {
-            position: absolute;
-            bottom: 1rem;
-            right: 1rem;
-            padding: 0.75rem 1.5rem;
-            background: rgba(255, 255, 255, 0.95);
-            color: #C9A96E;
-            border: none;
-            border-radius: 25px;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            z-index: 2;
-        }
-        
-        .view-gallery-btn:hover {
-            background: white;
-            transform: translateY(-2px);
-            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
-        }
-        
-        /* Resort Info Section */
-        .resort-info {
-            padding: 1.5rem 2rem;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-        }
-        
-        .resort-header {
-            margin-bottom: 1rem;
-        }
-        
-        .resort-name-ko {
-            font-size: 2rem;
-            font-weight: 700;
-            color: #2C2C2C;
-            margin-bottom: 0.5rem;
-        }
-        
-        .resort-name-en {
-            font-size: 1.2rem;
-            color: #888;
-            font-weight: 400;
-        }
-        
-        .resort-description {
-            font-size: 1rem;
-            line-height: 1.6;
-            color: #555;
-            margin-bottom: 1rem;
-            max-height: 4.8em;
-            overflow: hidden;
-            display: -webkit-box;
-            -webkit-line-clamp: 3;
-            -webkit-box-orient: vertical;
-        }
-        
-        /* Features (Highlights) */
-        .resort-features {
-            margin-bottom: 1rem;
-        }
-        
-                .features-title {
-            font-size: 0.95rem;
-            font-weight: 600;
-            color: #C9A96E;
-            margin-bottom: 0.75rem;
-        }
-        
-        .features-list {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 0.5rem;
-        }
-        
-        .feature-item {
+            background: rgba(201, 169, 110, 0.8);
             display: flex;
             align-items: center;
-            gap: 0.4rem;
-            font-size: 0.9rem;
-            color: #444;
+            justify-content: center;
+            opacity: 0;
+            transition: opacity 0.3s ease;
         }
         
-        .feature-item i {
-            display: none; /* 별 아이콘 숨김 */
+        .gallery-item:hover .gallery-overlay {
+            opacity: 1;
         }
         
-        .feature-item::before {
-            content: "•";
-            color: #C9A96E;
-            font-weight: 700;
-            font-size: 1.2rem;
+        .gallery-overlay i {
+            color: var(--color-white);
+            font-size: 2rem;
         }
         
-        /* Action Buttons */
-        .resort-actions {
-            display: flex;
-            gap: 1rem;
-            margin-top: auto;
-        }
-        
-        .btn-inquiry {
-            flex: 1;
-            padding: 1rem;
-            background: linear-gradient(135deg, #C9A96E 0%, #B8935E 100%);
-            color: white;
-            text-align: center;
-            text-decoration: none;
-            border-radius: 8px;
-            font-weight: 600;
-            transition: all 0.3s ease;
-        }
-        
-        .btn-inquiry:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 4px 12px rgba(201, 169, 110, 0.4);
-        }
-        
-        /* Gallery Thumbnails (below resort card) */
-        .resort-gallery {
-            display: none;
-            grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
-            gap: 1rem;
-            padding: 1.5rem;
-            background: #f8f9fa;
-            border-top: 1px solid #e0e0e0;
-        }
-        
-        .resort-gallery.show {
-            display: grid;
-        }
-        
-        .gallery-thumb {
-            aspect-ratio: 4/3;
-            border-radius: 8px;
-            overflow: hidden;
-            cursor: pointer;
-            transition: all 0.3s ease;
-        }
-        
-        .gallery-thumb:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
-        }
-        
-        .gallery-thumb img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-        
-        /* Image Modal */
-        .image-modal {
+        /* Image Lightbox Modal */
+        .lightbox-modal {
             display: none;
             position: fixed;
             z-index: 9999;
@@ -341,567 +145,546 @@
             top: 0;
             width: 100%;
             height: 100%;
-            background: rgba(0,0,0,0.95);
+            background-color: rgba(0, 0, 0, 0.95);
+            animation: fadeIn 0.3s ease;
         }
         
-        .modal-content-wrapper {
-            position: relative;
-            height: 100%;
+        .lightbox-modal.active {
             display: flex;
             align-items: center;
             justify-content: center;
-            padding: 2rem;
         }
         
-        .modal-image {
+        .lightbox-content {
+            position: relative;
             max-width: 90%;
-            max-height: 90%;
-            object-fit: contain;
-            border-radius: 8px;
+            max-height: 90vh;
+            animation: zoomIn 0.3s ease;
         }
         
-        .modal-close {
+        .lightbox-content img {
+            width: 100%;
+            height: 100%;
+            max-height: 90vh;
+            object-fit: contain;
+            border-radius: 5px;
+        }
+        
+        .lightbox-close {
             position: absolute;
-            top: 2rem;
-            right: 2rem;
-            color: white;
+            top: -50px;
+            right: 0;
+            color: var(--color-white);
             font-size: 3rem;
             font-weight: 300;
             cursor: pointer;
             transition: all 0.3s ease;
-            z-index: 10000;
+            width: 50px;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
         }
         
-        .modal-close:hover {
-            color: #C9A96E;
+        .lightbox-close:hover {
+            background: var(--color-primary);
             transform: rotate(90deg);
         }
         
-        .modal-nav {
+        .lightbox-nav {
             position: absolute;
             top: 50%;
             transform: translateY(-50%);
-            background: rgba(201, 169, 110, 0.8);
-            color: white;
-            border: none;
-            padding: 1.5rem 1rem;
-            font-size: 2rem;
+            color: var(--color-white);
+            font-size: 3rem;
             cursor: pointer;
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 5px;
             transition: all 0.3s ease;
-            border-radius: 4px;
+            user-select: none;
         }
         
-        .modal-nav:hover {
-            background: rgba(201, 169, 110, 1);
+        .lightbox-nav:hover {
+            background: var(--color-primary);
         }
         
-        .modal-prev { left: 2rem; }
-        .modal-next { right: 2rem; }
+        .lightbox-prev {
+            left: 20px;
+        }
         
-        .modal-counter {
+        .lightbox-next {
+            right: 20px;
+        }
+        
+        .lightbox-caption {
             position: absolute;
-            bottom: 2rem;
-            left: 50%;
-            transform: translateX(-50%);
-            color: white;
+            bottom: -50px;
+            left: 0;
+            width: 100%;
+            text-align: center;
+            color: var(--color-white);
             font-size: 1.1rem;
-            background: rgba(0,0,0,0.6);
-            padding: 0.75rem 1.5rem;
-            border-radius: 25px;
+            padding: 10px;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        
+        @keyframes zoomIn {
+            from { 
+                transform: scale(0.8);
+                opacity: 0;
+            }
+            to { 
+                transform: scale(1);
+                opacity: 1;
+            }
+        }
+        
+        .resort-info {
+            padding: 50px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+        
+        .resort-category {
+            color: var(--color-primary);
+            font-size: 0.85rem;
+            font-weight: 600;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-bottom: 15px;
+        }
+        
+        .resort-name {
+            font-size: 2.2rem;
+            font-weight: 600;
+            margin-bottom: 20px;
+            color: var(--color-dark);
+            line-height: 1.3;
+        }
+        
+        .resort-description {
+            font-size: 1.05rem;
+            line-height: 1.9;
+            color: var(--color-gray);
+            margin-bottom: 30px;
+        }
+        
+        .resort-features {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px;
+            margin-bottom: 30px;
+        }
+        
+        .feature-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 0.95rem;
+            color: var(--color-gray);
+        }
+        
+        .feature-item i {
+            color: var(--color-primary);
+            font-size: 1.1rem;
+        }
+        
+        .resort-cta {
+            display: inline-block;
+            padding: 15px 40px;
+            background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-gold) 100%);
+            color: var(--color-white);
+            text-decoration: none;
+            font-weight: 600;
+            border-radius: 30px;
+            transition: all 0.3s ease;
+            text-align: center;
+            letter-spacing: 1px;
+        }
+        
+        .resort-cta:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(201, 169, 110, 0.4);
+        }
+        
+        /* Breadcrumb */
+        .breadcrumb {
+            padding: 30px 0;
+            background-color: var(--color-cream);
+            margin-top: 110px;
+        }
+        
+        .breadcrumb-list {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            list-style: none;
+            font-size: 0.9rem;
+        }
+        
+        .breadcrumb-list li {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .breadcrumb-list a {
+            color: var(--color-gray);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        
+        .breadcrumb-list a:hover {
+            color: var(--color-primary);
+        }
+        
+        .breadcrumb-list .current {
+            color: var(--color-primary);
+            font-weight: 600;
         }
         
         /* Responsive */
-        @media (max-width: 968px) {
-            .resort-layout {
+        @media (max-width: 992px) {
+            .resort-header {
                 grid-template-columns: 1fr;
             }
             
-            .resort-main-image {
-                height: 300px;
+            .resort-gallery {
+                grid-template-columns: repeat(3, 1fr);
             }
             
-            .features-list {
+            .resort-features {
                 grid-template-columns: 1fr;
-            }
-            
-            .hero-content h1 {
-                font-size: 2.5rem;
             }
         }
         
         @media (max-width: 768px) {
-            .hero-content h1 {
-                font-size: 2rem;
+            .resort-gallery {
+                grid-template-columns: repeat(2, 1fr);
             }
             
-            .hero-content p {
-                font-size: 1.2rem;
+            .resort-info {
+                padding: 30px;
             }
             
-            .resort-name-ko {
-                font-size: 1.5rem;
-            }
-            
-            .gallery-thumb {
-                min-width: 120px;
+            .resort-name {
+                font-size: 1.8rem;
             }
         }
     </style>
 </head>
 <body>
-    <!-- Header & Navigation -->
-    <header>
-        <nav class="container">
-            <div class="logo">
-                <a href="/" style="display: flex; align-items: center; gap: 12px;">
-                    <img src="/static/images/logo-sunrise.png" alt="Sunshine Tour" style="height: 40px; width: auto; object-fit: contain;">
-                    <span style="font-family: 'Montserrat', sans-serif; font-weight: 700; font-size: 1.3rem; letter-spacing: 0.5px;">SUNSHINE TOUR</span>
+    <!-- Navigation -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <a href="/">
+                    <div class="logo-wrapper">
+                        <div class="text-logo" style="display: flex; align-items: center; gap: 10px;">
+                            <i class="fas fa-sun" style="font-size: 32px; color: #C9A96E;"></i>
+                            <div style="display: flex; flex-direction: column; line-height: 1.2;">
+                                <span style="font-family: 'Montserrat', sans-serif; font-size: 20px; font-weight: 700; color: #C9A96E; letter-spacing: 1px;">SUNSHINE</span>
+                                <span style="font-family: 'Montserrat', sans-serif; font-size: 10px; font-weight: 400; color: #7A7A7A; letter-spacing: 2px;">TOUR</span>
+                            </div>
+                        </div>
+                    </div>
                 </a>
             </div>
-            <ul class="nav-links">
-                <li class="nav-dropdown">
-                    <a href="#destinations">Destinations <i class="fas fa-chevron-down"></i></a>
-                    <div class="dropdown-content">
-                        <a href="/thailand-khao-lak">🇹🇭 태국 카오락</a>
-                        <a href="/thailand-koh-samui">🇹🇭 태국 코사무이</a>
-                        <a href="/thailand-phuket">🇹🇭 태국 푸켓</a>
-                        <a href="/thailand-krabi">🇹🇭 태국 끄라비</a>
-                        <a href="/thailand-pattaya">🇹🇭 태국 파타야</a>
-                        <a href="/thailand-hua-hin">🇹🇭 태국 후아힌</a>
-                    </div>
-                </li>
-                <li><a href="/reviews">Reviews</a></li>
-                <li><a href="/inquiry">Contact</a></li>
-                <li><a href="/admin">Admin</a></li>
+            <ul class="nav-menu" id="nav-menu">
+                <li><a href="/#home" class="nav-link">Home</a></li>
+                <li><a href="/#destinations" class="nav-link">Destinations</a></li>
+                <li><a href="/reviews" class="nav-link">Reviews</a></li>
+                <li><a href="/#about" class="nav-link">About</a></li>
+                <li><a href="/#contact" class="nav-link">Contact</a></li>
             </ul>
-            <button class="mobile-menu-btn">
+            <div class="nav-toggle" id="nav-toggle">
                 <i class="fas fa-bars"></i>
-            </button>
-        </nav>
-    </header>
+            </div>
+        </div>
+    </nav>
 
-    <!-- Hero Section -->
-    <section class="region-hero" style="background-image: url('/static/images/regions/maldives/maldives-01.webp');">
-        <div class="hero-overlay"></div>
-        <div class="hero-content">
-            <h1>🌴 몰디브</h1>
-            <p>프리미엄 허니문 여행지</p>
-            <a href="#resorts" class="btn btn-primary">리조트 둘러보기</a>
+    <!-- Breadcrumb -->
+    <section class="breadcrumb">
+        <div class="container">
+            <ul class="breadcrumb-list">
+                <li><a href="/">Home</a></li>
+                <li><i class="fas fa-chevron-right"></i></li>
+                <li><a href="/destination-maldives.html">Maldives</a></li>
+                <li><i class="fas fa-chevron-right"></i></li>
+                <li class="current">몰디브</li>
+            </ul>
         </div>
     </section>
 
-    <!-- Region Information -->
-    <div class="container">
-        <div class="region-info">
-            <h2 class="section-title">몰디브 소개</h2>
-            <div class="region-description">
-                세계적인 수준의 리조트와 아름다운 자연 경관이 어우러진 최고의 허니문 여행지입니다.
+    <!-- Page Header -->
+    <section class="destination-intro">
+        <div class="container">
+            <div class="intro-wrapper">
+                <span class="section-label">MALDIVES RESORTS</span>
+                <h1 class="destination-section-title">몰디브 리조트</h1>
+                <p class="destination-description">
+                    인도양의 천국, 수상 빌라와 산호초의 낙원.<br>
+                    몰디브의 럭셔리 수상 빌라와 환상적인 스노클링을<br>
+                    몰디브에서 만나보세요.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Resort List -->
+    <section class="resort-list">
+        <div class="container">
+            <!-- Resorts will be loaded dynamically from database -->
+            <div id="resorts-container" data-region="region-maldives">
+                <!-- Resort cards will be inserted here by JavaScript -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Info Section -->
+    <section class="info-section">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-label">WHY MALDIVES</span>
+                <h2 class="section-title">몰디브를 선택해야 하는 이유</h2>
             </div>
             
-            <div class="region-meta">
+            <div class="info-grid">
+                <div class="info-card">
+                    <div class="info-icon">
+                        <i class="fas fa-water"></i>
+                    </div>
+                    <h3 class="info-title">수상 빌라</h3>
+                    <p class="info-text">세계 최고의 수상 빌라에서 프라이빗한 휴식과 낭만을 즐길 수 있습니다.</p>
+                </div>
                 
-        <div class="meta-item">
-            <div class="meta-label"><i class="fas fa-plane-departure"></i> 비행시간</div>
-            <div class="meta-value">문의 주세요</div>
-        </div>
-        <div class="meta-item">
-            <div class="meta-label"><i class="fas fa-sun"></i> 여행 최적기</div>
-            <div class="meta-value">연중</div>
-        </div>
-    
+                <div class="info-card">
+                    <div class="info-icon">
+                        <i class="fas fa-fish"></i>
+                    </div>
+                    <h3 class="info-title">스노클링 천국</h3>
+                    <p class="info-text">형형색색의 산호초와 열대어들을 바로 객실 앞에서 만날 수 있습니다.</p>
+                </div>
+                
+                <div class="info-card">
+                    <div class="info-icon">
+                        <i class="fas fa-gem"></i>
+                    </div>
+                    <h3 class="info-title">럭셔리 리조트</h3>
+                    <p class="info-text">세계에서 가장 럭셔리한 올인클루시브 리조트들이 최상의 서비스를 제공합니다.</p>
+                </div>
             </div>
-        </div>
-    </div>
-
-    <!-- Resorts Section -->
-    <section class="resorts-section" id="resorts">
-        <div class="section-header">
-            <h2>추천 리조트</h2>
-            <p>몰디브의 엄선된 프리미엄 리조트를 만나보세요</p>
-        </div>
-        
-        <div id="resortsContainer">
-            <!-- Resorts will be loaded here -->
         </div>
     </section>
 
-    <!-- Image Modal -->
-    <div id="imageModal" class="image-modal">
-        <span class="modal-close" onclick="closeModal()">&times;</span>
-        <div class="modal-content-wrapper">
-            <button class="modal-nav modal-prev" onclick="changeModalImage(-1)">
-                <i class="fas fa-chevron-left"></i>
-            </button>
-            <img id="modalImage" class="modal-image" src="" alt="">
-            <button class="modal-nav modal-next" onclick="changeModalImage(1)">
-                <i class="fas fa-chevron-right"></i>
-            </button>
-            <div class="modal-counter">
-                <span id="currentImageIndex">1</span> / <span id="totalImages">0</span>
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <div class="container">
+            <div class="cta-content">
+                <h2>몰디브에서 특별한 허니문을 시작하세요</h2>
+                <p>전문 상담사가 여러분의 완벽한 여행을 계획해드립니다</p>
+                <a href="/inquiry" class="cta-btn">문의하기</a>
             </div>
         </div>
-    </div>
+    </section>
 
     <!-- Footer -->
-    <footer style="background-color: #2C2C2C; color: white; padding: 3rem 2rem; margin-top: 4rem;">
-        <div class="container" style="max-width: 1200px; margin: 0 auto; text-align: center;">
-            <p style="margin-bottom: 1rem; font-size: 1.1rem;">
-                <i class="fas fa-phone"></i> 02-1234-5678 | 
-                <i class="fas fa-envelope"></i> info@sunshinetour.com
-            </p>
-            <p style="opacity: 0.8; font-size: 0.9rem;">
-                &copy; 2024 Sunshine Tour. All rights reserved.
-            </p>
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <h3>SUNSHINE TOUR</h3>
+                    <p>프라이빗 허니문 전문 여행사</p>
+                </div>
+                
+                <div class="footer-info">
+                    <p>서울특별시 성북구 보문로30길 71, 2층 7호</p>
+                    <p>TEL: 02-318-8021</p>
+                    <p class="copyright">© 2024 Sunshine Tour. All rights reserved.</p>
+                </div>
+            </div>
         </div>
     </footer>
 
+    <!-- Lightbox Modal -->
+    <div id="lightbox-modal" class="lightbox-modal">
+        <div class="lightbox-content">
+            <span class="lightbox-close">&times;</span>
+            <span class="lightbox-nav lightbox-prev">&#10094;</span>
+            <img id="lightbox-img" src="" alt="">
+            <span class="lightbox-nav lightbox-next">&#10095;</span>
+            <div class="lightbox-caption" id="lightbox-caption"></div>
+        </div>
+    </div>
+
+    <!-- JavaScript -->
+    <script src="/static/js/main.js"></script>
     <script>
-        // Resort data from mapping file
-        const resortData = [
-        {
-                "name_ko": "소네바 자니",
-                "name_en": "Soneva Jani",
-                "category": "초럭셔리",
-                "description": "프리미엄급 시설과 서비스를 합리적인 가격으로 제공하는 리조트입니다. 편안한 휴식과 다양한 액티비티를 동시에 즐길 수 있습니다.",
-                "images": [
-                        "/static/images/resorts/maldives/maldives-resort04-01.webp",
-                        "/static/images/resorts/maldives/maldives-resort04-02.webp",
-                        "/static/images/resorts/maldives/maldives-resort04-03.webp"
-                ],
-                "features": [
-                        "인피니티 풀",
-                        "스파 & 웰니스",
-                        "고급 레스토랑",
-                        "무료 Wi-Fi",
-                        "피트니스 센터",
-                        "룸서비스"
-                ]
-        },
-        {
-                "name_ko": "길리랑칸푸시",
-                "name_en": "Gili Lankanfushi",
-                "category": "럭셔리",
-                "description": "세계적인 명성의 럭셔리 리조트로, 최상급 서비스와 프라이빗한 공간을 제공합니다. 허니문 커플을 위한 로맨틱한 분위기와 함께 잊지 못할 추억을 선사합니다.",
-                "images": [
-                        "/static/images/resorts/maldives/maldives-resort01-01.webp",
-                        "/static/images/resorts/maldives/maldives-resort01-02.webp",
-                        "/static/images/resorts/maldives/maldives-resort01-03.webp",
-                        "/static/images/resorts/maldives/maldives-resort01-04.webp",
-                        "/static/images/resorts/maldives/maldives-resort01-05.webp",
-                        "/static/images/resorts/maldives/maldives-resort01-06.webp",
-                        "/static/images/resorts/maldives/maldives-resort01-07.webp"
-                ],
-                "features": [
-                        "프라이빗 풀빌라",
-                        "고급 스파 & 마사지",
-                        "미슐랭 레스토랑",
-                        "24시간 컨시어지",
-                        "공항 픽업 서비스",
-                        "프라이빗 비치 액세스"
-                ]
-        },
-        {
-                "name_ko": "바두",
-                "name_en": "Vadu",
-                "category": "럭셔리",
-                "description": "세계적인 명성의 럭셔리 리조트로, 최상급 서비스와 프라이빗한 공간을 제공합니다. 허니문 커플을 위한 로맨틱한 분위기와 함께 잊지 못할 추억을 선사합니다.",
-                "images": [
-                        "/static/images/resorts/maldives/maldives-resort02-01.webp",
-                        "/static/images/resorts/maldives/maldives-resort02-02.webp",
-                        "/static/images/resorts/maldives/maldives-resort02-03.webp",
-                        "/static/images/resorts/maldives/maldives-resort02-04.webp",
-                        "/static/images/resorts/maldives/maldives-resort02-05.webp",
-                        "/static/images/resorts/maldives/maldives-resort02-06.webp",
-                        "/static/images/resorts/maldives/maldives-resort02-07.webp"
-                ],
-                "features": [
-                        "프라이빗 풀빌라",
-                        "고급 스파 & 마사지",
-                        "미슐랭 레스토랑",
-                        "24시간 컨시어지",
-                        "공항 픽업 서비스",
-                        "프라이빗 비치 액세스"
-                ]
-        },
-        {
-                "name_ko": "벨라사루",
-                "name_en": "Velassaru",
-                "category": "럭셔리",
-                "description": "세계적인 명성의 럭셔리 리조트로, 최상급 서비스와 프라이빗한 공간을 제공합니다. 허니문 커플을 위한 로맨틱한 분위기와 함께 잊지 못할 추억을 선사합니다.",
-                "images": [
-                        "/static/images/resorts/maldives/maldives-resort03-01.webp",
-                        "/static/images/resorts/maldives/maldives-resort03-02.webp",
-                        "/static/images/resorts/maldives/maldives-resort03-03.webp",
-                        "/static/images/resorts/maldives/maldives-resort03-04.webp",
-                        "/static/images/resorts/maldives/maldives-resort03-05.webp",
-                        "/static/images/resorts/maldives/maldives-resort03-06.webp",
-                        "/static/images/resorts/maldives/maldives-resort03-07.webp"
-                ],
-                "features": [
-                        "프라이빗 풀빌라",
-                        "고급 스파 & 마사지",
-                        "미슐랭 레스토랑",
-                        "24시간 컨시어지",
-                        "공항 픽업 서비스",
-                        "프라이빗 비치 액세스"
-                ]
-        },
-        {
-                "name_ko": "아다란",
-                "name_en": "Adaaran",
-                "category": "럭셔리",
-                "description": "세계적인 명성의 럭셔리 리조트로, 최상급 서비스와 프라이빗한 공간을 제공합니다. 허니문 커플을 위한 로맨틱한 분위기와 함께 잊지 못할 추억을 선사합니다.",
-                "images": [
-                        "/static/images/resorts/maldives/maldives-resort06-01.webp",
-                        "/static/images/resorts/maldives/maldives-resort06-02.webp",
-                        "/static/images/resorts/maldives/maldives-resort06-03.webp",
-                        "/static/images/resorts/maldives/maldives-resort06-04.webp",
-                        "/static/images/resorts/maldives/maldives-resort06-05.webp",
-                        "/static/images/resorts/maldives/maldives-resort06-06.webp",
-                        "/static/images/resorts/maldives/maldives-resort06-07.webp"
-                ],
-                "features": [
-                        "프라이빗 풀빌라",
-                        "고급 스파 & 마사지",
-                        "미슐랭 레스토랑",
-                        "24시간 컨시어지",
-                        "공항 픽업 서비스",
-                        "프라이빗 비치 액세스"
-                ]
-        },
-        {
-                "name_ko": "코코팜",
-                "name_en": "Coco Palm",
-                "category": "럭셔리",
-                "description": "세계적인 명성의 럭셔리 리조트로, 최상급 서비스와 프라이빗한 공간을 제공합니다. 허니문 커플을 위한 로맨틱한 분위기와 함께 잊지 못할 추억을 선사합니다.",
-                "images": [
-                        "/static/images/resorts/maldives/maldives-resort09-01.webp",
-                        "/static/images/resorts/maldives/maldives-resort09-02.webp",
-                        "/static/images/resorts/maldives/maldives-resort09-03.webp",
-                        "/static/images/resorts/maldives/maldives-resort09-04.webp",
-                        "/static/images/resorts/maldives/maldives-resort09-05.webp",
-                        "/static/images/resorts/maldives/maldives-resort09-06.webp",
-                        "/static/images/resorts/maldives/maldives-resort09-07.webp"
-                ],
-                "features": [
-                        "프라이빗 풀빌라",
-                        "고급 스파 & 마사지",
-                        "미슐랭 레스토랑",
-                        "24시간 컨시어지",
-                        "공항 픽업 서비스",
-                        "프라이빗 비치 액세스"
-                ]
-        },
-        {
-                "name_ko": "시나몬",
-                "name_en": "Cinnamon",
-                "category": "프리미엄",
-                "description": "프리미엄급 시설과 서비스를 합리적인 가격으로 제공하는 리조트입니다. 편안한 휴식과 다양한 액티비티를 동시에 즐길 수 있습니다.",
-                "images": [
-                        "/static/images/resorts/maldives/maldives-resort05-01.webp",
-                        "/static/images/resorts/maldives/maldives-resort05-02.webp",
-                        "/static/images/resorts/maldives/maldives-resort05-03.webp",
-                        "/static/images/resorts/maldives/maldives-resort05-04.webp",
-                        "/static/images/resorts/maldives/maldives-resort05-05.webp",
-                        "/static/images/resorts/maldives/maldives-resort05-06.webp",
-                        "/static/images/resorts/maldives/maldives-resort05-07.webp"
-                ],
-                "features": [
-                        "인피니티 풀",
-                        "스파 & 웰니스",
-                        "고급 레스토랑",
-                        "무료 Wi-Fi",
-                        "피트니스 센터",
-                        "룸서비스"
-                ]
-        },
-        {
-                "name_ko": "오블루",
-                "name_en": "Oblu",
-                "category": "프리미엄",
-                "description": "프리미엄급 시설과 서비스를 합리적인 가격으로 제공하는 리조트입니다. 편안한 휴식과 다양한 액티비티를 동시에 즐길 수 있습니다.",
-                "images": [
-                        "/static/images/resorts/maldives/maldives-resort07-01.webp",
-                        "/static/images/resorts/maldives/maldives-resort07-02.webp",
-                        "/static/images/resorts/maldives/maldives-resort07-03.webp",
-                        "/static/images/resorts/maldives/maldives-resort07-04.webp",
-                        "/static/images/resorts/maldives/maldives-resort07-05.webp",
-                        "/static/images/resorts/maldives/maldives-resort07-06.webp",
-                        "/static/images/resorts/maldives/maldives-resort07-07.webp"
-                ],
-                "features": [
-                        "인피니티 풀",
-                        "스파 & 웰니스",
-                        "고급 레스토랑",
-                        "무료 Wi-Fi",
-                        "피트니스 센터",
-                        "룸서비스"
-                ]
-        },
-        {
-                "name_ko": "칸두마",
-                "name_en": "Kandooma",
-                "category": "프리미엄",
-                "description": "프리미엄급 시설과 서비스를 합리적인 가격으로 제공하는 리조트입니다. 편안한 휴식과 다양한 액티비티를 동시에 즐길 수 있습니다.",
-                "images": [
-                        "/static/images/resorts/maldives/maldives-resort08-01.webp",
-                        "/static/images/resorts/maldives/maldives-resort08-02.webp",
-                        "/static/images/resorts/maldives/maldives-resort08-03.webp",
-                        "/static/images/resorts/maldives/maldives-resort08-04.webp",
-                        "/static/images/resorts/maldives/maldives-resort08-05.webp",
-                        "/static/images/resorts/maldives/maldives-resort08-06.webp",
-                        "/static/images/resorts/maldives/maldives-resort08-07.webp"
-                ],
-                "features": [
-                        "인피니티 풀",
-                        "스파 & 웰니스",
-                        "고급 레스토랑",
-                        "무료 Wi-Fi",
-                        "피트니스 센터",
-                        "룸서비스"
-                ]
-        }
-];
-        
-        let currentModalImages = [];
-        let currentImageIndex = 0;
-        
-        // Render resorts
-        function renderResorts() {
-            const container = document.getElementById('resortsContainer');
-            container.innerHTML = '';
+        // Load and display resorts
+        async function loadResorts() {
+            const container = document.getElementById('resorts-container');
+            const regionId = container.dataset.region;
             
-            resortData.forEach((resort, index) => {
-                const resortCard = createResortCard(resort, index);
-                container.appendChild(resortCard);
-            });
-        }
-        
-        // Create resort card
-        function createResortCard(resort, index) {
-            const card = document.createElement('div');
-            card.className = 'resort-card';
-            card.id = `resort-${index}`;
-            
-            const mainImage = resort.images[0];
-            const galleryImages = resort.images.slice(1);
-            
-            card.innerHTML = `
-                <div class="resort-layout">
-                    <div class="resort-main-image" onclick="openGallery(${index}, 0)">
-                        <img src="${mainImage}" alt="${resort.name_ko}">
-                        <div class="resort-category-badge">${resort.category}</div>
-                        <button class="view-gallery-btn" onclick="event.stopPropagation(); toggleGallery(${index})">
-                            <i class="fas fa-images"></i> 사진 ${resort.images.length}장
-                        </button>
-                    </div>
-                    
-                    <div class="resort-info">
-                        <div>
-                            <div class="resort-header">
-                                <h3 class="resort-name-ko">${resort.name_ko}</h3>
-                                <div class="resort-name-en">${resort.name_en}</div>
-                            </div>
-                            
-                            <p class="resort-description">${resort.description}</p>
-                            
-                            <div class="resort-features">
-                                <div class="features-title">주요 특징</div>
-                                <div class="features-list">
-                                    ${resort.features.map(f => `
-                                        <div class="feature-item">
-                                            <i class="fas fa-check-circle"></i>
-                                            <span>${f}</span>
-                                        </div>
-                                    `).join('')}
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <div class="resort-actions">
-                            <a href="/inquiry" class="btn-inquiry">
-                                <i class="fas fa-envelope"></i> 상담 신청
-                            </a>
-                        </div>
-                    </div>
-                </div>
+            try {
+                const response = await fetch(`/api/resorts?region_id=${regionId}`);
+                const data = await response.json();
                 
-                <div class="resort-gallery" id="gallery-${index}">
-                    ${resort.images.map((img, imgIndex) => `
-                        <div class="gallery-thumb" onclick="openGallery(${index}, ${imgIndex})">
-                            <img src="${img}" alt="${resort.name_ko} ${imgIndex + 1}">
+                if (data.success && data.data && data.data.length > 0) {
+                    container.innerHTML = data.data.map((resort, index) => createResortCard(resort, index)).join('');
+                    initializeLightbox();
+                } else {
+                    container.innerHTML = '<p>리조트 정보를 불러올 수 없습니다.</p>';
+                }
+            } catch (error) {
+                console.error('Error loading resorts:', error);
+                container.innerHTML = '<p>리조트 정보를 불러오는 중 오류가 발생했습니다.</p>';
+            }
+        }
+        
+        function createResortCard(resort, index) {
+            const gallery = JSON.parse(resort.gallery_images || '[]');
+            const features = JSON.parse(resort.features || '[]');
+            
+            // Alternate layout: even index = image left, odd index = image right
+            const imageFirst = index % 2 === 0;
+            
+            return `
+                <div class="resort-card">
+                    <div class="resort-content-wrapper">
+                        <div class="resort-header" style="grid-template-columns: ${imageFirst ? '1fr 1fr' : '1fr 1fr'};">
+                            ${imageFirst ? `
+                                <div class="resort-image">
+                                    <img src="${resort.main_image_url}" alt="${resort.name_ko}">
+                                    <div class="resort-badge">${resort.category}</div>
+                                </div>
+                                <div class="resort-info">
+                                    <div class="resort-category">${resort.category}</div>
+                                    <h2 class="resort-name">${resort.name_ko}</h2>
+                                    <p class="resort-description">${resort.description}</p>
+                                    <div class="resort-features">
+                                        ${features.map(feature => `
+                                            <div class="feature-item">
+                                                <i class="fas fa-check-circle"></i>
+                                                <span>${feature}</span>
+                                            </div>
+                                        `).join('')}
+                                    </div>
+                                    <a href="/inquiry" class="resort-cta">문의하기</a>
+                                </div>
+                            ` : `
+                                <div class="resort-info">
+                                    <div class="resort-category">${resort.category}</div>
+                                    <h2 class="resort-name">${resort.name_ko}</h2>
+                                    <p class="resort-description">${resort.description}</p>
+                                    <div class="resort-features">
+                                        ${features.map(feature => `
+                                            <div class="feature-item">
+                                                <i class="fas fa-check-circle"></i>
+                                                <span>${feature}</span>
+                                            </div>
+                                        `).join('')}
+                                    </div>
+                                    <a href="/inquiry" class="resort-cta">문의하기</a>
+                                </div>
+                                <div class="resort-image">
+                                    <img src="${resort.main_image_url}" alt="${resort.name_ko}">
+                                    <div class="resort-badge">${resort.category}</div>
+                                </div>
+                            `}
                         </div>
-                    `).join('')}
+                        <div class="resort-gallery">
+                            ${gallery.slice(0, 6).map((img, idx) => `
+                                <div class="gallery-item" data-resort="${resort.id}" data-index="${idx}">
+                                    <img src="${img}" alt="${resort.name_ko} - 갤러리 ${idx + 1}">
+                                    <div class="gallery-overlay">
+                                        <i class="fas fa-search-plus"></i>
+                                    </div>
+                                </div>
+                            `).join('')}
+                        </div>
+                    </div>
                 </div>
             `;
-            
-            return card;
         }
         
-        // Toggle gallery visibility
-        function toggleGallery(resortIndex) {
-            const gallery = document.getElementById(`gallery-${resortIndex}`);
-            gallery.classList.toggle('show');
-        }
-        
-        // Open image in modal
-        function openGallery(resortIndex, imageIndex) {
-            currentModalImages = resortData[resortIndex].images;
-            currentImageIndex = imageIndex;
+        function initializeLightbox() {
+            const modal = document.getElementById('lightbox-modal');
+            const modalImg = document.getElementById('lightbox-img');
+            const caption = document.getElementById('lightbox-caption');
+            const closeBtn = document.querySelector('.lightbox-close');
+            const prevBtn = document.querySelector('.lightbox-prev');
+            const nextBtn = document.querySelector('.lightbox-next');
             
-            const modal = document.getElementById('imageModal');
-            const modalImage = document.getElementById('modalImage');
+            let currentImages = [];
+            let currentIndex = 0;
             
-            modal.style.display = 'block';
-            modalImage.src = currentModalImages[imageIndex];
-            updateModalCounter();
+            // Open lightbox on gallery item click
+            document.querySelectorAll('.gallery-item').forEach(item => {
+                item.addEventListener('click', function() {
+                    const resortId = this.dataset.resort;
+                    const index = parseInt(this.dataset.index);
+                    
+                    // Get all images for this resort
+                    const resortItems = document.querySelectorAll(`.gallery-item[data-resort="${resortId}"]`);
+                    currentImages = Array.from(resortItems).map(item => item.querySelector('img').src);
+                    currentIndex = index;
+                    
+                    showImage(currentIndex);
+                    modal.classList.add('active');
+                });
+            });
             
-            document.body.style.overflow = 'hidden';
-        }
-        
-        // Close modal
-        function closeModal() {
-            document.getElementById('imageModal').style.display = 'none';
-            document.body.style.overflow = 'auto';
-        }
-        
-        // Change image in modal
-        function changeModalImage(direction) {
-            currentImageIndex += direction;
+            // Close lightbox
+            closeBtn.addEventListener('click', () => {
+                modal.classList.remove('active');
+            });
             
-            if (currentImageIndex < 0) {
-                currentImageIndex = currentModalImages.length - 1;
-            } else if (currentImageIndex >= currentModalImages.length) {
-                currentImageIndex = 0;
+            modal.addEventListener('click', (e) => {
+                if (e.target === modal) {
+                    modal.classList.remove('active');
+                }
+            });
+            
+            // Navigate images
+            prevBtn.addEventListener('click', () => {
+                currentIndex = (currentIndex - 1 + currentImages.length) % currentImages.length;
+                showImage(currentIndex);
+            });
+            
+            nextBtn.addEventListener('click', () => {
+                currentIndex = (currentIndex + 1) % currentImages.length;
+                showImage(currentIndex);
+            });
+            
+            // Keyboard navigation
+            document.addEventListener('keydown', (e) => {
+                if (!modal.classList.contains('active')) return;
+                
+                if (e.key === 'Escape') {
+                    modal.classList.remove('active');
+                } else if (e.key === 'ArrowLeft') {
+                    prevBtn.click();
+                } else if (e.key === 'ArrowRight') {
+                    nextBtn.click();
+                }
+            });
+            
+            function showImage(index) {
+                modalImg.src = currentImages[index];
+                caption.textContent = `${index + 1} / ${currentImages.length}`;
             }
-            
-            document.getElementById('modalImage').src = currentModalImages[currentImageIndex];
-            updateModalCounter();
         }
         
-        // Update modal counter
-        function updateModalCounter() {
-            document.getElementById('currentImageIndex').textContent = currentImageIndex + 1;
-            document.getElementById('totalImages').textContent = currentModalImages.length;
-        }
-        
-        // Keyboard navigation
-        document.addEventListener('keydown', (e) => {
-            const modal = document.getElementById('imageModal');
-            if (modal.style.display === 'block') {
-                if (e.key === 'Escape') closeModal();
-                else if (e.key === 'ArrowLeft') changeModalImage(-1);
-                else if (e.key === 'ArrowRight') changeModalImage(1);
-            }
-        });
-        
-        // Mobile menu
-        document.querySelector('.mobile-menu-btn')?.addEventListener('click', function() {
-            document.querySelector('.nav-links').classList.toggle('active');
-        });
-        
-        // Initialize
-        document.addEventListener('DOMContentLoaded', renderResorts);
+        // Load resorts on page load
+        document.addEventListener('DOMContentLoaded', loadResorts);
     </script>
 </body>
 </html>
