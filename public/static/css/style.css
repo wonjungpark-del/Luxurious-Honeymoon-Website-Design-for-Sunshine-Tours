@@ -199,6 +199,19 @@ body {
     font-size: 1.5rem;
     color: var(--color-dark);
     cursor: pointer;
+    background: none;
+    border: none;
+    padding: 8px;
+    transition: var(--transition-fast);
+}
+
+.nav-toggle:hover {
+    color: var(--color-primary);
+}
+
+.nav-toggle:focus {
+    outline: 2px solid var(--color-primary);
+    outline-offset: 2px;
 }
 
 /* ===================================
