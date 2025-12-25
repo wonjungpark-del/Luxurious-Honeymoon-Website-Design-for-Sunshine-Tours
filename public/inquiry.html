@@ -115,6 +115,11 @@
                     </div>
 
                     <div style="margin-bottom: 1.5rem;">
+                        <label style="display: block; margin-bottom: 0.5rem; color: #2C2C2C; font-weight: 600;">문의 제목 <span style="color: #C9A96E;">*</span></label>
+                        <input type="text" id="subject" required placeholder="예: 푸켓 허니문 상담 문의" style="width: 100%; padding: 1rem; border: 2px solid #E8E8E8; border-radius: 10px; font-size: 1rem; transition: border-color 0.3s ease; background: white;">
+                    </div>
+
+                    <div style="margin-bottom: 1.5rem;">
                         <label style="display: block; margin-bottom: 0.5rem; color: #2C2C2C; font-weight: 600;">희망 여행지 <span style="color: #C9A96E;">*</span></label>
                         <select id="destination" required style="width: 100%; padding: 1rem; border: 2px solid #E8E8E8; border-radius: 10px; font-size: 1rem; background: white; cursor: pointer;">
                             <option value="">여행지를 선택해주세요</option>
@@ -233,13 +238,12 @@
                 name: document.getElementById('name').value,
                 phone: document.getElementById('phone').value,
                 email: document.getElementById('email').value,
+                subject: document.getElementById('subject').value,
                 destination: document.getElementById('destination').value,
                 budget: document.getElementById('budget').value,
-                travelers: document.getElementById('travelers').value,
+                travelers: parseInt(document.getElementById('travelers').value),
                 duration: document.getElementById('duration').value,
-                message: document.getElementById('message').value,
-                status: 'pending',
-                created_at: new Date().toISOString()
+                message: document.getElementById('message').value
             };
             
             try {
