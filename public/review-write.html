@@ -126,22 +126,18 @@
                     </div>
 
                     <div style="margin-bottom: 1.5rem;">
-                        <label style="display: block; margin-bottom: 0.5rem; color: #2C2C2C; font-weight: 600;">여행 사진 업로드 (선택)</label>
-                        <input type="file" id="image_file" accept="image/*" style="display: none;">
+                        <label style="display: block; margin-bottom: 0.5rem; color: #2C2C2C; font-weight: 600;">여행 사진 업로드 (선택, 최대 5장)</label>
+                        <p style="color: #7A7A7A; font-size: 0.85rem; margin-bottom: 1rem;">여러 사진을 선택하거나 드래그하여 업로드하세요</p>
+                        <input type="file" id="image_files" accept="image/*" multiple style="display: none;">
                         <div id="upload-area" style="border: 2px dashed #E8E8E8; border-radius: 10px; padding: 2rem; text-align: center; cursor: pointer; transition: all 0.3s ease; background: white;">
                             <i class="fas fa-cloud-upload-alt" style="font-size: 3rem; color: #C9A96E; margin-bottom: 1rem;"></i>
                             <p style="color: #2C2C2C; font-weight: 600; margin-bottom: 0.5rem;">클릭하여 사진 선택</p>
-                            <p style="color: #7A7A7A; font-size: 0.85rem;">또는 사진을 이곳으로 드래그하세요</p>
-                            <p style="color: #7A7A7A; font-size: 0.75rem; margin-top: 0.5rem;">JPG, PNG, WEBP (최대 10MB)</p>
+                            <p style="color: #7A7A7A; font-size: 0.85rem;">또는 사진을 이곳으로 드래그하세요 (최대 5장)</p>
+                            <p style="color: #7A7A7A; font-size: 0.75rem; margin-top: 0.5rem;">JPG, PNG, WEBP (각 최대 10MB)</p>
                         </div>
-                        <div id="image-preview" style="margin-top: 1rem; display: none;">
-                            <div style="position: relative; display: inline-block;">
-                                <img id="preview-img" style="max-width: 100%; max-height: 300px; border-radius: 10px; box-shadow: 0 4px 15px rgba(0,0,0,0.1);">
-                                <button type="button" id="remove-image" style="position: absolute; top: 10px; right: 10px; background: rgba(0,0,0,0.7); color: white; border: none; border-radius: 50%; width: 30px; height: 30px; cursor: pointer; display: flex; align-items: center; justify-content: center;">
-                                    <i class="fas fa-times"></i>
-                                </button>
-                            </div>
-                            <p id="upload-status" style="color: #7A7A7A; font-size: 0.9rem; margin-top: 0.5rem;"></p>
+                        <div id="images-preview" style="margin-top: 1rem; display: none;">
+                            <div id="preview-grid" style="display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 1rem;"></div>
+                            <p id="upload-status" style="color: #7A7A7A; font-size: 0.9rem; margin-top: 1rem; text-align: center;"></p>
                         </div>
                     </div>
 
@@ -186,8 +182,8 @@
     <script src="/static/js/main.js"></script>
     <script>
         let selectedRating = 0;
-        let uploadedImageUrl = null;
-        let selectedFile = null;
+        let uploadedImageUrls = [];
+        let selectedFiles = [];
         
         // Destination name mapping
         const destinationNames = {
@@ -277,22 +273,21 @@
         
         // Image upload functionality
         const uploadArea = document.getElementById('upload-area');
-        const imageFile = document.getElementById('image_file');
-        const imagePreview = document.getElementById('image-preview');
-        const previewImg = document.getElementById('preview-img');
-        const removeImageBtn = document.getElementById('remove-image');
+        const imageFiles = document.getElementById('image_files');
+        const imagesPreview = document.getElementById('images-preview');
+        const previewGrid = document.getElementById('preview-grid');
         const uploadStatus = document.getElementById('upload-status');
         
-        // Click to select file
+        // Click to select files
         uploadArea.addEventListener('click', () => {
-            imageFile.click();
+            imageFiles.click();
         });
         
-        // File selected
-        imageFile.addEventListener('change', (e) => {
-            const file = e.target.files[0];
-            if (file) {
-                handleFile(file);
+        // Files selected
+        imageFiles.addEventListener('change', (e) => {
+            const files = Array.from(e.target.files);
+            if (files.length > 0) {
+                handleFiles(files);
             }
         });
         
@@ -314,64 +309,115 @@
             uploadArea.style.borderColor = '#E8E8E8';
             uploadArea.style.backgroundColor = 'white';
             
-            const file = e.dataTransfer.files[0];
-            if (file && file.type.startsWith('image/')) {
-                handleFile(file);
+            const files = Array.from(e.dataTransfer.files).filter(file => file.type.startsWith('image/'));
+            if (files.length > 0) {
+                handleFiles(files);
             } else {
                 alert('이미지 파일만 업로드 가능합니다.');
             }
         });
         
-        // Handle file
-        function handleFile(file) {
-            // File size check (10MB)
-            if (file.size > 10 * 1024 * 1024) {
-                alert('파일 크기는 10MB 이하여야 합니다.');
-                return;
+        // Handle multiple files
+        function handleFiles(files) {
+            // Check total count (max 5)
+            const totalCount = selectedFiles.length + files.length;
+            if (totalCount > 5) {
+                alert('최대 5장까지만 업로드 가능합니다.');
+                files = files.slice(0, 5 - selectedFiles.length);
             }
             
-            // Image type check
-            if (!file.type.startsWith('image/')) {
-                alert('이미지 파일만 업로드 가능합니다.');
-                return;
-            }
+            files.forEach(file => {
+                // File size check (10MB)
+                if (file.size > 10 * 1024 * 1024) {
+                    alert(`${file.name}의 크기는 10MB 이하여야 합니다.`);
+                    return;
+                }
+                
+                // Image type check
+                if (!file.type.startsWith('image/')) {
+                    alert(`${file.name}는 이미지 파일이 아닙니다.`);
+                    return;
+                }
+                
+                selectedFiles.push(file);
+                addPreviewImage(file);
+            });
             
-            selectedFile = file;
-            
-            // Preview image
+            updateUploadUI();
+        }
+        
+        // Add preview image
+        function addPreviewImage(file) {
             const reader = new FileReader();
             reader.onload = (e) => {
-                previewImg.src = e.target.result;
-                imagePreview.style.display = 'block';
-                uploadArea.style.display = 'none';
-                uploadStatus.textContent = `${file.name} (${(file.size / 1024 / 1024).toFixed(2)}MB)`;
-                uploadStatus.style.color = '#7A7A7A';
+                const index = selectedFiles.indexOf(file);
+                const previewItem = document.createElement('div');
+                previewItem.style.position = 'relative';
+                previewItem.dataset.index = index;
+                
+                previewItem.innerHTML = `
+                    <img src="${e.target.result}" style="width: 100%; height: 150px; object-fit: cover; border-radius: 10px; box-shadow: 0 4px 15px rgba(0,0,0,0.1);">
+                    <button type="button" class="remove-image-btn" data-index="${index}" style="position: absolute; top: 5px; right: 5px; background: rgba(0,0,0,0.7); color: white; border: none; border-radius: 50%; width: 30px; height: 30px; cursor: pointer; display: flex; align-items: center; justify-content: center;">
+                        <i class="fas fa-times"></i>
+                    </button>
+                    <p style="color: #7A7A7A; font-size: 0.75rem; margin-top: 0.5rem; text-align: center; word-break: break-all;">${file.name}</p>
+                `;
+                
+                previewGrid.appendChild(previewItem);
+                
+                // Add remove button event
+                previewItem.querySelector('.remove-image-btn').addEventListener('click', function() {
+                    const idx = parseInt(this.dataset.index);
+                    removeImage(idx);
+                });
             };
             reader.readAsDataURL(file);
         }
         
         // Remove image
-        removeImageBtn.addEventListener('click', () => {
-            selectedFile = null;
-            uploadedImageUrl = null;
-            imageFile.value = '';
-            imagePreview.style.display = 'none';
-            uploadArea.style.display = 'block';
-            uploadStatus.textContent = '';
-        });
+        function removeImage(index) {
+            selectedFiles = selectedFiles.filter((_, i) => i !== index);
+            uploadedImageUrls = uploadedImageUrls.filter((_, i) => i !== index);
+            renderPreviews();
+            updateUploadUI();
+        }
         
-        // Upload image to server
-        async function uploadImage() {
-            if (!selectedFile) {
-                return null;
+        // Render all previews
+        function renderPreviews() {
+            previewGrid.innerHTML = '';
+            selectedFiles.forEach(file => {
+                addPreviewImage(file);
+            });
+        }
+        
+        // Update upload UI
+        function updateUploadUI() {
+            if (selectedFiles.length > 0) {
+                imagesPreview.style.display = 'block';
+                uploadArea.style.display = 'none';
+                uploadStatus.textContent = `${selectedFiles.length}장 선택됨 (최대 5장)`;
+                uploadStatus.style.color = '#7A7A7A';
+            } else {
+                imagesPreview.style.display = 'none';
+                uploadArea.style.display = 'block';
+                uploadStatus.textContent = '';
+            }
+        }
+        
+        // Upload images to server
+        async function uploadImages() {
+            if (selectedFiles.length === 0) {
+                return [];
             }
             
-            uploadStatus.textContent = '이미지 업로드 중...';
+            uploadStatus.textContent = `이미지 업로드 중... (0/${selectedFiles.length})`;
             uploadStatus.style.color = '#C9A96E';
             
             try {
                 const formData = new FormData();
-                formData.append('images', selectedFile);
+                selectedFiles.forEach(file => {
+                    formData.append('images', file);
+                });
                 formData.append('type', 'reviews');
                 
                 const response = await fetch('/api/upload', {
@@ -382,10 +428,10 @@
                 const result = await response.json();
                 
                 if (result.success && result.urls && result.urls.length > 0) {
-                    uploadedImageUrl = result.urls[0];
-                    uploadStatus.textContent = '✓ 업로드 완료';
+                    uploadedImageUrls = result.urls;
+                    uploadStatus.textContent = `✓ ${result.urls.length}장 업로드 완료`;
                     uploadStatus.style.color = '#28a745';
-                    return uploadedImageUrl;
+                    return uploadedImageUrls;
                 } else {
                     throw new Error(result.error || '이미지 업로드에 실패했습니다.');
                 }
@@ -416,12 +462,13 @@
             submitButton.innerHTML = '<i class="fas fa-spinner fa-spin" style="margin-right: 8px;"></i>등록 중...';
             
             try {
-                // Upload image if selected
-                let imageUrl = null;
-                if (selectedFile) {
-                    imageUrl = await uploadImage();
+                // Upload images if selected
+                let imageUrls = [];
+                if (selectedFiles.length > 0) {
+                    imageUrls = await uploadImages();
                 }
                 
+                // Use first image URL for main image, rest for gallery
                 const destination = document.getElementById('destination').value;
                 const formData = {
                     destination: destination,
@@ -431,7 +478,8 @@
                     rating: selectedRating,
                     author_name: document.getElementById('author_name').value,
                     travel_date: document.getElementById('travel_date').value,
-                    image_url: imageUrl,
+                    image_url: imageUrls.length > 0 ? imageUrls[0] : null,
+                    gallery_images: imageUrls.length > 1 ? JSON.stringify(imageUrls.slice(1)) : null,
                     status: 'pending',
                     is_featured: false
                 };
@@ -456,11 +504,12 @@
                     
                     document.getElementById('review-form').reset();
                     selectedRating = 0;
-                    selectedFile = null;
-                    uploadedImageUrl = null;
+                    selectedFiles = [];
+                    uploadedImageUrls = [];
                     updateStars();
-                    imagePreview.style.display = 'none';
+                    imagesPreview.style.display = 'none';
                     uploadArea.style.display = 'block';
+                    previewGrid.innerHTML = '';
                     
                     setTimeout(() => {
                         window.location.href = '/reviews';
