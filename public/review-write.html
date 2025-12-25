@@ -126,9 +126,23 @@
                     </div>
 
                     <div style="margin-bottom: 1.5rem;">
-                        <label style="display: block; margin-bottom: 0.5rem; color: #2C2C2C; font-weight: 600;">사진 URL (선택)</label>
-                        <input type="url" id="image_url" placeholder="https://example.com/image.jpg" style="width: 100%; padding: 1rem; border: 2px solid #E8E8E8; border-radius: 10px; font-size: 1rem; transition: border-color 0.3s ease; background: white;">
-                        <p style="color: #7A7A7A; font-size: 0.85rem; margin-top: 0.5rem;">이미지 URL을 입력하시면 후기에 사진이 표시됩니다.</p>
+                        <label style="display: block; margin-bottom: 0.5rem; color: #2C2C2C; font-weight: 600;">여행 사진 업로드 (선택)</label>
+                        <input type="file" id="image_file" accept="image/*" style="display: none;">
+                        <div id="upload-area" style="border: 2px dashed #E8E8E8; border-radius: 10px; padding: 2rem; text-align: center; cursor: pointer; transition: all 0.3s ease; background: white;">
+                            <i class="fas fa-cloud-upload-alt" style="font-size: 3rem; color: #C9A96E; margin-bottom: 1rem;"></i>
+                            <p style="color: #2C2C2C; font-weight: 600; margin-bottom: 0.5rem;">클릭하여 사진 선택</p>
+                            <p style="color: #7A7A7A; font-size: 0.85rem;">또는 사진을 이곳으로 드래그하세요</p>
+                            <p style="color: #7A7A7A; font-size: 0.75rem; margin-top: 0.5rem;">JPG, PNG, WEBP (최대 10MB)</p>
+                        </div>
+                        <div id="image-preview" style="margin-top: 1rem; display: none;">
+                            <div style="position: relative; display: inline-block;">
+                                <img id="preview-img" style="max-width: 100%; max-height: 300px; border-radius: 10px; box-shadow: 0 4px 15px rgba(0,0,0,0.1);">
+                                <button type="button" id="remove-image" style="position: absolute; top: 10px; right: 10px; background: rgba(0,0,0,0.7); color: white; border: none; border-radius: 50%; width: 30px; height: 30px; cursor: pointer; display: flex; align-items: center; justify-content: center;">
+                                    <i class="fas fa-times"></i>
+                                </button>
+                            </div>
+                            <p id="upload-status" style="color: #7A7A7A; font-size: 0.9rem; margin-top: 0.5rem;"></p>
+                        </div>
                     </div>
 
                     <button type="submit" style="width: 100%; padding: 1.2rem; background: linear-gradient(135deg, #C9A96E, #D4AF37); color: white; border: none; border-radius: 10px; font-size: 1.1rem; font-weight: 700; cursor: pointer; transition: transform 0.3s ease, box-shadow 0.3s ease; box-shadow: 0 4px 15px rgba(201, 169, 110, 0.3);">
@@ -172,6 +186,8 @@
     <script src="/static/js/main.js"></script>
     <script>
         let selectedRating = 0;
+        let uploadedImageUrl = null;
+        let selectedFile = null;
         
         // Destination name mapping
         const destinationNames = {
@@ -259,6 +275,132 @@
             this.style.boxShadow = '0 4px 15px rgba(201, 169, 110, 0.3)';
         });
         
+        // Image upload functionality
+        const uploadArea = document.getElementById('upload-area');
+        const imageFile = document.getElementById('image_file');
+        const imagePreview = document.getElementById('image-preview');
+        const previewImg = document.getElementById('preview-img');
+        const removeImageBtn = document.getElementById('remove-image');
+        const uploadStatus = document.getElementById('upload-status');
+        
+        // Click to select file
+        uploadArea.addEventListener('click', () => {
+            imageFile.click();
+        });
+        
+        // File selected
+        imageFile.addEventListener('change', (e) => {
+            const file = e.target.files[0];
+            if (file) {
+                handleFile(file);
+            }
+        });
+        
+        // Drag and drop
+        uploadArea.addEventListener('dragover', (e) => {
+            e.preventDefault();
+            uploadArea.style.borderColor = '#C9A96E';
+            uploadArea.style.backgroundColor = 'rgba(201, 169, 110, 0.05)';
+        });
+        
+        uploadArea.addEventListener('dragleave', (e) => {
+            e.preventDefault();
+            uploadArea.style.borderColor = '#E8E8E8';
+            uploadArea.style.backgroundColor = 'white';
+        });
+        
+        uploadArea.addEventListener('drop', (e) => {
+            e.preventDefault();
+            uploadArea.style.borderColor = '#E8E8E8';
+            uploadArea.style.backgroundColor = 'white';
+            
+            const file = e.dataTransfer.files[0];
+            if (file && file.type.startsWith('image/')) {
+                handleFile(file);
+            } else {
+                alert('이미지 파일만 업로드 가능합니다.');
+            }
+        });
+        
+        // Handle file
+        function handleFile(file) {
+            // File size check (10MB)
+            if (file.size > 10 * 1024 * 1024) {
+                alert('파일 크기는 10MB 이하여야 합니다.');
+                return;
+            }
+            
+            // Image type check
+            if (!file.type.startsWith('image/')) {
+                alert('이미지 파일만 업로드 가능합니다.');
+                return;
+            }
+            
+            selectedFile = file;
+            
+            // Preview image
+            const reader = new FileReader();
+            reader.onload = (e) => {
+                previewImg.src = e.target.result;
+                imagePreview.style.display = 'block';
+                uploadArea.style.display = 'none';
+                uploadStatus.textContent = `${file.name} (${(file.size / 1024 / 1024).toFixed(2)}MB)`;
+                uploadStatus.style.color = '#7A7A7A';
+            };
+            reader.readAsDataURL(file);
+        }
+        
+        // Remove image
+        removeImageBtn.addEventListener('click', () => {
+            selectedFile = null;
+            uploadedImageUrl = null;
+            imageFile.value = '';
+            imagePreview.style.display = 'none';
+            uploadArea.style.display = 'block';
+            uploadStatus.textContent = '';
+        });
+        
+        // Upload image to server
+        async function uploadImage() {
+            if (!selectedFile) {
+                return null;
+            }
+            
+            uploadStatus.textContent = '이미지 업로드 중...';
+            uploadStatus.style.color = '#C9A96E';
+            
+            try {
+                const formData = new FormData();
+                formData.append('images', selectedFile);
+                formData.append('type', 'reviews');
+                
+                const response = await fetch('/api/upload', {
+                    method: 'POST',
+                    body: formData
+                });
+                
+                const result = await response.json();
+                
+                if (result.success && result.urls && result.urls.length > 0) {
+                    uploadedImageUrl = result.urls[0];
+                    uploadStatus.textContent = '✓ 업로드 완료';
+                    uploadStatus.style.color = '#28a745';
+                    return uploadedImageUrl;
+                } else {
+                    throw new Error(result.error || '이미지 업로드에 실패했습니다.');
+                }
+            } catch (error) {
+                uploadStatus.textContent = '✗ 업로드 실패: ' + error.message;
+                uploadStatus.style.color = '#dc3545';
+                throw error;
+            }
+        }
+        
+        document.querySelector('button[type="submit"]').addEventListener('mouseleave', function() {
+            this.style.transform = 'translateY(0)';
+            this.style.boxShadow = '0 4px 15px rgba(201, 169, 110, 0.3)';
+        });
+        
         // Form submission
         document.getElementById('review-form').addEventListener('submit', async (e) => {
             e.preventDefault();
@@ -268,21 +410,32 @@
                 return;
             }
             
-            const destination = document.getElementById('destination').value;
-            const formData = {
-                destination: destination,
-                destination_kr: destinationNames[destination] || destination,
-                title: document.getElementById('title').value,
-                content: document.getElementById('content').value,
-                rating: selectedRating,
-                author_name: document.getElementById('author_name').value,
-                travel_date: document.getElementById('travel_date').value,
-                image_url: document.getElementById('image_url').value || null,
-                status: 'pending',
-                is_featured: false
-            };
+            const submitButton = e.target.querySelector('button[type="submit"]');
+            const originalButtonText = submitButton.innerHTML;
+            submitButton.disabled = true;
+            submitButton.innerHTML = '<i class="fas fa-spinner fa-spin" style="margin-right: 8px;"></i>등록 중...';
             
             try {
+                // Upload image if selected
+                let imageUrl = null;
+                if (selectedFile) {
+                    imageUrl = await uploadImage();
+                }
+                
+                const destination = document.getElementById('destination').value;
+                const formData = {
+                    destination: destination,
+                    destination_kr: destinationNames[destination] || destination,
+                    title: document.getElementById('title').value,
+                    content: document.getElementById('content').value,
+                    rating: selectedRating,
+                    author_name: document.getElementById('author_name').value,
+                    travel_date: document.getElementById('travel_date').value,
+                    image_url: imageUrl,
+                    status: 'pending',
+                    is_featured: false
+                };
+                
                 const response = await fetch('/api/reviews', {
                     method: 'POST',
                     headers: {
@@ -303,7 +456,11 @@
                     
                     document.getElementById('review-form').reset();
                     selectedRating = 0;
+                    selectedFile = null;
+                    uploadedImageUrl = null;
                     updateStars();
+                    imagePreview.style.display = 'none';
+                    uploadArea.style.display = 'block';
                     
                     setTimeout(() => {
                         window.location.href = '/reviews';
@@ -318,6 +475,9 @@
                 messageDiv.style.color = '#721c24';
                 messageDiv.style.border = '1px solid #f5c6cb';
                 messageDiv.innerHTML = '<i class="fas fa-exclamation-circle"></i> ' + error.message;
+                
+                submitButton.disabled = false;
+                submitButton.innerHTML = originalButtonText;
             }
         });
     </script>
