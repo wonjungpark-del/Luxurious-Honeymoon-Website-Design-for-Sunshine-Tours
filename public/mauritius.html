@@ -380,6 +380,98 @@
             }
         }
     </style>
+        
+        /* Gallery Section Styles */
+        .gallery-section {
+            padding: 80px 0;
+            background-color: #f8f9fa;
+        }
+        
+        .gallery-section .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: #2C2C2C;
+            margin-bottom: 60px;
+        }
+        
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .gallery-item {
+            position: relative;
+            height: 250px;
+            overflow: hidden;
+            border-radius: 12px;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+        
+        .gallery-item:hover {
+            transform: translateY(-5px);
+        }
+        
+        .gallery-item.large {
+            grid-column: span 2;
+            grid-row: span 2;
+            height: 520px;
+        }
+        
+        .gallery-item.medium {
+            grid-column: span 2;
+            height: 250px;
+        }
+        
+        .gallery-item.small {
+            height: 250px;
+        }
+        
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+        
+        .gallery-item:hover img {
+            transform: scale(1.1);
+        }
+        
+        .gallery-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to bottom, rgba(0,0,0,0.2), rgba(0,0,0,0.6));
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            padding: 30px;
+            color: white;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        
+        .gallery-item:hover .gallery-overlay {
+            opacity: 1;
+        }
+        
+        .gallery-overlay h3 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+        
+        .gallery-overlay p {
+            font-size: 1rem;
+            opacity: 0.9;
+        }
 </head>
 <body>
     <!-- Navigation -->
@@ -445,6 +537,88 @@
             <!-- Resorts will be loaded dynamically from database -->
             <div id="resorts-container" data-region="region-mauritius">
                 <!-- Resort cards will be inserted here by JavaScript -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery Section -->
+    <section class="gallery-section">
+        <div class="container">
+            <h2 class="section-title">모리셔스 하이라이트</h2>
+            <div class="gallery-grid">
+
+                <div class="gallery-item large">
+                    <img src="/static/images/destinations/mauritius/MORI_1.webp" alt="카타마란 크루즈" 
+                         onerror="this.src='https://images.unsplash.com/photo-1506929562872-bb421503ef21?w=800'">
+                    <div class="gallery-overlay">
+                        <h3>돌핀 카타마란 크루즈</h3>
+                        <p>돌고래와 함께하는 특별한 세일링</p>
+                    </div>
+                </div>
+
+                <div class="gallery-item small">
+                    <img src="/static/images/destinations/mauritius/MORI_2.webp" alt="크레올 요리" 
+                         onerror="this.src='https://images.unsplash.com/photo-1506929562872-bb421503ef21?w=800'">
+                    <div class="gallery-overlay">
+                        <h3>크레올 요리</h3>
+                        <p>프렌치와 인디언이 융합된 독특한 미식</p>
+                    </div>
+                </div>
+
+                <div class="gallery-item small">
+                    <img src="/static/images/destinations/mauritius/MORI_3.webp" alt="샤마렐 폭포" 
+                         onerror="this.src='https://images.unsplash.com/photo-1506929562872-bb421503ef21?w=800'">
+                    <div class="gallery-overlay">
+                        <h3>샤마렐 7색 대지</h3>
+                        <p>자연이 만든 경이로운 무지개 언덕</p>
+                    </div>
+                </div>
+
+                <div class="gallery-item medium">
+                    <img src="/static/images/destinations/mauritius/MORI_4.webp" alt="카이트서핑" 
+                         onerror="this.src='https://images.unsplash.com/photo-1506929562872-bb421503ef21?w=800'">
+                    <div class="gallery-overlay">
+                        <h3>카이트서핑</h3>
+                        <p>세계적인 윈드서핑 명소</p>
+                    </div>
+                </div>
+
+                <div class="gallery-item small">
+                    <img src="/static/images/destinations/mauritius/MORI_5.webp" alt="수상 스포츠" 
+                         onerror="this.src='https://images.unsplash.com/photo-1506929562872-bb421503ef21?w=800'">
+                    <div class="gallery-overlay">
+                        <h3>다양한 수상 액티비티</h3>
+                        <p>제트스키, 패러세일링, 카약</p>
+                    </div>
+                </div>
+
+                <div class="gallery-item small">
+                    <img src="/static/images/destinations/mauritius/MORI_6.webp" alt="골프 리조트" 
+                         onerror="this.src='https://images.unsplash.com/photo-1506929562872-bb421503ef21?w=800'">
+                    <div class="gallery-overlay">
+                        <h3>오션뷰 골프장</h3>
+                        <p>세계적인 골프 리조트</p>
+                    </div>
+                </div>
+
+                <div class="gallery-item medium">
+                    <img src="/static/images/destinations/mauritius/MORI_7.webp" alt="화산 전경" 
+                         onerror="this.src='https://images.unsplash.com/photo-1506929562872-bb421503ef21?w=800'">
+                    <div class="gallery-overlay">
+                        <h3>르 모른 산</h3>
+                        <p>화산섬의 상징적인 풍경</p>
+                    </div>
+                </div>
+
+                <div class="gallery-item large">
+                    <img src="/static/images/destinations/mauritius/MORI_8.webp" alt="비치 디너" 
+                         onerror="this.src='https://images.unsplash.com/photo-1506929562872-bb421503ef21?w=800'">
+                    <div class="gallery-overlay">
+                        <h3>선셋 비치 디너</h3>
+                        <p>인도양 석양 아래 로맨틱한 식사</p>
+                    </div>
+                </div>
+
             </div>
         </div>
     </section>
