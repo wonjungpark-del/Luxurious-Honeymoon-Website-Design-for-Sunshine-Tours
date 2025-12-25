@@ -9,467 +9,281 @@
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Noto+Serif+KR:wght@400;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@300;400;600;700&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     
     <!-- Font Awesome -->
-    <link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
     
     <!-- Custom CSS -->
-    <link href="/static/css/style.css" rel="stylesheet">
+    <link rel="stylesheet" href="/static/css/style.css">
 </head>
 <body>
-    <!-- Header & Navigation -->
-    <header>
-        <nav class="container">
-            <div class="logo">
-                <a href="/" style="display: flex; align-items: center; gap: 12px;"><img src="/static/images/logo-sunrise.png" alt="Sunshine Tour" style="height: 40px; width: auto; object-fit: contain;"><span style="font-family: 'Montserrat', sans-serif; font-weight: 700; font-size: 1.3rem; letter-spacing: 0.5px;">SUNSHINE TOUR</span></a>
-            </div>
-            <ul class="nav-links">
-                <li class="nav-dropdown">
-                    <a href="#destinations">Destinations <i class="fas fa-chevron-down"></i></a>
-                    <div class="dropdown-content">
-                        <a href="/destinations/thailand">🇹🇭 태국</a>
-                        <a href="/destinations/bali">🇮🇩 발리</a>
-                        <a href="/destinations/maldives">🇲🇻 몰디브</a>
-                        <a href="/destinations/hawaii">🇺🇸 하와이</a>
-                        <a href="/destinations/philippines">🇵🇭 필리핀</a>
-                        <a href="/destinations/europe">🇪🇺 유럽</a>
+    <!-- Navigation -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <a href="/index.html">
+                    <div class="text-logo" style="display: flex; align-items: center; gap: 10px;">
+                        <i class="fas fa-sun" style="font-size: 32px; color: #C9A96E;"></i>
+                        <div style="display: flex; flex-direction: column; line-height: 1.2;">
+                            <span style="font-family: 'Montserrat', sans-serif; font-size: 20px; font-weight: 700; color: #C9A96E; letter-spacing: 1px;">SUNSHINE</span>
+                            <span style="font-family: 'Montserrat', sans-serif; font-size: 10px; font-weight: 400; color: #7A7A7A; letter-spacing: 2px;">TOUR</span>
+                        </div>
                     </div>
-                </li>
-                <li><a href="/reviews">Reviews</a></li>
-                <li><a href="/inquiry">Contact</a></li>
-                <li><a href="/admin">Admin</a></li>
+                </a>
+            </div>
+            <ul class="nav-menu" id="nav-menu">
+                <li><a href="/index.html#home" class="nav-link">Home</a></li>
+                <li><a href="/index.html#destinations" class="nav-link">Destinations</a></li>
+                <li><a href="/reviews" class="nav-link">Reviews</a></li>
+                <li><a href="/index.html#about" class="nav-link">About</a></li>
+                <li><a href="/inquiry" class="nav-link">Contact</a></li>
             </ul>
-            <button class="mobile-menu-btn">
+            <div class="nav-toggle" id="nav-toggle">
                 <i class="fas fa-bars"></i>
-            </button>
-        </nav>
-    </header>
+            </div>
+        </div>
+    </nav>
 
     <!-- Page Header -->
-    <section style="background: linear-gradient(135deg, var(--primary-color), var(--secondary-color)); padding: 4rem 0; color: white; text-align: center;">
+    <section class="page-hero" style="background: linear-gradient(135deg, rgba(201, 169, 110, 0.9), rgba(212, 175, 55, 0.9)), url('https://images.unsplash.com/photo-1436491865332-7a61a109cc05?w=2000&q=80') center/cover; padding: 8rem 0 6rem; color: white; text-align: center; position: relative;">
         <div class="container">
-            <h1 style="font-size: 2.5rem; margin-bottom: 1rem;">후기 작성</h1>
-            <p style="font-size: 1.2rem;">선샤인투어와 함께한 특별한 여행 경험을 공유해주세요</p>
+            <h1 style="font-size: 3rem; font-weight: 700; margin-bottom: 1rem; text-shadow: 2px 2px 4px rgba(0,0,0,0.3);">여행 후기 작성</h1>
+            <p style="font-size: 1.3rem; opacity: 0.95;">선샤인투어와 함께한 특별한 여행 경험을 공유해주세요</p>
         </div>
     </section>
 
     <!-- Review Form -->
-    <section class="container" style="margin-top: 3rem; margin-bottom: 5rem;">
-        <div style="max-width: 800px; margin: 0 auto; background-color: white; padding: 3rem; border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.1);">
-            <form id="review-form">
-                <div class="form-group">
-                    <label class="form-label">여행지 선택 <span style="color: red;">*</span></label>
-                    <select id="destination" class="form-select" required>
-                        <option value="">여행지를 선택해주세요</option>
-                        <option value="thailand">🇹🇭 태국</option>
-                        <option value="bali">🇮🇩 발리</option>
-                        <option value="maldives">🇲🇻 몰디브</option>
-                        <option value="hawaii">🇺🇸 하와이</option>
-                        <option value="philippines">🇵🇭 필리핀</option>
-                        <option value="europe">🇪🇺 유럽</option>
-                        <option value="southpacific">🌊 남태평양</option>
-                        <option value="cancun">🇲🇽 칸쿤</option>
-                        <option value="other">✈️ 기타</option>
-                    </select>
+    <section style="padding: 5rem 0; background-color: white;">
+        <div class="container">
+            <div style="max-width: 800px; margin: 0 auto;">
+                <div style="text-align: center; margin-bottom: 3rem;">
+                    <span style="color: #C9A96E; font-weight: 600; letter-spacing: 2px; font-size: 0.9rem;">WRITE A REVIEW</span>
+                    <h2 style="font-size: 2.5rem; color: #2C2C2C; margin-top: 1rem; font-weight: 700;">소중한 후기 남기기</h2>
                 </div>
-
-                <div class="form-group">
-                    <label class="form-label">별점 <span style="color: red;">*</span></label>
-                    <div style="display: flex; gap: 0.5rem; font-size: 2rem;">
-                        <span class="star" data-rating="1">☆</span>
-                        <span class="star" data-rating="2">☆</span>
-                        <span class="star" data-rating="3">☆</span>
-                        <span class="star" data-rating="4">☆</span>
-                        <span class="star" data-rating="5">☆</span>
+                
+                <form id="review-form" style="background-color: #FAF8F3; padding: 3rem; border-radius: 20px; box-shadow: 0 8px 30px rgba(0,0,0,0.1);">
+                    <div style="margin-bottom: 1.5rem;">
+                        <label style="display: block; margin-bottom: 0.5rem; color: #2C2C2C; font-weight: 600;">여행지 <span style="color: #C9A96E;">*</span></label>
+                        <select id="destination" required style="width: 100%; padding: 1rem; border: 2px solid #E8E8E8; border-radius: 10px; font-size: 1rem; background: white; cursor: pointer;">
+                            <option value="">여행지를 선택해주세요</option>
+                            <option value="thailand-khao-lak">🇹🇭 태국 - 카오락</option>
+                            <option value="thailand-koh-samui">🇹🇭 태국 - 코사무이</option>
+                            <option value="thailand-phuket">🇹🇭 태국 - 푸켓</option>
+                            <option value="thailand-krabi">🇹🇭 태국 - 끄라비</option>
+                            <option value="thailand-pattaya">🇹🇭 태국 - 파타야</option>
+                            <option value="thailand-hua-hin">🇹🇭 태국 - 후아힌</option>
+                            <option value="bali">🇮🇩 발리</option>
+                            <option value="lombok">🇮🇩 롬복</option>
+                            <option value="maldives">🇲🇻 몰디브</option>
+                            <option value="mauritius">🇲🇺 모리셔스</option>
+                            <option value="hawaii">🇺🇸 하와이</option>
+                            <option value="guam">🇬🇺 괌</option>
+                            <option value="saipan">🇲🇵 사이판</option>
+                            <option value="fiji">🇫🇯 피지</option>
+                            <option value="philippines">🇵🇭 필리핀</option>
+                            <option value="cancun">🇲🇽 칸쿤</option>
+                            <option value="danang">🇻🇳 다낭</option>
+                            <option value="australia">🇦🇺 호주</option>
+                            <option value="europe">🇪🇺 유럽</option>
+                            <option value="other">✈️ 기타</option>
+                        </select>
                     </div>
-                    <input type="hidden" id="rating" name="rating" required>
-                    <p id="rating-text" style="color: var(--text-light); margin-top: 0.5rem;"></p>
-                </div>
 
-                <div class="form-group">
-                    <label class="form-label">제목 <span style="color: red;">*</span></label>
-                    <input type="text" id="title" class="form-input" placeholder="후기 제목을 입력해주세요" required>
-                </div>
-
-                <div class="form-group">
-                    <label class="form-label">후기 내용 <span style="color: red;">*</span></label>
-                    <textarea id="content" class="form-textarea" rows="8" placeholder="여행 경험을 자세히 작성해주세요. 리조트, 음식, 관광지 등 다양한 정보를 공유해주시면 다른 고객분들께 큰 도움이 됩니다." required></textarea>
-                </div>
-
-                <div class="form-group">
-                    <label class="form-label">작성자명 <span style="color: red;">*</span></label>
-                    <input type="text" id="author_name" class="form-input" placeholder="예: 김** (개인정보 보호를 위해 일부 마스킹 권장)" required>
-                </div>
-
-                <div class="form-group">
-                    <label class="form-label">여행 시기 <span style="color: red;">*</span></label>
-                    <input type="text" id="travel_date" class="form-input" placeholder="예: 2024년 11월" required>
-                </div>
-
-                <div class="form-group">
-                    <label class="form-label">여행 사진 업로드 (선택, 최대 5장)</label>
-                    <div style="border: 2px dashed #ddd; border-radius: 8px; padding: 2rem; text-align: center; cursor: pointer; transition: all 0.3s;" id="upload-area">
-                        <input type="file" id="image_files" accept="image/*" multiple style="display: none;">
-                        <i class="fas fa-cloud-upload-alt" style="font-size: 3rem; color: var(--primary-color); margin-bottom: 1rem;"></i>
-                        <p style="color: var(--text-primary); font-weight: 600; margin-bottom: 0.5rem;">사진을 여기에 드래그하거나 클릭하여 업로드</p>
-                        <p style="color: var(--text-light); font-size: 0.9rem;">JPG, PNG, WebP 지원 · 각 파일 최대 10MB · 최대 5장</p>
+                    <div style="margin-bottom: 1.5rem;">
+                        <label style="display: block; margin-bottom: 0.5rem; color: #2C2C2C; font-weight: 600;">별점 <span style="color: #C9A96E;">*</span></label>
+                        <div style="display: flex; gap: 0.5rem; font-size: 2.5rem; margin-bottom: 0.5rem;">
+                            <span class="star" data-rating="1" style="cursor: pointer; transition: all 0.2s ease; color: #E8E8E8;">☆</span>
+                            <span class="star" data-rating="2" style="cursor: pointer; transition: all 0.2s ease; color: #E8E8E8;">☆</span>
+                            <span class="star" data-rating="3" style="cursor: pointer; transition: all 0.2s ease; color: #E8E8E8;">☆</span>
+                            <span class="star" data-rating="4" style="cursor: pointer; transition: all 0.2s ease; color: #E8E8E8;">☆</span>
+                            <span class="star" data-rating="5" style="cursor: pointer; transition: all 0.2s ease; color: #E8E8E8;">☆</span>
+                        </div>
+                        <input type="hidden" id="rating" name="rating" required>
+                        <p id="rating-text" style="color: #7A7A7A; font-size: 0.9rem;"></p>
                     </div>
-                    <div id="image-preview-container" style="display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 1rem; margin-top: 1rem;"></div>
-                    <p id="upload-status" style="color: var(--text-light); font-size: 0.9rem; margin-top: 0.5rem;"></p>
-                </div>
 
-                <div id="message-container" style="margin-bottom: 1rem;"></div>
+                    <div style="margin-bottom: 1.5rem;">
+                        <label style="display: block; margin-bottom: 0.5rem; color: #2C2C2C; font-weight: 600;">제목 <span style="color: #C9A96E;">*</span></label>
+                        <input type="text" id="title" required placeholder="예: 완벽했던 푸켓 허니문!" style="width: 100%; padding: 1rem; border: 2px solid #E8E8E8; border-radius: 10px; font-size: 1rem; transition: border-color 0.3s ease; background: white;">
+                    </div>
 
-                <div style="display: flex; gap: 1rem;">
-                    <button type="submit" class="btn btn-primary" style="flex: 1;">
-                        <i class="fas fa-paper-plane"></i> 후기 제출하기
+                    <div style="margin-bottom: 1.5rem;">
+                        <label style="display: block; margin-bottom: 0.5rem; color: #2C2C2C; font-weight: 600;">후기 내용 <span style="color: #C9A96E;">*</span></label>
+                        <textarea id="content" required rows="8" placeholder="여행 경험을 자세히 작성해주세요. 리조트, 음식, 관광지 등 다양한 정보를 공유해주시면 다른 고객분들께 큰 도움이 됩니다." style="width: 100%; padding: 1rem; border: 2px solid #E8E8E8; border-radius: 10px; font-size: 1rem; resize: vertical; font-family: inherit; transition: border-color 0.3s ease; background: white;"></textarea>
+                    </div>
+
+                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1.5rem; margin-bottom: 1.5rem;">
+                        <div>
+                            <label style="display: block; margin-bottom: 0.5rem; color: #2C2C2C; font-weight: 600;">작성자 이름 <span style="color: #C9A96E;">*</span></label>
+                            <input type="text" id="author_name" required placeholder="홍길동" style="width: 100%; padding: 1rem; border: 2px solid #E8E8E8; border-radius: 10px; font-size: 1rem; transition: border-color 0.3s ease; background: white;">
+                        </div>
+
+                        <div>
+                            <label style="display: block; margin-bottom: 0.5rem; color: #2C2C2C; font-weight: 600;">여행 시기 <span style="color: #C9A96E;">*</span></label>
+                            <input type="text" id="travel_date" required placeholder="예: 2024-12" style="width: 100%; padding: 1rem; border: 2px solid #E8E8E8; border-radius: 10px; font-size: 1rem; transition: border-color 0.3s ease; background: white;">
+                        </div>
+                    </div>
+
+                    <div style="margin-bottom: 1.5rem;">
+                        <label style="display: block; margin-bottom: 0.5rem; color: #2C2C2C; font-weight: 600;">사진 URL (선택)</label>
+                        <input type="url" id="image_url" placeholder="https://example.com/image.jpg" style="width: 100%; padding: 1rem; border: 2px solid #E8E8E8; border-radius: 10px; font-size: 1rem; transition: border-color 0.3s ease; background: white;">
+                        <p style="color: #7A7A7A; font-size: 0.85rem; margin-top: 0.5rem;">이미지 URL을 입력하시면 후기에 사진이 표시됩니다.</p>
+                    </div>
+
+                    <button type="submit" style="width: 100%; padding: 1.2rem; background: linear-gradient(135deg, #C9A96E, #D4AF37); color: white; border: none; border-radius: 10px; font-size: 1.1rem; font-weight: 700; cursor: pointer; transition: transform 0.3s ease, box-shadow 0.3s ease; box-shadow: 0 4px 15px rgba(201, 169, 110, 0.3);">
+                        <i class="fas fa-paper-plane" style="margin-right: 8px;"></i>
+                        후기 등록하기
                     </button>
-                    <a href="/reviews" class="btn" style="flex: 1; background-color: #ccc; text-align: center; line-height: 1;">
-                        <i class="fas fa-times"></i> 취소
-                    </a>
-                </div>
+                </form>
 
-                <p style="color: var(--text-light); font-size: 0.9rem; margin-top: 1rem; text-align: center;">
-                    <i class="fas fa-shield-alt"></i> 제출하신 후기는 관리자 승인 후 게시됩니다.
-                </p>
-            </form>
+                <div id="form-message" style="margin-top: 2rem; padding: 1rem; border-radius: 10px; display: none; text-align: center; font-weight: 600;"></div>
+            </div>
         </div>
     </section>
 
     <!-- Footer -->
-    <footer>
+    <footer class="footer">
         <div class="container">
             <div class="footer-content">
-                <div class="footer-section">
-                    <h3>선샤인투어</h3>
-                    <p>프리미엄 허니문 & 해외 여행 전문</p>
-                    <p>20년 경력의 전문가가 만드는 완벽한 여행</p>
+                <div class="footer-brand">
+                    <h3>SUNSHINE TOUR</h3>
+                    <p>프라이빗 허니문 전문 여행사</p>
                 </div>
-                <div class="footer-section">
-                    <h3>여행지</h3>
-                    <p><a href="/destinations/thailand">태국</a></p>
-                    <p><a href="/destinations/bali">발리</a></p>
-                    <p><a href="/destinations/maldives">몰디브</a></p>
-                    <p><a href="/destinations/hawaii">하와이</a></p>
-                </div>
-                <div class="footer-section">
-                    <h3>고객 지원</h3>
-                    <p><a href="/reviews">고객 후기</a></p>
-                    <p><a href="/inquiry">문의하기</a></p>
-                    <p><a href="/admin">관리자</a></p>
-                </div>
-                <div class="footer-section">
-                    <h3>연락처</h3>
-                    <p><i class="fas fa-phone"></i> 02-1234-5678</p>
-                    <p><i class="fas fa-envelope"></i> info@sunshinetour.com</p>
-                    <p><i class="fas fa-map-marker-alt"></i> 서울특별시 강남구</p>
+                
+                <div class="footer-info">
+                    <p>서울특별시 성북구 보문로30길 71, 2층 7호</p>
+                    <p>TEL: 02-318-8021</p>
+                    <p class="copyright">© 2024 Sunshine Tour. All rights reserved.</p>
                 </div>
             </div>
-            <div class="footer-bottom">
-                <p>&copy; 2024 선샤인투어. All rights reserved.</p>
-            </div>
+        </div>
+        
+        <!-- Admin Access Button -->
+        <div class="admin-access">
+            <a href="/admin" class="admin-btn" title="관리자 페이지">
+                <i class="fas fa-user-shield"></i>
+                <span>Admin</span>
+            </a>
         </div>
     </footer>
 
-    <!-- Scripts -->
-    <style>
-        #upload-area:hover {
-            border-color: var(--primary-color);
-            background-color: #f9f9f9;
-        }
-        .image-preview-item {
-            position: relative;
-            border-radius: 8px;
-            overflow: hidden;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-        }
-        .image-preview-item img {
-            width: 100%;
-            height: 150px;
-            object-fit: cover;
-        }
-        .image-preview-item .remove-btn {
-            position: absolute;
-            top: 8px;
-            right: 8px;
-            background: rgba(255, 0, 0, 0.8);
-            color: white;
-            border: none;
-            border-radius: 50%;
-            width: 30px;
-            height: 30px;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: background 0.3s;
-        }
-        .image-preview-item .remove-btn:hover {
-            background: rgba(255, 0, 0, 1);
-        }
-    </style>
+    <!-- JavaScript -->
+    <script src="/static/js/main.js"></script>
     <script>
-        const API_BASE = '/api';
         let selectedRating = 0;
-        let selectedFiles = [];
-        let uploadedImageUrls = [];
         
-        // 여행지 한글 매핑
-        const destinationMap = {
-            'thailand': '태국',
+        // Destination name mapping
+        const destinationNames = {
+            'thailand-khao-lak': '카오락',
+            'thailand-koh-samui': '코사무이',
+            'thailand-phuket': '푸켓',
+            'thailand-krabi': '끄라비',
+            'thailand-pattaya': '파타야',
+            'thailand-hua-hin': '후아힌',
             'bali': '발리',
+            'lombok': '롬복',
             'maldives': '몰디브',
+            'mauritius': '모리셔스',
             'hawaii': '하와이',
+            'guam': '괌',
+            'saipan': '사이판',
+            'fiji': '피지',
             'philippines': '필리핀',
-            'europe': '유럽',
-            'southpacific': '남태평양',
             'cancun': '칸쿤',
+            'danang': '다낭',
+            'australia': '호주',
+            'europe': '유럽',
             'other': '기타'
         };
         
-        document.addEventListener('DOMContentLoaded', () => {
-            // 별점 선택 기능
-            const stars = document.querySelectorAll('.star');
-            stars.forEach(star => {
-                star.addEventListener('click', () => {
-                    selectedRating = parseInt(star.dataset.rating);
-                    document.getElementById('rating').value = selectedRating;
-                    updateStars();
-                });
-                
-                star.addEventListener('mouseover', () => {
-                    const rating = parseInt(star.dataset.rating);
-                    stars.forEach((s, i) => {
-                        s.textContent = i < rating ? '⭐' : '☆';
-                    });
-                });
+        // Star rating
+        document.querySelectorAll('.star').forEach(star => {
+            star.addEventListener('click', function() {
+                selectedRating = parseInt(this.dataset.rating);
+                document.getElementById('rating').value = selectedRating;
+                updateStars();
             });
             
-            const starContainer = stars[0].parentElement;
-            starContainer.addEventListener('mouseleave', updateStars);
-            
-            // 이미지 업로드 영역 설정
-            const uploadArea = document.getElementById('upload-area');
-            const imageInput = document.getElementById('image_files');
-            
-            uploadArea.addEventListener('click', () => imageInput.click());
-            
-            imageInput.addEventListener('change', (e) => {
-                handleFileSelect(e.target.files);
+            star.addEventListener('mouseenter', function() {
+                const rating = parseInt(this.dataset.rating);
+                highlightStars(rating);
             });
-            
-            // 드래그 앤 드롭
-            uploadArea.addEventListener('dragover', (e) => {
-                e.preventDefault();
-                uploadArea.style.borderColor = 'var(--primary-color)';
-                uploadArea.style.backgroundColor = '#f9f9f9';
-            });
-            
-            uploadArea.addEventListener('dragleave', (e) => {
-                e.preventDefault();
-                uploadArea.style.borderColor = '#ddd';
-                uploadArea.style.backgroundColor = 'white';
-            });
-            
-            uploadArea.addEventListener('drop', (e) => {
-                e.preventDefault();
-                uploadArea.style.borderColor = '#ddd';
-                uploadArea.style.backgroundColor = 'white';
-                handleFileSelect(e.dataTransfer.files);
-            });
-            
-            // 폼 제출
-            document.getElementById('review-form').addEventListener('submit', handleSubmit);
-            
-            // 모바일 메뉴
-            const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
-            const navLinks = document.querySelector('.nav-links');
-            if (mobileMenuBtn) {
-                mobileMenuBtn.addEventListener('click', () => {
-                    navLinks.classList.toggle('active');
-                });
-            }
         });
         
-        function updateStars() {
-            const stars = document.querySelectorAll('.star');
-            const ratingText = document.getElementById('rating-text');
-            
-            stars.forEach((star, i) => {
-                star.textContent = i < selectedRating ? '⭐' : '☆';
-            });
-            
-            const ratingTexts = ['', '별로예요', '그저 그래요', '좋아요', '아주 좋아요', '최고예요!'];
-            ratingText.textContent = selectedRating > 0 ? ratingTexts[selectedRating] : '';
-        }
+        document.querySelector('.star').parentElement.addEventListener('mouseleave', function() {
+            updateStars();
+        });
         
-        function handleFileSelect(files) {
-            const fileArray = Array.from(files);
-            
-            // 파일 개수 체크
-            if (selectedFiles.length + fileArray.length > 5) {
-                alert('최대 5장까지 업로드 가능합니다.');
-                return;
-            }
-            
-            // 이미지 파일만 필터링
-            const imageFiles = fileArray.filter(file => file.type.startsWith('image/'));
-            
-            if (imageFiles.length !== fileArray.length) {
-                alert('이미지 파일만 업로드 가능합니다.');
-            }
-            
-            selectedFiles = [...selectedFiles, ...imageFiles];
-            displayImagePreviews();
-        }
-        
-        function displayImagePreviews() {
-            const container = document.getElementById('image-preview-container');
-            container.innerHTML = '';
-            
-            selectedFiles.forEach((file, index) => {
-                const reader = new FileReader();
-                reader.onload = (e) => {
-                    const preview = document.createElement('div');
-                    preview.className = 'image-preview-item';
-                    preview.innerHTML = `
-                        <img src="${e.target.result}" alt="Preview">
-                        <button type="button" class="remove-btn" onclick="removeImage(${index})">
-                            <i class="fas fa-times"></i>
-                        </button>
-                    `;
-                    container.appendChild(preview);
-                };
-                reader.readAsDataURL(file);
-            });
-            
-            document.getElementById('upload-status').textContent = 
-                `${selectedFiles.length}장의 이미지가 선택되었습니다. (최대 5장)`;
-        }
-        
-        function removeImage(index) {
-            selectedFiles.splice(index, 1);
-            displayImagePreviews();
-        }
-        
-        // 이미지 압축 함수
-        async function compressImage(file, maxWidth = 1920, quality = 0.8) {
-            return new Promise((resolve) => {
-                const reader = new FileReader();
-                reader.onload = (e) => {
-                    const img = new Image();
-                    img.onload = () => {
-                        const canvas = document.createElement('canvas');
-                        let width = img.width;
-                        let height = img.height;
-                        
-                        // 리사이징
-                        if (width > maxWidth) {
-                            height = (height * maxWidth) / width;
-                            width = maxWidth;
-                        }
-                        
-                        canvas.width = width;
-                        canvas.height = height;
-                        
-                        const ctx = canvas.getContext('2d');
-                        ctx.drawImage(img, 0, 0, width, height);
-                        
-                        // WebP로 변환 (지원하지 않으면 JPEG)
-                        canvas.toBlob((blob) => {
-                            resolve(new File([blob], file.name.replace(/\.[^.]+$/, '.webp'), {
-                                type: 'image/webp'
-                            }));
-                        }, 'image/webp', quality);
-                    };
-                    img.src = e.target.result;
-                };
-                reader.readAsDataURL(file);
-            });
-        }
-        
-        // 이미지 업로드 함수
-        async function uploadImages() {
-            if (selectedFiles.length === 0) {
-                return [];
-            }
-            
-            const statusEl = document.getElementById('upload-status');
-            statusEl.innerHTML = '<i class="fas fa-spinner fa-spin"></i> 이미지 압축 및 업로드 중...';
-            
-            try {
-                // 이미지 압축
-                const compressedFiles = await Promise.all(
-                    selectedFiles.map(file => compressImage(file))
-                );
-                
-                // FormData 생성
-                const formData = new FormData();
-                compressedFiles.forEach(file => {
-                    formData.append('images', file);
-                });
-                
-                // 업로드
-                const response = await fetch(`${API_BASE}/upload`, {
-                    method: 'POST',
-                    body: formData
-                });
-                
-                const result = await response.json();
-                
-                if (result.success) {
-                    statusEl.innerHTML = `<i class="fas fa-check-circle" style="color: green;"></i> ${result.count}장의 이미지가 업로드되었습니다.`;
-                    return result.urls;
+        function highlightStars(rating) {
+            document.querySelectorAll('.star').forEach((star, index) => {
+                if (index < rating) {
+                    star.textContent = '★';
+                    star.style.color = '#FFD700';
                 } else {
-                    throw new Error(result.error);
+                    star.textContent = '☆';
+                    star.style.color = '#E8E8E8';
                 }
-            } catch (error) {
-                statusEl.innerHTML = `<i class="fas fa-exclamation-triangle" style="color: red;"></i> 이미지 업로드 실패: ${error.message}`;
-                throw error;
-            }
+            });
         }
         
-        async function handleSubmit(e) {
+        function updateStars() {
+            highlightStars(selectedRating);
+            const ratingText = document.getElementById('rating-text');
+            const texts = ['', '별로예요', '그저 그래요', '좋아요', '아주 좋아요', '완벽해요!'];
+            ratingText.textContent = selectedRating > 0 ? texts[selectedRating] : '별점을 선택해주세요';
+            ratingText.style.color = selectedRating > 0 ? '#C9A96E' : '#7A7A7A';
+        }
+        
+        // Input focus effects
+        document.querySelectorAll('input, select, textarea').forEach(element => {
+            element.addEventListener('focus', function() {
+                this.style.borderColor = '#C9A96E';
+                this.style.boxShadow = '0 0 0 3px rgba(201, 169, 110, 0.1)';
+            });
+            
+            element.addEventListener('blur', function() {
+                this.style.borderColor = '#E8E8E8';
+                this.style.boxShadow = 'none';
+            });
+        });
+        
+        // Button hover effect
+        document.querySelector('button[type="submit"]').addEventListener('mouseenter', function() {
+            this.style.transform = 'translateY(-2px)';
+            this.style.boxShadow = '0 6px 20px rgba(201, 169, 110, 0.4)';
+        });
+        
+        document.querySelector('button[type="submit"]').addEventListener('mouseleave', function() {
+            this.style.transform = 'translateY(0)';
+            this.style.boxShadow = '0 4px 15px rgba(201, 169, 110, 0.3)';
+        });
+        
+        // Form submission
+        document.getElementById('review-form').addEventListener('submit', async (e) => {
             e.preventDefault();
             
-            const messageContainer = document.getElementById('message-container');
-            const submitBtn = e.target.querySelector('button[type="submit"]');
-            
-            // 별점 검증
-            if (selectedRating === 0) {
-                messageContainer.innerHTML = `
-                    <div class="error-message">
-                        <i class="fas fa-exclamation-triangle"></i> 별점을 선택해주세요.
-                    </div>
-                `;
+            if (!selectedRating) {
+                alert('별점을 선택해주세요.');
                 return;
             }
             
-            // 버튼 비활성화
-            submitBtn.disabled = true;
-            submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> 제출 중...';
+            const destination = document.getElementById('destination').value;
+            const formData = {
+                destination: destination,
+                destination_kr: destinationNames[destination] || destination,
+                title: document.getElementById('title').value,
+                content: document.getElementById('content').value,
+                rating: selectedRating,
+                author_name: document.getElementById('author_name').value,
+                travel_date: document.getElementById('travel_date').value,
+                image_url: document.getElementById('image_url').value || null,
+                status: 'pending',
+                is_featured: false
+            };
             
             try {
-                // 이미지 업로드 (있는 경우)
-                let imageUrls = [];
-                if (selectedFiles.length > 0) {
-                    imageUrls = await uploadImages();
-                }
-                
-                const formData = {
-                    destination: document.getElementById('destination').value,
-                    destination_kr: destinationMap[document.getElementById('destination').value] || '기타',
-                    rating: selectedRating,
-                    title: document.getElementById('title').value,
-                    content: document.getElementById('content').value,
-                    author_name: document.getElementById('author_name').value,
-                    travel_date: document.getElementById('travel_date').value,
-                    image_url: imageUrls.length > 0 ? imageUrls[0] : '', // 첫 번째 이미지만 저장
-                    image_urls: imageUrls // 전체 이미지 URL 배열
-                };
-                
-                const response = await fetch(`${API_BASE}/reviews`, {
+                const response = await fetch('/api/reviews', {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json'
@@ -478,41 +292,34 @@
                 });
                 
                 const result = await response.json();
+                const messageDiv = document.getElementById('form-message');
                 
                 if (result.success) {
-                    messageContainer.innerHTML = `
-                        <div class="success-message">
-                            <i class="fas fa-check-circle"></i> 후기가 성공적으로 제출되었습니다! 관리자 승인 후 게시됩니다.
-                        </div>
-                    `;
+                    messageDiv.style.display = 'block';
+                    messageDiv.style.backgroundColor = '#d4edda';
+                    messageDiv.style.color = '#155724';
+                    messageDiv.style.border = '1px solid #c3e6cb';
+                    messageDiv.innerHTML = '<i class="fas fa-check-circle"></i> 후기가 성공적으로 등록되었습니다! 관리자 승인 후 게시됩니다.';
                     
-                    // 폼 초기화
                     document.getElementById('review-form').reset();
                     selectedRating = 0;
-                    selectedFiles = [];
-                    displayImagePreviews();
                     updateStars();
                     
-                    // 3초 후 후기 목록으로 이동
                     setTimeout(() => {
                         window.location.href = '/reviews';
                     }, 3000);
                 } else {
-                    throw new Error(result.error || '후기 제출에 실패했습니다.');
+                    throw new Error(result.error || '후기 등록에 실패했습니다.');
                 }
             } catch (error) {
-                console.error('Error submitting review:', error);
-                messageContainer.innerHTML = `
-                    <div class="error-message">
-                        <i class="fas fa-exclamation-triangle"></i> ${error.message}
-                    </div>
-                `;
-                
-                // 버튼 활성화
-                submitBtn.disabled = false;
-                submitBtn.innerHTML = '<i class="fas fa-paper-plane"></i> 후기 제출하기';
+                const messageDiv = document.getElementById('form-message');
+                messageDiv.style.display = 'block';
+                messageDiv.style.backgroundColor = '#f8d7da';
+                messageDiv.style.color = '#721c24';
+                messageDiv.style.border = '1px solid #f5c6cb';
+                messageDiv.innerHTML = '<i class="fas fa-exclamation-circle"></i> ' + error.message;
             }
-        }
+        });
     </script>
 </body>
 </html>

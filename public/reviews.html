@@ -9,182 +9,172 @@
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Noto+Serif+KR:wght@400;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@300;400;600;700&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     
     <!-- Font Awesome -->
-    <link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
     
     <!-- Custom CSS -->
-    <link href="/static/css/style.css" rel="stylesheet">
+    <link rel="stylesheet" href="/static/css/style.css">
 </head>
 <body>
-    <!-- Header & Navigation -->
-    <header>
-        <nav class="container">
-            <div class="logo">
-                <a href="/" style="display: flex; align-items: center; gap: 12px;"><img src="/static/images/logo-sunrise.png" alt="Sunshine Tour" style="height: 40px; width: auto; object-fit: contain;"><span style="font-family: 'Montserrat', sans-serif; font-weight: 700; font-size: 1.3rem; letter-spacing: 0.5px;">SUNSHINE TOUR</span></a>
-            </div>
-            <ul class="nav-links">
-                <li class="nav-dropdown">
-                    <a href="#destinations">Destinations <i class="fas fa-chevron-down"></i></a>
-                    <div class="dropdown-content">
-                        <a href="/destinations/thailand">🇹🇭 태국</a>
-                        <a href="/destinations/bali">🇮🇩 발리</a>
-                        <a href="/destinations/maldives">🇲🇻 몰디브</a>
-                        <a href="/destinations/hawaii">🇺🇸 하와이</a>
-                        <a href="/destinations/philippines">🇵🇭 필리핀</a>
-                        <a href="/destinations/europe">🇪🇺 유럽</a>
+    <!-- Navigation -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <a href="/index.html">
+                    <div class="text-logo" style="display: flex; align-items: center; gap: 10px;">
+                        <i class="fas fa-sun" style="font-size: 32px; color: #C9A96E;"></i>
+                        <div style="display: flex; flex-direction: column; line-height: 1.2;">
+                            <span style="font-family: 'Montserrat', sans-serif; font-size: 20px; font-weight: 700; color: #C9A96E; letter-spacing: 1px;">SUNSHINE</span>
+                            <span style="font-family: 'Montserrat', sans-serif; font-size: 10px; font-weight: 400; color: #7A7A7A; letter-spacing: 2px;">TOUR</span>
+                        </div>
                     </div>
-                </li>
-                <li><a href="/reviews">Reviews</a></li>
-                <li><a href="/inquiry">Contact</a></li>
-                <li><a href="/admin">Admin</a></li>
+                </a>
+            </div>
+            <ul class="nav-menu" id="nav-menu">
+                <li><a href="/index.html#home" class="nav-link">Home</a></li>
+                <li><a href="/index.html#destinations" class="nav-link">Destinations</a></li>
+                <li><a href="/reviews" class="nav-link active">Reviews</a></li>
+                <li><a href="/index.html#about" class="nav-link">About</a></li>
+                <li><a href="/inquiry" class="nav-link">Contact</a></li>
             </ul>
-            <button class="mobile-menu-btn">
+            <div class="nav-toggle" id="nav-toggle">
                 <i class="fas fa-bars"></i>
-            </button>
-        </nav>
-    </header>
+            </div>
+        </div>
+    </nav>
 
-    <!-- Reviews Header -->
-    <section style="background: linear-gradient(135deg, var(--primary-color), var(--secondary-color)); padding: 4rem 0; color: white; text-align: center;">
+    <!-- Page Header -->
+    <section class="page-hero" style="background: linear-gradient(135deg, rgba(201, 169, 110, 0.9), rgba(212, 175, 55, 0.9)), url('https://images.unsplash.com/photo-1488646953014-85cb44e25828?w=2000&q=80') center/cover; padding: 8rem 0 6rem; color: white; text-align: center; position: relative;">
         <div class="container">
-            <h1 style="font-size: 2.5rem; margin-bottom: 1rem;">고객 후기</h1>
-            <p style="font-size: 1.2rem; margin-bottom: 2rem;">선샤인투어와 함께한 행복한 순간들</p>
-            <a href="/review-write" class="btn btn-secondary">후기 작성하기</a>
+            <h1 style="font-size: 3rem; font-weight: 700; margin-bottom: 1rem; text-shadow: 2px 2px 4px rgba(0,0,0,0.3);">고객 후기</h1>
+            <p style="font-size: 1.3rem; opacity: 0.95; margin-bottom: 2rem;">선샤인투어와 함께한 행복한 순간들</p>
+            <a href="/review-write" style="display: inline-block; padding: 1rem 2.5rem; background: white; color: #C9A96E; font-weight: 700; border-radius: 50px; text-decoration: none; transition: transform 0.3s ease, box-shadow 0.3s ease; box-shadow: 0 4px 15px rgba(0,0,0,0.2);">
+                <i class="fas fa-pen" style="margin-right: 8px;"></i>후기 작성하기
+            </a>
         </div>
     </section>
 
     <!-- Reviews Container -->
-    <section class="container" style="margin-top: 3rem;">
-        <div id="reviews-container">
-            <div class="loading">
-                <div class="spinner"></div>
-                <p>후기를 불러오는 중...</p>
+    <section style="padding: 5rem 0; background-color: white;">
+        <div class="container">
+            <div id="reviews-container" style="max-width: 1200px; margin: 0 auto;">
+                <div style="text-align: center; padding: 3rem; color: #7A7A7A;">
+                    <div style="width: 60px; height: 60px; margin: 0 auto 1.5rem; background: linear-gradient(135deg, #C9A96E, #D4AF37); border-radius: 50%; display: flex; align-items: center; justify-content: center;">
+                        <i class="fas fa-spinner fa-spin" style="font-size: 1.5rem; color: white;"></i>
+                    </div>
+                    <p style="font-size: 1.1rem;">후기를 불러오는 중...</p>
+                </div>
             </div>
         </div>
     </section>
 
     <!-- Footer -->
-    <footer style="margin-top: 5rem;">
+    <footer class="footer">
         <div class="container">
             <div class="footer-content">
-                <div class="footer-section">
-                    <h3>선샤인투어</h3>
-                    <p>프리미엄 허니문 & 해외 여행 전문</p>
-                    <p>20년 경력의 전문가가 만드는 완벽한 여행</p>
+                <div class="footer-brand">
+                    <h3>SUNSHINE TOUR</h3>
+                    <p>프라이빗 허니문 전문 여행사</p>
                 </div>
-                <div class="footer-section">
-                    <h3>여행지</h3>
-                    <p><a href="/destinations/thailand">태국</a></p>
-                    <p><a href="/destinations/bali">발리</a></p>
-                    <p><a href="/destinations/maldives">몰디브</a></p>
-                    <p><a href="/destinations/hawaii">하와이</a></p>
-                </div>
-                <div class="footer-section">
-                    <h3>고객 지원</h3>
-                    <p><a href="/reviews">고객 후기</a></p>
-                    <p><a href="/inquiry">문의하기</a></p>
-                    <p><a href="/admin">관리자</a></p>
-                </div>
-                <div class="footer-section">
-                    <h3>연락처</h3>
-                    <p><i class="fas fa-phone"></i> 02-1234-5678</p>
-                    <p><i class="fas fa-envelope"></i> info@sunshinetour.com</p>
-                    <p><i class="fas fa-map-marker-alt"></i> 서울특별시 강남구</p>
+                
+                <div class="footer-info">
+                    <p>서울특별시 성북구 보문로30길 71, 2층 7호</p>
+                    <p>TEL: 02-318-8021</p>
+                    <p class="copyright">© 2024 Sunshine Tour. All rights reserved.</p>
                 </div>
             </div>
-            <div class="footer-bottom">
-                <p>&copy; 2024 선샤인투어. All rights reserved.</p>
-            </div>
+        </div>
+        
+        <!-- Admin Access Button -->
+        <div class="admin-access">
+            <a href="/admin" class="admin-btn" title="관리자 페이지">
+                <i class="fas fa-user-shield"></i>
+                <span>Admin</span>
+            </a>
         </div>
     </footer>
 
-    <!-- Scripts -->
+    <!-- JavaScript -->
+    <script src="/static/js/main.js"></script>
     <script>
-        const API_BASE = '/api';
-        
-        // 페이지 로드시 후기 로드
+        // Load reviews on page load
         document.addEventListener('DOMContentLoaded', () => {
             loadReviews();
-            
-            // 모바일 메뉴
-            const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
-            const navLinks = document.querySelector('.nav-links');
-            if (mobileMenuBtn) {
-                mobileMenuBtn.addEventListener('click', () => {
-                    navLinks.classList.toggle('active');
-                });
-            }
         });
         
-        // 후기 로드 함수
+        // Load reviews function
         async function loadReviews() {
             const container = document.getElementById('reviews-container');
             
-            container.innerHTML = `
-                <div class="loading">
-                    <div class="spinner"></div>
-                    <p>후기를 불러오는 중...</p>
-                </div>
-            `;
-            
             try {
-                const response = await fetch(`${API_BASE}/reviews?status=approved`);
+                const response = await fetch('/api/reviews?status=approved');
                 const result = await response.json();
                 
                 if (result.success && result.data.length > 0) {
+                    const reviews = result.data;
+                    
                     container.innerHTML = `
-                        <div class="card-grid">
-                            ${result.data.map(review => createReviewCard(review)).join('')}
+                        <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(350px, 1fr)); gap: 2rem;">
+                            ${reviews.map(review => createReviewCard(review)).join('')}
                         </div>
                     `;
                 } else {
                     container.innerHTML = `
-                        <div style="text-align: center; padding: 3rem; color: var(--text-light);">
-                            <i class="fas fa-comments" style="font-size: 3rem; margin-bottom: 1rem;"></i>
-                            <p>아직 등록된 후기가 없습니다.</p>
-                            <a href="/review-write" class="btn btn-primary" style="margin-top: 1rem;">첫 후기 작성하기</a>
+                        <div style="text-align: center; padding: 3rem;">
+                            <div style="width: 80px; height: 80px; margin: 0 auto 1.5rem; background: linear-gradient(135deg, #C9A96E, #D4AF37); border-radius: 50%; display: flex; align-items: center; justify-content: center;">
+                                <i class="fas fa-comments" style="font-size: 2rem; color: white;"></i>
+                            </div>
+                            <p style="font-size: 1.2rem; color: #7A7A7A; margin-bottom: 1.5rem;">아직 등록된 후기가 없습니다.</p>
+                            <a href="/review-write" style="display: inline-block; padding: 1rem 2rem; background: linear-gradient(135deg, #C9A96E, #D4AF37); color: white; border-radius: 10px; text-decoration: none; font-weight: 600; transition: transform 0.3s ease;">
+                                <i class="fas fa-pen" style="margin-right: 8px;"></i>첫 후기 작성하기
+                            </a>
                         </div>
                     `;
                 }
             } catch (error) {
                 console.error('Error loading reviews:', error);
                 container.innerHTML = `
-                    <div class="error-message">
-                        후기를 불러오는 중 오류가 발생했습니다.
+                    <div style="text-align: center; padding: 3rem;">
+                        <div style="width: 80px; height: 80px; margin: 0 auto 1.5rem; background: #f8d7da; border-radius: 50%; display: flex; align-items: center; justify-content: center;">
+                            <i class="fas fa-exclamation-triangle" style="font-size: 2rem; color: #721c24;"></i>
+                        </div>
+                        <p style="font-size: 1.2rem; color: #721c24;">후기를 불러오는 중 오류가 발생했습니다.</p>
                     </div>
                 `;
             }
         }
         
-        // 후기 카드 생성
+        // Create review card
         function createReviewCard(review) {
             const stars = '⭐'.repeat(review.rating);
             const imageHtml = review.image_url 
-                ? `<img src="${review.image_url}" alt="${escapeHtml(review.title)}" class="card-image" onerror="this.style.display='none'">` 
-                : '';
+                ? `<img src="${escapeHtml(review.image_url)}" alt="${escapeHtml(review.title)}" style="width: 100%; height: 250px; object-fit: cover; border-radius: 15px 15px 0 0;" onerror="this.style.display='none'">` 
+                : `<div style="width: 100%; height: 250px; background: linear-gradient(135deg, rgba(201, 169, 110, 0.2), rgba(212, 175, 55, 0.2)); border-radius: 15px 15px 0 0; display: flex; align-items: center; justify-content: center;">
+                    <i class="fas fa-image" style="font-size: 3rem; color: #C9A96E; opacity: 0.5;"></i>
+                </div>`;
             
             return `
-                <div class="card">
+                <div style="background: white; border-radius: 15px; overflow: hidden; box-shadow: 0 4px 20px rgba(0,0,0,0.08); transition: transform 0.3s ease, box-shadow 0.3s ease; cursor: pointer;" onmouseover="this.style.transform='translateY(-5px)'; this.style.boxShadow='0 8px 30px rgba(0,0,0,0.15)'" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 4px 20px rgba(0,0,0,0.08)'">
                     ${imageHtml}
-                    <div class="card-content">
-                        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.5rem;">
-                            <div class="review-rating">${stars}</div>
-                            <span style="background-color: var(--primary-color); color: white; padding: 0.3rem 0.8rem; border-radius: 50px; font-size: 0.85rem;">${escapeHtml(review.destination_kr)}</span>
+                    <div style="padding: 1.5rem;">
+                        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem;">
+                            <div style="font-size: 1.3rem;">${stars}</div>
+                            <span style="background: linear-gradient(135deg, #C9A96E, #D4AF37); color: white; padding: 0.3rem 0.8rem; border-radius: 50px; font-size: 0.85rem; font-weight: 600;">${escapeHtml(review.destination_kr)}</span>
                         </div>
-                        <h3 class="card-title">${escapeHtml(review.title)}</h3>
-                        <p class="card-description">${escapeHtml(review.content.substring(0, 150))}${review.content.length > 150 ? '...' : ''}</p>
-                        <div class="review-meta">
-                            <span><i class="fas fa-user"></i> ${escapeHtml(review.author_name)}</span>
-                            <span><i class="fas fa-calendar"></i> ${escapeHtml(review.travel_date)}</span>
+                        <h3 style="font-size: 1.3rem; color: #2C2C2C; margin-bottom: 0.8rem; font-weight: 700; line-height: 1.4;">${escapeHtml(review.title)}</h3>
+                        <p style="color: #7A7A7A; line-height: 1.6; margin-bottom: 1rem; font-size: 0.95rem;">${escapeHtml(review.content.substring(0, 120))}${review.content.length > 120 ? '...' : ''}</p>
+                        <div style="display: flex; justify-content: space-between; align-items: center; padding-top: 1rem; border-top: 1px solid #E8E8E8; color: #7A7A7A; font-size: 0.9rem;">
+                            <span><i class="fas fa-user" style="margin-right: 5px; color: #C9A96E;"></i> ${escapeHtml(review.author_name)}</span>
+                            <span><i class="fas fa-calendar" style="margin-right: 5px; color: #C9A96E;"></i> ${escapeHtml(review.travel_date)}</span>
                         </div>
                     </div>
                 </div>
             `;
         }
         
-        // HTML 이스케이프
+        // HTML escape
         function escapeHtml(text) {
             const map = {
                 '&': '&amp;',
