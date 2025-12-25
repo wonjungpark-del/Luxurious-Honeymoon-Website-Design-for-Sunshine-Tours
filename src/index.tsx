@@ -77,7 +77,7 @@ app.post('/api/upload', async (c) => {
       })
       
       // Public URL 생성 (환경변수에서 가져오기)
-      const baseUrl = c.env.R2_PUBLIC_URL || 'https://pub-d0131c5bb5bf458eaada30b9c50ce106.r2.dev'
+      const baseUrl = c.env.R2_PUBLIC_URL || 'https://pub-150169497a2b410dbbf3a2f16dee32b8.r2.dev'
       const publicUrl = `${baseUrl}/${fileName}`
       uploadedUrls.push(publicUrl)
     }
