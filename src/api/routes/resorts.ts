@@ -1,5 +1,5 @@
 import { Hono, Context } from 'hono';
-import { db } from '../db';
+import { db } from './db';
 
 export const resortsApp = new Hono();
 
