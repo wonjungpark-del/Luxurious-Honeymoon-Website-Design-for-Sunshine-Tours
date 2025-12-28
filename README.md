@@ -128,8 +128,8 @@
 ```
 
 ### Storage Services
-- **D1 Database**: SQLite 기반 지역/리조트/후기/문의 데이터
-- **R2 Storage**: 이미지 파일 저장 (sunshinetour-images 버킷)
+- **Vercel Postgres**: PostgreSQL 기반 지역/리조트/후기/문의 데이터
+- **Vercel Blob Storage**: 이미지 파일 저장 (sunshinetour-images)
 
 ## 📋 API 엔드포인트
 
@@ -194,47 +194,59 @@
 - Public URL 자동 생성
 
 ## 🛠️ 배포 상태
-- **플랫폼**: Cloudflare Pages
-- **상태**: ✅ 샌드박스 테스트 완료 / ❌ 프로덕션 배포 대기
+- **플랫폼**: Vercel (마이그레이션 완료 🎉)
+- **상태**: ✅ Vercel 배포 준비 완료
 - **기술 스택**: 
   - Frontend: HTML + TailwindCSS + Vanilla JS
-  - Backend: Hono + TypeScript
-  - Database: Cloudflare D1 (SQLite)
-  - Storage: Cloudflare R2
-  - Deployment: Cloudflare Pages + Wrangler
-- **마지막 업데이트**: 2024-12-16
+  - Backend: Hono + TypeScript + Vercel Serverless Functions
+  - Database: Vercel Postgres (PostgreSQL)
+  - Storage: Vercel Blob Storage
+  - Deployment: Vercel + GitHub
+- **마지막 업데이트**: 2024-12-26
+
+### ⚡ Vercel 마이그레이션
+- ✅ Cloudflare D1 → Vercel Postgres
+- ✅ Cloudflare R2 → Vercel Blob Storage
+- ✅ API 코드 Vercel 호환으로 전환
+- ✅ GitHub 푸시 완료 (커밋: ce6dacd)
+- ⏳ Vercel 대시보드에서 배포 진행 필요
 
 ## 🔧 개발 환경 실행
 
-### 로컬 개발
+### 로컬 개발 (Vercel)
 ```bash
-# DB 마이그레이션 (최초 1회)
-npm run db:migrate:local
+# Vercel CLI 설치
+npm install -g vercel
 
-# 샘플 데이터 로드
-npx wrangler d1 execute sunshinetour-db --local --file=./seed-data.sql
+# Vercel 로그인
+vercel login
 
-# 빌드
-npm run build
+# 프로젝트 링크
+vercel link
 
-# 개발 서버 시작 (PM2)
-pm2 start ecosystem.config.cjs
+# 환경 변수 가져오기
+vercel env pull .env.local
 
-# 서비스 URL 확인
-curl http://localhost:3000
+# 개발 서버 시작
+vercel dev
 ```
 
-### 프로덕션 배포
+### 프로덕션 배포 (Vercel)
 ```bash
-# DB 마이그레이션 (프로덕션)
-npm run db:migrate:prod
+# GitHub 푸시로 자동 배포
+git add .
+git commit -m "Update"
+git push origin main
 
-# 샘플 데이터 로드 (프로덕션 - 선택사항)
-npx wrangler d1 execute sunshinetour-db --file=./seed-data.sql
-
-# 프로덕션 배포
-npm run deploy
+# 또는 Vercel CLI로 직접 배포
+vercel --prod
 ```
+
+### 데이터베이스 설정
+1. Vercel 대시보드 → Storage → Create Database → Postgres
+2. Database Name: `sunshinetour-db`
+3. Query 탭에서 `scripts/schema.sql` 실행
+4. 샘플 데이터 추가 (선택사항)
 
 ## 📝 아직 구현되지 않은 기능
 - ❌ 관리자 페이지에서 지역별 리조트 미리보기
