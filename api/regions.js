@@ -1,6 +1,6 @@
-import { getRegions, getRegionById, createRegion, updateRegion, deleteRegion } from './_db.js';
+const { getRegions, getRegionById, createRegion, updateRegion, deleteRegion } = require('./_db');
 
-export default async function handler(req, res) {
+module.exports = async function handler(req, res) {
   try {
     const { method, query } = req;
     const id = query.id;

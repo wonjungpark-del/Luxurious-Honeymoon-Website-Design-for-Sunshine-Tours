@@ -1,7 +1,7 @@
-import { sql } from '@vercel/postgres';
+const { sql } = require('@vercel/postgres');
 
 // Regions
-export async function getRegions(filters = {}) {
+async function getRegions(filters = {}) {
   let queryText = 'SELECT * FROM regions WHERE 1=1';
   const params = [];
   let paramIndex = 1;
@@ -20,12 +20,12 @@ export async function getRegions(filters = {}) {
   return result.rows;
 }
 
-export async function getRegionById(id) {
+async function getRegionById(id) {
   const result = await sql.query('SELECT * FROM regions WHERE id = $1', [id]);
   return result.rows[0] || null;
 }
 
-export async function createRegion(data) {
+async function createRegion(data) {
   const result = await sql.query(
     `INSERT INTO regions (id, code, country, name_ko, name_en, description, image_url, display_order, is_active, created_at, updated_at)
      VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, NOW(), NOW())
@@ -35,7 +35,7 @@ export async function createRegion(data) {
   return result.rows[0];
 }
 
-export async function updateRegion(id, data) {
+async function updateRegion(id, data) {
   const fields = [];
   const params = [];
   let paramIndex = 1;
@@ -55,12 +55,12 @@ export async function updateRegion(id, data) {
   return result.rows[0];
 }
 
-export async function deleteRegion(id) {
+async function deleteRegion(id) {
   await sql.query('DELETE FROM regions WHERE id = $1', [id]);
 }
 
 // Resorts
-export async function getResorts(filters = {}) {
+async function getResorts(filters = {}) {
   let queryText = 'SELECT * FROM resorts WHERE 1=1';
   const params = [];
   let paramIndex = 1;
@@ -79,12 +79,12 @@ export async function getResorts(filters = {}) {
   return result.rows;
 }
 
-export async function getResortById(id) {
+async function getResortById(id) {
   const result = await sql.query('SELECT * FROM resorts WHERE id = $1', [id]);
   return result.rows[0] || null;
 }
 
-export async function createResort(data) {
+async function createResort(data) {
   const result = await sql.query(
     `INSERT INTO resorts (id, region_id, name_ko, name_en, category, description, main_image_url, gallery_images, features, display_order, is_active, created_at, updated_at)
      VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, NOW(), NOW())
@@ -106,7 +106,7 @@ export async function createResort(data) {
   return result.rows[0];
 }
 
-export async function updateResort(id, data) {
+async function updateResort(id, data) {
   const fields = [];
   const params = [];
   let paramIndex = 1;
@@ -131,12 +131,12 @@ export async function updateResort(id, data) {
   return result.rows[0];
 }
 
-export async function deleteResort(id) {
+async function deleteResort(id) {
   await sql.query('DELETE FROM resorts WHERE id = $1', [id]);
 }
 
 // Reviews
-export async function getReviews(filters = {}) {
+async function getReviews(filters = {}) {
   let queryText = 'SELECT * FROM reviews WHERE 1=1';
   const params = [];
   let paramIndex = 1;
@@ -159,12 +159,12 @@ export async function getReviews(filters = {}) {
   return result.rows;
 }
 
-export async function getReviewById(id) {
+async function getReviewById(id) {
   const result = await sql.query('SELECT * FROM reviews WHERE id = $1', [id]);
   return result.rows[0] || null;
 }
 
-export async function createReview(data) {
+async function createReview(data) {
   const result = await sql.query(
     `INSERT INTO reviews (id, destination, destination_kr, title, content, rating, author_name, travel_date, image_url, status, is_featured, created_at, updated_at)
      VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, NOW(), NOW())
@@ -186,7 +186,7 @@ export async function createReview(data) {
   return result.rows[0];
 }
 
-export async function updateReview(id, data) {
+async function updateReview(id, data) {
   const fields = [];
   const params = [];
   let paramIndex = 1;
@@ -206,12 +206,12 @@ export async function updateReview(id, data) {
   return result.rows[0];
 }
 
-export async function deleteReview(id) {
+async function deleteReview(id) {
   await sql.query('DELETE FROM reviews WHERE id = $1', [id]);
 }
 
 // Inquiries
-export async function getInquiries(filters = {}) {
+async function getInquiries(filters = {}) {
   let queryText = 'SELECT * FROM inquiries WHERE 1=1';
   const params = [];
   let paramIndex = 1;
@@ -226,12 +226,12 @@ export async function getInquiries(filters = {}) {
   return result.rows;
 }
 
-export async function getInquiryById(id) {
+async function getInquiryById(id) {
   const result = await sql.query('SELECT * FROM inquiries WHERE id = $1', [id]);
   return result.rows[0] || null;
 }
 
-export async function createInquiry(data) {
+async function createInquiry(data) {
   const result = await sql.query(
     `INSERT INTO inquiries (id, name, email, phone, destination, budget, travelers, departure_date, duration, subject, message, status, created_at, updated_at)
      VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, NOW(), NOW())
@@ -254,7 +254,7 @@ export async function createInquiry(data) {
   return result.rows[0];
 }
 
-export async function updateInquiry(id, data) {
+async function updateInquiry(id, data) {
   const fields = [];
   const params = [];
   let paramIndex = 1;
@@ -274,6 +274,29 @@ export async function updateInquiry(id, data) {
   return result.rows[0];
 }
 
-export async function deleteInquiry(id) {
+async function deleteInquiry(id) {
   await sql.query('DELETE FROM inquiries WHERE id = $1', [id]);
 }
+
+module.exports = {
+  getRegions,
+  getRegionById,
+  createRegion,
+  updateRegion,
+  deleteRegion,
+  getResorts,
+  getResortById,
+  createResort,
+  updateResort,
+  deleteResort,
+  getReviews,
+  getReviewById,
+  createReview,
+  updateReview,
+  deleteReview,
+  getInquiries,
+  getInquiryById,
+  createInquiry,
+  updateInquiry,
+  deleteInquiry,
+};

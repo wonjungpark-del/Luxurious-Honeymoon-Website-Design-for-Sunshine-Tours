@@ -1,6 +1,6 @@
-import { getResorts, getResortById, createResort, updateResort, deleteResort } from './_db.js';
+const { getResorts, getResortById, createResort, updateResort, deleteResort } = require('./_db');
 
-export default async function handler(req, res) {
+module.exports = async function handler(req, res) {
   try {
     const { method, query } = req;
     const id = query.id;
