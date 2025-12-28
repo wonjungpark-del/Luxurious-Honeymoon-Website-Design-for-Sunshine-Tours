@@ -1,4 +1,42 @@
 {
   "cleanUrls": true,
-  "trailingSlash": false
+  "trailingSlash": false,
+  "redirects": [
+    {
+      "source": "/thailand-khao-lak",
+      "destination": "/thailand-khao-lak.html"
+    },
+    {
+      "source": "/thailand-phuket",
+      "destination": "/thailand-phuket.html"
+    },
+    {
+      "source": "/thailand-krabi",
+      "destination": "/thailand-krabi.html"
+    },
+    {
+      "source": "/thailand-koh-samui",
+      "destination": "/thailand-koh-samui.html"
+    },
+    {
+      "source": "/thailand-pattaya",
+      "destination": "/thailand-pattaya.html"
+    },
+    {
+      "source": "/thailand-hua-hin",
+      "destination": "/thailand-hua-hin.html"
+    },
+    {
+      "source": "/maui",
+      "destination": "/maui.html"
+    },
+    {
+      "source": "/bigisland",
+      "destination": "/bigisland.html"
+    },
+    {
+      "source": "/oahu",
+      "destination": "/oahu.html"
+    }
+  ]
 }
