@@ -1,16 +1,15 @@
-import type { VercelRequest, VercelResponse } from '@vercel/node';
-import { getReviews, getReviewById, createReview, updateReview, deleteReview } from './_db';
+import { getReviews, getReviewById, createReview, updateReview, deleteReview } from './_db.js';
 
-export default async function handler(req: VercelRequest, res: VercelResponse) {
+export default async function handler(req, res) {
   try {
     const { method, query } = req;
-    const id = query.id as string | undefined;
+    const id = query.id;
 
     // GET /api/reviews - List all reviews
     if (method === 'GET' && !id) {
-      const filters: any = {};
-      if (query.destination) filters.destination = query.destination as string;
-      if (query.status) filters.status = query.status as string;
+      const filters = {};
+      if (query.destination) filters.destination = query.destination;
+      if (query.status) filters.status = query.status;
       if (query.is_featured !== undefined) filters.is_featured = query.is_featured === 'true';
 
       const reviews = await getReviews(filters);

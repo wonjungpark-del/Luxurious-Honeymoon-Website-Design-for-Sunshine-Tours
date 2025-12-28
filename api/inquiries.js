@@ -1,15 +1,14 @@
-import type { VercelRequest, VercelResponse } from '@vercel/node';
-import { getInquiries, getInquiryById, createInquiry, updateInquiry, deleteInquiry } from './_db';
+import { getInquiries, getInquiryById, createInquiry, updateInquiry, deleteInquiry } from './_db.js';
 
-export default async function handler(req: VercelRequest, res: VercelResponse) {
+export default async function handler(req, res) {
   try {
     const { method, query } = req;
-    const id = query.id as string | undefined;
+    const id = query.id;
 
     // GET /api/inquiries - List all inquiries
     if (method === 'GET' && !id) {
-      const filters: any = {};
-      if (query.status) filters.status = query.status as string;
+      const filters = {};
+      if (query.status) filters.status = query.status;
 
       const inquiries = await getInquiries(filters);
       return res.status(200).json({ success: true, data: inquiries });

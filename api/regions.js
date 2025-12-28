@@ -1,15 +1,14 @@
-import type { VercelRequest, VercelResponse } from '@vercel/node';
-import { getRegions, getRegionById, createRegion, updateRegion, deleteRegion } from './_db';
+import { getRegions, getRegionById, createRegion, updateRegion, deleteRegion } from './_db.js';
 
-export default async function handler(req: VercelRequest, res: VercelResponse) {
+export default async function handler(req, res) {
   try {
     const { method, query } = req;
-    const id = query.id as string | undefined;
+    const id = query.id;
 
     // GET /api/regions - List all regions
     if (method === 'GET' && !id) {
-      const filters: any = {};
-      if (query.country) filters.country = query.country as string;
+      const filters = {};
+      if (query.country) filters.country = query.country;
       if (query.is_active !== undefined) filters.is_active = query.is_active === 'true';
 
       const regions = await getRegions(filters);

@@ -1,15 +1,14 @@
-import type { VercelRequest, VercelResponse } from '@vercel/node';
-import { getResorts, getResortById, createResort, updateResort, deleteResort } from './_db';
+import { getResorts, getResortById, createResort, updateResort, deleteResort } from './_db.js';
 
-export default async function handler(req: VercelRequest, res: VercelResponse) {
+export default async function handler(req, res) {
   try {
     const { method, query } = req;
-    const id = query.id as string | undefined;
+    const id = query.id;
 
     // GET /api/resorts - List all resorts
     if (method === 'GET' && !id) {
-      const filters: any = {};
-      if (query.region_id) filters.region_id = query.region_id as string;
+      const filters = {};
+      if (query.region_id) filters.region_id = query.region_id;
       if (query.is_active !== undefined) filters.is_active = query.is_active === 'true';
 
       const resorts = await getResorts(filters);
