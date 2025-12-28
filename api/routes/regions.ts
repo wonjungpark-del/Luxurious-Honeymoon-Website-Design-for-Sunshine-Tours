@@ -1,10 +1,10 @@
-import { Hono } from 'hono';
+import { Hono, Context } from 'hono';
 import { db } from '../db';
 
 export const regionsApp = new Hono();
 
 // GET /api/regions - Get all regions with optional filters
-regionsApp.get('/', async (c) => {
+regionsApp.get('/', async (c: Context) => {
   try {
     const country = c.req.query('country');
     const is_active = c.req.query('is_active');
@@ -29,7 +29,7 @@ regionsApp.get('/', async (c) => {
 });
 
 // GET /api/regions/:id - Get region by ID
-regionsApp.get('/:id', async (c) => {
+regionsApp.get('/:id', async (c: Context) => {
   try {
     const id = c.req.param('id');
     const region = await db.getRegionById(id);
@@ -55,7 +55,7 @@ regionsApp.get('/:id', async (c) => {
 });
 
 // POST /api/regions - Create new region
-regionsApp.post('/', async (c) => {
+regionsApp.post('/', async (c: Context) => {
   try {
     const body = await c.req.json();
     const region = await db.createRegion(body);
@@ -74,7 +74,7 @@ regionsApp.post('/', async (c) => {
 });
 
 // PUT /api/regions/:id - Update region
-regionsApp.put('/:id', async (c) => {
+regionsApp.put('/:id', async (c: Context) => {
   try {
     const id = c.req.param('id');
     const body = await c.req.json();
@@ -94,7 +94,7 @@ regionsApp.put('/:id', async (c) => {
 });
 
 // DELETE /api/regions/:id - Delete region
-regionsApp.delete('/:id', async (c) => {
+regionsApp.delete('/:id', async (c: Context) => {
   try {
     const id = c.req.param('id');
     await db.deleteRegion(id);

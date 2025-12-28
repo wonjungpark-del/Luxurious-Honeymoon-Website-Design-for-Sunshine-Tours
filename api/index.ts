@@ -1,5 +1,4 @@
-import type { VercelRequest, VercelResponse } from '@vercel/node';
-import { Hono } from 'hono';
+import { Hono, Context } from 'hono';
 import { handle } from 'hono/vercel';
 
 // Import API routes
@@ -20,7 +19,7 @@ app.route('/inquiries', inquiriesApp);
 app.route('/upload', uploadApp);
 
 // Health check
-app.get('/health', (c) => {
+app.get('/health', (c: Context) => {
   return c.json({ status: 'ok', timestamp: new Date().toISOString() });
 });
 

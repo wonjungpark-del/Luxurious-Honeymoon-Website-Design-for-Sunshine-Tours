@@ -1,10 +1,10 @@
-import { Hono } from 'hono';
+import { Hono, Context } from 'hono';
 import { db } from '../db';
 
 export const reviewsApp = new Hono();
 
 // GET /api/reviews - Get all reviews with optional filters
-reviewsApp.get('/', async (c) => {
+reviewsApp.get('/', async (c: Context) => {
   try {
     const destination = c.req.query('destination');
     const status = c.req.query('status');
@@ -31,7 +31,7 @@ reviewsApp.get('/', async (c) => {
 });
 
 // GET /api/reviews/:id - Get review by ID
-reviewsApp.get('/:id', async (c) => {
+reviewsApp.get('/:id', async (c: Context) => {
   try {
     const id = c.req.param('id');
     const review = await db.getReviewById(id);
@@ -57,7 +57,7 @@ reviewsApp.get('/:id', async (c) => {
 });
 
 // POST /api/reviews - Create new review
-reviewsApp.post('/', async (c) => {
+reviewsApp.post('/', async (c: Context) => {
   try {
     const body = await c.req.json();
     const review = await db.createReview(body);
@@ -76,7 +76,7 @@ reviewsApp.post('/', async (c) => {
 });
 
 // PATCH /api/reviews/:id - Update review status
-reviewsApp.patch('/:id', async (c) => {
+reviewsApp.patch('/:id', async (c: Context) => {
   try {
     const id = c.req.param('id');
     const body = await c.req.json();
@@ -96,7 +96,7 @@ reviewsApp.patch('/:id', async (c) => {
 });
 
 // DELETE /api/reviews/:id - Delete review
-reviewsApp.delete('/:id', async (c) => {
+reviewsApp.delete('/:id', async (c: Context) => {
   try {
     const id = c.req.param('id');
     await db.deleteReview(id);

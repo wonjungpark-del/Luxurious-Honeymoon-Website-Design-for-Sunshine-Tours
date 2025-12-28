@@ -1,10 +1,10 @@
-import { Hono } from 'hono';
+import { Hono, Context } from 'hono';
 import { db } from '../db';
 
 export const inquiriesApp = new Hono();
 
 // GET /api/inquiries - Get all inquiries with optional filters
-inquiriesApp.get('/', async (c) => {
+inquiriesApp.get('/', async (c: Context) => {
   try {
     const status = c.req.query('status');
     
@@ -27,7 +27,7 @@ inquiriesApp.get('/', async (c) => {
 });
 
 // GET /api/inquiries/:id - Get inquiry by ID
-inquiriesApp.get('/:id', async (c) => {
+inquiriesApp.get('/:id', async (c: Context) => {
   try {
     const id = c.req.param('id');
     const inquiry = await db.getInquiryById(id);
@@ -53,7 +53,7 @@ inquiriesApp.get('/:id', async (c) => {
 });
 
 // POST /api/inquiries - Create new inquiry
-inquiriesApp.post('/', async (c) => {
+inquiriesApp.post('/', async (c: Context) => {
   try {
     const body = await c.req.json();
     const inquiry = await db.createInquiry(body);
@@ -72,7 +72,7 @@ inquiriesApp.post('/', async (c) => {
 });
 
 // PATCH /api/inquiries/:id - Update inquiry status
-inquiriesApp.patch('/:id', async (c) => {
+inquiriesApp.patch('/:id', async (c: Context) => {
   try {
     const id = c.req.param('id');
     const body = await c.req.json();
@@ -92,7 +92,7 @@ inquiriesApp.patch('/:id', async (c) => {
 });
 
 // DELETE /api/inquiries/:id - Delete inquiry
-inquiriesApp.delete('/:id', async (c) => {
+inquiriesApp.delete('/:id', async (c: Context) => {
   try {
     const id = c.req.param('id');
     await db.deleteInquiry(id);

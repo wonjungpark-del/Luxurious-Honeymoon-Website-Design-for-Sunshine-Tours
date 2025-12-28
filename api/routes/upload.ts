@@ -1,10 +1,10 @@
-import { Hono } from 'hono';
+import { Hono, Context } from 'hono';
 import { put } from '@vercel/blob';
 
 export const uploadApp = new Hono();
 
 // POST /api/upload - Upload images to Vercel Blob Storage
-uploadApp.post('/', async (c) => {
+uploadApp.post('/', async (c: Context) => {
   try {
     const formData = await c.req.formData();
     const files = formData.getAll('images') as File[];

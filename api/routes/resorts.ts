@@ -1,10 +1,10 @@
-import { Hono } from 'hono';
+import { Hono, Context } from 'hono';
 import { db } from '../db';
 
 export const resortsApp = new Hono();
 
 // GET /api/resorts - Get all resorts with optional filters
-resortsApp.get('/', async (c) => {
+resortsApp.get('/', async (c: Context) => {
   try {
     const region_id = c.req.query('region_id');
     const is_active = c.req.query('is_active');
@@ -29,7 +29,7 @@ resortsApp.get('/', async (c) => {
 });
 
 // GET /api/resorts/:id - Get resort by ID
-resortsApp.get('/:id', async (c) => {
+resortsApp.get('/:id', async (c: Context) => {
   try {
     const id = c.req.param('id');
     const resort = await db.getResortById(id);
@@ -55,7 +55,7 @@ resortsApp.get('/:id', async (c) => {
 });
 
 // POST /api/resorts - Create new resort
-resortsApp.post('/', async (c) => {
+resortsApp.post('/', async (c: Context) => {
   try {
     const body = await c.req.json();
     const resort = await db.createResort(body);
@@ -74,7 +74,7 @@ resortsApp.post('/', async (c) => {
 });
 
 // PUT /api/resorts/:id - Update resort
-resortsApp.put('/:id', async (c) => {
+resortsApp.put('/:id', async (c: Context) => {
   try {
     const id = c.req.param('id');
     const body = await c.req.json();
@@ -94,7 +94,7 @@ resortsApp.put('/:id', async (c) => {
 });
 
 // DELETE /api/resorts/:id - Delete resort
-resortsApp.delete('/:id', async (c) => {
+resortsApp.delete('/:id', async (c: Context) => {
   try {
     const id = c.req.param('id');
     await db.deleteResort(id);
