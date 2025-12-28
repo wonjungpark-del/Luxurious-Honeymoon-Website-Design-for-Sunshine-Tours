@@ -24,7 +24,10 @@
     "git:log": "git log --oneline"
   },
   "dependencies": {
-    "hono": "^4.11.1"
+    "@vercel/blob": "^2.0.0",
+    "@vercel/node": "^5.5.16",
+    "@vercel/postgres": "^0.10.0",
+    "hono": "^4.11.3"
   },
   "devDependencies": {
     "@hono/vite-build": "^1.2.0",
