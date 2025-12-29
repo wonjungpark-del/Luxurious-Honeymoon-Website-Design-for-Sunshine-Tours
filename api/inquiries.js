@@ -1,7 +1,45 @@
+const { sql } = require('@vercel/postgres');
 const { getInquiries, getInquiryById, createInquiry, updateInquiry, deleteInquiry } = require('./_db');
+
+// Initialize inquiries table if it doesn't exist
+async function initializeInquiriesTable() {
+  try {
+    await sql`
+      CREATE TABLE IF NOT EXISTS inquiries (
+        id VARCHAR(255) PRIMARY KEY,
+        name VARCHAR(255) NOT NULL,
+        email VARCHAR(255) NOT NULL,
+        phone VARCHAR(50),
+        destination VARCHAR(255),
+        budget VARCHAR(100),
+        travelers INTEGER DEFAULT 2,
+        departure_date VARCHAR(100),
+        duration VARCHAR(100),
+        subject VARCHAR(500),
+        message TEXT,
+        status VARCHAR(50) DEFAULT 'pending',
+        created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+        updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+      )
+    `;
+    await sql`CREATE INDEX IF NOT EXISTS idx_inquiries_status ON inquiries(status)`;
+    await sql`CREATE INDEX IF NOT EXISTS idx_inquiries_created_at ON inquiries(created_at DESC)`;
+  } catch (error) {
+    console.error('Table initialization error:', error);
+  }
+}
+
+// Initialize table on first load
+let tableInitialized = false;
 
 module.exports = async function handler(req, res) {
   try {
+    // Initialize table on first request
+    if (!tableInitialized) {
+      await initializeInquiriesTable();
+      tableInitialized = true;
+    }
+
     const { method, query } = req;
     const id = query.id;
 
