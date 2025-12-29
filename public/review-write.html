@@ -404,7 +404,7 @@
             }
         }
         
-        // Upload images to server
+        // Upload images to server (one by one)
         async function uploadImages() {
             if (selectedFiles.length === 0) {
                 return [];
@@ -413,28 +413,33 @@
             uploadStatus.textContent = `이미지 업로드 중... (0/${selectedFiles.length})`;
             uploadStatus.style.color = '#C9A96E';
             
+            const uploadedUrls = [];
+            
             try {
-                const formData = new FormData();
-                selectedFiles.forEach(file => {
-                    formData.append('images', file);
-                });
-                formData.append('type', 'reviews');
-                
-                const response = await fetch('/api/upload', {
-                    method: 'POST',
-                    body: formData
-                });
-                
-                const result = await response.json();
-                
-                if (result.success && result.urls && result.urls.length > 0) {
-                    uploadedImageUrls = result.urls;
-                    uploadStatus.textContent = `✓ ${result.urls.length}장 업로드 완료`;
-                    uploadStatus.style.color = '#28a745';
-                    return uploadedImageUrls;
-                } else {
-                    throw new Error(result.error || '이미지 업로드에 실패했습니다.');
+                for (let i = 0; i < selectedFiles.length; i++) {
+                    const file = selectedFiles[i];
+                    const formData = new FormData();
+                    formData.append('file', file);
+                    
+                    const response = await fetch('/api/upload', {
+                        method: 'POST',
+                        body: formData
+                    });
+                    
+                    const result = await response.json();
+                    
+                    if (result.success && result.url) {
+                        uploadedUrls.push(result.url);
+                        uploadStatus.textContent = `이미지 업로드 중... (${i + 1}/${selectedFiles.length})`;
+                    } else {
+                        throw new Error(result.error || '이미지 업로드에 실패했습니다.');
+                    }
                 }
+                
+                uploadedImageUrls = uploadedUrls;
+                uploadStatus.textContent = `✓ ${uploadedUrls.length}장 업로드 완료`;
+                uploadStatus.style.color = '#28a745';
+                return uploadedImageUrls;
             } catch (error) {
                 uploadStatus.textContent = '✗ 업로드 실패: ' + error.message;
                 uploadStatus.style.color = '#dc3545';
