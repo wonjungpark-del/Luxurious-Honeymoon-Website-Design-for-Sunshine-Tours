@@ -1021,7 +1021,14 @@
         }
 
         function closeResortModal() {
-            document.getElementById('resortModal').classList.remove('active');
+            const modal = document.getElementById('resortModal');
+            modal.classList.remove('active');
+            
+            // Reset file inputs
+            document.getElementById('resortMainImageFile').value = '';
+            for (let i = 1; i <= 6; i++) {
+                document.getElementById(`galleryImageFile${i}`).value = '';
+            }
         }
 
         document.getElementById('resortForm').addEventListener('submit', async (e) => {
@@ -1029,13 +1036,14 @@
             
             const id = document.getElementById('resortId').value || `resort-${Date.now()}`;
             
-            // Parse gallery images (줄바꿈으로 구분)
-            const galleryText = document.getElementById('resortGalleryImages').value;
-            const gallery_images = galleryText
-                .split('\n')
-                .map(line => line.trim())
-                .filter(line => line.length > 0)
-                .slice(0, 6); // 최대 6개
+            // Collect gallery images from individual fields
+            const gallery_images = [];
+            for (let i = 1; i <= 6; i++) {
+                const url = document.getElementById(`resortGalleryImage${i}`).value.trim();
+                if (url) {
+                    gallery_images.push(url);
+                }
+            }
             
             // Parse features (줄바꿈으로 구분)
             const featuresText = document.getElementById('resortFeatures').value;
@@ -1057,6 +1065,9 @@
                 display_order: parseInt(document.getElementById('resortDisplayOrder').value),
                 is_active: document.getElementById('resortIsActive').value === 'true'
             };
+            
+            console.log('💾 Saving resort data:', data);
+            console.log('📸 Gallery images count:', gallery_images.length);
             
             try {
                 let response;
