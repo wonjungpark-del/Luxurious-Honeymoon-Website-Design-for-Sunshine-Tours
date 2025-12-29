@@ -345,6 +345,57 @@
             font-size: 3rem;
             margin-bottom: 1rem;
         }
+        
+        /* Inquiry Detail Modal Styles */
+        .inquiry-detail {
+            padding: 1.5rem 0;
+        }
+        
+        .detail-section {
+            margin-bottom: 2rem;
+            padding: 1.5rem;
+            background: #f8f9fa;
+            border-radius: 8px;
+        }
+        
+        .detail-section h3 {
+            margin: 0 0 1rem 0;
+            font-size: 1.1rem;
+            color: #2c3e50;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid #667eea;
+        }
+        
+        .detail-row {
+            display: flex;
+            padding: 0.75rem 0;
+            border-bottom: 1px solid #e0e6ed;
+        }
+        
+        .detail-row:last-child {
+            border-bottom: none;
+        }
+        
+        .detail-row label {
+            min-width: 120px;
+            font-weight: 600;
+            color: #34495e;
+        }
+        
+        .detail-row span {
+            flex: 1;
+            color: #2c3e50;
+        }
+        
+        .message-row {
+            flex-direction: column;
+        }
+        
+        .message-row span {
+            margin-top: 0.5rem;
+            white-space: pre-wrap;
+            line-height: 1.6;
+        }
     </style>
 </head>
 <body>
@@ -608,6 +659,77 @@
                     <button type="button" onclick="closeResortModal()" class="btn btn-secondary">취소</button>
                 </div>
             </form>
+        </div>
+    </div>
+
+    <!-- Inquiry Detail Modal -->
+    <div id="inquiryDetailModal" class="modal">
+        <div class="modal-content" style="max-width: 800px;">
+            <h2>문의 상세 정보</h2>
+            <div class="inquiry-detail">
+                <div class="detail-section">
+                    <h3>고객 정보</h3>
+                    <div class="detail-row">
+                        <label>이름:</label>
+                        <span id="detailName"></span>
+                    </div>
+                    <div class="detail-row">
+                        <label>이메일:</label>
+                        <span id="detailEmail"></span>
+                    </div>
+                    <div class="detail-row">
+                        <label>전화번호:</label>
+                        <span id="detailPhone"></span>
+                    </div>
+                </div>
+                
+                <div class="detail-section">
+                    <h3>여행 정보</h3>
+                    <div class="detail-row">
+                        <label>여행지:</label>
+                        <span id="detailDestination"></span>
+                    </div>
+                    <div class="detail-row">
+                        <label>예산:</label>
+                        <span id="detailBudget"></span>
+                    </div>
+                    <div class="detail-row">
+                        <label>인원:</label>
+                        <span id="detailTravelers"></span>
+                    </div>
+                    <div class="detail-row">
+                        <label>기간:</label>
+                        <span id="detailDuration"></span>
+                    </div>
+                </div>
+                
+                <div class="detail-section">
+                    <h3>문의 내용</h3>
+                    <div class="detail-row">
+                        <label>제목:</label>
+                        <span id="detailSubject"></span>
+                    </div>
+                    <div class="detail-row message-row">
+                        <label>내용:</label>
+                        <span id="detailMessage"></span>
+                    </div>
+                </div>
+                
+                <div class="detail-section">
+                    <h3>처리 정보</h3>
+                    <div class="detail-row">
+                        <label>상태:</label>
+                        <span id="detailStatus"></span>
+                    </div>
+                    <div class="detail-row">
+                        <label>등록일:</label>
+                        <span id="detailCreatedAt"></span>
+                    </div>
+                </div>
+            </div>
+            <div class="action-buttons">
+                <button type="button" onclick="closeInquiryDetailModal()" class="btn btn-primary">닫기</button>
+            </div>
         </div>
     </div>
 
@@ -909,7 +1031,7 @@
                 return;
             }
 
-            let html = '<table><thead><tr><th>이름</th><th>이메일</th><th>여행지</th><th>상태</th><th>관리</th></tr></thead><tbody>';
+            let html = '<table><thead><tr><th>이름</th><th>이메일</th><th>여행지</th><th>상태</th><th>등록일</th><th>관리</th></tr></thead><tbody>';
             
             currentInquiries.forEach(inquiry => {
                 let statusBadge = '';
@@ -921,13 +1043,21 @@
                     statusBadge = '<span class="badge badge-danger">대기</span>';
                 }
                 
+                const createdDate = new Date(inquiry.created_at).toLocaleDateString('ko-KR', {
+                    year: 'numeric',
+                    month: '2-digit',
+                    day: '2-digit'
+                });
+                
                 html += `
                     <tr>
                         <td>${inquiry.name}</td>
                         <td>${inquiry.email}</td>
                         <td>${inquiry.destination}</td>
                         <td>${statusBadge}</td>
+                        <td>${createdDate}</td>
                         <td class="action-buttons">
+                            <button class="btn btn-sm btn-primary" onclick="viewInquiryDetail('${inquiry.id}')">상세보기</button>
                             ${inquiry.status === 'pending' ? `<button class="btn btn-sm btn-success" onclick="updateInquiryStatus('${inquiry.id}', 'processing')">처리중</button>` : ''}
                             ${inquiry.status === 'processing' ? `<button class="btn btn-sm btn-success" onclick="updateInquiryStatus('${inquiry.id}', 'completed')">완료</button>` : ''}
                             <button class="btn btn-sm btn-danger" onclick="deleteInquiry('${inquiry.id}')">삭제</button>
@@ -1357,6 +1487,37 @@
                 urlInput.value = '';
                 alert('업로드 중 오류가 발생했습니다.');
             }
+        }
+
+        // Inquiry Detail Modal
+        function viewInquiryDetail(inquiryId) {
+            const inquiry = currentInquiries.find(i => i.id === inquiryId);
+            if (!inquiry) return;
+            
+            const modal = document.getElementById('inquiryDetailModal');
+            const createdDate = new Date(inquiry.created_at).toLocaleString('ko-KR');
+            
+            document.getElementById('detailName').textContent = inquiry.name;
+            document.getElementById('detailEmail').textContent = inquiry.email;
+            document.getElementById('detailPhone').textContent = inquiry.phone;
+            document.getElementById('detailDestination').textContent = inquiry.destination;
+            document.getElementById('detailBudget').textContent = inquiry.budget || '-';
+            document.getElementById('detailTravelers').textContent = inquiry.travelers || '-';
+            document.getElementById('detailDuration').textContent = inquiry.duration || '-';
+            document.getElementById('detailSubject').textContent = inquiry.subject;
+            document.getElementById('detailMessage').textContent = inquiry.message;
+            document.getElementById('detailCreatedAt').textContent = createdDate;
+            
+            let statusText = '대기';
+            if (inquiry.status === 'completed') statusText = '완료';
+            else if (inquiry.status === 'processing') statusText = '처리중';
+            document.getElementById('detailStatus').textContent = statusText;
+            
+            modal.style.display = 'flex';
+        }
+        
+        function closeInquiryDetailModal() {
+            document.getElementById('inquiryDetailModal').style.display = 'none';
         }
 
         // Initialize
