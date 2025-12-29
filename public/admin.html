@@ -1411,7 +1411,7 @@
         async function approveReview(id) {
             try {
                 const response = await fetch(`${API_BASE}/reviews?id=${id}`, {
-                    method: 'PUT',
+                    method: 'PATCH',
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify({ status: 'approved' })
                 });
