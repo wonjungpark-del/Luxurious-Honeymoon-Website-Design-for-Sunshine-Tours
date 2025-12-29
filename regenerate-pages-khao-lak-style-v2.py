@@ -236,10 +236,20 @@ HTML_TEMPLATE = '''<!DOCTYPE html>
 </head>
 <body>
     <!-- Navigation -->
-    <nav class="navbar">
-        <div class="container">
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
             <div class="nav-logo">
-                <a href="/index.html">SUNSHINE TOURS</a>
+                <a href="/index.html">
+                    <div class="logo-wrapper">
+                        <div class="text-logo" style="display: flex; align-items: center; gap: 10px;">
+                            <i class="fas fa-sun" style="font-size: 32px; color: #C9A96E;"></i>
+                            <div style="display: flex; flex-direction: column; line-height: 1.2;">
+                                <span style="font-family: 'Montserrat', sans-serif; font-size: 20px; font-weight: 700; color: #C9A96E; letter-spacing: 1px;">SUNSHINE</span>
+                                <span style="font-family: 'Montserrat', sans-serif; font-size: 10px; font-weight: 400; color: #7A7A7A; letter-spacing: 2px;">TOUR</span>
+                            </div>
+                        </div>
+                    </div>
+                </a>
             </div>
             <ul class="nav-menu" id="nav-menu">
                 <li><a href="/index.html#home" class="nav-link">Home</a></li>
