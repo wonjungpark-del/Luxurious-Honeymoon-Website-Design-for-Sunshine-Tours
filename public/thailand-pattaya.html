@@ -226,26 +226,18 @@
                                             <div class="resort-category">${categoryLabels[resort.category] || 'RESORT'}</div>
                                             <h2 class="resort-name">${resort.name_ko}</h2>
                                             <p class="resort-description" style="line-height: 1.8; margin-bottom: 1.5rem; color: #666;">
-                                                ${resort.name_ko}은(는) 파타야의 프리미엄 허니문 리조트입니다.<br>타이만의 맑은 바다와 활기찬 해변 문화가 공존하는 리조트에서<br>럭셔리한 객실과 월드클래스 스파, 다양한 레스토랑을 경험하실 수 있습니다.<br>활력 넘치고 로맨틱한 분위기 속에서 특별한 허니문을 만들어보세요.
+                                                ${resort.description || `${resort.name_ko}은(는) 파타야의 프리미엄 허니문 리조트입니다.`}
                                             </p>
+                                            ${features.length > 0 ? `
                                             <div class="resort-features">
-                                                <div class="feature-item">
-                                                    <i class="fas fa-check-circle" style="color: #C9A96E;"></i>
-                                                    <span>프라이빗 비치</span>
-                                                </div>
-                                                <div class="feature-item">
-                                                    <i class="fas fa-check-circle" style="color: #C9A96E;"></i>
-                                                    <span>인피니티 풀</span>
-                                                </div>
-                                                <div class="feature-item">
-                                                    <i class="fas fa-check-circle" style="color: #C9A96E;"></i>
-                                                    <span>럭셔리 스파</span>
-                                                </div>
-                                                <div class="feature-item">
-                                                    <i class="fas fa-check-circle" style="color: #C9A96E;"></i>
-                                                    <span>키즈클럽</span>
-                                                </div>
+                                                ${features.slice(0, 4).map(feature => `
+                                                    <div class="feature-item">
+                                                        <i class="fas fa-check-circle" style="color: #C9A96E;"></i>
+                                                        <span>${feature}</span>
+                                                    </div>
+                                                `).join('')}
                                             </div>
+                                            ` : ''}
                                         </div>
                                     </div>
                                     ${gallery.length > 0 ? `
