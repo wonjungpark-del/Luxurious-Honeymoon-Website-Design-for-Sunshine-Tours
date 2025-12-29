@@ -2,6 +2,270 @@
    Region Page Styles (Resort List)
    =================================== */
 
+/* Hero Section for Region Pages */
+.hero-region {
+    position: relative;
+    height: 500px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, #2c3e50 0%, #3498db 100%);
+    overflow: hidden;
+}
+
+.hero-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.4);
+    z-index: 1;
+}
+
+.hero-content {
+    position: relative;
+    z-index: 2;
+    text-align: center;
+    color: white;
+    max-width: 800px;
+    padding: 0 20px;
+}
+
+.hero-title {
+    font-size: 4rem;
+    font-weight: 700;
+    margin-bottom: 20px;
+    text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.5);
+    letter-spacing: 2px;
+}
+
+.hero-subtitle {
+    font-size: 1.5rem;
+    font-weight: 300;
+    text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.5);
+    letter-spacing: 1px;
+}
+
+/* Region Intro Section */
+.region-intro {
+    padding: 80px 0;
+    background-color: var(--color-white);
+    text-align: center;
+}
+
+.region-intro .section-title {
+    font-size: 2.5rem;
+    margin-bottom: 30px;
+    color: var(--color-dark);
+}
+
+.intro-text {
+    font-size: 1.2rem;
+    line-height: 1.8;
+    color: var(--color-gray);
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+/* Region Features Section */
+.region-features {
+    padding: 80px 0;
+    background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+}
+
+.features-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 40px;
+    margin-top: 50px;
+}
+
+.feature-card {
+    background: var(--color-white);
+    padding: 40px 30px;
+    border-radius: 15px;
+    text-align: center;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+    transition: all 0.3s ease;
+}
+
+.feature-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 30px rgba(201, 169, 110, 0.2);
+}
+
+.feature-icon {
+    width: 80px;
+    height: 80px;
+    margin: 0 auto 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-gold) 100%);
+    border-radius: 50%;
+}
+
+.feature-icon i {
+    font-size: 2rem;
+    color: var(--color-white);
+}
+
+.feature-card h3 {
+    font-size: 1.4rem;
+    font-weight: 600;
+    margin-bottom: 15px;
+    color: var(--color-dark);
+}
+
+.feature-card p {
+    font-size: 1rem;
+    line-height: 1.7;
+    color: var(--color-gray);
+}
+
+/* Resorts Section */
+.resorts-section {
+    padding: 80px 0;
+    background-color: var(--color-white);
+}
+
+.resorts-section .section-title {
+    text-align: center;
+    font-size: 2.5rem;
+    margin-bottom: 50px;
+    color: var(--color-dark);
+}
+
+.resorts-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 50px;
+}
+
+.loading-message,
+.no-resorts,
+.error-message {
+    text-align: center;
+    padding: 60px 20px;
+    color: var(--color-gray);
+}
+
+.loading-message i,
+.no-resorts i,
+.error-message i {
+    font-size: 3rem;
+    margin-bottom: 20px;
+    display: block;
+    color: var(--color-primary);
+}
+
+.loading-message p,
+.no-resorts p,
+.error-message p {
+    font-size: 1.2rem;
+}
+
+/* Lightbox Modal */
+.lightbox {
+    display: none;
+    position: fixed;
+    z-index: 9999;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.95);
+    padding: 50px;
+}
+
+.lightbox.active,
+.lightbox:target {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.lightbox-content {
+    max-width: 90%;
+    max-height: 90%;
+    object-fit: contain;
+    border-radius: 5px;
+}
+
+.lightbox-close {
+    position: absolute;
+    top: 20px;
+    right: 40px;
+    color: white;
+    font-size: 50px;
+    font-weight: 300;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.lightbox-close:hover {
+    color: var(--color-primary);
+    transform: scale(1.1);
+}
+
+#lightbox-caption {
+    position: absolute;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+    color: white;
+    font-size: 1.2rem;
+    text-align: center;
+}
+
+.feature-tag {
+    display: inline-block;
+    padding: 8px 15px;
+    background-color: #f8f9fa;
+    border-radius: 20px;
+    font-size: 0.9rem;
+    color: var(--color-gray);
+    margin: 5px;
+}
+
+.feature-tag i {
+    color: var(--color-primary);
+    margin-right: 5px;
+}
+
+.resort-button {
+    display: inline-block;
+    padding: 15px 40px;
+    background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-gold) 100%);
+    color: white;
+    border: none;
+    border-radius: 30px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin-top: 20px;
+}
+
+.resort-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 30px rgba(201, 169, 110, 0.4);
+}
+
+.resort-gallery img {
+    width: 100%;
+    height: 150px;
+    object-fit: cover;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.resort-gallery img:hover {
+    opacity: 0.8;
+    transform: scale(1.05);
+}
+
 /* Resort List Section */
 .resort-list {
     padding: 100px 0;

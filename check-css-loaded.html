@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>CSS Check</title>
+    <link rel="stylesheet" href="https://luxurious-honeymoon-website-design.vercel.app/static/css/style.css">
+    <link rel="stylesheet" href="https://luxurious-honeymoon-website-design.vercel.app/static/css/destination.css">
+    <link rel="stylesheet" href="https://luxurious-honeymoon-website-design.vercel.app/static/css/region.css">
+</head>
+<body>
+    <div class="navbar">Test Navbar</div>
+    <div class="hero-region">Test Hero</div>
+    <script>
+        const stylesheets = document.styleSheets;
+        console.log('Loaded stylesheets:', stylesheets.length);
+        for (let i = 0; i < stylesheets.length; i++) {
+            console.log('Stylesheet', i, ':', stylesheets[i].href);
+        }
+    </script>
+</body>
+</html>
