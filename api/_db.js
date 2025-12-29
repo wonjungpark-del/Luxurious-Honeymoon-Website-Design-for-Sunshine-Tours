@@ -283,7 +283,7 @@ async function createInquiry(data) {
         id, name, email, phone, destination, 
         budget, travelers, departure_date, duration, 
         subject, message, status, created_at, updated_at
-      )
+      ) OVERRIDING SYSTEM VALUE
       VALUES (
         ${inquiryId}, 
         ${data.name}, 
