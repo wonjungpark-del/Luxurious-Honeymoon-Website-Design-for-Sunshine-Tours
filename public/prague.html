@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>프라하 리조트 추천 | 동화 같은 도시 - 선샤인투어</title>
-    <meta name="description" content="프라하 최고의 럭셔리 리조트 추천. 동화 같은 도시, 중세 건축과 블타바 강의 아름다움.">
+    <meta name="description" content="프라하 최고의 럭셔리 리조트 추천. 동화 같은 도시">
     <meta name="keywords" content="프라하, 프라하 리조트, 프라하 호텔, 프라하 허니문, 프라하 신혼여행, 선샤인투어">
     
     <!-- Google Fonts -->
@@ -13,7 +13,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@400;700&family=Montserrat:wght@300;400;600;700&display=swap" rel="stylesheet">
     
     <!-- Font Awesome -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
     
     <!-- Custom CSS -->
     <link rel="stylesheet" href="/static/css/style.css">
@@ -24,141 +24,158 @@
     <!-- Navigation -->
     <nav class="navbar">
         <div class="container">
-            <div class="nav-brand">
+            <div class="nav-logo">
                 <a href="/index.html">SUNSHINE TOURS</a>
             </div>
-            <ul class="nav-menu">
-                <li><a href="/index.html">Home</a></li>
-                <li><a href="/index.html#destinations">Destinations</a></li>
-                <li><a href="/reviews.html">Reviews</a></li>
-                <li><a href="/index.html#about">About</a></li>
-                <li><a href="/inquiry.html" class="nav-cta">Contact</a></li>
+            <ul class="nav-menu" id="nav-menu">
+                <li><a href="/index.html#home" class="nav-link">Home</a></li>
+                <li><a href="/index.html#destinations" class="nav-link">Destinations</a></li>
+                <li><a href="/reviews" class="nav-link">Reviews</a></li>
+                <li><a href="/index.html#about" class="nav-link">About</a></li>
+                <li><a href="/index.html#contact" class="nav-link">Contact</a></li>
             </ul>
+            <div class="nav-toggle" id="nav-toggle">
+                <i class="fas fa-bars"></i>
+            </div>
         </div>
     </nav>
 
     <!-- Breadcrumb -->
-    <nav class="breadcrumb">
+    <section class="breadcrumb">
         <div class="container">
             <ul class="breadcrumb-list">
-                <li><a href="/index.html"><i class="fas fa-home"></i> Home</a></li>
+                <li><a href="/index.html">Home</a></li>
+                <li><i class="fas fa-chevron-right"></i></li>
                 <li><a href="/index.html#destinations">유럽</a></li>
-                <li class="active">프라하</li>
+                <li><i class="fas fa-chevron-right"></i></li>
+                <li class="current">프라하</li>
             </ul>
-        </div>
-    </nav>
-
-    <!-- Destination Header/Intro -->
-    <section class="destination-intro">
-        <div class="container">
-            <div class="intro-badge">유럽</div>
-            <h1 class="intro-title">PRAGUE RESORTS</h1>
-            <h2 class="intro-subtitle">프라하 최고의 리조트</h2>
-            <p class="intro-description">동화 같은 도시, 중세 건축과 블타바 강의 아름다움.</p>
         </div>
     </section>
 
-    <!-- Why This Destination -->
-    <section class="region-info">
+    <!-- Page Header -->
+    <section class="destination-intro">
         <div class="container">
-            <h2 class="section-title">WHY PRAGUE</h2>
-            <div class="info-grid">
-                <div class="info-card">
-                    <div class="info-icon">
-                        <i class="fas fa-castle"></i>
+            <div class="intro-wrapper">
+                <span class="section-label">PRAGUE RESORTS</span>
+                <h1 class="destination-section-title">프라하 리조트</h1>
+                <p class="destination-description">
+                    아름답고 중세적인 프라하는 블타바 강과 프라하 성의 도시입니다.<br>
+카를교와 천문시계, 체코 맥주가 어우러진<br>
+동화 같은 허니문을 경험하세요.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why This Destination Section -->
+    <section class="region-info" style="margin-top: 4rem;">
+        <div class="container" style="max-width: 1200px; margin: 0 auto; padding: 0 2rem;">
+            <div class="section-header" style="text-align: center; margin-bottom: 3rem;">
+                <span class="section-label" style="color: #C9A96E; font-weight: 600; letter-spacing: 2px; font-size: 0.9rem;">WHY PRAGUE</span>
+                <h2 class="section-title" style="font-size: 2.5rem; color: #2C2C2C; margin-top: 1rem;">프라하을(를) 선택해야 하는 이유</h2>
+            </div>
+            
+            <div class="region-meta" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2rem; padding: 0;">
+                <div class="meta-card" style="background: white; padding: 2rem; border-radius: 15px; text-align: center; box-shadow: 0 5px 20px rgba(0,0,0,0.08); transition: transform 0.3s;" onmouseover="this.style.transform='translateY(-10px)'" onmouseout="this.style.transform='translateY(0)'">
+                    <div class="icon" style="width: 70px; height: 70px; background: linear-gradient(135deg, #C9A96E, #B8935B); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 1.5rem;">
+                        <i class="fas fa-castle" style="font-size: 2rem; color: white;"></i>
                     </div>
-                    <h3 class="info-title">프라하 성</h3>
-                    <p class="info-text">세계에서 가장 큰 고대 성</p>
+                    <h3 style="font-size: 1.4rem; color: #2C2C2C; margin-bottom: 0.8rem;">프라하 성</h3>
+                    <p style="color: #666; line-height: 1.6;">세계에서 가장 큰 고대 성</p>
                 </div>
-                <div class="info-card">
-                    <div class="info-icon">
-                        <i class="fas fa-bridge"></i>
+                <div class="meta-card" style="background: white; padding: 2rem; border-radius: 15px; text-align: center; box-shadow: 0 5px 20px rgba(0,0,0,0.08); transition: transform 0.3s;" onmouseover="this.style.transform='translateY(-10px)'" onmouseout="this.style.transform='translateY(0)'">
+                    <div class="icon" style="width: 70px; height: 70px; background: linear-gradient(135deg, #C9A96E, #B8935B); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 1.5rem;">
+                        <i class="fas fa-bridge" style="font-size: 2rem; color: white;"></i>
                     </div>
-                    <h3 class="info-title">카를교</h3>
-                    <p class="info-text">블타바 강의 역사적 다리</p>
+                    <h3 style="font-size: 1.4rem; color: #2C2C2C; margin-bottom: 0.8rem;">카를교</h3>
+                    <p style="color: #666; line-height: 1.6;">블타바 강의 역사적 다리</p>
                 </div>
-                <div class="info-card">
-                    <div class="info-icon">
-                        <i class="fas fa-clock"></i>
+                <div class="meta-card" style="background: white; padding: 2rem; border-radius: 15px; text-align: center; box-shadow: 0 5px 20px rgba(0,0,0,0.08); transition: transform 0.3s;" onmouseover="this.style.transform='translateY(-10px)'" onmouseout="this.style.transform='translateY(0)'">
+                    <div class="icon" style="width: 70px; height: 70px; background: linear-gradient(135deg, #C9A96E, #B8935B); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 1.5rem;">
+                        <i class="fas fa-clock" style="font-size: 2rem; color: white;"></i>
                     </div>
-                    <h3 class="info-title">천문시계</h3>
-                    <p class="info-text">600년 역사의 기계식 시계</p>
+                    <h3 style="font-size: 1.4rem; color: #2C2C2C; margin-bottom: 0.8rem;">천문시계</h3>
+                    <p style="color: #666; line-height: 1.6;">600년 역사의 기계식 시계</p>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Resorts Section -->
-    <section class="resort-list">
-        <div class="container">
-            <h2 class="section-title">프라하 추천 리조트</h2>
+    <section id="resorts" style="padding: 4rem 0; background: #fff;">
+        <div class="container" style="max-width: 1200px; margin: 0 auto; padding: 0 2rem;">
+            <div class="section-header" style="text-align: center; margin-bottom: 3rem;">
+                <span class="section-label" style="color: #C9A96E; font-weight: 600; letter-spacing: 2px; font-size: 0.9rem;">PRAGUE ACCOMMODATIONS</span>
+                <h2 class="section-title" style="font-size: 2.5rem; color: #2C2C2C; margin-top: 1rem;">프라하 추천 리조트</h2>
+            </div>
+            
             <div id="resorts-container">
-                <!-- Resorts will be loaded dynamically -->
-                <div class="loading-resorts">
-                    <i class="fas fa-spinner fa-spin"></i>
-                    <p>리조트 정보를 불러오는 중...</p>
+                <div style="text-align: center; padding: 3rem 0;">
+                    <i class="fas fa-spinner fa-spin" style="font-size: 3rem; color: #C9A96E;"></i>
+                    <p style="margin-top: 1rem; color: #666;">리조트 정보를 불러오는 중...</p>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- CTA Section -->
-    <section class="cta-section">
+    <section class="cta-section" style="background: linear-gradient(135deg, #C9A96E 0%, #B8935B 100%); padding: 4rem 0; text-align: center; color: white;">
         <div class="container">
-            <h2>지금 바로 프라하 허니문을 계획하세요</h2>
-            <p>전문 여행 컨설턴트가 맞춤 상담을 제공합니다</p>
-            <a href="/inquiry.html" class="cta-button">무료 상담 신청</a>
+            <h2 style="font-size: 2.5rem; margin-bottom: 1rem;">지금 바로 프라하 허니문을 계획하세요</h2>
+            <p style="font-size: 1.2rem; margin-bottom: 2rem; opacity: 0.95;">전문 여행 컨설턴트가 맞춤 상담을 제공합니다</p>
+            <a href="/inquiry.html" style="display: inline-block; background: white; color: #C9A96E; padding: 1rem 3rem; border-radius: 50px; text-decoration: none; font-weight: 600; font-size: 1.1rem; transition: all 0.3s;">무료 상담 신청</a>
         </div>
     </section>
 
     <!-- Footer -->
-    <footer class="footer">
+    <footer class="footer" style="background: #2C2C2C; color: #fff; padding: 3rem 0 1rem;">
         <div class="container">
-            <div class="footer-content">
+            <div class="footer-content" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 2rem; margin-bottom: 2rem;">
                 <div class="footer-section">
-                    <h3>SUNSHINE TOURS</h3>
+                    <h3 style="color: #C9A96E; margin-bottom: 1rem;">SUNSHINE TOURS</h3>
                     <p>프리미엄 허니문 전문 여행사</p>
-                    <div class="social-links">
-                        <a href="#"><i class="fab fa-facebook"></i></a>
-                        <a href="#"><i class="fab fa-instagram"></i></a>
-                        <a href="#"><i class="fab fa-youtube"></i></a>
+                    <div class="social-links" style="display: flex; gap: 1rem; margin-top: 1rem;">
+                        <a href="#" style="color: #fff; font-size: 1.5rem;"><i class="fab fa-facebook"></i></a>
+                        <a href="#" style="color: #fff; font-size: 1.5rem;"><i class="fab fa-instagram"></i></a>
+                        <a href="#" style="color: #fff; font-size: 1.5rem;"><i class="fab fa-youtube"></i></a>
                     </div>
                 </div>
                 <div class="footer-section">
-                    <h4>여행지</h4>
-                    <ul>
-                        <li><a href="/index.html#destinations">태국</a></li>
-                        <li><a href="/index.html#destinations">하와이</a></li>
-                        <li><a href="/index.html#destinations">인도네시아</a></li>
-                        <li><a href="/index.html#destinations">남태평양</a></li>
+                    <h4 style="color: #C9A96E; margin-bottom: 1rem;">여행지</h4>
+                    <ul style="list-style: none; padding: 0;">
+                        <li style="margin-bottom: 0.5rem;"><a href="/index.html#destinations" style="color: #fff; text-decoration: none;">태국</a></li>
+                        <li style="margin-bottom: 0.5rem;"><a href="/index.html#destinations" style="color: #fff; text-decoration: none;">하와이</a></li>
+                        <li style="margin-bottom: 0.5rem;"><a href="/index.html#destinations" style="color: #fff; text-decoration: none;">인도네시아</a></li>
+                        <li style="margin-bottom: 0.5rem;"><a href="/index.html#destinations" style="color: #fff; text-decoration: none;">남태평양</a></li>
                     </ul>
                 </div>
                 <div class="footer-section">
-                    <h4>고객센터</h4>
-                    <ul>
-                        <li><a href="/inquiry.html">문의하기</a></li>
-                        <li><a href="/reviews.html">이용후기</a></li>
-                        <li><a href="/admin.html">관리자</a></li>
+                    <h4 style="color: #C9A96E; margin-bottom: 1rem;">고객센터</h4>
+                    <ul style="list-style: none; padding: 0;">
+                        <li style="margin-bottom: 0.5rem;"><a href="/inquiry.html" style="color: #fff; text-decoration: none;">문의하기</a></li>
+                        <li style="margin-bottom: 0.5rem;"><a href="/reviews.html" style="color: #fff; text-decoration: none;">이용후기</a></li>
+                        <li style="margin-bottom: 0.5rem;"><a href="/admin.html" style="color: #fff; text-decoration: none;">관리자</a></li>
                     </ul>
                 </div>
                 <div class="footer-section">
-                    <h4>연락처</h4>
+                    <h4 style="color: #C9A96E; margin-bottom: 1rem;">연락처</h4>
                     <p><i class="fas fa-phone"></i> 1234-5678</p>
                     <p><i class="fas fa-envelope"></i> info@sunshinetours.com</p>
                     <p><i class="fas fa-clock"></i> 평일 09:00 - 18:00</p>
                 </div>
             </div>
-            <div class="footer-bottom">
+            <div class="footer-bottom" style="text-align: center; padding-top: 2rem; border-top: 1px solid rgba(255,255,255,0.1);">
                 <p>&copy; 2024 Sunshine Tours. All rights reserved.</p>
             </div>
         </div>
     </footer>
 
     <!-- Lightbox Modal -->
-    <div id="lightbox-modal" class="lightbox-modal">
-        <span class="lightbox-close">&times;</span>
-        <img class="lightbox-content" id="lightbox-img">
-        <div id="lightbox-caption"></div>
+    <div id="lightboxModal" class="modal" style="display: none; position: fixed; z-index: 9999; left: 0; top: 0; width: 100%; height: 100%; background-color: rgba(0,0,0,0.9);">
+        <span class="close" onclick="closeLightbox()" style="position: absolute; top: 20px; right: 35px; color: #f1f1f1; font-size: 40px; font-weight: bold; cursor: pointer;">&times;</span>
+        <img class="modal-content" id="lightboxImg" style="margin: auto; display: block; max-width: 90%; max-height: 90%; margin-top: 50px;">
+        <div id="caption" style="text-align: center; color: #ccc; padding: 20px; font-size: 1.2rem;"></div>
     </div>
 
     <!-- JavaScript -->
@@ -192,23 +209,20 @@
 
                 if (result.success && result.data && result.data.length > 0) {
                     container.innerHTML = result.data.map(resort => createResortCard(resort)).join('');
-                    
-                    // Initialize lightbox after cards are created
-                    initializeLightbox();
                 } else {
                     container.innerHTML = `
-                        <div class="no-resorts">
-                            <i class="fas fa-info-circle"></i>
-                            <p>현재 표시할 리조트가 없습니다.</p>
+                        <div style="text-align: center; padding: 3rem 0;">
+                            <i class="fas fa-info-circle" style="font-size: 3rem; color: #C9A96E;"></i>
+                            <p style="margin-top: 1rem; color: #666;">현재 표시할 리조트가 없습니다.</p>
                         </div>
                     `;
                 }
             } catch (error) {
                 console.error('Error loading resorts:', error);
                 container.innerHTML = `
-                    <div class="error-resorts">
-                        <i class="fas fa-exclamation-triangle"></i>
-                        <p>리조트 정보를 불러오는데 실패했습니다.</p>
+                    <div style="text-align: center; padding: 3rem 0;">
+                        <i class="fas fa-exclamation-triangle" style="font-size: 3rem; color: #ff6b6b;"></i>
+                        <p style="margin-top: 1rem; color: #666;">리조트 정보를 불러오는데 실패했습니다.</p>
                     </div>
                 `;
             }
@@ -225,45 +239,47 @@
             const categoryLabel = categoryLabels[resort.category] || resort.category;
 
             return `
-                <div class="resort-card">
-                    <div class="resort-header">
-                        <div class="resort-image-container">
+                <div class="resort-card" style="background: white; border-radius: 15px; overflow: hidden; box-shadow: 0 10px 40px rgba(0,0,0,0.1); margin-bottom: 3rem;">
+                    <div class="resort-header" style="display: grid; grid-template-columns: 400px 1fr; gap: 2rem;">
+                        <div class="resort-image" style="position: relative; height: 400px; overflow: hidden;">
                             <img src="${mainImage}" 
                                  alt="${resort.name_ko}" 
-                                 class="resort-image"
+                                 style="width: 100%; height: 100%; object-fit: cover;"
                                  onerror="this.src='https://images.unsplash.com/photo-1571896349842-33c89424de2d?w=800'">
-                            <div class="resort-badge">${categoryLabel}</div>
+                            <span class="category-badge" style="position: absolute; top: 20px; right: 20px; background: linear-gradient(135deg, #C9A96E, #B8935B); color: white; padding: 0.5rem 1.5rem; border-radius: 50px; font-weight: 600; font-size: 0.9rem;">${categoryLabel}</span>
                         </div>
-                        <div class="resort-info">
-                            <div class="resort-category">${categoryLabel}</div>
-                            <h3 class="resort-name">${resort.name_ko}</h3>
-                            <p class="resort-name-en">${resort.name_en}</p>
-                            <p class="resort-description">${resort.description}</p>
+                        <div class="resort-info" style="padding: 2rem;">
+                            <span style="color: #C9A96E; font-weight: 600; font-size: 0.9rem; letter-spacing: 1px;">${categoryLabel.toUpperCase()}</span>
+                            <h3 style="font-size: 2.2rem; color: #2C2C2C; margin: 0.5rem 0;">${resort.name_ko}</h3>
+                            <p style="color: #666; font-size: 1.05rem; line-height: 1.6; margin-bottom: 1.5rem;">${resort.description}</p>
                             
                             ${features.length > 0 ? `
-                                <div class="resort-features">
+                                <div class="features" style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 1rem; margin-bottom: 2rem;">
                                     ${features.slice(0, 4).map(feature => `
-                                        <div class="feature-item">
-                                            <i class="fas fa-check-circle"></i>
-                                            <span>${feature}</span>
+                                        <div style="display: flex; align-items: center; gap: 0.8rem;">
+                                            <i class="fas fa-check-circle" style="color: #C9A96E; font-size: 1.2rem;"></i>
+                                            <span style="color: #555; font-size: 1rem;">${feature}</span>
                                         </div>
                                     `).join('')}
                                 </div>
                             ` : ''}
                             
-                            <a href="/inquiry.html" class="resort-cta">문의하기</a>
+                            <a href="/inquiry.html" style="display: inline-block; background: linear-gradient(135deg, #C9A96E, #B8935B); color: white; padding: 1rem 2.5rem; border-radius: 50px; text-decoration: none; font-weight: 600; transition: all 0.3s;">문의하기</a>
                         </div>
                     </div>
                     
                     ${gallery.length > 0 ? `
-                        <div class="resort-gallery">
+                        <div class="gallery" style="display: grid; grid-template-columns: repeat(6, 1fr); border-top: 1px solid #eee;">
                             ${gallery.slice(0, 6).map((img, index) => `
-                                <div class="gallery-item" onclick="openLightbox('${img}', '${resort.name_ko} - 이미지 ${index + 1}')">
+                                <div style="position: relative; height: 180px; overflow: hidden; cursor: pointer; border-right: 1px solid #eee;" onclick="openLightbox('${img}', '${resort.name_ko} - 이미지 ${index + 1}')">
                                     <img src="${img}" 
                                          alt="${resort.name_ko} 갤러리 ${index + 1}"
+                                         style="width: 100%; height: 100%; object-fit: cover; transition: transform 0.3s;"
+                                         onmouseover="this.style.transform='scale(1.1)'"
+                                         onmouseout="this.style.transform='scale(1)'"
                                          onerror="this.src='https://images.unsplash.com/photo-1582719508461-905c673771fd?w=800'">
-                                    <div class="gallery-overlay">
-                                        <i class="fas fa-search-plus"></i>
+                                    <div style="position: absolute; inset: 0; background: rgba(201, 169, 110, 0.8); display: flex; align-items: center; justify-content: center; opacity: 0; transition: opacity 0.3s;" onmouseover="this.style.opacity='1'" onmouseout="this.style.opacity='0'">
+                                        <i class="fas fa-search-plus" style="color: white; font-size: 1.5rem;"></i>
                                     </div>
                                 </div>
                             `).join('')}
@@ -274,30 +290,33 @@
         }
 
         // Lightbox functions
-        function initializeLightbox() {
-            const modal = document.getElementById('lightbox-modal');
-            const closeBtn = document.querySelector('.lightbox-close');
-
-            closeBtn.onclick = function() {
-                modal.style.display = 'none';
-            }
-
-            modal.onclick = function(e) {
-                if (e.target === modal) {
-                    modal.style.display = 'none';
-                }
-            }
-        }
-
         function openLightbox(imgSrc, caption) {
-            const modal = document.getElementById('lightbox-modal');
-            const modalImg = document.getElementById('lightbox-img');
-            const captionText = document.getElementById('lightbox-caption');
+            const modal = document.getElementById('lightboxModal');
+            const modalImg = document.getElementById('lightboxImg');
+            const captionText = document.getElementById('caption');
 
             modal.style.display = 'block';
             modalImg.src = imgSrc;
             captionText.innerHTML = caption;
         }
+
+        function closeLightbox() {
+            document.getElementById('lightboxModal').style.display = 'none';
+        }
+
+        // Close lightbox when clicking outside the image
+        document.getElementById('lightboxModal')?.addEventListener('click', function(e) {
+            if (e.target === this) {
+                closeLightbox();
+            }
+        });
+
+        // Close lightbox with ESC key
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') {
+                closeLightbox();
+            }
+        });
     </script>
 </body>
 </html>
