@@ -285,7 +285,7 @@ HTML_TEMPLATE = '''<!DOCTYPE html>
         <div class="container" style="max-width: 1200px; margin: 0 auto; padding: 0 2rem;">
             <div class="section-header" style="text-align: center; margin-bottom: 3rem;">
                 <span class="section-label" style="color: #C9A96E; font-weight: 600; letter-spacing: 2px; font-size: 0.9rem;">WHY {name_en_upper}</span>
-                <h2 class="section-title" style="font-size: 2.5rem; color: #2C2C2C; margin-top: 1rem;">{name_ko}을(를) 선택해야 하는 이유</h2>
+                <h2 class="section-title" style="font-size: 2.5rem; color: #2C2C2C; margin-top: 1rem;">{name_ko}를 선택해야 하는 이유</h2>
             </div>
             
             <div class="region-meta" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2rem; padding: 0;">
