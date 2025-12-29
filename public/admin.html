@@ -733,6 +733,76 @@
         </div>
     </div>
 
+    <!-- Review Detail Modal -->
+    <div id="reviewDetailModal" class="modal">
+        <div class="modal-content" style="max-width: 800px;">
+            <h2>후기 상세 정보</h2>
+            <div class="inquiry-detail">
+                <div class="detail-section">
+                    <h3>작성자 정보</h3>
+                    <div class="detail-row">
+                        <label>작성자:</label>
+                        <span id="reviewDetailAuthor"></span>
+                    </div>
+                    <div class="detail-row">
+                        <label>여행 시기:</label>
+                        <span id="reviewDetailTravelDate"></span>
+                    </div>
+                </div>
+                
+                <div class="detail-section">
+                    <h3>여행지 정보</h3>
+                    <div class="detail-row">
+                        <label>여행지:</label>
+                        <span id="reviewDetailDestination"></span>
+                    </div>
+                    <div class="detail-row">
+                        <label>평점:</label>
+                        <span id="reviewDetailRating"></span>
+                    </div>
+                </div>
+                
+                <div class="detail-section">
+                    <h3>후기 내용</h3>
+                    <div class="detail-row">
+                        <label>제목:</label>
+                        <span id="reviewDetailTitle"></span>
+                    </div>
+                    <div class="detail-row message-row">
+                        <label>내용:</label>
+                        <span id="reviewDetailContent"></span>
+                    </div>
+                </div>
+                
+                <div class="detail-section" id="reviewImageSection" style="display: none;">
+                    <h3>첨부 이미지</h3>
+                    <div class="detail-row">
+                        <img id="reviewDetailImage" src="" alt="후기 이미지" style="max-width: 100%; border-radius: 8px;">
+                    </div>
+                </div>
+                
+                <div class="detail-section">
+                    <h3>관리 정보</h3>
+                    <div class="detail-row">
+                        <label>상태:</label>
+                        <span id="reviewDetailStatus"></span>
+                    </div>
+                    <div class="detail-row">
+                        <label>추천 후기:</label>
+                        <span id="reviewDetailFeatured"></span>
+                    </div>
+                    <div class="detail-row">
+                        <label>등록일:</label>
+                        <span id="reviewDetailCreatedAt"></span>
+                    </div>
+                </div>
+            </div>
+            <div class="action-buttons">
+                <button type="button" onclick="closeReviewDetailModal()" class="btn btn-primary">닫기</button>
+            </div>
+        </div>
+    </div>
+
     <script>
         // Config
         const ADMIN_PASSWORD = 'admin1234';
@@ -993,7 +1063,7 @@
                 return;
             }
 
-            let html = '<table><thead><tr><th>작성자</th><th>제목</th><th>평점</th><th>상태</th><th>관리</th></tr></thead><tbody>';
+            let html = '<table><thead><tr><th>작성자</th><th>제목</th><th>여행지</th><th>평점</th><th>상태</th><th>등록일</th><th>관리</th></tr></thead><tbody>';
             
             currentReviews.forEach(review => {
                 let statusBadge = '';
@@ -1005,13 +1075,22 @@
                     statusBadge = '<span class="badge badge-danger">거부</span>';
                 }
                 
+                const createdDate = new Date(review.created_at).toLocaleDateString('ko-KR', {
+                    year: 'numeric',
+                    month: '2-digit',
+                    day: '2-digit'
+                });
+                
                 html += `
                     <tr>
                         <td>${review.author_name}</td>
                         <td>${review.title}</td>
+                        <td>${review.destination_kr || review.destination}</td>
                         <td>${'⭐'.repeat(review.rating)}</td>
                         <td>${statusBadge}</td>
+                        <td>${createdDate}</td>
                         <td class="action-buttons">
+                            <button class="btn btn-sm btn-primary" onclick="viewReviewDetail('${review.id}')">상세보기</button>
                             ${review.status === 'pending' ? `<button class="btn btn-sm btn-success" onclick="approveReview('${review.id}')">승인</button>` : ''}
                             <button class="btn btn-sm btn-danger" onclick="deleteReview('${review.id}')">삭제</button>
                         </td>
@@ -1518,6 +1597,46 @@
         
         function closeInquiryDetailModal() {
             document.getElementById('inquiryDetailModal').style.display = 'none';
+        }
+
+        // Review Detail Modal
+        function viewReviewDetail(reviewId) {
+            const review = currentReviews.find(r => r.id === reviewId);
+            if (!review) return;
+            
+            const modal = document.getElementById('reviewDetailModal');
+            const createdDate = new Date(review.created_at).toLocaleString('ko-KR');
+            
+            document.getElementById('reviewDetailAuthor').textContent = review.author_name;
+            document.getElementById('reviewDetailTravelDate').textContent = review.travel_date;
+            document.getElementById('reviewDetailDestination').textContent = review.destination_kr || review.destination;
+            document.getElementById('reviewDetailRating').textContent = '⭐'.repeat(review.rating) + ` (${review.rating}/5)`;
+            document.getElementById('reviewDetailTitle').textContent = review.title;
+            document.getElementById('reviewDetailContent').textContent = review.content;
+            document.getElementById('reviewDetailCreatedAt').textContent = createdDate;
+            
+            // 이미지 표시
+            const imageSection = document.getElementById('reviewImageSection');
+            if (review.image_url) {
+                document.getElementById('reviewDetailImage').src = review.image_url;
+                imageSection.style.display = 'block';
+            } else {
+                imageSection.style.display = 'none';
+            }
+            
+            // 상태 표시
+            let statusText = '대기';
+            if (review.status === 'approved') statusText = '승인';
+            else if (review.status === 'rejected') statusText = '거부';
+            document.getElementById('reviewDetailStatus').textContent = statusText;
+            
+            document.getElementById('reviewDetailFeatured').textContent = review.is_featured ? '예' : '아니오';
+            
+            modal.style.display = 'flex';
+        }
+        
+        function closeReviewDetailModal() {
+            document.getElementById('reviewDetailModal').style.display = 'none';
         }
 
         // Initialize
