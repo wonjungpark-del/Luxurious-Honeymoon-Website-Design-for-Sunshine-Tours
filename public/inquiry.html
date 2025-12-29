@@ -230,57 +230,92 @@
     <!-- JavaScript -->
     <script src="/static/js/main.js"></script>
     <script>
-        // Form submission
-        document.getElementById('inquiry-form').addEventListener('submit', async (e) => {
-            e.preventDefault();
+        // Form submission with improved error handling
+        document.addEventListener('DOMContentLoaded', function() {
+            const form = document.getElementById('inquiry-form');
+            const messageDiv = document.getElementById('form-message');
             
-            const formData = {
-                name: document.getElementById('name').value,
-                phone: document.getElementById('phone').value,
-                email: document.getElementById('email').value,
-                subject: document.getElementById('subject').value,
-                destination: document.getElementById('destination').value,
-                budget: document.getElementById('budget').value,
-                travelers: parseInt(document.getElementById('travelers').value),
-                duration: document.getElementById('duration').value,
-                message: document.getElementById('message').value
-            };
-            
-            try {
-                const response = await fetch('/api/inquiries', {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json'
-                    },
-                    body: JSON.stringify(formData)
-                });
+            form.addEventListener('submit', async (e) => {
+                e.preventDefault();
                 
-                const result = await response.json();
-                const messageDiv = document.getElementById('form-message');
+                console.log('Form submission started');
                 
-                if (result.success) {
+                // Disable submit button to prevent double submission
+                const submitBtn = form.querySelector('button[type="submit"]');
+                const originalText = submitBtn.innerHTML;
+                submitBtn.disabled = true;
+                submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> 전송 중...';
+                
+                // Hide previous message
+                messageDiv.style.display = 'none';
+                
+                const formData = {
+                    name: document.getElementById('name').value.trim(),
+                    phone: document.getElementById('phone').value.trim(),
+                    email: document.getElementById('email').value.trim(),
+                    subject: document.getElementById('subject').value.trim(),
+                    destination: document.getElementById('destination').value,
+                    budget: document.getElementById('budget').value,
+                    travelers: parseInt(document.getElementById('travelers').value),
+                    duration: document.getElementById('duration').value,
+                    message: document.getElementById('message').value.trim()
+                };
+                
+                console.log('Form data:', formData);
+                
+                try {
+                    console.log('Sending request to /api/inquiries');
+                    const response = await fetch('/api/inquiries', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json'
+                        },
+                        body: JSON.stringify(formData)
+                    });
+                    
+                    console.log('Response status:', response.status);
+                    
+                    if (!response.ok) {
+                        throw new Error(`서버 오류 (상태 코드: ${response.status})`);
+                    }
+                    
+                    const result = await response.json();
+                    console.log('Response result:', result);
+                    
+                    if (result.success) {
+                        messageDiv.style.display = 'block';
+                        messageDiv.style.backgroundColor = '#d4edda';
+                        messageDiv.style.color = '#155724';
+                        messageDiv.style.border = '1px solid #c3e6cb';
+                        messageDiv.innerHTML = '<i class="fas fa-check-circle"></i> 문의가 성공적으로 접수되었습니다! 빠른 시일 내에 답변드리겠습니다.';
+                        
+                        form.reset();
+                        
+                        // Scroll to message
+                        messageDiv.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                        
+                        setTimeout(() => {
+                            window.location.href = '/index.html';
+                        }, 3000);
+                    } else {
+                        throw new Error(result.error || '문의 접수에 실패했습니다.');
+                    }
+                } catch (error) {
+                    console.error('Form submission error:', error);
                     messageDiv.style.display = 'block';
-                    messageDiv.style.backgroundColor = '#d4edda';
-                    messageDiv.style.color = '#155724';
-                    messageDiv.style.border = '1px solid #c3e6cb';
-                    messageDiv.innerHTML = '<i class="fas fa-check-circle"></i> 문의가 성공적으로 접수되었습니다! 빠른 시일 내에 답변드리겠습니다.';
+                    messageDiv.style.backgroundColor = '#f8d7da';
+                    messageDiv.style.color = '#721c24';
+                    messageDiv.style.border = '1px solid #f5c6cb';
+                    messageDiv.innerHTML = '<i class="fas fa-exclamation-circle"></i> ' + error.message + '<br><small>다시 시도하거나 전화(02-318-8021)로 문의해주세요.</small>';
                     
-                    document.getElementById('inquiry-form').reset();
-                    
-                    setTimeout(() => {
-                        window.location.href = '/index.html';
-                    }, 3000);
-                } else {
-                    throw new Error(result.error || '문의 접수에 실패했습니다.');
+                    // Scroll to error message
+                    messageDiv.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                } finally {
+                    // Re-enable submit button
+                    submitBtn.disabled = false;
+                    submitBtn.innerHTML = originalText;
                 }
-            } catch (error) {
-                const messageDiv = document.getElementById('form-message');
-                messageDiv.style.display = 'block';
-                messageDiv.style.backgroundColor = '#f8d7da';
-                messageDiv.style.color = '#721c24';
-                messageDiv.style.border = '1px solid #f5c6cb';
-                messageDiv.innerHTML = '<i class="fas fa-exclamation-circle"></i> ' + error.message;
-            }
+            });
         });
 
         // Input focus effects

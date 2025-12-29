@@ -1,0 +1,493 @@
+================================================================================
+리조트 이미지 Vercel Blob 업로드 시작
+================================================================================
+
+
+📍 두바이 (dubai) - 3개 리조트
+--------------------------------------------------------------------------------
+
+🏨 디바나 플라자 - 6개 이미지
+  ❌ 디바나 플라자 [0] 업로드 실패: Vercel Blob: No token found. Either configure the `BLOB_READ_WRITE_TOKEN` environment variable, or pass a `token` option to your calls.
+  ❌ 디바나 플라자 [1] 업로드 실패: Vercel Blob: No token found. Either configure the `BLOB_READ_WRITE_TOKEN` environment variable, or pass a `token` option to your calls.
+  ❌ 디바나 플라자 [2] 업로드 실패: Vercel Blob: No token found. Either configure the `BLOB_READ_WRITE_TOKEN` environment variable, or pass a `token` option to your calls.
+  ❌ 디바나 플라자 [3] 업로드 실패: Vercel Blob: No token found. Either configure the `BLOB_READ_WRITE_TOKEN` environment variable, or pass a `token` option to your calls.
+  ❌ 디바나 플라자 [4] 업로드 실패: Vercel Blob: No token found. Either configure the `BLOB_READ_WRITE_TOKEN` environment variable, or pass a `token` option to your calls.
+  ❌ 디바나 플라자 [5] 업로드 실패: Vercel Blob: No token found. Either configure the `BLOB_READ_WRITE_TOKEN` environment variable, or pass a `token` option to your calls.
+
+🏨 리치칼튼 - 4개 이미지
+  ❌ 리치칼튼 [0] 업로드 실패: Vercel Blob: No token found. Either configure the `BLOB_READ_WRITE_TOKEN` environment variable, or pass a `token` option to your calls.
+  ❌ 리치칼튼 [1] 업로드 실패: Vercel Blob: No token found. Either configure the `BLOB_READ_WRITE_TOKEN` environment variable, or pass a `token` option to your calls.
+  ❌ 리치칼튼 [2] 업로드 실패: Vercel Blob: No token found. Either configure the `BLOB_READ_WRITE_TOKEN` environment variable, or pass a `token` option to your calls.
+  ❌ 리치칼튼 [3] 업로드 실패: Vercel Blob: No token found. Either configure the `BLOB_READ_WRITE_TOKEN` environment variable, or pass a `token` option to your calls.
+
+🏨 피말라이 - 4개 이미지
+  ❌ 피말라이 [0] 업로드 실패: Vercel Blob: No token found. Either configure the `BLOB_READ_WRITE_TOKEN` environment variable, or pass a `token` option to your calls.
+  ❌ 피말라이 [1] 업로드 실패: Vercel Blob: No token found. Either configure the `BLOB_READ_WRITE_TOKEN` environment variable, or pass a `token` option to your calls.
+  ❌ 피말라이 [2] 업로드 실패: Vercel Blob: No token found. Either configure the `BLOB_READ_WRITE_TOKEN` environment variable, or pass a `token` option to your calls.
+  ❌ 피말라이 [3] 업로드 실패: Vercel Blob: No token found. Either configure the `BLOB_READ_WRITE_TOKEN` environment variable, or pass a `token` option to your calls.
+
+📍 롬복 (lombok) - 3개 리조트
+--------------------------------------------------------------------------------
+
+🏨 수다말라 - 4개 이미지
+  ❌ 수다말라 [0] 업로드 실패: Vercel Blob: No token found. Either configure the `BLOB_READ_WRITE_TOKEN` environment variable, or pass a `token` option to your calls.
+  ❌ 수다말라 [1] 업로드 실패: Vercel Blob: No token found. Either configure the `BLOB_READ_WRITE_TOKEN` environment variable, or pass a `token` option to your calls.
+  ❌ 수다말라 [2] 업로드 실패: Vercel Blob: No token found. Either configure the `BLOB_READ_WRITE_TOKEN` environment variable, or pass a `token` option to your calls.
+  ❌ 수다말라 [3] 업로드 실패: Vercel Blob: No token found. Either configure the `BLOB_READ_WRITE_TOKEN` environment variable, or pass a `token` option to your calls.
+
+🏨 옴박 - 7개 이미지
+  ❌ 옴박 [0] 업로드 실패: Vercel Blob: No token found. Either configure the `BLOB_READ_WRITE_TOKEN` environment variable, or pass a `token` option to your calls.
+  ❌ 옴박 [1] 업로드 실패: Vercel Blob: No token found. Either configure the `BLOB_READ_WRITE_TOKEN` environment variable, or pass a `token` option to your calls.
+  ❌ 옴박 [2] 업로드 실패: Vercel Blob: No token found. Either configure the `BLOB_READ_WRITE_TOKEN` environment variable, or pass a `token` option to your calls.
+  ❌ 옴박 [3] 업로드 실패: Vercel Blob: No token found. Either configure the `BLOB_READ_WRITE_TOKEN` environment variable, or pass a `token` option to your calls.
+  ❌ 옴박 [4] 업로드 실패: Vercel Blob: No token found. Either configure the `BLOB_READ_WRITE_TOKEN` environment variable, or pass a `token` option to your calls.
+  ❌ 옴박 [5] 업로드 실패: Vercel Blob: No token found. Either configure the `BLOB_READ_WRITE_TOKEN` environment variable, or pass a `token` option to your calls.
+  ❌ 옴박 [6] 업로드 실패: Vercel Blob: No token found. Either configure the `BLOB_READ_WRITE_TOKEN` environment variable, or pass a `token` option to your calls.
+
+🏨 푸리마스 - 4개 이미지
+  ❌ 푸리마스 [0] 업로드 실패: Vercel Blob: No token found. Either configure the `BLOB_READ_WRITE_TOKEN` environment variable, or pass a `token` option to your calls.
+  ❌ 푸리마스 [1] 업로드 실패: Vercel Blob: No token found. Either configure the `BLOB_READ_WRITE_TOKEN` environment variable, or pass a `token` option to your calls.
+  ❌ 푸리마스 [2] 업로드 실패: Vercel Blob: No token found. Either configure the `BLOB_READ_WRITE_TOKEN` environment variable, or pass a `token` option to your calls.
+  ❌ 푸리마스 [3] 업로드 실패: Vercel Blob: No token found. Either configure the `BLOB_READ_WRITE_TOKEN` environment variable, or pass a `token` option to your calls.
+
+📍 마우이 (maui) - 3개 리조트
+--------------------------------------------------------------------------------
+
+🏨 쉐라톤마우이 리조트 - 7개 이미지
+  ❌ 쉐라톤마우이 리조트 [0] 업로드 실패: Vercel Blob: No token found. Either configure the `BLOB_READ_WRITE_TOKEN` environment variable, or pass a `token` option to your calls.
+  ❌ 쉐라톤마우이 리조트 [1] 업로드 실패: Vercel Blob: No token found. Either configure the `BLOB_READ_WRITE_TOKEN` environment variable, or pass a `token` option to your calls.
+  ❌ 쉐라톤마우이 리조트 [2] 업로드 실패: Vercel Blob: No token found. Either configure the `BLOB_READ_WRITE_TOKEN` environment variable, or pass a `token` option to your calls.
+  ❌ 쉐라톤마우이 리조트 [3] 업로드 실패: Vercel Blob: No token found. Either configure the `BLOB_READ_WRITE_TOKEN` environment variable, or pass a `token` option to your calls.
+  ❌ 쉐라톤마우이 리조트 [4] 업로드 실패: Vercel Blob: No token found. Either configure the `BLOB_READ_WRITE_TOKEN` environment variable, or pass a `token` option to your calls.
+  ❌ 쉐라톤마우이 리조트 [5] 업로드 실패: Vercel Blob: No token found. Either configure the `BLOB_READ_WRITE_TOKEN` environment variable, or pass a `token` option to your calls.
+  ❌ 쉐라톤마우이 리조트 [6] 업로드 실패: Vercel Blob: No token found. Either configure the `BLOB_READ_WRITE_TOKEN` environment variable, or pass a `token` option to your calls.
+
+🏨 웨스틴마우이 리조트 - 7개 이미지
+  ❌ 웨스틴마우이 리조트 [0] 업로드 실패: Vercel Blob: No token found. Either configure the `BLOB_READ_WRITE_TOKEN` environment variable, or pass a `token` option to your calls.
+  ❌ 웨스틴마우이 리조트 [1] 업로드 실패: Vercel Blob: No token found. Either configure the `BLOB_READ_WRITE_TOKEN` environment variable, or pass a `token` option to your calls.
+  ❌ 웨스틴마우이 리조트 [2] 업로드 실패: Vercel Blob: No token found. Either configure the `BLOB_READ_WRITE_TOKEN` environment variable, or pass a `token` option to your calls.
+  ❌ 웨스틴마우이 리조트 [3] 업로드 실패: Vercel Blob: No token found. Either configure the `BLOB_READ_WRITE_TOKEN` environment variable, or pass a `token` option to your calls.
+  ❌ 웨스틴마우이 리조트 [4] 업로드 실패: Vercel Blob: No token found. Either configure the `BLOB_READ_WRITE_TOKEN` environment variable, or pass a `token` option to your calls.
+  ❌ 웨스틴마우이 리조트 [5] 업로드 실패: Vercel Blob: No token found. Either configure the `BLOB_READ_WRITE_TOKEN` environment variable, or pass a `token` option to your calls.
+  ❌ 웨스틴마우이 리조트 [6] 업로드 실패: Vercel Blob: No token found. Either configure the `BLOB_READ_WRITE_TOKEN` environment variable, or pass a `token` option to your calls.
+
+🏨 하얏트리젠시 마우이 - 6개 이미지
+  ❌ 하얏트리젠시 마우이 [0] 업로드 실패: Vercel Blob: No token found. Either configure the `BLOB_READ_WRITE_TOKEN` environment variable, or pass a `token` option to your calls.
+  ❌ 하얏트리젠시 마우이 [1] 업로드 실패: Vercel Blob: No token found. Either configure the `BLOB_READ_WRITE_TOKEN` environment variable, or pass a `token` option to your calls.
+  ❌ 하얏트리젠시 마우이 [2] 업로드 실패: Vercel Blob: No token found. Either configure the `BLOB_READ_WRITE_TOKEN` environment variable, or pass a `token` option to your calls.
+  ❌ 하얏트리젠시 마우이 [3] 업로드 실패: Vercel Blob: No token found. Either configure the `BLOB_READ_WRITE_TOKEN` environment variable, or pass a `token` option to your calls.
+  ❌ 하얏트리젠시 마우이 [4] 업로드 실패: Vercel Blob: No token found. Either configure the `BLOB_READ_WRITE_TOKEN` environment variable, or pass a `token` option to your calls.
+  ❌ 하얏트리젠시 마우이 [5] 업로드 실패: Vercel Blob: No token found. Either configure the `BLOB_READ_WRITE_TOKEN` environment variable, or pass a `token` option to your calls.
+
+📍 몰디브 (maldives) - 9개 리조트
+--------------------------------------------------------------------------------
+
+🏨 길리랑칸푸쉬 - 7개 이미지
+  ❌ 길리랑칸푸쉬 [0] 업로드 실패: Vercel Blob: No token found. Either configure the `BLOB_READ_WRITE_TOKEN` environment variable, or pass a `token` option to your calls.
+  ❌ 길리랑칸푸쉬 [1] 업로드 실패: Vercel Blob: No token found. Either configure the `BLOB_READ_WRITE_TOKEN` environment variable, or pass a `token` option to your calls.
+  ❌ 길리랑칸푸쉬 [2] 업로드 실패: Vercel Blob: No token found. Either configure the `BLOB_READ_WRITE_TOKEN` environment variable, or pass a `token` option to your calls.
+  ❌ 길리랑칸푸쉬 [3] 업로드 실패: Vercel Blob: No token found. Either configure the `BLOB_READ_WRITE_TOKEN` environment variable, or pass a `token` option to your calls.
+  ❌ 길리랑칸푸쉬 [4] 업로드 실패: Vercel Blob: No token found. Either configure the `BLOB_READ_WRITE_TOKEN` environment variable, or pass a `token` option to your calls.
+  ❌ 길리랑칸푸쉬 [5] 업로드 실패: Vercel Blob: No token found. Either configure the `BLOB_READ_WRITE_TOKEN` environment variable, or pass a `token` option to your calls.
+  ❌ 길리랑칸푸쉬 [6] 업로드 실패: Vercel Blob: No token found. Either configure the `BLOB_READ_WRITE_TOKEN` environment variable, or pass a `token` option to your calls.
+
+🏨 바두 - 7개 이미지
+  ❌ 바두 [0] 업로드 실패: Vercel Blob: No token found. Either configure the `BLOB_READ_WRITE_TOKEN` environment variable, or pass a `token` option to your calls.
+  ❌ 바두 [1] 업로드 실패: Vercel Blob: No token found. Either configure the `BLOB_READ_WRITE_TOKEN` environment variable, or pass a `token` option to your calls.
+  ❌ 바두 [2] 업로드 실패: Vercel Blob: No token found. Either configure the `BLOB_READ_WRITE_TOKEN` environment variable, or pass a `token` option to your calls.
+  ❌ 바두 [3] 업로드 실패: Vercel Blob: No token found. Either configure the `BLOB_READ_WRITE_TOKEN` environment variable, or pass a `token` option to your calls.
+  ❌ 바두 [4] 업로드 실패: Vercel Blob: No token found. Either configure the `BLOB_READ_WRITE_TOKEN` environment variable, or pass a `token` option to your calls.
+  ❌ 바두 [5] 업로드 실패: Vercel Blob: No token found. Either configure the `BLOB_READ_WRITE_TOKEN` environment variable, or pass a `token` option to your calls.
+  ❌ 바두 [6] 업로드 실패: Vercel Blob: No token found. Either configure the `BLOB_READ_WRITE_TOKEN` environment variable, or pass a `token` option to your calls.
+
+🏨 벨라사루 리조트 - 7개 이미지
+  ❌ 벨라사루 리조트 [0] 업로드 실패: Vercel Blob: No token found. Either configure the `BLOB_READ_WRITE_TOKEN` environment variable, or pass a `token` option to your calls.
+  ❌ 벨라사루 리조트 [1] 업로드 실패: Vercel Blob: No token found. Either configure the `BLOB_READ_WRITE_TOKEN` environment variable, or pass a `token` option to your calls.
+  ❌ 벨라사루 리조트 [2] 업로드 실패: Vercel Blob: No token found. Either configure the `BLOB_READ_WRITE_TOKEN` environment variable, or pass a `token` option to your calls.
+  ❌ 벨라사루 리조트 [3] 업로드 실패: Vercel Blob: No token found. Either configure the `BLOB_READ_WRITE_TOKEN` environment variable, or pass a `token` option to your calls.
+  ❌ 벨라사루 리조트 [4] 업로드 실패: Vercel Blob: No token found. Either configure the `BLOB_READ_WRITE_TOKEN` environment variable, or pass a `token` option to your calls.
+  ❌ 벨라사루 리조트 [5] 업로드 실패: Vercel Blob: No token found. Either configure the `BLOB_READ_WRITE_TOKEN` environment variable, or pass a `token` option to your calls.
+  ❌ 벨라사루 리조트 [6] 업로드 실패: Vercel Blob: No token found. Either configure the `BLOB_READ_WRITE_TOKEN` environment variable, or pass a `token` option to your calls.
+
+🏨 소바자니 - 3개 이미지
+  ❌ 소바자니 [0] 업로드 실패: Vercel Blob: No token found. Either configure the `BLOB_READ_WRITE_TOKEN` environment variable, or pass a `token` option to your calls.
+  ❌ 소바자니 [1] 업로드 실패: Vercel Blob: No token found. Either configure the `BLOB_READ_WRITE_TOKEN` environment variable, or pass a `token` option to your calls.
+  ❌ 소바자니 [2] 업로드 실패: Vercel Blob: No token found. Either configure the `BLOB_READ_WRITE_TOKEN` environment variable, or pass a `token` option to your calls.
+
+🏨 시나몬 돈벨리 - 7개 이미지
+  ❌ 시나몬 돈벨리 [0] 업로드 실패: Vercel Blob: No token found. Either configure the `BLOB_READ_WRITE_TOKEN` environment variable, or pass a `token` option to your calls.
+  ❌ 시나몬 돈벨리 [1] 업로드 실패: Vercel Blob: No token found. Either configure the `BLOB_READ_WRITE_TOKEN` environment variable, or pass a `token` option to your calls.
+  ❌ 시나몬 돈벨리 [2] 업로드 실패: Vercel Blob: No token found. Either configure the `BLOB_READ_WRITE_TOKEN` environment variable, or pass a `token` option to your calls.
+  ❌ 시나몬 돈벨리 [3] 업로드 실패: Vercel Blob: No token found. Either configure the `BLOB_READ_WRITE_TOKEN` environment variable, or pass a `token` option to your calls.
+  ❌ 시나몬 돈벨리 [4] 업로드 실패: Vercel Blob: No token found. Either configure the `BLOB_READ_WRITE_TOKEN` environment variable, or pass a `token` option to your calls.
+  ❌ 시나몬 돈벨리 [5] 업로드 실패: Vercel Blob: No token found. Either configure the `BLOB_READ_WRITE_TOKEN` environment variable, or pass a `token` option to your calls.
+  ❌ 시나몬 돈벨리 [6] 업로드 실패: Vercel Blob: No token found. Either configure the `BLOB_READ_WRITE_TOKEN` environment variable, or pass a `token` option to your calls.
+
+🏨 아다아란 프레스티지 오션빌라 & 후두란푸시 - 7개 이미지
+  ❌ 아다아란 프레스티지 오션빌라 & 후두란푸시 [0] 업로드 실패: Vercel Blob: No token found. Either configure the `BLOB_READ_WRITE_TOKEN` environment variable, or pass a `token` option to your calls.
+  ❌ 아다아란 프레스티지 오션빌라 & 후두란푸시 [1] 업로드 실패: Vercel Blob: No token found. Either configure the `BLOB_READ_WRITE_TOKEN` environment variable, or pass a `token` option to your calls.
+  ❌ 아다아란 프레스티지 오션빌라 & 후두란푸시 [2] 업로드 실패: Vercel Blob: No token found. Either configure the `BLOB_READ_WRITE_TOKEN` environment variable, or pass a `token` option to your calls.
+  ❌ 아다아란 프레스티지 오션빌라 & 후두란푸시 [3] 업로드 실패: Vercel Blob: No token found. Either configure the `BLOB_READ_WRITE_TOKEN` environment variable, or pass a `token` option to your calls.
+  ❌ 아다아란 프레스티지 오션빌라 & 후두란푸시 [4] 업로드 실패: Vercel Blob: No token found. Either configure the `BLOB_READ_WRITE_TOKEN` environment variable, or pass a `token` option to your calls.
+  ❌ 아다아란 프레스티지 오션빌라 & 후두란푸시 [5] 업로드 실패: Vercel Blob: No token found. Either configure the `BLOB_READ_WRITE_TOKEN` environment variable, or pass a `token` option to your calls.
+  ❌ 아다아란 프레스티지 오션빌라 & 후두란푸시 [6] 업로드 실패: Vercel Blob: No token found. Either configure the `BLOB_READ_WRITE_TOKEN` environment variable, or pass a `token` option to your calls.
+
+🏨 오블루 - 7개 이미지
+  ❌ 오블루 [0] 업로드 실패: Vercel Blob: No token found. Either configure the `BLOB_READ_WRITE_TOKEN` environment variable, or pass a `token` option to your calls.
+  ❌ 오블루 [1] 업로드 실패: Vercel Blob: No token found. Either configure the `BLOB_READ_WRITE_TOKEN` environment variable, or pass a `token` option to your calls.
+  ❌ 오블루 [2] 업로드 실패: Vercel Blob: No token found. Either configure the `BLOB_READ_WRITE_TOKEN` environment variable, or pass a `token` option to your calls.
+  ❌ 오블루 [3] 업로드 실패: Vercel Blob: No token found. Either configure the `BLOB_READ_WRITE_TOKEN` environment variable, or pass a `token` option to your calls.
+  ❌ 오블루 [4] 업로드 실패: Vercel Blob: No token found. Either configure the `BLOB_READ_WRITE_TOKEN` environment variable, or pass a `token` option to your calls.
+  ❌ 오블루 [5] 업로드 실패: Vercel Blob: No token found. Either configure the `BLOB_READ_WRITE_TOKEN` environment variable, or pass a `token` option to your calls.
+  ❌ 오블루 [6] 업로드 실패: Vercel Blob: No token found. Either configure the `BLOB_READ_WRITE_TOKEN` environment variable, or pass a `token` option to your calls.
+
+🏨 칸두마 - 7개 이미지
+  ❌ 칸두마 [0] 업로드 실패: Vercel Blob: No token found. Either configure the `BLOB_READ_WRITE_TOKEN` environment variable, or pass a `token` option to your calls.
+  ❌ 칸두마 [1] 업로드 실패: Vercel Blob: No token found. Either configure the `BLOB_READ_WRITE_TOKEN` environment variable, or pass a `token` option to your calls.
+  ❌ 칸두마 [2] 업로드 실패: Vercel Blob: No token found. Either configure the `BLOB_READ_WRITE_TOKEN` environment variable, or pass a `token` option to your calls.
+  ❌ 칸두마 [3] 업로드 실패: Vercel Blob: No token found. Either configure the `BLOB_READ_WRITE_TOKEN` environment variable, or pass a `token` option to your calls.
+  ❌ 칸두마 [4] 업로드 실패: Vercel Blob: No token found. Either configure the `BLOB_READ_WRITE_TOKEN` environment variable, or pass a `token` option to your calls.
+  ❌ 칸두마 [5] 업로드 실패: Vercel Blob: No token found. Either configure the `BLOB_READ_WRITE_TOKEN` environment variable, or pass a `token` option to your calls.
+  ❌ 칸두마 [6] 업로드 실패: Vercel Blob: No token found. Either configure the `BLOB_READ_WRITE_TOKEN` environment variable, or pass a `token` option to your calls.
+
+🏨 코코팜 보두히티 - 7개 이미지
+  ❌ 코코팜 보두히티 [0] 업로드 실패: Vercel Blob: No token found. Either configure the `BLOB_READ_WRITE_TOKEN` environment variable, or pass a `token` option to your calls.
+  ❌ 코코팜 보두히티 [1] 업로드 실패: Vercel Blob: No token found. Either configure the `BLOB_READ_WRITE_TOKEN` environment variable, or pass a `token` option to your calls.
+  ❌ 코코팜 보두히티 [2] 업로드 실패: Vercel Blob: No token found. Either configure the `BLOB_READ_WRITE_TOKEN` environment variable, or pass a `token` option to your calls.
+  ❌ 코코팜 보두히티 [3] 업로드 실패: Vercel Blob: No token found. Either configure the `BLOB_READ_WRITE_TOKEN` environment variable, or pass a `token` option to your calls.
+  ❌ 코코팜 보두히티 [4] 업로드 실패: Vercel Blob: No token found. Either configure the `BLOB_READ_WRITE_TOKEN` environment variable, or pass a `token` option to your calls.
+  ❌ 코코팜 보두히티 [5] 업로드 실패: Vercel Blob: No token found. Either configure the `BLOB_READ_WRITE_TOKEN` environment variable, or pass a `token` option to your calls.
+  ❌ 코코팜 보두히티 [6] 업로드 실패: Vercel Blob: No token found. Either configure the `BLOB_READ_WRITE_TOKEN` environment variable, or pass a `token` option to your calls.
+
+📍 발리 (bali) - 4개 리조트
+--------------------------------------------------------------------------------
+
+🏨 반얀트리 - 7개 이미지
+  ❌ 반얀트리 [0] 업로드 실패: Vercel Blob: No token found. Either configure the `BLOB_READ_WRITE_TOKEN` environment variable, or pass a `token` option to your calls.
+  ❌ 반얀트리 [1] 업로드 실패: Vercel Blob: No token found. Either configure the `BLOB_READ_WRITE_TOKEN` environment variable, or pass a `token` option to your calls.
+  ❌ 반얀트리 [2] 업로드 실패: Vercel Blob: No token found. Either configure the `BLOB_READ_WRITE_TOKEN` environment variable, or pass a `token` option to your calls.
+  ❌ 반얀트리 [3] 업로드 실패: Vercel Blob: No token found. Either configure the `BLOB_READ_WRITE_TOKEN` environment variable, or pass a `token` option to your calls.
+  ❌ 반얀트리 [4] 업로드 실패: Vercel Blob: No token found. Either configure the `BLOB_READ_WRITE_TOKEN` environment variable, or pass a `token` option to your calls.
+  ❌ 반얀트리 [5] 업로드 실패: Vercel Blob: No token found. Either configure the `BLOB_READ_WRITE_TOKEN` environment variable, or pass a `token` option to your calls.
+  ❌ 반얀트리 [6] 업로드 실패: Vercel Blob: No token found. Either configure the `BLOB_READ_WRITE_TOKEN` environment variable, or pass a `token` option to your calls.
+
+🏨 아야나 - 7개 이미지
+  ❌ 아야나 [0] 업로드 실패: Vercel Blob: No token found. Either configure the `BLOB_READ_WRITE_TOKEN` environment variable, or pass a `token` option to your calls.
+  ❌ 아야나 [1] 업로드 실패: Vercel Blob: No token found. Either configure the `BLOB_READ_WRITE_TOKEN` environment variable, or pass a `token` option to your calls.
+  ❌ 아야나 [2] 업로드 실패: Vercel Blob: No token found. Either configure the `BLOB_READ_WRITE_TOKEN` environment variable, or pass a `token` option to your calls.
+  ❌ 아야나 [3] 업로드 실패: Vercel Blob: No token found. Either configure the `BLOB_READ_WRITE_TOKEN` environment variable, or pass a `token` option to your calls.
+  ❌ 아야나 [4] 업로드 실패: Vercel Blob: No token found. Either configure the `BLOB_READ_WRITE_TOKEN` environment variable, or pass a `token` option to your calls.
+  ❌ 아야나 [5] 업로드 실패: Vercel Blob: No token found. Either configure the `BLOB_READ_WRITE_TOKEN` environment variable, or pass a `token` option to your calls.
+  ❌ 아야나 [6] 업로드 실패: Vercel Blob: No token found. Either configure the `BLOB_READ_WRITE_TOKEN` environment variable, or pass a `token` option to your calls.
+
+🏨 알란드라 짐바란 - 7개 이미지
+  ❌ 알란드라 짐바란 [0] 업로드 실패: Vercel Blob: No token found. Either configure the `BLOB_READ_WRITE_TOKEN` environment variable, or pass a `token` option to your calls.
+  ❌ 알란드라 짐바란 [1] 업로드 실패: Vercel Blob: No token found. Either configure the `BLOB_READ_WRITE_TOKEN` environment variable, or pass a `token` option to your calls.
+  ❌ 알란드라 짐바란 [2] 업로드 실패: Vercel Blob: No token found. Either configure the `BLOB_READ_WRITE_TOKEN` environment variable, or pass a `token` option to your calls.
+  ❌ 알란드라 짐바란 [3] 업로드 실패: Vercel Blob: No token found. Either configure the `BLOB_READ_WRITE_TOKEN` environment variable, or pass a `token` option to your calls.
+  ❌ 알란드라 짐바란 [4] 업로드 실패: Vercel Blob: No token found. Either configure the `BLOB_READ_WRITE_TOKEN` environment variable, or pass a `token` option to your calls.
+  ❌ 알란드라 짐바란 [5] 업로드 실패: Vercel Blob: No token found. Either configure the `BLOB_READ_WRITE_TOKEN` environment variable, or pass a `token` option to your calls.
+  ❌ 알란드라 짐바란 [6] 업로드 실패: Vercel Blob: No token found. Either configure the `BLOB_READ_WRITE_TOKEN` environment variable, or pass a `token` option to your calls.
+
+🏨 포시즌 - 7개 이미지
+  ❌ 포시즌 [0] 업로드 실패: Vercel Blob: No token found. Either configure the `BLOB_READ_WRITE_TOKEN` environment variable, or pass a `token` option to your calls.
+  ❌ 포시즌 [1] 업로드 실패: Vercel Blob: No token found. Either configure the `BLOB_READ_WRITE_TOKEN` environment variable, or pass a `token` option to your calls.
+  ❌ 포시즌 [2] 업로드 실패: Vercel Blob: No token found. Either configure the `BLOB_READ_WRITE_TOKEN` environment variable, or pass a `token` option to your calls.
+  ❌ 포시즌 [3] 업로드 실패: Vercel Blob: No token found. Either configure the `BLOB_READ_WRITE_TOKEN` environment variable, or pass a `token` option to your calls.
+  ❌ 포시즌 [4] 업로드 실패: Vercel Blob: No token found. Either configure the `BLOB_READ_WRITE_TOKEN` environment variable, or pass a `token` option to your calls.
+  ❌ 포시즌 [5] 업로드 실패: Vercel Blob: No token found. Either configure the `BLOB_READ_WRITE_TOKEN` environment variable, or pass a `token` option to your calls.
+  ❌ 포시즌 [6] 업로드 실패: Vercel Blob: No token found. Either configure the `BLOB_READ_WRITE_TOKEN` environment variable, or pass a `token` option to your calls.
+
+📍 빅아일랜드 (big-island) - 1개 리조트
+--------------------------------------------------------------------------------
+
+🏨 쉐라톤코나 - 7개 이미지
+  ❌ 쉐라톤코나 [0] 업로드 실패: Vercel Blob: No token found. Either configure the `BLOB_READ_WRITE_TOKEN` environment variable, or pass a `token` option to your calls.
+  ❌ 쉐라톤코나 [1] 업로드 실패: Vercel Blob: No token found. Either configure the `BLOB_READ_WRITE_TOKEN` environment variable, or pass a `token` option to your calls.
+  ❌ 쉐라톤코나 [2] 업로드 실패: Vercel Blob: No token found. Either configure the `BLOB_READ_WRITE_TOKEN` environment variable, or pass a `token` option to your calls.
+  ❌ 쉐라톤코나 [3] 업로드 실패: Vercel Blob: No token found. Either configure the `BLOB_READ_WRITE_TOKEN` environment variable, or pass a `token` option to your calls.
+  ❌ 쉐라톤코나 [4] 업로드 실패: Vercel Blob: No token found. Either configure the `BLOB_READ_WRITE_TOKEN` environment variable, or pass a `token` option to your calls.
+  ❌ 쉐라톤코나 [5] 업로드 실패: Vercel Blob: No token found. Either configure the `BLOB_READ_WRITE_TOKEN` environment variable, or pass a `token` option to your calls.
+  ❌ 쉐라톤코나 [6] 업로드 실패: Vercel Blob: No token found. Either configure the `BLOB_READ_WRITE_TOKEN` environment variable, or pass a `token` option to your calls.
+
+📍 오아후 (oahu) - 4개 리조트
+--------------------------------------------------------------------------------
+
+🏨 쉐라톤 와이키키 - 7개 이미지
+  ❌ 쉐라톤 와이키키 [0] 업로드 실패: Vercel Blob: No token found. Either configure the `BLOB_READ_WRITE_TOKEN` environment variable, or pass a `token` option to your calls.
+  ❌ 쉐라톤 와이키키 [1] 업로드 실패: Vercel Blob: No token found. Either configure the `BLOB_READ_WRITE_TOKEN` environment variable, or pass a `token` option to your calls.
+  ❌ 쉐라톤 와이키키 [2] 업로드 실패: Vercel Blob: No token found. Either configure the `BLOB_READ_WRITE_TOKEN` environment variable, or pass a `token` option to your calls.
+  ❌ 쉐라톤 와이키키 [3] 업로드 실패: Vercel Blob: No token found. Either configure the `BLOB_READ_WRITE_TOKEN` environment variable, or pass a `token` option to your calls.
+  ❌ 쉐라톤 와이키키 [4] 업로드 실패: Vercel Blob: No token found. Either configure the `BLOB_READ_WRITE_TOKEN` environment variable, or pass a `token` option to your calls.
+  ❌ 쉐라톤 와이키키 [5] 업로드 실패: Vercel Blob: No token found. Either configure the `BLOB_READ_WRITE_TOKEN` environment variable, or pass a `token` option to your calls.
+  ❌ 쉐라톤 와이키키 [6] 업로드 실패: Vercel Blob: No token found. Either configure the `BLOB_READ_WRITE_TOKEN` environment variable, or pass a `token` option to your calls.
+
+🏨 쉐라톤 프린세스 카이울라니 - 7개 이미지
+  ❌ 쉐라톤 프린세스 카이울라니 [0] 업로드 실패: Vercel Blob: No token found. Either configure the `BLOB_READ_WRITE_TOKEN` environment variable, or pass a `token` option to your calls.
+  ❌ 쉐라톤 프린세스 카이울라니 [1] 업로드 실패: Vercel Blob: No token found. Either configure the `BLOB_READ_WRITE_TOKEN` environment variable, or pass a `token` option to your calls.
+  ❌ 쉐라톤 프린세스 카이울라니 [2] 업로드 실패: Vercel Blob: No token found. Either configure the `BLOB_READ_WRITE_TOKEN` environment variable, or pass a `token` option to your calls.
+  ❌ 쉐라톤 프린세스 카이울라니 [3] 업로드 실패: Vercel Blob: No token found. Either configure the `BLOB_READ_WRITE_TOKEN` environment variable, or pass a `token` option to your calls.
+  ❌ 쉐라톤 프린세스 카이울라니 [4] 업로드 실패: Vercel Blob: No token found. Either configure the `BLOB_READ_WRITE_TOKEN` environment variable, or pass a `token` option to your calls.
+  ❌ 쉐라톤 프린세스 카이울라니 [5] 업로드 실패: Vercel Blob: No token found. Either configure the `BLOB_READ_WRITE_TOKEN` environment variable, or pass a `token` option to your calls.
+  ❌ 쉐라톤 프린세스 카이울라니 [6] 업로드 실패: Vercel Blob: No token found. Either configure the `BLOB_READ_WRITE_TOKEN` environment variable, or pass a `token` option to your calls.
+
+🏨 트럼프 - 14개 이미지
+  ❌ 트럼프 [0] 업로드 실패: Vercel Blob: No token found. Either configure the `BLOB_READ_WRITE_TOKEN` environment variable, or pass a `token` option to your calls.
+  ❌ 트럼프 [1] 업로드 실패: Vercel Blob: No token found. Either configure the `BLOB_READ_WRITE_TOKEN` environment variable, or pass a `token` option to your calls.
+  ❌ 트럼프 [2] 업로드 실패: Vercel Blob: No token found. Either configure the `BLOB_READ_WRITE_TOKEN` environment variable, or pass a `token` option to your calls.
+  ❌ 트럼프 [3] 업로드 실패: Vercel Blob: No token found. Either configure the `BLOB_READ_WRITE_TOKEN` environment variable, or pass a `token` option to your calls.
+  ❌ 트럼프 [4] 업로드 실패: Vercel Blob: No token found. Either configure the `BLOB_READ_WRITE_TOKEN` environment variable, or pass a `token` option to your calls.
+  ❌ 트럼프 [5] 업로드 실패: Vercel Blob: No token found. Either configure the `BLOB_READ_WRITE_TOKEN` environment variable, or pass a `token` option to your calls.
+  ❌ 트럼프 [6] 업로드 실패: Vercel Blob: No token found. Either configure the `BLOB_READ_WRITE_TOKEN` environment variable, or pass a `token` option to your calls.
+  ❌ 트럼프 [7] 업로드 실패: Vercel Blob: No token found. Either configure the `BLOB_READ_WRITE_TOKEN` environment variable, or pass a `token` option to your calls.
+  ❌ 트럼프 [8] 업로드 실패: Vercel Blob: No token found. Either configure the `BLOB_READ_WRITE_TOKEN` environment variable, or pass a `token` option to your calls.
+  ❌ 트럼프 [9] 업로드 실패: Vercel Blob: No token found. Either configure the `BLOB_READ_WRITE_TOKEN` environment variable, or pass a `token` option to your calls.
+  ❌ 트럼프 [10] 업로드 실패: Vercel Blob: No token found. Either configure the `BLOB_READ_WRITE_TOKEN` environment variable, or pass a `token` option to your calls.
+  ❌ 트럼프 [11] 업로드 실패: Vercel Blob: No token found. Either configure the `BLOB_READ_WRITE_TOKEN` environment variable, or pass a `token` option to your calls.
+  ❌ 트럼프 [12] 업로드 실패: Vercel Blob: No token found. Either configure the `BLOB_READ_WRITE_TOKEN` environment variable, or pass a `token` option to your calls.
+  ❌ 트럼프 [13] 업로드 실패: Vercel Blob: No token found. Either configure the `BLOB_READ_WRITE_TOKEN` environment variable, or pass a `token` option to your calls.
+
+🏨 힐튼 하와이언 빌리지 - 7개 이미지
+  ❌ 힐튼 하와이언 빌리지 [0] 업로드 실패: Vercel Blob: No token found. Either configure the `BLOB_READ_WRITE_TOKEN` environment variable, or pass a `token` option to your calls.
+  ❌ 힐튼 하와이언 빌리지 [1] 업로드 실패: Vercel Blob: No token found. Either configure the `BLOB_READ_WRITE_TOKEN` environment variable, or pass a `token` option to your calls.
+  ❌ 힐튼 하와이언 빌리지 [2] 업로드 실패: Vercel Blob: No token found. Either configure the `BLOB_READ_WRITE_TOKEN` environment variable, or pass a `token` option to your calls.
+  ❌ 힐튼 하와이언 빌리지 [3] 업로드 실패: Vercel Blob: No token found. Either configure the `BLOB_READ_WRITE_TOKEN` environment variable, or pass a `token` option to your calls.
+  ❌ 힐튼 하와이언 빌리지 [4] 업로드 실패: Vercel Blob: No token found. Either configure the `BLOB_READ_WRITE_TOKEN` environment variable, or pass a `token` option to your calls.
+  ❌ 힐튼 하와이언 빌리지 [5] 업로드 실패: Vercel Blob: No token found. Either configure the `BLOB_READ_WRITE_TOKEN` environment variable, or pass a `token` option to your calls.
+  ❌ 힐튼 하와이언 빌리지 [6] 업로드 실패: Vercel Blob: No token found. Either configure the `BLOB_READ_WRITE_TOKEN` environment variable, or pass a `token` option to your calls.
+
+📍 카오락 (khao-lak) - 7개 리조트
+--------------------------------------------------------------------------------
+
+🏨 JW - 4개 이미지
+  ❌ JW [0] 업로드 실패: Vercel Blob: No token found. Either configure the `BLOB_READ_WRITE_TOKEN` environment variable, or pass a `token` option to your calls.
+  ❌ JW [1] 업로드 실패: Vercel Blob: No token found. Either configure the `BLOB_READ_WRITE_TOKEN` environment variable, or pass a `token` option to your calls.
+  ❌ JW [2] 업로드 실패: Vercel Blob: No token found. Either configure the `BLOB_READ_WRITE_TOKEN` environment variable, or pass a `token` option to your calls.
+  ❌ JW [3] 업로드 실패: Vercel Blob: No token found. Either configure the `BLOB_READ_WRITE_TOKEN` environment variable, or pass a `token` option to your calls.
+
+🏨 라벨라 - 7개 이미지
+  ❌ 라벨라 [0] 업로드 실패: Vercel Blob: No token found. Either configure the `BLOB_READ_WRITE_TOKEN` environment variable, or pass a `token` option to your calls.
+  ❌ 라벨라 [1] 업로드 실패: Vercel Blob: No token found. Either configure the `BLOB_READ_WRITE_TOKEN` environment variable, or pass a `token` option to your calls.
+  ❌ 라벨라 [2] 업로드 실패: Vercel Blob: No token found. Either configure the `BLOB_READ_WRITE_TOKEN` environment variable, or pass a `token` option to your calls.
+  ❌ 라벨라 [3] 업로드 실패: Vercel Blob: No token found. Either configure the `BLOB_READ_WRITE_TOKEN` environment variable, or pass a `token` option to your calls.
+  ❌ 라벨라 [4] 업로드 실패: Vercel Blob: No token found. Either configure the `BLOB_READ_WRITE_TOKEN` environment variable, or pass a `token` option to your calls.
+  ❌ 라벨라 [5] 업로드 실패: Vercel Blob: No token found. Either configure the `BLOB_READ_WRITE_TOKEN` environment variable, or pass a `token` option to your calls.
+  ❌ 라벨라 [6] 업로드 실패: Vercel Blob: No token found. Either configure the `BLOB_READ_WRITE_TOKEN` environment variable, or pass a `token` option to your calls.
+
+🏨 로빈슨 - 7개 이미지
+  ❌ 로빈슨 [0] 업로드 실패: Vercel Blob: No token found. Either configure the `BLOB_READ_WRITE_TOKEN` environment variable, or pass a `token` option to your calls.
+  ❌ 로빈슨 [1] 업로드 실패: Vercel Blob: No token found. Either configure the `BLOB_READ_WRITE_TOKEN` environment variable, or pass a `token` option to your calls.
+  ❌ 로빈슨 [2] 업로드 실패: Vercel Blob: No token found. Either configure the `BLOB_READ_WRITE_TOKEN` environment variable, or pass a `token` option to your calls.
+  ❌ 로빈슨 [3] 업로드 실패: Vercel Blob: No token found. Either configure the `BLOB_READ_WRITE_TOKEN` environment variable, or pass a `token` option to your calls.
+  ❌ 로빈슨 [4] 업로드 실패: Vercel Blob: No token found. Either configure the `BLOB_READ_WRITE_TOKEN` environment variable, or pass a `token` option to your calls.
+  ❌ 로빈슨 [5] 업로드 실패: Vercel Blob: No token found. Either configure the `BLOB_READ_WRITE_TOKEN` environment variable, or pass a `token` option to your calls.
+  ❌ 로빈슨 [6] 업로드 실패: Vercel Blob: No token found. Either configure the `BLOB_READ_WRITE_TOKEN` environment variable, or pass a `token` option to your calls.
+
+🏨 마이카오락 - 7개 이미지
+  ❌ 마이카오락 [0] 업로드 실패: Vercel Blob: No token found. Either configure the `BLOB_READ_WRITE_TOKEN` environment variable, or pass a `token` option to your calls.
+  ❌ 마이카오락 [1] 업로드 실패: Vercel Blob: No token found. Either configure the `BLOB_READ_WRITE_TOKEN` environment variable, or pass a `token` option to your calls.
+  ❌ 마이카오락 [2] 업로드 실패: Vercel Blob: No token found. Either configure the `BLOB_READ_WRITE_TOKEN` environment variable, or pass a `token` option to your calls.
+  ❌ 마이카오락 [3] 업로드 실패: Vercel Blob: No token found. Either configure the `BLOB_READ_WRITE_TOKEN` environment variable, or pass a `token` option to your calls.
+  ❌ 마이카오락 [4] 업로드 실패: Vercel Blob: No token found. Either configure the `BLOB_READ_WRITE_TOKEN` environment variable, or pass a `token` option to your calls.
+  ❌ 마이카오락 [5] 업로드 실패: Vercel Blob: No token found. Either configure the `BLOB_READ_WRITE_TOKEN` environment variable, or pass a `token` option to your calls.
+  ❌ 마이카오락 [6] 업로드 실패: Vercel Blob: No token found. Either configure the `BLOB_READ_WRITE_TOKEN` environment variable, or pass a `token` option to your calls.
+
+🏨 비욘드 - 7개 이미지
+  ❌ 비욘드 [0] 업로드 실패: Vercel Blob: No token found. Either configure the `BLOB_READ_WRITE_TOKEN` environment variable, or pass a `token` option to your calls.
+  ❌ 비욘드 [1] 업로드 실패: Vercel Blob: No token found. Either configure the `BLOB_READ_WRITE_TOKEN` environment variable, or pass a `token` option to your calls.
+  ❌ 비욘드 [2] 업로드 실패: Vercel Blob: No token found. Either configure the `BLOB_READ_WRITE_TOKEN` environment variable, or pass a `token` option to your calls.
+  ❌ 비욘드 [3] 업로드 실패: Vercel Blob: No token found. Either configure the `BLOB_READ_WRITE_TOKEN` environment variable, or pass a `token` option to your calls.
+  ❌ 비욘드 [4] 업로드 실패: Vercel Blob: No token found. Either configure the `BLOB_READ_WRITE_TOKEN` environment variable, or pass a `token` option to your calls.
+  ❌ 비욘드 [5] 업로드 실패: Vercel Blob: No token found. Either configure the `BLOB_READ_WRITE_TOKEN` environment variable, or pass a `token` option to your calls.
+  ❌ 비욘드 [6] 업로드 실패: Vercel Blob: No token found. Either configure the `BLOB_READ_WRITE_TOKEN` environment variable, or pass a `token` option to your calls.
+
+🏨 센마이리조트 - 8개 이미지
+  ❌ 센마이리조트 [0] 업로드 실패: Vercel Blob: No token found. Either configure the `BLOB_READ_WRITE_TOKEN` environment variable, or pass a `token` option to your calls.
+  ❌ 센마이리조트 [1] 업로드 실패: Vercel Blob: No token found. Either configure the `BLOB_READ_WRITE_TOKEN` environment variable, or pass a `token` option to your calls.
+  ❌ 센마이리조트 [2] 업로드 실패: Vercel Blob: No token found. Either configure the `BLOB_READ_WRITE_TOKEN` environment variable, or pass a `token` option to your calls.
+  ❌ 센마이리조트 [3] 업로드 실패: Vercel Blob: No token found. Either configure the `BLOB_READ_WRITE_TOKEN` environment variable, or pass a `token` option to your calls.
+  ❌ 센마이리조트 [4] 업로드 실패: Vercel Blob: No token found. Either configure the `BLOB_READ_WRITE_TOKEN` environment variable, or pass a `token` option to your calls.
+  ❌ 센마이리조트 [5] 업로드 실패: Vercel Blob: No token found. Either configure the `BLOB_READ_WRITE_TOKEN` environment variable, or pass a `token` option to your calls.
+  ❌ 센마이리조트 [6] 업로드 실패: Vercel Blob: No token found. Either configure the `BLOB_READ_WRITE_TOKEN` environment variable, or pass a `token` option to your calls.
+  ❌ 센마이리조트 [7] 업로드 실패: Vercel Blob: No token found. Either configure the `BLOB_READ_WRITE_TOKEN` environment variable, or pass a `token` option to your calls.
+
+🏨 에덴비치 - 6개 이미지
+  ❌ 에덴비치 [0] 업로드 실패: Vercel Blob: No token found. Either configure the `BLOB_READ_WRITE_TOKEN` environment variable, or pass a `token` option to your calls.
+  ❌ 에덴비치 [1] 업로드 실패: Vercel Blob: No token found. Either configure the `BLOB_READ_WRITE_TOKEN` environment variable, or pass a `token` option to your calls.
+  ❌ 에덴비치 [2] 업로드 실패: Vercel Blob: No token found. Either configure the `BLOB_READ_WRITE_TOKEN` environment variable, or pass a `token` option to your calls.
+  ❌ 에덴비치 [3] 업로드 실패: Vercel Blob: No token found. Either configure the `BLOB_READ_WRITE_TOKEN` environment variable, or pass a `token` option to your calls.
+  ❌ 에덴비치 [4] 업로드 실패: Vercel Blob: No token found. Either configure the `BLOB_READ_WRITE_TOKEN` environment variable, or pass a `token` option to your calls.
+  ❌ 에덴비치 [5] 업로드 실패: Vercel Blob: No token found. Either configure the `BLOB_READ_WRITE_TOKEN` environment variable, or pass a `token` option to your calls.
+
+📍 칸쿤 (cancun) - 5개 리조트
+--------------------------------------------------------------------------------
+
+🏨 멜로디메이커 - 7개 이미지
+  ❌ 멜로디메이커 [0] 업로드 실패: Vercel Blob: No token found. Either configure the `BLOB_READ_WRITE_TOKEN` environment variable, or pass a `token` option to your calls.
+  ❌ 멜로디메이커 [1] 업로드 실패: Vercel Blob: No token found. Either configure the `BLOB_READ_WRITE_TOKEN` environment variable, or pass a `token` option to your calls.
+  ❌ 멜로디메이커 [2] 업로드 실패: Vercel Blob: No token found. Either configure the `BLOB_READ_WRITE_TOKEN` environment variable, or pass a `token` option to your calls.
+  ❌ 멜로디메이커 [3] 업로드 실패: Vercel Blob: No token found. Either configure the `BLOB_READ_WRITE_TOKEN` environment variable, or pass a `token` option to your calls.
+  ❌ 멜로디메이커 [4] 업로드 실패: Vercel Blob: No token found. Either configure the `BLOB_READ_WRITE_TOKEN` environment variable, or pass a `token` option to your calls.
+  ❌ 멜로디메이커 [5] 업로드 실패: Vercel Blob: No token found. Either configure the `BLOB_READ_WRITE_TOKEN` environment variable, or pass a `token` option to your calls.
+  ❌ 멜로디메이커 [6] 업로드 실패: Vercel Blob: No token found. Either configure the `BLOB_READ_WRITE_TOKEN` environment variable, or pass a `token` option to your calls.
+
+🏨 선 팰리스 - 3개 이미지
+  ❌ 선 팰리스 [0] 업로드 실패: Vercel Blob: No token found. Either configure the `BLOB_READ_WRITE_TOKEN` environment variable, or pass a `token` option to your calls.
+  ❌ 선 팰리스 [1] 업로드 실패: Vercel Blob: No token found. Either configure the `BLOB_READ_WRITE_TOKEN` environment variable, or pass a `token` option to your calls.
+  ❌ 선 팰리스 [2] 업로드 실패: Vercel Blob: No token found. Either configure the `BLOB_READ_WRITE_TOKEN` environment variable, or pass a `token` option to your calls.
+
+🏨 시크릿더바인 - 7개 이미지
+  ❌ 시크릿더바인 [0] 업로드 실패: Vercel Blob: No token found. Either configure the `BLOB_READ_WRITE_TOKEN` environment variable, or pass a `token` option to your calls.
+  ❌ 시크릿더바인 [1] 업로드 실패: Vercel Blob: No token found. Either configure the `BLOB_READ_WRITE_TOKEN` environment variable, or pass a `token` option to your calls.
+  ❌ 시크릿더바인 [2] 업로드 실패: Vercel Blob: No token found. Either configure the `BLOB_READ_WRITE_TOKEN` environment variable, or pass a `token` option to your calls.
+  ❌ 시크릿더바인 [3] 업로드 실패: Vercel Blob: No token found. Either configure the `BLOB_READ_WRITE_TOKEN` environment variable, or pass a `token` option to your calls.
+  ❌ 시크릿더바인 [4] 업로드 실패: Vercel Blob: No token found. Either configure the `BLOB_READ_WRITE_TOKEN` environment variable, or pass a `token` option to your calls.
+  ❌ 시크릿더바인 [5] 업로드 실패: Vercel Blob: No token found. Either configure the `BLOB_READ_WRITE_TOKEN` environment variable, or pass a `token` option to your calls.
+  ❌ 시크릿더바인 [6] 업로드 실패: Vercel Blob: No token found. Either configure the `BLOB_READ_WRITE_TOKEN` environment variable, or pass a `token` option to your calls.
+
+🏨 파라디수스 칸쿤 - 7개 이미지
+  ❌ 파라디수스 칸쿤 [0] 업로드 실패: Vercel Blob: No token found. Either configure the `BLOB_READ_WRITE_TOKEN` environment variable, or pass a `token` option to your calls.
+  ❌ 파라디수스 칸쿤 [1] 업로드 실패: Vercel Blob: No token found. Either configure the `BLOB_READ_WRITE_TOKEN` environment variable, or pass a `token` option to your calls.
+  ❌ 파라디수스 칸쿤 [2] 업로드 실패: Vercel Blob: No token found. Either configure the `BLOB_READ_WRITE_TOKEN` environment variable, or pass a `token` option to your calls.
+  ❌ 파라디수스 칸쿤 [3] 업로드 실패: Vercel Blob: No token found. Either configure the `BLOB_READ_WRITE_TOKEN` environment variable, or pass a `token` option to your calls.
+  ❌ 파라디수스 칸쿤 [4] 업로드 실패: Vercel Blob: No token found. Either configure the `BLOB_READ_WRITE_TOKEN` environment variable, or pass a `token` option to your calls.
+  ❌ 파라디수스 칸쿤 [5] 업로드 실패: Vercel Blob: No token found. Either configure the `BLOB_READ_WRITE_TOKEN` environment variable, or pass a `token` option to your calls.
+  ❌ 파라디수스 칸쿤 [6] 업로드 실패: Vercel Blob: No token found. Either configure the `BLOB_READ_WRITE_TOKEN` environment variable, or pass a `token` option to your calls.
+
+🏨 하얏트지바 - 7개 이미지
+  ❌ 하얏트지바 [0] 업로드 실패: Vercel Blob: No token found. Either configure the `BLOB_READ_WRITE_TOKEN` environment variable, or pass a `token` option to your calls.
+  ❌ 하얏트지바 [1] 업로드 실패: Vercel Blob: No token found. Either configure the `BLOB_READ_WRITE_TOKEN` environment variable, or pass a `token` option to your calls.
+  ❌ 하얏트지바 [2] 업로드 실패: Vercel Blob: No token found. Either configure the `BLOB_READ_WRITE_TOKEN` environment variable, or pass a `token` option to your calls.
+  ❌ 하얏트지바 [3] 업로드 실패: Vercel Blob: No token found. Either configure the `BLOB_READ_WRITE_TOKEN` environment variable, or pass a `token` option to your calls.
+  ❌ 하얏트지바 [4] 업로드 실패: Vercel Blob: No token found. Either configure the `BLOB_READ_WRITE_TOKEN` environment variable, or pass a `token` option to your calls.
+  ❌ 하얏트지바 [5] 업로드 실패: Vercel Blob: No token found. Either configure the `BLOB_READ_WRITE_TOKEN` environment variable, or pass a `token` option to your calls.
+  ❌ 하얏트지바 [6] 업로드 실패: Vercel Blob: No token found. Either configure the `BLOB_READ_WRITE_TOKEN` environment variable, or pass a `token` option to your calls.
+
+📍 코사무이 (koh-samui) - 5개 리조트
+--------------------------------------------------------------------------------
+
+🏨 더사란 - 7개 이미지
+  ❌ 더사란 [0] 업로드 실패: Vercel Blob: No token found. Either configure the `BLOB_READ_WRITE_TOKEN` environment variable, or pass a `token` option to your calls.
+  ❌ 더사란 [1] 업로드 실패: Vercel Blob: No token found. Either configure the `BLOB_READ_WRITE_TOKEN` environment variable, or pass a `token` option to your calls.
+  ❌ 더사란 [2] 업로드 실패: Vercel Blob: No token found. Either configure the `BLOB_READ_WRITE_TOKEN` environment variable, or pass a `token` option to your calls.
+  ❌ 더사란 [3] 업로드 실패: Vercel Blob: No token found. Either configure the `BLOB_READ_WRITE_TOKEN` environment variable, or pass a `token` option to your calls.
+  ❌ 더사란 [4] 업로드 실패: Vercel Blob: No token found. Either configure the `BLOB_READ_WRITE_TOKEN` environment variable, or pass a `token` option to your calls.
+  ❌ 더사란 [5] 업로드 실패: Vercel Blob: No token found. Either configure the `BLOB_READ_WRITE_TOKEN` environment variable, or pass a `token` option to your calls.
+  ❌ 더사란 [6] 업로드 실패: Vercel Blob: No token found. Either configure the `BLOB_READ_WRITE_TOKEN` environment variable, or pass a `token` option to your calls.
+
+🏨 반얀트리 - 7개 이미지
+  ❌ 반얀트리 [0] 업로드 실패: Vercel Blob: No token found. Either configure the `BLOB_READ_WRITE_TOKEN` environment variable, or pass a `token` option to your calls.
+  ❌ 반얀트리 [1] 업로드 실패: Vercel Blob: No token found. Either configure the `BLOB_READ_WRITE_TOKEN` environment variable, or pass a `token` option to your calls.
+  ❌ 반얀트리 [2] 업로드 실패: Vercel Blob: No token found. Either configure the `BLOB_READ_WRITE_TOKEN` environment variable, or pass a `token` option to your calls.
+  ❌ 반얀트리 [3] 업로드 실패: Vercel Blob: No token found. Either configure the `BLOB_READ_WRITE_TOKEN` environment variable, or pass a `token` option to your calls.
+  ❌ 반얀트리 [4] 업로드 실패: Vercel Blob: No token found. Either configure the `BLOB_READ_WRITE_TOKEN` environment variable, or pass a `token` option to your calls.
+  ❌ 반얀트리 [5] 업로드 실패: Vercel Blob: No token found. Either configure the `BLOB_READ_WRITE_TOKEN` environment variable, or pass a `token` option to your calls.
+  ❌ 반얀트리 [6] 업로드 실패: Vercel Blob: No token found. Either configure the `BLOB_READ_WRITE_TOKEN` environment variable, or pass a `token` option to your calls.
+
+🏨 인터콘티넨탈 - 7개 이미지
+  ❌ 인터콘티넨탈 [0] 업로드 실패: Vercel Blob: No token found. Either configure the `BLOB_READ_WRITE_TOKEN` environment variable, or pass a `token` option to your calls.
+  ❌ 인터콘티넨탈 [1] 업로드 실패: Vercel Blob: No token found. Either configure the `BLOB_READ_WRITE_TOKEN` environment variable, or pass a `token` option to your calls.
+  ❌ 인터콘티넨탈 [2] 업로드 실패: Vercel Blob: No token found. Either configure the `BLOB_READ_WRITE_TOKEN` environment variable, or pass a `token` option to your calls.
+  ❌ 인터콘티넨탈 [3] 업로드 실패: Vercel Blob: No token found. Either configure the `BLOB_READ_WRITE_TOKEN` environment variable, or pass a `token` option to your calls.
+  ❌ 인터콘티넨탈 [4] 업로드 실패: Vercel Blob: No token found. Either configure the `BLOB_READ_WRITE_TOKEN` environment variable, or pass a `token` option to your calls.
+  ❌ 인터콘티넨탈 [5] 업로드 실패: Vercel Blob: No token found. Either configure the `BLOB_READ_WRITE_TOKEN` environment variable, or pass a `token` option to your calls.
+  ❌ 인터콘티넨탈 [6] 업로드 실패: Vercel Blob: No token found. Either configure the `BLOB_READ_WRITE_TOKEN` environment variable, or pass a `token` option to your calls.
+
+🏨 키리카얀 - 7개 이미지
+  ❌ 키리카얀 [0] 업로드 실패: Vercel Blob: No token found. Either configure the `BLOB_READ_WRITE_TOKEN` environment variable, or pass a `token` option to your calls.
+  ❌ 키리카얀 [1] 업로드 실패: Vercel Blob: No token found. Either configure the `BLOB_READ_WRITE_TOKEN` environment variable, or pass a `token` option to your calls.
+  ❌ 키리카얀 [2] 업로드 실패: Vercel Blob: No token found. Either configure the `BLOB_READ_WRITE_TOKEN` environment variable, or pass a `token` option to your calls.
+  ❌ 키리카얀 [3] 업로드 실패: Vercel Blob: No token found. Either configure the `BLOB_READ_WRITE_TOKEN` environment variable, or pass a `token` option to your calls.
+  ❌ 키리카얀 [4] 업로드 실패: Vercel Blob: No token found. Either configure the `BLOB_READ_WRITE_TOKEN` environment variable, or pass a `token` option to your calls.
+  ❌ 키리카얀 [5] 업로드 실패: Vercel Blob: No token found. Either configure the `BLOB_READ_WRITE_TOKEN` environment variable, or pass a `token` option to your calls.
+  ❌ 키리카얀 [6] 업로드 실패: Vercel Blob: No token found. Either configure the `BLOB_READ_WRITE_TOKEN` environment variable, or pass a `token` option to your calls.
+
+🏨 포시즌리조트 - 7개 이미지
+  ❌ 포시즌리조트 [0] 업로드 실패: Vercel Blob: No token found. Either configure the `BLOB_READ_WRITE_TOKEN` environment variable, or pass a `token` option to your calls.
+  ❌ 포시즌리조트 [1] 업로드 실패: Vercel Blob: No token found. Either configure the `BLOB_READ_WRITE_TOKEN` environment variable, or pass a `token` option to your calls.
+  ❌ 포시즌리조트 [2] 업로드 실패: Vercel Blob: No token found. Either configure the `BLOB_READ_WRITE_TOKEN` environment variable, or pass a `token` option to your calls.
+  ❌ 포시즌리조트 [3] 업로드 실패: Vercel Blob: No token found. Either configure the `BLOB_READ_WRITE_TOKEN` environment variable, or pass a `token` option to your calls.
+  ❌ 포시즌리조트 [4] 업로드 실패: Vercel Blob: No token found. Either configure the `BLOB_READ_WRITE_TOKEN` environment variable, or pass a `token` option to your calls.
+  ❌ 포시즌리조트 [5] 업로드 실패: Vercel Blob: No token found. Either configure the `BLOB_READ_WRITE_TOKEN` environment variable, or pass a `token` option to your calls.
+  ❌ 포시즌리조트 [6] 업로드 실패: Vercel Blob: No token found. Either configure the `BLOB_READ_WRITE_TOKEN` environment variable, or pass a `token` option to your calls.
+
+📍 파타야 (pattaya) - 2개 리조트
+--------------------------------------------------------------------------------
+
+🏨 쉐라톤 - 2개 이미지
+  ❌ 쉐라톤 [0] 업로드 실패: Vercel Blob: No token found. Either configure the `BLOB_READ_WRITE_TOKEN` environment variable, or pass a `token` option to your calls.
+  ❌ 쉐라톤 [1] 업로드 실패: Vercel Blob: No token found. Either configure the `BLOB_READ_WRITE_TOKEN` environment variable, or pass a `token` option to your calls.
+
+🏨 자인 - 4개 이미지
+  ❌ 자인 [0] 업로드 실패: Vercel Blob: No token found. Either configure the `BLOB_READ_WRITE_TOKEN` environment variable, or pass a `token` option to your calls.
+  ❌ 자인 [1] 업로드 실패: Vercel Blob: No token found. Either configure the `BLOB_READ_WRITE_TOKEN` environment variable, or pass a `token` option to your calls.
+  ❌ 자인 [2] 업로드 실패: Vercel Blob: No token found. Either configure the `BLOB_READ_WRITE_TOKEN` environment variable, or pass a `token` option to your calls.
+  ❌ 자인 [3] 업로드 실패: Vercel Blob: No token found. Either configure the `BLOB_READ_WRITE_TOKEN` environment variable, or pass a `token` option to your calls.
+
+📍 푸켓 (phuket) - 6개 리조트
+--------------------------------------------------------------------------------
+
+🏨 노보텔 까말라 - 7개 이미지
+  ❌ 노보텔 까말라 [0] 업로드 실패: Vercel Blob: No token found. Either configure the `BLOB_READ_WRITE_TOKEN` environment variable, or pass a `token` option to your calls.
+  ❌ 노보텔 까말라 [1] 업로드 실패: Vercel Blob: No token found. Either configure the `BLOB_READ_WRITE_TOKEN` environment variable, or pass a `token` option to your calls.
+  ❌ 노보텔 까말라 [2] 업로드 실패: Vercel Blob: No token found. Either configure the `BLOB_READ_WRITE_TOKEN` environment variable, or pass a `token` option to your calls.
+  ❌ 노보텔 까말라 [3] 업로드 실패: Vercel Blob: No token found. Either configure the `BLOB_READ_WRITE_TOKEN` environment variable, or pass a `token` option to your calls.
+  ❌ 노보텔 까말라 [4] 업로드 실패: Vercel Blob: No token found. Either configure the `BLOB_READ_WRITE_TOKEN` environment variable, or pass a `token` option to your calls.
+  ❌ 노보텔 까말라 [5] 업로드 실패: Vercel Blob: No token found. Either configure the `BLOB_READ_WRITE_TOKEN` environment variable, or pass a `token` option to your calls.
+  ❌ 노보텔 까말라 [6] 업로드 실패: Vercel Blob: No token found. Either configure the `BLOB_READ_WRITE_TOKEN` environment variable, or pass a `token` option to your calls.
+
+🏨 라플로라 파통 - 7개 이미지
+  ❌ 라플로라 파통 [0] 업로드 실패: Vercel Blob: No token found. Either configure the `BLOB_READ_WRITE_TOKEN` environment variable, or pass a `token` option to your calls.
+  ❌ 라플로라 파통 [1] 업로드 실패: Vercel Blob: No token found. Either configure the `BLOB_READ_WRITE_TOKEN` environment variable, or pass a `token` option to your calls.
+  ❌ 라플로라 파통 [2] 업로드 실패: Vercel Blob: No token found. Either configure the `BLOB_READ_WRITE_TOKEN` environment variable, or pass a `token` option to your calls.
+  ❌ 라플로라 파통 [3] 업로드 실패: Vercel Blob: No token found. Either configure the `BLOB_READ_WRITE_TOKEN` environment variable, or pass a `token` option to your calls.
+  ❌ 라플로라 파통 [4] 업로드 실패: Vercel Blob: No token found. Either configure the `BLOB_READ_WRITE_TOKEN` environment variable, or pass a `token` option to your calls.
+  ❌ 라플로라 파통 [5] 업로드 실패: Vercel Blob: No token found. Either configure the `BLOB_READ_WRITE_TOKEN` environment variable, or pass a `token` option to your calls.
+  ❌ 라플로라 파통 [6] 업로드 실패: Vercel Blob: No token found. Either configure the `BLOB_READ_WRITE_TOKEN` environment variable, or pass a `token` option to your calls.
+
+🏨 반다라 빌라스 - 7개 이미지
+  ❌ 반다라 빌라스 [0] 업로드 실패: Vercel Blob: No token found. Either configure the `BLOB_READ_WRITE_TOKEN` environment variable, or pass a `token` option to your calls.
+  ❌ 반다라 빌라스 [1] 업로드 실패: Vercel Blob: No token found. Either configure the `BLOB_READ_WRITE_TOKEN` environment variable, or pass a `token` option to your calls.
+  ❌ 반다라 빌라스 [2] 업로드 실패: Vercel Blob: No token found. Either configure the `BLOB_READ_WRITE_TOKEN` environment variable, or pass a `token` option to your calls.
+  ❌ 반다라 빌라스 [3] 업로드 실패: Vercel Blob: No token found. Either configure the `BLOB_READ_WRITE_TOKEN` environment variable, or pass a `token` option to your calls.
+  ❌ 반다라 빌라스 [4] 업로드 실패: Vercel Blob: No token found. Either configure the `BLOB_READ_WRITE_TOKEN` environment variable, or pass a `token` option to your calls.
+  ❌ 반다라 빌라스 [5] 업로드 실패: Vercel Blob: No token found. Either configure the `BLOB_READ_WRITE_TOKEN` environment variable, or pass a `token` option to your calls.
+  ❌ 반다라 빌라스 [6] 업로드 실패: Vercel Blob: No token found. Either configure the `BLOB_READ_WRITE_TOKEN` environment variable, or pass a `token` option to your calls.
+
+🏨 센타라 빌라스 푸켓 - 7개 이미지
+  ❌ 센타라 빌라스 푸켓 [0] 업로드 실패: Vercel Blob: No token found. Either configure the `BLOB_READ_WRITE_TOKEN` environment variable, or pass a `token` option to your calls.
+  ❌ 센타라 빌라스 푸켓 [1] 업로드 실패: Vercel Blob: No token found. Either configure the `BLOB_READ_WRITE_TOKEN` environment variable, or pass a `token` option to your calls.
+  ❌ 센타라 빌라스 푸켓 [2] 업로드 실패: Vercel Blob: No token found. Either configure the `BLOB_READ_WRITE_TOKEN` environment variable, or pass a `token` option to your calls.
+  ❌ 센타라 빌라스 푸켓 [3] 업로드 실패: Vercel Blob: No token found. Either configure the `BLOB_READ_WRITE_TOKEN` environment variable, or pass a `token` option to your calls.
+  ❌ 센타라 빌라스 푸켓 [4] 업로드 실패: Vercel Blob: No token found. Either configure the `BLOB_READ_WRITE_TOKEN` environment variable, or pass a `token` option to your calls.
+  ❌ 센타라 빌라스 푸켓 [5] 업로드 실패: Vercel Blob: No token found. Either configure the `BLOB_READ_WRITE_TOKEN` environment variable, or pass a `token` option to your calls.
+  ❌ 센타라 빌라스 푸켓 [6] 업로드 실패: Vercel Blob: No token found. Either configure the `BLOB_READ_WRITE_TOKEN` environment variable, or pass a `token` option to your calls.
+
+🏨 웨스턴 - 7개 이미지
+  ❌ 웨스턴 [0] 업로드 실패: Vercel Blob: No token found. Either configure the `BLOB_READ_WRITE_TOKEN` environment variable, or pass a `token` option to your calls.
+  ❌ 웨스턴 [1] 업로드 실패: Vercel Blob: No token found. Either configure the `BLOB_READ_WRITE_TOKEN` environment variable, or pass a `token` option to your calls.
+  ❌ 웨스턴 [2] 업로드 실패: Vercel Blob: No token found. Either configure the `BLOB_READ_WRITE_TOKEN` environment variable, or pass a `token` option to your calls.
+  ❌ 웨스턴 [3] 업로드 실패: Vercel Blob: No token found. Either configure the `BLOB_READ_WRITE_TOKEN` environment variable, or pass a `token` option to your calls.
+  ❌ 웨스턴 [4] 업로드 실패: Vercel Blob: No token found. Either configure the `BLOB_READ_WRITE_TOKEN` environment variable, or pass a `token` option to your calls.
+  ❌ 웨스턴 [5] 업로드 실패: Vercel Blob: No token found. Either configure the `BLOB_READ_WRITE_TOKEN` environment variable, or pass a `token` option to your calls.
+  ❌ 웨스턴 [6] 업로드 실패: Vercel Blob: No token found. Either configure the `BLOB_READ_WRITE_TOKEN` environment variable, or pass a `token` option to your calls.
+
+🏨 윈덤 그랜드 - 7개 이미지
+  ❌ 윈덤 그랜드 [0] 업로드 실패: Vercel Blob: No token found. Either configure the `BLOB_READ_WRITE_TOKEN` environment variable, or pass a `token` option to your calls.
+  ❌ 윈덤 그랜드 [1] 업로드 실패: Vercel Blob: No token found. Either configure the `BLOB_READ_WRITE_TOKEN` environment variable, or pass a `token` option to your calls.
+  ❌ 윈덤 그랜드 [2] 업로드 실패: Vercel Blob: No token found. Either configure the `BLOB_READ_WRITE_TOKEN` environment variable, or pass a `token` option to your calls.
+  ❌ 윈덤 그랜드 [3] 업로드 실패: Vercel Blob: No token found. Either configure the `BLOB_READ_WRITE_TOKEN` environment variable, or pass a `token` option to your calls.
+  ❌ 윈덤 그랜드 [4] 업로드 실패: Vercel Blob: No token found. Either configure the `BLOB_READ_WRITE_TOKEN` environment variable, or pass a `token` option to your calls.
+  ❌ 윈덤 그랜드 [5] 업로드 실패: Vercel Blob: No token found. Either configure the `BLOB_READ_WRITE_TOKEN` environment variable, or pass a `token` option to your calls.
+  ❌ 윈덤 그랜드 [6] 업로드 실패: Vercel Blob: No token found. Either configure the `BLOB_READ_WRITE_TOKEN` environment variable, or pass a `token` option to your calls.
+
+================================================================================
+업로드 완료!
+================================================================================
+✅ 성공: 0개
+❌ 실패: 338개
+📊 총계: 338개
+
+📄 결과 저장: /home/user/webapp/upload_results.json
+
+✅ 모든 작업 완료!

@@ -1,0 +1,788 @@
+{
+  "dubai": {
+    "region_id": "dubai",
+    "region_name": "두바이",
+    "resorts": [
+      {
+        "name_encoded": "#Ub514#Ubc14#Ub098 #Ud50c#Ub77c#Uc790",
+        "name_decoded": "디바나 플라자",
+        "images": [
+          "/home/user/uploaded_files/#Ub044#Ub77c#Ube44/#Ub514#Ubc14#Ub098 #Ud50c#Ub77c#Uc790/se2_15247345004418.jpg",
+          "/home/user/uploaded_files/#Ub044#Ub77c#Ube44/#Ub514#Ubc14#Ub098 #Ud50c#Ub77c#Uc790/se2_15247345039405.jpg",
+          "/home/user/uploaded_files/#Ub044#Ub77c#Ube44/#Ub514#Ubc14#Ub098 #Ud50c#Ub77c#Uc790/se2_15247345548696.jpg",
+          "/home/user/uploaded_files/#Ub044#Ub77c#Ube44/#Ub514#Ubc14#Ub098 #Ud50c#Ub77c#Uc790/se2_15247345550581.jpg",
+          "/home/user/uploaded_files/#Ub044#Ub77c#Ube44/#Ub514#Ubc14#Ub098 #Ud50c#Ub77c#Uc790/se2_15247346808760.jpg",
+          "/home/user/uploaded_files/#Ub044#Ub77c#Ube44/#Ub514#Ubc14#Ub098 #Ud50c#Ub77c#Uc790/se2_15247346809379.jpg"
+        ],
+        "image_count": 6
+      },
+      {
+        "name_encoded": "#Ub9ac#Uce58#Uce7c#Ud2bc",
+        "name_decoded": "리치칼튼",
+        "images": [
+          "/home/user/uploaded_files/#Ub044#Ub77c#Ube44/#Ub9ac#Uce58#Uce7c#Ud2bc/thumb_14581209085580.jpg",
+          "/home/user/uploaded_files/#Ub044#Ub77c#Ube44/#Ub9ac#Uce58#Uce7c#Ud2bc/thumb_14581209085581.jpg",
+          "/home/user/uploaded_files/#Ub044#Ub77c#Ube44/#Ub9ac#Uce58#Uce7c#Ud2bc/thumb_14581209085582.jpg",
+          "/home/user/uploaded_files/#Ub044#Ub77c#Ube44/#Ub9ac#Uce58#Uce7c#Ud2bc/thumb_14581209085583.jpg"
+        ],
+        "image_count": 4
+      },
+      {
+        "name_encoded": "#Ud53c#Ub9d0#Ub77c#Uc774",
+        "name_decoded": "피말라이",
+        "images": [
+          "/home/user/uploaded_files/#Ub044#Ub77c#Ube44/#Ud53c#Ub9d0#Ub77c#Uc774/thumb_14581217698907.jpg",
+          "/home/user/uploaded_files/#Ub044#Ub77c#Ube44/#Ud53c#Ub9d0#Ub77c#Uc774/thumb_14581217698908.jpg",
+          "/home/user/uploaded_files/#Ub044#Ub77c#Ube44/#Ud53c#Ub9d0#Ub77c#Uc774/thumb_14581217698909.jpg",
+          "/home/user/uploaded_files/#Ub044#Ub77c#Ube44/#Ud53c#Ub9d0#Ub77c#Uc774/thumb_14581217698910.jpg"
+        ],
+        "image_count": 4
+      }
+    ],
+    "resort_count": 3
+  },
+  "lombok": {
+    "region_id": "lombok",
+    "region_name": "롬복",
+    "resorts": [
+      {
+        "name_encoded": "#Uc218#Ub2e4#Ub9d0#Ub77c",
+        "name_decoded": "수다말라",
+        "images": [
+          "/home/user/uploaded_files/#Ub86c#Ubcf5/#Uc218#Ub2e4#Ub9d0#Ub77c/thumb_14581205594736.jpg",
+          "/home/user/uploaded_files/#Ub86c#Ubcf5/#Uc218#Ub2e4#Ub9d0#Ub77c/thumb_14581205594737.jpg",
+          "/home/user/uploaded_files/#Ub86c#Ubcf5/#Uc218#Ub2e4#Ub9d0#Ub77c/thumb_14581205594738.jpg",
+          "/home/user/uploaded_files/#Ub86c#Ubcf5/#Uc218#Ub2e4#Ub9d0#Ub77c/thumb_14581205594739.jpg"
+        ],
+        "image_count": 4
+      },
+      {
+        "name_encoded": "#Uc634#Ubc15",
+        "name_decoded": "옴박",
+        "images": [
+          "/home/user/uploaded_files/#Ub86c#Ubcf5/#Uc634#Ubc15/se2_15247322550932.jpg",
+          "/home/user/uploaded_files/#Ub86c#Ubcf5/#Uc634#Ubc15/se2_15247322552764.jpg",
+          "/home/user/uploaded_files/#Ub86c#Ubcf5/#Uc634#Ubc15/se2_15247322556362.jpg",
+          "/home/user/uploaded_files/#Ub86c#Ubcf5/#Uc634#Ubc15/se2_15247322557736.jpg",
+          "/home/user/uploaded_files/#Ub86c#Ubcf5/#Uc634#Ubc15/se2_15247322559558.jpg",
+          "/home/user/uploaded_files/#Ub86c#Ubcf5/#Uc634#Ubc15/se2_15247322561320.jpg",
+          "/home/user/uploaded_files/#Ub86c#Ubcf5/#Uc634#Ubc15/se2_15247325550953.jpg"
+        ],
+        "image_count": 7
+      },
+      {
+        "name_encoded": "#Ud478#Ub9ac#Ub9c8#Uc2a4",
+        "name_decoded": "푸리마스",
+        "images": [
+          "/home/user/uploaded_files/#Ub86c#Ubcf5/#Ud478#Ub9ac#Ub9c8#Uc2a4/thumb_14581208622107.jpg",
+          "/home/user/uploaded_files/#Ub86c#Ubcf5/#Ud478#Ub9ac#Ub9c8#Uc2a4/thumb_14581208622109.jpg",
+          "/home/user/uploaded_files/#Ub86c#Ubcf5/#Ud478#Ub9ac#Ub9c8#Uc2a4/thumb_14581208622110.jpg",
+          "/home/user/uploaded_files/#Ub86c#Ubcf5/#Ud478#Ub9ac#Ub9c8#Uc2a4/thumb_14581208622111.jpg"
+        ],
+        "image_count": 4
+      }
+    ],
+    "resort_count": 3
+  },
+  "maui": {
+    "region_id": "maui",
+    "region_name": "마우이",
+    "resorts": [
+      {
+        "name_encoded": "#Uc250#Ub77c#Ud1a4#Ub9c8#Uc6b0#Uc774 #Ub9ac#Uc870#Ud2b8",
+        "name_decoded": "쉐라톤마우이 리조트",
+        "images": [
+          "/home/user/uploaded_files/#Ub9c8#Uc6b0#Uc774/#Uc250#Ub77c#Ud1a4#Ub9c8#Uc6b0#Uc774 #Ub9ac#Uc870#Ud2b8/se2_15931410847532.jpg",
+          "/home/user/uploaded_files/#Ub9c8#Uc6b0#Uc774/#Uc250#Ub77c#Ud1a4#Ub9c8#Uc6b0#Uc774 #Ub9ac#Uc870#Ud2b8/se2_15931410912885.jpg",
+          "/home/user/uploaded_files/#Ub9c8#Uc6b0#Uc774/#Uc250#Ub77c#Ud1a4#Ub9c8#Uc6b0#Uc774 #Ub9ac#Uc870#Ud2b8/se2_15931410980099.jpg",
+          "/home/user/uploaded_files/#Ub9c8#Uc6b0#Uc774/#Uc250#Ub77c#Ud1a4#Ub9c8#Uc6b0#Uc774 #Ub9ac#Uc870#Ud2b8/se2_15931411206596.jpg",
+          "/home/user/uploaded_files/#Ub9c8#Uc6b0#Uc774/#Uc250#Ub77c#Ud1a4#Ub9c8#Uc6b0#Uc774 #Ub9ac#Uc870#Ud2b8/se2_15931411329782.jpg",
+          "/home/user/uploaded_files/#Ub9c8#Uc6b0#Uc774/#Uc250#Ub77c#Ud1a4#Ub9c8#Uc6b0#Uc774 #Ub9ac#Uc870#Ud2b8/se2_15931411780636.jpg",
+          "/home/user/uploaded_files/#Ub9c8#Uc6b0#Uc774/#Uc250#Ub77c#Ud1a4#Ub9c8#Uc6b0#Uc774 #Ub9ac#Uc870#Ud2b8/se2_15931411961547.jpg"
+        ],
+        "image_count": 7
+      },
+      {
+        "name_encoded": "#Uc6e8#Uc2a4#Ud2f4#Ub9c8#Uc6b0#Uc774 #Ub9ac#Uc870#Ud2b8",
+        "name_decoded": "웨스틴마우이 리조트",
+        "images": [
+          "/home/user/uploaded_files/#Ub9c8#Uc6b0#Uc774/#Uc6e8#Uc2a4#Ud2f4#Ub9c8#Uc6b0#Uc774 #Ub9ac#Uc870#Ud2b8/se2_15931420165387.jpg",
+          "/home/user/uploaded_files/#Ub9c8#Uc6b0#Uc774/#Uc6e8#Uc2a4#Ud2f4#Ub9c8#Uc6b0#Uc774 #Ub9ac#Uc870#Ud2b8/se2_15931420226887.jpg",
+          "/home/user/uploaded_files/#Ub9c8#Uc6b0#Uc774/#Uc6e8#Uc2a4#Ud2f4#Ub9c8#Uc6b0#Uc774 #Ub9ac#Uc870#Ud2b8/se2_15931420286751.jpg",
+          "/home/user/uploaded_files/#Ub9c8#Uc6b0#Uc774/#Uc6e8#Uc2a4#Ud2f4#Ub9c8#Uc6b0#Uc774 #Ub9ac#Uc870#Ud2b8/se2_15931420426300.jpg",
+          "/home/user/uploaded_files/#Ub9c8#Uc6b0#Uc774/#Uc6e8#Uc2a4#Ud2f4#Ub9c8#Uc6b0#Uc774 #Ub9ac#Uc870#Ud2b8/se2_15931420485503.jpg",
+          "/home/user/uploaded_files/#Ub9c8#Uc6b0#Uc774/#Uc6e8#Uc2a4#Ud2f4#Ub9c8#Uc6b0#Uc774 #Ub9ac#Uc870#Ud2b8/se2_15931420740926.jpg",
+          "/home/user/uploaded_files/#Ub9c8#Uc6b0#Uc774/#Uc6e8#Uc2a4#Ud2f4#Ub9c8#Uc6b0#Uc774 #Ub9ac#Uc870#Ud2b8/se2_15931420902077.jpg"
+        ],
+        "image_count": 7
+      },
+      {
+        "name_encoded": "#Ud558#Uc58f#Ud2b8#Ub9ac#Uc820#Uc2dc #Ub9c8#Uc6b0#Uc774",
+        "name_decoded": "하얏트리젠시 마우이",
+        "images": [
+          "/home/user/uploaded_files/#Ub9c8#Uc6b0#Uc774/#Ud558#Uc58f#Ud2b8#Ub9ac#Uc820#Uc2dc #Ub9c8#Uc6b0#Uc774/se2_15931451398584.jpg",
+          "/home/user/uploaded_files/#Ub9c8#Uc6b0#Uc774/#Ud558#Uc58f#Ud2b8#Ub9ac#Uc820#Uc2dc #Ub9c8#Uc6b0#Uc774/se2_15931451534529.jpg",
+          "/home/user/uploaded_files/#Ub9c8#Uc6b0#Uc774/#Ud558#Uc58f#Ud2b8#Ub9ac#Uc820#Uc2dc #Ub9c8#Uc6b0#Uc774/se2_15931451588181.jpg",
+          "/home/user/uploaded_files/#Ub9c8#Uc6b0#Uc774/#Ud558#Uc58f#Ud2b8#Ub9ac#Uc820#Uc2dc #Ub9c8#Uc6b0#Uc774/se2_15931451764898.jpg",
+          "/home/user/uploaded_files/#Ub9c8#Uc6b0#Uc774/#Ud558#Uc58f#Ud2b8#Ub9ac#Uc820#Uc2dc #Ub9c8#Uc6b0#Uc774/se2_15931452031229.jpg",
+          "/home/user/uploaded_files/#Ub9c8#Uc6b0#Uc774/#Ud558#Uc58f#Ud2b8#Ub9ac#Uc820#Uc2dc #Ub9c8#Uc6b0#Uc774/se2_15931452144767.jpg"
+        ],
+        "image_count": 6
+      }
+    ],
+    "resort_count": 3
+  },
+  "maldives": {
+    "region_id": "maldives",
+    "region_name": "몰디브",
+    "resorts": [
+      {
+        "name_encoded": "#Uae38#Ub9ac#Ub791#Uce78#Ud478#Uc26c",
+        "name_decoded": "길리랑칸푸쉬",
+        "images": [
+          "/home/user/uploaded_files/#Ubab0#Ub514#Ube0c/#Uae38#Ub9ac#Ub791#Uce78#Ud478#Uc26c/se2_14755760632474.jpg",
+          "/home/user/uploaded_files/#Ubab0#Ub514#Ube0c/#Uae38#Ub9ac#Ub791#Uce78#Ud478#Uc26c/se2_14755760633512.jpg",
+          "/home/user/uploaded_files/#Ubab0#Ub514#Ube0c/#Uae38#Ub9ac#Ub791#Uce78#Ud478#Uc26c/se2_14755765263071.jpg",
+          "/home/user/uploaded_files/#Ubab0#Ub514#Ube0c/#Uae38#Ub9ac#Ub791#Uce78#Ud478#Uc26c/se2_14755765263419.jpg",
+          "/home/user/uploaded_files/#Ubab0#Ub514#Ube0c/#Uae38#Ub9ac#Ub791#Uce78#Ud478#Uc26c/se2_14755766066470.jpg",
+          "/home/user/uploaded_files/#Ubab0#Ub514#Ube0c/#Uae38#Ub9ac#Ub791#Uce78#Ud478#Uc26c/se2_14755766614972.jpg",
+          "/home/user/uploaded_files/#Ubab0#Ub514#Ube0c/#Uae38#Ub9ac#Ub791#Uce78#Ud478#Uc26c/se2_14755766617462.jpg"
+        ],
+        "image_count": 7
+      },
+      {
+        "name_encoded": "#Ubc14#Ub450",
+        "name_decoded": "바두",
+        "images": [
+          "/home/user/uploaded_files/#Ubab0#Ub514#Ube0c/#Ubc14#Ub450/se2_14756403975805.jpg",
+          "/home/user/uploaded_files/#Ubab0#Ub514#Ube0c/#Ubc14#Ub450/se2_14756403976134.jpg",
+          "/home/user/uploaded_files/#Ubab0#Ub514#Ube0c/#Ubc14#Ub450/se2_14756403976451.jpg",
+          "/home/user/uploaded_files/#Ubab0#Ub514#Ube0c/#Ubc14#Ub450/se2_14756404371946.jpg",
+          "/home/user/uploaded_files/#Ubab0#Ub514#Ube0c/#Ubc14#Ub450/se2_14756404452764.jpg",
+          "/home/user/uploaded_files/#Ubab0#Ub514#Ube0c/#Ubc14#Ub450/se2_14756404530897.jpg",
+          "/home/user/uploaded_files/#Ubab0#Ub514#Ube0c/#Ubc14#Ub450/se2_14756404531183.jpg"
+        ],
+        "image_count": 7
+      },
+      {
+        "name_encoded": "#Ubca8#Ub77c#Uc0ac#Ub8e8 #Ub9ac#Uc870#Ud2b8",
+        "name_decoded": "벨라사루 리조트",
+        "images": [
+          "/home/user/uploaded_files/#Ubab0#Ub514#Ube0c/#Ubca8#Ub77c#Uc0ac#Ub8e8 #Ub9ac#Uc870#Ud2b8/se2_15923576288791.jpg",
+          "/home/user/uploaded_files/#Ubab0#Ub514#Ube0c/#Ubca8#Ub77c#Uc0ac#Ub8e8 #Ub9ac#Uc870#Ud2b8/se2_15923576289383.jpg",
+          "/home/user/uploaded_files/#Ubab0#Ub514#Ube0c/#Ubca8#Ub77c#Uc0ac#Ub8e8 #Ub9ac#Uc870#Ud2b8/se2_15923576468221.jpg",
+          "/home/user/uploaded_files/#Ubab0#Ub514#Ube0c/#Ubca8#Ub77c#Uc0ac#Ub8e8 #Ub9ac#Uc870#Ud2b8/se2_15923576469474.jpg",
+          "/home/user/uploaded_files/#Ubab0#Ub514#Ube0c/#Ubca8#Ub77c#Uc0ac#Ub8e8 #Ub9ac#Uc870#Ud2b8/se2_15923576592757.jpg",
+          "/home/user/uploaded_files/#Ubab0#Ub514#Ube0c/#Ubca8#Ub77c#Uc0ac#Ub8e8 #Ub9ac#Uc870#Ud2b8/se2_15923576594930.jpg",
+          "/home/user/uploaded_files/#Ubab0#Ub514#Ube0c/#Ubca8#Ub77c#Uc0ac#Ub8e8 #Ub9ac#Uc870#Ud2b8/se2_15923576852713.jpg"
+        ],
+        "image_count": 7
+      },
+      {
+        "name_encoded": "#Uc18c#Ubc14#Uc790#Ub2c8",
+        "name_decoded": "소바자니",
+        "images": [
+          "/home/user/uploaded_files/#Ubab0#Ub514#Ube0c/#Uc18c#Ubc14#Uc790#Ub2c8/271313061.jpg",
+          "/home/user/uploaded_files/#Ubab0#Ub514#Ube0c/#Uc18c#Ubc14#Uc790#Ub2c8/406700527.jpg",
+          "/home/user/uploaded_files/#Ubab0#Ub514#Ube0c/#Uc18c#Ubc14#Uc790#Ub2c8/cec5f329ce83088e48fe82a0af7d4968.jpg"
+        ],
+        "image_count": 3
+      },
+      {
+        "name_encoded": "#Uc2dc#Ub098#Ubaac #Ub3c8#Ubca8#Ub9ac",
+        "name_decoded": "시나몬 돈벨리",
+        "images": [
+          "/home/user/uploaded_files/#Ubab0#Ub514#Ube0c/#Uc2dc#Ub098#Ubaac #Ub3c8#Ubca8#Ub9ac/se2_15919384390247.jpg",
+          "/home/user/uploaded_files/#Ubab0#Ub514#Ube0c/#Uc2dc#Ub098#Ubaac #Ub3c8#Ubca8#Ub9ac/se2_15919384690253.jpg",
+          "/home/user/uploaded_files/#Ubab0#Ub514#Ube0c/#Uc2dc#Ub098#Ubaac #Ub3c8#Ubca8#Ub9ac/se2_15919385031882.jpg",
+          "/home/user/uploaded_files/#Ubab0#Ub514#Ube0c/#Uc2dc#Ub098#Ubaac #Ub3c8#Ubca8#Ub9ac/se2_15919385192934.jpg",
+          "/home/user/uploaded_files/#Ubab0#Ub514#Ube0c/#Uc2dc#Ub098#Ubaac #Ub3c8#Ubca8#Ub9ac/se2_15919385786670.jpg",
+          "/home/user/uploaded_files/#Ubab0#Ub514#Ube0c/#Uc2dc#Ub098#Ubaac #Ub3c8#Ubca8#Ub9ac/se2_15919387624920.jpg",
+          "/home/user/uploaded_files/#Ubab0#Ub514#Ube0c/#Uc2dc#Ub098#Ubaac #Ub3c8#Ubca8#Ub9ac/se2_15919387704895.jpg"
+        ],
+        "image_count": 7
+      },
+      {
+        "name_encoded": "#Uc544#Ub2e4#Uc544#Ub780 #Ud504#Ub808#Uc2a4#Ud2f0#Uc9c0 #Uc624#Uc158#Ube4c#Ub77c & #Ud6c4#Ub450#Ub780#Ud478#Uc2dc",
+        "name_decoded": "아다아란 프레스티지 오션빌라 & 후두란푸시",
+        "images": [
+          "/home/user/uploaded_files/#Ubab0#Ub514#Ube0c/#Uc544#Ub2e4#Uc544#Ub780 #Ud504#Ub808#Uc2a4#Ud2f0#Uc9c0 #Uc624#Uc158#Ube4c#Ub77c & #Ud6c4#Ub450#Ub780#Ud478#Uc2dc/se2_14695043586019.jpg",
+          "/home/user/uploaded_files/#Ubab0#Ub514#Ube0c/#Uc544#Ub2e4#Uc544#Ub780 #Ud504#Ub808#Uc2a4#Ud2f0#Uc9c0 #Uc624#Uc158#Ube4c#Ub77c & #Ud6c4#Ub450#Ub780#Ud478#Uc2dc/se2_14695045487278.jpg",
+          "/home/user/uploaded_files/#Ubab0#Ub514#Ube0c/#Uc544#Ub2e4#Uc544#Ub780 #Ud504#Ub808#Uc2a4#Ud2f0#Uc9c0 #Uc624#Uc158#Ube4c#Ub77c & #Ud6c4#Ub450#Ub780#Ud478#Uc2dc/se2_14695045538425.jpg",
+          "/home/user/uploaded_files/#Ubab0#Ub514#Ube0c/#Uc544#Ub2e4#Uc544#Ub780 #Ud504#Ub808#Uc2a4#Ud2f0#Uc9c0 #Uc624#Uc158#Ube4c#Ub77c & #Ud6c4#Ub450#Ub780#Ud478#Uc2dc/se2_14695045814357.jpg",
+          "/home/user/uploaded_files/#Ubab0#Ub514#Ube0c/#Uc544#Ub2e4#Uc544#Ub780 #Ud504#Ub808#Uc2a4#Ud2f0#Uc9c0 #Uc624#Uc158#Ube4c#Ub77c & #Ud6c4#Ub450#Ub780#Ud478#Uc2dc/se2_14695045938437.jpg",
+          "/home/user/uploaded_files/#Ubab0#Ub514#Ube0c/#Uc544#Ub2e4#Uc544#Ub780 #Ud504#Ub808#Uc2a4#Ud2f0#Uc9c0 #Uc624#Uc158#Ube4c#Ub77c & #Ud6c4#Ub450#Ub780#Ud478#Uc2dc/se2_14695046093431.jpg",
+          "/home/user/uploaded_files/#Ubab0#Ub514#Ube0c/#Uc544#Ub2e4#Uc544#Ub780 #Ud504#Ub808#Uc2a4#Ud2f0#Uc9c0 #Uc624#Uc158#Ube4c#Ub77c & #Ud6c4#Ub450#Ub780#Ud478#Uc2dc/se2_14695047168105.jpg"
+        ],
+        "image_count": 7
+      },
+      {
+        "name_encoded": "#Uc624#Ube14#Ub8e8",
+        "name_decoded": "오블루",
+        "images": [
+          "/home/user/uploaded_files/#Ubab0#Ub514#Ube0c/#Uc624#Ube14#Ub8e8/se2_14616403701807.jpg",
+          "/home/user/uploaded_files/#Ubab0#Ub514#Ube0c/#Uc624#Ube14#Ub8e8/se2_14616403702106.jpg",
+          "/home/user/uploaded_files/#Ubab0#Ub514#Ube0c/#Uc624#Ube14#Ub8e8/se2_14616403702793.jpg",
+          "/home/user/uploaded_files/#Ubab0#Ub514#Ube0c/#Uc624#Ube14#Ub8e8/se2_14616404385335.jpg",
+          "/home/user/uploaded_files/#Ubab0#Ub514#Ube0c/#Uc624#Ube14#Ub8e8/se2_14616404904643.jpg",
+          "/home/user/uploaded_files/#Ubab0#Ub514#Ube0c/#Uc624#Ube14#Ub8e8/se2_14616404919946.jpg",
+          "/home/user/uploaded_files/#Ubab0#Ub514#Ube0c/#Uc624#Ube14#Ub8e8/se2_14616407117764.jpg"
+        ],
+        "image_count": 7
+      },
+      {
+        "name_encoded": "#Uce78#Ub450#Ub9c8",
+        "name_decoded": "칸두마",
+        "images": [
+          "/home/user/uploaded_files/#Ubab0#Ub514#Ube0c/#Uce78#Ub450#Ub9c8/se2_14756360418151.jpg",
+          "/home/user/uploaded_files/#Ubab0#Ub514#Ube0c/#Uce78#Ub450#Ub9c8/se2_14756360418464.jpg",
+          "/home/user/uploaded_files/#Ubab0#Ub514#Ube0c/#Uce78#Ub450#Ub9c8/se2_14756360418807.jpg",
+          "/home/user/uploaded_files/#Ubab0#Ub514#Ube0c/#Uce78#Ub450#Ub9c8/se2_14756360845347.jpg",
+          "/home/user/uploaded_files/#Ubab0#Ub514#Ube0c/#Uce78#Ub450#Ub9c8/se2_14756361008119.jpg",
+          "/home/user/uploaded_files/#Ubab0#Ub514#Ube0c/#Uce78#Ub450#Ub9c8/se2_14756361008405.jpg",
+          "/home/user/uploaded_files/#Ubab0#Ub514#Ube0c/#Uce78#Ub450#Ub9c8/se2_14756362363128.jpg"
+        ],
+        "image_count": 7
+      },
+      {
+        "name_encoded": "#Ucf54#Ucf54#Ud31c #Ubcf4#Ub450#Ud788#Ud2f0",
+        "name_decoded": "코코팜 보두히티",
+        "images": [
+          "/home/user/uploaded_files/#Ubab0#Ub514#Ube0c/#Ucf54#Ucf54#Ud31c #Ubcf4#Ub450#Ud788#Ud2f0/se2_14756412485241.jpg",
+          "/home/user/uploaded_files/#Ubab0#Ub514#Ube0c/#Ucf54#Ucf54#Ud31c #Ubcf4#Ub450#Ud788#Ud2f0/se2_14756412485536.jpg",
+          "/home/user/uploaded_files/#Ubab0#Ub514#Ube0c/#Ucf54#Ucf54#Ud31c #Ubcf4#Ub450#Ud788#Ud2f0/se2_14756413105869.jpg",
+          "/home/user/uploaded_files/#Ubab0#Ub514#Ube0c/#Ucf54#Ucf54#Ud31c #Ubcf4#Ub450#Ud788#Ud2f0/se2_14756413106142.jpg",
+          "/home/user/uploaded_files/#Ubab0#Ub514#Ube0c/#Ucf54#Ucf54#Ud31c #Ubcf4#Ub450#Ud788#Ud2f0/se2_14756413106463.jpg",
+          "/home/user/uploaded_files/#Ubab0#Ub514#Ube0c/#Ucf54#Ucf54#Ud31c #Ubcf4#Ub450#Ud788#Ud2f0/se2_14756413899862.jpg",
+          "/home/user/uploaded_files/#Ubab0#Ub514#Ube0c/#Ucf54#Ucf54#Ud31c #Ubcf4#Ub450#Ud788#Ud2f0/se2_14756413901375.jpg"
+        ],
+        "image_count": 7
+      }
+    ],
+    "resort_count": 9
+  },
+  "bali": {
+    "region_id": "bali",
+    "region_name": "발리",
+    "resorts": [
+      {
+        "name_encoded": "#Ubc18#Uc580#Ud2b8#Ub9ac",
+        "name_decoded": "반얀트리",
+        "images": [
+          "/home/user/uploaded_files/#Ubc1c#Ub9ac/#Ubc18#Uc580#Ud2b8#Ub9ac/se2_15942720576216.jpg",
+          "/home/user/uploaded_files/#Ubc1c#Ub9ac/#Ubc18#Uc580#Ud2b8#Ub9ac/se2_15942720580711.jpg",
+          "/home/user/uploaded_files/#Ubc1c#Ub9ac/#Ubc18#Uc580#Ud2b8#Ub9ac/se2_15942720583041.jpg",
+          "/home/user/uploaded_files/#Ubc1c#Ub9ac/#Ubc18#Uc580#Ud2b8#Ub9ac/se2_15942720583961.jpg",
+          "/home/user/uploaded_files/#Ubc1c#Ub9ac/#Ubc18#Uc580#Ud2b8#Ub9ac/se2_15942720586247.jpg",
+          "/home/user/uploaded_files/#Ubc1c#Ub9ac/#Ubc18#Uc580#Ud2b8#Ub9ac/se2_15942720594787.jpg",
+          "/home/user/uploaded_files/#Ubc1c#Ub9ac/#Ubc18#Uc580#Ud2b8#Ub9ac/se2_15942720595387.jpg"
+        ],
+        "image_count": 7
+      },
+      {
+        "name_encoded": "#Uc544#Uc57c#Ub098",
+        "name_decoded": "아야나",
+        "images": [
+          "/home/user/uploaded_files/#Ubc1c#Ub9ac/#Uc544#Uc57c#Ub098/se2_15942713675694.jpg",
+          "/home/user/uploaded_files/#Ubc1c#Ub9ac/#Uc544#Uc57c#Ub098/se2_15942713689233.jpg",
+          "/home/user/uploaded_files/#Ubc1c#Ub9ac/#Uc544#Uc57c#Ub098/se2_15942713702021.jpg",
+          "/home/user/uploaded_files/#Ubc1c#Ub9ac/#Uc544#Uc57c#Ub098/se2_15942713982219.jpg",
+          "/home/user/uploaded_files/#Ubc1c#Ub9ac/#Uc544#Uc57c#Ub098/se2_15942713984856.jpg",
+          "/home/user/uploaded_files/#Ubc1c#Ub9ac/#Uc544#Uc57c#Ub098/se2_15942713986245.jpg",
+          "/home/user/uploaded_files/#Ubc1c#Ub9ac/#Uc544#Uc57c#Ub098/se2_15942714033591.jpg"
+        ],
+        "image_count": 7
+      },
+      {
+        "name_encoded": "#Uc54c#Ub780#Ub4dc#Ub77c #Uc9d0#Ubc14#Ub780",
+        "name_decoded": "알란드라 짐바란",
+        "images": [
+          "/home/user/uploaded_files/#Ubc1c#Ub9ac/#Uc54c#Ub780#Ub4dc#Ub77c #Uc9d0#Ubc14#Ub780/se2_15940031550513.jpg",
+          "/home/user/uploaded_files/#Ubc1c#Ub9ac/#Uc54c#Ub780#Ub4dc#Ub77c #Uc9d0#Ubc14#Ub780/se2_15940031593292.jpg",
+          "/home/user/uploaded_files/#Ubc1c#Ub9ac/#Uc54c#Ub780#Ub4dc#Ub77c #Uc9d0#Ubc14#Ub780/se2_15940031650702.jpg",
+          "/home/user/uploaded_files/#Ubc1c#Ub9ac/#Uc54c#Ub780#Ub4dc#Ub77c #Uc9d0#Ubc14#Ub780/se2_15940032307934.jpg",
+          "/home/user/uploaded_files/#Ubc1c#Ub9ac/#Uc54c#Ub780#Ub4dc#Ub77c #Uc9d0#Ubc14#Ub780/se2_15940032366432.jpg",
+          "/home/user/uploaded_files/#Ubc1c#Ub9ac/#Uc54c#Ub780#Ub4dc#Ub77c #Uc9d0#Ubc14#Ub780/se2_15940032375405.jpg",
+          "/home/user/uploaded_files/#Ubc1c#Ub9ac/#Uc54c#Ub780#Ub4dc#Ub77c #Uc9d0#Ubc14#Ub780/thumb_15940033474817.jpg"
+        ],
+        "image_count": 7
+      },
+      {
+        "name_encoded": "#Ud3ec#Uc2dc#Uc98c",
+        "name_decoded": "포시즌",
+        "images": [
+          "/home/user/uploaded_files/#Ubc1c#Ub9ac/#Ud3ec#Uc2dc#Uc98c/se2_15925477334300.jpg",
+          "/home/user/uploaded_files/#Ubc1c#Ub9ac/#Ud3ec#Uc2dc#Uc98c/se2_15925477420362.jpg",
+          "/home/user/uploaded_files/#Ubc1c#Ub9ac/#Ud3ec#Uc2dc#Uc98c/se2_15925477570575.jpg",
+          "/home/user/uploaded_files/#Ubc1c#Ub9ac/#Ud3ec#Uc2dc#Uc98c/se2_15925477729138.jpg",
+          "/home/user/uploaded_files/#Ubc1c#Ub9ac/#Ud3ec#Uc2dc#Uc98c/se2_15925477729697.jpg",
+          "/home/user/uploaded_files/#Ubc1c#Ub9ac/#Ud3ec#Uc2dc#Uc98c/se2_15925477886547.jpg",
+          "/home/user/uploaded_files/#Ubc1c#Ub9ac/#Ud3ec#Uc2dc#Uc98c/se2_15925478021422.jpg"
+        ],
+        "image_count": 7
+      }
+    ],
+    "resort_count": 4
+  },
+  "big-island": {
+    "region_id": "big-island",
+    "region_name": "빅아일랜드",
+    "resorts": [
+      {
+        "name_encoded": "#Uc250#Ub77c#Ud1a4#Ucf54#Ub098",
+        "name_decoded": "쉐라톤코나",
+        "images": [
+          "/home/user/uploaded_files/#Ube45#Uc544#Uc77c#Ub80c#Ub4dc/#Uc250#Ub77c#Ud1a4#Ucf54#Ub098/se2_15931511352220.jpg",
+          "/home/user/uploaded_files/#Ube45#Uc544#Uc77c#Ub80c#Ub4dc/#Uc250#Ub77c#Ud1a4#Ucf54#Ub098/se2_15931511408497.jpg",
+          "/home/user/uploaded_files/#Ube45#Uc544#Uc77c#Ub80c#Ub4dc/#Uc250#Ub77c#Ud1a4#Ucf54#Ub098/se2_15931511462104.jpg",
+          "/home/user/uploaded_files/#Ube45#Uc544#Uc77c#Ub80c#Ub4dc/#Uc250#Ub77c#Ud1a4#Ucf54#Ub098/se2_15931511572937.jpg",
+          "/home/user/uploaded_files/#Ube45#Uc544#Uc77c#Ub80c#Ub4dc/#Uc250#Ub77c#Ud1a4#Ucf54#Ub098/se2_15931511689244.jpg",
+          "/home/user/uploaded_files/#Ube45#Uc544#Uc77c#Ub80c#Ub4dc/#Uc250#Ub77c#Ud1a4#Ucf54#Ub098/se2_15931511863364.jpg",
+          "/home/user/uploaded_files/#Ube45#Uc544#Uc77c#Ub80c#Ub4dc/#Uc250#Ub77c#Ud1a4#Ucf54#Ub098/se2_15931512233465.jpg"
+        ],
+        "image_count": 7
+      }
+    ],
+    "resort_count": 1
+  },
+  "oahu": {
+    "region_id": "oahu",
+    "region_name": "오아후",
+    "resorts": [
+      {
+        "name_encoded": "#Uc250#Ub77c#Ud1a4 #Uc640#Uc774#Ud0a4#Ud0a4",
+        "name_decoded": "쉐라톤 와이키키",
+        "images": [
+          "/home/user/uploaded_files/#Uc624#Uc544#Ud6c4/#Uc250#Ub77c#Ud1a4 #Uc640#Uc774#Ud0a4#Ud0a4/se2_15916811618948.jpg",
+          "/home/user/uploaded_files/#Uc624#Uc544#Ud6c4/#Uc250#Ub77c#Ud1a4 #Uc640#Uc774#Ud0a4#Ud0a4/se2_15916811733873.jpg",
+          "/home/user/uploaded_files/#Uc624#Uc544#Ud6c4/#Uc250#Ub77c#Ud1a4 #Uc640#Uc774#Ud0a4#Ud0a4/se2_15916811865709.jpg",
+          "/home/user/uploaded_files/#Uc624#Uc544#Ud6c4/#Uc250#Ub77c#Ud1a4 #Uc640#Uc774#Ud0a4#Ud0a4/se2_15916811926055.jpg",
+          "/home/user/uploaded_files/#Uc624#Uc544#Ud6c4/#Uc250#Ub77c#Ud1a4 #Uc640#Uc774#Ud0a4#Ud0a4/se2_15916811988772.jpg",
+          "/home/user/uploaded_files/#Uc624#Uc544#Ud6c4/#Uc250#Ub77c#Ud1a4 #Uc640#Uc774#Ud0a4#Ud0a4/se2_15916812133855.jpg",
+          "/home/user/uploaded_files/#Uc624#Uc544#Ud6c4/#Uc250#Ub77c#Ud1a4 #Uc640#Uc774#Ud0a4#Ud0a4/se2_15916812196382.jpg"
+        ],
+        "image_count": 7
+      },
+      {
+        "name_encoded": "#Uc250#Ub77c#Ud1a4 #Ud504#Ub9b0#Uc138#Uc2a4 #Uce74#Uc774#Uc6b8#Ub77c#Ub2c8",
+        "name_decoded": "쉐라톤 프린세스 카이울라니",
+        "images": [
+          "/home/user/uploaded_files/#Uc624#Uc544#Ud6c4/#Uc250#Ub77c#Ud1a4 #Ud504#Ub9b0#Uc138#Uc2a4 #Uce74#Uc774#Uc6b8#Ub77c#Ub2c8/se2_15915988079879.jpg",
+          "/home/user/uploaded_files/#Uc624#Uc544#Ud6c4/#Uc250#Ub77c#Ud1a4 #Ud504#Ub9b0#Uc138#Uc2a4 #Uce74#Uc774#Uc6b8#Ub77c#Ub2c8/se2_15915988131855.jpg",
+          "/home/user/uploaded_files/#Uc624#Uc544#Ud6c4/#Uc250#Ub77c#Ud1a4 #Ud504#Ub9b0#Uc138#Uc2a4 #Uce74#Uc774#Uc6b8#Ub77c#Ub2c8/se2_15915988243827.jpg",
+          "/home/user/uploaded_files/#Uc624#Uc544#Ud6c4/#Uc250#Ub77c#Ud1a4 #Ud504#Ub9b0#Uc138#Uc2a4 #Uce74#Uc774#Uc6b8#Ub77c#Ub2c8/se2_15915988310871.jpg",
+          "/home/user/uploaded_files/#Uc624#Uc544#Ud6c4/#Uc250#Ub77c#Ud1a4 #Ud504#Ub9b0#Uc138#Uc2a4 #Uce74#Uc774#Uc6b8#Ub77c#Ub2c8/se2_15915988399740.jpg",
+          "/home/user/uploaded_files/#Uc624#Uc544#Ud6c4/#Uc250#Ub77c#Ud1a4 #Ud504#Ub9b0#Uc138#Uc2a4 #Uce74#Uc774#Uc6b8#Ub77c#Ub2c8/se2_15915988649289.jpg",
+          "/home/user/uploaded_files/#Uc624#Uc544#Ud6c4/#Uc250#Ub77c#Ud1a4 #Ud504#Ub9b0#Uc138#Uc2a4 #Uce74#Uc774#Uc6b8#Ub77c#Ub2c8/se2_15915988700816.jpg"
+        ],
+        "image_count": 7
+      },
+      {
+        "name_encoded": "#Ud2b8#Ub7fc#Ud504",
+        "name_decoded": "트럼프",
+        "images": [
+          "/home/user/uploaded_files/#Uc624#Uc544#Ud6c4/#Ud2b8#Ub7fc#Ud504/[#Ud06c#Uae30#Ubcc0#Ud658]se2_15919322084267.jpg",
+          "/home/user/uploaded_files/#Uc624#Uc544#Ud6c4/#Ud2b8#Ub7fc#Ud504/[#Ud06c#Uae30#Ubcc0#Ud658]se2_15919322143147.jpg",
+          "/home/user/uploaded_files/#Uc624#Uc544#Ud6c4/#Ud2b8#Ub7fc#Ud504/[#Ud06c#Uae30#Ubcc0#Ud658]se2_15919322280223.jpg",
+          "/home/user/uploaded_files/#Uc624#Uc544#Ud6c4/#Ud2b8#Ub7fc#Ud504/[#Ud06c#Uae30#Ubcc0#Ud658]se2_15919322412569.jpg",
+          "/home/user/uploaded_files/#Uc624#Uc544#Ud6c4/#Ud2b8#Ub7fc#Ud504/[#Ud06c#Uae30#Ubcc0#Ud658]se2_15919322483250.jpg",
+          "/home/user/uploaded_files/#Uc624#Uc544#Ud6c4/#Ud2b8#Ub7fc#Ud504/[#Ud06c#Uae30#Ubcc0#Ud658]se2_15919322550360.jpg",
+          "/home/user/uploaded_files/#Uc624#Uc544#Ud6c4/#Ud2b8#Ub7fc#Ud504/[#Ud06c#Uae30#Ubcc0#Ud658]se2_15919323121649.jpg",
+          "/home/user/uploaded_files/#Uc624#Uc544#Ud6c4/#Ud2b8#Ub7fc#Ud504/se2_15919322084267.jpg",
+          "/home/user/uploaded_files/#Uc624#Uc544#Ud6c4/#Ud2b8#Ub7fc#Ud504/se2_15919322143147.jpg",
+          "/home/user/uploaded_files/#Uc624#Uc544#Ud6c4/#Ud2b8#Ub7fc#Ud504/se2_15919322280223.jpg",
+          "/home/user/uploaded_files/#Uc624#Uc544#Ud6c4/#Ud2b8#Ub7fc#Ud504/se2_15919322412569.jpg",
+          "/home/user/uploaded_files/#Uc624#Uc544#Ud6c4/#Ud2b8#Ub7fc#Ud504/se2_15919322483250.jpg",
+          "/home/user/uploaded_files/#Uc624#Uc544#Ud6c4/#Ud2b8#Ub7fc#Ud504/se2_15919322550360.jpg",
+          "/home/user/uploaded_files/#Uc624#Uc544#Ud6c4/#Ud2b8#Ub7fc#Ud504/se2_15919323121649.jpg"
+        ],
+        "image_count": 14
+      },
+      {
+        "name_encoded": "#Ud790#Ud2bc #Ud558#Uc640#Uc774#Uc5b8 #Ube4c#Ub9ac#Uc9c0",
+        "name_decoded": "힐튼 하와이언 빌리지",
+        "images": [
+          "/home/user/uploaded_files/#Uc624#Uc544#Ud6c4/#Ud790#Ud2bc #Ud558#Uc640#Uc774#Uc5b8 #Ube4c#Ub9ac#Uc9c0/[#Ud06c#Uae30#Ubcc0#Ud658]se2_15918538383498.jpg",
+          "/home/user/uploaded_files/#Uc624#Uc544#Ud6c4/#Ud790#Ud2bc #Ud558#Uc640#Uc774#Uc5b8 #Ube4c#Ub9ac#Uc9c0/[#Ud06c#Uae30#Ubcc0#Ud658]se2_15918538521116.jpg",
+          "/home/user/uploaded_files/#Uc624#Uc544#Ud6c4/#Ud790#Ud2bc #Ud558#Uc640#Uc774#Uc5b8 #Ube4c#Ub9ac#Uc9c0/[#Ud06c#Uae30#Ubcc0#Ud658]se2_15918538581881.jpg",
+          "/home/user/uploaded_files/#Uc624#Uc544#Ud6c4/#Ud790#Ud2bc #Ud558#Uc640#Uc774#Uc5b8 #Ube4c#Ub9ac#Uc9c0/[#Ud06c#Uae30#Ubcc0#Ud658]se2_15918538641083.jpg",
+          "/home/user/uploaded_files/#Uc624#Uc544#Ud6c4/#Ud790#Ud2bc #Ud558#Uc640#Uc774#Uc5b8 #Ube4c#Ub9ac#Uc9c0/[#Ud06c#Uae30#Ubcc0#Ud658]se2_15918538771337.jpg",
+          "/home/user/uploaded_files/#Uc624#Uc544#Ud6c4/#Ud790#Ud2bc #Ud558#Uc640#Uc774#Uc5b8 #Ube4c#Ub9ac#Uc9c0/[#Ud06c#Uae30#Ubcc0#Ud658]se2_15918538835176.jpg",
+          "/home/user/uploaded_files/#Uc624#Uc544#Ud6c4/#Ud790#Ud2bc #Ud558#Uc640#Uc774#Uc5b8 #Ube4c#Ub9ac#Uc9c0/[#Ud06c#Uae30#Ubcc0#Ud658]se2_15918539066746.jpg"
+        ],
+        "image_count": 7
+      }
+    ],
+    "resort_count": 4
+  },
+  "khao-lak": {
+    "region_id": "khao-lak",
+    "region_name": "카오락",
+    "resorts": [
+      {
+        "name_encoded": "JW",
+        "name_decoded": "JW",
+        "images": [
+          "/home/user/uploaded_files/#Uce74#Uc624#Ub77d/JW/thumb_14581178238282.jpg",
+          "/home/user/uploaded_files/#Uce74#Uc624#Ub77d/JW/thumb_14581178238283.jpg",
+          "/home/user/uploaded_files/#Uce74#Uc624#Ub77d/JW/thumb_14581178238284.jpg",
+          "/home/user/uploaded_files/#Uce74#Uc624#Ub77d/JW/thumb_14581178238285.jpg"
+        ],
+        "image_count": 4
+      },
+      {
+        "name_encoded": "#Ub77c#Ubca8#Ub77c",
+        "name_decoded": "라벨라",
+        "images": [
+          "/home/user/uploaded_files/#Uce74#Uc624#Ub77d/#Ub77c#Ubca8#Ub77c/se2_15907182973620.jpg",
+          "/home/user/uploaded_files/#Uce74#Uc624#Ub77d/#Ub77c#Ubca8#Ub77c/se2_15907183037536.jpg",
+          "/home/user/uploaded_files/#Uce74#Uc624#Ub77d/#Ub77c#Ubca8#Ub77c/se2_15907183091615.jpg",
+          "/home/user/uploaded_files/#Uce74#Uc624#Ub77d/#Ub77c#Ubca8#Ub77c/se2_15907183259438.jpg",
+          "/home/user/uploaded_files/#Uce74#Uc624#Ub77d/#Ub77c#Ubca8#Ub77c/se2_15907183314304.jpg",
+          "/home/user/uploaded_files/#Uce74#Uc624#Ub77d/#Ub77c#Ubca8#Ub77c/se2_15907183386677.jpg",
+          "/home/user/uploaded_files/#Uce74#Uc624#Ub77d/#Ub77c#Ubca8#Ub77c/se2_15907183694116.jpg"
+        ],
+        "image_count": 7
+      },
+      {
+        "name_encoded": "#Ub85c#Ube48#Uc2a8",
+        "name_decoded": "로빈슨",
+        "images": [
+          "/home/user/uploaded_files/#Uce74#Uc624#Ub77d/#Ub85c#Ube48#Uc2a8/se2_15906452073660.jpg",
+          "/home/user/uploaded_files/#Uce74#Uc624#Ub77d/#Ub85c#Ube48#Uc2a8/se2_15906452294052.jpg",
+          "/home/user/uploaded_files/#Uce74#Uc624#Ub77d/#Ub85c#Ube48#Uc2a8/se2_15906452452748.jpg",
+          "/home/user/uploaded_files/#Uce74#Uc624#Ub77d/#Ub85c#Ube48#Uc2a8/se2_15906453352360.jpg",
+          "/home/user/uploaded_files/#Uce74#Uc624#Ub77d/#Ub85c#Ube48#Uc2a8/se2_15906453675977.jpg",
+          "/home/user/uploaded_files/#Uce74#Uc624#Ub77d/#Ub85c#Ube48#Uc2a8/se2_15906454155780.jpg",
+          "/home/user/uploaded_files/#Uce74#Uc624#Ub77d/#Ub85c#Ube48#Uc2a8/se2_15906455633008.jpg"
+        ],
+        "image_count": 7
+      },
+      {
+        "name_encoded": "#Ub9c8#Uc774#Uce74#Uc624#Ub77d",
+        "name_decoded": "마이카오락",
+        "images": [
+          "/home/user/uploaded_files/#Uce74#Uc624#Ub77d/#Ub9c8#Uc774#Uce74#Uc624#Ub77d/se2_15924448131165.jpg",
+          "/home/user/uploaded_files/#Uce74#Uc624#Ub77d/#Ub9c8#Uc774#Uce74#Uc624#Ub77d/se2_15924448138597.jpg",
+          "/home/user/uploaded_files/#Uce74#Uc624#Ub77d/#Ub9c8#Uc774#Uce74#Uc624#Ub77d/se2_15924448144214.jpg",
+          "/home/user/uploaded_files/#Uce74#Uc624#Ub77d/#Ub9c8#Uc774#Uce74#Uc624#Ub77d/se2_15924449279096.jpg",
+          "/home/user/uploaded_files/#Uce74#Uc624#Ub77d/#Ub9c8#Uc774#Uce74#Uc624#Ub77d/se2_15924449281017.jpg",
+          "/home/user/uploaded_files/#Uce74#Uc624#Ub77d/#Ub9c8#Uc774#Uce74#Uc624#Ub77d/se2_15924449764494.jpg",
+          "/home/user/uploaded_files/#Uce74#Uc624#Ub77d/#Ub9c8#Uc774#Uce74#Uc624#Ub77d/se2_15924449767552.jpg"
+        ],
+        "image_count": 7
+      },
+      {
+        "name_encoded": "#Ube44#Uc698#Ub4dc",
+        "name_decoded": "비욘드",
+        "images": [
+          "/home/user/uploaded_files/#Uce74#Uc624#Ub77d/#Ube44#Uc698#Ub4dc/se2_15941817002228.jpg",
+          "/home/user/uploaded_files/#Uce74#Uc624#Ub77d/#Ube44#Uc698#Ub4dc/se2_15941817205265.jpg",
+          "/home/user/uploaded_files/#Uce74#Uc624#Ub77d/#Ube44#Uc698#Ub4dc/se2_15941817205891.jpg",
+          "/home/user/uploaded_files/#Uce74#Uc624#Ub77d/#Ube44#Uc698#Ub4dc/se2_15941817209256.jpg",
+          "/home/user/uploaded_files/#Uce74#Uc624#Ub77d/#Ube44#Uc698#Ub4dc/se2_15941817210068.jpg",
+          "/home/user/uploaded_files/#Uce74#Uc624#Ub77d/#Ube44#Uc698#Ub4dc/se2_15941817214210.jpg",
+          "/home/user/uploaded_files/#Uce74#Uc624#Ub77d/#Ube44#Uc698#Ub4dc/se2_15941817226160.jpg"
+        ],
+        "image_count": 7
+      },
+      {
+        "name_encoded": "#Uc13c#Ub9c8#Uc774#Ub9ac#Uc870#Ud2b8",
+        "name_decoded": "센마이리조트",
+        "images": [
+          "/home/user/uploaded_files/#Uce74#Uc624#Ub77d/#Uc13c#Ub9c8#Uc774#Ub9ac#Uc870#Ud2b8/se2_15903833471578.jpg",
+          "/home/user/uploaded_files/#Uce74#Uc624#Ub77d/#Uc13c#Ub9c8#Uc774#Ub9ac#Uc870#Ud2b8/se2_15903833561891.jpg",
+          "/home/user/uploaded_files/#Uce74#Uc624#Ub77d/#Uc13c#Ub9c8#Uc774#Ub9ac#Uc870#Ud2b8/se2_15903833627055.jpg",
+          "/home/user/uploaded_files/#Uce74#Uc624#Ub77d/#Uc13c#Ub9c8#Uc774#Ub9ac#Uc870#Ud2b8/se2_15903833769991.jpg",
+          "/home/user/uploaded_files/#Uce74#Uc624#Ub77d/#Uc13c#Ub9c8#Uc774#Ub9ac#Uc870#Ud2b8/se2_15903833862535.jpg",
+          "/home/user/uploaded_files/#Uce74#Uc624#Ub77d/#Uc13c#Ub9c8#Uc774#Ub9ac#Uc870#Ud2b8/se2_15903833953444.jpg",
+          "/home/user/uploaded_files/#Uce74#Uc624#Ub77d/#Uc13c#Ub9c8#Uc774#Ub9ac#Uc870#Ud2b8/se2_15903834768461.jpg",
+          "/home/user/uploaded_files/#Uce74#Uc624#Ub77d/#Uc13c#Ub9c8#Uc774#Ub9ac#Uc870#Ud2b8/se2_15903835590902.jpg"
+        ],
+        "image_count": 8
+      },
+      {
+        "name_encoded": "#Uc5d0#Ub374#Ube44#Uce58",
+        "name_decoded": "에덴비치",
+        "images": [
+          "/home/user/uploaded_files/#Uce74#Uc624#Ub77d/#Uc5d0#Ub374#Ube44#Uce58/se2_15909898849370.jpg",
+          "/home/user/uploaded_files/#Uce74#Uc624#Ub77d/#Uc5d0#Ub374#Ube44#Uce58/se2_15909898850005.jpg",
+          "/home/user/uploaded_files/#Uce74#Uc624#Ub77d/#Uc5d0#Ub374#Ube44#Uce58/se2_15909898852849.jpg",
+          "/home/user/uploaded_files/#Uce74#Uc624#Ub77d/#Uc5d0#Ub374#Ube44#Uce58/se2_15909899062438.jpg",
+          "/home/user/uploaded_files/#Uce74#Uc624#Ub77d/#Uc5d0#Ub374#Ube44#Uce58/se2_15909899066171.jpg",
+          "/home/user/uploaded_files/#Uce74#Uc624#Ub77d/#Uc5d0#Ub374#Ube44#Uce58/se2_15909899117939.jpg"
+        ],
+        "image_count": 6
+      }
+    ],
+    "resort_count": 7
+  },
+  "cancun": {
+    "region_id": "cancun",
+    "region_name": "칸쿤",
+    "resorts": [
+      {
+        "name_encoded": "#Uba5c#Ub85c#Ub514#Uba54#Uc774#Ucee4",
+        "name_decoded": "멜로디메이커",
+        "images": [
+          "/home/user/uploaded_files/#Uce78#Ucfe4/#Uba5c#Ub85c#Ub514#Uba54#Uc774#Ucee4/se2_15930609674075.jpg",
+          "/home/user/uploaded_files/#Uce78#Ucfe4/#Uba5c#Ub85c#Ub514#Uba54#Uc774#Ucee4/se2_15930609737507.jpg",
+          "/home/user/uploaded_files/#Uce78#Ucfe4/#Uba5c#Ub85c#Ub514#Uba54#Uc774#Ucee4/se2_15930609797549.jpg",
+          "/home/user/uploaded_files/#Uce78#Ucfe4/#Uba5c#Ub85c#Ub514#Uba54#Uc774#Ucee4/se2_15930609858742.jpg",
+          "/home/user/uploaded_files/#Uce78#Ucfe4/#Uba5c#Ub85c#Ub514#Uba54#Uc774#Ucee4/se2_15930609911177.jpg",
+          "/home/user/uploaded_files/#Uce78#Ucfe4/#Uba5c#Ub85c#Ub514#Uba54#Uc774#Ucee4/se2_15930610152591.jpg",
+          "/home/user/uploaded_files/#Uce78#Ucfe4/#Uba5c#Ub85c#Ub514#Uba54#Uc774#Ucee4/se2_15930610923221.jpg"
+        ],
+        "image_count": 7
+      },
+      {
+        "name_encoded": "#Uc120 #Ud330#Ub9ac#Uc2a4",
+        "name_decoded": "선 팰리스",
+        "images": [
+          "/home/user/uploaded_files/#Uce78#Ucfe4/#Uc120 #Ud330#Ub9ac#Uc2a4/thumb_14582160575922.jpg",
+          "/home/user/uploaded_files/#Uce78#Ucfe4/#Uc120 #Ud330#Ub9ac#Uc2a4/thumb_14582160575923.jpg",
+          "/home/user/uploaded_files/#Uce78#Ucfe4/#Uc120 #Ud330#Ub9ac#Uc2a4/thumb_14582160575924.jpg"
+        ],
+        "image_count": 3
+      },
+      {
+        "name_encoded": "#Uc2dc#Ud06c#Ub9bf#Ub354#Ubc14#Uc778",
+        "name_decoded": "시크릿더바인",
+        "images": [
+          "/home/user/uploaded_files/#Uce78#Ucfe4/#Uc2dc#Ud06c#Ub9bf#Ub354#Ubc14#Uc778/se2_15930551100276.jpg",
+          "/home/user/uploaded_files/#Uce78#Ucfe4/#Uc2dc#Ud06c#Ub9bf#Ub354#Ubc14#Uc778/se2_15930551293623.jpg",
+          "/home/user/uploaded_files/#Uce78#Ucfe4/#Uc2dc#Ud06c#Ub9bf#Ub354#Ubc14#Uc778/se2_15930551349262.jpg",
+          "/home/user/uploaded_files/#Uce78#Ucfe4/#Uc2dc#Ud06c#Ub9bf#Ub354#Ubc14#Uc778/se2_15930551459884.jpg",
+          "/home/user/uploaded_files/#Uce78#Ucfe4/#Uc2dc#Ud06c#Ub9bf#Ub354#Ubc14#Uc778/se2_15930551635423.jpg",
+          "/home/user/uploaded_files/#Uce78#Ucfe4/#Uc2dc#Ud06c#Ub9bf#Ub354#Ubc14#Uc778/se2_15930552010101.jpg",
+          "/home/user/uploaded_files/#Uce78#Ucfe4/#Uc2dc#Ud06c#Ub9bf#Ub354#Ubc14#Uc778/se2_15930552319892.jpg"
+        ],
+        "image_count": 7
+      },
+      {
+        "name_encoded": "#Ud30c#Ub77c#Ub514#Uc218#Uc2a4 #Uce78#Ucfe4",
+        "name_decoded": "파라디수스 칸쿤",
+        "images": [
+          "/home/user/uploaded_files/#Uce78#Ucfe4/#Ud30c#Ub77c#Ub514#Uc218#Uc2a4 #Uce78#Ucfe4/se2_15930582425797.jpg",
+          "/home/user/uploaded_files/#Uce78#Ucfe4/#Ud30c#Ub77c#Ub514#Uc218#Uc2a4 #Uce78#Ucfe4/se2_15930582537805.jpg",
+          "/home/user/uploaded_files/#Uce78#Ucfe4/#Ud30c#Ub77c#Ub514#Uc218#Uc2a4 #Uce78#Ucfe4/se2_15930582661392.jpg",
+          "/home/user/uploaded_files/#Uce78#Ucfe4/#Ud30c#Ub77c#Ub514#Uc218#Uc2a4 #Uce78#Ucfe4/se2_15930582842879.jpg",
+          "/home/user/uploaded_files/#Uce78#Ucfe4/#Ud30c#Ub77c#Ub514#Uc218#Uc2a4 #Uce78#Ucfe4/se2_15930582960053.jpg",
+          "/home/user/uploaded_files/#Uce78#Ucfe4/#Ud30c#Ub77c#Ub514#Uc218#Uc2a4 #Uce78#Ucfe4/se2_15930583137724.jpg",
+          "/home/user/uploaded_files/#Uce78#Ucfe4/#Ud30c#Ub77c#Ub514#Uc218#Uc2a4 #Uce78#Ucfe4/se2_15930583355849.jpg"
+        ],
+        "image_count": 7
+      },
+      {
+        "name_encoded": "#Ud558#Uc58f#Ud2b8#Uc9c0#Ubc14",
+        "name_decoded": "하얏트지바",
+        "images": [
+          "/home/user/uploaded_files/#Uce78#Ucfe4/#Ud558#Uc58f#Ud2b8#Uc9c0#Ubc14/se2_15929763188054.jpg",
+          "/home/user/uploaded_files/#Uce78#Ucfe4/#Ud558#Uc58f#Ud2b8#Uc9c0#Ubc14/se2_15929763246723.jpg",
+          "/home/user/uploaded_files/#Uce78#Ucfe4/#Ud558#Uc58f#Ud2b8#Uc9c0#Ubc14/se2_15929763362568.jpg",
+          "/home/user/uploaded_files/#Uce78#Ucfe4/#Ud558#Uc58f#Ud2b8#Uc9c0#Ubc14/se2_15929763502992.jpg",
+          "/home/user/uploaded_files/#Uce78#Ucfe4/#Ud558#Uc58f#Ud2b8#Uc9c0#Ubc14/se2_15929763838471.jpg",
+          "/home/user/uploaded_files/#Uce78#Ucfe4/#Ud558#Uc58f#Ud2b8#Uc9c0#Ubc14/se2_15929763952839.jpg",
+          "/home/user/uploaded_files/#Uce78#Ucfe4/#Ud558#Uc58f#Ud2b8#Uc9c0#Ubc14/se2_15929764069752.jpg"
+        ],
+        "image_count": 7
+      }
+    ],
+    "resort_count": 5
+  },
+  "koh-samui": {
+    "region_id": "koh-samui",
+    "region_name": "코사무이",
+    "resorts": [
+      {
+        "name_encoded": "#Ub354#Uc0ac#Ub780",
+        "name_decoded": "더사란",
+        "images": [
+          "/home/user/uploaded_files/#Ucf54#Uc0ac#Ubb34#Uc774/#Ub354#Uc0ac#Ub780/se2_15928842296193.jpg",
+          "/home/user/uploaded_files/#Ucf54#Uc0ac#Ubb34#Uc774/#Ub354#Uc0ac#Ub780/se2_15928842365804.jpg",
+          "/home/user/uploaded_files/#Ucf54#Uc0ac#Ubb34#Uc774/#Ub354#Uc0ac#Ub780/se2_15928842419782.jpg",
+          "/home/user/uploaded_files/#Ucf54#Uc0ac#Ubb34#Uc774/#Ub354#Uc0ac#Ub780/se2_15928842473134.jpg",
+          "/home/user/uploaded_files/#Ucf54#Uc0ac#Ubb34#Uc774/#Ub354#Uc0ac#Ub780/se2_15928842917960.jpg",
+          "/home/user/uploaded_files/#Ucf54#Uc0ac#Ubb34#Uc774/#Ub354#Uc0ac#Ub780/se2_15928842975436.jpg",
+          "/home/user/uploaded_files/#Ucf54#Uc0ac#Ubb34#Uc774/#Ub354#Uc0ac#Ub780/se2_15928843090955.jpg"
+        ],
+        "image_count": 7
+      },
+      {
+        "name_encoded": "#Ubc18#Uc580#Ud2b8#Ub9ac",
+        "name_decoded": "반얀트리",
+        "images": [
+          "/home/user/uploaded_files/#Ucf54#Uc0ac#Ubb34#Uc774/#Ubc18#Uc580#Ud2b8#Ub9ac/se2_15893535140450.jpg",
+          "/home/user/uploaded_files/#Ucf54#Uc0ac#Ubb34#Uc774/#Ubc18#Uc580#Ud2b8#Ub9ac/se2_15893535227863.jpg",
+          "/home/user/uploaded_files/#Ucf54#Uc0ac#Ubb34#Uc774/#Ubc18#Uc580#Ud2b8#Ub9ac/se2_15893535308871.jpg",
+          "/home/user/uploaded_files/#Ucf54#Uc0ac#Ubb34#Uc774/#Ubc18#Uc580#Ud2b8#Ub9ac/se2_15893535955691.jpg",
+          "/home/user/uploaded_files/#Ucf54#Uc0ac#Ubb34#Uc774/#Ubc18#Uc580#Ud2b8#Ub9ac/se2_15893536910572.jpg",
+          "/home/user/uploaded_files/#Ucf54#Uc0ac#Ubb34#Uc774/#Ubc18#Uc580#Ud2b8#Ub9ac/se2_15893536986466.jpg",
+          "/home/user/uploaded_files/#Ucf54#Uc0ac#Ubb34#Uc774/#Ubc18#Uc580#Ud2b8#Ub9ac/se2_15893537505560.jpg"
+        ],
+        "image_count": 7
+      },
+      {
+        "name_encoded": "#Uc778#Ud130#Ucf58#Ud2f0#Ub128#Ud0c8",
+        "name_decoded": "인터콘티넨탈",
+        "images": [
+          "/home/user/uploaded_files/#Ucf54#Uc0ac#Ubb34#Uc774/#Uc778#Ud130#Ucf58#Ud2f0#Ub128#Ud0c8/se2_15927923603689.jpg",
+          "/home/user/uploaded_files/#Ucf54#Uc0ac#Ubb34#Uc774/#Uc778#Ud130#Ucf58#Ud2f0#Ub128#Ud0c8/se2_15927923674088.jpg",
+          "/home/user/uploaded_files/#Ucf54#Uc0ac#Ubb34#Uc774/#Uc778#Ud130#Ucf58#Ud2f0#Ub128#Ud0c8/se2_15927923924527.jpg",
+          "/home/user/uploaded_files/#Ucf54#Uc0ac#Ubb34#Uc774/#Uc778#Ud130#Ucf58#Ud2f0#Ub128#Ud0c8/se2_15927924069068.jpg",
+          "/home/user/uploaded_files/#Ucf54#Uc0ac#Ubb34#Uc774/#Uc778#Ud130#Ucf58#Ud2f0#Ub128#Ud0c8/se2_15927924131456.jpg",
+          "/home/user/uploaded_files/#Ucf54#Uc0ac#Ubb34#Uc774/#Uc778#Ud130#Ucf58#Ud2f0#Ub128#Ud0c8/se2_15927924527923.jpg",
+          "/home/user/uploaded_files/#Ucf54#Uc0ac#Ubb34#Uc774/#Uc778#Ud130#Ucf58#Ud2f0#Ub128#Ud0c8/se2_15927924874026.jpg"
+        ],
+        "image_count": 7
+      },
+      {
+        "name_encoded": "#Ud0a4#Ub9ac#Uce74#Uc580",
+        "name_decoded": "키리카얀",
+        "images": [
+          "/home/user/uploaded_files/#Ucf54#Uc0ac#Ubb34#Uc774/#Ud0a4#Ub9ac#Uce74#Uc580/se2_15928788119654.jpg",
+          "/home/user/uploaded_files/#Ucf54#Uc0ac#Ubb34#Uc774/#Ud0a4#Ub9ac#Uce74#Uc580/se2_15928788247024.jpg",
+          "/home/user/uploaded_files/#Ucf54#Uc0ac#Ubb34#Uc774/#Ud0a4#Ub9ac#Uce74#Uc580/se2_15928788305386.jpg",
+          "/home/user/uploaded_files/#Ucf54#Uc0ac#Ubb34#Uc774/#Ud0a4#Ub9ac#Uce74#Uc580/se2_15928788364556.jpg",
+          "/home/user/uploaded_files/#Ucf54#Uc0ac#Ubb34#Uc774/#Ud0a4#Ub9ac#Uce74#Uc580/se2_15928788737764.jpg",
+          "/home/user/uploaded_files/#Ucf54#Uc0ac#Ubb34#Uc774/#Ud0a4#Ub9ac#Uce74#Uc580/se2_15928788843220.jpg",
+          "/home/user/uploaded_files/#Ucf54#Uc0ac#Ubb34#Uc774/#Ud0a4#Ub9ac#Uce74#Uc580/se2_15928789604581.jpg"
+        ],
+        "image_count": 7
+      },
+      {
+        "name_encoded": "#Ud3ec#Uc2dc#Uc98c#Ub9ac#Uc870#Ud2b8",
+        "name_decoded": "포시즌리조트",
+        "images": [
+          "/home/user/uploaded_files/#Ucf54#Uc0ac#Ubb34#Uc774/#Ud3ec#Uc2dc#Uc98c#Ub9ac#Uc870#Ud2b8/se2_15928880108082.jpg",
+          "/home/user/uploaded_files/#Ucf54#Uc0ac#Ubb34#Uc774/#Ud3ec#Uc2dc#Uc98c#Ub9ac#Uc870#Ud2b8/se2_15928880174799.jpg",
+          "/home/user/uploaded_files/#Ucf54#Uc0ac#Ubb34#Uc774/#Ud3ec#Uc2dc#Uc98c#Ub9ac#Uc870#Ud2b8/se2_15928880231367.jpg",
+          "/home/user/uploaded_files/#Ucf54#Uc0ac#Ubb34#Uc774/#Ud3ec#Uc2dc#Uc98c#Ub9ac#Uc870#Ud2b8/se2_15928880349769.jpg",
+          "/home/user/uploaded_files/#Ucf54#Uc0ac#Ubb34#Uc774/#Ud3ec#Uc2dc#Uc98c#Ub9ac#Uc870#Ud2b8/se2_15928880467922.jpg",
+          "/home/user/uploaded_files/#Ucf54#Uc0ac#Ubb34#Uc774/#Ud3ec#Uc2dc#Uc98c#Ub9ac#Uc870#Ud2b8/se2_15928880540739.jpg",
+          "/home/user/uploaded_files/#Ucf54#Uc0ac#Ubb34#Uc774/#Ud3ec#Uc2dc#Uc98c#Ub9ac#Uc870#Ud2b8/se2_15928880592465.jpg"
+        ],
+        "image_count": 7
+      }
+    ],
+    "resort_count": 5
+  },
+  "pattaya": {
+    "region_id": "pattaya",
+    "region_name": "파타야",
+    "resorts": [
+      {
+        "name_encoded": "#Uc250#Ub77c#Ud1a4",
+        "name_decoded": "쉐라톤",
+        "images": [
+          "/home/user/uploaded_files/#Ud30c#Ud0c0#Uc57c/#Uc250#Ub77c#Ud1a4/thumb_14581907753988.jpg",
+          "/home/user/uploaded_files/#Ud30c#Ud0c0#Uc57c/#Uc250#Ub77c#Ud1a4/thumb_14581907753989.jpg"
+        ],
+        "image_count": 2
+      },
+      {
+        "name_encoded": "#Uc790#Uc778",
+        "name_decoded": "자인",
+        "images": [
+          "/home/user/uploaded_files/#Ud30c#Ud0c0#Uc57c/#Uc790#Uc778/thumb_14581929836414.jpg",
+          "/home/user/uploaded_files/#Ud30c#Ud0c0#Uc57c/#Uc790#Uc778/thumb_14581929836415 (1).jpg",
+          "/home/user/uploaded_files/#Ud30c#Ud0c0#Uc57c/#Uc790#Uc778/thumb_14581929836415.jpg",
+          "/home/user/uploaded_files/#Ud30c#Ud0c0#Uc57c/#Uc790#Uc778/thumb_14581929836416.jpg"
+        ],
+        "image_count": 4
+      }
+    ],
+    "resort_count": 2
+  },
+  "phuket": {
+    "region_id": "phuket",
+    "region_name": "푸켓",
+    "resorts": [
+      {
+        "name_encoded": "#Ub178#Ubcf4#Ud154 #Uae4c#Ub9d0#Ub77c",
+        "name_decoded": "노보텔 까말라",
+        "images": [
+          "/home/user/uploaded_files/#Ud478#Ucf13/#Ub178#Ubcf4#Ud154 #Uae4c#Ub9d0#Ub77c/se2_14792814315997.jpg",
+          "/home/user/uploaded_files/#Ud478#Ucf13/#Ub178#Ubcf4#Ud154 #Uae4c#Ub9d0#Ub77c/se2_14792814355666.jpg",
+          "/home/user/uploaded_files/#Ud478#Ucf13/#Ub178#Ubcf4#Ud154 #Uae4c#Ub9d0#Ub77c/se2_14792814391588.jpg",
+          "/home/user/uploaded_files/#Ud478#Ucf13/#Ub178#Ubcf4#Ud154 #Uae4c#Ub9d0#Ub77c/se2_14792816505881.jpg",
+          "/home/user/uploaded_files/#Ud478#Ucf13/#Ub178#Ubcf4#Ud154 #Uae4c#Ub9d0#Ub77c/se2_14792817101664.jpg",
+          "/home/user/uploaded_files/#Ud478#Ucf13/#Ub178#Ubcf4#Ud154 #Uae4c#Ub9d0#Ub77c/se2_14792817156416.jpg",
+          "/home/user/uploaded_files/#Ud478#Ucf13/#Ub178#Ubcf4#Ud154 #Uae4c#Ub9d0#Ub77c/se2_14792817209647.jpg"
+        ],
+        "image_count": 7
+      },
+      {
+        "name_encoded": "#Ub77c#Ud50c#Ub85c#Ub77c #Ud30c#Ud1b5",
+        "name_decoded": "라플로라 파통",
+        "images": [
+          "/home/user/uploaded_files/#Ud478#Ucf13/#Ub77c#Ud50c#Ub85c#Ub77c #Ud30c#Ud1b5/se2_14592479691108.jpg",
+          "/home/user/uploaded_files/#Ud478#Ucf13/#Ub77c#Ud50c#Ub85c#Ub77c #Ud30c#Ud1b5/se2_14592479915548.jpg",
+          "/home/user/uploaded_files/#Ud478#Ucf13/#Ub77c#Ud50c#Ub85c#Ub77c #Ud30c#Ud1b5/se2_14592480055362.jpg",
+          "/home/user/uploaded_files/#Ud478#Ucf13/#Ub77c#Ud50c#Ub85c#Ub77c #Ud30c#Ud1b5/se2_14592483077390.jpg",
+          "/home/user/uploaded_files/#Ud478#Ucf13/#Ub77c#Ud50c#Ub85c#Ub77c #Ud30c#Ud1b5/se2_14592483078623.jpg",
+          "/home/user/uploaded_files/#Ud478#Ucf13/#Ub77c#Ud50c#Ub85c#Ub77c #Ud30c#Ud1b5/se2_14592483391630.jpg",
+          "/home/user/uploaded_files/#Ud478#Ucf13/#Ub77c#Ud50c#Ub85c#Ub77c #Ud30c#Ud1b5/se2_14592483394731.jpg"
+        ],
+        "image_count": 7
+      },
+      {
+        "name_encoded": "#Ubc18#Ub2e4#Ub77c #Ube4c#Ub77c#Uc2a4",
+        "name_decoded": "반다라 빌라스",
+        "images": [
+          "/home/user/uploaded_files/#Ud478#Ucf13/#Ubc18#Ub2e4#Ub77c #Ube4c#Ub77c#Uc2a4/se2_15108996312172.jpg",
+          "/home/user/uploaded_files/#Ud478#Ucf13/#Ubc18#Ub2e4#Ub77c #Ube4c#Ub77c#Uc2a4/se2_15108996314782.jpg",
+          "/home/user/uploaded_files/#Ud478#Ucf13/#Ubc18#Ub2e4#Ub77c #Ube4c#Ub77c#Uc2a4/se2_15108996316884.jpg",
+          "/home/user/uploaded_files/#Ud478#Ucf13/#Ubc18#Ub2e4#Ub77c #Ube4c#Ub77c#Uc2a4/se2_15108996319937.jpg",
+          "/home/user/uploaded_files/#Ud478#Ucf13/#Ubc18#Ub2e4#Ub77c #Ube4c#Ub77c#Uc2a4/se2_15108996522820.jpg",
+          "/home/user/uploaded_files/#Ud478#Ucf13/#Ubc18#Ub2e4#Ub77c #Ube4c#Ub77c#Uc2a4/se2_15108996523297.jpg",
+          "/home/user/uploaded_files/#Ud478#Ucf13/#Ubc18#Ub2e4#Ub77c #Ube4c#Ub77c#Uc2a4/se2_15108996635335.jpg"
+        ],
+        "image_count": 7
+      },
+      {
+        "name_encoded": "#Uc13c#Ud0c0#Ub77c #Ube4c#Ub77c#Uc2a4 #Ud478#Ucf13",
+        "name_decoded": "센타라 빌라스 푸켓",
+        "images": [
+          "/home/user/uploaded_files/#Ud478#Ucf13/#Uc13c#Ud0c0#Ub77c #Ube4c#Ub77c#Uc2a4 #Ud478#Ucf13/se2_15907253464485.jpg",
+          "/home/user/uploaded_files/#Ud478#Ucf13/#Uc13c#Ud0c0#Ub77c #Ube4c#Ub77c#Uc2a4 #Ud478#Ucf13/se2_15907253544466.jpg",
+          "/home/user/uploaded_files/#Ud478#Ucf13/#Uc13c#Ud0c0#Ub77c #Ube4c#Ub77c#Uc2a4 #Ud478#Ucf13/se2_15907253666109.jpg",
+          "/home/user/uploaded_files/#Ud478#Ucf13/#Uc13c#Ud0c0#Ub77c #Ube4c#Ub77c#Uc2a4 #Ud478#Ucf13/se2_15907253871359.jpg",
+          "/home/user/uploaded_files/#Ud478#Ucf13/#Uc13c#Ud0c0#Ub77c #Ube4c#Ub77c#Uc2a4 #Ud478#Ucf13/se2_15907253947619.jpg",
+          "/home/user/uploaded_files/#Ud478#Ucf13/#Uc13c#Ud0c0#Ub77c #Ube4c#Ub77c#Uc2a4 #Ud478#Ucf13/se2_15907254016126.jpg",
+          "/home/user/uploaded_files/#Ud478#Ucf13/#Uc13c#Ud0c0#Ub77c #Ube4c#Ub77c#Uc2a4 #Ud478#Ucf13/se2_15907254292079.jpg"
+        ],
+        "image_count": 7
+      },
+      {
+        "name_encoded": "#Uc6e8#Uc2a4#Ud134",
+        "name_decoded": "웨스턴",
+        "images": [
+          "/home/user/uploaded_files/#Ud478#Ucf13/#Uc6e8#Uc2a4#Ud134/se2_15917619303518.jpg",
+          "/home/user/uploaded_files/#Ud478#Ucf13/#Uc6e8#Uc2a4#Ud134/se2_15917619560433.jpg",
+          "/home/user/uploaded_files/#Ud478#Ucf13/#Uc6e8#Uc2a4#Ud134/se2_15917619616869.jpg",
+          "/home/user/uploaded_files/#Ud478#Ucf13/#Uc6e8#Uc2a4#Ud134/se2_15917619675173.jpg",
+          "/home/user/uploaded_files/#Ud478#Ucf13/#Uc6e8#Uc2a4#Ud134/se2_15917619879145.jpg",
+          "/home/user/uploaded_files/#Ud478#Ucf13/#Uc6e8#Uc2a4#Ud134/se2_15917620096800.jpg",
+          "/home/user/uploaded_files/#Ud478#Ucf13/#Uc6e8#Uc2a4#Ud134/se2_15917620171597.jpg"
+        ],
+        "image_count": 7
+      },
+      {
+        "name_encoded": "#Uc708#Ub364 #Uadf8#Ub79c#Ub4dc",
+        "name_decoded": "윈덤 그랜드",
+        "images": [
+          "/home/user/uploaded_files/#Ud478#Ucf13/#Uc708#Ub364 #Uadf8#Ub79c#Ub4dc/se2_15108990292554.jpg",
+          "/home/user/uploaded_files/#Ud478#Ucf13/#Uc708#Ub364 #Uadf8#Ub79c#Ub4dc/se2_15108990293289.jpg",
+          "/home/user/uploaded_files/#Ud478#Ucf13/#Uc708#Ub364 #Uadf8#Ub79c#Ub4dc/se2_15108990295207.jpg",
+          "/home/user/uploaded_files/#Ud478#Ucf13/#Uc708#Ub364 #Uadf8#Ub79c#Ub4dc/se2_15108990297559.jpg",
+          "/home/user/uploaded_files/#Ud478#Ucf13/#Uc708#Ub364 #Uadf8#Ub79c#Ub4dc/se2_15108990297952.jpg",
+          "/home/user/uploaded_files/#Ud478#Ucf13/#Uc708#Ub364 #Uadf8#Ub79c#Ub4dc/se2_15108990573245.jpg",
+          "/home/user/uploaded_files/#Ud478#Ucf13/#Uc708#Ub364 #Uadf8#Ub79c#Ub4dc/se2_15108990574661.jpg"
+        ],
+        "image_count": 7
+      }
+    ],
+    "resort_count": 6
+  }
+}

@@ -1,0 +1,491 @@
+================================================================================
+리조트 이미지 업로드 시작 (API 엔드포인트 사용)
+================================================================================
+
+
+📍 발리 (bali) - 4개 리조트
+--------------------------------------------------------------------------------
+
+🏨 반얀트리 - 7개 이미지
+    ✅ [0] https://atntzsryivyk2c4y.public.blob.vercel-storage.com/1767016441141-pn2fme.jpg
+    ✅ [1] https://atntzsryivyk2c4y.public.blob.vercel-storage.com/1767016442125-4w1vh.jpg
+    ✅ [2] https://atntzsryivyk2c4y.public.blob.vercel-storage.com/1767016442707-fjca.jpg
+    ✅ [3] https://atntzsryivyk2c4y.public.blob.vercel-storage.com/1767016443277-jufsm.jpg
+    ✅ [4] https://atntzsryivyk2c4y.public.blob.vercel-storage.com/1767016444081-c7qozk.jpg
+    ✅ [5] https://atntzsryivyk2c4y.public.blob.vercel-storage.com/1767016444493-1mz6hm.jpg
+    ✅ [6] https://atntzsryivyk2c4y.public.blob.vercel-storage.com/1767016445057-ys70u.jpg
+
+🏨 아야나 - 7개 이미지
+    ✅ [0] https://atntzsryivyk2c4y.public.blob.vercel-storage.com/1767016445750-pvkka.jpg
+    ✅ [1] https://atntzsryivyk2c4y.public.blob.vercel-storage.com/1767016446514-w3cv9.jpg
+    ✅ [2] https://atntzsryivyk2c4y.public.blob.vercel-storage.com/1767016447563-htsi4l.jpg
+    ✅ [3] https://atntzsryivyk2c4y.public.blob.vercel-storage.com/1767016448455-tvlsxl.jpg
+    ✅ [4] https://atntzsryivyk2c4y.public.blob.vercel-storage.com/1767016449247-40put.jpg
+    ✅ [5] https://atntzsryivyk2c4y.public.blob.vercel-storage.com/1767016449963-e1cpic.jpg
+    ✅ [6] https://atntzsryivyk2c4y.public.blob.vercel-storage.com/1767016450948-95p9q6.jpg
+
+🏨 알란드라 짐바란 - 7개 이미지
+    ✅ [0] https://atntzsryivyk2c4y.public.blob.vercel-storage.com/1767016451953-xhmxcf.jpg
+    ✅ [1] https://atntzsryivyk2c4y.public.blob.vercel-storage.com/1767016452601-odz9wa.jpg
+    ✅ [2] https://atntzsryivyk2c4y.public.blob.vercel-storage.com/1767016453464-4yzfz.jpg
+    ✅ [3] https://atntzsryivyk2c4y.public.blob.vercel-storage.com/1767016454391-cq76c8.jpg
+    ✅ [4] https://atntzsryivyk2c4y.public.blob.vercel-storage.com/1767016455864-72w4m.jpg
+    ✅ [5] https://atntzsryivyk2c4y.public.blob.vercel-storage.com/1767016456519-jibbo.jpg
+    ✅ [6] https://atntzsryivyk2c4y.public.blob.vercel-storage.com/1767016456863-4yu3mr.jpg
+
+🏨 포시즌 - 7개 이미지
+    ✅ [0] https://atntzsryivyk2c4y.public.blob.vercel-storage.com/1767016457552-qc287d.jpg
+    ✅ [1] https://atntzsryivyk2c4y.public.blob.vercel-storage.com/1767016458134-9rgbbg.jpg
+    ✅ [2] https://atntzsryivyk2c4y.public.blob.vercel-storage.com/1767016459000-weapms.jpg
+    ✅ [3] https://atntzsryivyk2c4y.public.blob.vercel-storage.com/1767016459581-r90d1i.jpg
+    ✅ [4] https://atntzsryivyk2c4y.public.blob.vercel-storage.com/1767016460030-ih76cj.jpg
+    ✅ [5] https://atntzsryivyk2c4y.public.blob.vercel-storage.com/1767016461234-1cesgs.jpg
+    ✅ [6] https://atntzsryivyk2c4y.public.blob.vercel-storage.com/1767016462172-0xtd7.jpg
+
+📍 빅아일랜드 (big-island) - 1개 리조트
+--------------------------------------------------------------------------------
+
+🏨 쉐라톤코나 - 7개 이미지
+    ✅ [0] https://atntzsryivyk2c4y.public.blob.vercel-storage.com/1767016463016-ok3egn.jpg
+    ✅ [1] https://atntzsryivyk2c4y.public.blob.vercel-storage.com/1767016463717-edjr8.jpg
+    ✅ [2] https://atntzsryivyk2c4y.public.blob.vercel-storage.com/1767016464423-3b5wyg.jpg
+    ✅ [3] https://atntzsryivyk2c4y.public.blob.vercel-storage.com/1767016465156-dhy027.jpg
+    ✅ [4] https://atntzsryivyk2c4y.public.blob.vercel-storage.com/1767016465950-6l7dsw.jpg
+    ✅ [5] https://atntzsryivyk2c4y.public.blob.vercel-storage.com/1767016466820-n0wx4f.jpg
+    ✅ [6] https://atntzsryivyk2c4y.public.blob.vercel-storage.com/1767016467508-fnmngq.jpg
+
+📍 칸쿤 (cancun) - 5개 리조트
+--------------------------------------------------------------------------------
+
+🏨 멜로디메이커 - 7개 이미지
+    ✅ [0] https://atntzsryivyk2c4y.public.blob.vercel-storage.com/1767016468170-hs6b9h.jpg
+    ✅ [1] https://atntzsryivyk2c4y.public.blob.vercel-storage.com/1767016468898-2xt4r.jpg
+    ✅ [2] https://atntzsryivyk2c4y.public.blob.vercel-storage.com/1767016469497-jq8we6.jpg
+    ✅ [3] https://atntzsryivyk2c4y.public.blob.vercel-storage.com/1767016470115-o0vbbn.jpg
+    ✅ [4] https://atntzsryivyk2c4y.public.blob.vercel-storage.com/1767016470672-jfu17.jpg
+    ✅ [5] https://atntzsryivyk2c4y.public.blob.vercel-storage.com/1767016471356-yiddj.jpg
+    ✅ [6] https://atntzsryivyk2c4y.public.blob.vercel-storage.com/1767016471860-gbsm2.jpg
+
+🏨 선 팰리스 - 3개 이미지
+    ✅ [0] https://atntzsryivyk2c4y.public.blob.vercel-storage.com/1767016472257-thzyj.jpg
+    ✅ [1] https://atntzsryivyk2c4y.public.blob.vercel-storage.com/1767016472667-aot1ss.jpg
+    ✅ [2] https://atntzsryivyk2c4y.public.blob.vercel-storage.com/1767016473017-y8ar.jpg
+
+🏨 시크릿더바인 - 7개 이미지
+    ✅ [0] https://atntzsryivyk2c4y.public.blob.vercel-storage.com/1767016473661-93nbjo.jpg
+    ✅ [1] https://atntzsryivyk2c4y.public.blob.vercel-storage.com/1767016474316-cocs4k.jpg
+    ✅ [2] https://atntzsryivyk2c4y.public.blob.vercel-storage.com/1767016475014-pgdro8.jpg
+    ✅ [3] https://atntzsryivyk2c4y.public.blob.vercel-storage.com/1767016475850-gckzno.jpg
+    ✅ [4] https://atntzsryivyk2c4y.public.blob.vercel-storage.com/1767016476534-0i3zbh.jpg
+    ✅ [5] https://atntzsryivyk2c4y.public.blob.vercel-storage.com/1767016477280-nngdq.jpg
+    ✅ [6] https://atntzsryivyk2c4y.public.blob.vercel-storage.com/1767016477878-3zyaus.jpg
+
+🏨 파라디수스 칸쿤 - 7개 이미지
+    ✅ [0] https://atntzsryivyk2c4y.public.blob.vercel-storage.com/1767016478678-ntw9d9.jpg
+    ✅ [1] https://atntzsryivyk2c4y.public.blob.vercel-storage.com/1767016479500-by5afe.jpg
+    ✅ [2] https://atntzsryivyk2c4y.public.blob.vercel-storage.com/1767016480357-i5oxtu.jpg
+    ✅ [3] https://atntzsryivyk2c4y.public.blob.vercel-storage.com/1767016481090-ra6c8j.jpg
+    ✅ [4] https://atntzsryivyk2c4y.public.blob.vercel-storage.com/1767016481884-xwcim.jpg
+    ✅ [5] https://atntzsryivyk2c4y.public.blob.vercel-storage.com/1767016482726-tput6v.jpg
+    ✅ [6] https://atntzsryivyk2c4y.public.blob.vercel-storage.com/1767016483802-xrjb5m.jpg
+
+🏨 하얏트지바 - 7개 이미지
+    ✅ [0] https://atntzsryivyk2c4y.public.blob.vercel-storage.com/1767016485065-1m34v.jpg
+    ✅ [1] https://atntzsryivyk2c4y.public.blob.vercel-storage.com/1767016485686-hx4jzf.jpg
+    ✅ [2] https://atntzsryivyk2c4y.public.blob.vercel-storage.com/1767016486398-gnhphm.jpg
+    ✅ [3] https://atntzsryivyk2c4y.public.blob.vercel-storage.com/1767016487058-znp9x4.jpg
+    ✅ [4] https://atntzsryivyk2c4y.public.blob.vercel-storage.com/1767016487537-99ub4t.jpg
+    ✅ [5] https://atntzsryivyk2c4y.public.blob.vercel-storage.com/1767016488166-lei6on.jpg
+    ✅ [6] https://atntzsryivyk2c4y.public.blob.vercel-storage.com/1767016488766-3zv8pd.jpg
+
+📍 두바이 (dubai) - 3개 리조트
+--------------------------------------------------------------------------------
+
+🏨 디바나 플라자 - 6개 이미지
+    ✅ [0] https://atntzsryivyk2c4y.public.blob.vercel-storage.com/1767016489380-gm20db.jpg
+    ✅ [1] https://atntzsryivyk2c4y.public.blob.vercel-storage.com/1767016490043-mhfqma.jpg
+    ✅ [2] https://atntzsryivyk2c4y.public.blob.vercel-storage.com/1767016490695-nnh98v.jpg
+    ✅ [3] https://atntzsryivyk2c4y.public.blob.vercel-storage.com/1767016491199-yfi2nd.jpg
+    ✅ [4] https://atntzsryivyk2c4y.public.blob.vercel-storage.com/1767016491936-mmlyyi.jpg
+    ✅ [5] https://atntzsryivyk2c4y.public.blob.vercel-storage.com/1767016492640-x6rj04.jpg
+
+🏨 리치칼튼 - 4개 이미지
+    ✅ [0] https://atntzsryivyk2c4y.public.blob.vercel-storage.com/1767016492995-yy82ce.jpg
+    ✅ [1] https://atntzsryivyk2c4y.public.blob.vercel-storage.com/1767016493319-7qfn7.jpg
+    ✅ [2] https://atntzsryivyk2c4y.public.blob.vercel-storage.com/1767016493990-ul9ij.jpg
+    ✅ [3] https://atntzsryivyk2c4y.public.blob.vercel-storage.com/1767016494374-9qdux.jpg
+
+🏨 피말라이 - 4개 이미지
+    ✅ [0] https://atntzsryivyk2c4y.public.blob.vercel-storage.com/1767016494722-5lgtdj.jpg
+    ✅ [1] https://atntzsryivyk2c4y.public.blob.vercel-storage.com/1767016495213-e28ks.jpg
+    ✅ [2] https://atntzsryivyk2c4y.public.blob.vercel-storage.com/1767016495536-79ifxj.jpg
+    ✅ [3] https://atntzsryivyk2c4y.public.blob.vercel-storage.com/1767016495892-ptsmsl.jpg
+
+📍 카오락 (khao-lak) - 7개 리조트
+--------------------------------------------------------------------------------
+
+🏨 JW - 4개 이미지
+    ✅ [0] https://atntzsryivyk2c4y.public.blob.vercel-storage.com/1767016496243-slzbsu.jpg
+    ✅ [1] https://atntzsryivyk2c4y.public.blob.vercel-storage.com/1767016496642-zw7isq.jpg
+    ✅ [2] https://atntzsryivyk2c4y.public.blob.vercel-storage.com/1767016496964-t6fbnd.jpg
+    ✅ [3] https://atntzsryivyk2c4y.public.blob.vercel-storage.com/1767016497280-f8pfjah.jpg
+
+🏨 라벨라 - 7개 이미지
+    ✅ [0] https://atntzsryivyk2c4y.public.blob.vercel-storage.com/1767016497823-m7jd7e.jpg
+    ✅ [1] https://atntzsryivyk2c4y.public.blob.vercel-storage.com/1767016498291-l5mtkd.jpg
+    ✅ [2] https://atntzsryivyk2c4y.public.blob.vercel-storage.com/1767016498817-fg9fyc.jpg
+    ✅ [3] https://atntzsryivyk2c4y.public.blob.vercel-storage.com/1767016499446-mhfbsp.jpg
+    ✅ [4] https://atntzsryivyk2c4y.public.blob.vercel-storage.com/1767016499916-b6zpm.jpg
+    ✅ [5] https://atntzsryivyk2c4y.public.blob.vercel-storage.com/1767016500372-1p7dkt.jpg
+    ✅ [6] https://atntzsryivyk2c4y.public.blob.vercel-storage.com/1767016500775-1n6az6.jpg
+
+🏨 로빈슨 - 7개 이미지
+    ✅ [0] https://atntzsryivyk2c4y.public.blob.vercel-storage.com/1767016501407-ei202w.jpg
+    ✅ [1] https://atntzsryivyk2c4y.public.blob.vercel-storage.com/1767016501998-z9l50b.jpg
+    ✅ [2] https://atntzsryivyk2c4y.public.blob.vercel-storage.com/1767016502626-v4pw5a.jpg
+    ✅ [3] https://atntzsryivyk2c4y.public.blob.vercel-storage.com/1767016503184-8sgi5q.jpg
+    ✅ [4] https://atntzsryivyk2c4y.public.blob.vercel-storage.com/1767016503690-wdj5f3.jpg
+    ✅ [5] https://atntzsryivyk2c4y.public.blob.vercel-storage.com/1767016504201-e1mqqw.jpg
+    ✅ [6] https://atntzsryivyk2c4y.public.blob.vercel-storage.com/1767016504732-8r0lcf.jpg
+
+🏨 마이카오락 - 7개 이미지
+    ✅ [0] https://atntzsryivyk2c4y.public.blob.vercel-storage.com/1767016505377-r4dto.jpg
+    ✅ [1] https://atntzsryivyk2c4y.public.blob.vercel-storage.com/1767016506139-ntpx0s.jpg
+    ✅ [2] https://atntzsryivyk2c4y.public.blob.vercel-storage.com/1767016506982-y7sv9l.jpg
+    ✅ [3] https://atntzsryivyk2c4y.public.blob.vercel-storage.com/1767016507489-m81oz.jpg
+    ✅ [4] https://atntzsryivyk2c4y.public.blob.vercel-storage.com/1767016507920-jah1hi.jpg
+    ✅ [5] https://atntzsryivyk2c4y.public.blob.vercel-storage.com/1767016508380-0naoz3.jpg
+    ✅ [6] https://atntzsryivyk2c4y.public.blob.vercel-storage.com/1767016508904-b1ecci.jpg
+
+🏨 비욘드 - 7개 이미지
+    ✅ [0] https://atntzsryivyk2c4y.public.blob.vercel-storage.com/1767016509424-lgspci.jpg
+    ✅ [1] https://atntzsryivyk2c4y.public.blob.vercel-storage.com/1767016510792-1dmuuc.jpg
+    ✅ [2] https://atntzsryivyk2c4y.public.blob.vercel-storage.com/1767016511677-c88uj.jpg
+    ✅ [3] https://atntzsryivyk2c4y.public.blob.vercel-storage.com/1767016512768-o73f7p.jpg
+    ✅ [4] https://atntzsryivyk2c4y.public.blob.vercel-storage.com/1767016513850-6r8ek5.jpg
+    ✅ [5] https://atntzsryivyk2c4y.public.blob.vercel-storage.com/1767016514792-iq0jf.jpg
+    ✅ [6] https://atntzsryivyk2c4y.public.blob.vercel-storage.com/1767016515518-b3wcil.jpg
+
+🏨 센마이리조트 - 8개 이미지
+    ✅ [0] https://atntzsryivyk2c4y.public.blob.vercel-storage.com/1767016516335-qbrzpg.jpg
+    ✅ [1] https://atntzsryivyk2c4y.public.blob.vercel-storage.com/1767016517085-qyggl.jpg
+    ✅ [2] https://atntzsryivyk2c4y.public.blob.vercel-storage.com/1767016517637-qa7v7.jpg
+    ✅ [3] https://atntzsryivyk2c4y.public.blob.vercel-storage.com/1767016518233-l6k0l.jpg
+    ✅ [4] https://atntzsryivyk2c4y.public.blob.vercel-storage.com/1767016518748-x7r1pl.jpg
+    ✅ [5] https://atntzsryivyk2c4y.public.blob.vercel-storage.com/1767016519207-fi20oj.jpg
+    ✅ [6] https://atntzsryivyk2c4y.public.blob.vercel-storage.com/1767016519682-ca2hkr.jpg
+    ✅ [7] https://atntzsryivyk2c4y.public.blob.vercel-storage.com/1767016520148-2g4z9x.jpg
+
+🏨 에덴비치 - 6개 이미지
+    ✅ [0] https://atntzsryivyk2c4y.public.blob.vercel-storage.com/1767016520822-zm8tdg.jpg
+    ✅ [1] https://atntzsryivyk2c4y.public.blob.vercel-storage.com/1767016521566-gr0ycc.jpg
+    ✅ [2] https://atntzsryivyk2c4y.public.blob.vercel-storage.com/1767016522300-l10do.jpg
+    ✅ [3] https://atntzsryivyk2c4y.public.blob.vercel-storage.com/1767016522907-nj5jqi.jpg
+    ✅ [4] https://atntzsryivyk2c4y.public.blob.vercel-storage.com/1767016523490-0upm3h.jpg
+    ✅ [5] https://atntzsryivyk2c4y.public.blob.vercel-storage.com/1767016524045-swsf.jpg
+
+📍 코사무이 (koh-samui) - 5개 리조트
+--------------------------------------------------------------------------------
+
+🏨 더사란 - 7개 이미지
+    ✅ [0] https://atntzsryivyk2c4y.public.blob.vercel-storage.com/1767016524544-vj8sef.jpg
+    ✅ [1] https://atntzsryivyk2c4y.public.blob.vercel-storage.com/1767016525157-3blwl8.jpg
+    ✅ [2] https://atntzsryivyk2c4y.public.blob.vercel-storage.com/1767016526026-notc6a.jpg
+    ✅ [3] https://atntzsryivyk2c4y.public.blob.vercel-storage.com/1767016526682-oc2d328.jpg
+    ✅ [4] https://atntzsryivyk2c4y.public.blob.vercel-storage.com/1767016527410-ndjhn.jpg
+    ✅ [5] https://atntzsryivyk2c4y.public.blob.vercel-storage.com/1767016528022-hqzd3.jpg
+    ✅ [6] https://atntzsryivyk2c4y.public.blob.vercel-storage.com/1767016528535-t9b4nny.jpg
+
+🏨 반얀트리 - 7개 이미지
+    ✅ [0] https://atntzsryivyk2c4y.public.blob.vercel-storage.com/1767016529265-re7bkh.jpg
+    ✅ [1] https://atntzsryivyk2c4y.public.blob.vercel-storage.com/1767016529854-pasw8h.jpg
+    ✅ [2] https://atntzsryivyk2c4y.public.blob.vercel-storage.com/1767016530546-ekvw2.jpg
+    ✅ [3] https://atntzsryivyk2c4y.public.blob.vercel-storage.com/1767016531229-6204z.jpg
+    ✅ [4] https://atntzsryivyk2c4y.public.blob.vercel-storage.com/1767016531855-h8ata.jpg
+    ✅ [5] https://atntzsryivyk2c4y.public.blob.vercel-storage.com/1767016532420-10b6h.jpg
+    ✅ [6] https://atntzsryivyk2c4y.public.blob.vercel-storage.com/1767016532939-zaumzq.jpg
+
+🏨 인터콘티넨탈 - 7개 이미지
+    ✅ [0] https://atntzsryivyk2c4y.public.blob.vercel-storage.com/1767016533637-m89j1.jpg
+    ✅ [1] https://atntzsryivyk2c4y.public.blob.vercel-storage.com/1767016534334-wzrkuv.jpg
+    ✅ [2] https://atntzsryivyk2c4y.public.blob.vercel-storage.com/1767016534864-vo5e5.jpg
+    ✅ [3] https://atntzsryivyk2c4y.public.blob.vercel-storage.com/1767016535278-1vh8o5.jpg
+    ✅ [4] https://atntzsryivyk2c4y.public.blob.vercel-storage.com/1767016535808-009efx.jpg
+    ✅ [5] https://atntzsryivyk2c4y.public.blob.vercel-storage.com/1767016536646-ehnuoe.jpg
+    ✅ [6] https://atntzsryivyk2c4y.public.blob.vercel-storage.com/1767016537300-omiai.jpg
+
+🏨 키리카얀 - 7개 이미지
+    ✅ [0] https://atntzsryivyk2c4y.public.blob.vercel-storage.com/1767016538027-dydupk.jpg
+    ✅ [1] https://atntzsryivyk2c4y.public.blob.vercel-storage.com/1767016538700-hwr3a.jpg
+    ✅ [2] https://atntzsryivyk2c4y.public.blob.vercel-storage.com/1767016539322-l8qzae.jpg
+    ✅ [3] https://atntzsryivyk2c4y.public.blob.vercel-storage.com/1767016539972-91t9kp.jpg
+    ✅ [4] https://atntzsryivyk2c4y.public.blob.vercel-storage.com/1767016540512-b8ajfa.jpg
+    ✅ [5] https://atntzsryivyk2c4y.public.blob.vercel-storage.com/1767016541155-gd66o4.jpg
+    ✅ [6] https://atntzsryivyk2c4y.public.blob.vercel-storage.com/1767016541765-ihj1ui.jpg
+
+🏨 포시즌리조트 - 7개 이미지
+    ✅ [0] https://atntzsryivyk2c4y.public.blob.vercel-storage.com/1767016542338-3fwb.jpg
+    ✅ [1] https://atntzsryivyk2c4y.public.blob.vercel-storage.com/1767016542990-8yz349.jpg
+    ✅ [2] https://atntzsryivyk2c4y.public.blob.vercel-storage.com/1767016543618-u058bi.jpg
+    ✅ [3] https://atntzsryivyk2c4y.public.blob.vercel-storage.com/1767016544202-ec5l.jpg
+    ✅ [4] https://atntzsryivyk2c4y.public.blob.vercel-storage.com/1767016544752-aspv59.jpg
+    ✅ [5] https://atntzsryivyk2c4y.public.blob.vercel-storage.com/1767016545622-fwy18u.jpg
+    ✅ [6] https://atntzsryivyk2c4y.public.blob.vercel-storage.com/1767016546296-7cnac.jpg
+
+📍 롬복 (lombok) - 3개 리조트
+--------------------------------------------------------------------------------
+
+🏨 수다말라 - 4개 이미지
+    ✅ [0] https://atntzsryivyk2c4y.public.blob.vercel-storage.com/1767016546709-cpps1a.jpg
+    ✅ [1] https://atntzsryivyk2c4y.public.blob.vercel-storage.com/1767016547068-kk37ji.jpg
+    ✅ [2] https://atntzsryivyk2c4y.public.blob.vercel-storage.com/1767016547402-upur0d.jpg
+    ✅ [3] https://atntzsryivyk2c4y.public.blob.vercel-storage.com/1767016547723-cjcftth.jpg
+
+🏨 옴박 - 7개 이미지
+    ✅ [0] https://atntzsryivyk2c4y.public.blob.vercel-storage.com/1767016548395-y1utv.jpg
+    ✅ [1] https://atntzsryivyk2c4y.public.blob.vercel-storage.com/1767016549136-kl0lcg.jpg
+    ✅ [2] https://atntzsryivyk2c4y.public.blob.vercel-storage.com/1767016549833-wmos1.jpg
+    ✅ [3] https://atntzsryivyk2c4y.public.blob.vercel-storage.com/1767016550457-9c3ugo.jpg
+    ✅ [4] https://atntzsryivyk2c4y.public.blob.vercel-storage.com/1767016551244-xgin1i.jpg
+    ✅ [5] https://atntzsryivyk2c4y.public.blob.vercel-storage.com/1767016551861-wc1v3t.jpg
+    ✅ [6] https://atntzsryivyk2c4y.public.blob.vercel-storage.com/1767016552454-f54jft.jpg
+
+🏨 푸리마스 - 4개 이미지
+    ✅ [0] https://atntzsryivyk2c4y.public.blob.vercel-storage.com/1767016552812-uts187.jpg
+    ✅ [1] https://atntzsryivyk2c4y.public.blob.vercel-storage.com/1767016553137-gii96m.jpg
+    ✅ [2] https://atntzsryivyk2c4y.public.blob.vercel-storage.com/1767016553474-hzkkrh.jpg
+    ✅ [3] https://atntzsryivyk2c4y.public.blob.vercel-storage.com/1767016553819-y597cg.jpg
+
+📍 몰디브 (maldives) - 9개 리조트
+--------------------------------------------------------------------------------
+
+🏨 길리랑칸푸쉬 - 7개 이미지
+    ✅ [0] https://atntzsryivyk2c4y.public.blob.vercel-storage.com/1767016554193-sb9tcb.jpg
+    ✅ [1] https://atntzsryivyk2c4y.public.blob.vercel-storage.com/1767016555048-ugxz8l.jpg
+    ✅ [2] https://atntzsryivyk2c4y.public.blob.vercel-storage.com/1767016555782-351tr.jpg
+    ✅ [3] https://atntzsryivyk2c4y.public.blob.vercel-storage.com/1767016557587-pz67k.jpg
+    ✅ [4] https://atntzsryivyk2c4y.public.blob.vercel-storage.com/1767016558278-4fb4qr.jpg
+    ✅ [5] https://atntzsryivyk2c4y.public.blob.vercel-storage.com/1767016559987-i6bi3i.jpg
+    ✅ [6] https://atntzsryivyk2c4y.public.blob.vercel-storage.com/1767016561926-pfht1g.jpg
+
+🏨 바두 - 7개 이미지
+    ✅ [0] https://atntzsryivyk2c4y.public.blob.vercel-storage.com/1767016562562-026exq.jpg
+    ✅ [1] https://atntzsryivyk2c4y.public.blob.vercel-storage.com/1767016563141-pfx5c.jpg
+    ✅ [2] https://atntzsryivyk2c4y.public.blob.vercel-storage.com/1767016563739-g6mcca.jpg
+    ✅ [3] https://atntzsryivyk2c4y.public.blob.vercel-storage.com/1767016564351-v4bbwv.jpg
+    ✅ [4] https://atntzsryivyk2c4y.public.blob.vercel-storage.com/1767016564982-95fp9a.jpg
+    ✅ [5] https://atntzsryivyk2c4y.public.blob.vercel-storage.com/1767016565712-f6p1u8.jpg
+    ✅ [6] https://atntzsryivyk2c4y.public.blob.vercel-storage.com/1767016566270-wbk46m.jpg
+
+🏨 벨라사루 리조트 - 7개 이미지
+    ✅ [0] https://atntzsryivyk2c4y.public.blob.vercel-storage.com/1767016566969-eeakqk.jpg
+    ✅ [1] https://atntzsryivyk2c4y.public.blob.vercel-storage.com/1767016567880-36iold.jpg
+    ✅ [2] https://atntzsryivyk2c4y.public.blob.vercel-storage.com/1767016568726-xcjaae.jpg
+    ✅ [3] https://atntzsryivyk2c4y.public.blob.vercel-storage.com/1767016569493-klxc2.jpg
+    ✅ [4] https://atntzsryivyk2c4y.public.blob.vercel-storage.com/1767016570119-9n8iu.jpg
+    ✅ [5] https://atntzsryivyk2c4y.public.blob.vercel-storage.com/1767016570734-a30d6.jpg
+    ✅ [6] https://atntzsryivyk2c4y.public.blob.vercel-storage.com/1767016571433-rz731m.jpg
+
+🏨 소바자니 - 3개 이미지
+    ✅ [0] https://atntzsryivyk2c4y.public.blob.vercel-storage.com/1767016571975-7hqtn.jpg
+    ✅ [1] https://atntzsryivyk2c4y.public.blob.vercel-storage.com/1767016572750-l4w7v5.jpg
+    ✅ [2] https://atntzsryivyk2c4y.public.blob.vercel-storage.com/1767016573447-250f78.jpg
+
+🏨 시나몬 돈벨리 - 7개 이미지
+    ✅ [0] https://atntzsryivyk2c4y.public.blob.vercel-storage.com/1767016574090-1r911p.jpg
+    ✅ [1] https://atntzsryivyk2c4y.public.blob.vercel-storage.com/1767016575027-img5g7.jpg
+    ✅ [2] https://atntzsryivyk2c4y.public.blob.vercel-storage.com/1767016575816-gr2hrr.jpg
+    ✅ [3] https://atntzsryivyk2c4y.public.blob.vercel-storage.com/1767016576529-dzvb8e.jpg
+    ✅ [4] https://atntzsryivyk2c4y.public.blob.vercel-storage.com/1767016577172-1b43zn.jpg
+    ✅ [5] https://atntzsryivyk2c4y.public.blob.vercel-storage.com/1767016577870-zxu1j.jpg
+    ✅ [6] https://atntzsryivyk2c4y.public.blob.vercel-storage.com/1767016578558-6oyure.jpg
+
+🏨 아다아란 프레스티지 오션빌라 & 후두란푸시 - 7개 이미지
+    ✅ [0] https://atntzsryivyk2c4y.public.blob.vercel-storage.com/1767016579054-w8z0x.jpg
+    ✅ [1] https://atntzsryivyk2c4y.public.blob.vercel-storage.com/1767016579542-2ysup.jpg
+    ✅ [2] https://atntzsryivyk2c4y.public.blob.vercel-storage.com/1767016580019-ki296.jpg
+    ✅ [3] https://atntzsryivyk2c4y.public.blob.vercel-storage.com/1767016580459-v2ef6l.jpg
+    ✅ [4] https://atntzsryivyk2c4y.public.blob.vercel-storage.com/1767016580942-u6qqy.jpg
+    ✅ [5] https://atntzsryivyk2c4y.public.blob.vercel-storage.com/1767016581438-zeplzg.jpg
+    ✅ [6] https://atntzsryivyk2c4y.public.blob.vercel-storage.com/1767016582069-wnn1y.jpg
+
+🏨 오블루 - 7개 이미지
+    ✅ [0] https://atntzsryivyk2c4y.public.blob.vercel-storage.com/1767016582520-k54q05.jpg
+    ✅ [1] https://atntzsryivyk2c4y.public.blob.vercel-storage.com/1767016583024-f0pm5.jpg
+    ✅ [2] https://atntzsryivyk2c4y.public.blob.vercel-storage.com/1767016583635-ggcvfi.jpg
+    ✅ [3] https://atntzsryivyk2c4y.public.blob.vercel-storage.com/1767016584143-nqapjd.jpg
+    ✅ [4] https://atntzsryivyk2c4y.public.blob.vercel-storage.com/1767016584664-x4jwh.jpg
+    ✅ [5] https://atntzsryivyk2c4y.public.blob.vercel-storage.com/1767016585271-6k3il.jpg
+    ✅ [6] https://atntzsryivyk2c4y.public.blob.vercel-storage.com/1767016585897-9p3s7c.jpg
+
+🏨 칸두마 - 7개 이미지
+    ✅ [0] https://atntzsryivyk2c4y.public.blob.vercel-storage.com/1767016586350-fwty1k.jpg
+    ✅ [1] https://atntzsryivyk2c4y.public.blob.vercel-storage.com/1767016586813-c36ow.jpg
+    ✅ [2] https://atntzsryivyk2c4y.public.blob.vercel-storage.com/1767016587328-g7dx05.jpg
+    ✅ [3] https://atntzsryivyk2c4y.public.blob.vercel-storage.com/1767016587747-hl6iko.jpg
+    ✅ [4] https://atntzsryivyk2c4y.public.blob.vercel-storage.com/1767016588153-4tsf3g.jpg
+    ✅ [5] https://atntzsryivyk2c4y.public.blob.vercel-storage.com/1767016588567-h2jll3.jpg
+    ✅ [6] https://atntzsryivyk2c4y.public.blob.vercel-storage.com/1767016589335-ihshr8.jpg
+
+🏨 코코팜 보두히티 - 7개 이미지
+    ✅ [0] https://atntzsryivyk2c4y.public.blob.vercel-storage.com/1767016589828-uiodyu.jpg
+    ✅ [1] https://atntzsryivyk2c4y.public.blob.vercel-storage.com/1767016590546-js8h1e.jpg
+    ✅ [2] https://atntzsryivyk2c4y.public.blob.vercel-storage.com/1767016591114-yu9fb.jpg
+    ✅ [3] https://atntzsryivyk2c4y.public.blob.vercel-storage.com/1767016591580-an6r4b.jpg
+    ✅ [4] https://atntzsryivyk2c4y.public.blob.vercel-storage.com/1767016592012-284p5h.jpg
+    ✅ [5] https://atntzsryivyk2c4y.public.blob.vercel-storage.com/1767016592405-vhf9x.jpg
+    ✅ [6] https://atntzsryivyk2c4y.public.blob.vercel-storage.com/1767016592770-yy18v.jpg
+
+📍 마우이 (maui) - 3개 리조트
+--------------------------------------------------------------------------------
+
+🏨 쉐라톤마우이 리조트 - 7개 이미지
+    ✅ [0] https://atntzsryivyk2c4y.public.blob.vercel-storage.com/1767016593318-p91r6.jpg
+    ✅ [1] https://atntzsryivyk2c4y.public.blob.vercel-storage.com/1767016593924-7x3vr.jpg
+    ✅ [2] https://atntzsryivyk2c4y.public.blob.vercel-storage.com/1767016594458-2opdjm.jpg
+    ✅ [3] https://atntzsryivyk2c4y.public.blob.vercel-storage.com/1767016595107-98bb5.jpg
+    ✅ [4] https://atntzsryivyk2c4y.public.blob.vercel-storage.com/1767016595844-23mhik.jpg
+    ✅ [5] https://atntzsryivyk2c4y.public.blob.vercel-storage.com/1767016596753-9whppi.jpg
+    ✅ [6] https://atntzsryivyk2c4y.public.blob.vercel-storage.com/1767016597519-oj42zb.jpg
+
+🏨 웨스틴마우이 리조트 - 7개 이미지
+    ✅ [0] https://atntzsryivyk2c4y.public.blob.vercel-storage.com/1767016598398-6ve5l5.jpg
+    ✅ [1] https://atntzsryivyk2c4y.public.blob.vercel-storage.com/1767016599106-vihjla.jpg
+    ✅ [2] https://atntzsryivyk2c4y.public.blob.vercel-storage.com/1767016599958-cvmi2.jpg
+    ✅ [3] https://atntzsryivyk2c4y.public.blob.vercel-storage.com/1767016600834-vdxo9.jpg
+    ✅ [4] https://atntzsryivyk2c4y.public.blob.vercel-storage.com/1767016601652-q6gz1w.jpg
+    ✅ [5] https://atntzsryivyk2c4y.public.blob.vercel-storage.com/1767016602346-nj1cxk.jpg
+    ✅ [6] https://atntzsryivyk2c4y.public.blob.vercel-storage.com/1767016603019-74pm7k.jpg
+
+🏨 하얏트리젠시 마우이 - 6개 이미지
+    ✅ [0] https://atntzsryivyk2c4y.public.blob.vercel-storage.com/1767016603771-si5r0m.jpg
+    ✅ [1] https://atntzsryivyk2c4y.public.blob.vercel-storage.com/1767016604447-vonl6r.jpg
+    ✅ [2] https://atntzsryivyk2c4y.public.blob.vercel-storage.com/1767016605174-48o6w8.jpg
+    ✅ [3] https://atntzsryivyk2c4y.public.blob.vercel-storage.com/1767016605813-aclszd.jpg
+    ✅ [4] https://atntzsryivyk2c4y.public.blob.vercel-storage.com/1767016606465-9xvt5e.jpg
+    ✅ [5] https://atntzsryivyk2c4y.public.blob.vercel-storage.com/1767016607173-trddqe.jpg
+
+📍 오아후 (oahu) - 4개 리조트
+--------------------------------------------------------------------------------
+
+🏨 쉐라톤 와이키키 - 7개 이미지
+    ✅ [0] https://atntzsryivyk2c4y.public.blob.vercel-storage.com/1767016607765-few1v9.jpg
+    ✅ [1] https://atntzsryivyk2c4y.public.blob.vercel-storage.com/1767016608281-4zuzv.jpg
+    ✅ [2] https://atntzsryivyk2c4y.public.blob.vercel-storage.com/1767016608851-i30s1q.jpg
+    ✅ [3] https://atntzsryivyk2c4y.public.blob.vercel-storage.com/1767016609465-c9fjidc.jpg
+    ✅ [4] https://atntzsryivyk2c4y.public.blob.vercel-storage.com/1767016610008-clca98.jpg
+    ✅ [5] https://atntzsryivyk2c4y.public.blob.vercel-storage.com/1767016610465-0u9p8j.jpg
+    ✅ [6] https://atntzsryivyk2c4y.public.blob.vercel-storage.com/1767016610927-zphx8e.jpg
+
+🏨 쉐라톤 프린세스 카이울라니 - 7개 이미지
+    ✅ [0] https://atntzsryivyk2c4y.public.blob.vercel-storage.com/1767016611601-fyf2fc.jpg
+    ✅ [1] https://atntzsryivyk2c4y.public.blob.vercel-storage.com/1767016612229-odt93a.jpg
+    ✅ [2] https://atntzsryivyk2c4y.public.blob.vercel-storage.com/1767016612834-btvsok.jpg
+    ✅ [3] https://atntzsryivyk2c4y.public.blob.vercel-storage.com/1767016613446-er2zxe.jpg
+    ✅ [4] https://atntzsryivyk2c4y.public.blob.vercel-storage.com/1767016613993-mie3f.jpg
+    ✅ [5] https://atntzsryivyk2c4y.public.blob.vercel-storage.com/1767016614590-44edcf.jpg
+    ✅ [6] https://atntzsryivyk2c4y.public.blob.vercel-storage.com/1767016615153-9njvnl.jpg
+
+🏨 트럼프 - 14개 이미지
+    ✅ [0] https://atntzsryivyk2c4y.public.blob.vercel-storage.com/1767016615960-cuzvta.jpg
+    ✅ [1] https://atntzsryivyk2c4y.public.blob.vercel-storage.com/1767016616637-h5w5od.jpg
+    ✅ [2] https://atntzsryivyk2c4y.public.blob.vercel-storage.com/1767016617243-0yhecu.jpg
+    ✅ [3] https://atntzsryivyk2c4y.public.blob.vercel-storage.com/1767016617892-yimty4j.jpg
+    ✅ [4] https://atntzsryivyk2c4y.public.blob.vercel-storage.com/1767016618632-ivlvvg.jpg
+    ✅ [5] https://atntzsryivyk2c4y.public.blob.vercel-storage.com/1767016619281-tg484y.jpg
+    ✅ [6] https://atntzsryivyk2c4y.public.blob.vercel-storage.com/1767016619891-6oxifj.jpg
+    ✅ [7] https://atntzsryivyk2c4y.public.blob.vercel-storage.com/1767016620933-ntx6c.jpg
+    ✅ [8] https://atntzsryivyk2c4y.public.blob.vercel-storage.com/1767016621973-7flu2r.jpg
+    ✅ [9] https://atntzsryivyk2c4y.public.blob.vercel-storage.com/1767016622982-v2omvj.jpg
+    ✅ [10] https://atntzsryivyk2c4y.public.blob.vercel-storage.com/1767016624290-n909yt.jpg
+    ✅ [11] https://atntzsryivyk2c4y.public.blob.vercel-storage.com/1767016625496-w4js.jpg
+    ✅ [12] https://atntzsryivyk2c4y.public.blob.vercel-storage.com/1767016626275-cnrsr8.jpg
+    ✅ [13] https://atntzsryivyk2c4y.public.blob.vercel-storage.com/1767016627036-mpt76e.jpg
+
+🏨 힐튼 하와이언 빌리지 - 7개 이미지
+    ✅ [0] https://atntzsryivyk2c4y.public.blob.vercel-storage.com/1767016627717-vc80pn.jpg
+    ✅ [1] https://atntzsryivyk2c4y.public.blob.vercel-storage.com/1767016628405-ims4yf.jpg
+    ✅ [2] https://atntzsryivyk2c4y.public.blob.vercel-storage.com/1767016629090-youkg.jpg
+    ✅ [3] https://atntzsryivyk2c4y.public.blob.vercel-storage.com/1767016629738-aiyfop.jpg
+    ✅ [4] https://atntzsryivyk2c4y.public.blob.vercel-storage.com/1767016630367-380z7g.jpg
+    ✅ [5] https://atntzsryivyk2c4y.public.blob.vercel-storage.com/1767016631021-aacp4q.jpg
+    ✅ [6] https://atntzsryivyk2c4y.public.blob.vercel-storage.com/1767016631803-f9bc14.jpg
+
+📍 파타야 (pattaya) - 2개 리조트
+--------------------------------------------------------------------------------
+
+🏨 쉐라톤 - 2개 이미지
+    ✅ [0] https://atntzsryivyk2c4y.public.blob.vercel-storage.com/1767016632152-6c6p2a.jpg
+    ✅ [1] https://atntzsryivyk2c4y.public.blob.vercel-storage.com/1767016632532-5ognl.jpg
+
+🏨 자인 - 4개 이미지
+    ✅ [0] https://atntzsryivyk2c4y.public.blob.vercel-storage.com/1767016632874-vxlnh.jpg
+    ✅ [1] https://atntzsryivyk2c4y.public.blob.vercel-storage.com/1767016633204-kd704h.jpg
+    ✅ [2] https://atntzsryivyk2c4y.public.blob.vercel-storage.com/1767016633519-pw3k4e.jpg
+    ✅ [3] https://atntzsryivyk2c4y.public.blob.vercel-storage.com/1767016633837-ji5uxk.jpg
+
+📍 푸켓 (phuket) - 6개 리조트
+--------------------------------------------------------------------------------
+
+🏨 노보텔 까말라 - 7개 이미지
+    ✅ [0] https://atntzsryivyk2c4y.public.blob.vercel-storage.com/1767016634577-r2rysm.jpg
+    ✅ [1] https://atntzsryivyk2c4y.public.blob.vercel-storage.com/1767016635242-qywfz.jpg
+    ✅ [2] https://atntzsryivyk2c4y.public.blob.vercel-storage.com/1767016635955-6r254b.jpg
+    ✅ [3] https://atntzsryivyk2c4y.public.blob.vercel-storage.com/1767016636488-t0qape.jpg
+    ✅ [4] https://atntzsryivyk2c4y.public.blob.vercel-storage.com/1767016637152-d4pulq.jpg
+    ✅ [5] https://atntzsryivyk2c4y.public.blob.vercel-storage.com/1767016637867-6k1786.jpg
+    ✅ [6] https://atntzsryivyk2c4y.public.blob.vercel-storage.com/1767016638442-19z9y.jpg
+
+🏨 라플로라 파통 - 7개 이미지
+    ✅ [0] https://atntzsryivyk2c4y.public.blob.vercel-storage.com/1767016639003-pbwgwj.jpg
+    ✅ [1] https://atntzsryivyk2c4y.public.blob.vercel-storage.com/1767016639481-8j2lbw.jpg
+    ✅ [2] https://atntzsryivyk2c4y.public.blob.vercel-storage.com/1767016639925-tpb5pi.jpg
+    ✅ [3] https://atntzsryivyk2c4y.public.blob.vercel-storage.com/1767016640375-z7sf5f.jpg
+    ✅ [4] https://atntzsryivyk2c4y.public.blob.vercel-storage.com/1767016640830-rtln37.jpg
+    ✅ [5] https://atntzsryivyk2c4y.public.blob.vercel-storage.com/1767016641286-f1v28i.jpg
+    ✅ [6] https://atntzsryivyk2c4y.public.blob.vercel-storage.com/1767016641821-vmwrl9.jpg
+
+🏨 반다라 빌라스 - 7개 이미지
+    ✅ [0] https://atntzsryivyk2c4y.public.blob.vercel-storage.com/1767016642376-5rszb2.jpg
+    ✅ [1] https://atntzsryivyk2c4y.public.blob.vercel-storage.com/1767016642989-v5vtj.jpg
+    ✅ [2] https://atntzsryivyk2c4y.public.blob.vercel-storage.com/1767016643521-nkkrn5o.jpg
+    ✅ [3] https://atntzsryivyk2c4y.public.blob.vercel-storage.com/1767016644180-oewmke.jpg
+    ✅ [4] https://atntzsryivyk2c4y.public.blob.vercel-storage.com/1767016644716-lwaghu.jpg
+    ✅ [5] https://atntzsryivyk2c4y.public.blob.vercel-storage.com/1767016645428-e1cv3r.jpg
+    ✅ [6] https://atntzsryivyk2c4y.public.blob.vercel-storage.com/1767016646005-zvhvh6.jpg
+
+🏨 센타라 빌라스 푸켓 - 7개 이미지
+    ✅ [0] https://atntzsryivyk2c4y.public.blob.vercel-storage.com/1767016646741-d0oh89.jpg
+    ✅ [1] https://atntzsryivyk2c4y.public.blob.vercel-storage.com/1767016647492-1oa92.jpg
+    ✅ [2] https://atntzsryivyk2c4y.public.blob.vercel-storage.com/1767016648317-5tmog.jpg
+    ✅ [3] https://atntzsryivyk2c4y.public.blob.vercel-storage.com/1767016649117-q3xifj.jpg
+    ✅ [4] https://atntzsryivyk2c4y.public.blob.vercel-storage.com/1767016649742-jez8y2.jpg
+    ✅ [5] https://atntzsryivyk2c4y.public.blob.vercel-storage.com/1767016650361-ks5hhsf.jpg
+    ✅ [6] https://atntzsryivyk2c4y.public.blob.vercel-storage.com/1767016650996-b3irj.jpg
+
+🏨 웨스턴 - 7개 이미지
+    ✅ [0] https://atntzsryivyk2c4y.public.blob.vercel-storage.com/1767016651568-x35hgn.jpg
+    ✅ [1] https://atntzsryivyk2c4y.public.blob.vercel-storage.com/1767016652240-j18wm7.jpg
+    ✅ [2] https://atntzsryivyk2c4y.public.blob.vercel-storage.com/1767016652883-2ay11v.jpg
+    ✅ [3] https://atntzsryivyk2c4y.public.blob.vercel-storage.com/1767016653503-mom4gc.jpg
+    ✅ [4] https://atntzsryivyk2c4y.public.blob.vercel-storage.com/1767016654022-eu3r3i.jpg
+    ✅ [5] https://atntzsryivyk2c4y.public.blob.vercel-storage.com/1767016654489-5nk1hc.jpg
+    ✅ [6] https://atntzsryivyk2c4y.public.blob.vercel-storage.com/1767016654926-lf311.jpg
+
+🏨 윈덤 그랜드 - 7개 이미지
+    ✅ [0] https://atntzsryivyk2c4y.public.blob.vercel-storage.com/1767016655767-n36y0s.jpg
+    ✅ [1] https://atntzsryivyk2c4y.public.blob.vercel-storage.com/1767016656744-2vzehh.jpg
+    ✅ [2] https://atntzsryivyk2c4y.public.blob.vercel-storage.com/1767016657633-mgb1gk.jpg
+    ✅ [3] https://atntzsryivyk2c4y.public.blob.vercel-storage.com/1767016658900-hccbuj.jpg
+    ✅ [4] https://atntzsryivyk2c4y.public.blob.vercel-storage.com/1767016659940-1bopjk.jpg
+    ✅ [5] https://atntzsryivyk2c4y.public.blob.vercel-storage.com/1767016660775-ir5vu8.jpg
+    ✅ [6] https://atntzsryivyk2c4y.public.blob.vercel-storage.com/1767016661469-hkf6.jpg
+
+================================================================================
+업로드 완료!
+================================================================================
+✅ 성공: 338개
+❌ 실패: 0개
+📊 총계: 338개
+
+📄 결과 저장: /home/user/webapp/upload_results.json
