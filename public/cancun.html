@@ -183,21 +183,30 @@
                                                  onerror="this.src='https://images.unsplash.com/photo-1571896349842-33c89424de2d?q=80&w=2080'">
                                             ${resort.category ? `<div class="resort-badge">${categoryLabels[resort.category] || resort.category}</div>` : ''}
                                         </div>
-                                        <div class="resort-info">
+                                                                                <div class="resort-info">
                                             <div class="resort-category">${categoryLabels[resort.category] || 'RESORT'}</div>
                                             <h2 class="resort-name">${resort.name_ko}</h2>
-                                            <p class="resort-description">${resort.description || ''}</p>
-                                            ${features.length > 0 ? `
-                                                <div class="resort-features">
-                                                    ${features.slice(0, 4).map(feature => `
-                                                        <div class="feature-item">
-                                                            <i class="fas fa-check-circle"></i>
-                                                            <span>${feature}</span>
-                                                        </div>
-                                                    `).join('')}
+                                            <p class="resort-description" style="line-height: 1.8; margin-bottom: 1.5rem; color: #666;">
+                                                ${resort.name_ko}은(는) 칸쿤의 프리미엄 허니문 리조트입니다.<br>카리브해의 터키색 바다와 마야 문명이 공존하는 열대 낙원에서<br>럭셔리한 올인클루시브 리조트와 월드클래스 스파를 경험하실 수 있습니다.<br>환상적이고 로맨틱한 분위기 속에서 특별한 허니문을 만들어보세요.
+                                            </p>
+                                            <div class="resort-features">
+                                                <div class="feature-item">
+                                                    <i class="fas fa-check-circle" style="color: #C9A96E;"></i>
+                                                    <span>프라이빗 비치</span>
                                                 </div>
-                                            ` : ''}
-                                            <a href="/inquiry" class="resort-cta">상담 신청하기</a>
+                                                <div class="feature-item">
+                                                    <i class="fas fa-check-circle" style="color: #C9A96E;"></i>
+                                                    <span>인피니티 풀</span>
+                                                </div>
+                                                <div class="feature-item">
+                                                    <i class="fas fa-check-circle" style="color: #C9A96E;"></i>
+                                                    <span>럭셔리 스파</span>
+                                                </div>
+                                                <div class="feature-item">
+                                                    <i class="fas fa-check-circle" style="color: #C9A96E;"></i>
+                                                    <span>키즈클럽</span>
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
                                     ${gallery.length > 0 ? `
