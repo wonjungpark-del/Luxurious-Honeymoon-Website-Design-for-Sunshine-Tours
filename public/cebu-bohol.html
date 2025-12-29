@@ -528,15 +528,19 @@
     <!-- JavaScript -->
     <script src="/static/js/main.js"></script>
     <script>
-        // Load and display resorts
+        // Load and display resorts for Cebu-Bohol region
         async function loadResorts() {
             const container = document.getElementById('resorts-container');
-            // Force correct region_id for Cebu resorts
+            // Fixed region_id for Cebu resorts
             const regionId = 'region-philippines-cebu';
+            
+            console.log('Loading resorts with region_id:', regionId);
             
             try {
                 const response = await fetch(`/api/resorts?region_id=${regionId}&is_active=true`);
                 const data = await response.json();
+                
+                console.log('Resort data loaded:', data);
                 
                 if (data.success && data.data && data.data.length > 0) {
                     container.innerHTML = data.data.map((resort, index) => createResortCard(resort, index)).join('');
