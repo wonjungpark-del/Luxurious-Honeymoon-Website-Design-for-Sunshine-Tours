@@ -1,8 +1,5 @@
 const { put } = require('@vercel/blob');
-const formidable = require('formidable');
-const fs = require('fs');
 
-// Disable Next.js body parsing to allow formidable to handle it
 module.exports = async function handler(req, res) {
   // Enable CORS
   res.setHeader('Access-Control-Allow-Origin', '*');
@@ -18,55 +15,98 @@ module.exports = async function handler(req, res) {
   }
 
   try {
-    // Parse the multipart form data
-    const form = formidable({
-      maxFileSize: 10 * 1024 * 1024, // 10MB max
-      keepExtensions: true
-    });
-
-    const [fields, files] = await new Promise((resolve, reject) => {
-      form.parse(req, (err, fields, files) => {
-        if (err) reject(err);
-        else resolve([fields, files]);
-      });
-    });
-
-    // Get the uploaded file
-    const file = files.file?.[0] || files.file;
-    
-    if (!file) {
-      return res.status(400).json({ 
+    // Check if BLOB_READ_WRITE_TOKEN is set
+    if (!process.env.BLOB_READ_WRITE_TOKEN) {
+      return res.status(500).json({ 
         success: false, 
-        error: 'No file uploaded' 
+        error: 'BLOB_READ_WRITE_TOKEN is not configured. Please connect Blob Storage to your project.' 
       });
     }
 
-    // Read file buffer
-    const fileBuffer = fs.readFileSync(file.filepath);
+    // Get the request body as Buffer
+    const chunks = [];
+    for await (const chunk of req) {
+      chunks.push(chunk);
+    }
+    const buffer = Buffer.concat(chunks);
+
+    // Parse the content type to extract boundary
+    const contentType = req.headers['content-type'] || '';
+    if (!contentType.includes('multipart/form-data')) {
+      return res.status(400).json({ 
+        success: false, 
+        error: 'Content-Type must be multipart/form-data' 
+      });
+    }
+
+    // Extract boundary from content-type
+    const boundaryMatch = contentType.match(/boundary=([^;]+)/);
+    if (!boundaryMatch) {
+      return res.status(400).json({ 
+        success: false, 
+        error: 'No boundary found in multipart data' 
+      });
+    }
+    const boundary = boundaryMatch[1];
+
+    // Parse multipart data manually
+    const parts = buffer.toString('binary').split(`--${boundary}`);
     
-    // Generate a unique filename with timestamp
+    let fileBuffer = null;
+    let filename = 'upload.jpg';
+    let contentTypeFile = 'image/jpeg';
+
+    for (const part of parts) {
+      if (part.includes('Content-Disposition: form-data')) {
+        // Extract filename
+        const filenameMatch = part.match(/filename="([^"]+)"/);
+        if (filenameMatch) {
+          filename = filenameMatch[1];
+        }
+
+        // Extract content type
+        const ctMatch = part.match(/Content-Type: ([^\r\n]+)/);
+        if (ctMatch) {
+          contentTypeFile = ctMatch[1].trim();
+        }
+
+        // Extract file data (everything after the double CRLF)
+        const dataStart = part.indexOf('\r\n\r\n') + 4;
+        const dataEnd = part.lastIndexOf('\r\n');
+        
+        if (dataStart > 3 && dataEnd > dataStart) {
+          const binaryData = part.substring(dataStart, dataEnd);
+          fileBuffer = Buffer.from(binaryData, 'binary');
+        }
+      }
+    }
+
+    if (!fileBuffer || fileBuffer.length === 0) {
+      return res.status(400).json({ 
+        success: false, 
+        error: 'No file data found' 
+      });
+    }
+
+    // Generate unique filename
     const timestamp = Date.now();
-    const originalName = file.originalFilename || 'upload';
-    const extension = originalName.split('.').pop();
-    const filename = `${timestamp}-${Math.random().toString(36).substring(7)}.${extension}`;
-    
-    // Upload to Vercel Blob Storage
-    const blob = await put(filename, fileBuffer, {
+    const extension = filename.split('.').pop() || 'jpg';
+    const uniqueFilename = `${timestamp}-${Math.random().toString(36).substring(7)}.${extension}`;
+
+    // Upload to Vercel Blob
+    const blob = await put(uniqueFilename, fileBuffer, {
       access: 'public',
-      contentType: file.mimetype || 'image/jpeg',
+      contentType: contentTypeFile,
       addRandomSuffix: false
     });
 
-    // Clean up temp file
-    fs.unlinkSync(file.filepath);
-
-    // Return the blob URL
+    // Return success response
     return res.status(200).json({
       success: true,
       url: blob.url,
-      filename: filename,
-      size: file.size,
-      contentType: file.mimetype
+      filename: uniqueFilename,
+      size: fileBuffer.length,
+      contentType: contentTypeFile
     });
 
   } catch (error) {
@@ -76,11 +116,4 @@ module.exports = async function handler(req, res) {
       error: error.message || 'Upload failed' 
     });
   }
-};
-
-// Disable Next.js body parser for this API route
-module.exports.config = {
-  api: {
-    bodyParser: false,
-  },
 };

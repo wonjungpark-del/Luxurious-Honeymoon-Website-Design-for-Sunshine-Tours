@@ -14,8 +14,7 @@
   "dependencies": {
     "@vercel/blob": "^2.0.0",
     "@vercel/node": "^5.5.16",
-    "@vercel/postgres": "^0.10.0",
-    "formidable": "^3.5.4"
+    "@vercel/postgres": "^0.10.0"
   },
   "devDependencies": {
     "vercel": "^37.0.0"
