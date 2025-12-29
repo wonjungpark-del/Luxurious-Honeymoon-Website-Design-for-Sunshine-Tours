@@ -195,15 +195,25 @@
                         // Handle features - check if already array or needs parsing
                         let features = [];
                         if (resort.features) {
-                            features = Array.isArray(resort.features) ? resort.features : 
-                                       (typeof resort.features === 'string' ? JSON.parse(resort.features) : []);
+                            try {
+                                features = Array.isArray(resort.features) ? resort.features : 
+                                          (typeof resort.features === 'string' ? JSON.parse(resort.features) : []);
+                            } catch (e) {
+                                console.warn('Failed to parse features for', resort.name_ko, ':', e);
+                                features = [];
+                            }
                         }
                         
                         // Handle gallery - check if already array or needs parsing
                         let gallery = [];
                         if (resort.gallery_images) {
-                            gallery = Array.isArray(resort.gallery_images) ? resort.gallery_images : 
-                                      (typeof resort.gallery_images === 'string' ? JSON.parse(resort.gallery_images) : []);
+                            try {
+                                gallery = Array.isArray(resort.gallery_images) ? resort.gallery_images : 
+                                         (typeof resort.gallery_images === 'string' ? JSON.parse(resort.gallery_images) : []);
+                            } catch (e) {
+                                console.warn('Failed to parse gallery for', resort.name_ko, ':', e);
+                                gallery = [];
+                            }
                         }
                         
                         // Category badge
@@ -228,7 +238,7 @@
                                                 ${resort.description || `${resort.name_ko}은(는) 롬복의 프리미엄 허니문 리조트입니다.<br>발리보다 한적하고 순수한 자연이 살아있는 롬복에서<br>럭셔리한 객실과 월드클래스 스파, 미식 레스토랑을 경험하실 수 있습니다.<br>평화롭고 로맨틱한 분위기 속에서 특별한 허니문을 만들어보세요.`}
                                             </p>
                                             <div class="resort-features">
-                                                ${(resort.features || ['프라이빗 비치', '인피니티 풀', '럭셔리 스파', '키즈클럽']).map(feature => `
+                                                ${(features.length > 0 ? features : ['프라이빗 비치', '인피니티 풀', '럭셔리 스파', '키즈클럽']).slice(0, 4).map(feature => `
                                                 <div class="feature-item">
                                                     <i class="fas fa-check-circle" style="color: #C9A96E;"></i>
                                                     <span>${feature}</span>
@@ -240,8 +250,8 @@
                                     ${gallery.length > 0 ? `
                                         <div class="resort-gallery">
                                             ${gallery.slice(0, 6).map((img, index) => `
-                                                <div class="gallery-item" onclick="openLightbox('${img}', '${resort.name_kr} - 이미지 ${index + 1}')">
-                                                    <img src="${img}" alt="${resort.name_kr} - 이미지 ${index + 1}">
+                                                <div class="gallery-item" onclick="openLightbox('${img}', '${resort.name_ko}')">
+                                                    <img src="${img}" alt="${resort.name_ko} - 이미지 ${index + 1}">
                                                     <div class="gallery-overlay">
                                                         <i class="fas fa-search-plus"></i>
                                                     </div>
