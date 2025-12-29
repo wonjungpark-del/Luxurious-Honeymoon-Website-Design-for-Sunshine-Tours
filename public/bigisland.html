@@ -443,7 +443,7 @@
     <section class="resort-list">
         <div class="container">
             <!-- Resorts will be loaded dynamically from database -->
-            <div id="resorts-container" data-region="region-bigisland">
+            <div id="resorts-container" data-region="region-hawaii-bigisland">
                 <!-- Resort cards will be inserted here by JavaScript -->
             </div>
         </div>
@@ -551,8 +551,8 @@
         }
         
         function createResortCard(resort, index) {
-            const gallery = JSON.parse(resort.gallery_images || '[]');
-            const features = JSON.parse(resort.features || '[]');
+            const gallery = Array.isArray(resort.gallery_images) ? resort.gallery_images : [];
+            const features = Array.isArray(resort.features) ? resort.features : [];
             
             // Alternate layout: even index = image left, odd index = image right
             const imageFirst = index % 2 === 0;
