@@ -167,7 +167,7 @@
                         const gallery = Array.isArray(resort.gallery_images) ? resort.gallery_images : [];
                         const categoryLabels = { 'luxury': '럭셔리', 'premium': '프리미엄', 'standard': '스탠다드', '럭셔리': '럭셔리', '프리미엄': '프리미엄', '스탠다드': '스탠다드' };
                         return `
-                            <div class="resort-card">
+                            <div class="resort-card" data-resort-id="${resort.id}">
                                 <div class="resort-content-wrapper">
                                     <div class="resort-header">
                                         <div class="resort-image">
@@ -194,8 +194,8 @@
                                     ${gallery.length > 0 ? `
                                         <div class="resort-gallery">
                                             ${gallery.slice(0, 6).map((img, index) => `
-                                                <div class="gallery-item" onclick="openLightbox('${img}', '${resort.name_ko} - 이미지 ${index + 1}')">
-                                                    <img src="${img}" alt="${resort.name_ko} - 이미지 ${index + 1}" onerror="this.src='https://images.unsplash.com/photo-1571896349842-33c89424de2d?q=80&w=2080'">
+                                                <div class="gallery-item" onclick="openLightbox(${index}, '${resort.id}')">
+                                                    <img src="${img}" alt="${resort.name_ko}" onerror="this.src='https://images.unsplash.com/photo-1571896349842-33c89424de2d?q=80&w=2080'">
                                                     <div class="gallery-overlay">
                                                         <i class="fas fa-search-plus"></i>
                                                     </div>

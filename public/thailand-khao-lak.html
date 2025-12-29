@@ -205,7 +205,7 @@
                         };
                         
                         return `
-                            <div class="resort-card">
+                            <div class="resort-card" data-resort-id="${resort.id}">
                                 <div class="resort-content-wrapper">
                                     <div class="resort-header">
                                         <div class="resort-image">
@@ -233,8 +233,8 @@
                                     ${gallery.length > 0 ? `
                                         <div class="resort-gallery">
                                             ${gallery.slice(0, 6).map((img, index) => `
-                                                <div class="gallery-item" onclick="openLightbox('${img}', '${resort.name_ko} - 이미지 ${index + 1}')">
-                                                    <img src="${img}" alt="${resort.name_ko} - 이미지 ${index + 1}">
+                                                <div class="gallery-item" onclick="openLightbox(${index}, '${resort.id}')">
+                                                    <img src="${img}" alt="${resort.name_ko}">
                                                     <div class="gallery-overlay">
                                                         <i class="fas fa-search-plus"></i>
                                                     </div>
@@ -265,18 +265,39 @@
             }
         }
         
+        // Store gallery images globally
+        let currentGalleryImages = [];
+        let currentImageIndex = 0;
+        let currentResortName = '';
+        
         // Lightbox functionality
-        function openLightbox(imgSrc, caption) {
+        function openLightbox(index, resortId) {
+            const resortCard = document.querySelector(`[data-resort-id="${resortId}"]`);
+            if (!resortCard) return;
+            
+            const galleryItems = resortCard.querySelectorAll('.gallery-item img');
+            currentGalleryImages = Array.from(galleryItems).map(img => img.src);
+            currentImageIndex = index;
+            currentResortName = resortCard.querySelector('.resort-name').textContent;
+            
+            showLightboxImage();
+        }
+        
+        function showLightboxImage() {
             const modal = document.getElementById('lightbox-modal');
             const img = document.getElementById('lightbox-img');
             const captionText = document.getElementById('lightbox-caption');
             
             modal.classList.add('active');
-            img.src = imgSrc;
-            captionText.textContent = caption;
-            
-            // Store current image for navigation
-            window.currentLightboxImg = imgSrc;
+            img.src = currentGalleryImages[currentImageIndex];
+            captionText.textContent = currentResortName;
+        }
+        
+        function navigateLightbox(direction) {
+            currentImageIndex += direction;
+            if (currentImageIndex < 0) currentImageIndex = currentGalleryImages.length - 1;
+            if (currentImageIndex >= currentGalleryImages.length) currentImageIndex = 0;
+            showLightboxImage();
         }
         
         function closeLightbox() {
@@ -294,6 +315,12 @@
             if (closeBtn) {
                 closeBtn.addEventListener('click', closeLightbox);
             }
+            
+            // Lightbox navigation
+            const prevBtn = document.querySelector('.lightbox-prev');
+            const nextBtn = document.querySelector('.lightbox-next');
+            if (prevBtn) prevBtn.addEventListener('click', () => navigateLightbox(-1));
+            if (nextBtn) nextBtn.addEventListener('click', () => navigateLightbox(1));
             
             // Close on background click
             const modal = document.getElementById('lightbox-modal');
