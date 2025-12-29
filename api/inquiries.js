@@ -64,7 +64,20 @@ module.exports = async function handler(req, res) {
     // POST /api/inquiries - Create new inquiry
     if (method === 'POST') {
       const data = req.body;
+      console.log('POST /api/inquiries received data:', JSON.stringify(data, null, 2));
+      
+      // Validate required fields
+      if (!data.name || !data.email || !data.phone || !data.subject || !data.message) {
+        console.error('Validation failed:', { name: !!data.name, email: !!data.email, phone: !!data.phone, subject: !!data.subject, message: !!data.message });
+        return res.status(400).json({ 
+          success: false, 
+          error: 'Missing required fields',
+          required: ['name', 'email', 'phone', 'subject', 'message']
+        });
+      }
+      
       const inquiry = await createInquiry(data);
+      console.log('Inquiry created successfully:', inquiry.id);
       return res.status(201).json({ success: true, data: inquiry });
     }
 
@@ -84,6 +97,16 @@ module.exports = async function handler(req, res) {
     return res.status(405).json({ success: false, error: 'Method not allowed' });
   } catch (error) {
     console.error('Inquiries API error:', error);
-    return res.status(500).json({ success: false, error: 'Internal server error' });
+    console.error('Error details:', {
+      message: error.message,
+      stack: error.stack,
+      method: req.method,
+      body: req.body
+    });
+    return res.status(500).json({ 
+      success: false, 
+      error: 'Internal server error',
+      details: process.env.NODE_ENV === 'development' ? error.message : undefined
+    });
   }
 }
