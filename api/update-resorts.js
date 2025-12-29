@@ -25,21 +25,20 @@ module.exports = async function handler(req, res) {
 
     console.log('Starting resort data update from JSON...');
 
-    // Region ID mapping
+    // Region ID mapping (Korean names to database IDs)
     const regionMapping = {
-      'bali': 'region-bali',
-      'bigisland': 'region-hawaii-bigisland',
-      'big island': 'region-hawaii-bigisland',
-      'cancun': 'region-cancun',
-      'dubai': 'region-dubai',
-      'khao lak': 'region-thailand-khao-lak',
-      'koh samui': 'region-thailand-koh-samui',
-      'lombok': 'region-lombok',
-      'maldives': 'region-maldives',
-      'maui': 'region-hawaii-maui',
-      'oahu': 'region-hawaii-oahu',
-      'pattaya': 'region-thailand-pattaya',
-      'phuket': 'region-thailand-phuket'
+      '발리': 'region-bali',
+      '빅아일랜드': 'region-hawaii-bigisland',
+      '칸쿤': 'region-cancun',
+      '두바이': 'region-dubai',
+      '카오락': 'region-thailand-khao-lak',
+      '코사무이': 'region-thailand-koh-samui',
+      '롬복': 'region-lombok',
+      '몰디브': 'region-maldives',
+      '마우이': 'region-hawaii-maui',
+      '오아후': 'region-hawaii-oahu',
+      '파타야': 'region-thailand-pattaya',
+      '푸켓': 'region-thailand-phuket'
     };
 
     const results = {
@@ -53,7 +52,7 @@ module.exports = async function handler(req, res) {
 
     // Process each region from upload results
     for (const item of resortData.success) {
-      const regionName = item.region_name.toLowerCase();
+      const regionName = item.region_name; // Use Korean name directly
       const regionId = regionMapping[regionName] || `region-${regionName}`;
       const resortName = item.resort_name;
       const images = item.images || [];
