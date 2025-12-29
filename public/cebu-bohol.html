@@ -531,10 +531,11 @@
         // Load and display resorts
         async function loadResorts() {
             const container = document.getElementById('resorts-container');
-            const regionId = container.dataset.region;
+            // Force correct region_id for Cebu resorts
+            const regionId = 'region-philippines-cebu';
             
             try {
-                const response = await fetch(`/api/resorts?region_id=${regionId}`);
+                const response = await fetch(`/api/resorts?region_id=${regionId}&is_active=true`);
                 const data = await response.json();
                 
                 if (data.success && data.data && data.data.length > 0) {
