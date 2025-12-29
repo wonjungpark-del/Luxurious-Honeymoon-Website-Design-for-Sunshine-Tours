@@ -209,12 +209,49 @@ async function getReviewById(id) {
 }
 
 async function createReview(data) {
-  const result = await sql`
-    INSERT INTO reviews (id, destination, destination_kr, title, content, rating, author_name, travel_date, image_url, status, is_featured, created_at, updated_at)
-    VALUES (${data.id}, ${data.destination}, ${data.destination_kr || ''}, ${data.title}, ${data.content}, ${data.rating}, ${data.author_name}, ${data.travel_date}, ${data.image_url || ''}, ${data.status || 'pending'}, ${data.is_featured !== true ? false : true}, NOW(), NOW())
-    RETURNING *
-  `;
-  return result.rows[0];
+  try {
+    // Generate ID if not provided
+    const reviewId = data.id || `review-${Date.now()}-${Math.random().toString(36).substr(2, 9)}`;
+    
+    console.log('Creating review with ID:', reviewId);
+    console.log('Review data:', JSON.stringify(data, null, 2));
+    
+    const result = await sql`
+      INSERT INTO reviews (
+        id, destination, destination_kr, title, content, 
+        rating, author_name, travel_date, image_url, 
+        gallery_images, status, is_featured, created_at, updated_at
+      )
+      VALUES (
+        ${reviewId}, 
+        ${data.destination}, 
+        ${data.destination_kr || ''}, 
+        ${data.title}, 
+        ${data.content}, 
+        ${data.rating}, 
+        ${data.author_name}, 
+        ${data.travel_date || ''}, 
+        ${data.image_url || null}, 
+        ${data.gallery_images || null},
+        ${data.status || 'pending'}, 
+        ${data.is_featured !== true ? false : true}, 
+        NOW(), 
+        NOW()
+      )
+      RETURNING *
+    `;
+    
+    console.log('Review created successfully:', result.rows[0].id);
+    return result.rows[0];
+  } catch (error) {
+    console.error('Error in createReview:', error);
+    console.error('Error details:', {
+      message: error.message,
+      stack: error.stack,
+      data: data
+    });
+    throw error;
+  }
 }
 
 async function updateReview(id, data) {
