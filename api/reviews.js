@@ -77,9 +77,17 @@ module.exports = async function handler(req, res) {
     }
 
     // PATCH /api/reviews?id=xxx - Update review (status, is_featured)
-    if (method === 'PATCH' && id) {
+    if (method === 'PATCH') {
+      console.log('PATCH request received:', { id, hasId: !!id, body: req.body });
+      
+      if (!id) {
+        return res.status(400).json({ success: false, error: 'Review ID is required' });
+      }
+      
       const data = req.body;
+      console.log('Updating review:', { id, data });
       const review = await updateReview(id, data);
+      console.log('Review updated successfully:', review);
       return res.status(200).json({ success: true, data: review });
     }
 
