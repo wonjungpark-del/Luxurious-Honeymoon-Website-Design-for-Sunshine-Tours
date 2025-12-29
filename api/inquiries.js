@@ -1,6 +1,13 @@
 const { sql } = require('@vercel/postgres');
 const { getInquiries, getInquiryById, createInquiry, updateInquiry, deleteInquiry } = require('./_db');
 
+// Disable body parsing, we'll handle it manually
+export const config = {
+  api: {
+    bodyParser: true,
+  },
+};
+
 // Initialize inquiries table if it doesn't exist
 async function initializeInquiriesTable() {
   try {
@@ -34,6 +41,16 @@ let tableInitialized = false;
 
 module.exports = async function handler(req, res) {
   try {
+    // Set CORS headers
+    res.setHeader('Access-Control-Allow-Origin', '*');
+    res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PATCH, DELETE, OPTIONS');
+    res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
+    
+    // Handle OPTIONS request
+    if (req.method === 'OPTIONS') {
+      return res.status(200).end();
+    }
+
     // Initialize table on first request
     if (!tableInitialized) {
       await initializeInquiriesTable();
@@ -42,6 +59,14 @@ module.exports = async function handler(req, res) {
 
     const { method, query } = req;
     const id = query.id;
+
+    console.log('Inquiries API called:', {
+      method,
+      id,
+      hasBody: !!req.body,
+      bodyType: typeof req.body,
+      body: req.body
+    });
 
     // GET /api/inquiries - List all inquiries
     if (method === 'GET' && !id) {
