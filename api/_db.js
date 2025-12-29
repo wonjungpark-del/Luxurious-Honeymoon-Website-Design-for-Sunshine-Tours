@@ -271,9 +271,12 @@ async function getInquiryById(id) {
 }
 
 async function createInquiry(data) {
+  // Generate ID if not provided
+  const inquiryId = data.id || `inquiry-${Date.now()}-${Math.random().toString(36).substr(2, 9)}`;
+  
   const result = await sql`
     INSERT INTO inquiries (id, name, email, phone, destination, budget, travelers, departure_date, duration, subject, message, status, created_at, updated_at)
-    VALUES (${data.id}, ${data.name}, ${data.email}, ${data.phone}, ${data.destination}, ${data.budget || ''}, ${data.travelers || 2}, ${data.departure_date || ''}, ${data.duration || ''}, ${data.subject}, ${data.message}, ${data.status || 'pending'}, NOW(), NOW())
+    VALUES (${inquiryId}, ${data.name}, ${data.email}, ${data.phone}, ${data.destination}, ${data.budget || ''}, ${data.travelers || 2}, ${data.departure_date || ''}, ${data.duration || ''}, ${data.subject}, ${data.message}, ${data.status || 'pending'}, NOW(), NOW())
     RETURNING *
   `;
   return result.rows[0];
