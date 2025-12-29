@@ -271,15 +271,49 @@ async function getInquiryById(id) {
 }
 
 async function createInquiry(data) {
-  // Generate ID if not provided
-  const inquiryId = data.id || `inquiry-${Date.now()}-${Math.random().toString(36).substr(2, 9)}`;
-  
-  const result = await sql`
-    INSERT INTO inquiries (id, name, email, phone, destination, budget, travelers, departure_date, duration, subject, message, status, created_at, updated_at)
-    VALUES (${inquiryId}, ${data.name}, ${data.email}, ${data.phone}, ${data.destination}, ${data.budget || ''}, ${data.travelers || 2}, ${data.departure_date || ''}, ${data.duration || ''}, ${data.subject}, ${data.message}, ${data.status || 'pending'}, NOW(), NOW())
-    RETURNING *
-  `;
-  return result.rows[0];
+  try {
+    // Generate ID if not provided
+    const inquiryId = data.id || `inquiry-${Date.now()}-${Math.random().toString(36).substr(2, 9)}`;
+    
+    console.log('Creating inquiry with ID:', inquiryId);
+    console.log('Inquiry data:', JSON.stringify(data, null, 2));
+    
+    const result = await sql`
+      INSERT INTO inquiries (
+        id, name, email, phone, destination, 
+        budget, travelers, departure_date, duration, 
+        subject, message, status, created_at, updated_at
+      )
+      VALUES (
+        ${inquiryId}, 
+        ${data.name}, 
+        ${data.email}, 
+        ${data.phone}, 
+        ${data.destination || ''}, 
+        ${data.budget || ''}, 
+        ${data.travelers || 2}, 
+        ${data.departure_date || ''}, 
+        ${data.duration || ''}, 
+        ${data.subject}, 
+        ${data.message}, 
+        ${data.status || 'pending'}, 
+        NOW(), 
+        NOW()
+      )
+      RETURNING *
+    `;
+    
+    console.log('Inquiry created successfully:', result.rows[0].id);
+    return result.rows[0];
+  } catch (error) {
+    console.error('Error in createInquiry:', error);
+    console.error('Error details:', {
+      message: error.message,
+      stack: error.stack,
+      data: data
+    });
+    throw error;
+  }
 }
 
 async function updateInquiry(id, data) {
