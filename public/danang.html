@@ -3,96 +3,133 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>다낭 리조트 추천 | 베트남의 숨은 보석 - 선샤인투어</title>
-    <meta name="description" content="다낭의 프리미엄 리조트를 소개합니다. 인터컨티넨탈, 풀만 등 최고급 리조트에서 베트남 중부의 아름다운 해변과 문화를 경험하세요.">
-    <meta name="keywords" content="다낭, 다낭 리조트, 베트남 여행, 다낭 허니문, 논느억 해변, 인터컨티넨탈 다낭, 풀만 다낭">
+    <title>베트남 다낭 리조트 추천 | 논느억 해변 허니문 - 선샤인투어</title>
+    <meta name="description" content="베트남 다낭 프리미엄 비치 리조트 전문. 논느억 해변과 미케 비치의 럭셔리 허니문, 27년 신뢰의 선샤인투어가 추천하는 다낭 최고급 리조트.">
+    <meta name="keywords" content="다낭, 다낭 리조트, 베트남 다낭, 다낭 허니문, 논느억 해변, 베트남 리조트, 선샤인투어, 다낭 여행, 미케 비치, 다낭 호텔">
     
     <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@300;400;600;700&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     
     <!-- Font Awesome -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
     
-    <!-- CSS -->
+    <!-- Custom CSS -->
     <link rel="stylesheet" href="/static/css/style.css">
     <link rel="stylesheet" href="/static/css/destination.css">
     <link rel="stylesheet" href="/static/css/region.css">
 </head>
 <body>
-    <!-- 네비게이션 -->
-    <nav class="navbar">
-        <div class="container">
-            <a href="/" class="logo">
-                <i class="fas fa-umbrella-beach"></i>
-                Sunshine Tour
-            </a>
-            <ul class="nav-menu">
-                <li><a href="/">홈</a></li>
-                <li><a href="/thailand">태국</a></li>
-                <li><a href="/hawaii">하와이</a></li>
-                <li><a href="/indonesia">인도네시아</a></li>
-                <li><a href="/about">소개</a></li>
-                <li><a href="/contact">문의</a></li>
+    <!-- Navigation -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <a href="/index.html">
+                    <div class="logo-wrapper">
+                        <div class="text-logo" style="display: flex; align-items: center; gap: 10px;">
+                            <i class="fas fa-sun" style="font-size: 32px; color: #C9A96E;"></i>
+                            <div style="display: flex; flex-direction: column; line-height: 1.2;">
+                                <span style="font-family: 'Montserrat', sans-serif; font-size: 20px; font-weight: 700; color: #C9A96E; letter-spacing: 1px;">SUNSHINE</span>
+                                <span style="font-family: 'Montserrat', sans-serif; font-size: 10px; font-weight: 400; color: #7A7A7A; letter-spacing: 2px;">TOUR</span>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            <ul class="nav-menu" id="nav-menu">
+                <li><a href="/index.html#home" class="nav-link">Home</a></li>
+                <li><a href="/index.html#destinations" class="nav-link">Destinations</a></li>
+                <li><a href="/reviews" class="nav-link">Reviews</a></li>
+                <li><a href="/index.html#about" class="nav-link">About</a></li>
+                <li><a href="/index.html#contact" class="nav-link">Contact</a></li>
             </ul>
+            <div class="nav-toggle" id="nav-toggle">
+                <i class="fas fa-bars"></i>
+            </div>
         </div>
     </nav>
 
-    <!-- Hero Section -->
-    <section class="hero-region">
-        <div class="hero-overlay"></div>
-        <div class="hero-content">
-            <h1 class="hero-title">다낭</h1>
-            <p class="hero-subtitle">베트남의 숨은 보석, 아름다운 해변과 문화 유산</p>
+    <!-- Breadcrumb -->
+    <section class="breadcrumb">
+        <div class="container">
+            <ul class="breadcrumb-list">
+                <li><a href="/index.html">Home</a></li>
+                <li><i class="fas fa-chevron-right"></i></li>
+                <li><a href="/destination-vietnam.html">Vietnam</a></li>
+                <li><i class="fas fa-chevron-right"></i></li>
+                <li class="current">다낭</li>
+            </ul>
         </div>
     </section>
 
-    <!-- 지역 소개 -->
-    <section class="region-intro">
+    <!-- Page Header -->
+    <section class="destination-intro">
         <div class="container">
-            <h2 class="section-title">다낭에서의 특별한 시간</h2>
-            <p class="intro-text">중부 베트남의 항구도시 다낭은 논느억 해변, 미케 해변 등 아름다운 해변과 참 문화 유적, 그리고 세계적 수준의 리조트가 어우러진 곳입니다.</p>
+            <div class="intro-wrapper">
+                <span class="section-label">DANANG RESORTS</span>
+                <h1 class="destination-section-title">다낭 리조트</h1>
+                <p class="destination-description">
+                    중부 베트남의 항구도시 다낭은 논느억 해변, 미케 해변 등<br>아름다운 해변과 참 문화 유적, 그리고 세계적 수준의 리조트가<br>어우러진 베트남 최고의 비치 리조트 여행지입니다.
+                </p>
+            </div>
         </div>
     </section>
 
-    <!-- 특징 -->
-    <section class="region-features">
-        <div class="container">
-            <div class="features-grid">
-                
-                <div class="feature-card">
-                    <div class="feature-icon">
-                        <i class="fas fa-water"></i>
+    <!-- Why Section -->
+    <section class="region-info" style="margin-top: 4rem;">
+        <div class="container" style="max-width: 1200px; margin: 0 auto; padding: 0 2rem;">
+            <div class="section-header" style="text-align: center; margin-bottom: 3rem;">
+                <span class="section-label" style="color: #C9A96E; font-weight: 600; letter-spacing: 2px; font-size: 0.9rem;">WHY DANANG</span>
+                <h2 class="section-title" style="font-size: 2.5rem; color: #2C2C2C; margin-top: 1rem;">다낭을 선택해야 하는 이유</h2>
+            </div>
+            
+            <div class="region-meta" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2rem; padding: 0;">
+                <div class="meta-item" style="text-align: center; padding: 2rem; background: #f8f9fa; border-radius: 12px;">
+                    <div style="width: 80px; height: 80px; margin: 0 auto 1.5rem; background: linear-gradient(135deg, #C9A96E 0%, #B8935E 100%); border-radius: 50%; display: flex; align-items: center; justify-content: center;">
+                        <i class="fas fa-water" style="font-size: 2rem; color: white;"></i>
                     </div>
-                    <h3>아름다운 해변</h3>
-                    <p>논느억, 미케 등 세계적인 해변</p>
+                    <h3 class="meta-label" style="font-size: 1.3rem; color: #2C2C2C; margin-bottom: 1rem; font-weight: 600;">아름다운 해변</h3>
+                    <p class="meta-value" style="font-size: 1rem; color: #666; line-height: 1.6;">논느억 해변, 미케 비치 등 세계적인 해변과 맑은 바다를 자랑합니다.</p>
                 </div>
-                <div class="feature-card">
-                    <div class="feature-icon">
-                        <i class="fas fa-landmark"></i>
+                <div class="meta-item" style="text-align: center; padding: 2rem; background: #f8f9fa; border-radius: 12px;">
+                    <div style="width: 80px; height: 80px; margin: 0 auto 1.5rem; background: linear-gradient(135deg, #C9A96E 0%, #B8935E 100%); border-radius: 50%; display: flex; align-items: center; justify-content: center;">
+                        <i class="fas fa-landmark" style="font-size: 2rem; color: white;"></i>
                     </div>
-                    <h3>문화 유산</h3>
-                    <p>호이안, 미선 유적 등 UNESCO 세계문화유산</p>
+                    <h3 class="meta-label" style="font-size: 1.3rem; color: #2C2C2C; margin-bottom: 1rem; font-weight: 600;">문화 유산</h3>
+                    <p class="meta-value" style="font-size: 1rem; color: #666; line-height: 1.6;">호이안 고도시, 미선 유적 등 UNESCO 세계문화유산을 가까이에서 만날 수 있습니다.</p>
                 </div>
-                <div class="feature-card">
-                    <div class="feature-icon">
-                        <i class="fas fa-utensils"></i>
+                <div class="meta-item" style="text-align: center; padding: 2rem; background: #f8f9fa; border-radius: 12px;">
+                    <div style="width: 80px; height: 80px; margin: 0 auto 1.5rem; background: linear-gradient(135deg, #C9A96E 0%, #B8935E 100%); border-radius: 50%; display: flex; align-items: center; justify-content: center;">
+                        <i class="fas fa-utensils" style="font-size: 2rem; color: white;"></i>
                     </div>
-                    <h3>베트남 미식</h3>
-                    <p>신선한 해산물과 전통 베트남 요리</p>
+                    <h3 class="meta-label" style="font-size: 1.3rem; color: #2C2C2C; margin-bottom: 1rem; font-weight: 600;">베트남 미식</h3>
+                    <p class="meta-value" style="font-size: 1rem; color: #666; line-height: 1.6;">신선한 해산물과 전통 베트남 요리로 미식가들의 천국입니다.</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- 리조트 목록 -->
-    <section class="resorts-section">
+    <!-- Resort List -->
+    <section class="resort-list">
         <div class="container">
-            <h2 class="section-title">추천 리조트</h2>
-            <div id="resorts-container" class="resorts-grid">
-                <div class="loading-message">
+            <!-- Resorts will be loaded dynamically from database -->
+            <div id="resorts-container">
+                <div class="loading-resorts">
                     <i class="fas fa-spinner fa-spin"></i>
                     <p>리조트 정보를 불러오는 중...</p>
                 </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <div class="container">
+            <div class="cta-content">
+                <h2>다낭에서 특별한 허니문을 시작하세요</h2>
+                <p>전문 상담사가 여러분의 완벽한 여행을 계획해드립니다</p>
+                <a href="/inquiry" class="cta-btn">문의하기</a>
             </div>
         </div>
     </section>
@@ -101,154 +138,165 @@
     <footer class="footer">
         <div class="container">
             <div class="footer-content">
-                <div class="footer-section">
-                    <h3><i class="fas fa-umbrella-beach"></i> Sunshine Tour</h3>
-                    <p>세계 최고의 리조트에서 꿈같은 허니문을 만들어드립니다.</p>
+                <div class="footer-brand">
+                    <h3>SUNSHINE TOUR</h3>
+                    <p>프라이빗 허니문 전문 여행사</p>
                 </div>
-                <div class="footer-section">
-                    <h4>바로가기</h4>
-                    <ul>
-                        <li><a href="/">홈</a></li>
-                        <li><a href="/thailand">태국</a></li>
-                        <li><a href="/hawaii">하와이</a></li>
-                        <li><a href="/indonesia">인도네시아</a></li>
-                    </ul>
-                </div>
-                <div class="footer-section">
-                    <h4>문의</h4>
-                    <p><i class="fas fa-phone"></i> 1588-0000</p>
-                    <p><i class="fas fa-envelope"></i> info@sunshinetour.com</p>
+                
+                <div class="footer-info">
+                    <p>서울특별시 성북구 보문로30길 71, 2층 7호</p>
+                    <p>TEL: 02-318-8021</p>
+                    <p class="copyright">© 2024 Sunshine Tour. All rights reserved.</p>
                 </div>
             </div>
-            <div class="footer-bottom">
-                <p>&copy; 2024 Sunshine Tour. All rights reserved.</p>
-            </div>
+        </div>
+        
+        <!-- Admin Access Button -->
+        <div class="admin-access">
+            <a href="/admin" class="admin-btn" title="관리자 페이지">
+                <i class="fas fa-user-shield"></i>
+                <span>Admin</span>
+            </a>
         </div>
     </footer>
 
     <!-- Lightbox Modal -->
-    <div id="lightbox" class="lightbox">
-        <span class="lightbox-close">&times;</span>
-        <img class="lightbox-content" id="lightbox-img">
-        <div id="lightbox-caption"></div>
+    <div id="lightbox-modal" class="lightbox-modal">
+        <div class="lightbox-content">
+            <span class="lightbox-close">&times;</span>
+            <span class="lightbox-nav lightbox-prev">&#10094;</span>
+            <img id="lightbox-img" src="" alt="">
+            <span class="lightbox-nav lightbox-next">&#10095;</span>
+            <div class="lightbox-caption" id="lightbox-caption"></div>
+        </div>
     </div>
 
+    <!-- JavaScript -->
+    <script src="/static/js/main.js"></script>
     <script>
-    // 지역 ID 설정
-    const REGION_ID = 'region-vietnam-danang';
-    const API_BASE = '/api/resorts';
-    
-    // 리조트 데이터 로드
-    async function loadResorts() {
-        try {
-            const response = await fetch(`${API_BASE}?region_id=${REGION_ID}&is_active=true`);
-            const result = await response.json();
-            
-            const container = document.getElementById('resorts-container');
-            
-            if (!result.success || !result.data || result.data.length === 0) {
-                container.innerHTML = `
-                    <div class="no-resorts">
-                        <p>현재 표시할 리조트가 없습니다.</p>
-                    </div>
-                `;
-                return;
-            }
-            
-            const fallbackImg = 'https://images.unsplash.com/photo-1571896349842-33c89424de2d?q=80&w=2080';
-            const resorts = result.data;
-            
-            // 카테고리 라벨 매핑 (한글/영어 모두 지원)
-            const categoryLabels = {
-                'luxury': '럭셔리',
-                'premium': '프리미엄',
-                'standard': '스탠다드',
-                '럭셔리': '럭셔리',
-                '프리미엄': '프리미엄',
-                '스탠다드': '스탠다드'
-            };
-            
-            container.innerHTML = resorts.map(resort => {
-                const features = Array.isArray(resort.features) ? resort.features : [];
-                const gallery = Array.isArray(resort.gallery_images) ? resort.gallery_images : [];
-                const categoryLabel = categoryLabels[resort.category] || resort.category || 'RESORT';
-                
-                return `
-                    <div class="resort-card">
-                        <div class="resort-image">
-                            <img src="${resort.main_image_url || fallbackImg}" 
-                                 alt="${resort.name_ko}"
-                                 onerror="this.src='${fallbackImg}'">
-                            ${resort.category ? `<span class="resort-badge">${categoryLabel}</span>` : ''}
-                        </div>
-                        <div class="resort-info">
-                            <span class="resort-category">${categoryLabel}</span>
-                            <h3 class="resort-name">${resort.name_ko}</h3>
-                            <p class="resort-description">${resort.description || ''}</p>
-                            <div class="resort-features">
-                                ${features.slice(0, 4).map(f => `
-                                    <span class="feature-tag">
-                                        <i class="fas fa-check"></i> ${f}
-                                    </span>
-                                `).join('')}
-                            </div>
-                            <div class="resort-gallery">
-                                ${gallery.slice(0, 6).map((img, idx) => `
-                                    <img src="${img}" 
-                                         alt="${resort.name_ko} - 이미지 ${idx + 1}"
-                                         onclick="openLightbox('${img}', '${resort.name_ko} - 이미지 ${idx + 1}')"
-                                         onerror="this.src='${fallbackImg}'">
-                                `).join('')}
-                            </div>
-                            <button class="resort-button" onclick="location.href='/contact'">
-                                예약 문의 <i class="fas fa-arrow-right"></i>
-                            </button>
-                        </div>
-                    </div>
-                `;
-            }).join('');
-            
-        } catch (error) {
-            console.error('리조트 로딩 실패:', error);
-            document.getElementById('resorts-container').innerHTML = `
-                <div class="error-message">
-                    <p>리조트 정보를 불러오는데 실패했습니다. 잠시 후 다시 시도해주세요.</p>
-                </div>
-            `;
-        }
-    }
-    
-    // Lightbox 기능
-    function openLightbox(imgSrc, caption) {
-        const lightbox = document.getElementById('lightbox');
-        const lightboxImg = document.getElementById('lightbox-img');
-        const lightboxCaption = document.getElementById('lightbox-caption');
+        // Load resorts for this region
+        const REGION_ID = 'region-vietnam-danang';
         
-        lightbox.style.display = 'block';
-        lightboxImg.src = imgSrc;
-        lightboxCaption.textContent = caption;
-    }
-    
-    // Lightbox 닫기
-    document.querySelector('.lightbox-close').onclick = function() {
-        document.getElementById('lightbox').style.display = 'none';
-    };
-    
-    document.getElementById('lightbox').onclick = function(e) {
-        if (e.target.id === 'lightbox') {
-            this.style.display = 'none';
+        async function loadResorts() {
+            try {
+                const response = await fetch(`/api/resorts?region_id=${REGION_ID}&is_active=true`);
+                const result = await response.json();
+                
+                const container = document.getElementById('resorts-container');
+                
+                if (result.success && result.data.length > 0) {
+                    const resorts = result.data;
+                    
+                    container.innerHTML = resorts.map(resort => {
+                        // Parse features and gallery
+                        const features = Array.isArray(resort.features) ? resort.features : [];
+                        const gallery = Array.isArray(resort.gallery_images) ? resort.gallery_images : [];
+                        
+                        // Category badge
+                        const categoryLabels = {
+                            'luxury': '럭셔리',
+                            'premium': '프리미엄',
+                            'standard': '스탠다드',
+                            '럭셔리': '럭셔리',
+                            '프리미엄': '프리미엄',
+                            '스탠다드': '스탠다드'
+                        };
+                        
+                        return `
+                            <div class="resort-card">
+                                <div class="resort-content-wrapper">
+                                    <div class="resort-header">
+                                        <div class="resort-image">
+                                            <img src="${resort.main_image_url || 'https://images.unsplash.com/photo-1571896349842-33c89424de2d?q=80&w=2080'}" alt="${resort.name_ko}">
+                                            ${resort.category ? `<div class="resort-badge">${categoryLabels[resort.category] || resort.category}</div>` : ''}
+                                        </div>
+                                        <div class="resort-info">
+                                            <div class="resort-category">${categoryLabels[resort.category] || 'RESORT'}</div>
+                                            <h2 class="resort-name">${resort.name_ko}</h2>
+                                            <p class="resort-description">${resort.description || ''}</p>
+                                            ${features.length > 0 ? `
+                                                <div class="resort-features">
+                                                    ${features.slice(0, 4).map(feature => `
+                                                        <div class="feature-item">
+                                                            <i class="fas fa-check-circle"></i>
+                                                            <span>${feature}</span>
+                                                        </div>
+                                                    `).join('')}
+                                                </div>
+                                            ` : ''}
+                                            <a href="/inquiry" class="resort-cta">상담 신청하기</a>
+                                        </div>
+                                    </div>
+                                    ${gallery.length > 0 ? `
+                                        <div class="resort-gallery">
+                                            ${gallery.slice(0, 6).map((img, index) => `
+                                                <div class="gallery-item" onclick="openLightbox('${img}', '${resort.name_ko} - 이미지 ${index + 1}')">
+                                                    <img src="${img}" alt="${resort.name_ko} - 이미지 ${index + 1}">
+                                                    <div class="gallery-overlay">
+                                                        <i class="fas fa-search-plus"></i>
+                                                    </div>
+                                                </div>
+                                            `).join('')}
+                                        </div>
+                                    ` : ''}
+                                </div>
+                            </div>
+                        `;
+                    }).join('');
+                } else {
+                    container.innerHTML = `
+                        <div class="no-resorts">
+                            <i class="fas fa-hotel"></i>
+                            <p>현재 등록된 리조트가 없습니다.<br>곧 멋진 리조트들을 소개해드리겠습니다.</p>
+                        </div>
+                    `;
+                }
+            } catch (error) {
+                console.error('Error loading resorts:', error);
+                document.getElementById('resorts-container').innerHTML = `
+                    <div class="error-resorts">
+                        <i class="fas fa-exclamation-circle"></i>
+                        <p>리조트 정보를 불러오는데 실패했습니다.<br>잠시 후 다시 시도해주세요.</p>
+                    </div>
+                `;
+            }
         }
-    };
-    
-    // ESC 키로 닫기
-    document.addEventListener('keydown', function(e) {
-        if (e.key === 'Escape') {
-            document.getElementById('lightbox').style.display = 'none';
+        
+        // Lightbox functionality
+        function openLightbox(imgSrc, caption) {
+            const modal = document.getElementById('lightbox-modal');
+            const img = document.getElementById('lightbox-img');
+            const captionText = document.getElementById('lightbox-caption');
+            
+            modal.classList.add('active');
+            img.src = imgSrc;
+            captionText.textContent = caption;
+            
+            // Store current image for navigation
+            window.currentLightboxImg = imgSrc;
         }
-    });
-    
-    // 페이지 로드 시 리조트 데이터 로드
-    document.addEventListener('DOMContentLoaded', loadResorts);
+        
+        // Close lightbox
+        document.querySelector('.lightbox-close').addEventListener('click', function() {
+            document.getElementById('lightbox-modal').classList.remove('active');
+        });
+        
+        // Close on background click
+        document.getElementById('lightbox-modal').addEventListener('click', function(e) {
+            if (e.target === this) {
+                this.classList.remove('active');
+            }
+        });
+        
+        // Close on ESC key
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') {
+                document.getElementById('lightbox-modal').classList.remove('active');
+            }
+        });
+        
+        // Load resorts on page load
+        document.addEventListener('DOMContentLoaded', loadResorts);
     </script>
 </body>
 </html>
