@@ -413,6 +413,20 @@
                                 <i class="fas fa-plus"></i> 리조트 추가
                             </button>
                         </div>
+                        
+                        <!-- Region Filter -->
+                        <div style="margin-bottom: 1.5rem; padding: 1rem; background: #f8f9fa; border-radius: 8px; display: flex; align-items: center; gap: 1rem;">
+                            <label style="font-weight: 600; color: #2c3e50; white-space: nowrap;">
+                                <i class="fas fa-filter"></i> 지역별 필터:
+                            </label>
+                            <select id="resortRegionFilter" class="form-input" style="max-width: 300px;" onchange="filterResortsByRegion()">
+                                <option value="">전체 지역</option>
+                            </select>
+                            <span id="resortCountBadge" style="margin-left: auto; padding: 0.5rem 1rem; background: #667eea; color: white; border-radius: 20px; font-weight: 600; font-size: 0.9rem;">
+                                총 0개
+                            </span>
+                        </div>
+                        
                         <div id="resortsTable"></div>
                     </div>
                 </section>
@@ -684,12 +698,49 @@
                 
                 if (data.success) {
                     currentResorts = data.data;
+                    updateResortRegionFilter();
                     renderResortsTable();
                 }
             } catch (error) {
                 console.error('Failed to load resorts:', error);
                 document.getElementById('resortsTable').innerHTML = '<div class="empty-state">데이터를 불러오는데 실패했습니다.</div>';
             }
+        }
+        
+        // Update region filter dropdown
+        function updateResortRegionFilter() {
+            const filterSelect = document.getElementById('resortRegionFilter');
+            if (!filterSelect) return;
+            
+            // Keep current selection
+            const currentValue = filterSelect.value;
+            
+            // Clear and add "All Regions" option
+            filterSelect.innerHTML = '<option value="">전체 지역</option>';
+            
+            // Add regions sorted by name
+            const sortedRegions = [...currentRegions].sort((a, b) => 
+                a.name_ko.localeCompare(b.name_ko, 'ko')
+            );
+            
+            sortedRegions.forEach(region => {
+                const resortsCount = currentResorts.filter(r => r.region_id === region.id).length;
+                const option = document.createElement('option');
+                option.value = region.id;
+                option.textContent = `${region.name_ko} (${resortsCount}개)`;
+                filterSelect.appendChild(option);
+            });
+            
+            // Restore previous selection
+            filterSelect.value = currentValue;
+        }
+        
+        // Filter resorts by selected region
+        function filterResortsByRegion() {
+            const filterSelect = document.getElementById('resortRegionFilter');
+            const selectedRegionId = filterSelect.value;
+            
+            renderResortsTable(selectedRegionId);
         }
 
         async function loadReviews() {
@@ -756,17 +807,38 @@
             container.innerHTML = html;
         }
 
-        function renderResortsTable() {
+        function renderResortsTable(filterRegionId = '') {
             const container = document.getElementById('resortsTable');
+            const countBadge = document.getElementById('resortCountBadge');
             
-            if (currentResorts.length === 0) {
-                container.innerHTML = '<div class="empty-state"><i class="fas fa-inbox"></i><p>등록된 리조트가 없습니다.</p></div>';
+            // Filter resorts by region if specified
+            let displayResorts = currentResorts;
+            if (filterRegionId) {
+                displayResorts = currentResorts.filter(r => r.region_id === filterRegionId);
+            }
+            
+            // Update count badge
+            if (countBadge) {
+                const filterSelect = document.getElementById('resortRegionFilter');
+                const selectedRegion = currentRegions.find(r => r.id === filterRegionId);
+                if (filterRegionId && selectedRegion) {
+                    countBadge.textContent = `${selectedRegion.name_ko}: ${displayResorts.length}개`;
+                    countBadge.style.background = '#38c172';
+                } else {
+                    countBadge.textContent = `총 ${displayResorts.length}개`;
+                    countBadge.style.background = '#667eea';
+                }
+            }
+            
+            if (displayResorts.length === 0) {
+                const message = filterRegionId ? '해당 지역에 등록된 리조트가 없습니다.' : '등록된 리조트가 없습니다.';
+                container.innerHTML = `<div class="empty-state"><i class="fas fa-inbox"></i><p>${message}</p></div>`;
                 return;
             }
 
             let html = '<table><thead><tr><th>지역</th><th>이름</th><th>카테고리</th><th>상태</th><th>관리</th></tr></thead><tbody>';
             
-            currentResorts.forEach(resort => {
+            displayResorts.forEach(resort => {
                 const region = currentRegions.find(r => r.id === resort.region_id);
                 const regionName = region ? region.name_ko : resort.region_id;
                 const statusBadge = resort.is_active ? 
