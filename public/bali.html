@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>발리 리조트 - 선샤인투어</title>
-    <meta name="description" content="인도네시아 발리의 프리미엄 리조트를 만나보세요.">
+    <title>인도네시아 발리/롬복 리조트 - 선샤인투어</title>
+    <meta name="description" content="인도네시아 발리와 롬복의 프리미엄 리조트를 만나보세요.">
     
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -301,16 +301,53 @@
         
         /* Gallery Thumbnails (below resort card) */
         .resort-gallery {
-            display: none;
-            grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
             gap: 1rem;
-            padding: 1.5rem;
-            background: #f8f9fa;
-            border-top: 1px solid #e0e0e0;
+            padding: 1.5rem 0;
+            margin-top: 1.5rem;
         }
         
-        .resort-gallery.show {
-            display: grid;
+        .resort-gallery .gallery-item {
+            position: relative;
+            aspect-ratio: 4/3;
+            overflow: hidden;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+        
+        .resort-gallery .gallery-item:hover {
+            transform: scale(1.05);
+        }
+        
+        .resort-gallery .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .resort-gallery .gallery-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.5);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        
+        .resort-gallery .gallery-item:hover .gallery-overlay {
+            opacity: 1;
+        }
+        
+        .resort-gallery .gallery-overlay i {
+            color: white;
+            font-size: 2rem;
         }
         
         .gallery-thumb {
@@ -515,13 +552,28 @@
 
     <!-- Resorts Section -->
     <section class="resorts-section" id="resorts">
-        <div class="section-header">
-            <h2>추천 리조트</h2>
-            <p>발리의 엄선된 프리미엄 리조트를 만나보세요</p>
+        <!-- Bali Resorts -->
+        <div class="region-subsection">
+            <div class="section-header">
+                <h2>🌴 발리 리조트</h2>
+                <p>신들의 섬, 발리의 최고급 리조트를 만나보세요</p>
+            </div>
+            
+            <div id="bali-resorts-container" data-region="region-bali">
+                <!-- Bali Resorts will be loaded here -->
+            </div>
         </div>
         
-        <div id="resorts-container" data-region="region-bali">
-            <!-- Resorts will be loaded here -->
+        <!-- Lombok Resorts -->
+        <div class="region-subsection" style="margin-top: 4rem;">
+            <div class="section-header">
+                <h2>🏝️ 롬복 리조트</h2>
+                <p>발리 옆 숨은 보석, 롬복의 프리미엄 리조트를 만나보세요</p>
+            </div>
+            
+            <div id="lombok-resorts-container" data-region="region-lombok">
+                <!-- Lombok Resorts will be loaded here -->
+            </div>
         </div>
     </section>
 
@@ -759,13 +811,18 @@
         let currentModalImages = [];
         let currentImageIndex = 0;
         
-        // Load resorts from API
+        // Load resorts from API for both regions
         async function loadResorts() {
+            await loadResortsForRegion('region-bali', 'bali-resorts-container');
+            await loadResortsForRegion('region-lombok', 'lombok-resorts-container');
+        }
+        
+        async function loadResortsForRegion(regionId, containerId) {
             try {
-                const response = await fetch(`/api/resorts?region_id=${REGION_ID}&is_active=true`);
+                const response = await fetch(`/api/resorts?region_id=${regionId}&is_active=true`);
                 const result = await response.json();
                 
-                const container = document.getElementById('resorts-container');
+                const container = document.getElementById(containerId);
                 
                 if (result.success && result.data.length > 0) {
                     const resorts = result.data;
@@ -838,12 +895,15 @@
                 }
             } catch (error) {
                 console.error('Error loading resorts:', error);
-                document.getElementById('resorts-container').innerHTML = `
-                    <div class="error-resorts">
-                        <i class="fas fa-exclamation-circle"></i>
-                        <p>리조트 정보를 불러오는데 실패했습니다.<br>잠시 후 다시 시도해주세요.</p>
-                    </div>
-                `;
+                const container = document.getElementById(containerId);
+                if (container) {
+                    container.innerHTML = `
+                        <div class="error-resorts">
+                            <i class="fas fa-exclamation-circle"></i>
+                            <p>리조트 정보를 불러오는데 실패했습니다.<br>잠시 후 다시 시도해주세요.</p>
+                        </div>
+                    `;
+                }
             }
         }
         
