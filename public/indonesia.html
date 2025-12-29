@@ -3,1127 +3,257 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>인도네시아 리조트 추천 | 발리 & 롬복 허니문 - 선샤인투어</title>
-    <meta name="description" content="인도네시아 최고의 허니문 여행지, 발리와 롬복의 프리미엄 리조트를 만나보세요. 신들의 섬 발리와 숨은 보석 롬복의 럭셔리 리조트를 한눈에 비교하세요.">
+    <title>인도네시아 리조트 | 발리 & 롬복 허니문 - 선샤인투어</title>
+    <meta name="description" content="신들의 섬 발리와 숨은 보석 롬복. 인도네시아 최고의 허니문 리조트를 만나보세요.">
     
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Noto+Serif+KR:wght@400;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@300;400;600;700&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     
     <!-- Font Awesome -->
-    <link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
     
     <!-- Custom CSS -->
-    <link href="/static/css/style.css" rel="stylesheet">
-    
-    <style>
-        /* Region Page Styles */
-        .region-hero {
-            position: relative;
-            height: 60vh;
-            min-height: 400px;
-            background-size: cover;
-            background-position: center;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-        
-        .hero-overlay {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(to bottom, rgba(0,0,0,0.3), rgba(0,0,0,0.5));
-        }
-        
-        .hero-content {
-            position: relative;
-            z-index: 2;
-            text-align: center;
-            color: white;
-            max-width: 800px;
-            padding: 2rem;
-        }
-        
-        .hero-content h1 {
-            font-size: 3.5rem;
-            font-weight: 700;
-            margin-bottom: 1rem;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
-        }
-        
-        .hero-content p {
-            font-size: 1.5rem;
-            margin-bottom: 2rem;
-            opacity: 0.95;
-        }
-        
-        /* Region Info Section */
-        .region-info {
-            background: white;
-            padding: 3rem 2rem;
-            margin: 3rem auto;
-            max-width: 1200px;
-            border-radius: 12px;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
-        }
-        
-        .region-description {
-            font-size: 1.1rem;
-            line-height: 1.8;
-            color: #444;
-            margin-bottom: 2rem;
-        }
-        
-        .region-meta {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 1.5rem;
-            padding: 2rem;
-            background: #f8f9fa;
-            border-radius: 8px;
-            margin: 2rem 0;
-        }
-        
-        .meta-item {
-            text-align: center;
-        }
-        
-        .meta-label {
-            color: var(--primary-color);
-            font-weight: 600;
-            margin-bottom: 0.5rem;
-            font-size: 1rem;
-        }
-        
-        .meta-value {
-            color: #2C2C2C;
-            font-size: 1rem;
-        }
-        
-        /* Resorts Section */
-        .resorts-section {
-            max-width: 1200px;
-            margin: 4rem auto;
-            padding: 0 2rem;
-        }
-        
-        .section-header {
-            text-align: center;
-            margin-bottom: 3rem;
-        }
-        
-        .section-header h2 {
-            font-size: 2.5rem;
-            color: #2C2C2C;
-            margin-bottom: 1rem;
-        }
-        
-        .section-header p {
-            font-size: 1.1rem;
-            color: #666;
-        }
-        
-        /* Resort Card */
-        .resort-card {
-            background: white;
-            border-radius: 12px;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
-            margin-bottom: 3rem;
-            overflow: hidden;
-            transition: all 0.3s ease;
-        }
-        
-        .resort-card:hover {
-            box-shadow: 0 8px 24px rgba(0,0,0,0.12);
-        }
-        
-        .resort-layout {
-            display: grid;
-            grid-template-columns: 500px 1fr;
-            gap: 0;
-        }
-        
-        /* Main Image Section */
-        .resort-main-image {
-            position: relative;
-            height: 400px;
-            overflow: hidden;
-            cursor: pointer;
-        }
-        
-        .resort-main-image img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: transform 0.3s ease;
-        }
-        
-        .resort-card:hover .resort-main-image img {
-            transform: scale(1.05);
-        }
-        
-        .resort-category-badge {
-            position: absolute;
-            top: 1rem;
-            left: 1rem;
-            padding: 0.5rem 1rem;
-            background: rgba(201, 169, 110, 0.95);
-            color: white;
-            border-radius: 20px;
-            font-size: 0.85rem;
-            font-weight: 600;
-            letter-spacing: 0.5px;
-            z-index: 2;
-        }
-        
-        .view-gallery-btn {
-            position: absolute;
-            bottom: 1rem;
-            right: 1rem;
-            padding: 0.75rem 1.5rem;
-            background: rgba(255, 255, 255, 0.95);
-            color: #C9A96E;
-            border: none;
-            border-radius: 25px;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            z-index: 2;
-        }
-        
-        .view-gallery-btn:hover {
-            background: white;
-            transform: translateY(-2px);
-            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
-        }
-        
-        /* Resort Info Section */
-        .resort-info {
-            padding: 1.5rem 2rem;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-        }
-        
-        .resort-header {
-            margin-bottom: 1rem;
-        }
-        
-        .resort-name-ko {
-            font-size: 2rem;
-            font-weight: 700;
-            color: #2C2C2C;
-            margin-bottom: 0.5rem;
-        }
-        
-        .resort-name-en {
-            font-size: 1.2rem;
-            color: #888;
-            font-weight: 400;
-        }
-        
-        .resort-description {
-            font-size: 1rem;
-            line-height: 1.6;
-            color: #555;
-            margin-bottom: 1rem;
-            max-height: 4.8em;
-            overflow: hidden;
-            display: -webkit-box;
-            -webkit-line-clamp: 3;
-            -webkit-box-orient: vertical;
-        }
-        
-        /* Features (Highlights) */
-        .resort-features {
-            margin-bottom: 1rem;
-        }
-        
-                .features-title {
-            font-size: 0.95rem;
-            font-weight: 600;
-            color: #C9A96E;
-            margin-bottom: 0.75rem;
-        }
-        
-        .features-list {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 0.5rem;
-        }
-        
-        .feature-item {
-            display: flex;
-            align-items: center;
-            gap: 0.4rem;
-            font-size: 0.9rem;
-            color: #444;
-        }
-        
-        .feature-item i {
-            display: none; /* 별 아이콘 숨김 */
-        }
-        
-        .feature-item::before {
-            content: "•";
-            color: #C9A96E;
-            font-weight: 700;
-            font-size: 1.2rem;
-        }
-        
-        /* Action Buttons */
-        .resort-actions {
-            display: flex;
-            gap: 1rem;
-            margin-top: auto;
-        }
-        
-        .btn-inquiry {
-            flex: 1;
-            padding: 1rem;
-            background: linear-gradient(135deg, #C9A96E 0%, #B8935E 100%);
-            color: white;
-            text-align: center;
-            text-decoration: none;
-            border-radius: 8px;
-            font-weight: 600;
-            transition: all 0.3s ease;
-        }
-        
-        .btn-inquiry:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 4px 12px rgba(201, 169, 110, 0.4);
-        }
-        
-        /* Gallery Thumbnails (below resort card) */
-        .resort-gallery {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 1rem;
-            padding: 1.5rem 0;
-            margin-top: 1.5rem;
-        }
-        
-        .resort-gallery .gallery-item {
-            position: relative;
-            aspect-ratio: 4/3;
-            overflow: hidden;
-            border-radius: 8px;
-            cursor: pointer;
-            transition: transform 0.3s ease;
-        }
-        
-        .resort-gallery .gallery-item:hover {
-            transform: scale(1.05);
-        }
-        
-        .resort-gallery .gallery-item img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-        
-        .resort-gallery .gallery-overlay {
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: rgba(0, 0, 0, 0.5);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            opacity: 0;
-            transition: opacity 0.3s ease;
-        }
-        
-        .resort-gallery .gallery-item:hover .gallery-overlay {
-            opacity: 1;
-        }
-        
-        .resort-gallery .gallery-overlay i {
-            color: white;
-            font-size: 2rem;
-        }
-        
-        .gallery-thumb {
-            aspect-ratio: 4/3;
-            border-radius: 8px;
-            overflow: hidden;
-            cursor: pointer;
-            transition: all 0.3s ease;
-        }
-        
-        .gallery-thumb:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
-        }
-        
-        .gallery-thumb img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-        
-        /* Image Modal */
-        .image-modal {
-            display: none;
-            position: fixed;
-            z-index: 9999;
-            left: 0;
-            top: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0,0,0,0.95);
-        }
-        
-        .modal-content-wrapper {
-            position: relative;
-            height: 100%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            padding: 2rem;
-        }
-        
-        .modal-image {
-            max-width: 90%;
-            max-height: 90%;
-            object-fit: contain;
-            border-radius: 8px;
-        }
-        
-        .modal-close {
-            position: absolute;
-            top: 2rem;
-            right: 2rem;
-            color: white;
-            font-size: 3rem;
-            font-weight: 300;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            z-index: 10000;
-        }
-        
-        .modal-close:hover {
-            color: #C9A96E;
-            transform: rotate(90deg);
-        }
-        
-        .modal-nav {
-            position: absolute;
-            top: 50%;
-            transform: translateY(-50%);
-            background: rgba(201, 169, 110, 0.8);
-            color: white;
-            border: none;
-            padding: 1.5rem 1rem;
-            font-size: 2rem;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            border-radius: 4px;
-        }
-        
-        .modal-nav:hover {
-            background: rgba(201, 169, 110, 1);
-        }
-        
-        .modal-prev { left: 2rem; }
-        .modal-next { right: 2rem; }
-        
-        .modal-counter {
-            position: absolute;
-            bottom: 2rem;
-            left: 50%;
-            transform: translateX(-50%);
-            color: white;
-            font-size: 1.1rem;
-            background: rgba(0,0,0,0.6);
-            padding: 0.75rem 1.5rem;
-            border-radius: 25px;
-        }
-        
-        /* Responsive */
-        @media (max-width: 968px) {
-            .resort-layout {
-                grid-template-columns: 1fr;
-            }
-            
-            .resort-main-image {
-                height: 300px;
-            }
-            
-            .features-list {
-                grid-template-columns: 1fr;
-            }
-            
-            .hero-content h1 {
-                font-size: 2.5rem;
-            }
-        }
-        
-        @media (max-width: 768px) {
-            .hero-content h1 {
-                font-size: 2rem;
-            }
-            
-            .hero-content p {
-                font-size: 1.2rem;
-            }
-            
-            .resort-name-ko {
-                font-size: 1.5rem;
-            }
-            
-            .gallery-thumb {
-                min-width: 120px;
-            }
-        }
-    </style>
+    <link rel="stylesheet" href="/static/css/style.css">
+    <link rel="stylesheet" href="/static/css/destination.css">
 </head>
 <body>
-    <!-- Header & Navigation -->
-    <header>
-        <nav class="container">
-            <div class="logo">
-                <a href="/" style="display: flex; align-items: center; gap: 12px;">
-                    <img src="/static/images/logo-sunrise.webp" alt="Sunshine Tour" style="height: 40px; width: auto; object-fit: contain;">
-                    <span style="font-family: 'Montserrat', sans-serif; font-weight: 700; font-size: 1.3rem; letter-spacing: 0.5px;">SUNSHINE TOUR</span>
+    <!-- Navigation -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <a href="/index.html">
+                    <div class="logo-wrapper">
+                        <div class="text-logo" style="display: flex; align-items: center; gap: 10px;">
+                            <i class="fas fa-sun" style="font-size: 32px; color: #C9A96E;"></i>
+                            <div style="display: flex; flex-direction: column; line-height: 1.2;">
+                                <span style="font-family: 'Montserrat', sans-serif; font-size: 20px; font-weight: 700; color: #C9A96E; letter-spacing: 1px;">SUNSHINE</span>
+                                <span style="font-family: 'Montserrat', sans-serif; font-size: 10px; font-weight: 400; color: #7A7A7A; letter-spacing: 2px;">TOUR</span>
+                            </div>
+                        </div>
+                    </div>
                 </a>
             </div>
-            <ul class="nav-links">
-                <li class="nav-dropdown">
-                    <a href="#destinations">Destinations <i class="fas fa-chevron-down"></i></a>
-                    <div class="dropdown-content">
-                        <a href="/thailand-khao-lak">🇹🇭 태국 카오락</a>
-                        <a href="/thailand-koh-samui">🇹🇭 태국 코사무이</a>
-                        <a href="/thailand-phuket">🇹🇭 태국 푸켓</a>
-                        <a href="/thailand-krabi">🇹🇭 태국 끄라비</a>
-                        <a href="/thailand-pattaya">🇹🇭 태국 파타야</a>
-                        <a href="/thailand-hua-hin">🇹🇭 태국 후아힌</a>
-                    </div>
-                </li>
-                <li><a href="/reviews">Reviews</a></li>
-                <li><a href="/inquiry">Contact</a></li>
-                <li><a href="/admin">Admin</a></li>
+            <ul class="nav-menu" id="nav-menu">
+                <li><a href="/index.html#home" class="nav-link">Home</a></li>
+                <li><a href="/index.html#destinations" class="nav-link">Destinations</a></li>
+                <li><a href="/reviews" class="nav-link">Reviews</a></li>
+                <li><a href="/index.html#about" class="nav-link">About</a></li>
+                <li><a href="/index.html#contact" class="nav-link">Contact</a></li>
             </ul>
-            <button class="mobile-menu-btn">
+            <div class="nav-toggle" id="nav-toggle">
                 <i class="fas fa-bars"></i>
-            </button>
-        </nav>
-    </header>
+            </div>
+        </div>
+    </nav>
 
-    <!-- Hero Section -->
-    <section class="region-hero" style="background-image: url('/static/images/regions/bali/bali-01.webp');">
-        <div class="hero-overlay"></div>
-        <div class="hero-content">
-            <h1>🇮🇩 인도네시아</h1>
-            <p>발리 & 롬복 프리미엄 허니문 리조트</p>
-            <a href="#resorts" class="btn btn-primary">리조트 둘러보기</a>
+    <!-- Destination Hero -->
+    <section class="destination-hero">
+        <div class="destination-hero-image">
+            <img src="/static/images/destinations/bali/BAL_1.webp" alt="Indonesia">
+        </div>
+        <div class="destination-hero-content">
+            <span class="destination-label">HONEYMOON DESTINATION</span>
+            <h1 class="destination-hero-title">Indonesia</h1>
+            <p class="destination-hero-subtitle">인도네시아</p>
         </div>
     </section>
 
-    <!-- Region Information -->
-    <div class="container">
-        <div class="region-info">
-            <h2 class="section-title">인도네시아 소개</h2>
-            <div class="region-description">
-                <p>
-                    인도네시아는 동남아시아의 대표적인 허니문 여행지로, 특히 <strong>발리</strong>와 <strong>롬복</strong>은 
-                    신혼부부들에게 가장 사랑받는 섬입니다.
-                </p>
-                <p>
-                    <strong>발리(Bali)</strong>는 "신들의 섬"이라 불리며, 아름다운 해변과 사원, 계단식 논, 
-                    그리고 독특한 발리 문화가 어우러진 세계적인 관광지입니다. 우붓의 정글, 세미냑의 비치클럽, 
-                    울루와투의 절벽 등 다양한 매력을 자랑합니다.
-                </p>
-                <p>
-                    <strong>롬복(Lombok)</strong>은 발리 옆에 위치한 "숨은 보석" 같은 섬으로, 
-                    발리보다 한적하고 자연이 잘 보존되어 있습니다. 맑고 투명한 바다의 길리 섬(Gili Islands)과 
-                    인도네시아에서 두 번째로 높은 린자니 화산(Mt. Rinjani)이 유명합니다.
-                </p>
-                <p>
-                    두 섬 모두 럭셔리 리조트, 프라이빗 빌라, 세계적인 스파, 그리고 로맨틱한 선셋을 즐길 수 있어 
-                    허니문 커플들에게 완벽한 여행지입니다.
-                </p>
-            </div>
-            
-            <div class="region-meta">
-                <div class="meta-item">
-                    <div class="meta-label"><i class="fas fa-plane-departure"></i> 비행시간</div>
-                    <div class="meta-value">약 7-8시간 (직항)</div>
-                </div>
-                <div class="meta-item">
-                    <div class="meta-label"><i class="fas fa-sun"></i> 여행 최적기</div>
-                    <div class="meta-value">4월 ~ 10월 (건기)</div>
-                </div>
-                <div class="meta-item">
-                    <div class="meta-label"><i class="fas fa-umbrella-beach"></i> 추천 일정</div>
-                    <div class="meta-value">5박 7일 이상</div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Resorts Section -->
-    <section class="resorts-section" id="resorts">
-        <!-- Bali Resorts -->
-        <div class="region-subsection">
+    <!-- Indonesia Regions -->
+    <section class="thailand-regions">
+        <div class="container">
             <div class="section-header">
-                <h2>🌴 발리 리조트</h2>
-                <p>신들의 섬, 발리의 최고급 리조트를 만나보세요</p>
+                <span class="section-label">POPULAR REGIONS</span>
+                <h2 class="section-title">인도네시아 인기 지역</h2>
+                <p class="section-description">각 지역의 독특한 매력을 경험해보세요</p>
             </div>
             
-            <div id="bali-resorts-container" data-region="region-bali">
-                <!-- Bali Resorts will be loaded here -->
-            </div>
-        </div>
-        
-        <!-- Lombok Resorts -->
-        <div class="region-subsection" style="margin-top: 4rem;">
-            <div class="section-header">
-                <h2>🏝️ 롬복 리조트</h2>
-                <p>발리 옆 숨은 보석, 롬복의 프리미엄 리조트를 만나보세요</p>
-            </div>
-            
-            <div id="lombok-resorts-container" data-region="region-lombok">
-                <!-- Lombok Resorts will be loaded here -->
+            <div class="regions-grid">
+                <div class="region-card featured" onclick="window.location.href='/bali.html'" style="cursor: pointer;">
+                    <div class="region-icon">
+                        <i class="fas fa-om"></i>
+                    </div>
+                    <h3 class="region-name">발리</h3>
+                    <p class="region-description">신들의 섬, 사원과 해변이 어우러진 천국</p>
+                    <span class="featured-badge">인기</span>
+                </div>
+                
+                <div class="region-card" onclick="window.location.href='/lombok.html'" style="cursor: pointer;">
+                    <div class="region-icon">
+                        <i class="fas fa-island-tropical"></i>
+                    </div>
+                    <h3 class="region-name">롬복</h3>
+                    <p class="region-description">숨은 보석, 맑은 바다와 린자니 화산</p>
+                </div>
             </div>
         </div>
     </section>
 
-    <!-- Image Modal -->
-    <div id="imageModal" class="image-modal">
-        <span class="modal-close" onclick="closeModal()">&times;</span>
-        <div class="modal-content-wrapper">
-            <button class="modal-nav modal-prev" onclick="changeModalImage(-1)">
-                <i class="fas fa-chevron-left"></i>
-            </button>
-            <img id="modalImage" class="modal-image" src="" alt="">
-            <button class="modal-nav modal-next" onclick="changeModalImage(1)">
-                <i class="fas fa-chevron-right"></i>
-            </button>
-            <div class="modal-counter">
-                <span id="currentImageIndex">1</span> / <span id="totalImages">0</span>
+    <!-- Destination Intro -->
+    <section class="destination-intro">
+        <div class="container">
+            <div class="intro-wrapper">
+                <h2 class="destination-section-title">열대 낙원</h2>
+                <p class="destination-description">
+                    에메랄드빛 바다와 황금빛 일몰, 그리고 발리의 영적인 문화.<br>
+                    인도네시아는 전통과 자연이 완벽하게 조화를 이루는 세계적인 허니문 여행지입니다.<br>
+                    발리의 우붓 정글과 롬복의 길리 섬에서 평생 잊지 못할 추억을 만드세요.
+                </p>
             </div>
         </div>
-    </div>
+    </section>
+
+    <!-- Photo Gallery -->
+    <section class="photo-gallery">
+        <div class="gallery-grid">
+            <!-- Gallery Item 1 -->
+            <div class="gallery-item large">
+                <div class="gallery-image-wrapper">
+                    <img src="/static/images/destinations/bali/BAL_1.webp" alt="우붓 라이스 테라스" onerror="this.src='https://images.unsplash.com/photo-1537996194471-e657df975ab4?w=800'">
+                    <div class="gallery-overlay">
+                        <div class="gallery-text">
+                            <h3>우붓 라이스 테라스</h3>
+                            <p>계단식 논의 아름다움</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Gallery Item 2 -->
+            <div class="gallery-item small">
+                <div class="gallery-image-wrapper">
+                    <img src="/static/images/destinations/bali/BAL_4.webp" alt="발리 사원" onerror="this.src='https://images.unsplash.com/photo-1506929562872-bb421503ef21?w=800'">
+                    <div class="gallery-overlay">
+                        <div class="gallery-text">
+                            <h3>발리 사원</h3>
+                            <p>신성한 영적 공간</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Gallery Item 3 -->
+            <div class="gallery-item small">
+                <div class="gallery-image-wrapper">
+                    <img src="/static/images/destinations/bali/BAL_2.webp" alt="세미냑 비치" onerror="this.src='https://images.unsplash.com/photo-1559827260-dc66d52bef19?w=800'">
+                    <div class="gallery-overlay">
+                        <div class="gallery-text">
+                            <h3>세미냑 비치</h3>
+                            <p>럭셔리 비치클럽</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Gallery Item 4 -->
+            <div class="gallery-item wide">
+                <div class="gallery-image-wrapper">
+                    <img src="/static/images/destinations/lombok/LOM_1.webp" alt="길리 섬" onerror="this.src='https://images.unsplash.com/photo-1537996194471-e657df975ab4?w=800'">
+                    <div class="gallery-overlay">
+                        <div class="gallery-text">
+                            <h3>길리 섬</h3>
+                            <p>투명한 바다의 천국</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Gallery Item 5 -->
+            <div class="gallery-item tall">
+                <div class="gallery-image-wrapper">
+                    <img src="/static/images/destinations/lombok/LOM_2.webp" alt="린자니 화산" onerror="this.src='https://images.unsplash.com/photo-1559827260-dc66d52bef19?w=800'">
+                    <div class="gallery-overlay">
+                        <div class="gallery-text">
+                            <h3>린자니 화산</h3>
+                            <p>장엄한 자연의 경이</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Gallery Item 6 -->
+            <div class="gallery-item">
+                <div class="gallery-image-wrapper">
+                    <img src="/static/images/destinations/bali/BAL_3.webp" alt="울루와투 사원" onerror="this.src='https://images.unsplash.com/photo-1506929562872-bb421503ef21?w=800'">
+                    <div class="gallery-overlay">
+                        <div class="gallery-text">
+                            <h3>울루와투 사원</h3>
+                            <p>절벽 위의 석양</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
     <!-- Footer -->
-    
-    <!-- 포토 갤러리 -->
-    <section class="gallery-section">
+    <footer class="footer">
         <div class="container">
-            <h2 class="section-title">인도네시아 하이라이트</h2>
-            <div class="gallery-grid">
-
-                <div class="gallery-item large">
-                    <img src="/static/images/destinations/bali/BAL_1.webp" alt="우붓 라이스 테라스" 
-                         onerror="this.src='https://images.unsplash.com/photo-1506929562872-bb421503ef21?w=800'">
-                    <div class="gallery-overlay">
-                        <h3>우붓 라이스 테라스</h3>
-                        <p>계단식 논의 아름다움</p>
+            <div class="footer-content">
+                <div class="footer-section">
+                    <div class="text-logo" style="display: flex; align-items: center; gap: 10px; margin-bottom: 1rem;">
+                        <i class="fas fa-sun" style="font-size: 32px; color: #C9A96E;"></i>
+                        <div style="display: flex; flex-direction: column; line-height: 1.2;">
+                            <span style="font-family: 'Montserrat', sans-serif; font-size: 20px; font-weight: 700; color: #C9A96E; letter-spacing: 1px;">SUNSHINE</span>
+                            <span style="font-family: 'Montserrat', sans-serif; font-size: 10px; font-weight: 400; color: #999; letter-spacing: 2px;">TOUR</span>
+                        </div>
                     </div>
+                    <p>당신의 특별한 순간을 더욱 빛나게 할 프리미엄 허니문 여행</p>
                 </div>
-
-                <div class="gallery-item small">
-                    <img src="/static/images/destinations/bali/BAL_4.webp" alt="발리 사원" 
-                         onerror="this.src='https://images.unsplash.com/photo-1506929562872-bb421503ef21?w=800'">
-                    <div class="gallery-overlay">
-                        <h3>발리 사원</h3>
-                        <p>신비로운 힌두 문화</p>
-                    </div>
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul class="footer-links">
+                        <li><a href="/index.html#destinations">여행지</a></li>
+                        <li><a href="/reviews">후기</a></li>
+                        <li><a href="/index.html#about">회사소개</a></li>
+                        <li><a href="/index.html#contact">문의하기</a></li>
+                    </ul>
                 </div>
-
-                <div class="gallery-item small">
-                    <img src="/static/images/destinations/bali/BAL_2.webp" alt="럭셔리 빌라" 
-                         onerror="this.src='https://images.unsplash.com/photo-1506929562872-bb421503ef21?w=800'">
-                    <div class="gallery-overlay">
-                        <h3>럭셔리 빌라</h3>
-                        <p>프라이빗 풀빌라</p>
-                    </div>
+                <div class="footer-section">
+                    <h4>Contact</h4>
+                    <ul class="footer-contact">
+                        <li><i class="fas fa-phone"></i> 문의 주세요</li>
+                        <li><i class="fas fa-envelope"></i> info@sunshinetour.com</li>
+                    </ul>
                 </div>
-
-                <div class="gallery-item medium">
-                    <img src="/static/images/destinations/bali/BAL_5.webp" alt="발리 비치" 
-                         onerror="this.src='https://images.unsplash.com/photo-1506929562872-bb421503ef21?w=800'">
-                    <div class="gallery-overlay">
-                        <h3>발리 비치</h3>
-                        <p>서핑과 휴식의 천국</p>
-                    </div>
-                </div>
-
-                <div class="gallery-item small">
-                    <img src="/static/images/destinations/bali/BAL_6.webp" alt="정글 스윙" 
-                         onerror="this.src='https://images.unsplash.com/photo-1506929562872-bb421503ef21?w=800'">
-                    <div class="gallery-overlay">
-                        <h3>정글 스윙</h3>
-                        <p>인스타 감성 포토존</p>
-                    </div>
-                </div>
-
-                <div class="gallery-item small">
-                    <img src="/static/images/destinations/bali/BAL_7.webp" alt="스파 & 마사지" 
-                         onerror="this.src='https://images.unsplash.com/photo-1506929562872-bb421503ef21?w=800'">
-                    <div class="gallery-overlay">
-                        <h3>스파 & 마사지</h3>
-                        <p>세계적인 스파</p>
-                    </div>
-                </div>
-
-                <div class="gallery-item medium">
-                    <img src="/static/images/destinations/bali/BAL_8.webp" alt="정글 워터폴" 
-                         onerror="this.src='https://images.unsplash.com/photo-1506929562872-bb421503ef21?w=800'">
-                    <div class="gallery-overlay">
-                        <h3>정글 워터폴</h3>
-                        <p>자연 속 힐링</p>
-                    </div>
-                </div>
-
-                <div class="gallery-item small">
-                    <img src="/static/images/destinations/bali/BAL_4.webp" alt="발리 사원 문화" 
-                         onerror="this.src='https://images.unsplash.com/photo-1506929562872-bb421503ef21?w=800'">
-                    <div class="gallery-overlay">
-                        <h3>발리 사원 문화</h3>
-                        <p>힌두 전통 체험</p>
-                    </div>
-                </div>
-
-                <div class="gallery-item large">
-                    <img src="/static/images/destinations/bali/BAL_3.webp" alt="선셋 디너" 
-                         onerror="this.src='https://images.unsplash.com/photo-1506929562872-bb421503ef21?w=800'">
-                    <div class="gallery-overlay">
-                        <h3>선셋 디너</h3>
-                        <p>해변 낭만 식사</p>
-                    </div>
-                </div>
-
             </div>
-        </div>
-    </section>
-    
-    <!-- CTA Section -->
-    <section class="cta-section">
-        <div class="container">
-            <h2>지금 바로 문의하세요!</h2>
-            <p>전문 상담사가 최적의 여행 플랜을 제안해드립니다</p>
-            <a href="/index.html#contact" class="cta-button">문의하기</a>
-        </div>
-    </section>
-
-    <footer style="background-color: #2C2C2C; color: white; padding: 3rem 2rem; margin-top: 4rem;">
-        <div class="container" style="max-width: 1200px; margin: 0 auto; text-align: center;">
-            <p style="margin-bottom: 1rem; font-size: 1.1rem;">
-                <i class="fas fa-phone"></i> 02-1234-5678 | 
-                <i class="fas fa-envelope"></i> info@sunshinetour.com
-            </p>
-            <p style="opacity: 0.8; font-size: 0.9rem;">
-                &copy; 2024 Sunshine Tour. All rights reserved.
-            </p>
+            <div class="footer-bottom">
+                <p>&copy; 2024 Sunshine Tour. All rights reserved.</p>
+            </div>
         </div>
     </footer>
 
+    <!-- JavaScript -->
     <script>
-        // Region ID
-        const REGION_ID = 'region-bali';
-        
-        // Resort data from mapping file (will be replaced by API)
-        const resortData_OLD = [
-        {
-                "name_ko": "반얀트리",
-                "name_en": "Banyan Tree",
-                "category": "럭셔리",
-                "description": "세계적인 명성의 럭셔리 리조트로, 최상급 서비스와 프라이빗한 공간을 제공합니다. 허니문 커플을 위한 로맨틱한 분위기와 함께 잊지 못할 추억을 선사합니다.",
-                "images": [
-                        "/static/images/resorts/bali/bali-resort01-01.webp",
-                        "/static/images/resorts/bali/bali-resort01-02.webp",
-                        "/static/images/resorts/bali/bali-resort01-03.webp",
-                        "/static/images/resorts/bali/bali-resort01-04.webp",
-                        "/static/images/resorts/bali/bali-resort01-05.webp",
-                        "/static/images/resorts/bali/bali-resort01-06.webp",
-                        "/static/images/resorts/bali/bali-resort01-07.webp"
-                ],
-                "features": [
-                        "프라이빗 풀빌라",
-                        "고급 스파 & 마사지",
-                        "미슐랭 레스토랑",
-                        "24시간 컨시어지",
-                        "공항 픽업 서비스",
-                        "프라이빗 비치 액세스"
-                ]
-        },
-        {
-                "name_ko": "아야나",
-                "name_en": "AYANA",
-                "category": "럭셔리",
-                "description": "세계적인 명성의 럭셔리 리조트로, 최상급 서비스와 프라이빗한 공간을 제공합니다. 허니문 커플을 위한 로맨틱한 분위기와 함께 잊지 못할 추억을 선사합니다.",
-                "images": [
-                        "/static/images/resorts/bali/bali-resort02-01.webp",
-                        "/static/images/resorts/bali/bali-resort02-02.webp",
-                        "/static/images/resorts/bali/bali-resort02-03.webp",
-                        "/static/images/resorts/bali/bali-resort02-04.webp",
-                        "/static/images/resorts/bali/bali-resort02-05.webp",
-                        "/static/images/resorts/bali/bali-resort02-06.webp",
-                        "/static/images/resorts/bali/bali-resort02-07.webp"
-                ],
-                "features": [
-                        "프라이빗 풀빌라",
-                        "고급 스파 & 마사지",
-                        "미슐랭 레스토랑",
-                        "24시간 컨시어지",
-                        "공항 픽업 서비스",
-                        "프라이빗 비치 액세스"
-                ]
-        },
-        {
-                "name_ko": "포시즌",
-                "name_en": "Four Seasons",
-                "category": "럭셔리",
-                "description": "세계적인 명성의 럭셔리 리조트로, 최상급 서비스와 프라이빗한 공간을 제공합니다. 허니문 커플을 위한 로맨틱한 분위기와 함께 잊지 못할 추억을 선사합니다.",
-                "images": [
-                        "/static/images/resorts/bali/bali-resort04-01.webp",
-                        "/static/images/resorts/bali/bali-resort04-02.webp",
-                        "/static/images/resorts/bali/bali-resort04-03.webp",
-                        "/static/images/resorts/bali/bali-resort04-04.webp",
-                        "/static/images/resorts/bali/bali-resort04-05.webp",
-                        "/static/images/resorts/bali/bali-resort04-06.webp",
-                        "/static/images/resorts/bali/bali-resort04-07.webp"
-                ],
-                "features": [
-                        "프라이빗 풀빌라",
-                        "고급 스파 & 마사지",
-                        "미슐랭 레스토랑",
-                        "24시간 컨시어지",
-                        "공항 픽업 서비스",
-                        "프라이빗 비치 액세스"
-                ]
-        },
-        {
-                "name_ko": "알란드라",
-                "name_en": "Alindra",
-                "category": "프리미엄",
-                "description": "프리미엄급 시설과 서비스를 합리적인 가격으로 제공하는 리조트입니다. 편안한 휴식과 다양한 액티비티를 동시에 즐길 수 있습니다.",
-                "images": [
-                        "/static/images/resorts/bali/bali-resort03-01.webp",
-                        "/static/images/resorts/bali/bali-resort03-02.webp",
-                        "/static/images/resorts/bali/bali-resort03-03.webp",
-                        "/static/images/resorts/bali/bali-resort03-04.webp",
-                        "/static/images/resorts/bali/bali-resort03-05.webp",
-                        "/static/images/resorts/bali/bali-resort03-06.webp",
-                        "/static/images/resorts/bali/bali-resort03-07.webp"
-                ],
-                "features": [
-                        "인피니티 풀",
-                        "스파 & 웰니스",
-                        "고급 레스토랑",
-                        "무료 Wi-Fi",
-                        "피트니스 센터",
-                        "룸서비스"
-                ]
-        }
-];
-        
-        let currentModalImages = [];
-        let currentImageIndex = 0;
-        
-        // Load resorts from API for both regions
-        async function loadResorts() {
-            await loadResortsForRegion('region-bali', 'bali-resorts-container');
-            await loadResortsForRegion('region-lombok', 'lombok-resorts-container');
-        }
-        
-        async function loadResortsForRegion(regionId, containerId) {
-            try {
-                const response = await fetch(`/api/resorts?region_id=${regionId}&is_active=true`);
-                const result = await response.json();
-                
-                const container = document.getElementById(containerId);
-                
-                if (result.success && result.data.length > 0) {
-                    const resorts = result.data;
-                    
-                    container.innerHTML = resorts.map(resort => {
-                        // API already returns arrays, no need to parse
-                        const features = Array.isArray(resort.features) ? resort.features : [];
-                        const gallery = Array.isArray(resort.gallery_images) ? resort.gallery_images : [];
-                        
-                        // Category badge
-                        const categoryLabels = {
-                            'luxury': '럭셔리',
-                            'premium': '프리미엄',
-                            'standard': '스탠다드'
-                        };
-                        
-                        const fallbackImg = 'https://images.unsplash.com/photo-1571896349842-33c89424de2d?q=80&w=2080';
-                        
-                        return `
-                            <div class="resort-card">
-                                <div class="resort-content-wrapper">
-                                    <div class="resort-header">
-                                        <div class="resort-image">
-                                            <img src="${resort.main_image_url || fallbackImg}" 
-                                                 alt="${resort.name_ko}"
-                                                 onerror="this.src='${fallbackImg}'">
-                                            ${resort.category ? `<div class="resort-badge">${categoryLabels[resort.category] || resort.category}</div>` : ''}
-                                        </div>
-                                        <div class="resort-info">
-                                            <div class="resort-category">${categoryLabels[resort.category] || 'RESORT'}</div>
-                                            <h2 class="resort-name">${resort.name_ko}</h2>
-                                            <p class="resort-description">${resort.description || ''}</p>
-                                            ${features.length > 0 ? `
-                                                <div class="resort-features">
-                                                    ${features.slice(0, 4).map(feature => `
-                                                        <div class="feature-item">
-                                                            <i class="fas fa-check-circle"></i>
-                                                            <span>${feature}</span>
-                                                        </div>
-                                                    `).join('')}
-                                                </div>
-                                            ` : ''}
-                                            <a href="/inquiry" class="resort-cta">상담 신청하기</a>
-                                        </div>
-                                    </div>
-                                    ${gallery.length > 0 ? `
-                                        <div class="resort-gallery">
-                                            ${gallery.slice(0, 6).map((img, index) => `
-                                                <div class="gallery-item" onclick="openLightbox('${img}', '${resort.name_ko} - 이미지 ${index + 1}')">
-                                                    <img src="${img}" alt="${resort.name_ko} - 이미지 ${index + 1}"
-                                                         onerror="this.src='${fallbackImg}'">
-                                                    <div class="gallery-overlay">
-                                                        <i class="fas fa-search-plus"></i>
-                                                    </div>
-                                                </div>
-                                            `).join('')}
-                                        </div>
-                                    ` : ''}
-                                </div>
-                            </div>
-                        `;
-                    }).join('');
-                } else {
-                    container.innerHTML = `
-                        <div class="no-resorts">
-                            <i class="fas fa-hotel"></i>
-                            <p>현재 등록된 리조트가 없습니다.<br>곧 멋진 리조트들을 소개해드리겠습니다.</p>
-                        </div>
-                    `;
-                }
-            } catch (error) {
-                console.error('Error loading resorts:', error);
-                const container = document.getElementById(containerId);
-                if (container) {
-                    container.innerHTML = `
-                        <div class="error-resorts">
-                            <i class="fas fa-exclamation-circle"></i>
-                            <p>리조트 정보를 불러오는데 실패했습니다.<br>잠시 후 다시 시도해주세요.</p>
-                        </div>
-                    `;
-                }
-            }
-        }
-        
-        // Lightbox functionality
-        let currentModalImages = [];
-        let currentImageIndex = 0;
-        
-        function openLightbox(imgSrc, caption) {
-            // Find resort gallery images for navigation
-            const galleries = document.querySelectorAll('.resort-gallery .gallery-item img');
-            currentModalImages = Array.from(galleries).map(img => img.src);
-            currentImageIndex = currentModalImages.indexOf(imgSrc);
-            
-            showModalImage(currentImageIndex);
-            
-            const modal = document.getElementById('imageModal');
-            if (modal) {
-                modal.style.display = 'flex';
-            }
-        }
-        
-        // Render resorts (OLD - replaced by loadResorts)
-        function renderResorts_OLD() {
-            const container = document.getElementById('resorts-container');
-            container.innerHTML = '';
-            
-            resortData.forEach((resort, index) => {
-                const resortCard = createResortCard(resort, index);
-                container.appendChild(resortCard);
-            });
-        }
-        
-        // Create resort card
-        function createResortCard(resort, index) {
-            const card = document.createElement('div');
-            card.className = 'resort-card';
-            card.id = `resort-${index}`;
-            
-            const mainImage = resort.images[0];
-            const galleryImages = resort.images.slice(1);
-            
-            card.innerHTML = `
-                <div class="resort-layout">
-                    <div class="resort-main-image" onclick="openGallery(${index}, 0)">
-                        <img src="${mainImage}" alt="${resort.name_ko}">
-                        <div class="resort-category-badge">${resort.category}</div>
-                        <button class="view-gallery-btn" onclick="event.stopPropagation(); toggleGallery(${index})">
-                            <i class="fas fa-images"></i> 사진 ${resort.images.length}장
-                        </button>
-                    </div>
-                    
-                    <div class="resort-info">
-                        <div>
-                            <div class="resort-header">
-                                <h3 class="resort-name-ko">${resort.name_ko}</h3>
-                                <div class="resort-name-en">${resort.name_en}</div>
-                            </div>
-                            
-                            <p class="resort-description">${resort.description}</p>
-                            
-                            <div class="resort-features">
-                                <div class="features-title">주요 특징</div>
-                                <div class="features-list">
-                                    ${resort.features.map(f => `
-                                        <div class="feature-item">
-                                            <i class="fas fa-check-circle"></i>
-                                            <span>${f}</span>
-                                        </div>
-                                    `).join('')}
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <div class="resort-actions">
-                            <a href="/inquiry" class="btn-inquiry">
-                                <i class="fas fa-envelope"></i> 상담 신청
-                            </a>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="resort-gallery" id="gallery-${index}">
-                    ${resort.images.map((img, imgIndex) => `
-                        <div class="gallery-thumb" onclick="openGallery(${index}, ${imgIndex})">
-                            <img src="${img}" alt="${resort.name_ko} ${imgIndex + 1}">
-                        </div>
-                    `).join('')}
-                </div>
-            `;
-            
-            return card;
-        }
-        
-        // Toggle gallery visibility
-        function toggleGallery(resortIndex) {
-            const gallery = document.getElementById(`gallery-${resortIndex}`);
-            gallery.classList.toggle('show');
-        }
-        
-        // Open image in modal
-        function openGallery(resortIndex, imageIndex) {
-            currentModalImages = resortData[resortIndex].images;
-            currentImageIndex = imageIndex;
-            
-            const modal = document.getElementById('imageModal');
-            const modalImage = document.getElementById('modalImage');
-            
-            modal.style.display = 'block';
-            modalImage.src = currentModalImages[imageIndex];
-            updateModalCounter();
-            
-            document.body.style.overflow = 'hidden';
-        }
-        
-        // Close modal
-        function closeModal() {
-            const modal = document.getElementById('imageModal');
-            if (modal) {
-                modal.style.display = 'none';
-            }
-        }
-        
-        // Change image in modal
-        function changeModalImage(direction) {
-            currentImageIndex += direction;
-            
-            if (currentImageIndex >= currentModalImages.length) {
-                currentImageIndex = 0;
-            } else if (currentImageIndex < 0) {
-                currentImageIndex = currentModalImages.length - 1;
-            }
-            
-            showModalImage(currentImageIndex);
-        }
-        
-        // Show modal image
-        function showModalImage(index) {
-            const modalImg = document.getElementById('modalImage');
-            const currentIndexEl = document.getElementById('currentImageIndex');
-            const totalImagesEl = document.getElementById('totalImages');
-            
-            if (modalImg && currentModalImages.length > 0) {
-                modalImg.src = currentModalImages[index];
-                if (currentIndexEl) currentIndexEl.textContent = index + 1;
-                if (totalImagesEl) totalImagesEl.textContent = currentModalImages.length;
-            }
-        }
-        
-        // Update modal counter (OLD - replaced by showModalImage)
-        function updateModalCounter_OLD() {
-            document.getElementById('currentImageIndex').textContent = currentImageIndex + 1;
-            document.getElementById('totalImages').textContent = currentModalImages.length;
-        }
-        
-        // Keyboard navigation
-        document.addEventListener('keydown', (e) => {
-            const modal = document.getElementById('imageModal');
-            if (modal.style.display === 'block') {
-                if (e.key === 'Escape') closeModal();
-                else if (e.key === 'ArrowLeft') changeModalImage(-1);
-                else if (e.key === 'ArrowRight') changeModalImage(1);
+        // Mobile menu toggle
+        const navToggle = document.getElementById('nav-toggle');
+        const navMenu = document.getElementById('nav-menu');
+
+        navToggle.addEventListener('click', () => {
+            navMenu.classList.toggle('active');
+        });
+
+        // Navbar scroll effect
+        window.addEventListener('scroll', () => {
+            const navbar = document.getElementById('navbar');
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
             }
         });
-        
-        // Mobile menu
-        document.querySelector('.mobile-menu-btn')?.addEventListener('click', function() {
-            document.querySelector('.nav-links').classList.toggle('active');
-        });
-        
-        // Initialize
-        document.addEventListener('DOMContentLoaded', () => {
-            // Load resorts from API
-            loadResorts();
-            
-            // Close modal on background click
-            const modal = document.getElementById('imageModal');
-            if (modal) {
-                modal.addEventListener('click', (e) => {
-                    if (e.target === modal) {
-                        closeModal();
-                    }
-                });
-            }
-            
-            // Keyboard navigation
-            document.addEventListener('keydown', (e) => {
-                const modal = document.getElementById('imageModal');
-                if (modal && modal.style.display === 'flex') {
-                    if (e.key === 'Escape') {
-                        closeModal();
-                    } else if (e.key === 'ArrowLeft') {
-                        changeModalImage(-1);
-                    } else if (e.key === 'ArrowRight') {
-                        changeModalImage(1);
-                    }
+
+        // Smooth scroll
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth'
+                    });
                 }
-            });
-            
-            // Mobile menu
-            document.querySelector('.mobile-menu-btn')?.addEventListener('click', function() {
-                document.querySelector('.nav-links').classList.toggle('active');
             });
         });
     </script>
