@@ -1,4 +1,6 @@
 {
+  "buildCommand": "echo 'Static site - no build needed'",
+  "outputDirectory": "public",
   "cleanUrls": true,
   "trailingSlash": false,
   "redirects": [
@@ -38,5 +40,16 @@
       "source": "/oahu",
       "destination": "/oahu.html"
     }
-  ]
+  ],
+  "rewrites": [
+    {
+      "source": "/api/(.*)",
+      "destination": "/api/$1"
+    }
+  ],
+  "functions": {
+    "api/**/*.js": {
+      "runtime": "nodejs18.x"
+    }
+  }
 }
