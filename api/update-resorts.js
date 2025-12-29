@@ -23,8 +23,8 @@ module.exports = async function handler(req, res) {
 
     console.log('Starting resort data update...');
 
-    // Read the SQL file
-    const sqlFilePath = path.join(process.cwd(), 'resort_insert_final.sql');
+    // Read the SQL file (updated version with correct region IDs)
+    const sqlFilePath = path.join(process.cwd(), 'resort_insert_updated.sql');
     let sqlContent;
     
     try {
