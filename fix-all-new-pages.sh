@@ -1,11 +1,18 @@
+#!/bin/bash
+
+echo "=== 모든 새 페이지 수정 중 ==="
+
+# Cancun 페이지 수정
+echo "📍 칸쿤 페이지 수정..."
+cat > public/cancun.html << 'EOF'
 <!DOCTYPE html>
 <html lang="ko">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>몰디브 리조트 추천 | 인도양의 보석 - 선샤인투어</title>
-    <meta name="description" content="몰디브 워터빌라 리조트 전문. 인도양의 청정 해역과 럭셔리 수상 빌라, 27년 신뢰의 선샤인투어가 추천하는 몰디브 최고급 리조트.">
-    <meta name="keywords" content="몰디브, 몰디브 리조트, 몰디브 허니문, 몰디브 워터빌라, 몰디브 수상빌라, 선샤인투어, 몰디브 여행, 몰디브 호텔">
+    <title>칸쿤 리조트 추천 | 카리브해의 럭셔리 허니문 - 선샤인투어</title>
+    <meta name="description" content="멕시코 칸쿤 올인클루시브 리조트 전문. 카리브해의 터키석 바다와 마야 문명, 27년 신뢰의 선샤인투어가 추천하는 칸쿤 최고급 리조트.">
+    <meta name="keywords" content="칸쿤, 칸쿤 리조트, 멕시코 칸쿤, 칸쿤 허니문, 칸쿤 올인클루시브, 멕시코 리조트, 선샤인투어, 칸쿤 여행, 카리브해, 칸쿤 호텔">
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -49,9 +56,9 @@
             <ul class="breadcrumb-list">
                 <li><a href="/index.html">Home</a></li>
                 <li><i class="fas fa-chevron-right"></i></li>
-                <li><a href="/destination-maldives.html">Maldives</a></li>
+                <li><a href="/destination-cancun.html">Mexico</a></li>
                 <li><i class="fas fa-chevron-right"></i></li>
-                <li class="current">몰디브</li>
+                <li class="current">칸쿤</li>
             </ul>
         </div>
     </section>
@@ -59,9 +66,12 @@
     <section class="destination-intro">
         <div class="container">
             <div class="intro-wrapper">
-                <span class="section-label">MALDIVES RESORTS</span>
-                <h1 class="destination-section-title">몰디브 리조트</h1>
-                <p class="destination-description">인도양의 보석, 세계 최고의 허니문 여행지 몰디브.<br>프라이빗 워터빌라에서 꿈같은 휴식을 경험하세요.</p>
+                <span class="section-label">CANCUN RESORTS</span>
+                <h1 class="destination-section-title">칸쿤 리조트</h1>
+                <p class="destination-description">
+                    터키석 빛 카리브해와 하얀 모래사장이 펼쳐진 멕시코 칸쿤.<br>
+                    올인클루시브 리조트에서 마야 문명과 럭셔리를 동시에 경험하세요.
+                </p>
             </div>
         </div>
     </section>
@@ -69,30 +79,30 @@
     <section class="region-info" style="margin-top: 4rem;">
         <div class="container" style="max-width: 1200px; margin: 0 auto; padding: 0 2rem;">
             <div class="section-header" style="text-align: center; margin-bottom: 3rem;">
-                <span class="section-label" style="color: #C9A96E; font-weight: 600; letter-spacing: 2px; font-size: 0.9rem;">WHY MALDIVES</span>
-                <h2 class="section-title" style="font-size: 2.5rem; color: #2C2C2C; margin-top: 1rem;">몰디브를 선택해야 하는 이유</h2>
+                <span class="section-label" style="color: #C9A96E; font-weight: 600; letter-spacing: 2px; font-size: 0.9rem;">WHY CANCUN</span>
+                <h2 class="section-title" style="font-size: 2.5rem; color: #2C2C2C; margin-top: 1rem;">칸쿤을 선택해야 하는 이유</h2>
             </div>
             <div class="region-meta" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2rem; padding: 0;">
                 <div class="meta-item" style="text-align: center; padding: 2rem; background: #f8f9fa; border-radius: 12px;">
                     <div style="width: 80px; height: 80px; margin: 0 auto 1.5rem; background: linear-gradient(135deg, #C9A96E 0%, #B8935E 100%); border-radius: 50%; display: flex; align-items: center; justify-content: center;">
-                        <i class="fas fa-home" style="font-size: 2rem; color: white;"></i>
+                        <i class="fas fa-umbrella-beach" style="font-size: 2rem; color: white;"></i>
                     </div>
-                    <h3 class="meta-label" style="font-size: 1.3rem; color: #2C2C2C; margin-bottom: 1rem; font-weight: 600;">워터빌라</h3>
-                    <p class="meta-value" style="font-size: 1rem; color: #666; line-height: 1.6;">에메랄드 바다 위에 지어진 프라이빗 수상 빌라에서 특별한 경험을 하세요.</p>
+                    <h3 class="meta-label" style="font-size: 1.3rem; color: #2C2C2C; margin-bottom: 1rem; font-weight: 600;">올인클루시브</h3>
+                    <p class="meta-value" style="font-size: 1rem; color: #666; line-height: 1.6;">식사, 음료, 액티비티가 모두 포함된 편리한 휴양을 즐길 수 있습니다.</p>
+                </div>
+                <div class="meta-item" style="text-align: center; padding: 2rem; background: #f8f9fa; border-radius: 12px;">
+                    <div style="width: 80px; height: 80px; margin: 0 auto 1.5rem; background: linear-gradient(135deg, #C9A96E 0%, #B8935E 100%); border-radius: 50%; display: flex; align-items: center; justify-content: center;">
+                        <i class="fas fa-landmark" style="font-size: 2rem; color: white;"></i>
+                    </div>
+                    <h3 class="meta-label" style="font-size: 1.3rem; color: #2C2C2C; margin-bottom: 1rem; font-weight: 600;">마야 문명</h3>
+                    <p class="meta-value" style="font-size: 1rem; color: #666; line-height: 1.6;">치첸이트사, 툴룸 등 유네스코 세계문화유산을 방문할 수 있습니다.</p>
                 </div>
                 <div class="meta-item" style="text-align: center; padding: 2rem; background: #f8f9fa; border-radius: 12px;">
                     <div style="width: 80px; height: 80px; margin: 0 auto 1.5rem; background: linear-gradient(135deg, #C9A96E 0%, #B8935E 100%); border-radius: 50%; display: flex; align-items: center; justify-content: center;">
                         <i class="fas fa-water" style="font-size: 2rem; color: white;"></i>
                     </div>
-                    <h3 class="meta-label" style="font-size: 1.3rem; color: #2C2C2C; margin-bottom: 1rem; font-weight: 600;">청정 바다</h3>
-                    <p class="meta-value" style="font-size: 1rem; color: #666; line-height: 1.6;">세계에서 가장 맑고 아름다운 인도양에서 스노클링을 즐기세요.</p>
-                </div>
-                <div class="meta-item" style="text-align: center; padding: 2rem; background: #f8f9fa; border-radius: 12px;">
-                    <div style="width: 80px; height: 80px; margin: 0 auto 1.5rem; background: linear-gradient(135deg, #C9A96E 0%, #B8935E 100%); border-radius: 50%; display: flex; align-items: center; justify-content: center;">
-                        <i class="fas fa-spa" style="font-size: 2rem; color: white;"></i>
-                    </div>
-                    <h3 class="meta-label" style="font-size: 1.3rem; color: #2C2C2C; margin-bottom: 1rem; font-weight: 600;">완벽한 휴식</h3>
-                    <p class="meta-value" style="font-size: 1rem; color: #666; line-height: 1.6;">리조트 한 섬 독립 시스템으로 진정한 프라이빗 휴양을 경험합니다.</p>
+                    <h3 class="meta-label" style="font-size: 1.3rem; color: #2C2C2C; margin-bottom: 1rem; font-weight: 600;">카리브 해</h3>
+                    <p class="meta-value" style="font-size: 1rem; color: #666; line-height: 1.6;">세계에서 가장 아름다운 터키석 빛 바다에서 수영과 스노클링을 즐기세요.</p>
                 </div>
             </div>
         </div>
@@ -112,7 +122,7 @@
     <section class="cta-section">
         <div class="container">
             <div class="cta-content">
-                <h2>몰디브에서 특별한 허니문을 시작하세요</h2>
+                <h2>칸쿤에서 특별한 허니문을 시작하세요</h2>
                 <p>전문 상담사가 여러분의 완벽한 여행을 계획해드립니다</p>
                 <a href="/inquiry" class="cta-btn">문의하기</a>
             </div>
@@ -153,78 +163,87 @@
 
     <script src="/static/js/main.js"></script>
     <script>
-        const REGION_ID = 'region-maldives';
+        const REGION_ID = 'region-cancun';
+        
         async function loadResorts() {
             try {
-                const response = await fetch(`/api/resorts?region_id=${REGION_ID}&is_active=true`);
+                const response = await fetch(\`/api/resorts?region_id=\${REGION_ID}&is_active=true\`);
                 const result = await response.json();
                 const container = document.getElementById('resorts-container');
+                
                 if (result.success && result.data.length > 0) {
                     const resorts = result.data;
                     const fallbackImg = 'https://images.unsplash.com/photo-1571896349842-33c89424de2d?q=80&w=2080';
+                    
                     container.innerHTML = resorts.map(resort => {
                         const features = Array.isArray(resort.features) ? resort.features : [];
                         const gallery = Array.isArray(resort.gallery_images) ? resort.gallery_images : [];
                         const categoryLabels = { 'luxury': '럭셔리', 'premium': '프리미엄', 'standard': '스탠다드' };
-                        return `
+                        
+                        return \`
                             <div class="resort-card">
                                 <div class="resort-content-wrapper">
                                     <div class="resort-header">
                                         <div class="resort-image">
-                                            <img src="${resort.main_image_url || fallbackImg}" alt="${resort.name_ko}" onerror="this.src='${fallbackImg}'">
-                                            ${resort.category ? `<div class="resort-badge">${categoryLabels[resort.category] || resort.category}</div>` : ''}
+                                            <img src="\${resort.main_image_url || fallbackImg}" 
+                                                 alt="\${resort.name_ko}"
+                                                 onerror="this.src='\${fallbackImg}'">
+                                            \${resort.category ? \`<div class="resort-badge">\${categoryLabels[resort.category] || resort.category}</div>\` : ''}
                                         </div>
                                         <div class="resort-info">
-                                            <div class="resort-category">${categoryLabels[resort.category] || 'RESORT'}</div>
-                                            <h2 class="resort-name">${resort.name_ko}</h2>
-                                            <p class="resort-description">${resort.description || ''}</p>
-                                            ${features.length > 0 ? `
+                                            <div class="resort-category">\${categoryLabels[resort.category] || 'RESORT'}</div>
+                                            <h2 class="resort-name">\${resort.name_ko}</h2>
+                                            <p class="resort-description">\${resort.description || ''}</p>
+                                            \${features.length > 0 ? \`
                                                 <div class="resort-features">
-                                                    ${features.slice(0, 4).map(feature => `
+                                                    \${features.slice(0, 4).map(feature => \`
                                                         <div class="feature-item">
                                                             <i class="fas fa-check-circle"></i>
-                                                            <span>${feature}</span>
+                                                            <span>\${feature}</span>
                                                         </div>
-                                                    `).join('')}
+                                                    \`).join('')}
                                                 </div>
-                                            ` : ''}
+                                            \` : ''}
                                             <a href="/inquiry" class="resort-cta">상담 신청하기</a>
                                         </div>
                                     </div>
-                                    ${gallery.length > 0 ? `
+                                    \${gallery.length > 0 ? \`
                                         <div class="resort-gallery">
-                                            ${gallery.slice(0, 6).map((img, index) => `
-                                                <div class="gallery-item" onclick="openLightbox('${img}', '${resort.name_ko} - 이미지 ${index + 1}')">
-                                                    <img src="${img}" alt="${resort.name_ko} - 이미지 ${index + 1}" onerror="this.src='${fallbackImg}'">
+                                            \${gallery.slice(0, 6).map((img, index) => \`
+                                                <div class="gallery-item" onclick="openLightbox('\${img}', '\${resort.name_ko} - 이미지 \${index + 1}')">
+                                                    <img src="\${img}" 
+                                                         alt="\${resort.name_ko} - 이미지 \${index + 1}"
+                                                         onerror="this.src='\${fallbackImg}'">
                                                     <div class="gallery-overlay">
                                                         <i class="fas fa-search-plus"></i>
                                                     </div>
                                                 </div>
-                                            `).join('')}
+                                            \`).join('')}
                                         </div>
-                                    ` : ''}
+                                    \` : ''}
                                 </div>
                             </div>
-                        `;
+                        \`;
                     }).join('');
                 } else {
-                    container.innerHTML = `
+                    container.innerHTML = \`
                         <div class="no-resorts">
                             <i class="fas fa-hotel"></i>
                             <p>현재 등록된 리조트가 없습니다.<br>곧 멋진 리조트들을 소개해드리겠습니다.</p>
                         </div>
-                    `;
+                    \`;
                 }
             } catch (error) {
                 console.error('Error loading resorts:', error);
-                document.getElementById('resorts-container').innerHTML = `
+                document.getElementById('resorts-container').innerHTML = \`
                     <div class="error-resorts">
                         <i class="fas fa-exclamation-circle"></i>
                         <p>리조트 정보를 불러오는데 실패했습니다.<br>잠시 후 다시 시도해주세요.</p>
                     </div>
-                `;
+                \`;
             }
         }
+        
         function openLightbox(imgSrc, caption) {
             const modal = document.getElementById('lightbox-modal');
             const img = document.getElementById('lightbox-img');
@@ -234,10 +253,12 @@
             captionText.textContent = caption;
             window.currentLightboxImg = imgSrc;
         }
+        
         function closeLightbox() {
             const modal = document.getElementById('lightbox-modal');
             modal.classList.remove('active');
         }
+        
         document.addEventListener('DOMContentLoaded', () => {
             loadResorts();
             const closeBtn = document.querySelector('.lightbox-close');
@@ -255,3 +276,9 @@
     </script>
 </body>
 </html>
+EOF
+
+echo "✅ 칸쿤 페이지 완료"
+echo ""
+
+echo "✅ 모든 페이지 수정 완료!"
