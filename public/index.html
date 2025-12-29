@@ -454,7 +454,7 @@
                         });
                         
                         return `
-                            <div class="review-card">
+                            <div class="review-card" onclick="location.href='/reviews'" style="cursor: pointer;">
                                 ${review.image_url ? `
                                     <div class="review-image-wrapper">
                                         <img src="${review.image_url}" alt="${review.title}" class="review-image">
