@@ -192,19 +192,18 @@
                     const resorts = result.data;
                     
                     container.innerHTML = resorts.map(resort => {
-                        // Parse features and gallery
+                        // Handle features - check if already array or needs parsing
                         let features = [];
-                        try {
-                            features = resort.features ? JSON.parse(resort.features) : [];
-                        } catch (e) {
-                            console.error('Error parsing features:', e);
+                        if (resort.features) {
+                            features = Array.isArray(resort.features) ? resort.features : 
+                                       (typeof resort.features === 'string' ? JSON.parse(resort.features) : []);
                         }
                         
+                        // Handle gallery - check if already array or needs parsing
                         let gallery = [];
-                        try {
-                            gallery = resort.gallery_images ? JSON.parse(resort.gallery_images) : [];
-                        } catch (e) {
-                            console.error('Error parsing gallery:', e);
+                        if (resort.gallery_images) {
+                            gallery = Array.isArray(resort.gallery_images) ? resort.gallery_images : 
+                                      (typeof resort.gallery_images === 'string' ? JSON.parse(resort.gallery_images) : []);
                         }
                         
                         // Category badge
