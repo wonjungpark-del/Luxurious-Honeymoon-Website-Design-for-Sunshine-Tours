@@ -1,5 +1,12 @@
 const { getReviews, getReviewById, createReview, updateReview, deleteReview } = require('./_db');
 
+// Disable body parsing, we'll handle it manually
+export const config = {
+  api: {
+    bodyParser: true,
+  },
+};
+
 module.exports = async function handler(req, res) {
   try {
     // Set CORS headers
