@@ -563,7 +563,7 @@
                         <div class="resort-header" style="grid-template-columns: ${imageFirst ? '1fr 1fr' : '1fr 1fr'};">
                             ${imageFirst ? `
                                 <div class="resort-image">
-                                    <img src="${resort.main_image_url}" alt="${resort.name_ko}">
+                                    <img src="${resort.main_image_url || 'https://images.unsplash.com/photo-1571896349842-33c89424de2d?w=800'}" alt="${resort.name_ko}" onerror="this.src='https://images.unsplash.com/photo-1571896349842-33c89424de2d?w=800'">
                                     <div class="resort-badge">${resort.category}</div>
                                 </div>
                                 <div class="resort-info">
@@ -571,7 +571,7 @@
                                     <h2 class="resort-name">${resort.name_ko}</h2>
                                     <p class="resort-description">${resort.description}</p>
                                     <div class="resort-features">
-                                        ${features.map(feature => `
+                                        ${features.slice(0, 4).map(feature => `
                                             <div class="feature-item">
                                                 <i class="fas fa-check-circle"></i>
                                                 <span>${feature}</span>
@@ -586,7 +586,7 @@
                                     <h2 class="resort-name">${resort.name_ko}</h2>
                                     <p class="resort-description">${resort.description}</p>
                                     <div class="resort-features">
-                                        ${features.map(feature => `
+                                        ${features.slice(0, 4).map(feature => `
                                             <div class="feature-item">
                                                 <i class="fas fa-check-circle"></i>
                                                 <span>${feature}</span>
@@ -596,7 +596,7 @@
                                     <a href="/inquiry" class="resort-cta">문의하기</a>
                                 </div>
                                 <div class="resort-image">
-                                    <img src="${resort.main_image_url}" alt="${resort.name_ko}">
+                                    <img src="${resort.main_image_url || 'https://images.unsplash.com/photo-1571896349842-33c89424de2d?w=800'}" alt="${resort.name_ko}" onerror="this.src='https://images.unsplash.com/photo-1571896349842-33c89424de2d?w=800'">
                                     <div class="resort-badge">${resort.category}</div>
                                 </div>
                             `}
