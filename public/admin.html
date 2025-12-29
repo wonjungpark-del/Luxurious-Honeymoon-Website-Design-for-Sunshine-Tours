@@ -519,7 +519,17 @@
                 </div>
                 <div class="form-group">
                     <label class="form-label">메인 이미지 URL</label>
-                    <input type="text" id="resortMainImageUrl" class="form-input">
+                    <input type="text" id="resortMainImageUrl" class="form-input" placeholder="/static/images/resorts/...">
+                </div>
+                <div class="form-group">
+                    <label class="form-label">갤러리 이미지 URL (6개, 줄바꿈으로 구분)</label>
+                    <textarea id="resortGalleryImages" class="form-input" rows="6" placeholder="/static/images/resorts/resort01-01.webp&#10;/static/images/resorts/resort01-02.webp&#10;/static/images/resorts/resort01-03.webp&#10;/static/images/resorts/resort01-04.webp&#10;/static/images/resorts/resort01-05.webp&#10;/static/images/resorts/resort01-06.webp"></textarea>
+                    <small style="color: #95a5a6;">각 이미지 URL을 줄바꿈으로 구분하여 입력하세요 (최대 6개)</small>
+                </div>
+                <div class="form-group">
+                    <label class="form-label">특징 (줄바꿈으로 구분)</label>
+                    <textarea id="resortFeatures" class="form-input" rows="4" placeholder="프라이빗 비치&#10;인피니티 풀&#10;스파&#10;한국인 가이드"></textarea>
+                    <small style="color: #95a5a6;">각 특징을 줄바꿈으로 구분하여 입력하세요</small>
                 </div>
                 <div class="form-group">
                     <label class="form-label">표시 순서</label>
@@ -943,6 +953,16 @@
                     document.getElementById('resortCategory').value = resort.category || '';
                     document.getElementById('resortDescription').value = resort.description || '';
                     document.getElementById('resortMainImageUrl').value = resort.main_image_url || '';
+                    
+                    // 갤러리 이미지 로드
+                    const galleryImages = resort.gallery_images || [];
+                    for (let i = 0; i < 6; i++) {
+                        const input = document.getElementById(`resortGalleryImage${i + 1}`);
+                        if (input) {
+                            input.value = galleryImages[i] || '';
+                        }
+                    }
+                    
                     document.getElementById('resortDisplayOrder').value = resort.display_order || 0;
                     document.getElementById('resortIsActive').value = resort.is_active ? 'true' : 'false';
                 }
@@ -961,6 +981,22 @@
             e.preventDefault();
             
             const id = document.getElementById('resortId').value || `resort-${Date.now()}`;
+            
+            // Parse gallery images (줄바꿈으로 구분)
+            const galleryText = document.getElementById('resortGalleryImages').value;
+            const gallery_images = galleryText
+                .split('\n')
+                .map(line => line.trim())
+                .filter(line => line.length > 0)
+                .slice(0, 6); // 최대 6개
+            
+            // Parse features (줄바꿈으로 구분)
+            const featuresText = document.getElementById('resortFeatures').value;
+            const features = featuresText
+                .split('\n')
+                .map(line => line.trim())
+                .filter(line => line.length > 0);
+            
             const data = {
                 id,
                 region_id: document.getElementById('resortRegionId').value,
@@ -969,8 +1005,8 @@
                 category: document.getElementById('resortCategory').value,
                 description: document.getElementById('resortDescription').value,
                 main_image_url: document.getElementById('resortMainImageUrl').value,
-                gallery_images: [],
-                features: [],
+                gallery_images: gallery_images,
+                features: features,
                 display_order: parseInt(document.getElementById('resortDisplayOrder').value),
                 is_active: document.getElementById('resortIsActive').value === 'true'
             };
