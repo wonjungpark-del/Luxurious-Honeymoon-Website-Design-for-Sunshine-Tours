@@ -1,5 +1,8 @@
 const { put } = require('@vercel/blob');
+const formidable = require('formidable');
+const fs = require('fs');
 
+// Disable Next.js body parsing to allow formidable to handle it
 module.exports = async function handler(req, res) {
   // Enable CORS
   res.setHeader('Access-Control-Allow-Origin', '*');
@@ -15,17 +18,55 @@ module.exports = async function handler(req, res) {
   }
 
   try {
-    // Parse multipart/form-data using Vercel's built-in parser
-    const contentType = req.headers['content-type'];
-    if (!contentType || !contentType.includes('multipart/form-data')) {
-      return res.status(400).json({ success: false, error: 'Content-Type must be multipart/form-data' });
+    // Parse the multipart form data
+    const form = formidable({
+      maxFileSize: 10 * 1024 * 1024, // 10MB max
+      keepExtensions: true
+    });
+
+    const [fields, files] = await new Promise((resolve, reject) => {
+      form.parse(req, (err, fields, files) => {
+        if (err) reject(err);
+        else resolve([fields, files]);
+      });
+    });
+
+    // Get the uploaded file
+    const file = files.file?.[0] || files.file;
+    
+    if (!file) {
+      return res.status(400).json({ 
+        success: false, 
+        error: 'No file uploaded' 
+      });
     }
 
-    // For now, return a placeholder response
-    // Vercel's body parser for multipart/form-data requires additional setup
-    return res.status(501).json({ 
-      success: false, 
-      error: 'File upload endpoint is being configured. Please use admin panel upload temporarily.' 
+    // Read file buffer
+    const fileBuffer = fs.readFileSync(file.filepath);
+    
+    // Generate a unique filename with timestamp
+    const timestamp = Date.now();
+    const originalName = file.originalFilename || 'upload';
+    const extension = originalName.split('.').pop();
+    const filename = `${timestamp}-${Math.random().toString(36).substring(7)}.${extension}`;
+    
+    // Upload to Vercel Blob Storage
+    const blob = await put(filename, fileBuffer, {
+      access: 'public',
+      contentType: file.mimetype || 'image/jpeg',
+      addRandomSuffix: false
+    });
+
+    // Clean up temp file
+    fs.unlinkSync(file.filepath);
+
+    // Return the blob URL
+    return res.status(200).json({
+      success: true,
+      url: blob.url,
+      filename: filename,
+      size: file.size,
+      contentType: file.mimetype
     });
 
   } catch (error) {
@@ -35,4 +76,11 @@ module.exports = async function handler(req, res) {
       error: error.message || 'Upload failed' 
     });
   }
-}
+};
+
+// Disable Next.js body parser for this API route
+module.exports.config = {
+  api: {
+    bodyParser: false,
+  },
+};

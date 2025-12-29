@@ -518,13 +518,60 @@
                     <textarea id="resortDescription" class="form-input"></textarea>
                 </div>
                 <div class="form-group">
-                    <label class="form-label">메인 이미지 URL</label>
-                    <input type="text" id="resortMainImageUrl" class="form-input" placeholder="/static/images/resorts/...">
+                    <label class="form-label">메인 이미지</label>
+                    <input type="file" id="resortMainImageFile" class="form-input" accept="image/*">
+                    <input type="text" id="resortMainImageUrl" class="form-input" placeholder="이미지 URL (업로드 후 자동 입력)" readonly style="margin-top: 8px;">
+                    <button type="button" onclick="uploadMainImage()" class="btn btn-secondary" style="margin-top: 8px;">
+                        📤 메인 이미지 업로드
+                    </button>
                 </div>
                 <div class="form-group">
-                    <label class="form-label">갤러리 이미지 URL (6개, 줄바꿈으로 구분)</label>
-                    <textarea id="resortGalleryImages" class="form-input" rows="6" placeholder="/static/images/resorts/resort01-01.webp&#10;/static/images/resorts/resort01-02.webp&#10;/static/images/resorts/resort01-03.webp&#10;/static/images/resorts/resort01-04.webp&#10;/static/images/resorts/resort01-05.webp&#10;/static/images/resorts/resort01-06.webp"></textarea>
-                    <small style="color: #95a5a6;">각 이미지 URL을 줄바꿈으로 구분하여 입력하세요 (최대 6개)</small>
+                    <label class="form-label">갤러리 이미지 (최대 6개)</label>
+                    <div id="galleryUploadContainer">
+                        <div style="margin-bottom: 12px;">
+                            <input type="file" id="galleryImageFile1" class="form-input" accept="image/*" style="margin-bottom: 4px;">
+                            <input type="text" id="resortGalleryImage1" class="form-input" placeholder="갤러리 1 URL" readonly>
+                            <button type="button" onclick="uploadGalleryImage(1)" class="btn btn-secondary" style="margin-top: 4px; font-size: 12px;">
+                                📤 업로드
+                            </button>
+                        </div>
+                        <div style="margin-bottom: 12px;">
+                            <input type="file" id="galleryImageFile2" class="form-input" accept="image/*" style="margin-bottom: 4px;">
+                            <input type="text" id="resortGalleryImage2" class="form-input" placeholder="갤러리 2 URL" readonly>
+                            <button type="button" onclick="uploadGalleryImage(2)" class="btn btn-secondary" style="margin-top: 4px; font-size: 12px;">
+                                📤 업로드
+                            </button>
+                        </div>
+                        <div style="margin-bottom: 12px;">
+                            <input type="file" id="galleryImageFile3" class="form-input" accept="image/*" style="margin-bottom: 4px;">
+                            <input type="text" id="resortGalleryImage3" class="form-input" placeholder="갤러리 3 URL" readonly>
+                            <button type="button" onclick="uploadGalleryImage(3)" class="btn btn-secondary" style="margin-top: 4px; font-size: 12px;">
+                                📤 업로드
+                            </button>
+                        </div>
+                        <div style="margin-bottom: 12px;">
+                            <input type="file" id="galleryImageFile4" class="form-input" accept="image/*" style="margin-bottom: 4px;">
+                            <input type="text" id="resortGalleryImage4" class="form-input" placeholder="갤러리 4 URL" readonly>
+                            <button type="button" onclick="uploadGalleryImage(4)" class="btn btn-secondary" style="margin-top: 4px; font-size: 12px;">
+                                📤 업로드
+                            </button>
+                        </div>
+                        <div style="margin-bottom: 12px;">
+                            <input type="file" id="galleryImageFile5" class="form-input" accept="image/*" style="margin-bottom: 4px;">
+                            <input type="text" id="resortGalleryImage5" class="form-input" placeholder="갤러리 5 URL" readonly>
+                            <button type="button" onclick="uploadGalleryImage(5)" class="btn btn-secondary" style="margin-top: 4px; font-size: 12px;">
+                                📤 업로드
+                            </button>
+                        </div>
+                        <div style="margin-bottom: 12px;">
+                            <input type="file" id="galleryImageFile6" class="form-input" accept="image/*" style="margin-bottom: 4px;">
+                            <input type="text" id="resortGalleryImage6" class="form-input" placeholder="갤러리 6 URL" readonly>
+                            <button type="button" onclick="uploadGalleryImage(6)" class="btn btn-secondary" style="margin-top: 4px; font-size: 12px;">
+                                📤 업로드
+                            </button>
+                        </div>
+                    </div>
+                    <small style="color: #95a5a6;">각 갤러리 이미지를 선택하고 업로드 버튼을 클릭하세요</small>
                 </div>
                 <div class="form-group">
                     <label class="form-label">특징 (줄바꿈으로 구분)</label>
@@ -1151,6 +1198,81 @@
             } catch (error) {
                 console.error('Delete inquiry error:', error);
                 alert('삭제 중 오류가 발생했습니다.');
+            }
+        }
+
+        // Image Upload Functions
+        async function uploadMainImage() {
+            const fileInput = document.getElementById('resortMainImageFile');
+            const file = fileInput.files[0];
+            
+            if (!file) {
+                alert('파일을 선택해주세요.');
+                return;
+            }
+            
+            const urlInput = document.getElementById('resortMainImageUrl');
+            urlInput.value = '업로드 중...';
+            
+            try {
+                const formData = new FormData();
+                formData.append('file', file);
+                
+                const response = await fetch(`${API_BASE}/upload`, {
+                    method: 'POST',
+                    body: formData
+                });
+                
+                const result = await response.json();
+                
+                if (result.success) {
+                    urlInput.value = result.url;
+                    alert('메인 이미지 업로드 완료!');
+                } else {
+                    urlInput.value = '';
+                    alert('업로드 실패: ' + result.error);
+                }
+            } catch (error) {
+                console.error('Upload error:', error);
+                urlInput.value = '';
+                alert('업로드 중 오류가 발생했습니다.');
+            }
+        }
+        
+        async function uploadGalleryImage(index) {
+            const fileInput = document.getElementById(`galleryImageFile${index}`);
+            const file = fileInput.files[0];
+            
+            if (!file) {
+                alert('파일을 선택해주세요.');
+                return;
+            }
+            
+            const urlInput = document.getElementById(`resortGalleryImage${index}`);
+            urlInput.value = '업로드 중...';
+            
+            try {
+                const formData = new FormData();
+                formData.append('file', file);
+                
+                const response = await fetch(`${API_BASE}/upload`, {
+                    method: 'POST',
+                    body: formData
+                });
+                
+                const result = await response.json();
+                
+                if (result.success) {
+                    urlInput.value = result.url;
+                    alert(`갤러리 이미지 ${index} 업로드 완료!`);
+                } else {
+                    urlInput.value = '';
+                    alert('업로드 실패: ' + result.error);
+                }
+            } catch (error) {
+                console.error('Upload error:', error);
+                urlInput.value = '';
+                alert('업로드 중 오류가 발생했습니다.');
             }
         }
 
