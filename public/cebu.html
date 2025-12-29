@@ -161,7 +161,7 @@
                 const container = document.getElementById('resorts-container');
                 if (result.success && result.data.length > 0) {
                     const resorts = result.data;
-                    const fallbackImg = 'https://images.unsplash.com/photo-1571896349842-33c89424de2d?q=80&w=2080';
+                    
                     container.innerHTML = resorts.map(resort => {
                         const features = Array.isArray(resort.features) ? resort.features : [];
                         const gallery = Array.isArray(resort.gallery_images) ? resort.gallery_images : [];
@@ -171,7 +171,7 @@
                                 <div class="resort-content-wrapper">
                                     <div class="resort-header">
                                         <div class="resort-image">
-                                            <img src="${resort.main_image_url || fallbackImg}" alt="${resort.name_ko}" onerror="this.src='${fallbackImg}'">
+                                            <img src="${resort.main_image_url || (resort.gallery_images && resort.gallery_images.length > 0 ? resort.gallery_images[0] : 'https://images.unsplash.com/photo-1571896349842-33c89424de2d?q=80&w=2080')}" alt="${resort.name_ko}" onerror="this.src='https://images.unsplash.com/photo-1571896349842-33c89424de2d?q=80&w=2080'">
                                             ${resort.category ? `<div class="resort-badge">${categoryLabels[resort.category] || resort.category}</div>` : ''}
                                         </div>
                                         <div class="resort-info">
@@ -195,7 +195,7 @@
                                         <div class="resort-gallery">
                                             ${gallery.slice(0, 6).map((img, index) => `
                                                 <div class="gallery-item" onclick="openLightbox('${img}', '${resort.name_ko} - 이미지 ${index + 1}')">
-                                                    <img src="${img}" alt="${resort.name_ko} - 이미지 ${index + 1}" onerror="this.src='${fallbackImg}'">
+                                                    <img src="${img}" alt="${resort.name_ko} - 이미지 ${index + 1}" onerror="this.src='https://images.unsplash.com/photo-1571896349842-33c89424de2d?q=80&w=2080'">
                                                     <div class="gallery-overlay">
                                                         <i class="fas fa-search-plus"></i>
                                                     </div>

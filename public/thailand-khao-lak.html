@@ -209,7 +209,7 @@
                                 <div class="resort-content-wrapper">
                                     <div class="resort-header">
                                         <div class="resort-image">
-                                            <img src="${resort.main_image_url || 'https://images.unsplash.com/photo-1571896349842-33c89424de2d?q=80&w=2080'}" alt="${resort.name_ko}">
+                                            <img src="${resort.main_image_url || (resort.gallery_images && resort.gallery_images.length > 0 ? resort.gallery_images[0] : 'https://images.unsplash.com/photo-1571896349842-33c89424de2d?q=80&w=2080')}" alt="${resort.name_ko}">
                                             ${resort.category ? `<div class="resort-badge">${categoryLabels[resort.category] || resort.category}</div>` : ''}
                                         </div>
                                         <div class="resort-info">

@@ -563,7 +563,7 @@
                         <div class="resort-header" style="grid-template-columns: ${imageFirst ? '1fr 1fr' : '1fr 1fr'};">
                             ${imageFirst ? `
                                 <div class="resort-image">
-                                    <img src="${resort.main_image_url || 'https://images.unsplash.com/photo-1571896349842-33c89424de2d?w=800'}" alt="${resort.name_ko}" onerror="this.src='https://images.unsplash.com/photo-1571896349842-33c89424de2d?w=800'">
+                                    <img src="${resort.main_image_url || (resort.gallery_images && resort.gallery_images.length > 0 ? resort.gallery_images[0] : 'https://images.unsplash.com/photo-1571896349842-33c89424de2d?q=80&w=2080')}" alt="${resort.name_ko}" onerror="this.src='https://images.unsplash.com/photo-1571896349842-33c89424de2d?w=800'">
                                     <div class="resort-badge">${resort.category}</div>
                                 </div>
                                 <div class="resort-info">
@@ -596,7 +596,7 @@
                                     <a href="/inquiry" class="resort-cta">문의하기</a>
                                 </div>
                                 <div class="resort-image">
-                                    <img src="${resort.main_image_url || 'https://images.unsplash.com/photo-1571896349842-33c89424de2d?w=800'}" alt="${resort.name_ko}" onerror="this.src='https://images.unsplash.com/photo-1571896349842-33c89424de2d?w=800'">
+                                    <img src="${resort.main_image_url || (resort.gallery_images && resort.gallery_images.length > 0 ? resort.gallery_images[0] : 'https://images.unsplash.com/photo-1571896349842-33c89424de2d?q=80&w=2080')}" alt="${resort.name_ko}" onerror="this.src='https://images.unsplash.com/photo-1571896349842-33c89424de2d?w=800'">
                                     <div class="resort-badge">${resort.category}</div>
                                 </div>
                             `}
