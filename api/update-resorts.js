@@ -62,8 +62,20 @@ module.exports = async function handler(req, res) {
         continue;
       }
 
-      const mainImage = images[0];
-      const galleryImages = images.slice(1);
+      // Extract URLs from image objects (handle both string and object formats)
+      const imageUrls = images.map(img => {
+        if (typeof img === 'string') return img;
+        if (img && img.url) return img.url;
+        return null;
+      }).filter(url => url !== null);
+
+      if (imageUrls.length === 0) {
+        console.log(`Skipping ${resortName} - no valid image URLs`);
+        continue;
+      }
+
+      const mainImage = imageUrls[0];
+      const galleryImages = imageUrls.slice(1);
 
       results.total++;
 
