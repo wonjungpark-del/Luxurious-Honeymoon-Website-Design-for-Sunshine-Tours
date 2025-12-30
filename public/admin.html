@@ -671,28 +671,60 @@
 
         // Login Handler Function
         function handleLogin() {
-            console.log('Login button clicked');
-            const password = document.getElementById('passwordInput').value;
-            console.log('Password entered, checking...', password === ADMIN_PASSWORD);
-            
-            if (password === ADMIN_PASSWORD) {
-                console.log('Password correct, logging in...');
-                document.getElementById('loginScreen').style.display = 'none';
-                document.getElementById('adminPanel').style.display = 'block';
-                loadAllData().then(() => {
-                    console.log('Data loaded, initializing...');
-                    initializeDestinations();
-                    initializeNotificationSettings();
-                    checkForNewContent();
-                }).catch(error => {
-                    console.error('Error during initialization:', error);
-                    alert('초기화 중 오류가 발생했습니다. 콘솔을 확인해주세요.');
-                });
-            } else {
-                console.log('Password incorrect');
-                document.getElementById('loginError').classList.remove('hidden');
+            try {
+                console.log('Login button clicked');
+                const passwordInput = document.getElementById('passwordInput');
+                
+                if (!passwordInput) {
+                    alert('오류: 비밀번호 입력 필드를 찾을 수 없습니다.');
+                    console.error('passwordInput element not found');
+                    return;
+                }
+                
+                const password = passwordInput.value;
+                console.log('Password entered, checking...', password === ADMIN_PASSWORD);
+                console.log('Password length:', password.length, 'Expected:', ADMIN_PASSWORD.length);
+                
+                if (password === ADMIN_PASSWORD) {
+                    console.log('Password correct, logging in...');
+                    
+                    const loginScreen = document.getElementById('loginScreen');
+                    const adminPanel = document.getElementById('adminPanel');
+                    
+                    if (!loginScreen || !adminPanel) {
+                        alert('오류: 화면 요소를 찾을 수 없습니다.');
+                        console.error('loginScreen or adminPanel not found');
+                        return;
+                    }
+                    
+                    loginScreen.style.display = 'none';
+                    adminPanel.style.display = 'block';
+                    
+                    loadAllData().then(() => {
+                        console.log('Data loaded, initializing...');
+                        initializeDestinations();
+                        initializeNotificationSettings();
+                        checkForNewContent();
+                    }).catch(error => {
+                        console.error('Error during initialization:', error);
+                        alert('초기화 중 오류가 발생했습니다:\n' + error.message);
+                    });
+                } else {
+                    console.log('Password incorrect');
+                    const loginError = document.getElementById('loginError');
+                    if (loginError) {
+                        loginError.classList.remove('hidden');
+                    }
+                }
+            } catch (error) {
+                console.error('Error in handleLogin:', error);
+                alert('로그인 처리 중 오류가 발생했습니다:\n' + error.message);
             }
         }
+        
+        // Make handleLogin globally available
+        window.handleLogin = handleLogin;
+        console.log('handleLogin function defined and assigned to window');
 
         // Also support Enter key in password field
         document.addEventListener('DOMContentLoaded', function() {
