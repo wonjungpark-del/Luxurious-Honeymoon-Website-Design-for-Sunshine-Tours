@@ -1,0 +1,822 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>프랑스 여행 가이드 | 낭만의 나라 - 선샤인투어</title>
+    <meta name="description" content="프랑스 파리, 베르사유, 프로방스, 니스 여행 정보. 에펠탑, 루브르 박물관, 베르사유 궁전, 라벤더 밭 등 프랑스 주요 명소 안내.">
+    <meta name="keywords" content="프랑스여행, 파리여행, 베르사유, 프로방스, 니스, 에펠탑, 루브르박물관, 허니문, 신혼여행">
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="/static/css/style.css">
+    <link rel="stylesheet" href="/static/css/destination.css">
+    
+    <style>
+        :root {
+            --primary-gold: #C9A96E;
+            --dark-gold: #B8935E;
+            --light-beige: #F5F1E8;
+            --text-dark: #2C2C2C;
+            --text-gray: #666;
+        }
+        
+        body {
+            font-family: 'Noto Sans KR', sans-serif;
+            background: var(--light-beige);
+            color: var(--text-dark);
+            line-height: 1.7;
+        }
+        
+        /* Navigation */
+        .navbar {
+            background: rgba(255, 255, 255, 0.98);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 2px 20px rgba(0,0,0,0.08);
+            padding: 1.2rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+        
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary-gold);
+            text-decoration: none;
+            letter-spacing: 1px;
+        }
+        
+        .nav-menu {
+            display: flex;
+            gap: 2.5rem;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+        
+        .nav-menu a {
+            color: var(--text-dark);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+            font-size: 0.95rem;
+        }
+        
+        .nav-menu a:hover {
+            color: var(--primary-gold);
+        }
+        
+        /* Breadcrumb */
+        .breadcrumb {
+            max-width: 1200px;
+            margin: 2rem auto;
+            padding: 0 2rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.9rem;
+            color: var(--text-gray);
+        }
+        
+        .breadcrumb a {
+            color: var(--text-gray);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .breadcrumb a:hover {
+            color: var(--primary-gold);
+        }
+        
+        /* Region Intro */
+        .region-intro {
+            max-width: 1200px;
+            margin: 3rem auto;
+            padding: 0 2rem;
+            text-align: center;
+        }
+        
+        .region-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: white;
+            padding: 0.5rem 1.5rem;
+            border-radius: 50px;
+            margin-bottom: 1rem;
+            font-size: 0.9rem;
+            color: var(--primary-gold);
+            font-weight: 600;
+        }
+        
+        .region-intro h1 {
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            color: var(--text-dark);
+        }
+        
+        .region-intro p {
+            font-size: 1.1rem;
+            color: var(--text-gray);
+            max-width: 800px;
+            margin: 0 auto;
+            line-height: 1.8;
+        }
+        
+        /* City Section */
+        .city-section {
+            max-width: 1200px;
+            margin: 4rem auto;
+            padding: 3rem;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.06);
+        }
+        
+        .city-header {
+            text-align: center;
+            margin-bottom: 2.5rem;
+        }
+        
+        .city-badge {
+            display: inline-block;
+            background: linear-gradient(135deg, var(--primary-gold), var(--dark-gold));
+            color: white;
+            padding: 0.4rem 1.2rem;
+            border-radius: 50px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            letter-spacing: 1px;
+        }
+        
+        .city-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            color: var(--text-dark);
+        }
+        
+        .city-subtitle {
+            font-size: 1.1rem;
+            color: var(--text-gray);
+        }
+        
+        .city-images {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1.5rem;
+            margin: 2.5rem 0;
+            border-radius: 15px;
+            overflow: hidden;
+        }
+        
+        .city-images img {
+            width: 100%;
+            height: 350px;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+        
+        .city-images img:hover {
+            transform: scale(1.05);
+        }
+        
+        .city-description {
+            font-size: 1.05rem;
+            line-height: 1.9;
+            color: var(--text-gray);
+            margin: 2rem 0;
+        }
+        
+        .highlights {
+            margin-top: 2.5rem;
+        }
+        
+        .highlights h3 {
+            font-size: 1.3rem;
+            margin-bottom: 1.5rem;
+            color: var(--text-dark);
+            font-weight: 600;
+        }
+        
+        .highlights-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1.5rem;
+        }
+        
+        .highlight-item {
+            display: flex;
+            gap: 1rem;
+            padding: 1.2rem;
+            background: var(--light-beige);
+            border-radius: 12px;
+            transition: all 0.3s;
+        }
+        
+        .highlight-item:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(201, 169, 110, 0.2);
+        }
+        
+        .highlight-icon {
+            flex-shrink: 0;
+            width: 40px;
+            height: 40px;
+            background: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--primary-gold);
+        }
+        
+        .highlight-content h4 {
+            margin: 0 0 0.5rem 0;
+            font-size: 1.05rem;
+            color: var(--text-dark);
+            font-weight: 600;
+        }
+        
+        .highlight-content p {
+            margin: 0;
+            font-size: 0.95rem;
+            color: var(--text-gray);
+        }
+        
+        /* Map Button */
+        .map-button-container {
+            text-align: center;
+            margin-top: 3rem;
+            padding-top: 2rem;
+            border-top: 1px solid #E8E8E8;
+        }
+        
+        .map-button {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.8rem;
+            padding: 1rem 2.5rem;
+            background: linear-gradient(135deg, var(--primary-gold), var(--dark-gold));
+            color: white;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 1.05rem;
+            transition: all 0.3s;
+            box-shadow: 0 4px 15px rgba(201, 169, 110, 0.3);
+        }
+        
+        .map-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(201, 169, 110, 0.4);
+        }
+        
+        .map-button i {
+            font-size: 1.2rem;
+        }
+        
+        /* CTA Section */
+        .cta-section {
+            max-width: 1200px;
+            margin: 5rem auto;
+            padding: 4rem 2rem;
+            text-align: center;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.06);
+        }
+        
+        .cta-section h2 {
+            font-size: 2.2rem;
+            margin-bottom: 1rem;
+            color: var(--text-dark);
+        }
+        
+        .cta-section p {
+            font-size: 1.1rem;
+            color: var(--text-gray);
+            margin-bottom: 2rem;
+        }
+        
+        .cta-button {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.8rem;
+            padding: 1.2rem 3rem;
+            background: linear-gradient(135deg, var(--primary-gold), var(--dark-gold));
+            color: white;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: all 0.3s;
+            box-shadow: 0 4px 15px rgba(201, 169, 110, 0.3);
+        }
+        
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 25px rgba(201, 169, 110, 0.4);
+        }
+        
+        /* Footer */
+        .footer {
+            background: #2C2C2C;
+            color: white;
+            padding: 3rem 0 1.5rem;
+            margin-top: 5rem;
+        }
+        
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr;
+            gap: 3rem;
+        }
+        
+        .footer-brand h3 {
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+            color: var(--primary-gold);
+        }
+        
+        .footer-brand p {
+            color: #999;
+            margin-bottom: 1.5rem;
+            line-height: 1.8;
+        }
+        
+        .footer-links h4 {
+            margin-bottom: 1rem;
+            color: var(--primary-gold);
+        }
+        
+        .footer-links ul {
+            list-style: none;
+            padding: 0;
+        }
+        
+        .footer-links li {
+            margin-bottom: 0.7rem;
+        }
+        
+        .footer-links a {
+            color: #999;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .footer-links a:hover {
+            color: white;
+        }
+        
+        .contact-info {
+            color: #999;
+            line-height: 1.9;
+        }
+        
+        .contact-info i {
+            color: var(--primary-gold);
+            margin-right: 0.5rem;
+            width: 20px;
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+        
+        .social-links a {
+            width: 40px;
+            height: 40px;
+            background: #444;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            transition: all 0.3s;
+        }
+        
+        .social-links a:hover {
+            background: var(--primary-gold);
+            transform: translateY(-3px);
+        }
+        
+        .footer-bottom {
+            text-align: center;
+            padding-top: 2rem;
+            margin-top: 2rem;
+            border-top: 1px solid #444;
+            color: #999;
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .nav-menu {
+                gap: 1.5rem;
+            }
+            
+            .region-intro h1 {
+                font-size: 2rem;
+            }
+            
+            .city-section {
+                padding: 2rem 1.5rem;
+            }
+            
+            .city-title {
+                font-size: 2rem;
+            }
+            
+            .city-images {
+                grid-template-columns: 1fr;
+            }
+            
+            .city-images img {
+                height: 250px;
+            }
+            
+            .highlights-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .footer-content {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+            
+            .city-description {
+                padding: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="/" class="logo">SUNSHINE TOUR</a>
+            <ul class="nav-menu">
+                <li><a href="/">홈</a></li>
+                <li><a href="/destinations">목적지</a></li>
+                <li><a href="/reviews">리뷰</a></li>
+                <li><a href="/about">소개</a></li>
+                <li><a href="/inquiry">문의</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Breadcrumb -->
+    <div class="breadcrumb">
+        <a href="/">홈</a>
+        <i class="fas fa-chevron-right"></i>
+        <a href="/destinations">유럽</a>
+        <i class="fas fa-chevron-right"></i>
+        <span>프랑스</span>
+    </div>
+
+    <!-- Region Intro -->
+    <section class="region-intro">
+        <div class="region-badge">
+            <span>🇫🇷</span>
+            <span>FRANCE</span>
+        </div>
+        <h1>프랑스 여행 가이드</h1>
+        <p>낭만과 예술의 나라 프랑스. 에펠탑이 빛나는 파리부터 화려한 베르사유 궁전, 라벤더가 향기로운 프로방스, 지중해의 보석 니스까지. 프랑스는 여행자들에게 평생 잊지 못할 추억을 선사합니다.</p>
+    </section>
+
+    <!-- Paris -->
+    <section class="city-section">
+        <div class="city-header">
+            <div class="city-badge">PARIS</div>
+            <h2 class="city-title">파리</h2>
+            <p class="city-subtitle">세계에서 가장 낭만적인 도시</p>
+        </div>
+        
+        <div class="city-images">
+            <img src="https://atntzsryivyk2c4y.public.blob.vercel-storage.com/1767081346466-kwrlhg.jpg" alt="에펠탑">
+            <img src="https://atntzsryivyk2c4y.public.blob.vercel-storage.com/1767081347267-w3p7z.jpg" alt="루브르 박물관">
+        </div>
+        
+        <div class="city-description">
+            <p>파리는 세느강을 따라 펼쳐진 예술과 낭만의 도시입니다. 에펠탑에서 바라보는 파리의 야경은 한 폭의 그림 같으며, 루브르 박물관은 인류의 문화유산이 살아 숨쉬는 공간입니다. 샹젤리제 거리를 걸으며 느끼는 파리의 품격, 몽마르트 언덕에서 만나는 예술가들의 열정까지. 파리는 모든 순간이 특별한 도시입니다.</p>
+        </div>
+        
+        <div class="highlights">
+            <h3>주요 명소</h3>
+            <div class="highlights-grid">
+                <div class="highlight-item">
+                    <div class="highlight-icon">
+                        <i class="fas fa-tower-observation"></i>
+                    </div>
+                    <div class="highlight-content">
+                        <h4>에펠탑</h4>
+                        <p>파리의 상징. 전망대에서 바라보는 360도 파노라마 뷰는 잊을 수 없는 감동을 선사합니다.</p>
+                    </div>
+                </div>
+                <div class="highlight-item">
+                    <div class="highlight-icon">
+                        <i class="fas fa-landmark"></i>
+                    </div>
+                    <div class="highlight-content">
+                        <h4>루브르 박물관</h4>
+                        <p>모나리자, 밀로의 비너스 등 세계적인 걸작들을 만날 수 있는 세계 최대 규모의 박물관입니다.</p>
+                    </div>
+                </div>
+                <div class="highlight-item">
+                    <div class="highlight-icon">
+                        <i class="fas fa-church"></i>
+                    </div>
+                    <div class="highlight-content">
+                        <h4>노트르담 대성당</h4>
+                        <p>고딕 건축의 걸작. 세느강변에 자리한 아름다운 대성당으로 파리의 역사를 간직하고 있습니다.</p>
+                    </div>
+                </div>
+                <div class="highlight-item">
+                    <div class="highlight-icon">
+                        <i class="fas fa-palette"></i>
+                    </div>
+                    <div class="highlight-content">
+                        <h4>몽마르트 언덕</h4>
+                        <p>예술가들의 성지. 사크레쾨르 대성당과 테르트르 광장의 거리 화가들이 파리의 낭만을 더합니다.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="map-button-container">
+            <a href="http://www.sunshinetour.co.kr/maps/index/europe/france/francemain.html" class="map-button" target="_blank">
+                <i class="fas fa-map-marked-alt"></i>
+                <span>프랑스 지도 바로가기</span>
+            </a>
+        </div>
+    </section>
+
+    <!-- Versailles -->
+    <section class="city-section">
+        <div class="city-header">
+            <div class="city-badge">VERSAILLES</div>
+            <h2 class="city-title">베르사유</h2>
+            <p class="city-subtitle">프랑스 왕실의 화려한 역사</p>
+        </div>
+        
+        <div class="city-images">
+            <img src="https://atntzsryivyk2c4y.public.blob.vercel-storage.com/1767081347749-wgjf9n.jpg" alt="베르사유 궁전">
+            <img src="https://atntzsryivyk2c4y.public.blob.vercel-storage.com/1767081348689-1vq5uf.jpg" alt="베르사유 정원">
+        </div>
+        
+        <div class="city-description">
+            <p>베르사유 궁전은 프랑스 왕실의 화려했던 시절을 그대로 간직하고 있는 웅장한 궁전입니다. 거울의 방은 357개의 거울로 장식되어 있으며, 천장의 프레스코화는 숨이 멎을 만큼 아름답습니다. 궁전 뒤편으로 펼쳐진 정원은 끝이 보이지 않을 만큼 광활하며, 분수쇼가 열릴 때면 그 웅장함에 감탄하게 됩니다.</p>
+        </div>
+        
+        <div class="highlights">
+            <h3>주요 명소</h3>
+            <div class="highlights-grid">
+                <div class="highlight-item">
+                    <div class="highlight-icon">
+                        <i class="fas fa-crown"></i>
+                    </div>
+                    <div class="highlight-content">
+                        <h4>거울의 방</h4>
+                        <p>357개의 거울과 샹들리에로 장식된 화려한 홀. 루이 14세의 권력을 상징하는 공간입니다.</p>
+                    </div>
+                </div>
+                <div class="highlight-item">
+                    <div class="highlight-icon">
+                        <i class="fas fa-tree"></i>
+                    </div>
+                    <div class="highlight-content">
+                        <h4>베르사유 정원</h4>
+                        <p>기하학적으로 설계된 프랑스식 정원. 분수와 조각상들이 어우러진 예술 작품입니다.</p>
+                    </div>
+                </div>
+                <div class="highlight-item">
+                    <div class="highlight-icon">
+                        <i class="fas fa-water"></i>
+                    </div>
+                    <div class="highlight-content">
+                        <h4>분수쇼</h4>
+                        <p>여름철 주말에 열리는 음악 분수쇼. 바로크 음악과 함께 춤추는 분수는 장관입니다.</p>
+                    </div>
+                </div>
+                <div class="highlight-item">
+                    <div class="highlight-icon">
+                        <i class="fas fa-home"></i>
+                    </div>
+                    <div class="highlight-content">
+                        <h4>마리 앙투아네트 별궁</h4>
+                        <p>왕비의 사적인 공간. 소박하고 아름다운 별궁에서 당시 왕실 생활을 엿볼 수 있습니다.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="map-button-container">
+            <a href="http://www.sunshinetour.co.kr/maps/index/europe/france/francemain.html" class="map-button" target="_blank">
+                <i class="fas fa-map-marked-alt"></i>
+                <span>프랑스 지도 바로가기</span>
+            </a>
+        </div>
+    </section>
+
+    <!-- Provence -->
+    <section class="city-section">
+        <div class="city-header">
+            <div class="city-badge">PROVENCE</div>
+            <h2 class="city-title">프로방스</h2>
+            <p class="city-subtitle">라벤더가 향기로운 남프랑스의 보석</p>
+        </div>
+        
+        <div class="city-images">
+            <img src="https://atntzsryivyk2c4y.public.blob.vercel-storage.com/1767081349781-1myspq.jpg" alt="프로방스 라벤더">
+            <img src="https://atntzsryivyk2c4y.public.blob.vercel-storage.com/1767081350474-8i20xv.jpg" alt="프로방스 마을">
+        </div>
+        
+        <div class="city-description">
+            <p>프로방스는 남프랑스의 목가적인 풍경이 펼쳐지는 지역입니다. 여름이면 보라빛 라벤더 밭이 끝없이 이어지고, 고즈넉한 중세 마을들이 언덕마다 자리하고 있습니다. 고흐가 사랑했던 아를, 로마 유적이 남아있는 님, 교황청이 있는 아비뇽까지. 프로방스는 느리게 흐르는 시간 속에서 진정한 휴식을 선사합니다.</p>
+        </div>
+        
+        <div class="highlights">
+            <h3>주요 명소</h3>
+            <div class="highlights-grid">
+                <div class="highlight-item">
+                    <div class="highlight-icon">
+                        <i class="fas fa-spa"></i>
+                    </div>
+                    <div class="highlight-content">
+                        <h4>라벤더 밭</h4>
+                        <p>6-8월 발렁솔 고원의 라벤더 밭. 보라빛 융단처럼 펼쳐진 풍경은 평생 잊지 못할 순간입니다.</p>
+                    </div>
+                </div>
+                <div class="highlight-item">
+                    <div class="highlight-icon">
+                        <i class="fas fa-church"></i>
+                    </div>
+                    <div class="highlight-content">
+                        <h4>아비뇽 교황청</h4>
+                        <p>중세 교황청의 웅장한 모습. 유네스코 세계문화유산으로 지정된 역사적인 건축물입니다.</p>
+                    </div>
+                </div>
+                <div class="highlight-item">
+                    <div class="highlight-icon">
+                        <i class="fas fa-palette"></i>
+                    </div>
+                    <div class="highlight-content">
+                        <h4>아를</h4>
+                        <p>고흐의 도시. 해바라기가 만발하는 들판과 별이 빛나는 밤의 배경이 된 카페를 만날 수 있습니다.</p>
+                    </div>
+                </div>
+                <div class="highlight-item">
+                    <div class="highlight-icon">
+                        <i class="fas fa-mountain"></i>
+                    </div>
+                    <div class="highlight-content">
+                        <h4>뤼베롱</h4>
+                        <p>중세 마을들이 산 위에 자리한 아름다운 지역. 고르드, 루시용 등 그림 같은 마을들이 있습니다.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="map-button-container">
+            <a href="http://www.sunshinetour.co.kr/maps/index/europe/france/francemain.html" class="map-button" target="_blank">
+                <i class="fas fa-map-marked-alt"></i>
+                <span>프랑스 지도 바로가기</span>
+            </a>
+        </div>
+    </section>
+
+    <!-- Nice -->
+    <section class="city-section">
+        <div class="city-header">
+            <div class="city-badge">NICE</div>
+            <h2 class="city-title">니스</h2>
+            <p class="city-subtitle">푸른 지중해의 휴양 도시</p>
+        </div>
+        
+        <div class="city-images">
+            <img src="https://atntzsryivyk2c4y.public.blob.vercel-storage.com/1767081351386-0mbj1f.jpg" alt="니스 해변">
+            <img src="https://atntzsryivyk2c4y.public.blob.vercel-storage.com/1767081352508-3x5yh.jpg" alt="니스 구시가">
+        </div>
+        
+        <div class="city-description">
+            <p>니스는 코트다쥐르의 중심 도시로 푸른 지중해와 따뜻한 햇살이 반기는 휴양지입니다. 프롬나드 데 장글레를 따라 걸으며 바라보는 지중해의 풍경은 그 어떤 그림보다 아름답습니다. 구시가지의 좁은 골목길은 형형색색의 건물들로 가득하며, 신선한 해산물과 프로방스 요리를 맛볼 수 있는 레스토랑들이 즐비합니다.</p>
+        </div>
+        
+        <div class="highlights">
+            <h3>주요 명소</h3>
+            <div class="highlights-grid">
+                <div class="highlight-item">
+                    <div class="highlight-icon">
+                        <i class="fas fa-umbrella-beach"></i>
+                    </div>
+                    <div class="highlight-content">
+                        <h4>프롬나드 데 장글레</h4>
+                        <p>지중해를 따라 이어진 7km의 산책로. 해변과 야자수가 어우러진 아름다운 풍경이 펼쳐집니다.</p>
+                    </div>
+                </div>
+                <div class="highlight-item">
+                    <div class="highlight-icon">
+                        <i class="fas fa-city"></i>
+                    </div>
+                    <div class="highlight-content">
+                        <h4>구시가지</h4>
+                        <p>오렌지와 노란색 건물들이 가득한 미로 같은 골목길. 현지인들의 삶과 문화를 느낄 수 있습니다.</p>
+                    </div>
+                </div>
+                <div class="highlight-item">
+                    <div class="highlight-icon">
+                        <i class="fas fa-mountain"></i>
+                    </div>
+                    <div class="highlight-content">
+                        <h4>샤토 언덕</h4>
+                        <p>니스를 한눈에 내려다볼 수 있는 전망대. 푸른 바다와 붉은 지붕이 조화를 이루는 절경입니다.</p>
+                    </div>
+                </div>
+                <div class="highlight-item">
+                    <div class="highlight-icon">
+                        <i class="fas fa-palette"></i>
+                    </div>
+                    <div class="highlight-content">
+                        <h4>샤갈 미술관</h4>
+                        <p>샤갈의 대표작들을 소장한 미술관. 특히 성서 메시지 시리즈가 유명합니다.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="map-button-container">
+            <a href="http://www.sunshinetour.co.kr/maps/index/europe/france/francemain.html" class="map-button" target="_blank">
+                <i class="fas fa-map-marked-alt"></i>
+                <span>프랑스 지도 바로가기</span>
+            </a>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <h2>프랑스에서 특별한 여행을 시작하세요</h2>
+        <p>전문 상담사가 여러분의 완벽한 유럽 여행을 계획해드립니다</p>
+        <a href="/inquiry" class="cta-button">
+            <i class="fas fa-envelope"></i>
+            <span>문의하기</span>
+        </a>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-brand">
+                <h3>SUNSHINE TOUR</h3>
+                <p>프라이빗 허니문 전문 여행사</p>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-youtube"></i></a>
+                </div>
+            </div>
+            <div class="footer-links">
+                <h4>빠른 링크</h4>
+                <ul>
+                    <li><a href="/">홈</a></li>
+                    <li><a href="/destinations">목적지</a></li>
+                    <li><a href="/reviews">리뷰</a></li>
+                    <li><a href="/inquiry">문의하기</a></li>
+                </ul>
+            </div>
+            <div class="footer-links">
+                <h4>연락처</h4>
+                <div class="contact-info">
+                    <p><i class="fas fa-phone"></i> TEL 02-318-8021</p>
+                    <p><i class="fas fa-envelope"></i> info@sunshinetour.co.kr</p>
+                    <p><i class="fas fa-map-marker-alt"></i> 서울특별시 성북구<br>보문로30길 71, 2층 7호</p>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2024 Sunshine Tour. All rights reserved.</p>
+        </div>
+    </footer>
+</body>
+</html>
