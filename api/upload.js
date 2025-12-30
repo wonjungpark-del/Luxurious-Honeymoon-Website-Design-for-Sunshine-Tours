@@ -112,11 +112,20 @@ module.exports = async function handler(req, res) {
     }
 
     // Return success response
-    return res.status(200).json({
-      success: true,
-      urls: uploadedUrls,
-      count: uploadedUrls.length
-    });
+    // For single file upload (most common case), return url as string
+    // For multiple files, return urls as array
+    if (uploadedUrls.length === 1) {
+      return res.status(200).json({
+        success: true,
+        url: uploadedUrls[0]  // Single file: return as string
+      });
+    } else {
+      return res.status(200).json({
+        success: true,
+        urls: uploadedUrls,   // Multiple files: return as array
+        count: uploadedUrls.length
+      });
+    }
 
   } catch (error) {
     console.error('Upload error:', error);
