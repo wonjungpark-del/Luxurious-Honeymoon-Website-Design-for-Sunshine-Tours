@@ -720,33 +720,41 @@
                     }
                 } catch (uploadError) {
                     console.error('Image upload error:', uploadError);
-                    alert('이미지 업로드 중 오류가 발생했습니다. 이미지 없이 저장하시겠습니까?');
+                    if (!confirm('이미지 업로드 중 오류가 발생했습니다. 이미지 없이 저장하시겠습니까?')) {
+                        return;
+                    }
                 }
             }
             
             try {
-                // For now, store in localStorage (will be replaced with API call)
-                const reviews = JSON.parse(localStorage.getItem('reviews') || '[]');
-                
                 const reviewId = document.getElementById('reviewId').value;
+                let response;
+                
                 if (reviewId) {
                     // Update existing review
-                    const index = reviews.findIndex(r => r.id === reviewId);
-                    if (index !== -1) {
-                        reviews[index] = { ...reviews[index], ...reviewData, updated_at: new Date().toISOString() };
-                    }
+                    response = await fetch(`/api/reviews?id=${reviewId}`, {
+                        method: 'PATCH',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify(reviewData)
+                    });
                 } else {
                     // Add new review
-                    reviewData.id = Date.now().toString();
-                    reviewData.created_at = new Date().toISOString();
-                    reviews.push(reviewData);
+                    response = await fetch('/api/reviews', {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify(reviewData)
+                    });
                 }
                 
-                localStorage.setItem('reviews', JSON.stringify(reviews));
+                const result = await response.json();
                 
-                alert('✅ 후기가 저장되었습니다!');
-                hideReviewForm();
-                loadReviews();
+                if (result.success) {
+                    alert('✅ 후기가 저장되었습니다!');
+                    hideReviewForm();
+                    loadReviews();
+                } else {
+                    alert('❌ 후기 저장 실패: ' + (result.error || '알 수 없는 오류'));
+                }
             } catch (error) {
                 console.error('Error saving review:', error);
                 alert('❌ 후기 저장 중 오류가 발생했습니다: ' + error.message);
