@@ -3,81 +3,69 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>체코 여행 가이드 | 프라하의 매력 - 선샤인투어</title>
-    <meta name="description" content="체코 프라하 여행 정보.">
-    <meta name="keywords" content="체코여행, 프라하, 카를교, 프라하성, 허니문">
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <title>체코 여행 가이드 | 프라하 명소 - 선샤인투어</title>
+    <meta name="description" content="체코 프라하의 주요 관광 명소. 프라하성, 카를교, 구시가 광장 등 프라하의 아름다운 문화유산을 경험하세요.">
+    <meta name="keywords" content="체코, 프라하, 프라하성, 카를교, 구시가광장, 유럽여행, 선샤인투어">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css" rel="stylesheet">
     <link rel="stylesheet" href="/static/css/style.css">
     <link rel="stylesheet" href="/static/css/destination.css">
     <style>
-        :root { --primary-gold: #C9A96E; --dark-gold: #B8935E; --light-beige: #F5F1E8; --text-dark: #2C2C2C; --text-gray: #666; }
-        body { font-family: 'Noto Sans KR', sans-serif; background: var(--light-beige); color: var(--text-dark); line-height: 1.7; }
-        .navbar { background: rgba(255, 255, 255, 0.98); backdrop-filter: blur(10px); box-shadow: 0 2px 20px rgba(0,0,0,0.08); padding: 1.2rem 0; position: sticky; top: 0; z-index: 1000; }
-        .nav-container { max-width: 1200px; margin: 0 auto; padding: 0 2rem; display: flex; justify-content: space-between; align-items: center; }
-        .logo { font-size: 1.5rem; font-weight: 700; color: var(--primary-gold); text-decoration: none; letter-spacing: 1px; }
-        .nav-menu { display: flex; gap: 2.5rem; list-style: none; margin: 0; padding: 0; }
-        .nav-menu a { color: var(--text-dark); text-decoration: none; font-weight: 500; transition: color 0.3s; font-size: 0.95rem; }
-        .nav-menu a:hover { color: var(--primary-gold); }
-        .breadcrumb { max-width: 1200px; margin: 2rem auto; padding: 0 2rem; display: flex; align-items: center; gap: 0.5rem; font-size: 0.9rem; color: var(--text-gray); }
-        .breadcrumb a { color: var(--text-gray); text-decoration: none; transition: color 0.3s; }
-        .breadcrumb a:hover { color: var(--primary-gold); }
-        .region-intro { max-width: 1200px; margin: 3rem auto; padding: 0 2rem; text-align: center; }
-        .region-badge { display: inline-flex; align-items: center; gap: 0.5rem; background: white; padding: 0.5rem 1.5rem; border-radius: 50px; margin-bottom: 1rem; font-size: 0.9rem; color: var(--primary-gold); font-weight: 600; }
-        .region-intro h1 { font-size: 3rem; font-weight: 700; margin-bottom: 1rem; color: var(--text-dark); }
-        .region-intro p { font-size: 1.1rem; color: var(--text-gray); max-width: 800px; margin: 0 auto; line-height: 1.8; }
-        .city-section { max-width: 1200px; margin: 4rem auto; padding: 3rem; background: white; border-radius: 20px; box-shadow: 0 4px 20px rgba(0,0,0,0.06); }
-        .city-header { text-align: center; margin-bottom: 2.5rem; }
-        .city-badge { display: inline-block; background: linear-gradient(135deg, var(--primary-gold), var(--dark-gold)); color: white; padding: 0.4rem 1.2rem; border-radius: 50px; font-size: 0.85rem; font-weight: 600; margin-bottom: 1rem; letter-spacing: 1px; }
-        .city-title { font-size: 2.5rem; font-weight: 700; margin-bottom: 0.5rem; color: var(--text-dark); }
-        .city-subtitle { font-size: 1.1rem; color: var(--text-gray); }
-        .city-images { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.5rem; margin: 2.5rem 0; border-radius: 15px; overflow: hidden; }
-        .city-images img { width: 100%; height: 350px; object-fit: cover; transition: transform 0.5s; }
-        .city-images img:hover { transform: scale(1.05); }
-        .city-description { font-size: 1.05rem; line-height: 1.9; color: var(--text-gray); margin: 2rem 0; }
-        .highlights { margin-top: 2.5rem; }
-        .highlights h3 { font-size: 1.3rem; margin-bottom: 1.5rem; color: var(--text-dark); font-weight: 600; }
-        .highlights-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.5rem; }
-        .highlight-item { display: flex; gap: 1rem; padding: 1.2rem; background: var(--light-beige); border-radius: 12px; transition: all 0.3s; }
-        .highlight-item:hover { transform: translateY(-3px); box-shadow: 0 5px 15px rgba(201, 169, 110, 0.2); }
-        .highlight-icon { flex-shrink: 0; width: 40px; height: 40px; background: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: var(--primary-gold); }
-        .highlight-content h4 { margin: 0 0 0.5rem 0; font-size: 1.05rem; color: var(--text-dark); font-weight: 600; }
-        .highlight-content p { margin: 0; font-size: 0.95rem; color: var(--text-gray); }
-        .map-button-container { text-align: center; margin-top: 3rem; padding-top: 2rem; border-top: 1px solid #E8E8E8; }
-        .map-button { display: inline-flex; align-items: center; gap: 0.8rem; padding: 1rem 2.5rem; background: linear-gradient(135deg, var(--primary-gold), var(--dark-gold)); color: white; text-decoration: none; border-radius: 50px; font-weight: 600; font-size: 1.05rem; transition: all 0.3s; box-shadow: 0 4px 15px rgba(201, 169, 110, 0.3); }
-        .map-button:hover { transform: translateY(-3px); box-shadow: 0 6px 20px rgba(201, 169, 110, 0.4); }
-        .cta-section { max-width: 1200px; margin: 5rem auto; padding: 4rem 2rem; text-align: center; background: white; border-radius: 20px; box-shadow: 0 4px 20px rgba(0,0,0,0.06); }
-        .cta-section h2 { font-size: 2.2rem; margin-bottom: 1rem; color: var(--text-dark); }
-        .cta-section p { font-size: 1.1rem; color: var(--text-gray); margin-bottom: 2rem; }
-        .cta-button { display: inline-flex; align-items: center; gap: 0.8rem; padding: 1.2rem 3rem; background: linear-gradient(135deg, var(--primary-gold), var(--dark-gold)); color: white; text-decoration: none; border-radius: 50px; font-weight: 600; font-size: 1.1rem; transition: all 0.3s; box-shadow: 0 4px 15px rgba(201, 169, 110, 0.3); }
-        .cta-button:hover { transform: translateY(-3px); box-shadow: 0 6px 25px rgba(201, 169, 110, 0.4); }
-        .footer { background: #2C2C2C; color: white; padding: 3rem 0 1.5rem; margin-top: 5rem; }
-        .footer-content { max-width: 1200px; margin: 0 auto; padding: 0 2rem; display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 3rem; }
-        .footer-brand h3 { font-size: 1.5rem; margin-bottom: 0.5rem; color: var(--primary-gold); }
-        .footer-brand p { color: #999; margin-bottom: 1.5rem; line-height: 1.8; }
-        .contact-info { color: #999; line-height: 1.9; }
-        .contact-info i { color: var(--primary-gold); margin-right: 0.5rem; width: 20px; }
-        .social-links { display: flex; gap: 1rem; margin-top: 1.5rem; }
-        .social-links a { width: 40px; height: 40px; background: #C9A96E; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; transition: all 0.3s; }
-        .social-links a:hover { background: #B8935E; transform: translateY(-3px); }
-        .footer-bottom { text-align: center; padding-top: 2rem; margin-top: 2rem; border-top: 1px solid #444; color: #999; }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Noto Serif KR', serif; background: #fafafa; }
+        nav { background: white; padding: 1.2rem 2rem; position: sticky; top: 0; z-index: 1000; box-shadow: 0 2px 8px rgba(0,0,0,0.05); }
+        .nav-container { max-width: 1400px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; }
+        .logo { font-size: 1.5rem; font-weight: 700; color: #C9A96E; text-decoration: none; }
+        nav ul { display: flex; list-style: none; gap: 2rem; }
+        nav a { color: #333; text-decoration: none; font-weight: 500; }
+        nav a:hover { color: #C9A96E; }
+        .breadcrumb { background: #f8f5f0; padding: 1rem 2rem; }
+        .breadcrumb-list { max-width: 1400px; margin: 0 auto; display: flex; align-items: center; gap: 0.5rem; font-size: 0.9rem; }
+        .breadcrumb-list a { color: #666; text-decoration: none; }
+        .breadcrumb-list a:hover { color: #C9A96E; }
+        .breadcrumb-list i { font-size: 0.7rem; color: #999; margin: 0 0.5rem; }
+        .breadcrumb-list .current { color: #C9A96E; font-weight: 600; }
+        .container { max-width: 1400px; margin: 0 auto; padding: 0 2rem; }
+        .city-section { background: white; margin: 3rem auto; max-width: 1200px; box-shadow: 0 2px 12px rgba(0,0,0,0.08); }
+        .city-header { text-align: center; padding: 4rem 2rem 2rem; background: linear-gradient(to bottom, #f8f5f0 0%, white 100%); }
+        .city-badge { display: inline-block; padding: 0.5rem 1.5rem; background: #C9A96E; color: white; font-size: 0.9rem; letter-spacing: 2px; margin-bottom: 1rem; font-weight: 600; }
+        .city-title { font-size: 2.8rem; margin-bottom: 0.5rem; color: #333; }
+        .city-subtitle { font-size: 1.1rem; color: #999; }
+        .city-images { display: grid; grid-template-columns: repeat(2, 1fr); gap: 0; }
+        .city-images img { width: 100%; height: 400px; object-fit: cover; }
+        .city-description { padding: 3rem 4rem; font-size: 1.05rem; line-height: 1.9; color: #666; }
+        .highlights { padding: 0 4rem 3rem; }
+        .highlights h3 { font-size: 1.5rem; margin-bottom: 2rem; color: #333; }
+        .highlights-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 2rem; }
+        .highlight-item { display: flex; gap: 1.5rem; padding: 1.5rem; background: #f9f7f4; border-radius: 12px; transition: all 0.3s; }
+        .highlight-item:hover { transform: translateY(-4px); box-shadow: 0 8px 20px rgba(0,0,0,0.1); }
+        .highlight-icon { flex-shrink: 0; width: 50px; height: 50px; background: linear-gradient(135deg, #C9A96E, #B8935E); color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.3rem; }
+        .highlight-content h4 { font-size: 1.2rem; margin-bottom: 0.5rem; color: #333; }
+        .highlight-content p { font-size: 0.95rem; line-height: 1.6; color: #666; }
+        .map-button-container { text-align: center; padding: 2rem 0 3rem; border-top: 1px solid #eee; margin: 0 4rem; }
+        .map-button { display: inline-flex; align-items: center; gap: 0.8rem; padding: 1rem 2.5rem; background: linear-gradient(135deg, #C9A96E, #B8935E); color: white; text-decoration: none; border-radius: 50px; font-weight: 600; font-size: 1rem; transition: all 0.3s; box-shadow: 0 4px 15px rgba(201,169,110,0.3); }
+        .map-button:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(201,169,110,0.4); }
+        .cta-section { text-align: center; padding: 4rem 2rem; background: linear-gradient(135deg, #f8f5f0 0%, white 100%); max-width: 1200px; margin: 4rem auto; border-radius: 20px; }
+        .cta-section h2 { font-size: 2.5rem; margin-bottom: 1rem; color: #333; }
+        .cta-section p { font-size: 1.1rem; color: #666; margin-bottom: 2rem; }
+        .cta-button { display: inline-block; padding: 1.2rem 3rem; background: linear-gradient(135deg, #C9A96E, #B8935E); color: white; text-decoration: none; border-radius: 50px; font-weight: 600; font-size: 1.1rem; transition: all 0.3s; }
+        .cta-button:hover { transform: translateY(-3px); box-shadow: 0 8px 25px rgba(201,169,110,0.4); }
+        footer { background: #2c2c2c; color: white; padding: 3rem 2rem; text-align: center; margin-top: 4rem; }
         @media (max-width: 768px) {
-            .nav-menu { gap: 1.5rem; }
-            .region-intro h1 { font-size: 2rem; }
-            .city-section { padding: 2rem 1.5rem; }
             .city-title { font-size: 2rem; }
             .city-images { grid-template-columns: 1fr; }
             .city-images img { height: 250px; }
             .highlights-grid { grid-template-columns: 1fr; }
-            .footer-content { grid-template-columns: 1fr; gap: 2rem; }
         }
     </style>
 </head>
 <body>
-    <nav class="navbar">
+    <nav>
         <div class="nav-container">
             <a href="/" class="logo">SUNSHINE TOUR</a>
-            <ul class="nav-menu">
+            <ul>
                 <li><a href="/">홈</a></li>
                 <li><a href="/destinations">목적지</a></li>
                 <li><a href="/reviews">리뷰</a></li>
@@ -88,64 +76,58 @@
     </nav>
 
     <div class="breadcrumb">
-        <a href="/">홈</a>
-        <i class="fas fa-chevron-right"></i>
-        <a href="/destinations">유럽</a>
-        <i class="fas fa-chevron-right"></i>
-        <span>체코</span>
+        <div class="breadcrumb-list">
+            <a href="/">홈</a>
+            <i class="fas fa-chevron-right"></i>
+            <a href="/destinations/europemain.html">유럽</a>
+            <i class="fas fa-chevron-right"></i>
+            <span class="current">체코</span>
+        </div>
     </div>
 
-    <section class="region-intro">
-        <div class="region-badge">
-            <span>🇨🇿</span>
-            <span>CZECH REPUBLIC</span>
-        </div>
-        <h1>체코 여행 가이드</h1>
-        <p>천년의 역사가 살아 숨쉬는 황금의 도시 프라하. 취리히의 세련됨부터 루체른의 낭만, 인터라켄의 모험, 제네바의 국제적인 분위기까지. 스위스는 자연의 아름다움과 완벽한 조화를 이루는 나라입니다.</p>
-    </section>
-
+    <!-- Prague -->
     <section class="city-section">
         <div class="city-header">
-            <div class="city-badge">ZURICH & LUCERNE</div>
-            <h2 class="city-title">취리히 & 루체른</h2>
-            <p class="city-subtitle">호수와 알프스가 만나는 곳</p>
+            <div class="city-badge">PRAGUE</div>
+            <h2 class="city-title">프라하</h2>
+            <p class="city-subtitle">백탑의 도시, 유럽의 보석</p>
         </div>
         <div class="city-images">
-            <img src="https://atntzsryivyk2c4y.public.blob.vercel-storage.com/1767082501198-0w3zbs.jpg" alt="취리히 호수">
-            <img src="https://atntzsryivyk2c4y.public.blob.vercel-storage.com/1767082501810-51zrj.jpg" alt="취리히 구시가">
+            <img src="https://atntzsryivyk2c4y.public.blob.vercel-storage.com/1767082501198-0w3zbs.jpg" alt="프라하성">
+            <img src="https://atntzsryivyk2c4y.public.blob.vercel-storage.com/1767082501810-51zrj.jpg" alt="카를교">
         </div>
         <div class="city-description">
-            <p>취리히는 스위스 금융의 중심지이자 세련된 문화 도시입니다. 맑은 취리히 호수와 리마트 강이 도시를 가로지르며, 구시가지의 좁은 골목길은 중세의 분위기를 간직하고 있습니다.</p>
+            <p>프라하는 천년의 역사를 간직한 황금의 도시입니다. 블타바 강을 가로지르는 카를교, 고딕과 바로크 양식이 어우러진 건축물들, 구시가 광장의 천문시계까지. 프라하의 모든 순간은 중세로의 시간여행입니다. 붉은 지붕으로 가득한 도시 풍경은 유럽에서 가장 아름다운 경관 중 하나입니다.</p>
         </div>
         <div class="highlights">
             <h3>주요 명소</h3>
             <div class="highlights-grid">
                 <div class="highlight-item">
-                    <div class="highlight-icon"><i class="fas fa-water"></i></div>
+                    <div class="highlight-icon"><i class="fas fa-chess-rook"></i></div>
                     <div class="highlight-content">
-                        <h4>취리히 호수</h4>
-                        <p>알프스를 배경으로 한 아름다운 호수. 유람선을 타고 호수를 돌며 경치를 감상할 수 있습니다.</p>
+                        <h4>프라하성</h4>
+                        <p>천년의 역사를 간직한 세계 최대의 고성. 성 비투스 대성당의 스테인드글라스와 황금소로의 아기자기한 집들이 압권입니다.</p>
                     </div>
                 </div>
                 <div class="highlight-item">
-                    <div class="highlight-icon"><i class="fas fa-church"></i></div>
+                    <div class="highlight-icon"><i class="fas fa-bridge"></i></div>
                     <div class="highlight-content">
-                        <h4>그로스뮌스터</h4>
-                        <p>취리히의 상징적인 쌍둥이 탑 교회. 종교개혁의 발상지로 역사적 의미가 깊습니다.</p>
+                        <h4>카를교</h4>
+                        <p>블타바 강을 가로지르는 14세기 고딕 다리. 30개의 성인상이 늘어선 낭만적인 보행자 다리로 일출과 일몰이 특히 아름답습니다.</p>
                     </div>
                 </div>
                 <div class="highlight-item">
-                    <div class="highlight-icon"><i class="fas fa-bridge-water"></i></div>
+                    <div class="highlight-icon"><i class="fas fa-clock"></i></div>
                     <div class="highlight-content">
-                        <h4>카펠교</h4>
-                        <p>루체른의 상징. 14세기에 지어진 유럽에서 가장 오래된 목조 다리입니다.</p>
+                        <h4>구시가 광장 & 천문시계</h4>
+                        <p>프라하의 심장부. 매 정시마다 움직이는 600년 된 천문시계와 틴 성당의 쌍둥이 첨탑이 있는 중세 분위기 가득한 광장입니다.</p>
                     </div>
                 </div>
                 <div class="highlight-item">
-                    <div class="highlight-icon"><i class="fas fa-mountain"></i></div>
+                    <div class="highlight-icon"><i class="fas fa-star-of-david"></i></div>
                     <div class="highlight-content">
-                        <h4>필라투스산</h4>
-                        <p>세계에서 가장 가파른 등산철도를 타고 오르는 산. 정상에서 바라보는 알프스 전망이 압권입니다.</p>
+                        <h4>유대인 지구</h4>
+                        <p>중세 유대인들이 살던 요제포프 지구. 좁은 골목과 오래된 회당, 유대인 묘지가 역사를 말해줍니다.</p>
                     </div>
                 </div>
             </div>
@@ -153,98 +135,20 @@
         <div class="map-button-container">
             <a href="http://www.sunshinetour.co.kr/maps/index/europe/czech/czechmain.html" class="map-button" target="_blank">
                 <i class="fas fa-map-marked-alt"></i>
-                <span>스위스 지도 바로가기</span>
+                <span>체코 지도 바로가기</span>
             </a>
         </div>
     </section>
 
-    <section class="city-section">
-        <div class="city-header">
-            <div class="city-badge">INTERLAKEN & GENEVA</div>
-            <h2 class="city-title">인터라켄 & 제네바</h2>
-            <p class="city-subtitle">모험과 평화의 도시</p>
-        </div>
-        <div class="city-images">
-            <img src="https://atntzsryivyk2c4y.public.blob.vercel-storage.com/1767082498773-v69efk.jpg" alt="인터라켄 산">
-            <img src="https://atntzsryivyk2c4y.public.blob.vercel-storage.com/1767082500275-e9tash.jpg" alt="제네바 분수">
-        </div>
-        <div class="city-description">
-            <p>인터라켄은 융프라우, 아이거, 묀히 등 알프스 3대 명봉으로 가는 관문입니다. 제네바는 유엔 본부가 있는 국제 도시로, 레만 호수의 아름다움과 함께 세계적인 시계와 초콜릿을 만날 수 있습니다.</p>
-        </div>
-        <div class="highlights">
-            <h3>주요 명소</h3>
-            <div class="highlights-grid">
-                <div class="highlight-item">
-                    <div class="highlight-icon"><i class="fas fa-mountain"></i></div>
-                    <div class="highlight-content">
-                        <h4>융프라우요흐</h4>
-                        <p>'유럽의 지붕'으로 불리는 해발 3,454m의 전망대. 만년설과 알레치 빙하의 장관을 감상할 수 있습니다.</p>
-                    </div>
-                </div>
-                <div class="highlight-item">
-                    <div class="highlight-icon"><i class="fas fa-hiking"></i></div>
-                    <div class="highlight-content">
-                        <h4>하더 쿨름</h4>
-                        <p>인터라켄을 한눈에 내려다볼 수 있는 전망대. 파라글라이딩의 명소로도 유명합니다.</p>
-                    </div>
-                </div>
-                <div class="highlight-item">
-                    <div class="highlight-icon"><i class="fas fa-water"></i></div>
-                    <div class="highlight-content">
-                        <h4>제트 도</h4>
-                        <p>제네바의 상징인 140m 높이의 분수. 레만 호수에서 솟아오르는 물줄기가 장관입니다.</p>
-                    </div>
-                </div>
-                <div class="highlight-item">
-                    <div class="highlight-icon"><i class="fas fa-landmark"></i></div>
-                    <div class="highlight-content">
-                        <h4>유엔 본부</h4>
-                        <p>세계 평화의 중심지. 가이드 투어를 통해 국제기구의 역사와 활동을 알아볼 수 있습니다.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="map-button-container">
-            <a href="http://www.sunshinetour.co.kr/maps/index/europe/czech/czechmain.html" class="map-button" target="_blank">
-                <i class="fas fa-map-marked-alt"></i>
-                <span>스위스 지도 바로가기</span>
-            </a>
-        </div>
-    </section>
-
+    <!-- CTA Section -->
     <section class="cta-section">
-        <h2>체코에서 특별한 여행을 시작하세요</h2>
-        <p>전문 상담사가 여러분의 완벽한 유럽 여행을 계획해드립니다</p>
-        <a href="/inquiry" class="cta-button">
-            <i class="fas fa-envelope"></i>
-            <span>문의하기</span>
-        </a>
+        <h2>프라하에서 잊지 못할 순간을 만들어보세요</h2>
+        <p>중세 유럽의 아름다움이 그대로 간직된 황금의 도시로 떠나는 여행</p>
+        <a href="/inquiry" class="cta-button">여행 문의하기</a>
     </section>
 
-    <footer class="footer">
-        <div class="footer-content">
-            <div class="footer-brand">
-                <h3>SUNSHINE TOUR</h3>
-                <p>프라이빗 허니문 전문 여행사</p>
-                <div class="social-links">
-                    <a href="#"><i class="fab fa-facebook-f"></i></a>
-                    <a href="#"><i class="fab fa-instagram"></i></a>
-                    <a href="#"><i class="fab fa-youtube"></i></a>
-                </div>
-            </div>
-            <div class="footer-links"></div>
-            <div class="footer-links">
-                <h4>연락처</h4>
-                <div class="contact-info">
-                    <p><i class="fas fa-phone"></i> TEL 02-318-8021</p>
-                    <p><i class="fas fa-envelope"></i> info@sunshinetour.co.kr</p>
-                    <p><i class="fas fa-map-marker-alt"></i> 서울특별시 성북구<br>보문로30길 71, 2층 7호</p>
-                </div>
-            </div>
-        </div>
-        <div class="footer-bottom">
-            <p>&copy; 2024 Sunshine Tour. All rights reserved.</p>
-        </div>
+    <footer>
+        <p>&copy; 2024 SUNSHINE TOUR. All rights reserved.</p>
     </footer>
 </body>
 </html>
