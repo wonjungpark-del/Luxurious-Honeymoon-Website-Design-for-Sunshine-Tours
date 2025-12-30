@@ -1301,7 +1301,7 @@
             const gallery_images = [];
             for (let i = 1; i <= 6; i++) {
                 const url = document.getElementById(`resortGalleryImage${i}`).value.trim();
-                if (url) {
+                if (url && url !== '📤 업로드 중...') {
                     gallery_images.push(url);
                 }
             }
@@ -1313,6 +1313,10 @@
                 .map(line => line.trim())
                 .filter(line => line.length > 0);
             
+            // 메인 이미지 URL (업로드 중이면 제외)
+            const mainImageUrl = document.getElementById('resortMainImageUrl').value.trim();
+            const validMainImageUrl = (mainImageUrl && mainImageUrl !== '📤 업로드 중...') ? mainImageUrl : '';
+            
             const data = {
                 id,
                 region_id: document.getElementById('resortRegionId').value,
@@ -1320,10 +1324,10 @@
                 name_en: document.getElementById('resortNameEn').value,
                 category: document.getElementById('resortCategory').value,
                 description: document.getElementById('resortDescription').value,
-                main_image_url: document.getElementById('resortMainImageUrl').value,
+                main_image_url: validMainImageUrl,
                 gallery_images: gallery_images,
                 features: features,
-                display_order: parseInt(document.getElementById('resortDisplayOrder').value),
+                display_order: parseInt(document.getElementById('resortDisplayOrder').value) || 0,
                 is_active: document.getElementById('resortIsActive').value === 'true'
             };
             
@@ -1349,16 +1353,18 @@
                 }
                 
                 const result = await response.json();
+                console.log('✅ Save result:', result);
+                
                 if (result.success) {
-                    alert('저장되었습니다.');
+                    alert('✅ 저장되었습니다.');
                     closeResortModal();
                     await loadResorts();
                 } else {
-                    alert('저장에 실패했습니다: ' + result.error);
+                    alert('❌ 저장에 실패했습니다: ' + result.error);
                 }
             } catch (error) {
-                console.error('Save resort error:', error);
-                alert('저장 중 오류가 발생했습니다.');
+                console.error('❌ Save resort error:', error);
+                alert('❌ 저장 중 오류가 발생했습니다: ' + error.message);
             }
         });
 
