@@ -1,0 +1,1057 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>관리자 페이지 - 선샤인투어</title>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;600;700&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Noto Sans KR', sans-serif; background: #f5f7fa; color: #2c3e50; }
+        
+        /* Login Screen */
+        .login-container { min-height: 100vh; display: flex; align-items: center; justify-content: center; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); }
+        .login-box { background: white; padding: 3rem; border-radius: 16px; box-shadow: 0 20px 60px rgba(0,0,0,0.3); width: 100%; max-width: 400px; }
+        .login-title { text-align: center; margin-bottom: 2rem; color: #2c3e50; font-size: 1.8rem; }
+        .form-group { margin-bottom: 1.5rem; }
+        .form-label { display: block; margin-bottom: 0.5rem; font-weight: 600; color: #34495e; }
+        .form-input { width: 100%; padding: 0.75rem 1rem; border: 2px solid #e0e6ed; border-radius: 8px; font-size: 1rem; }
+        .form-input:focus { outline: none; border-color: #667eea; box-shadow: 0 0 0 3px rgba(102,126,234,0.1); }
+        .btn { padding: 0.75rem 1.5rem; border: none; border-radius: 8px; font-size: 1rem; font-weight: 600; cursor: pointer; transition: all 0.3s; }
+        .btn-primary { background: #667eea; color: white; width: 100%; }
+        .btn-primary:hover { background: #5568d3; transform: translateY(-2px); box-shadow: 0 4px 12px rgba(102,126,234,0.4); }
+        .error-message { background: #e74c3c; color: white; padding: 0.75rem; border-radius: 8px; margin-bottom: 1rem; text-align: center; }
+        
+        /* Admin Panel */
+        .admin-container { display: none; min-height: 100vh; }
+        .admin-header { background: white; padding: 1.5rem 2rem; box-shadow: 0 2px 8px rgba(0,0,0,0.1); display: flex; justify-content: space-between; align-items: center; }
+        .admin-title { font-size: 1.5rem; font-weight: 700; color: #2c3e50; }
+        .btn-logout { background: #e74c3c; color: white; padding: 0.5rem 1.5rem; border: none; border-radius: 6px; cursor: pointer; font-weight: 600; }
+        .btn-logout:hover { background: #c0392b; }
+        
+        .admin-content { padding: 2rem; max-width: 1400px; margin: 0 auto; }
+        
+        /* Navigation Steps */
+        .breadcrumb { background: white; padding: 1rem 2rem; margin-bottom: 2rem; border-radius: 12px; box-shadow: 0 2px 8px rgba(0,0,0,0.05); }
+        .breadcrumb-item { display: inline-block; color: #7f8c8d; font-size: 0.9rem; }
+        .breadcrumb-item.active { color: #667eea; font-weight: 600; }
+        .breadcrumb-separator { margin: 0 0.5rem; color: #bdc3c7; }
+        .btn-back { background: #95a5a6; color: white; padding: 0.5rem 1rem; border: none; border-radius: 6px; cursor: pointer; font-size: 0.9rem; margin-bottom: 1rem; }
+        .btn-back:hover { background: #7f8c8d; }
+        
+        /* Destination Grid */
+        .destination-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1.5rem; }
+        .destination-card { background: white; padding: 2rem; border-radius: 12px; box-shadow: 0 2px 12px rgba(0,0,0,0.08); text-align: center; cursor: pointer; transition: all 0.3s; border: 2px solid transparent; }
+        .destination-card:hover { transform: translateY(-4px); box-shadow: 0 8px 24px rgba(0,0,0,0.15); border-color: #667eea; }
+        .destination-icon { font-size: 3rem; margin-bottom: 1rem; }
+        .destination-name { font-size: 1.2rem; font-weight: 600; color: #2c3e50; }
+        
+        /* Region Grid */
+        .region-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 1rem; }
+        .region-card { background: white; padding: 1.5rem; border-radius: 10px; box-shadow: 0 2px 8px rgba(0,0,0,0.08); text-align: center; cursor: pointer; transition: all 0.3s; border: 2px solid transparent; }
+        .region-card:hover { transform: translateY(-3px); box-shadow: 0 6px 16px rgba(0,0,0,0.12); border-color: #3498db; }
+        .region-name { font-size: 1rem; font-weight: 600; color: #2c3e50; }
+        
+        /* Resort Management */
+        .resort-section { background: white; padding: 2rem; border-radius: 12px; box-shadow: 0 2px 12px rgba(0,0,0,0.08); margin-bottom: 2rem; }
+        .section-title { font-size: 1.3rem; font-weight: 700; color: #2c3e50; margin-bottom: 1.5rem; padding-bottom: 0.5rem; border-bottom: 2px solid #ecf0f1; }
+        .btn-add { background: #27ae60; color: white; padding: 0.75rem 1.5rem; border: none; border-radius: 8px; cursor: pointer; font-weight: 600; margin-bottom: 1.5rem; }
+        .btn-add:hover { background: #229954; }
+        
+        /* Resort Form */
+        .resort-form { display: none; background: #ecf0f1; padding: 1.5rem; border-radius: 8px; margin-bottom: 2rem; }
+        .resort-form.active { display: block; }
+        .form-row { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1rem; margin-bottom: 1rem; }
+        .form-control { width: 100%; padding: 0.75rem; border: 2px solid #bdc3c7; border-radius: 6px; font-size: 0.95rem; }
+        .form-control:focus { outline: none; border-color: #3498db; }
+        .btn-submit { background: #3498db; color: white; padding: 0.75rem 2rem; border: none; border-radius: 6px; cursor: pointer; font-weight: 600; margin-right: 0.5rem; }
+        .btn-submit:hover { background: #2980b9; }
+        .btn-cancel { background: #95a5a6; color: white; padding: 0.75rem 2rem; border: none; border-radius: 6px; cursor: pointer; font-weight: 600; }
+        .btn-cancel:hover { background: #7f8c8d; }
+        
+        /* Resort List */
+        .resort-list { display: grid; gap: 1rem; }
+        .resort-item { background: #f8f9fa; padding: 1.5rem; border-radius: 8px; border-left: 4px solid #3498db; display: flex; justify-content: space-between; align-items: center; }
+        .resort-info h4 { font-size: 1.1rem; color: #2c3e50; margin-bottom: 0.5rem; }
+        .resort-info p { font-size: 0.9rem; color: #7f8c8d; }
+        .resort-actions { display: flex; gap: 0.5rem; }
+        .btn-edit { background: #f39c12; color: white; padding: 0.5rem 1rem; border: none; border-radius: 6px; cursor: pointer; font-size: 0.9rem; }
+        .btn-edit:hover { background: #e67e22; }
+        .btn-delete { background: #e74c3c; color: white; padding: 0.5rem 1rem; border: none; border-radius: 6px; cursor: pointer; font-size: 0.9rem; }
+        .btn-delete:hover { background: #c0392b; }
+        .btn-toggle { background: #95a5a6; color: white; padding: 0.5rem 1rem; border: none; border-radius: 6px; cursor: pointer; font-size: 0.9rem; }
+        .btn-toggle:hover { background: #7f8c8d; }
+        .btn-toggle.active { background: #27ae60; }
+        
+        .hidden { display: none; }
+        
+        /* Notification Settings */
+        .notification-badge { position: absolute; top: -5px; right: -5px; background: #e74c3c; color: white; border-radius: 50%; width: 20px; height: 20px; font-size: 0.7rem; display: flex; align-items: center; justify-content: center; font-weight: 700; }
+        .notification-settings { position: relative; }
+        .btn-notification { background: #3498db; color: white; padding: 0.5rem 1.5rem; border: none; border-radius: 6px; cursor: pointer; font-weight: 600; margin-right: 1rem; position: relative; }
+        .btn-notification:hover { background: #2980b9; }
+        .notification-panel { display: none; position: absolute; top: 100%; right: 0; background: white; border-radius: 8px; box-shadow: 0 4px 20px rgba(0,0,0,0.15); padding: 1.5rem; width: 350px; margin-top: 0.5rem; z-index: 1000; }
+        .notification-panel.active { display: block; }
+        .notification-item { padding: 0.75rem; background: #f8f9fa; border-radius: 6px; margin-bottom: 0.75rem; border-left: 3px solid #3498db; }
+        .notification-item.unread { background: #e3f2fd; border-left-color: #e74c3c; }
+        .notification-title { font-weight: 600; color: #2c3e50; margin-bottom: 0.25rem; }
+        .notification-text { font-size: 0.9rem; color: #7f8c8d; }
+        .notification-time { font-size: 0.8rem; color: #95a5a6; margin-top: 0.25rem; }
+        .settings-form { margin-top: 1rem; padding-top: 1rem; border-top: 1px solid #ecf0f1; }
+        .settings-form label { display: flex; align-items: center; margin-bottom: 0.75rem; cursor: pointer; }
+        .settings-form input[type="checkbox"] { margin-right: 0.5rem; width: 18px; height: 18px; cursor: pointer; }
+        .settings-form input[type="email"] { width: 100%; padding: 0.5rem; border: 2px solid #e0e6ed; border-radius: 6px; margin-top: 0.5rem; }
+        .btn-save-settings { background: #27ae60; color: white; padding: 0.5rem 1rem; border: none; border-radius: 6px; cursor: pointer; font-weight: 600; width: 100%; margin-top: 0.75rem; }
+        .btn-save-settings:hover { background: #229954; }
+        
+        /* Tab Navigation */
+        .tab-navigation { background: white; padding: 0; margin-bottom: 2rem; border-radius: 12px; box-shadow: 0 2px 8px rgba(0,0,0,0.05); display: flex; overflow: hidden; }
+        .tab-button { flex: 1; padding: 1.25rem 2rem; border: none; background: white; color: #7f8c8d; font-size: 1rem; font-weight: 600; cursor: pointer; transition: all 0.3s; border-bottom: 3px solid transparent; }
+        .tab-button:hover { background: #f8f9fa; color: #2c3e50; }
+        .tab-button.active { color: #667eea; border-bottom-color: #667eea; background: #f8f9fa; }
+        .tab-button i { margin-right: 0.5rem; }
+        
+        .tab-content { display: none; }
+        .tab-content.active { display: block; }
+    </style>
+</head>
+<body>
+    <!-- Login Screen -->
+    <div class="login-container" id="loginScreen">
+        <div class="login-box">
+            <h2 class="login-title">🌅 선샤인투어 관리자</h2>
+            <div id="loginError" class="error-message hidden">비밀번호가 올바르지 않습니다.</div>
+            <form id="loginForm">
+                <div class="form-group">
+                    <label class="form-label">비밀번호</label>
+                    <input type="password" id="passwordInput" class="form-input" placeholder="비밀번호를 입력하세요" required>
+                </div>
+                <button type="submit" class="btn btn-primary">로그인</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Admin Panel -->
+    <div class="admin-container" id="adminPanel">
+        <!-- Header -->
+        <div class="admin-header">
+            <h1 class="admin-title">선샤인투어 관리자</h1>
+            <div style="display: flex; align-items: center;">
+                <div class="notification-settings">
+                    <button class="btn-notification" onclick="toggleNotificationPanel()">
+                        <i class="fas fa-bell"></i> 알림
+                        <span class="notification-badge hidden" id="notificationBadge">0</span>
+                    </button>
+                    
+                    <!-- Notification Panel -->
+                    <div class="notification-panel" id="notificationPanel">
+                        <h3 style="margin-bottom: 1rem; color: #2c3e50;">알림 센터</h3>
+                        
+                        <!-- Notification List -->
+                        <div id="notificationList" style="max-height: 300px; overflow-y: auto; margin-bottom: 1rem;">
+                            <!-- Notifications will be inserted here -->
+                        </div>
+                        
+                        <!-- Settings -->
+                        <div class="settings-form">
+                            <h4 style="margin-bottom: 0.75rem; color: #2c3e50;">알림 설정</h4>
+                            <label>
+                                <input type="checkbox" id="enableBrowserNotification" onchange="saveSoundSettings()">
+                                브라우저 알림 활성화
+                            </label>
+                            <label>
+                                <input type="checkbox" id="enableEmailNotification" onchange="toggleEmailInput()">
+                                이메일 알림 활성화
+                            </label>
+                            <div id="emailInputContainer" class="hidden">
+                                <input type="email" id="notificationEmail" placeholder="알림 받을 이메일">
+                            </div>
+                            <button class="btn-save-settings" onclick="saveNotificationSettings()">설정 저장</button>
+                        </div>
+                    </div>
+                </div>
+                <button class="btn-logout" onclick="logout()">로그아웃</button>
+            </div>
+        </div>
+
+        <!-- Content -->
+        <div class="admin-content">
+            <!-- Tab Navigation -->
+            <div class="tab-navigation">
+                <button class="tab-button active" onclick="switchTab('resort')">
+                    <i class="fas fa-hotel"></i> 리조트 관리
+                </button>
+                <button class="tab-button" onclick="switchTab('review')">
+                    <i class="fas fa-star"></i> 후기 관리
+                </button>
+                <button class="tab-button" onclick="switchTab('inquiry')">
+                    <i class="fas fa-envelope"></i> 문의 관리
+                </button>
+            </div>
+
+            <!-- Resort Management Tab -->
+            <div id="resortTab" class="tab-content active">
+            <!-- Breadcrumb -->
+            <div class="breadcrumb">
+                <span class="breadcrumb-item" id="breadcrumb"></span>
+            </div>
+
+            <!-- Back Button -->
+            <button class="btn-back hidden" id="backBtn" onclick="goBack()">
+                <i class="fas fa-arrow-left"></i> 뒤로가기
+            </button>
+
+            <!-- Step 1: Destination Selection -->
+            <div id="destinationStep">
+                <div class="resort-section">
+                    <h2 class="section-title">📍 목적지 선택</h2>
+                    <div class="destination-grid" id="destinationGrid"></div>
+                </div>
+            </div>
+
+            <!-- Step 2: Region Selection -->
+            <div id="regionStep" class="hidden">
+                <div class="resort-section">
+                    <h2 class="section-title">🗺️ <span id="currentDestinationName"></span> - 지역 선택</h2>
+                    <div class="region-grid" id="regionGrid"></div>
+                </div>
+            </div>
+
+            <!-- Step 3: Resort Management -->
+            <div id="resortStep" class="hidden">
+                <div class="resort-section">
+                    <h2 class="section-title">🏨 <span id="currentRegionName"></span> - 리조트 관리</h2>
+                    
+                    <button class="btn-add" onclick="showResortForm()">
+                        <i class="fas fa-plus"></i> 새 리조트 추가
+                    </button>
+
+                    <!-- Resort Form -->
+                    <div class="resort-form" id="resortForm">
+                        <h3 style="margin-bottom: 1rem; color: #2c3e50;">리조트 정보 입력</h3>
+                        <form id="resortDataForm">
+                            <div class="form-row">
+                                <input type="text" class="form-control" id="resortName" placeholder="리조트 이름" required>
+                                <input type="text" class="form-control" id="resortType" placeholder="리조트 타입 (예: 5성급, 럭셔리)">
+                            </div>
+                            <div class="form-row">
+                                <input type="url" class="form-control" id="resortImage" placeholder="이미지 URL">
+                                <input type="text" class="form-control" id="resortPrice" placeholder="가격 (예: $500/박)">
+                            </div>
+                            <div class="form-row">
+                                <textarea class="form-control" id="resortDescription" placeholder="설명" rows="3" style="grid-column: 1 / -1;"></textarea>
+                            </div>
+                            <div class="form-row">
+                                <input type="text" class="form-control" id="resortFeatures" placeholder="주요 특징 (쉼표로 구분)">
+                            </div>
+                            <div style="margin-top: 1rem;">
+                                <button type="submit" class="btn-submit">저장</button>
+                                <button type="button" class="btn-cancel" onclick="hideResortForm()">취소</button>
+                            </div>
+                        </form>
+                    </div>
+
+                    <!-- Resort List -->
+                    <div class="resort-list" id="resortList"></div>
+                </div>
+            </div>
+            </div>
+            <!-- End Resort Management Tab -->
+
+            <!-- Review Management Tab -->
+            <div id="reviewTab" class="tab-content">
+                <div class="resort-section">
+                    <h2 class="section-title">⭐ 후기 관리</h2>
+                    
+                    <button class="btn-add" onclick="showReviewForm()">
+                        <i class="fas fa-plus"></i> 새 후기 추가
+                    </button>
+
+                    <!-- Review Form -->
+                    <div class="resort-form" id="reviewForm">
+                        <h3 style="margin-bottom: 1rem; color: #2c3e50;">후기 정보 입력</h3>
+                        <form id="reviewDataForm">
+                            <div class="form-row">
+                                <input type="text" class="form-control" id="reviewAuthor" placeholder="작성자 이름" required>
+                                <input type="text" class="form-control" id="reviewResort" placeholder="리조트 이름">
+                            </div>
+                            <div class="form-row">
+                                <select class="form-control" id="reviewRating" required>
+                                    <option value="">평점 선택</option>
+                                    <option value="5">⭐⭐⭐⭐⭐ (5점)</option>
+                                    <option value="4">⭐⭐⭐⭐ (4점)</option>
+                                    <option value="3">⭐⭐⭐ (3점)</option>
+                                    <option value="2">⭐⭐ (2점)</option>
+                                    <option value="1">⭐ (1점)</option>
+                                </select>
+                                <input type="date" class="form-control" id="reviewDate" required>
+                            </div>
+                            <div class="form-row">
+                                <textarea class="form-control" id="reviewContent" placeholder="후기 내용" rows="4" style="grid-column: 1 / -1;" required></textarea>
+                            </div>
+                            <div style="margin-top: 1rem;">
+                                <button type="submit" class="btn-submit">저장</button>
+                                <button type="button" class="btn-cancel" onclick="hideReviewForm()">취소</button>
+                            </div>
+                        </form>
+                    </div>
+
+                    <!-- Review List -->
+                    <div class="resort-list" id="reviewList"></div>
+                </div>
+            </div>
+            <!-- End Review Management Tab -->
+
+            <!-- Inquiry Management Tab -->
+            <div id="inquiryTab" class="tab-content">
+                <div class="resort-section">
+                    <h2 class="section-title">📧 문의 관리</h2>
+                    
+                    <!-- Filter Buttons -->
+                    <div style="margin-bottom: 1.5rem;">
+                        <button class="btn" style="background: #3498db; color: white; margin-right: 0.5rem;" onclick="filterInquiries('all')">전체</button>
+                        <button class="btn" style="background: #f39c12; color: white; margin-right: 0.5rem;" onclick="filterInquiries('pending')">대기중</button>
+                        <button class="btn" style="background: #27ae60; color: white;" onclick="filterInquiries('completed')">답변완료</button>
+                    </div>
+
+                    <!-- Inquiry List -->
+                    <div class="resort-list" id="inquiryList"></div>
+                </div>
+            </div>
+            <!-- End Inquiry Management Tab -->
+
+        </div>
+    </div>
+
+    <script>
+        // Password
+        const ADMIN_PASSWORD = 'sun2026@';
+        
+        // Destination and Region Structure
+        const DESTINATIONS = {
+            '태국': {
+                icon: '🇹🇭',
+                regions: ['푸켓', '카오락', '끄라비', '코사무이', '파타야', '방콕']
+            },
+            '인도네시아': {
+                icon: '🇮🇩',
+                regions: ['발리', '롬복']
+            },
+            '하와이': {
+                icon: '🌺',
+                regions: ['오아후', '마우이', '빅아일랜드', '카우아이']
+            },
+            '칸쿤': {
+                icon: '🇲🇽',
+                regions: ['칸쿤', '플라야델카르멘', '툴룸']
+            },
+            '필리핀': {
+                icon: '🇵🇭',
+                regions: ['보라카이', '세부', '보홀', '팔라완']
+            },
+            '몰디브': {
+                icon: '🇲🇻',
+                regions: ['북말레', '남말레', '아리', '바']
+            },
+            '남태평양': {
+                icon: '🌊',
+                regions: ['피지', '타히티', '뉴칼레도니아', '사모아']
+            },
+            '다낭': {
+                icon: '🇻🇳',
+                regions: ['다낭', '호이안']
+            },
+            '모리셔스': {
+                icon: '🇲🇺',
+                regions: ['북부', '동부', '서부', '남부']
+            }
+        };
+
+        // State Management
+        let currentDestination = null;
+        let currentRegion = null;
+        let editingResortId = null;
+        let editingReviewId = null;
+        let resorts = {};
+        let reviews = [];
+        let inquiries = [];
+        let notifications = JSON.parse(localStorage.getItem('notifications')) || [];
+        let notificationSettings = JSON.parse(localStorage.getItem('notificationSettings')) || {
+            browserNotification: false,
+            emailNotification: false,
+            email: '',
+            lastReviewCount: 0,
+            lastInquiryCount: 0
+        };
+
+        // API Helper Functions
+        async function apiCall(endpoint, options = {}) {
+            try {
+                const response = await fetch(endpoint, {
+                    ...options,
+                    headers: {
+                        'Content-Type': 'application/json',
+                        ...options.headers
+                    }
+                });
+                const data = await response.json();
+                if (!data.success) {
+                    throw new Error(data.error || 'API call failed');
+                }
+                return data.data;
+            } catch (error) {
+                console.error('API Error:', error);
+                alert('서버와의 통신 중 오류가 발생했습니다: ' + error.message);
+                throw error;
+            }
+        }
+
+        // Load data from API on startup
+        async function loadAllData() {
+            try {
+                // Load reviews from API
+                const reviewsData = await apiCall('/api/reviews');
+                reviews = reviewsData || [];
+                
+                // Load inquiries from API
+                const inquiriesData = await apiCall('/api/inquiries');
+                inquiries = inquiriesData || [];
+                
+                // Update notification counts
+                notificationSettings.lastReviewCount = reviews.length;
+                notificationSettings.lastInquiryCount = inquiries.length;
+                localStorage.setItem('notificationSettings', JSON.stringify(notificationSettings));
+                
+                console.log('Loaded reviews:', reviews.length, 'inquiries:', inquiries.length);
+            } catch (error) {
+                console.error('Failed to load data:', error);
+            }
+        }
+
+        // Request browser notification permission on load
+        if ('Notification' in window && notificationSettings.browserNotification) {
+            if (Notification.permission === 'default') {
+                Notification.requestPermission();
+            }
+        }
+
+        // Notification Management
+        function toggleNotificationPanel() {
+            const panel = document.getElementById('notificationPanel');
+            panel.classList.toggle('active');
+            loadNotifications();
+            markNotificationsAsRead();
+        }
+
+        function toggleEmailInput() {
+            const enabled = document.getElementById('enableEmailNotification').checked;
+            const container = document.getElementById('emailInputContainer');
+            if (enabled) {
+                container.classList.remove('hidden');
+            } else {
+                container.classList.add('hidden');
+            }
+        }
+
+        function saveNotificationSettings() {
+            notificationSettings.browserNotification = document.getElementById('enableBrowserNotification').checked;
+            notificationSettings.emailNotification = document.getElementById('enableEmailNotification').checked;
+            notificationSettings.email = document.getElementById('notificationEmail').value;
+            
+            localStorage.setItem('notificationSettings', JSON.stringify(notificationSettings));
+            
+            // Request browser notification permission
+            if (notificationSettings.browserNotification && 'Notification' in window) {
+                if (Notification.permission === 'default') {
+                    Notification.requestPermission().then(permission => {
+                        if (permission === 'granted') {
+                            alert('브라우저 알림이 활성화되었습니다!');
+                        }
+                    });
+                } else if (Notification.permission === 'granted') {
+                    alert('설정이 저장되었습니다!');
+                } else {
+                    alert('브라우저 알림 권한이 차단되어 있습니다. 브라우저 설정에서 허용해주세요.');
+                }
+            } else {
+                alert('설정이 저장되었습니다!');
+            }
+        }
+
+        function saveSoundSettings() {
+            // Just save the checkbox state
+            const settings = JSON.parse(localStorage.getItem('notificationSettings')) || {};
+            settings.browserNotification = document.getElementById('enableBrowserNotification').checked;
+            localStorage.setItem('notificationSettings', JSON.stringify(settings));
+        }
+
+        function loadNotifications() {
+            const list = document.getElementById('notificationList');
+            
+            if (notifications.length === 0) {
+                list.innerHTML = '<p style="text-align: center; color: #7f8c8d; padding: 1rem;">알림이 없습니다</p>';
+                return;
+            }
+            
+            list.innerHTML = '';
+            notifications.slice().reverse().forEach(notif => {
+                const item = document.createElement('div');
+                item.className = `notification-item ${notif.read ? '' : 'unread'}`;
+                
+                const icon = notif.type === 'review' ? '⭐' : '📧';
+                const time = new Date(notif.timestamp).toLocaleString('ko-KR');
+                
+                item.innerHTML = `
+                    <div class="notification-title">${icon} ${notif.title}</div>
+                    <div class="notification-text">${notif.message}</div>
+                    <div class="notification-time">${time}</div>
+                `;
+                
+                list.appendChild(item);
+            });
+        }
+
+        function markNotificationsAsRead() {
+            notifications.forEach(n => n.read = true);
+            localStorage.setItem('notifications', JSON.stringify(notifications));
+            updateNotificationBadge();
+        }
+
+        function updateNotificationBadge() {
+            const unreadCount = notifications.filter(n => !n.read).length;
+            const badge = document.getElementById('notificationBadge');
+            
+            if (unreadCount > 0) {
+                badge.textContent = unreadCount;
+                badge.classList.remove('hidden');
+            } else {
+                badge.classList.add('hidden');
+            }
+        }
+
+        function addNotification(type, title, message) {
+            const notification = {
+                id: Date.now().toString(),
+                type: type,
+                title: title,
+                message: message,
+                timestamp: Date.now(),
+                read: false
+            };
+            
+            notifications.push(notification);
+            localStorage.setItem('notifications', JSON.stringify(notifications));
+            updateNotificationBadge();
+            
+            // Browser notification
+            if (notificationSettings.browserNotification && 'Notification' in window && Notification.permission === 'granted') {
+                new Notification('선샤인투어 - ' + title, {
+                    body: message,
+                    icon: '/favicon.ico',
+                    badge: '/favicon.ico'
+                });
+            }
+            
+            // Email notification (would need backend)
+            if (notificationSettings.emailNotification && notificationSettings.email) {
+                // This would normally call a backend API to send email
+                console.log(`Email would be sent to: ${notificationSettings.email}`);
+                console.log(`Subject: ${title}`);
+                console.log(`Body: ${message}`);
+            }
+        }
+
+        // Check for new reviews and inquiries
+        async function checkForNewContent() {
+            try {
+                // Reload data from API
+                await loadAllData();
+                
+                const currentReviewCount = reviews.length;
+                const currentInquiryCount = inquiries.length;
+                
+                if (notificationSettings.lastReviewCount > 0 && currentReviewCount > notificationSettings.lastReviewCount) {
+                    const newCount = currentReviewCount - notificationSettings.lastReviewCount;
+                    addNotification('review', '새로운 후기', `${newCount}개의 새로운 후기가 등록되었습니다.`);
+                }
+                
+                if (notificationSettings.lastInquiryCount > 0 && currentInquiryCount > notificationSettings.lastInquiryCount) {
+                    const newCount = currentInquiryCount - notificationSettings.lastInquiryCount;
+                    addNotification('inquiry', '새로운 문의', `${newCount}개의 새로운 문의가 접수되었습니다.`);
+                }
+                
+                notificationSettings.lastReviewCount = currentReviewCount;
+                notificationSettings.lastInquiryCount = currentInquiryCount;
+                localStorage.setItem('notificationSettings', JSON.stringify(notificationSettings));
+            } catch (error) {
+                console.error('Failed to check for new content:', error);
+            }
+        }
+
+        // Initialize notification settings UI
+        function initializeNotificationSettings() {
+            document.getElementById('enableBrowserNotification').checked = notificationSettings.browserNotification || false;
+            document.getElementById('enableEmailNotification').checked = notificationSettings.emailNotification || false;
+            document.getElementById('notificationEmail').value = notificationSettings.email || '';
+            
+            if (notificationSettings.emailNotification) {
+                document.getElementById('emailInputContainer').classList.remove('hidden');
+            }
+            
+            updateNotificationBadge();
+        }
+
+        // Periodically check for new content (every 30 seconds)
+        setInterval(checkForNewContent, 30000);
+
+        // Tab Management
+        function switchTab(tab) {
+            // Hide all tabs
+            document.querySelectorAll('.tab-content').forEach(t => t.classList.remove('active'));
+            document.querySelectorAll('.tab-button').forEach(b => b.classList.remove('active'));
+            
+            // Show selected tab
+            if (tab === 'resort') {
+                document.getElementById('resortTab').classList.add('active');
+                document.querySelectorAll('.tab-button')[0].classList.add('active');
+            } else if (tab === 'review') {
+                document.getElementById('reviewTab').classList.add('active');
+                document.querySelectorAll('.tab-button')[1].classList.add('active');
+                loadReviews();
+            } else if (tab === 'inquiry') {
+                document.getElementById('inquiryTab').classList.add('active');
+                document.querySelectorAll('.tab-button')[2].classList.add('active');
+                loadInquiries('all');
+            }
+        }
+
+        // Login
+        document.getElementById('loginForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const password = document.getElementById('passwordInput').value;
+            
+            if (password === ADMIN_PASSWORD) {
+                document.getElementById('loginScreen').style.display = 'none';
+                document.getElementById('adminPanel').style.display = 'block';
+                loadAllData().then(() => {
+                    initializeDestinations();
+                    initializeNotificationSettings();
+                    checkForNewContent();
+                });
+            } else {
+                document.getElementById('loginError').classList.remove('hidden');
+            }
+        });
+
+        function logout() {
+            document.getElementById('loginScreen').style.display = 'flex';
+            document.getElementById('adminPanel').style.display = 'none';
+            document.getElementById('passwordInput').value = '';
+            document.getElementById('loginError').classList.add('hidden');
+        }
+
+        // Initialize Destinations
+        function initializeDestinations() {
+            const grid = document.getElementById('destinationGrid');
+            grid.innerHTML = '';
+            
+            Object.keys(DESTINATIONS).forEach(dest => {
+                const card = document.createElement('div');
+                card.className = 'destination-card';
+                card.innerHTML = `
+                    <div class="destination-icon">${DESTINATIONS[dest].icon}</div>
+                    <div class="destination-name">${dest}</div>
+                `;
+                card.onclick = () => selectDestination(dest);
+                grid.appendChild(card);
+            });
+            
+            updateBreadcrumb('목적지 선택');
+        }
+
+        // Select Destination
+        function selectDestination(destination) {
+            currentDestination = destination;
+            
+            document.getElementById('destinationStep').classList.add('hidden');
+            document.getElementById('regionStep').classList.remove('hidden');
+            document.getElementById('backBtn').classList.remove('hidden');
+            
+            document.getElementById('currentDestinationName').textContent = destination;
+            
+            const grid = document.getElementById('regionGrid');
+            grid.innerHTML = '';
+            
+            DESTINATIONS[destination].regions.forEach(region => {
+                const card = document.createElement('div');
+                card.className = 'region-card';
+                card.innerHTML = `<div class="region-name">${region}</div>`;
+                card.onclick = () => selectRegion(region);
+                grid.appendChild(card);
+            });
+            
+            updateBreadcrumb(`목적지 선택 > ${destination}`);
+        }
+
+        // Select Region
+        function selectRegion(region) {
+            currentRegion = region;
+            
+            document.getElementById('regionStep').classList.add('hidden');
+            document.getElementById('resortStep').classList.remove('hidden');
+            
+            document.getElementById('currentRegionName').textContent = `${currentDestination} - ${region}`;
+            
+            loadResorts();
+            updateBreadcrumb(`목적지 선택 > ${currentDestination} > ${region}`);
+        }
+
+        // Go Back
+        function goBack() {
+            if (document.getElementById('resortStep').classList.contains('hidden') === false) {
+                // Resort -> Region
+                document.getElementById('resortStep').classList.add('hidden');
+                document.getElementById('regionStep').classList.remove('hidden');
+                hideResortForm();
+                updateBreadcrumb(`목적지 선택 > ${currentDestination}`);
+            } else if (document.getElementById('regionStep').classList.contains('hidden') === false) {
+                // Region -> Destination
+                document.getElementById('regionStep').classList.add('hidden');
+                document.getElementById('destinationStep').classList.remove('hidden');
+                document.getElementById('backBtn').classList.add('hidden');
+                currentDestination = null;
+                updateBreadcrumb('목적지 선택');
+            }
+        }
+
+        // Update Breadcrumb
+        function updateBreadcrumb(text) {
+            document.getElementById('breadcrumb').textContent = text;
+        }
+
+        // Resort Management
+        function showResortForm() {
+            document.getElementById('resortForm').classList.add('active');
+            editingResortId = null;
+            document.getElementById('resortDataForm').reset();
+        }
+
+        function hideResortForm() {
+            document.getElementById('resortForm').classList.remove('active');
+            editingResortId = null;
+            document.getElementById('resortDataForm').reset();
+        }
+
+        document.getElementById('resortDataForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const resortData = {
+                id: editingResortId || Date.now().toString(),
+                destination: currentDestination,
+                region: currentRegion,
+                name: document.getElementById('resortName').value,
+                type: document.getElementById('resortType').value,
+                image: document.getElementById('resortImage').value,
+                price: document.getElementById('resortPrice').value,
+                description: document.getElementById('resortDescription').value,
+                features: document.getElementById('resortFeatures').value.split(',').map(f => f.trim()),
+                enabled: true
+            };
+            
+            const key = `${currentDestination}_${currentRegion}`;
+            if (!resorts[key]) resorts[key] = [];
+            
+            if (editingResortId) {
+                const index = resorts[key].findIndex(r => r.id === editingResortId);
+                resorts[key][index] = resortData;
+            } else {
+                resorts[key].push(resortData);
+            }
+            
+            localStorage.setItem('resorts', JSON.stringify(resorts));
+            hideResortForm();
+            loadResorts();
+        });
+
+        function loadResorts() {
+            const key = `${currentDestination}_${currentRegion}`;
+            const regionResorts = resorts[key] || [];
+            
+            const list = document.getElementById('resortList');
+            list.innerHTML = '';
+            
+            if (regionResorts.length === 0) {
+                list.innerHTML = '<p style="text-align: center; color: #7f8c8d; padding: 2rem;">등록된 리조트가 없습니다.</p>';
+                return;
+            }
+            
+            regionResorts.forEach(resort => {
+                const item = document.createElement('div');
+                item.className = 'resort-item';
+                item.style.opacity = resort.enabled ? '1' : '0.5';
+                
+                item.innerHTML = `
+                    <div class="resort-info">
+                        <h4>${resort.name} ${resort.enabled ? '' : '(비활성화)'}</h4>
+                        <p>${resort.type || ''} ${resort.price ? '· ' + resort.price : ''}</p>
+                    </div>
+                    <div class="resort-actions">
+                        <button class="btn-toggle ${resort.enabled ? 'active' : ''}" onclick="toggleResort('${resort.id}')">
+                            ${resort.enabled ? '활성화' : '비활성화'}
+                        </button>
+                        <button class="btn-edit" onclick="editResort('${resort.id}')">수정</button>
+                        <button class="btn-delete" onclick="deleteResort('${resort.id}')">삭제</button>
+                    </div>
+                `;
+                
+                list.appendChild(item);
+            });
+        }
+
+        function editResort(id) {
+            const key = `${currentDestination}_${currentRegion}`;
+            const resort = resorts[key].find(r => r.id === id);
+            
+            editingResortId = id;
+            document.getElementById('resortName').value = resort.name;
+            document.getElementById('resortType').value = resort.type;
+            document.getElementById('resortImage').value = resort.image;
+            document.getElementById('resortPrice').value = resort.price;
+            document.getElementById('resortDescription').value = resort.description;
+            document.getElementById('resortFeatures').value = resort.features.join(', ');
+            
+            showResortForm();
+        }
+
+        function deleteResort(id) {
+            if (!confirm('이 리조트를 삭제하시겠습니까?')) return;
+            
+            const key = `${currentDestination}_${currentRegion}`;
+            resorts[key] = resorts[key].filter(r => r.id !== id);
+            localStorage.setItem('resorts', JSON.stringify(resorts));
+            loadResorts();
+        }
+
+        function toggleResort(id) {
+            const key = `${currentDestination}_${currentRegion}`;
+            const resort = resorts[key].find(r => r.id === id);
+            resort.enabled = !resort.enabled;
+            localStorage.setItem('resorts', JSON.stringify(resorts));
+            loadResorts();
+        }
+
+        // Review Management
+        function showReviewForm() {
+            document.getElementById('reviewForm').classList.add('active');
+            editingReviewId = null;
+            document.getElementById('reviewDataForm').reset();
+        }
+
+        function hideReviewForm() {
+            document.getElementById('reviewForm').classList.remove('active');
+            editingReviewId = null;
+            document.getElementById('reviewDataForm').reset();
+        }
+
+        document.getElementById('reviewDataForm').addEventListener('submit', async function(e) {
+            e.preventDefault();
+            
+            const reviewData = {
+                id: editingReviewId || undefined,
+                destination: '기타', // 목적지는 나중에 선택 가능하도록
+                title: document.getElementById('reviewResort').value || '리조트 후기',
+                author_name: document.getElementById('reviewAuthor').value,
+                content: document.getElementById('reviewContent').value,
+                rating: parseInt(document.getElementById('reviewRating').value),
+                travel_date: document.getElementById('reviewDate').value,
+                status: 'approved',
+                is_featured: false
+            };
+            
+            try {
+                if (editingReviewId) {
+                    // Update existing review
+                    await apiCall(`/api/reviews?id=${editingReviewId}`, {
+                        method: 'PATCH',
+                        body: JSON.stringify(reviewData)
+                    });
+                } else {
+                    // Create new review
+                    await apiCall('/api/reviews', {
+                        method: 'POST',
+                        body: JSON.stringify(reviewData)
+                    });
+                }
+                
+                // Reload reviews
+                await loadAllData();
+                hideReviewForm();
+                loadReviews();
+                alert('후기가 저장되었습니다!');
+            } catch (error) {
+                console.error('Failed to save review:', error);
+            }
+        });
+
+        function loadReviews() {
+            const list = document.getElementById('reviewList');
+            list.innerHTML = '';
+            
+            if (reviews.length === 0) {
+                list.innerHTML = '<p style="text-align: center; color: #7f8c8d; padding: 2rem;">등록된 후기가 없습니다.</p>';
+                return;
+            }
+            
+            reviews.forEach(review => {
+                const stars = '⭐'.repeat(review.rating || 5);
+                const item = document.createElement('div');
+                item.className = 'resort-item';
+                item.style.opacity = review.status === 'approved' ? '1' : '0.5';
+                
+                item.innerHTML = `
+                    <div class="resort-info">
+                        <h4>${review.author_name} - ${review.title} ${review.status !== 'approved' ? '(미승인)' : ''}</h4>
+                        <p>${stars} · ${review.travel_date || review.created_at}</p>
+                        <p style="margin-top: 0.5rem; color: #555;">${review.content.substring(0, 100)}${review.content.length > 100 ? '...' : ''}</p>
+                    </div>
+                    <div class="resort-actions">
+                        <button class="btn-toggle ${review.status === 'approved' ? 'active' : ''}" onclick="toggleReview('${review.id}')">
+                            ${review.status === 'approved' ? '승인됨' : '미승인'}
+                        </button>
+                        <button class="btn-edit" onclick="editReview('${review.id}')">수정</button>
+                        <button class="btn-delete" onclick="deleteReview('${review.id}')">삭제</button>
+                    </div>
+                `;
+                
+                list.appendChild(item);
+            });
+        }
+
+        function editReview(id) {
+            const review = reviews.find(r => r.id === id);
+            
+            editingReviewId = id;
+            document.getElementById('reviewAuthor').value = review.author_name;
+            document.getElementById('reviewResort').value = review.title;
+            document.getElementById('reviewRating').value = review.rating;
+            document.getElementById('reviewDate').value = review.travel_date || '';
+            document.getElementById('reviewContent').value = review.content;
+            
+            showReviewForm();
+        }
+
+        async function deleteReview(id) {
+            if (!confirm('이 후기를 삭제하시겠습니까?')) return;
+            
+            try {
+                await apiCall(`/api/reviews?id=${id}`, { method: 'DELETE' });
+                await loadAllData();
+                loadReviews();
+                alert('후기가 삭제되었습니다!');
+            } catch (error) {
+                console.error('Failed to delete review:', error);
+            }
+        }
+
+        async function toggleReview(id) {
+            const review = reviews.find(r => r.id === id);
+            const newStatus = review.status === 'approved' ? 'pending' : 'approved';
+            
+            try {
+                await apiCall(`/api/reviews?id=${id}`, {
+                    method: 'PATCH',
+                    body: JSON.stringify({ status: newStatus })
+                });
+                await loadAllData();
+                loadReviews();
+            } catch (error) {
+                console.error('Failed to toggle review:', error);
+            }
+        }
+
+        // Inquiry Management
+        function loadInquiries(filter) {
+            const list = document.getElementById('inquiryList');
+            list.innerHTML = '';
+            
+            let filteredInquiries = inquiries;
+            if (filter === 'pending') {
+                filteredInquiries = inquiries.filter(i => i.status === 'pending');
+            } else if (filter === 'completed') {
+                filteredInquiries = inquiries.filter(i => i.status === 'completed');
+            }
+            
+            if (filteredInquiries.length === 0) {
+                list.innerHTML = '<p style="text-align: center; color: #7f8c8d; padding: 2rem;">문의가 없습니다.</p>';
+                return;
+            }
+            
+            filteredInquiries.forEach(inquiry => {
+                const statusColor = inquiry.status === 'completed' ? '#27ae60' : '#f39c12';
+                const statusText = inquiry.status === 'completed' ? '답변완료' : '대기중';
+                
+                const item = document.createElement('div');
+                item.className = 'resort-item';
+                
+                item.innerHTML = `
+                    <div class="resort-info">
+                        <h4>${inquiry.name} - ${inquiry.email}</h4>
+                        <p style="color: ${statusColor}; font-weight: 600;">${statusText} · ${new Date(inquiry.created_at).toLocaleDateString('ko-KR')}</p>
+                        <p style="margin-top: 0.5rem;"><strong>문의:</strong> ${inquiry.subject || inquiry.message.substring(0, 50)}</p>
+                        <p style="margin-top: 0.5rem; color: #555;">${inquiry.message}</p>
+                        ${inquiry.admin_reply ? `<p style="margin-top: 0.5rem; padding: 0.5rem; background: #e8f5e9; border-radius: 4px;"><strong>답변:</strong> ${inquiry.admin_reply}</p>` : ''}
+                    </div>
+                    <div class="resort-actions">
+                        <button class="btn-edit" onclick="replyInquiry('${inquiry.id}')">
+                            ${inquiry.admin_reply ? '답변 수정' : '답변하기'}
+                        </button>
+                        <button class="btn-delete" onclick="deleteInquiry('${inquiry.id}')">삭제</button>
+                    </div>
+                `;
+                
+                list.appendChild(item);
+            });
+        }
+
+        async function replyInquiry(id) {
+            const inquiry = inquiries.find(i => i.id === id);
+            const reply = prompt('답변 내용을 입력하세요:', inquiry.admin_reply || '');
+            
+            if (reply !== null && reply.trim() !== '') {
+                try {
+                    await apiCall(`/api/inquiries?id=${id}`, {
+                        method: 'PATCH',
+                        body: JSON.stringify({ 
+                            admin_reply: reply,
+                            status: 'completed'
+                        })
+                    });
+                    await loadAllData();
+                    loadInquiries('all');
+                    alert('답변이 저장되었습니다!');
+                } catch (error) {
+                    console.error('Failed to reply to inquiry:', error);
+                }
+            }
+        }
+
+        async function deleteInquiry(id) {
+            if (!confirm('이 문의를 삭제하시겠습니까?')) return;
+            
+            try {
+                await apiCall(`/api/inquiries?id=${id}`, { method: 'DELETE' });
+                await loadAllData();
+                loadInquiries('all');
+                alert('문의가 삭제되었습니다!');
+            } catch (error) {
+                console.error('Failed to delete inquiry:', error);
+            }
+        }
+
+        function filterInquiries(filter) {
+            loadInquiries(filter);
+        }
+    </script>
+</body>
+</html>
