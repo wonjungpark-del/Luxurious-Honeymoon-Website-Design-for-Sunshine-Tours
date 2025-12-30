@@ -1028,30 +1028,89 @@
                 return;
             }
 
-            let html = '<table><thead><tr><th>지역</th><th>이름</th><th>카테고리</th><th>상태</th><th>관리</th></tr></thead><tbody>';
-            
+            // 목적지별로 그룹화
+            const groupedByDestination = {};
             displayResorts.forEach(resort => {
                 const region = currentRegions.find(r => r.id === resort.region_id);
-                const regionName = region ? region.name_ko : resort.region_id;
-                const statusBadge = resort.is_active ? 
-                    '<span class="badge badge-success">활성화</span>' : 
-                    '<span class="badge badge-danger">비활성화</span>';
+                const destination = region ? region.country : '기타';
+                
+                if (!groupedByDestination[destination]) {
+                    groupedByDestination[destination] = {};
+                }
+                
+                const regionName = region ? region.name_ko : '미지정';
+                if (!groupedByDestination[destination][regionName]) {
+                    groupedByDestination[destination][regionName] = [];
+                }
+                
+                groupedByDestination[destination][regionName].push(resort);
+            });
+
+            let html = '<div style="display: flex; flex-direction: column; gap: 2rem;">';
+            
+            // 목적지별로 렌더링
+            Object.keys(groupedByDestination).sort().forEach(destination => {
+                const destinationEmoji = {
+                    '태국': '🇹🇭', '인도네시아': '🇮🇩', '하와이': '🌺', '칸쿤': '🇲🇽',
+                    '필리핀': '🇵🇭', '몰디브': '🇲🇻', '남태평양': '🌊', '다낭': '🇻🇳', '모리셔스': '🇲🇺'
+                }[destination] || '🌍';
                 
                 html += `
-                    <tr>
-                        <td>${regionName}</td>
-                        <td>${resort.name_ko}</td>
-                        <td>${resort.category || '-'}</td>
-                        <td>${statusBadge}</td>
-                        <td class="action-buttons">
-                            <button class="btn btn-sm btn-primary" onclick="editResort('${resort.id}')">수정</button>
-                            <button class="btn btn-sm btn-danger" onclick="deleteResort('${resort.id}')">삭제</button>
-                        </td>
-                    </tr>
+                    <div style="background: #f8f9fa; border-radius: 12px; padding: 1.5rem; border-left: 4px solid #667eea;">
+                        <h3 style="margin-bottom: 1rem; color: #2c3e50; font-size: 1.3rem;">
+                            ${destinationEmoji} ${destination}
+                        </h3>
                 `;
+                
+                // 지역별로 렌더링
+                Object.keys(groupedByDestination[destination]).sort().forEach(regionName => {
+                    const resorts = groupedByDestination[destination][regionName];
+                    
+                    html += `
+                        <div style="margin-bottom: 1rem; background: white; border-radius: 8px; padding: 1rem; box-shadow: 0 1px 3px rgba(0,0,0,0.1);">
+                            <h4 style="margin-bottom: 0.75rem; color: #667eea; font-size: 1.1rem; display: flex; align-items: center; gap: 0.5rem;">
+                                📍 ${regionName} <span style="font-size: 0.85rem; color: #95a5a6;">(${resorts.length}개)</span>
+                            </h4>
+                            <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 1rem;">
+                    `;
+                    
+                    resorts.forEach(resort => {
+                        const statusBadge = resort.is_active ? 
+                            '<span class="badge badge-success">활성화</span>' : 
+                            '<span class="badge" style="background: #95a5a6;">비활성화</span>';
+                        
+                        const mainImage = resort.main_image_url ? 
+                            `<img src="${resort.main_image_url}" style="width: 100%; height: 150px; object-fit: cover; border-radius: 8px 8px 0 0;" alt="${resort.name_ko}">` : 
+                            `<div style="width: 100%; height: 150px; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); border-radius: 8px 8px 0 0; display: flex; align-items: center; justify-content: center; color: white; font-size: 2rem;">🏖️</div>`;
+                        
+                        const galleryCount = (resort.gallery_images && resort.gallery_images.length) || 0;
+                        
+                        html += `
+                            <div style="border: 1px solid #e0e0e0; border-radius: 8px; overflow: hidden; background: white;">
+                                ${mainImage}
+                                <div style="padding: 1rem;">
+                                    <div style="display: flex; justify-content: space-between; align-items: start; margin-bottom: 0.5rem;">
+                                        <h5 style="margin: 0; color: #2c3e50; font-size: 1rem;">${resort.name_ko}</h5>
+                                        ${statusBadge}
+                                    </div>
+                                    ${resort.category ? `<p style="margin: 0.25rem 0; color: #7f8c8d; font-size: 0.85rem;">📂 ${resort.category}</p>` : ''}
+                                    ${galleryCount > 0 ? `<p style="margin: 0.25rem 0; color: #7f8c8d; font-size: 0.85rem;">📸 갤러리 ${galleryCount}장</p>` : ''}
+                                    <div style="margin-top: 0.75rem; display: flex; gap: 0.5rem;">
+                                        <button class="btn btn-sm btn-primary" onclick="editResort('${resort.id}')" style="flex: 1;">✏️ 수정</button>
+                                        <button class="btn btn-sm btn-danger" onclick="deleteResort('${resort.id}')" style="flex: 1;">🗑️ 삭제</button>
+                                    </div>
+                                </div>
+                            </div>
+                        `;
+                    });
+                    
+                    html += '</div></div>';
+                });
+                
+                html += '</div>';
             });
             
-            html += '</tbody></table>';
+            html += '</div>';
             container.innerHTML = html;
         }
 
