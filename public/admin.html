@@ -584,37 +584,58 @@
                 </div>
                 <div class="form-group">
                     <label class="form-label">메인 이미지</label>
-                    <input type="file" id="resortMainImageFile" class="form-input" accept="image/*" onchange="uploadMainImageAuto()">
-                    <input type="text" id="resortMainImageUrl" class="form-input" placeholder="이미지 URL (업로드 후 자동 입력)" readonly style="margin-top: 8px;">
-                    <small style="color: #95a5a6;">이미지를 선택하면 자동으로 업로드됩니다</small>
+                    <div style="display: flex; gap: 8px; align-items: flex-start;">
+                        <input type="file" id="resortMainImageFile" class="form-input" accept="image/*" style="flex: 1;">
+                        <button type="button" class="btn btn-secondary" onclick="uploadMainImage()" style="white-space: nowrap;">📤 업로드</button>
+                    </div>
+                    <input type="text" id="resortMainImageUrl" class="form-input" placeholder="업로드 버튼을 눌러 이미지를 업로드하세요" readonly style="margin-top: 8px;">
+                    <small style="color: #95a5a6;">✅ 이미지 없이도 저장 가능 (기본 이미지 사용)</small>
                 </div>
                 <div class="form-group">
                     <label class="form-label">갤러리 이미지 (최대 6개)</label>
-                    <small style="color: #95a5a6; display: block; margin-bottom: 8px;">이미지를 선택하면 자동으로 업로드됩니다</small>
+                    <small style="color: #95a5a6; display: block; margin-bottom: 8px;">📤 업로드 버튼을 눌러 이미지를 업로드하세요</small>
                     <div id="galleryUploadContainer">
                         <div style="margin-bottom: 8px;">
-                            <input type="file" id="galleryImageFile1" class="form-input" accept="image/*" style="margin-bottom: 4px;" onchange="uploadGalleryImageAuto(1)">
-                            <input type="text" id="resortGalleryImage1" class="form-input" placeholder="갤러리 1 URL" readonly>
+                            <div style="display: flex; gap: 8px;">
+                                <input type="file" id="galleryImageFile1" class="form-input" accept="image/*" style="flex: 1;">
+                                <button type="button" class="btn btn-secondary" onclick="uploadGalleryImage(1)" style="white-space: nowrap;">📤</button>
+                            </div>
+                            <input type="text" id="resortGalleryImage1" class="form-input" placeholder="갤러리 1 URL" readonly style="margin-top: 4px;">
                         </div>
                         <div style="margin-bottom: 8px;">
-                            <input type="file" id="galleryImageFile2" class="form-input" accept="image/*" style="margin-bottom: 4px;" onchange="uploadGalleryImageAuto(2)">
-                            <input type="text" id="resortGalleryImage2" class="form-input" placeholder="갤러리 2 URL" readonly>
+                            <div style="display: flex; gap: 8px;">
+                                <input type="file" id="galleryImageFile2" class="form-input" accept="image/*" style="flex: 1;">
+                                <button type="button" class="btn btn-secondary" onclick="uploadGalleryImage(2)" style="white-space: nowrap;">📤</button>
+                            </div>
+                            <input type="text" id="resortGalleryImage2" class="form-input" placeholder="갤러리 2 URL" readonly style="margin-top: 4px;">
                         </div>
                         <div style="margin-bottom: 8px;">
-                            <input type="file" id="galleryImageFile3" class="form-input" accept="image/*" style="margin-bottom: 4px;" onchange="uploadGalleryImageAuto(3)">
-                            <input type="text" id="resortGalleryImage3" class="form-input" placeholder="갤러리 3 URL" readonly>
+                            <div style="display: flex; gap: 8px;">
+                                <input type="file" id="galleryImageFile3" class="form-input" accept="image/*" style="flex: 1;">
+                                <button type="button" class="btn btn-secondary" onclick="uploadGalleryImage(3)" style="white-space: nowrap;">📤</button>
+                            </div>
+                            <input type="text" id="resortGalleryImage3" class="form-input" placeholder="갤러리 3 URL" readonly style="margin-top: 4px;">
                         </div>
                         <div style="margin-bottom: 8px;">
-                            <input type="file" id="galleryImageFile4" class="form-input" accept="image/*" style="margin-bottom: 4px;" onchange="uploadGalleryImageAuto(4)">
-                            <input type="text" id="resortGalleryImage4" class="form-input" placeholder="갤러리 4 URL" readonly>
+                            <div style="display: flex; gap: 8px;">
+                                <input type="file" id="galleryImageFile4" class="form-input" accept="image/*" style="flex: 1;">
+                                <button type="button" class="btn btn-secondary" onclick="uploadGalleryImage(4)" style="white-space: nowrap;">📤</button>
+                            </div>
+                            <input type="text" id="resortGalleryImage4" class="form-input" placeholder="갤러리 4 URL" readonly style="margin-top: 4px;">
                         </div>
                         <div style="margin-bottom: 8px;">
-                            <input type="file" id="galleryImageFile5" class="form-input" accept="image/*" style="margin-bottom: 4px;" onchange="uploadGalleryImageAuto(5)">
-                            <input type="text" id="resortGalleryImage5" class="form-input" placeholder="갤러리 5 URL" readonly>
+                            <div style="display: flex; gap: 8px;">
+                                <input type="file" id="galleryImageFile5" class="form-input" accept="image/*" style="flex: 1;">
+                                <button type="button" class="btn btn-secondary" onclick="uploadGalleryImage(5)" style="white-space: nowrap;">📤</button>
+                            </div>
+                            <input type="text" id="resortGalleryImage5" class="form-input" placeholder="갤러리 5 URL" readonly style="margin-top: 4px;">
                         </div>
                         <div style="margin-bottom: 8px;">
-                            <input type="file" id="galleryImageFile6" class="form-input" accept="image/*" style="margin-bottom: 4px;" onchange="uploadGalleryImageAuto(6)">
-                            <input type="text" id="resortGalleryImage6" class="form-input" placeholder="갤러리 6 URL" readonly>
+                            <div style="display: flex; gap: 8px;">
+                                <input type="file" id="galleryImageFile6" class="form-input" accept="image/*" style="flex: 1;">
+                                <button type="button" class="btn btn-secondary" onclick="uploadGalleryImage(6)" style="white-space: nowrap;">📤</button>
+                            </div>
+                            <input type="text" id="resortGalleryImage6" class="form-input" placeholder="갤러리 6 URL" readonly style="margin-top: 4px;">>
                         </div>
                     </div>
                 </div>
@@ -1315,9 +1336,10 @@
                 .map(line => line.trim())
                 .filter(line => line.length > 0);
             
-            // 메인 이미지 URL (업로드 중이면 제외)
+            // 메인 이미지 URL (업로드 중이면 제외, 없으면 기본 이미지)
             const mainImageUrl = document.getElementById('resortMainImageUrl').value.trim();
-            const validMainImageUrl = (mainImageUrl && mainImageUrl !== '📤 업로드 중...') ? mainImageUrl : '';
+            const DEFAULT_IMAGE = 'https://images.unsplash.com/photo-1566073771259-6a8506099945?w=1200&q=80';
+            const validMainImageUrl = (mainImageUrl && mainImageUrl !== '📤 업로드 중...') ? mainImageUrl : DEFAULT_IMAGE;
             
             const regionId = document.getElementById('resortRegionId').value;
             const nameKo = document.getElementById('resortNameKo').value;
@@ -1325,7 +1347,8 @@
             console.log('📋 Form values:', {
                 regionId,
                 nameKo,
-                mainImageUrl: validMainImageUrl
+                mainImageUrl: validMainImageUrl,
+                isDefaultImage: validMainImageUrl === DEFAULT_IMAGE
             });
             
             // 필수 필드 검증
