@@ -647,7 +647,12 @@
         let reviewImages = [];
         
         function showReviewForm() {
-            document.getElementById('reviewFormModal').classList.remove('hidden');
+            console.log('=== showReviewForm called ===');
+            const modal = document.getElementById('reviewFormModal');
+            console.log('Modal element:', modal);
+            modal.classList.remove('hidden');
+            modal.style.display = 'block'; // Force display
+            console.log('Modal classes after remove:', modal.className);
             document.getElementById('reviewId').value = '';
             document.getElementById('reviewForm').reset();
             reviewImages = [];
@@ -655,7 +660,10 @@
         }
         
         function hideReviewForm() {
-            document.getElementById('reviewFormModal').classList.add('hidden');
+            console.log('=== hideReviewForm called ===');
+            const modal = document.getElementById('reviewFormModal');
+            modal.classList.add('hidden');
+            modal.style.display = 'none'; // Force hide
             document.getElementById('reviewForm').reset();
             reviewImages = [];
         }
@@ -757,8 +765,11 @@
         }
         
         function editReview(reviewId) {
+            console.log('=== editReview called ===', reviewId);
             const reviews = JSON.parse(localStorage.getItem('reviews') || '[]');
+            console.log('Total reviews:', reviews.length);
             const review = reviews.find(r => r.id === reviewId);
+            console.log('Found review:', review);
             
             if (review) {
                 showReviewForm();
@@ -775,6 +786,9 @@
                     document.getElementById('reviewImagesPreview').innerHTML = 
                         `<img src="${review.image_url}" style="width: 100%; height: 80px; object-fit: cover; border-radius: 4px;">`;
                 }
+                console.log('Review form populated');
+            } else {
+                alert('후기를 찾을 수 없습니다. ID: ' + reviewId);
             }
         }
         
@@ -844,13 +858,18 @@
         
         // ========== INQUIRY MANAGEMENT ==========
         function showInquiryForm() {
-            document.getElementById('inquiryFormModal').classList.remove('hidden');
+            console.log('=== showInquiryForm called ===');
+            const modal = document.getElementById('inquiryFormModal');
+            modal.classList.remove('hidden');
+            modal.style.display = 'block';
             document.getElementById('inquiryId').value = '';
             document.getElementById('inquiryForm').reset();
         }
         
         function hideInquiryForm() {
-            document.getElementById('inquiryFormModal').classList.add('hidden');
+            const modal = document.getElementById('inquiryFormModal');
+            modal.classList.add('hidden');
+            modal.style.display = 'none';
             document.getElementById('inquiryForm').reset();
         }
         
@@ -896,8 +915,10 @@
         }
         
         function editInquiry(inquiryId) {
+            console.log('=== editInquiry called ===', inquiryId);
             const inquiries = JSON.parse(localStorage.getItem('inquiries') || '[]');
             const inquiry = inquiries.find(i => i.id === inquiryId);
+            console.log('Found inquiry:', inquiry);
             
             if (inquiry) {
                 showInquiryForm();
@@ -908,6 +929,9 @@
                 document.getElementById('inquiryMessage').value = inquiry.message || '';
                 document.getElementById('inquiryReply').value = inquiry.admin_reply || '';
                 document.getElementById('inquiryIsAnswered').checked = inquiry.status === 'answered';
+                console.log('Inquiry form populated');
+            } else {
+                alert('문의를 찾을 수 없습니다. ID: ' + inquiryId);
             }
         }
         
@@ -1008,7 +1032,10 @@
         };
         
         function showResortForm() {
-            document.getElementById('resortFormModal').classList.remove('hidden');
+            console.log('=== showResortForm called ===');
+            const modal = document.getElementById('resortFormModal');
+            modal.classList.remove('hidden');
+            modal.style.display = 'block';
             document.getElementById('resortId').value = '';
             document.getElementById('resortForm').reset();
             uploadedImages = { main: null, additional: [] };
@@ -1017,7 +1044,9 @@
         }
         
         function hideResortForm() {
-            document.getElementById('resortFormModal').classList.add('hidden');
+            const modal = document.getElementById('resortFormModal');
+            modal.classList.add('hidden');
+            modal.style.display = 'none';
             document.getElementById('resortForm').reset();
             uploadedImages = { main: null, additional: [] };
         }
@@ -1221,8 +1250,10 @@
         }
         
         function editResort(resortId) {
+            console.log('=== editResort called ===', resortId);
             const resorts = JSON.parse(localStorage.getItem('resorts') || '[]');
             const resort = resorts.find(r => r.id === resortId);
+            console.log('Found resort:', resort);
             
             if (resort) {
                 showResortForm();
@@ -1241,6 +1272,9 @@
                     document.getElementById('mainImagePreview').innerHTML = 
                         `<img src="${resort.image_url}" style="max-width: 200px; max-height: 200px; border-radius: 8px;">`;
                 }
+                console.log('Resort form populated');
+            } else {
+                alert('리조트를 찾을 수 없습니다. ID: ' + resortId);
             }
         }
         
