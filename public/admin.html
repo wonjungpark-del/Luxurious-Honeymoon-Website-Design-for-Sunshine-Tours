@@ -247,8 +247,24 @@
     </style>
 </head>
 <body>
+    <!-- Login Screen -->
+    <div id="loginScreen" class="login-container">
+        <div class="login-box">
+            <h1 class="login-title">🌅 선샤인투어 관리자</h1>
+            <div style="text-align: center; color: #666; margin-bottom: 1rem; font-size: 0.9rem;">
+                비밀번호: sun2026@
+            </div>
+            <div class="form-group">
+                <label class="form-label">비밀번호</label>
+                <input type="password" id="passwordInput" class="form-input" placeholder="비밀번호를 입력하세요">
+            </div>
+            <button onclick="handleLogin()" class="btn">로그인</button>
+            <div id="error" class="error">비밀번호가 올바르지 않습니다.</div>
+        </div>
+    </div>
+
     <!-- Admin Dashboard -->
-    <div id="adminDashboard" class="admin-dashboard">
+    <div id="adminDashboard" class="admin-dashboard hidden">
         <!-- Header -->
         <div class="admin-header">
             <h1>🌅 선샤인투어 관리자</h1>
@@ -586,16 +602,23 @@
         }
         
         // Enter key support
-        passwordInput.addEventListener('keypress', function(e) {
-            if (e.key === 'Enter') {
-                e.preventDefault();
-                handleLogin();
-            }
-        });
+        if (passwordInput) {
+            passwordInput.addEventListener('keypress', function(e) {
+                if (e.key === 'Enter') {
+                    e.preventDefault();
+                    handleLogin();
+                }
+            });
+        }
         
         function logout() {
             console.log('=== logout called ===');
-            window.location.href = '/admin';
+            adminDashboard.classList.add('hidden');
+            adminDashboard.style.display = 'none';
+            loginScreen.classList.remove('hidden');
+            loginScreen.style.display = 'flex';
+            passwordInput.value = '';
+            errorDiv.classList.remove('show');
         }
         
         function showTab(tabName) {
@@ -1281,12 +1304,6 @@
         }
         
         console.log('=== Script initialized ===');
-        
-        // Auto-load data on page load
-        document.addEventListener('DOMContentLoaded', function() {
-            console.log('=== Page loaded, loading data ===');
-            loadReviews();
-        });
     </script>
 </body>
 </html>
