@@ -1537,12 +1537,14 @@
             const file = fileInput.files[0];
             
             if (!file) {
-                alert('파일을 선택해주세요.');
+                alert('❌ 파일을 먼저 선택해주세요!');
                 return;
             }
             
             const urlInput = document.getElementById('resortMainImageUrl');
-            urlInput.value = '업로드 중...';
+            urlInput.value = '📤 업로드 중...';
+            
+            console.log('🖼️ 메인 이미지 업로드 시작:', file.name, file.size, 'bytes');
             
             try {
                 const formData = new FormData();
@@ -1554,18 +1556,21 @@
                 });
                 
                 const result = await response.json();
+                console.log('📥 업로드 결과:', result);
                 
-                if (result.success) {
+                if (result.success && result.url) {
                     urlInput.value = result.url;
-                    alert('메인 이미지 업로드 완료!');
+                    console.log('✅ 메인 이미지 URL 저장됨:', result.url);
+                    alert('✅ 메인 이미지 업로드 완료!\n\nURL: ' + result.url);
                 } else {
                     urlInput.value = '';
-                    alert('업로드 실패: ' + result.error);
+                    console.error('❌ 업로드 실패:', result);
+                    alert('❌ 업로드 실패: ' + (result.error || '알 수 없는 오류'));
                 }
             } catch (error) {
-                console.error('Upload error:', error);
+                console.error('❌ Upload error:', error);
                 urlInput.value = '';
-                alert('업로드 중 오류가 발생했습니다.');
+                alert('❌ 업로드 중 오류가 발생했습니다: ' + error.message);
             }
         }
         
