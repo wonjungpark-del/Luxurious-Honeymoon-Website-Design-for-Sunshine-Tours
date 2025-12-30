@@ -373,9 +373,9 @@
         let currentRegion = null;
         let editingResortId = null;
         let editingReviewId = null;
-        let resorts = JSON.parse(localStorage.getItem('resorts')) || {};
-        let reviews = JSON.parse(localStorage.getItem('reviews')) || [];
-        let inquiries = JSON.parse(localStorage.getItem('inquiries')) || [];
+        let resorts = {};
+        let reviews = [];
+        let inquiries = [];
         let notifications = JSON.parse(localStorage.getItem('notifications')) || [];
         let notificationSettings = JSON.parse(localStorage.getItem('notificationSettings')) || {
             browserNotification: false,
@@ -384,6 +384,50 @@
             lastReviewCount: 0,
             lastInquiryCount: 0
         };
+
+        // API Helper Functions
+        async function apiCall(endpoint, options = {}) {
+            try {
+                const response = await fetch(endpoint, {
+                    ...options,
+                    headers: {
+                        'Content-Type': 'application/json',
+                        ...options.headers
+                    }
+                });
+                const data = await response.json();
+                if (!data.success) {
+                    throw new Error(data.error || 'API call failed');
+                }
+                return data.data;
+            } catch (error) {
+                console.error('API Error:', error);
+                alert('서버와의 통신 중 오류가 발생했습니다: ' + error.message);
+                throw error;
+            }
+        }
+
+        // Load data from API on startup
+        async function loadAllData() {
+            try {
+                // Load reviews from API
+                const reviewsData = await apiCall('/api/reviews');
+                reviews = reviewsData || [];
+                
+                // Load inquiries from API
+                const inquiriesData = await apiCall('/api/inquiries');
+                inquiries = inquiriesData || [];
+                
+                // Update notification counts
+                notificationSettings.lastReviewCount = reviews.length;
+                notificationSettings.lastInquiryCount = inquiries.length;
+                localStorage.setItem('notificationSettings', JSON.stringify(notificationSettings));
+                
+                console.log('Loaded reviews:', reviews.length, 'inquiries:', inquiries.length);
+            } catch (error) {
+                console.error('Failed to load data:', error);
+            }
+        }
 
         // Request browser notification permission on load
         if ('Notification' in window && notificationSettings.browserNotification) {
@@ -519,23 +563,30 @@
         }
 
         // Check for new reviews and inquiries
-        function checkForNewContent() {
-            const currentReviewCount = reviews.length;
-            const currentInquiryCount = inquiries.length;
-            
-            if (notificationSettings.lastReviewCount > 0 && currentReviewCount > notificationSettings.lastReviewCount) {
-                const newCount = currentReviewCount - notificationSettings.lastReviewCount;
-                addNotification('review', '새로운 후기', `${newCount}개의 새로운 후기가 등록되었습니다.`);
+        async function checkForNewContent() {
+            try {
+                // Reload data from API
+                await loadAllData();
+                
+                const currentReviewCount = reviews.length;
+                const currentInquiryCount = inquiries.length;
+                
+                if (notificationSettings.lastReviewCount > 0 && currentReviewCount > notificationSettings.lastReviewCount) {
+                    const newCount = currentReviewCount - notificationSettings.lastReviewCount;
+                    addNotification('review', '새로운 후기', `${newCount}개의 새로운 후기가 등록되었습니다.`);
+                }
+                
+                if (notificationSettings.lastInquiryCount > 0 && currentInquiryCount > notificationSettings.lastInquiryCount) {
+                    const newCount = currentInquiryCount - notificationSettings.lastInquiryCount;
+                    addNotification('inquiry', '새로운 문의', `${newCount}개의 새로운 문의가 접수되었습니다.`);
+                }
+                
+                notificationSettings.lastReviewCount = currentReviewCount;
+                notificationSettings.lastInquiryCount = currentInquiryCount;
+                localStorage.setItem('notificationSettings', JSON.stringify(notificationSettings));
+            } catch (error) {
+                console.error('Failed to check for new content:', error);
             }
-            
-            if (notificationSettings.lastInquiryCount > 0 && currentInquiryCount > notificationSettings.lastInquiryCount) {
-                const newCount = currentInquiryCount - notificationSettings.lastInquiryCount;
-                addNotification('inquiry', '새로운 문의', `${newCount}개의 새로운 문의가 접수되었습니다.`);
-            }
-            
-            notificationSettings.lastReviewCount = currentReviewCount;
-            notificationSettings.lastInquiryCount = currentInquiryCount;
-            localStorage.setItem('notificationSettings', JSON.stringify(notificationSettings));
         }
 
         // Initialize notification settings UI
@@ -583,9 +634,11 @@
             if (password === ADMIN_PASSWORD) {
                 document.getElementById('loginScreen').style.display = 'none';
                 document.getElementById('adminPanel').style.display = 'block';
-                initializeDestinations();
-                initializeNotificationSettings();
-                checkForNewContent();
+                loadAllData().then(() => {
+                    initializeDestinations();
+                    initializeNotificationSettings();
+                    checkForNewContent();
+                });
             } else {
                 document.getElementById('loginError').classList.remove('hidden');
             }
@@ -801,29 +854,44 @@
             document.getElementById('reviewDataForm').reset();
         }
 
-        document.getElementById('reviewDataForm').addEventListener('submit', function(e) {
+        document.getElementById('reviewDataForm').addEventListener('submit', async function(e) {
             e.preventDefault();
             
             const reviewData = {
-                id: editingReviewId || Date.now().toString(),
-                author: document.getElementById('reviewAuthor').value,
-                resort: document.getElementById('reviewResort').value,
-                rating: parseInt(document.getElementById('reviewRating').value),
-                date: document.getElementById('reviewDate').value,
+                id: editingReviewId || undefined,
+                destination: '기타', // 목적지는 나중에 선택 가능하도록
+                title: document.getElementById('reviewResort').value || '리조트 후기',
+                author_name: document.getElementById('reviewAuthor').value,
                 content: document.getElementById('reviewContent').value,
-                enabled: true
+                rating: parseInt(document.getElementById('reviewRating').value),
+                travel_date: document.getElementById('reviewDate').value,
+                status: 'approved',
+                is_featured: false
             };
             
-            if (editingReviewId) {
-                const index = reviews.findIndex(r => r.id === editingReviewId);
-                reviews[index] = reviewData;
-            } else {
-                reviews.push(reviewData);
+            try {
+                if (editingReviewId) {
+                    // Update existing review
+                    await apiCall(`/api/reviews?id=${editingReviewId}`, {
+                        method: 'PATCH',
+                        body: JSON.stringify(reviewData)
+                    });
+                } else {
+                    // Create new review
+                    await apiCall('/api/reviews', {
+                        method: 'POST',
+                        body: JSON.stringify(reviewData)
+                    });
+                }
+                
+                // Reload reviews
+                await loadAllData();
+                hideReviewForm();
+                loadReviews();
+                alert('후기가 저장되었습니다!');
+            } catch (error) {
+                console.error('Failed to save review:', error);
             }
-            
-            localStorage.setItem('reviews', JSON.stringify(reviews));
-            hideReviewForm();
-            loadReviews();
         });
 
         function loadReviews() {
@@ -836,20 +904,20 @@
             }
             
             reviews.forEach(review => {
-                const stars = '⭐'.repeat(review.rating);
+                const stars = '⭐'.repeat(review.rating || 5);
                 const item = document.createElement('div');
                 item.className = 'resort-item';
-                item.style.opacity = review.enabled ? '1' : '0.5';
+                item.style.opacity = review.status === 'approved' ? '1' : '0.5';
                 
                 item.innerHTML = `
                     <div class="resort-info">
-                        <h4>${review.author} - ${review.resort} ${review.enabled ? '' : '(비활성화)'}</h4>
-                        <p>${stars} · ${review.date}</p>
+                        <h4>${review.author_name} - ${review.title} ${review.status !== 'approved' ? '(미승인)' : ''}</h4>
+                        <p>${stars} · ${review.travel_date || review.created_at}</p>
                         <p style="margin-top: 0.5rem; color: #555;">${review.content.substring(0, 100)}${review.content.length > 100 ? '...' : ''}</p>
                     </div>
                     <div class="resort-actions">
-                        <button class="btn-toggle ${review.enabled ? 'active' : ''}" onclick="toggleReview('${review.id}')">
-                            ${review.enabled ? '활성화' : '비활성화'}
+                        <button class="btn-toggle ${review.status === 'approved' ? 'active' : ''}" onclick="toggleReview('${review.id}')">
+                            ${review.status === 'approved' ? '승인됨' : '미승인'}
                         </button>
                         <button class="btn-edit" onclick="editReview('${review.id}')">수정</button>
                         <button class="btn-delete" onclick="deleteReview('${review.id}')">삭제</button>
@@ -864,28 +932,42 @@
             const review = reviews.find(r => r.id === id);
             
             editingReviewId = id;
-            document.getElementById('reviewAuthor').value = review.author;
-            document.getElementById('reviewResort').value = review.resort;
+            document.getElementById('reviewAuthor').value = review.author_name;
+            document.getElementById('reviewResort').value = review.title;
             document.getElementById('reviewRating').value = review.rating;
-            document.getElementById('reviewDate').value = review.date;
+            document.getElementById('reviewDate').value = review.travel_date || '';
             document.getElementById('reviewContent').value = review.content;
             
             showReviewForm();
         }
 
-        function deleteReview(id) {
+        async function deleteReview(id) {
             if (!confirm('이 후기를 삭제하시겠습니까?')) return;
             
-            reviews = reviews.filter(r => r.id !== id);
-            localStorage.setItem('reviews', JSON.stringify(reviews));
-            loadReviews();
+            try {
+                await apiCall(`/api/reviews?id=${id}`, { method: 'DELETE' });
+                await loadAllData();
+                loadReviews();
+                alert('후기가 삭제되었습니다!');
+            } catch (error) {
+                console.error('Failed to delete review:', error);
+            }
         }
 
-        function toggleReview(id) {
+        async function toggleReview(id) {
             const review = reviews.find(r => r.id === id);
-            review.enabled = !review.enabled;
-            localStorage.setItem('reviews', JSON.stringify(reviews));
-            loadReviews();
+            const newStatus = review.status === 'approved' ? 'pending' : 'approved';
+            
+            try {
+                await apiCall(`/api/reviews?id=${id}`, {
+                    method: 'PATCH',
+                    body: JSON.stringify({ status: newStatus })
+                });
+                await loadAllData();
+                loadReviews();
+            } catch (error) {
+                console.error('Failed to toggle review:', error);
+            }
         }
 
         // Inquiry Management
@@ -915,14 +997,14 @@
                 item.innerHTML = `
                     <div class="resort-info">
                         <h4>${inquiry.name} - ${inquiry.email}</h4>
-                        <p style="color: ${statusColor}; font-weight: 600;">${statusText} · ${inquiry.date}</p>
-                        <p style="margin-top: 0.5rem;"><strong>문의:</strong> ${inquiry.subject}</p>
+                        <p style="color: ${statusColor}; font-weight: 600;">${statusText} · ${new Date(inquiry.created_at).toLocaleDateString('ko-KR')}</p>
+                        <p style="margin-top: 0.5rem;"><strong>문의:</strong> ${inquiry.subject || inquiry.message.substring(0, 50)}</p>
                         <p style="margin-top: 0.5rem; color: #555;">${inquiry.message}</p>
-                        ${inquiry.reply ? `<p style="margin-top: 0.5rem; padding: 0.5rem; background: #e8f5e9; border-radius: 4px;"><strong>답변:</strong> ${inquiry.reply}</p>` : ''}
+                        ${inquiry.admin_reply ? `<p style="margin-top: 0.5rem; padding: 0.5rem; background: #e8f5e9; border-radius: 4px;"><strong>답변:</strong> ${inquiry.admin_reply}</p>` : ''}
                     </div>
                     <div class="resort-actions">
                         <button class="btn-edit" onclick="replyInquiry('${inquiry.id}')">
-                            ${inquiry.reply ? '답변 수정' : '답변하기'}
+                            ${inquiry.admin_reply ? '답변 수정' : '답변하기'}
                         </button>
                         <button class="btn-delete" onclick="deleteInquiry('${inquiry.id}')">삭제</button>
                     </div>
@@ -932,24 +1014,39 @@
             });
         }
 
-        function replyInquiry(id) {
+        async function replyInquiry(id) {
             const inquiry = inquiries.find(i => i.id === id);
-            const reply = prompt('답변 내용을 입력하세요:', inquiry.reply || '');
+            const reply = prompt('답변 내용을 입력하세요:', inquiry.admin_reply || '');
             
             if (reply !== null && reply.trim() !== '') {
-                inquiry.reply = reply;
-                inquiry.status = 'completed';
-                localStorage.setItem('inquiries', JSON.stringify(inquiries));
-                loadInquiries('all');
+                try {
+                    await apiCall(`/api/inquiries?id=${id}`, {
+                        method: 'PATCH',
+                        body: JSON.stringify({ 
+                            admin_reply: reply,
+                            status: 'completed'
+                        })
+                    });
+                    await loadAllData();
+                    loadInquiries('all');
+                    alert('답변이 저장되었습니다!');
+                } catch (error) {
+                    console.error('Failed to reply to inquiry:', error);
+                }
             }
         }
 
-        function deleteInquiry(id) {
+        async function deleteInquiry(id) {
             if (!confirm('이 문의를 삭제하시겠습니까?')) return;
             
-            inquiries = inquiries.filter(i => i.id !== id);
-            localStorage.setItem('inquiries', JSON.stringify(inquiries));
-            loadInquiries('all');
+            try {
+                await apiCall(`/api/inquiries?id=${id}`, { method: 'DELETE' });
+                await loadAllData();
+                loadInquiries('all');
+                alert('문의가 삭제되었습니다!');
+            } catch (error) {
+                console.error('Failed to delete inquiry:', error);
+            }
         }
 
         function filterInquiries(filter) {
