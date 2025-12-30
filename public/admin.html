@@ -323,8 +323,94 @@
                 <div id="resortsTab" class="tab-content hidden">
                     <div class="content-header">
                         <h2>리조트 관리</h2>
-                        <button onclick="loadResorts()" class="btn btn-small">🔄 새로고침</button>
+                        <div>
+                            <button onclick="showResortForm()" class="btn btn-small" style="background: #27ae60; margin-right: 10px;">➕ 새 리조트 추가</button>
+                            <button onclick="loadDestinationsAndRegions()" class="btn btn-small">🔄 새로고침</button>
+                        </div>
                     </div>
+                    
+                    <!-- Resort Form Modal -->
+                    <div id="resortFormModal" class="hidden" style="background: white; padding: 2rem; border-radius: 8px; margin-bottom: 2rem; box-shadow: 0 2px 8px rgba(0,0,0,0.1);">
+                        <h3 style="margin-bottom: 1.5rem;">리조트 정보 입력</h3>
+                        <form id="resortForm" onsubmit="saveResort(event)">
+                            <input type="hidden" id="resortId" value="">
+                            
+                            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 1rem;">
+                                <div class="form-group">
+                                    <label class="form-label">목적지 *</label>
+                                    <select id="resortDestination" class="form-input" required onchange="loadRegionsByDestination()">
+                                        <option value="">-- 목적지 선택 --</option>
+                                        <option value="태국">🇹🇭 태국</option>
+                                        <option value="인도네시아">🇮🇩 인도네시아</option>
+                                        <option value="하와이">🌺 하와이</option>
+                                        <option value="칸쿤">🇲🇽 칸쿤</option>
+                                        <option value="필리핀">🇵🇭 필리핀</option>
+                                        <option value="몰디브">🇲🇻 몰디브</option>
+                                        <option value="남태평양">🌊 남태평양</option>
+                                        <option value="다낭">🇻🇳 다낭</option>
+                                        <option value="모리셔스">🇲🇺 모리셔스</option>
+                                    </select>
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label class="form-label">지역 *</label>
+                                    <select id="resortRegion" class="form-input" required>
+                                        <option value="">-- 먼저 목적지를 선택하세요 --</option>
+                                    </select>
+                                </div>
+                            </div>
+                            
+                            <div style="display: grid; grid-template-columns: 2fr 1fr; gap: 1rem; margin-bottom: 1rem;">
+                                <div class="form-group">
+                                    <label class="form-label">리조트 이름 (한글) *</label>
+                                    <input type="text" id="resortNameKo" class="form-input" placeholder="예: 아난타라 푸켓 리조트" required>
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label class="form-label">리조트 이름 (영문)</label>
+                                    <input type="text" id="resortNameEn" class="form-input" placeholder="예: Anantara Phuket Resort">
+                                </div>
+                            </div>
+                            
+                            <div class="form-group" style="margin-bottom: 1rem;">
+                                <label class="form-label">설명</label>
+                                <textarea id="resortDescription" class="form-input" rows="4" placeholder="리조트 설명을 입력하세요..."></textarea>
+                            </div>
+                            
+                            <div class="form-group" style="margin-bottom: 1rem;">
+                                <label class="form-label">메인 이미지</label>
+                                <input type="file" id="resortMainImage" class="form-input" accept="image/*" onchange="previewMainImage(event)">
+                                <div id="mainImagePreview" style="margin-top: 10px;"></div>
+                            </div>
+                            
+                            <div class="form-group" style="margin-bottom: 1rem;">
+                                <label class="form-label">추가 이미지 (최대 6장)</label>
+                                <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px;">
+                                    <input type="file" class="form-input" accept="image/*" onchange="previewAdditionalImage(event, 0)">
+                                    <input type="file" class="form-input" accept="image/*" onchange="previewAdditionalImage(event, 1)">
+                                    <input type="file" class="form-input" accept="image/*" onchange="previewAdditionalImage(event, 2)">
+                                    <input type="file" class="form-input" accept="image/*" onchange="previewAdditionalImage(event, 3)">
+                                    <input type="file" class="form-input" accept="image/*" onchange="previewAdditionalImage(event, 4)">
+                                    <input type="file" class="form-input" accept="image/*" onchange="previewAdditionalImage(event, 5)">
+                                </div>
+                                <div id="additionalImagesPreview" style="display: grid; grid-template-columns: repeat(6, 1fr); gap: 10px; margin-top: 10px;"></div>
+                            </div>
+                            
+                            <div class="form-group" style="margin-bottom: 1.5rem;">
+                                <label style="display: flex; align-items: center; cursor: pointer;">
+                                    <input type="checkbox" id="resortIsActive" checked style="margin-right: 8px; width: 20px; height: 20px;">
+                                    <span class="form-label" style="margin: 0;">활성화 (체크 해제 시 비활성화)</span>
+                                </label>
+                            </div>
+                            
+                            <div style="display: flex; gap: 10px;">
+                                <button type="submit" class="btn" style="flex: 1; background: #27ae60;">💾 저장</button>
+                                <button type="button" onclick="hideResortForm()" class="btn" style="flex: 1; background: #95a5a6;">❌ 취소</button>
+                            </div>
+                        </form>
+                    </div>
+                    
+                    <!-- Destinations and Resorts List -->
                     <div id="resortsList"></div>
                 </div>
             </div>
@@ -412,7 +498,7 @@
                 // Load data for the tab
                 if (tabName === 'reviews') loadReviews();
                 else if (tabName === 'inquiries') loadInquiries();
-                else if (tabName === 'resorts') loadResorts();
+                else if (tabName === 'resorts') loadDestinationsAndRegions();
             }
         }
         
@@ -519,48 +605,272 @@
             }
         }
         
-        async function loadResorts() {
+        // Resort Management Functions
+        const DESTINATIONS = {
+            '태국': ['푸켓', '카오락', '끄라비', '코사무이', '파타야', '방콕'],
+            '인도네시아': ['발리', '롬복'],
+            '하와이': ['오아후', '마우이', '빅아일랜드', '카우아이'],
+            '칸쿤': ['칸쿤', '플라야델카르멘', '툴룸'],
+            '필리핀': ['보라카이', '세부', '보홀', '팔라완'],
+            '몰디브': ['북말레', '남말레', '아리', '바'],
+            '남태평양': ['피지', '타히티', '뉴칼레도니아', '사모아'],
+            '다낭': ['다낭', '호이안'],
+            '모리셔스': ['북부', '동부', '서부', '남부']
+        };
+        
+        let uploadedImages = {
+            main: null,
+            additional: []
+        };
+        
+        function showResortForm() {
+            document.getElementById('resortFormModal').classList.remove('hidden');
+            document.getElementById('resortId').value = '';
+            document.getElementById('resortForm').reset();
+            uploadedImages = { main: null, additional: [] };
+            document.getElementById('mainImagePreview').innerHTML = '';
+            document.getElementById('additionalImagesPreview').innerHTML = '';
+        }
+        
+        function hideResortForm() {
+            document.getElementById('resortFormModal').classList.add('hidden');
+            document.getElementById('resortForm').reset();
+            uploadedImages = { main: null, additional: [] };
+        }
+        
+        function loadRegionsByDestination() {
+            const destination = document.getElementById('resortDestination').value;
+            const regionSelect = document.getElementById('resortRegion');
+            
+            regionSelect.innerHTML = '<option value="">-- 지역 선택 --</option>';
+            
+            if (destination && DESTINATIONS[destination]) {
+                DESTINATIONS[destination].forEach(region => {
+                    const option = document.createElement('option');
+                    option.value = region;
+                    option.textContent = region;
+                    regionSelect.appendChild(option);
+                });
+            }
+        }
+        
+        function previewMainImage(event) {
+            const file = event.target.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    document.getElementById('mainImagePreview').innerHTML = 
+                        `<img src="${e.target.result}" style="max-width: 200px; max-height: 200px; border-radius: 8px;">`;
+                };
+                reader.readAsDataURL(file);
+                uploadedImages.main = file;
+            }
+        }
+        
+        function previewAdditionalImage(event, index) {
+            const file = event.target.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    const previewContainer = document.getElementById('additionalImagesPreview');
+                    let imgElement = previewContainer.children[index];
+                    
+                    if (!imgElement) {
+                        imgElement = document.createElement('img');
+                        imgElement.style.width = '100%';
+                        imgElement.style.height = '80px';
+                        imgElement.style.objectFit = 'cover';
+                        imgElement.style.borderRadius = '4px';
+                        previewContainer.appendChild(imgElement);
+                    }
+                    
+                    imgElement.src = e.target.result;
+                };
+                reader.readAsDataURL(file);
+                uploadedImages.additional[index] = file;
+            }
+        }
+        
+        async function saveResort(event) {
+            event.preventDefault();
+            
+            const resortData = {
+                destination: document.getElementById('resortDestination').value,
+                region: document.getElementById('resortRegion').value,
+                name_ko: document.getElementById('resortNameKo').value,
+                name_en: document.getElementById('resortNameEn').value,
+                description: document.getElementById('resortDescription').value,
+                is_active: document.getElementById('resortIsActive').checked
+            };
+            
+            // Upload images if present
+            if (uploadedImages.main || uploadedImages.additional.length > 0) {
+                try {
+                    const formData = new FormData();
+                    
+                    if (uploadedImages.main) {
+                        formData.append('files', uploadedImages.main);
+                    }
+                    
+                    uploadedImages.additional.forEach((file, index) => {
+                        if (file) {
+                            formData.append('files', file);
+                        }
+                    });
+                    
+                    const uploadResponse = await fetch('/api/upload', {
+                        method: 'POST',
+                        body: formData
+                    });
+                    
+                    const uploadResult = await uploadResponse.json();
+                    
+                    if (uploadResult.success && uploadResult.urls) {
+                        resortData.image_url = uploadResult.urls[0];
+                        resortData.gallery_images = JSON.stringify(uploadResult.urls.slice(1));
+                    }
+                } catch (uploadError) {
+                    console.error('Image upload error:', uploadError);
+                    alert('이미지 업로드 중 오류가 발생했습니다. 이미지 없이 저장하시겠습니까?');
+                }
+            }
+            
+            try {
+                // For now, store in localStorage (will be replaced with API call)
+                const resorts = JSON.parse(localStorage.getItem('resorts') || '[]');
+                
+                const resortId = document.getElementById('resortId').value;
+                if (resortId) {
+                    // Update existing resort
+                    const index = resorts.findIndex(r => r.id === resortId);
+                    if (index !== -1) {
+                        resorts[index] = { ...resorts[index], ...resortData };
+                    }
+                } else {
+                    // Add new resort
+                    resortData.id = Date.now().toString();
+                    resortData.created_at = new Date().toISOString();
+                    resorts.push(resortData);
+                }
+                
+                localStorage.setItem('resorts', JSON.stringify(resorts));
+                
+                alert('✅ 리조트가 저장되었습니다!');
+                hideResortForm();
+                loadDestinationsAndRegions();
+            } catch (error) {
+                console.error('Error saving resort:', error);
+                alert('❌ 리조트 저장 중 오류가 발생했습니다: ' + error.message);
+            }
+        }
+        
+        async function loadDestinationsAndRegions() {
             const container = document.getElementById('resortsList');
             container.innerHTML = '<div class="loading">⏳ 로딩 중...</div>';
             
             try {
-                const response = await fetch('/api/resorts');
-                const data = await response.json();
+                // Load from localStorage for now
+                const resorts = JSON.parse(localStorage.getItem('resorts') || '[]');
                 
-                if (data.success && data.data && data.data.length > 0) {
-                    // Update stats
-                    document.getElementById('totalResorts').textContent = data.data.length;
-                    
-                    let html = '';
-                    data.data.forEach(resort => {
-                        const statusBadge = resort.is_active ? 
-                            '<span class="badge badge-success">활성</span>' : 
-                            '<span class="badge badge-info">비활성</span>';
-                        
-                        html += `
-                            <div class="item-card">
-                                <div class="item-header">
-                                    <h3 class="item-title">${resort.name_ko || resort.name_en || '이름 없음'}</h3>
-                                    ${statusBadge}
-                                </div>
-                                <div class="item-meta">
-                                    🌍 <strong>지역:</strong> ${resort.region_id || '-'} | 
-                                    🏷️ <strong>코드:</strong> ${resort.code || '-'}
-                                </div>
-                                ${resort.description ? `<div class="item-content">${resort.description}</div>` : ''}
-                                ${resort.image_url ? `<img src="${resort.image_url}" class="image-thumbnail" alt="${resort.name_ko}">` : ''}
-                            </div>
-                        `;
-                    });
-                    container.innerHTML = html;
-                } else {
-                    container.innerHTML = '<div class="empty-state"><div style="font-size: 3rem;">🏨</div><p>등록된 리조트가 없습니다.</p></div>';
-                    document.getElementById('totalResorts').textContent = '0';
+                // Update stats
+                document.getElementById('totalResorts').textContent = resorts.length;
+                
+                if (resorts.length === 0) {
+                    container.innerHTML = '<div class="empty-state"><div style="font-size: 3rem;">🏨</div><p>등록된 리조트가 없습니다.<br>위의 \"+ 새 리조트 추가\" 버튼을 클릭하여 리조트를 추가하세요.</p></div>';
+                    return;
                 }
+                
+                // Group by destination and region
+                const grouped = {};
+                resorts.forEach(resort => {
+                    if (!grouped[resort.destination]) {
+                        grouped[resort.destination] = {};
+                    }
+                    if (!grouped[resort.destination][resort.region]) {
+                        grouped[resort.destination][resort.region] = [];
+                    }
+                    grouped[resort.destination][resort.region].push(resort);
+                });
+                
+                let html = '';
+                Object.keys(grouped).sort().forEach(destination => {
+                    html += `<div style="margin-bottom: 2rem;">`;
+                    html += `<h3 style="font-size: 1.3rem; margin-bottom: 1rem; color: #2c3e50;">📍 ${destination}</h3>`;
+                    
+                    Object.keys(grouped[destination]).sort().forEach(region => {
+                        html += `<div style="margin-bottom: 1.5rem; margin-left: 1rem;">`;
+                        html += `<h4 style="font-size: 1.1rem; margin-bottom: 0.8rem; color: #34495e;">🌴 ${region}</h4>`;
+                        
+                        grouped[destination][region].forEach(resort => {
+                            const statusBadge = resort.is_active ? 
+                                '<span class="badge badge-success">활성</span>' : 
+                                '<span class="badge badge-info">비활성</span>';
+                            
+                            html += `
+                                <div class="item-card" style="margin-left: 1rem; margin-bottom: 1rem;">
+                                    <div class="item-header">
+                                        <h3 class="item-title">${resort.name_ko || resort.name_en || '이름 없음'}</h3>
+                                        ${statusBadge}
+                                    </div>
+                                    ${resort.name_en ? `<div style="color: #7f8c8d; margin-bottom: 0.5rem;">${resort.name_en}</div>` : ''}
+                                    ${resort.description ? `<div class="item-content">${resort.description}</div>` : ''}
+                                    ${resort.image_url ? `<img src="${resort.image_url}" class="image-thumbnail" alt="${resort.name_ko}">` : ''}
+                                    <div style="margin-top: 1rem; display: flex; gap: 10px;">
+                                        <button onclick="editResort('${resort.id}')" class="btn btn-small" style="background: #3498db; flex: 1;">✏️ 수정</button>
+                                        <button onclick="deleteResort('${resort.id}')" class="btn btn-small" style="background: #e74c3c; flex: 1;">🗑️ 삭제</button>
+                                    </div>
+                                </div>
+                            `;
+                        });
+                        
+                        html += `</div>`;
+                    });
+                    
+                    html += `</div>`;
+                });
+                
+                container.innerHTML = html;
             } catch (error) {
                 console.error('Error loading resorts:', error);
                 container.innerHTML = `<div class="error-message">❌ 리조트를 불러오는데 실패했습니다: ${error.message}</div>`;
             }
+        }
+        
+        function editResort(resortId) {
+            const resorts = JSON.parse(localStorage.getItem('resorts') || '[]');
+            const resort = resorts.find(r => r.id === resortId);
+            
+            if (resort) {
+                showResortForm();
+                document.getElementById('resortId').value = resort.id;
+                document.getElementById('resortDestination').value = resort.destination;
+                loadRegionsByDestination();
+                setTimeout(() => {
+                    document.getElementById('resortRegion').value = resort.region;
+                }, 100);
+                document.getElementById('resortNameKo').value = resort.name_ko || '';
+                document.getElementById('resortNameEn').value = resort.name_en || '';
+                document.getElementById('resortDescription').value = resort.description || '';
+                document.getElementById('resortIsActive').checked = resort.is_active !== false;
+                
+                if (resort.image_url) {
+                    document.getElementById('mainImagePreview').innerHTML = 
+                        `<img src="${resort.image_url}" style="max-width: 200px; max-height: 200px; border-radius: 8px;">`;
+                }
+            }
+        }
+        
+        function deleteResort(resortId) {
+            if (!confirm('정말로 이 리조트를 삭제하시겠습니까?')) {
+                return;
+            }
+            
+            const resorts = JSON.parse(localStorage.getItem('resorts') || '[]');
+            const filtered = resorts.filter(r => r.id !== resortId);
+            localStorage.setItem('resorts', JSON.stringify(filtered));
+            
+            alert('✅ 리조트가 삭제되었습니다.');
+            loadDestinationsAndRegions();
         }
         
         console.log('=== Script initialized ===');
