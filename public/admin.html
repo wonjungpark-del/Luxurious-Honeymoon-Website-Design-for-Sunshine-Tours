@@ -127,7 +127,26 @@
                     <label class="form-label">비밀번호</label>
                     <input type="password" id="passwordInput" class="form-input" placeholder="비밀번호를 입력하세요" required>
                 </div>
-                <button type="button" class="btn btn-primary" onclick="handleLogin()">로그인</button>
+                <button type="button" class="btn btn-primary" onclick="
+                    try {
+                        console.log('Button clicked - inline handler');
+                        const pwd = document.getElementById('passwordInput').value;
+                        console.log('Password value:', pwd);
+                        if (pwd === 'sun2026@') {
+                            console.log('Password matches!');
+                            document.getElementById('loginScreen').style.display = 'none';
+                            document.getElementById('adminPanel').style.display = 'block';
+                            alert('로그인 성공!');
+                        } else {
+                            console.log('Password does not match');
+                            document.getElementById('loginError').classList.remove('hidden');
+                            alert('비밀번호가 틀렸습니다: ' + pwd);
+                        }
+                    } catch(e) {
+                        alert('오류 발생: ' + e.message);
+                        console.error('Error:', e);
+                    }
+                ">로그인</button>
             </form>
         </div>
     </div>
