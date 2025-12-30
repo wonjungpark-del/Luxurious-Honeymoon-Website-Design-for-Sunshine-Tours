@@ -288,6 +288,14 @@
                                 <input type="date" class="form-control" id="reviewDate" required>
                             </div>
                             <div class="form-row">
+                            <div class="form-row">
+                                <input type="text" class="form-control" id="reviewTitle" placeholder="후기 제목" required>
+                            </div>
+                            <div class="form-row">
+                                <input type="file" class="form-control" id="reviewImages" multiple accept="image/*">
+                                <small style="grid-column: 1 / -1; color: #666; font-size: 0.85rem;">📷 최대 5장까지 업로드 가능 (각 5MB 이하)</small>
+                            </div>
+                            <div id="imagePreview" style="grid-column: 1 / -1; display: flex; gap: 10px; flex-wrap: wrap; margin-top: 10px;"></div>
                                 <textarea class="form-control" id="reviewContent" placeholder="후기 내용" rows="4" style="grid-column: 1 / -1;" required></textarea>
                             </div>
                             <div style="margin-top: 1rem;">
@@ -418,12 +426,34 @@
                 const inquiriesData = await apiCall('/api/inquiries');
                 inquiries = inquiriesData || [];
                 
+                // Load regions from API (for resort management)
+                try {
+                    const regionsData = await apiCall('/api/regions');
+                    console.log('Loaded regions:', regionsData?.length || 0);
+                    // Store regions for later use
+                    window.regionsData = regionsData || [];
+                } catch (error) {
+                    console.error('Failed to load regions:', error);
+                    window.regionsData = [];
+                }
+                
+                // Load resorts from API
+                try {
+                    const resortsData = await apiCall('/api/resorts');
+                    console.log('Loaded resorts:', resortsData?.length || 0);
+                    // Store resorts for later use
+                    window.resortsData = resortsData || [];
+                } catch (error) {
+                    console.error('Failed to load resorts:', error);
+                    window.resortsData = [];
+                }
+                
                 // Update notification counts
                 notificationSettings.lastReviewCount = reviews.length;
                 notificationSettings.lastInquiryCount = inquiries.length;
                 localStorage.setItem('notificationSettings', JSON.stringify(notificationSettings));
                 
-                console.log('Loaded reviews:', reviews.length, 'inquiries:', inquiries.length);
+                console.log('Loaded reviews:', reviews.length, 'inquiries:', inquiries.length, 'regions:', window.regionsData?.length || 0, 'resorts:', window.resortsData?.length || 0);
             } catch (error) {
                 console.error('Failed to load data:', error);
             }
@@ -854,19 +884,74 @@
             document.getElementById('reviewDataForm').reset();
         }
 
+        // Image preview functionality
+        document.getElementById('reviewImages')?.addEventListener('change', function(e) {
+            const preview = document.getElementById('imagePreview');
+            preview.innerHTML = '';
+            
+            const files = Array.from(e.target.files);
+            files.forEach((file, index) => {
+                if (file.size > 5 * 1024 * 1024) {
+                    alert(`${file.name}은(는) 5MB를 초과합니다.`);
+                    return;
+                }
+                
+                const reader = new FileReader();
+                reader.onload = function(event) {
+                    const img = document.createElement('img');
+                    img.src = event.target.result;
+                    img.style.width = '100px';
+                    img.style.height = '100px';
+                    img.style.objectFit = 'cover';
+                    img.style.borderRadius = '8px';
+                    img.style.border = '2px solid #667eea';
+                    preview.appendChild(img);
+                };
+                reader.readAsDataURL(file);
+            });
+        });
+
         document.getElementById('reviewDataForm').addEventListener('submit', async function(e) {
             e.preventDefault();
+            
+            // Upload images first if any
+            let imageUrls = [];
+            const imageFiles = document.getElementById('reviewImages')?.files;
+            
+            if (imageFiles && imageFiles.length > 0) {
+                try {
+                    const formData = new FormData();
+                    for (let file of imageFiles) {
+                        formData.append('files', file);
+                    }
+                    
+                    const uploadResponse = await fetch('/api/upload', {
+                        method: 'POST',
+                        body: formData
+                    });
+                    
+                    if (uploadResponse.ok) {
+                        const uploadResult = await uploadResponse.json();
+                        imageUrls = uploadResult.urls || [];
+                    }
+                } catch (error) {
+                    console.error('Image upload failed:', error);
+                    alert('이미지 업로드에 실패했습니다. 계속 진행합니다.');
+                }
+            }
             
             const reviewData = {
                 id: editingReviewId || undefined,
                 destination: '기타', // 목적지는 나중에 선택 가능하도록
-                title: document.getElementById('reviewResort').value || '리조트 후기',
+                title: document.getElementById('reviewTitle')?.value || document.getElementById('reviewResort').value || '리조트 후기',
                 author_name: document.getElementById('reviewAuthor').value,
                 content: document.getElementById('reviewContent').value,
                 rating: parseInt(document.getElementById('reviewRating').value),
                 travel_date: document.getElementById('reviewDate').value,
                 status: 'approved',
-                is_featured: false
+                is_featured: false,
+                image_url: imageUrls[0] || null,
+                gallery_images: imageUrls.length > 1 ? JSON.stringify(imageUrls) : null
             };
             
             try {
@@ -891,6 +976,7 @@
                 alert('후기가 저장되었습니다!');
             } catch (error) {
                 console.error('Failed to save review:', error);
+                alert('후기 저장에 실패했습니다: ' + error.message);
             }
         });
 
@@ -904,6 +990,38 @@
             }
             
             reviews.forEach(review => {
+                const stars = '⭐'.repeat(review.rating);
+                const images = review.gallery_images ? JSON.parse(review.gallery_images) : (review.image_url ? [review.image_url] : []);
+                const imageGallery = images.length > 0 ? `
+                    <div style="display: flex; gap: 5px; margin-top: 10px; flex-wrap: wrap;">
+                        ${images.map(img => `<img src="${img}" style="width: 60px; height: 60px; object-fit: cover; border-radius: 4px;">`).join('')}
+                    </div>
+                ` : '';
+                
+                list.innerHTML += `
+                    <div class="resort-card">
+                        <h3>${review.title || '제목 없음'}</h3>
+                        <p style="color: #e67e22; font-weight: 600;">${stars} (${review.rating}점)</p>
+                        <p><strong>작성자:</strong> ${review.author_name}</p>
+                        <p><strong>여행일:</strong> ${review.travel_date || '미정'}</p>
+                        <p style="margin-top: 10px; color: #555; white-space: pre-wrap;">${review.content}</p>
+                        ${imageGallery}
+                        <div style="margin-top: 15px;">
+                            <label class="toggle-switch">
+                                <input type="checkbox" ${review.status === 'approved' ? 'checked' : ''} 
+                                    onchange="toggleReviewStatus('${review.id}', this.checked)">
+                                <span class="toggle-slider"></span>
+                            </label>
+                            <span style="margin-left: 10px;">${review.status === 'approved' ? '승인됨' : '대기중'}</span>
+                        </div>
+                        <div class="card-actions">
+                            <button class="btn-edit" onclick="editReview('${review.id}')">수정</button>
+                            <button class="btn-delete" onclick="deleteReview('${review.id}')">삭제</button>
+                        </div>
+                    </div>
+                `;
+            });
+        }
                 const stars = '⭐'.repeat(review.rating || 5);
                 const item = document.createElement('div');
                 item.className = 'resort-item';
