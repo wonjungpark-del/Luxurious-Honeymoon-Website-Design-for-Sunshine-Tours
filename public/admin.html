@@ -4,1643 +4,1289 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>관리자 페이지 - 선샤인투어</title>
-    
-    <!-- Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Noto+Sans+KR:wght@400;600;700&display=swap" rel="stylesheet">
-    <link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css" rel="stylesheet">
-    
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;600;700&display=swap" rel="stylesheet">
     <style>
-        * {
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Noto Sans KR', sans-serif; background: #f5f7fa; }
+        
+        .login-container { 
+            min-height: 100vh; 
+            display: flex; 
+            align-items: center; 
+            justify-content: center; 
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); 
+        }
+        .login-box { 
+            background: white; 
+            padding: 3rem; 
+            border-radius: 16px; 
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3); 
+            width: 100%; 
+            max-width: 400px; 
+        }
+        .login-title { text-align: center; margin-bottom: 2rem; color: #2c3e50; font-size: 1.8rem; }
+        .form-group { margin-bottom: 1.5rem; }
+        .form-label { display: block; margin-bottom: 0.5rem; font-weight: 600; color: #34495e; }
+        .form-input { 
+            width: 100%; 
+            padding: 0.75rem 1rem; 
+            border: 2px solid #e0e6ed; 
+            border-radius: 8px; 
+            font-size: 1rem; 
+        }
+        .btn { 
+            width: 100%; 
+            padding: 0.75rem; 
+            border: none; 
+            border-radius: 8px; 
+            font-size: 1rem; 
+            font-weight: 600; 
+            cursor: pointer; 
+            background: #667eea; 
+            color: white; 
+        }
+        .btn:hover { background: #5568d3; }
+        .error { 
+            color: #e74c3c; 
+            text-align: center; 
+            margin-top: 1rem; 
+            display: none; 
+        }
+        .error.show { display: block; }
+        .hidden { display: none !important; }
+        
+        .admin-dashboard { 
+            max-width: 1400px; 
             margin: 0;
             padding: 0;
-            box-sizing: border-box;
-        }
-        
-        body {
-            font-family: 'Noto Sans KR', sans-serif;
-            background: #f5f7fa;
-            color: #2c3e50;
-        }
-        
-        /* Login Screen */
-        .login-container {
             min-height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background: #f5f7fa; 
         }
-        
-        .login-box {
-            background: white;
-            padding: 3rem;
-            border-radius: 16px;
-            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
-            width: 100%;
-            max-width: 400px;
-        }
-        
-        .login-title {
-            text-align: center;
-            margin-bottom: 2rem;
-            color: #2c3e50;
-        }
-        
-        .form-group {
-            margin-bottom: 1.5rem;
-        }
-        
-        .form-label {
-            display: block;
-            margin-bottom: 0.5rem;
-            font-weight: 600;
-            color: #34495e;
-        }
-        
-        .form-input {
-            width: 100%;
-            padding: 0.75rem 1rem;
-            border: 2px solid #e0e6ed;
-            border-radius: 8px;
-            font-size: 1rem;
-            transition: all 0.3s;
-        }
-        
-        .form-input:focus {
-            outline: none;
-            border-color: #667eea;
-            box-shadow: 0 0 0 3px rgba(102,126,234,0.1);
-        }
-        
-        .btn {
-            padding: 0.75rem 1.5rem;
-            border: none;
-            border-radius: 8px;
-            font-size: 1rem;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.3s;
-            text-decoration: none;
-            display: inline-block;
-        }
-        
-        .btn-primary {
-            background: #667eea;
-            color: white;
-            width: 100%;
-        }
-        
-        .btn-primary:hover {
-            background: #5568d3;
-            transform: translateY(-2px);
-            box-shadow: 0 4px 12px rgba(102,126,234,0.4);
-        }
-        
-        .btn-success {
-            background: #38c172;
-            color: white;
-        }
-        
-        .btn-success:hover {
-            background: #2fa360;
-        }
-        
-        .btn-danger {
-            background: #e74c3c;
-            color: white;
-        }
-        
-        .btn-danger:hover {
-            background: #c0392b;
-        }
-        
-        .btn-secondary {
-            background: #95a5a6;
-            color: white;
-        }
-        
-        .btn-secondary:hover {
-            background: #7f8c8d;
-        }
-        
-        /* Admin Dashboard */
-        .hidden {
-            display: none !important;
-        }
-        
         .admin-header {
             background: white;
             padding: 1.5rem 2rem;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
             display: flex;
             justify-content: space-between;
             align-items: center;
+            margin-bottom: 0;
         }
-        
-        .admin-title {
+        .admin-header h1 {
             font-size: 1.5rem;
-            font-weight: 700;
             color: #2c3e50;
         }
-        
-        .admin-body {
-            display: flex;
-            min-height: calc(100vh - 80px);
-        }
-        
-        .sidebar {
-            width: 250px;
-            background: white;
-            box-shadow: 2px 0 8px rgba(0,0,0,0.1);
-            padding: 2rem 0;
-        }
-        
-        .sidebar-menu {
-            list-style: none;
-        }
-        
-        .sidebar-menu li {
-            padding: 1rem 2rem;
-            cursor: pointer;
-            transition: all 0.3s;
-            border-left: 4px solid transparent;
-        }
-        
-        .sidebar-menu li:hover {
-            background: #f8f9fa;
-            border-left-color: #667eea;
-        }
-        
-        .sidebar-menu li.active {
-            background: #f8f9fa;
-            border-left-color: #667eea;
-            font-weight: 600;
-            color: #667eea;
-        }
-        
-        .main-content {
-            flex: 1;
+        .admin-content {
             padding: 2rem;
         }
-        
-        .content-section {
-            display: none;
-        }
-        
-        .content-section.active {
-            display: block;
-        }
-        
-        .card {
-            background: white;
-            border-radius: 12px;
-            padding: 2rem;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
             margin-bottom: 2rem;
         }
-        
-        .card-title {
-            font-size: 1.5rem;
-            font-weight: 700;
-            margin-bottom: 1.5rem;
-            color: #2c3e50;
-        }
-        
-        table {
-            width: 100%;
-            border-collapse: collapse;
-        }
-        
-        th, td {
-            padding: 1rem;
-            text-align: left;
-            border-bottom: 1px solid #e0e6ed;
-        }
-        
-        th {
-            background: #f8f9fa;
-            font-weight: 600;
-            color: #34495e;
-        }
-        
-        tr:hover {
-            background: #f8f9fa;
-        }
-        
-        .badge {
-            padding: 0.25rem 0.75rem;
-            border-radius: 12px;
-            font-size: 0.875rem;
-            font-weight: 600;
-        }
-        
-        .badge-success {
-            background: #d1f2e5;
-            color: #38c172;
-        }
-        
-        .badge-warning {
-            background: #fff3cd;
-            color: #f39c12;
-        }
-        
-        .badge-danger {
-            background: #f8d7da;
-            color: #e74c3c;
-        }
-        
-        .action-buttons {
-            display: flex;
-            gap: 0.5rem;
-        }
-        
-        .btn-sm {
-            padding: 0.5rem 1rem;
-            font-size: 0.875rem;
-        }
-        
-        /* Modal */
-        .modal {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0,0,0,0.5);
-            z-index: 1000;
-            align-items: center;
-            justify-content: center;
-        }
-        
-        .modal.active {
-            display: flex;
-        }
-        
-        .modal-content {
+        .stat-card {
             background: white;
-            border-radius: 12px;
-            padding: 2rem;
-            max-width: 600px;
-            width: 90%;
-            max-height: 80vh;
-            overflow-y: auto;
+            padding: 1.5rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
         }
-        
-        .modal-header {
+        .stat-card h3 {
+            color: #7f8c8d;
+            font-size: 0.9rem;
+            margin-bottom: 0.5rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        .stat-card .number {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: #667eea;
+        }
+        .tab-container {
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            overflow: hidden;
+        }
+        .tab-buttons {
+            display: flex;
+            background: #f8f9fa;
+            border-bottom: 2px solid #e9ecef;
+        }
+        .tab-btn {
+            flex: 1;
+            padding: 1rem 1.5rem;
+            border: none;
+            background: transparent;
+            cursor: pointer;
+            font-size: 1rem;
+            font-weight: 600;
+            color: #7f8c8d;
+            transition: all 0.3s;
+            border-bottom: 3px solid transparent;
+        }
+        .tab-btn:hover {
+            background: rgba(102, 126, 234, 0.1);
+            color: #667eea;
+        }
+        .tab-btn.active {
+            color: #667eea;
+            border-bottom-color: #667eea;
+            background: white;
+        }
+        .tab-content {
+            padding: 2rem;
+        }
+        .content-header {
             display: flex;
             justify-content: space-between;
             align-items: center;
             margin-bottom: 1.5rem;
         }
-        
-        .modal-title {
+        .content-header h2 {
             font-size: 1.5rem;
-            font-weight: 700;
-        }
-        
-        .close-modal {
-            cursor: pointer;
-            font-size: 1.5rem;
-            color: #95a5a6;
-        }
-        
-        .close-modal:hover {
             color: #2c3e50;
         }
-        
-        textarea {
-            width: 100%;
-            padding: 0.75rem 1rem;
-            border: 2px solid #e0e6ed;
-            border-radius: 8px;
-            font-size: 1rem;
-            font-family: inherit;
-            resize: vertical;
-            min-height: 100px;
+        .btn-small {
+            padding: 0.5rem 1rem;
+            font-size: 0.9rem;
+            width: auto;
         }
-        
-        select {
-            width: 100%;
-            padding: 0.75rem 1rem;
-            border: 2px solid #e0e6ed;
-            border-radius: 8px;
-            font-size: 1rem;
+        .item-card {
             background: white;
+            border: 1px solid #e9ecef;
+            border-radius: 8px;
+            padding: 1.5rem;
+            margin-bottom: 1rem;
+            transition: all 0.3s;
         }
-        
-        .loading {
-            text-align: center;
-            padding: 2rem;
-            color: #95a5a6;
+        .item-card:hover {
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            transform: translateY(-2px);
         }
-        
+        .item-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: start;
+            margin-bottom: 1rem;
+        }
+        .item-title {
+            font-size: 1.2rem;
+            color: #2c3e50;
+            margin: 0;
+        }
+        .badge {
+            padding: 0.35rem 0.75rem;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+        }
+        .badge-success { background: #d4edda; color: #155724; }
+        .badge-warning { background: #fff3cd; color: #856404; }
+        .badge-danger { background: #f8d7da; color: #721c24; }
+        .badge-info { background: #d1ecf1; color: #0c5460; }
+        .item-meta {
+            color: #7f8c8d;
+            font-size: 0.9rem;
+            margin: 0.5rem 0;
+        }
+        .item-content {
+            color: #495057;
+            line-height: 1.6;
+            margin: 1rem 0;
+        }
+        .reply-box {
+            background: #e8f5e9;
+            border-left: 4px solid #4caf50;
+            padding: 1rem;
+            margin-top: 1rem;
+            border-radius: 4px;
+        }
+        .reply-box strong {
+            color: #2e7d32;
+        }
         .empty-state {
             text-align: center;
-            padding: 3rem;
-            color: #95a5a6;
+            padding: 3rem 2rem;
+            color: #7f8c8d;
         }
-        
         .empty-state i {
             font-size: 3rem;
             margin-bottom: 1rem;
+            opacity: 0.5;
         }
-        
-        /* Inquiry Detail Modal Styles */
-        .inquiry-detail {
-            padding: 1.5rem 0;
+        .loading {
+            text-align: center;
+            padding: 2rem;
+            color: #7f8c8d;
         }
-        
-        .detail-section {
-            margin-bottom: 2rem;
-            padding: 1.5rem;
-            background: #f8f9fa;
+        .error-message {
+            background: #f8d7da;
+            border: 1px solid #f5c6cb;
+            color: #721c24;
+            padding: 1rem;
             border-radius: 8px;
+            margin: 1rem 0;
         }
-        
-        .detail-section h3 {
-            margin: 0 0 1rem 0;
+        .image-thumbnail {
+            width: 100%;
+            max-width: 200px;
+            height: auto;
+            border-radius: 8px;
+            margin-top: 1rem;
+            cursor: pointer;
+            transition: transform 0.3s;
+        }
+        .image-thumbnail:hover {
+            transform: scale(1.05);
+        }
+        .stars {
+            color: #ffc107;
             font-size: 1.1rem;
-            color: #2c3e50;
-            padding-bottom: 0.5rem;
-            border-bottom: 2px solid #667eea;
-        }
-        
-        .detail-row {
-            display: flex;
-            padding: 0.75rem 0;
-            border-bottom: 1px solid #e0e6ed;
-        }
-        
-        .detail-row:last-child {
-            border-bottom: none;
-        }
-        
-        .detail-row label {
-            min-width: 120px;
-            font-weight: 600;
-            color: #34495e;
-        }
-        
-        .detail-row span {
-            flex: 1;
-            color: #2c3e50;
-        }
-        
-        .message-row {
-            flex-direction: column;
-        }
-        
-        .message-row span {
-            margin-top: 0.5rem;
-            white-space: pre-wrap;
-            line-height: 1.6;
         }
     </style>
 </head>
 <body>
-    <!-- Login Screen -->
-    <div id="loginScreen" class="login-container">
-        <div class="login-box">
-            <h1 class="login-title">
-                <i class="fas fa-user-shield"></i><br>
-                관리자 로그인
-            </h1>
-            <form id="loginForm">
-                <div class="form-group">
-                    <label class="form-label">비밀번호</label>
-                    <input type="password" id="password" class="form-input" placeholder="비밀번호를 입력하세요" required>
-                </div>
-                <button type="submit" class="btn btn-primary">로그인</button>
-            </form>
-        </div>
-    </div>
-
     <!-- Admin Dashboard -->
-    <div id="adminDashboard" class="hidden">
-        <header class="admin-header">
-            <h1 class="admin-title"><i class="fas fa-sun"></i> 선샤인투어 관리자</h1>
-            <button onclick="logout()" class="btn btn-secondary">로그아웃</button>
-        </header>
+    <div id="adminDashboard" class="admin-dashboard">
+        <!-- Header -->
+        <div class="admin-header">
+            <h1>🌅 선샤인투어 관리자</h1>
+            <button onclick="logout()" class="btn btn-small">로그아웃</button>
+        </div>
         
-        <div class="admin-body">
-            <aside class="sidebar">
-                <ul class="sidebar-menu">
-                    <li class="active" data-section="regions">
-                        <i class="fas fa-map-marked-alt"></i> 지역 관리
-                    </li>
-                    <li data-section="resorts">
-                        <i class="fas fa-hotel"></i> 리조트 관리
-                    </li>
-                    <li data-section="reviews">
-                        <i class="fas fa-star"></i> 후기 관리
-                    </li>
-                    <li data-section="inquiries">
-                        <i class="fas fa-envelope"></i> 문의 관리
-                    </li>
-                </ul>
-            </aside>
+        <!-- Content -->
+        <div class="admin-content">
+            <!-- Statistics -->
+            <div class="stats-grid" id="statsGrid">
+                <div class="stat-card">
+                    <h3>📝 총 후기</h3>
+                    <div class="number" id="totalReviews">-</div>
+                </div>
+                <div class="stat-card">
+                    <h3>💬 총 문의</h3>
+                    <div class="number" id="totalInquiries">-</div>
+                </div>
+                <div class="stat-card">
+                    <h3>🏨 총 리조트</h3>
+                    <div class="number" id="totalResorts">-</div>
+                </div>
+                <div class="stat-card">
+                    <h3>⏰ 답변 대기</h3>
+                    <div class="number" id="pendingInquiries">-</div>
+                </div>
+            </div>
             
-            <main class="main-content">
-                <!-- Regions Section -->
-                <section id="regions" class="content-section active">
-                    <div class="card">
-                        <div class="card-title">
-                            지역 관리
-                            <button onclick="openRegionModal()" class="btn btn-success" style="float: right;">
-                                <i class="fas fa-plus"></i> 지역 추가
-                            </button>
-                        </div>
-                        <div id="regionsTable"></div>
-                    </div>
-                </section>
-
-                <!-- Resorts Section -->
-                <section id="resorts" class="content-section">
-                    <div class="card">
-                        <div class="card-title">
-                            리조트 관리
-                            <button onclick="openResortModal()" class="btn btn-success" style="float: right;">
-                                <i class="fas fa-plus"></i> 리조트 추가
-                            </button>
-                        </div>
-                        
-                        <!-- Region Filter -->
-                        <div style="margin-bottom: 1.5rem; padding: 1rem; background: #f8f9fa; border-radius: 8px; display: flex; align-items: center; gap: 1rem;">
-                            <label style="font-weight: 600; color: #2c3e50; white-space: nowrap;">
-                                <i class="fas fa-filter"></i> 지역별 필터:
-                            </label>
-                            <select id="resortRegionFilter" class="form-input" style="max-width: 300px;" onchange="filterResortsByRegion()">
-                                <option value="">전체 지역</option>
-                            </select>
-                            <span id="resortCountBadge" style="margin-left: auto; padding: 0.5rem 1rem; background: #667eea; color: white; border-radius: 20px; font-weight: 600; font-size: 0.9rem;">
-                                총 0개
-                            </span>
-                        </div>
-                        
-                        <div id="resortsTable"></div>
-                    </div>
-                </section>
-
-                <!-- Reviews Section -->
-                <section id="reviews" class="content-section">
-                    <div class="card">
-                        <div class="card-title">후기 관리</div>
-                        <div id="reviewsTable"></div>
-                    </div>
-                </section>
-
-                <!-- Inquiries Section -->
-                <section id="inquiries" class="content-section">
-                    <div class="card">
-                        <div class="card-title">문의 관리</div>
-                        <div id="inquiriesTable"></div>
-                    </div>
-                </section>
-            </main>
-        </div>
-    </div>
-
-    <!-- Region Modal -->
-    <div id="regionModal" class="modal">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h2 class="modal-title" id="regionModalTitle">지역 추가</h2>
-                <span class="close-modal" onclick="closeRegionModal()">×</span>
-            </div>
-            <form id="regionForm">
-                <input type="hidden" id="regionId">
-                <div class="form-group">
-                    <label class="form-label">지역 코드 *</label>
-                    <input type="text" id="regionCode" class="form-input" required>
-                </div>
-                <div class="form-group">
-                    <label class="form-label">국가 *</label>
-                    <input type="text" id="regionCountry" class="form-input" required>
-                </div>
-                <div class="form-group">
-                    <label class="form-label">한국어 이름 *</label>
-                    <input type="text" id="regionNameKo" class="form-input" required>
-                </div>
-                <div class="form-group">
-                    <label class="form-label">영어 이름 *</label>
-                    <input type="text" id="regionNameEn" class="form-input" required>
-                </div>
-                <div class="form-group">
-                    <label class="form-label">설명</label>
-                    <textarea id="regionDescription" class="form-input"></textarea>
-                </div>
-                <div class="form-group">
-                    <label class="form-label">이미지 URL</label>
-                    <input type="text" id="regionImageUrl" class="form-input">
-                </div>
-                <div class="form-group">
-                    <label class="form-label">표시 순서</label>
-                    <input type="number" id="regionDisplayOrder" class="form-input" value="0">
-                </div>
-                <div class="form-group">
-                    <label class="form-label">활성화</label>
-                    <select id="regionIsActive" class="form-input">
-                        <option value="true">활성화</option>
-                        <option value="false">비활성화</option>
-                    </select>
-                </div>
-                <div class="action-buttons">
-                    <button type="submit" class="btn btn-primary">저장</button>
-                    <button type="button" onclick="closeRegionModal()" class="btn btn-secondary">취소</button>
-                </div>
-            </form>
-        </div>
-    </div>
-
-    <!-- Resort Modal -->
-    <div id="resortModal" class="modal">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h2 class="modal-title" id="resortModalTitle">리조트 추가</h2>
-                <span class="close-modal" onclick="closeResortModal()">×</span>
-            </div>
-            <form id="resortForm">
-                <input type="hidden" id="resortId">
-                <div class="form-group">
-                    <label class="form-label">지역 선택 *</label>
-                    <select id="resortRegionId" class="form-input" required></select>
-                </div>
-                <div class="form-group">
-                    <label class="form-label">한국어 이름 *</label>
-                    <input type="text" id="resortNameKo" class="form-input" required>
-                </div>
-                <div class="form-group">
-                    <label class="form-label">영어 이름 *</label>
-                    <input type="text" id="resortNameEn" class="form-input" required>
-                </div>
-                <div class="form-group">
-                    <label class="form-label">카테고리</label>
-                    <input type="text" id="resortCategory" class="form-input" placeholder="예: 럭셔리, 부티크">
-                </div>
-                <div class="form-group">
-                    <label class="form-label">설명</label>
-                    <textarea id="resortDescription" class="form-input"></textarea>
-                </div>
-                <div class="form-group">
-                    <label class="form-label">메인 이미지</label>
-                    <input type="file" id="resortMainImageFile" class="form-input" accept="image/*">
-                    <input type="text" id="resortMainImageUrl" class="form-input" placeholder="이미지 URL (업로드 후 자동 입력)" readonly style="margin-top: 8px;">
-                    <button type="button" onclick="uploadMainImage()" class="btn btn-secondary" style="margin-top: 8px;">
-                        📤 메인 이미지 업로드
-                    </button>
-                </div>
-                <div class="form-group">
-                    <label class="form-label">갤러리 이미지 (최대 6개)</label>
-                    <div id="galleryUploadContainer">
-                        <div style="margin-bottom: 12px;">
-                            <input type="file" id="galleryImageFile1" class="form-input" accept="image/*" style="margin-bottom: 4px;">
-                            <input type="text" id="resortGalleryImage1" class="form-input" placeholder="갤러리 1 URL" readonly>
-                            <button type="button" onclick="uploadGalleryImage(1)" class="btn btn-secondary" style="margin-top: 4px; font-size: 12px;">
-                                📤 업로드
-                            </button>
-                        </div>
-                        <div style="margin-bottom: 12px;">
-                            <input type="file" id="galleryImageFile2" class="form-input" accept="image/*" style="margin-bottom: 4px;">
-                            <input type="text" id="resortGalleryImage2" class="form-input" placeholder="갤러리 2 URL" readonly>
-                            <button type="button" onclick="uploadGalleryImage(2)" class="btn btn-secondary" style="margin-top: 4px; font-size: 12px;">
-                                📤 업로드
-                            </button>
-                        </div>
-                        <div style="margin-bottom: 12px;">
-                            <input type="file" id="galleryImageFile3" class="form-input" accept="image/*" style="margin-bottom: 4px;">
-                            <input type="text" id="resortGalleryImage3" class="form-input" placeholder="갤러리 3 URL" readonly>
-                            <button type="button" onclick="uploadGalleryImage(3)" class="btn btn-secondary" style="margin-top: 4px; font-size: 12px;">
-                                📤 업로드
-                            </button>
-                        </div>
-                        <div style="margin-bottom: 12px;">
-                            <input type="file" id="galleryImageFile4" class="form-input" accept="image/*" style="margin-bottom: 4px;">
-                            <input type="text" id="resortGalleryImage4" class="form-input" placeholder="갤러리 4 URL" readonly>
-                            <button type="button" onclick="uploadGalleryImage(4)" class="btn btn-secondary" style="margin-top: 4px; font-size: 12px;">
-                                📤 업로드
-                            </button>
-                        </div>
-                        <div style="margin-bottom: 12px;">
-                            <input type="file" id="galleryImageFile5" class="form-input" accept="image/*" style="margin-bottom: 4px;">
-                            <input type="text" id="resortGalleryImage5" class="form-input" placeholder="갤러리 5 URL" readonly>
-                            <button type="button" onclick="uploadGalleryImage(5)" class="btn btn-secondary" style="margin-top: 4px; font-size: 12px;">
-                                📤 업로드
-                            </button>
-                        </div>
-                        <div style="margin-bottom: 12px;">
-                            <input type="file" id="galleryImageFile6" class="form-input" accept="image/*" style="margin-bottom: 4px;">
-                            <input type="text" id="resortGalleryImage6" class="form-input" placeholder="갤러리 6 URL" readonly>
-                            <button type="button" onclick="uploadGalleryImage(6)" class="btn btn-secondary" style="margin-top: 4px; font-size: 12px;">
-                                📤 업로드
-                            </button>
-                        </div>
-                    </div>
-                    <small style="color: #95a5a6;">각 갤러리 이미지를 선택하고 업로드 버튼을 클릭하세요</small>
-                </div>
-                <div class="form-group">
-                    <label class="form-label">특징 (줄바꿈으로 구분)</label>
-                    <textarea id="resortFeatures" class="form-input" rows="4" placeholder="프라이빗 비치&#10;인피니티 풀&#10;스파&#10;한국인 가이드"></textarea>
-                    <small style="color: #95a5a6;">각 특징을 줄바꿈으로 구분하여 입력하세요</small>
-                </div>
-                <div class="form-group">
-                    <label class="form-label">표시 순서</label>
-                    <input type="number" id="resortDisplayOrder" class="form-input" value="0">
-                </div>
-                <div class="form-group">
-                    <label class="form-label">활성화</label>
-                    <select id="resortIsActive" class="form-input">
-                        <option value="true">활성화</option>
-                        <option value="false">비활성화</option>
-                    </select>
-                </div>
-                <div class="action-buttons">
-                    <button type="submit" class="btn btn-primary">저장</button>
-                    <button type="button" onclick="closeResortModal()" class="btn btn-secondary">취소</button>
-                </div>
-            </form>
-        </div>
-    </div>
-
-    <!-- Inquiry Detail Modal -->
-    <div id="inquiryDetailModal" class="modal">
-        <div class="modal-content" style="max-width: 800px;">
-            <h2>문의 상세 정보</h2>
-            <div class="inquiry-detail">
-                <div class="detail-section">
-                    <h3>고객 정보</h3>
-                    <div class="detail-row">
-                        <label>이름:</label>
-                        <span id="detailName"></span>
-                    </div>
-                    <div class="detail-row">
-                        <label>이메일:</label>
-                        <span id="detailEmail"></span>
-                    </div>
-                    <div class="detail-row">
-                        <label>전화번호:</label>
-                        <span id="detailPhone"></span>
-                    </div>
+            <!-- Tabs Container -->
+            <div class="tab-container">
+                <div class="tab-buttons">
+                    <button class="tab-btn active" onclick="showTab('reviews')">📝 후기 관리</button>
+                    <button class="tab-btn" onclick="showTab('inquiries')">💬 문의 관리</button>
+                    <button class="tab-btn" onclick="showTab('resorts')">🏨 리조트 관리</button>
                 </div>
                 
-                <div class="detail-section">
-                    <h3>여행 정보</h3>
-                    <div class="detail-row">
-                        <label>여행지:</label>
-                        <span id="detailDestination"></span>
+                <!-- Reviews Tab -->
+                <div id="reviewsTab" class="tab-content">
+                    <div class="content-header">
+                        <h2>후기 관리</h2>
+                        <div>
+                            <button onclick="showReviewForm()" class="btn btn-small" style="background: #27ae60; margin-right: 10px;">➕ 새 후기 추가</button>
+                            <button onclick="loadReviews()" class="btn btn-small">🔄 새로고침</button>
+                        </div>
                     </div>
-                    <div class="detail-row">
-                        <label>예산:</label>
-                        <span id="detailBudget"></span>
+                    
+                    <!-- Review Form Modal -->
+                    <div id="reviewFormModal" class="hidden" style="background: white; padding: 2rem; border-radius: 8px; margin-bottom: 2rem; box-shadow: 0 2px 8px rgba(0,0,0,0.1);">
+                        <h3 style="margin-bottom: 1.5rem;">후기 정보 입력</h3>
+                        <form id="reviewForm" onsubmit="saveReview(event)">
+                            <input type="hidden" id="reviewId" value="">
+                            
+                            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 1rem;">
+                                <div class="form-group">
+                                    <label class="form-label">목적지 *</label>
+                                    <select id="reviewDestination" class="form-input" required>
+                                        <option value="">-- 목적지 선택 --</option>
+                                        <option value="태국">🇹🇭 태국</option>
+                                        <option value="인도네시아">🇮🇩 인도네시아</option>
+                                        <option value="하와이">🌺 하와이</option>
+                                        <option value="칸쿤">🇲🇽 칸쿤</option>
+                                        <option value="필리핀">🇵🇭 필리핀</option>
+                                        <option value="몰디브">🇲🇻 몰디브</option>
+                                        <option value="남태평양">🌊 남태평양</option>
+                                        <option value="다낭">🇻🇳 다낭</option>
+                                        <option value="모리셔스">🇲🇺 모리셔스</option>
+                                    </select>
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label class="form-label">평점 *</label>
+                                    <select id="reviewRating" class="form-input" required>
+                                        <option value="">-- 평점 선택 --</option>
+                                        <option value="5">⭐⭐⭐⭐⭐ (5점)</option>
+                                        <option value="4">⭐⭐⭐⭐ (4점)</option>
+                                        <option value="3">⭐⭐⭐ (3점)</option>
+                                        <option value="2">⭐⭐ (2점)</option>
+                                        <option value="1">⭐ (1점)</option>
+                                    </select>
+                                </div>
+                            </div>
+                            
+                            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 1rem;">
+                                <div class="form-group">
+                                    <label class="form-label">작성자 이름 *</label>
+                                    <input type="text" id="reviewAuthor" class="form-input" placeholder="예: 홍길동" required>
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label class="form-label">여행 날짜</label>
+                                    <input type="date" id="reviewTravelDate" class="form-input">
+                                </div>
+                            </div>
+                            
+                            <div class="form-group" style="margin-bottom: 1rem;">
+                                <label class="form-label">제목 *</label>
+                                <input type="text" id="reviewTitle" class="form-input" placeholder="예: 최고의 신혼여행지!" required>
+                            </div>
+                            
+                            <div class="form-group" style="margin-bottom: 1rem;">
+                                <label class="form-label">후기 내용 *</label>
+                                <textarea id="reviewContent" class="form-input" rows="6" placeholder="후기 내용을 입력하세요..." required></textarea>
+                            </div>
+                            
+                            <div class="form-group" style="margin-bottom: 1rem;">
+                                <label class="form-label">이미지 (최대 5개)</label>
+                                <div style="display: grid; grid-template-columns: repeat(5, 1fr); gap: 10px;">
+                                    <input type="file" class="form-input" accept="image/*" onchange="previewReviewImage(event, 0)" style="padding: 0.5rem;">
+                                    <input type="file" class="form-input" accept="image/*" onchange="previewReviewImage(event, 1)" style="padding: 0.5rem;">
+                                    <input type="file" class="form-input" accept="image/*" onchange="previewReviewImage(event, 2)" style="padding: 0.5rem;">
+                                    <input type="file" class="form-input" accept="image/*" onchange="previewReviewImage(event, 3)" style="padding: 0.5rem;">
+                                    <input type="file" class="form-input" accept="image/*" onchange="previewReviewImage(event, 4)" style="padding: 0.5rem;">
+                                </div>
+                                <div id="reviewImagesPreview" style="display: grid; grid-template-columns: repeat(5, 1fr); gap: 10px; margin-top: 10px;"></div>
+                            </div>
+                            
+                            <div class="form-group" style="margin-bottom: 1.5rem;">
+                                <label style="display: flex; align-items: center; cursor: pointer;">
+                                    <input type="checkbox" id="reviewIsApproved" checked style="margin-right: 8px; width: 20px; height: 20px;">
+                                    <span class="form-label" style="margin: 0;">승인 상태 (체크 시 승인됨)</span>
+                                </label>
+                            </div>
+                            
+                            <div style="display: flex; gap: 10px;">
+                                <button type="submit" class="btn" style="flex: 1; background: #27ae60;">💾 저장</button>
+                                <button type="button" onclick="hideReviewForm()" class="btn" style="flex: 1; background: #95a5a6;">❌ 취소</button>
+                            </div>
+                        </form>
                     </div>
-                    <div class="detail-row">
-                        <label>인원:</label>
-                        <span id="detailTravelers"></span>
-                    </div>
-                    <div class="detail-row">
-                        <label>기간:</label>
-                        <span id="detailDuration"></span>
-                    </div>
+                    
+                    <div id="reviewsList"></div>
                 </div>
                 
-                <div class="detail-section">
-                    <h3>문의 내용</h3>
-                    <div class="detail-row">
-                        <label>제목:</label>
-                        <span id="detailSubject"></span>
+                <!-- Inquiries Tab -->
+                <div id="inquiriesTab" class="tab-content hidden">
+                    <div class="content-header">
+                        <h2>문의 관리</h2>
+                        <div>
+                            <button onclick="showInquiryForm()" class="btn btn-small" style="background: #27ae60; margin-right: 10px;">➕ 새 문의 추가</button>
+                            <button onclick="loadInquiries()" class="btn btn-small">🔄 새로고침</button>
+                        </div>
                     </div>
-                    <div class="detail-row message-row">
-                        <label>내용:</label>
-                        <span id="detailMessage"></span>
+                    
+                    <!-- Inquiry Form Modal -->
+                    <div id="inquiryFormModal" class="hidden" style="background: white; padding: 2rem; border-radius: 8px; margin-bottom: 2rem; box-shadow: 0 2px 8px rgba(0,0,0,0.1);">
+                        <h3 style="margin-bottom: 1.5rem;">문의 정보 입력/수정</h3>
+                        <form id="inquiryForm" onsubmit="saveInquiry(event)">
+                            <input type="hidden" id="inquiryId" value="">
+                            
+                            <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 1rem; margin-bottom: 1rem;">
+                                <div class="form-group">
+                                    <label class="form-label">이름 *</label>
+                                    <input type="text" id="inquiryName" class="form-input" placeholder="예: 홍길동" required>
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label class="form-label">이메일 *</label>
+                                    <input type="email" id="inquiryEmail" class="form-input" placeholder="예: example@email.com" required>
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label class="form-label">연락처 *</label>
+                                    <input type="tel" id="inquiryPhone" class="form-input" placeholder="예: 010-1234-5678" required>
+                                </div>
+                            </div>
+                            
+                            <div class="form-group" style="margin-bottom: 1rem;">
+                                <label class="form-label">문의 내용 *</label>
+                                <textarea id="inquiryMessage" class="form-input" rows="5" placeholder="문의 내용을 입력하세요..." required></textarea>
+                            </div>
+                            
+                            <div class="form-group" style="margin-bottom: 1rem;">
+                                <label class="form-label">관리자 답변</label>
+                                <textarea id="inquiryReply" class="form-input" rows="5" placeholder="답변 내용을 입력하세요..."></textarea>
+                            </div>
+                            
+                            <div class="form-group" style="margin-bottom: 1.5rem;">
+                                <label style="display: flex; align-items: center; cursor: pointer;">
+                                    <input type="checkbox" id="inquiryIsAnswered" style="margin-right: 8px; width: 20px; height: 20px;">
+                                    <span class="form-label" style="margin: 0;">답변 완료 (체크 시 답변완료 상태)</span>
+                                </label>
+                            </div>
+                            
+                            <div style="display: flex; gap: 10px;">
+                                <button type="submit" class="btn" style="flex: 1; background: #27ae60;">💾 저장</button>
+                                <button type="button" onclick="hideInquiryForm()" class="btn" style="flex: 1; background: #95a5a6;">❌ 취소</button>
+                            </div>
+                        </form>
                     </div>
+                    
+                    <div id="inquiriesList"></div>
                 </div>
                 
-                <div class="detail-section">
-                    <h3>처리 정보</h3>
-                    <div class="detail-row">
-                        <label>상태:</label>
-                        <span id="detailStatus"></span>
+                <!-- Resorts Tab -->
+                <div id="resortsTab" class="tab-content hidden">
+                    <div class="content-header">
+                        <h2>리조트 관리</h2>
+                        <div>
+                            <button onclick="showResortForm()" class="btn btn-small" style="background: #27ae60; margin-right: 10px;">➕ 새 리조트 추가</button>
+                            <button onclick="loadDestinationsAndRegions()" class="btn btn-small">🔄 새로고침</button>
+                        </div>
                     </div>
-                    <div class="detail-row">
-                        <label>등록일:</label>
-                        <span id="detailCreatedAt"></span>
+                    
+                    <!-- Resort Form Modal -->
+                    <div id="resortFormModal" class="hidden" style="background: white; padding: 2rem; border-radius: 8px; margin-bottom: 2rem; box-shadow: 0 2px 8px rgba(0,0,0,0.1);">
+                        <h3 style="margin-bottom: 1.5rem;">리조트 정보 입력</h3>
+                        <form id="resortForm" onsubmit="saveResort(event)">
+                            <input type="hidden" id="resortId" value="">
+                            
+                            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 1rem;">
+                                <div class="form-group">
+                                    <label class="form-label">목적지 *</label>
+                                    <select id="resortDestination" class="form-input" required onchange="loadRegionsByDestination()">
+                                        <option value="">-- 목적지 선택 --</option>
+                                        <option value="태국">🇹🇭 태국</option>
+                                        <option value="인도네시아">🇮🇩 인도네시아</option>
+                                        <option value="하와이">🌺 하와이</option>
+                                        <option value="칸쿤">🇲🇽 칸쿤</option>
+                                        <option value="필리핀">🇵🇭 필리핀</option>
+                                        <option value="몰디브">🇲🇻 몰디브</option>
+                                        <option value="남태평양">🌊 남태평양</option>
+                                        <option value="다낭">🇻🇳 다낭</option>
+                                        <option value="모리셔스">🇲🇺 모리셔스</option>
+                                    </select>
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label class="form-label">지역 *</label>
+                                    <select id="resortRegion" class="form-input" required>
+                                        <option value="">-- 먼저 목적지를 선택하세요 --</option>
+                                    </select>
+                                </div>
+                            </div>
+                            
+                            <div style="display: grid; grid-template-columns: 2fr 1fr; gap: 1rem; margin-bottom: 1rem;">
+                                <div class="form-group">
+                                    <label class="form-label">리조트 이름 (한글) *</label>
+                                    <input type="text" id="resortNameKo" class="form-input" placeholder="예: 아난타라 푸켓 리조트" required>
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label class="form-label">리조트 이름 (영문)</label>
+                                    <input type="text" id="resortNameEn" class="form-input" placeholder="예: Anantara Phuket Resort">
+                                </div>
+                            </div>
+                            
+                            <div class="form-group" style="margin-bottom: 1rem;">
+                                <label class="form-label">설명</label>
+                                <textarea id="resortDescription" class="form-input" rows="4" placeholder="리조트 설명을 입력하세요..."></textarea>
+                            </div>
+                            
+                            <div class="form-group" style="margin-bottom: 1rem;">
+                                <label class="form-label">메인 이미지</label>
+                                <input type="file" id="resortMainImage" class="form-input" accept="image/*" onchange="previewMainImage(event)">
+                                <div id="mainImagePreview" style="margin-top: 10px;"></div>
+                            </div>
+                            
+                            <div class="form-group" style="margin-bottom: 1rem;">
+                                <label class="form-label">추가 이미지 (최대 6장)</label>
+                                <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px;">
+                                    <input type="file" class="form-input" accept="image/*" onchange="previewAdditionalImage(event, 0)">
+                                    <input type="file" class="form-input" accept="image/*" onchange="previewAdditionalImage(event, 1)">
+                                    <input type="file" class="form-input" accept="image/*" onchange="previewAdditionalImage(event, 2)">
+                                    <input type="file" class="form-input" accept="image/*" onchange="previewAdditionalImage(event, 3)">
+                                    <input type="file" class="form-input" accept="image/*" onchange="previewAdditionalImage(event, 4)">
+                                    <input type="file" class="form-input" accept="image/*" onchange="previewAdditionalImage(event, 5)">
+                                </div>
+                                <div id="additionalImagesPreview" style="display: grid; grid-template-columns: repeat(6, 1fr); gap: 10px; margin-top: 10px;"></div>
+                            </div>
+                            
+                            <div class="form-group" style="margin-bottom: 1.5rem;">
+                                <label style="display: flex; align-items: center; cursor: pointer;">
+                                    <input type="checkbox" id="resortIsActive" checked style="margin-right: 8px; width: 20px; height: 20px;">
+                                    <span class="form-label" style="margin: 0;">활성화 (체크 해제 시 비활성화)</span>
+                                </label>
+                            </div>
+                            
+                            <div style="display: flex; gap: 10px;">
+                                <button type="submit" class="btn" style="flex: 1; background: #27ae60;">💾 저장</button>
+                                <button type="button" onclick="hideResortForm()" class="btn" style="flex: 1; background: #95a5a6;">❌ 취소</button>
+                            </div>
+                        </form>
                     </div>
+                    
+                    <!-- Destinations and Resorts List -->
+                    <div id="resortsList"></div>
                 </div>
-            </div>
-            <div class="action-buttons">
-                <button type="button" onclick="closeInquiryDetailModal()" class="btn btn-primary">닫기</button>
-            </div>
-        </div>
-    </div>
-
-    <!-- Review Detail Modal -->
-    <div id="reviewDetailModal" class="modal">
-        <div class="modal-content" style="max-width: 800px;">
-            <h2>후기 상세 정보</h2>
-            <div class="inquiry-detail">
-                <div class="detail-section">
-                    <h3>작성자 정보</h3>
-                    <div class="detail-row">
-                        <label>작성자:</label>
-                        <span id="reviewDetailAuthor"></span>
-                    </div>
-                    <div class="detail-row">
-                        <label>여행 시기:</label>
-                        <span id="reviewDetailTravelDate"></span>
-                    </div>
-                </div>
-                
-                <div class="detail-section">
-                    <h3>여행지 정보</h3>
-                    <div class="detail-row">
-                        <label>여행지:</label>
-                        <span id="reviewDetailDestination"></span>
-                    </div>
-                    <div class="detail-row">
-                        <label>평점:</label>
-                        <span id="reviewDetailRating"></span>
-                    </div>
-                </div>
-                
-                <div class="detail-section">
-                    <h3>후기 내용</h3>
-                    <div class="detail-row">
-                        <label>제목:</label>
-                        <span id="reviewDetailTitle"></span>
-                    </div>
-                    <div class="detail-row message-row">
-                        <label>내용:</label>
-                        <span id="reviewDetailContent"></span>
-                    </div>
-                </div>
-                
-                <div class="detail-section" id="reviewImageSection" style="display: none;">
-                    <h3>첨부 이미지</h3>
-                    <div class="detail-row">
-                        <img id="reviewDetailImage" src="" alt="후기 이미지" style="max-width: 100%; border-radius: 8px;">
-                    </div>
-                </div>
-                
-                <div class="detail-section">
-                    <h3>관리 정보</h3>
-                    <div class="detail-row">
-                        <label>상태:</label>
-                        <span id="reviewDetailStatus"></span>
-                    </div>
-                    <div class="detail-row">
-                        <label>추천 후기:</label>
-                        <span id="reviewDetailFeatured"></span>
-                    </div>
-                    <div class="detail-row">
-                        <label>등록일:</label>
-                        <span id="reviewDetailCreatedAt"></span>
-                    </div>
-                </div>
-            </div>
-            <div class="action-buttons">
-                <button type="button" onclick="closeReviewDetailModal()" class="btn btn-primary">닫기</button>
             </div>
         </div>
     </div>
 
     <script>
-        // Config
-        const ADMIN_PASSWORD = 'admin1234';
-        const API_BASE = '/api';
-
-        // State
-        let currentRegions = [];
-        let currentResorts = [];
-        let currentReviews = [];
-        let currentInquiries = [];
-
-        // Auth
-        function checkAuth() {
-            const isLoggedIn = sessionStorage.getItem('admin_logged_in');
-            if (isLoggedIn === 'true') {
-                showDashboard();
-                loadAllData();
-            }
-        }
-
-        document.getElementById('loginForm').addEventListener('submit', (e) => {
-            e.preventDefault();
-            const password = document.getElementById('password').value;
+        console.log('=== Admin Page Loaded ===');
+        
+        const ADMIN_PASSWORD = 'sun2026@';
+        console.log('Password set:', ADMIN_PASSWORD);
+        
+        // Get elements
+        const loginScreen = document.getElementById('loginScreen');
+        const adminDashboard = document.getElementById('adminDashboard');
+        const passwordInput = document.getElementById('passwordInput');
+        const errorDiv = document.getElementById('error');
+        
+        console.log('Elements found:', {
+            loginScreen: !!loginScreen,
+            adminDashboard: !!adminDashboard,
+            passwordInput: !!passwordInput,
+            errorDiv: !!errorDiv
+        });
+        
+        // Login handler function
+        function handleLogin() {
+            console.log('=== handleLogin called ===');
+            
+            const password = passwordInput.value;
+            console.log('Entered password:', password);
+            console.log('Correct password:', ADMIN_PASSWORD);
+            console.log('Match:', password === ADMIN_PASSWORD);
+            
             if (password === ADMIN_PASSWORD) {
-                sessionStorage.setItem('admin_logged_in', 'true');
-                showDashboard();
-                loadAllData();
+                console.log('✅ LOGIN SUCCESS');
+                errorDiv.classList.remove('show');
+                loginScreen.classList.add('hidden');
+                loginScreen.style.display = 'none';
+                adminDashboard.classList.remove('hidden');
+                adminDashboard.style.display = 'block';
+                
+                // Load initial data
+                loadReviews();
             } else {
-                alert('비밀번호가 올바르지 않습니다.');
+                console.log('❌ LOGIN FAILED');
+                errorDiv.classList.add('show');
+                alert('비밀번호가 틀렸습니다: "' + password + '"');
+            }
+        }
+        
+        // Enter key support
+        passwordInput.addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                e.preventDefault();
+                handleLogin();
             }
         });
-
-        function showDashboard() {
-            document.getElementById('loginScreen').classList.add('hidden');
-            document.getElementById('adminDashboard').classList.remove('hidden');
-        }
-
+        
         function logout() {
-            sessionStorage.removeItem('admin_logged_in');
-            location.reload();
-        }
-
-        // Navigation
-        document.querySelectorAll('.sidebar-menu li').forEach(item => {
-            item.addEventListener('click', () => {
-                const section = item.dataset.section;
-                
-                // Update sidebar
-                document.querySelectorAll('.sidebar-menu li').forEach(li => li.classList.remove('active'));
-                item.classList.add('active');
-                
-                // Update content
-                document.querySelectorAll('.content-section').forEach(sec => sec.classList.remove('active'));
-                document.getElementById(section).classList.add('active');
-            });
-        });
-
-        // Load Data
-        async function loadAllData() {
-            await loadRegions();
-            await loadResorts();
-            await loadReviews();
-            await loadInquiries();
-        }
-
-        async function loadRegions() {
-            try {
-                const response = await fetch(`${API_BASE}/regions`);
-                const data = await response.json();
-                
-                if (data.success) {
-                    currentRegions = data.data;
-                    renderRegionsTable();
-                }
-            } catch (error) {
-                console.error('Failed to load regions:', error);
-                document.getElementById('regionsTable').innerHTML = '<div class="empty-state">데이터를 불러오는데 실패했습니다.</div>';
-            }
-        }
-
-        async function loadResorts() {
-            try {
-                const response = await fetch(`${API_BASE}/resorts`);
-                const data = await response.json();
-                
-                if (data.success) {
-                    currentResorts = data.data;
-                    updateResortRegionFilter();
-                    renderResortsTable();
-                }
-            } catch (error) {
-                console.error('Failed to load resorts:', error);
-                document.getElementById('resortsTable').innerHTML = '<div class="empty-state">데이터를 불러오는데 실패했습니다.</div>';
-            }
+            console.log('=== logout called ===');
+            window.location.href = '/admin';
         }
         
-        // Update region filter dropdown
-        function updateResortRegionFilter() {
-            const filterSelect = document.getElementById('resortRegionFilter');
-            if (!filterSelect) return;
+        function showTab(tabName) {
+            console.log('Switching to tab:', tabName);
             
-            // Keep current selection
-            const currentValue = filterSelect.value;
-            
-            // Clear and add "All Regions" option
-            filterSelect.innerHTML = '<option value="">전체 지역</option>';
-            
-            // Add regions sorted by name
-            const sortedRegions = [...currentRegions].sort((a, b) => 
-                a.name_ko.localeCompare(b.name_ko, 'ko')
-            );
-            
-            sortedRegions.forEach(region => {
-                const resortsCount = currentResorts.filter(r => r.region_id === region.id).length;
-                const option = document.createElement('option');
-                option.value = region.id;
-                option.textContent = `${region.name_ko} (${resortsCount}개)`;
-                filterSelect.appendChild(option);
+            // Hide all tabs
+            document.querySelectorAll('.tab-content').forEach(tab => {
+                tab.classList.add('hidden');
             });
             
-            // Restore previous selection
-            filterSelect.value = currentValue;
-        }
-        
-        // Filter resorts by selected region
-        function filterResortsByRegion() {
-            const filterSelect = document.getElementById('resortRegionFilter');
-            const selectedRegionId = filterSelect.value;
-            
-            renderResortsTable(selectedRegionId);
-        }
-
-        async function loadReviews() {
-            try {
-                const response = await fetch(`${API_BASE}/reviews`);
-                const data = await response.json();
-                
-                if (data.success) {
-                    currentReviews = data.data;
-                    renderReviewsTable();
-                }
-            } catch (error) {
-                console.error('Failed to load reviews:', error);
-                document.getElementById('reviewsTable').innerHTML = '<div class="empty-state">데이터를 불러오는데 실패했습니다.</div>';
-            }
-        }
-
-        async function loadInquiries() {
-            try {
-                const response = await fetch(`${API_BASE}/inquiries`);
-                const data = await response.json();
-                
-                if (data.success) {
-                    currentInquiries = data.data;
-                    renderInquiriesTable();
-                }
-            } catch (error) {
-                console.error('Failed to load inquiries:', error);
-                document.getElementById('inquiriesTable').innerHTML = '<div class="empty-state">데이터를 불러오는데 실패했습니다.</div>';
-            }
-        }
-
-        // Render Tables
-        function renderRegionsTable() {
-            const container = document.getElementById('regionsTable');
-            
-            if (currentRegions.length === 0) {
-                container.innerHTML = '<div class="empty-state"><i class="fas fa-inbox"></i><p>등록된 지역이 없습니다.</p></div>';
-                return;
-            }
-
-            let html = '<table><thead><tr><th>국가</th><th>이름</th><th>코드</th><th>상태</th><th>관리</th></tr></thead><tbody>';
-            
-            currentRegions.forEach(region => {
-                const statusBadge = region.is_active ? 
-                    '<span class="badge badge-success">활성화</span>' : 
-                    '<span class="badge badge-danger">비활성화</span>';
-                
-                html += `
-                    <tr>
-                        <td>${region.country}</td>
-                        <td>${region.name_ko} (${region.name_en})</td>
-                        <td>${region.code}</td>
-                        <td>${statusBadge}</td>
-                        <td class="action-buttons">
-                            <button class="btn btn-sm btn-primary" onclick="editRegion('${region.id}')">수정</button>
-                            <button class="btn btn-sm btn-danger" onclick="deleteRegion('${region.id}')">삭제</button>
-                        </td>
-                    </tr>
-                `;
+            // Remove active from all buttons
+            document.querySelectorAll('.tab-btn').forEach(btn => {
+                btn.classList.remove('active');
             });
             
-            html += '</tbody></table>';
-            container.innerHTML = html;
-        }
-
-        function renderResortsTable(filterRegionId = '') {
-            const container = document.getElementById('resortsTable');
-            const countBadge = document.getElementById('resortCountBadge');
-            
-            // Filter resorts by region if specified
-            let displayResorts = currentResorts;
-            if (filterRegionId) {
-                displayResorts = currentResorts.filter(r => r.region_id === filterRegionId);
-            }
-            
-            // Update count badge
-            if (countBadge) {
-                const filterSelect = document.getElementById('resortRegionFilter');
-                const selectedRegion = currentRegions.find(r => r.id === filterRegionId);
-                if (filterRegionId && selectedRegion) {
-                    countBadge.textContent = `${selectedRegion.name_ko}: ${displayResorts.length}개`;
-                    countBadge.style.background = '#38c172';
-                } else {
-                    countBadge.textContent = `총 ${displayResorts.length}개`;
-                    countBadge.style.background = '#667eea';
-                }
-            }
-            
-            if (displayResorts.length === 0) {
-                const message = filterRegionId ? '해당 지역에 등록된 리조트가 없습니다.' : '등록된 리조트가 없습니다.';
-                container.innerHTML = `<div class="empty-state"><i class="fas fa-inbox"></i><p>${message}</p></div>`;
-                return;
-            }
-
-            let html = '<table><thead><tr><th>지역</th><th>이름</th><th>카테고리</th><th>상태</th><th>관리</th></tr></thead><tbody>';
-            
-            displayResorts.forEach(resort => {
-                const region = currentRegions.find(r => r.id === resort.region_id);
-                const regionName = region ? region.name_ko : resort.region_id;
-                const statusBadge = resort.is_active ? 
-                    '<span class="badge badge-success">활성화</span>' : 
-                    '<span class="badge badge-danger">비활성화</span>';
-                
-                html += `
-                    <tr>
-                        <td>${regionName}</td>
-                        <td>${resort.name_ko}</td>
-                        <td>${resort.category || '-'}</td>
-                        <td>${statusBadge}</td>
-                        <td class="action-buttons">
-                            <button class="btn btn-sm btn-primary" onclick="editResort('${resort.id}')">수정</button>
-                            <button class="btn btn-sm btn-danger" onclick="deleteResort('${resort.id}')">삭제</button>
-                        </td>
-                    </tr>
-                `;
-            });
-            
-            html += '</tbody></table>';
-            container.innerHTML = html;
-        }
-
-        function renderReviewsTable() {
-            const container = document.getElementById('reviewsTable');
-            
-            if (currentReviews.length === 0) {
-                container.innerHTML = '<div class="empty-state"><i class="fas fa-inbox"></i><p>등록된 후기가 없습니다.</p></div>';
-                return;
-            }
-
-            let html = '<table><thead><tr><th>작성자</th><th>제목</th><th>여행지</th><th>평점</th><th>상태</th><th>등록일</th><th>관리</th></tr></thead><tbody>';
-            
-            currentReviews.forEach(review => {
-                let statusBadge = '';
-                if (review.status === 'approved') {
-                    statusBadge = '<span class="badge badge-success">승인</span>';
-                } else if (review.status === 'pending') {
-                    statusBadge = '<span class="badge badge-warning">대기</span>';
-                } else {
-                    statusBadge = '<span class="badge badge-danger">거부</span>';
-                }
-                
-                const createdDate = new Date(review.created_at).toLocaleDateString('ko-KR', {
-                    year: 'numeric',
-                    month: '2-digit',
-                    day: '2-digit'
-                });
-                
-                html += `
-                    <tr>
-                        <td>${review.author_name}</td>
-                        <td>${review.title}</td>
-                        <td>${review.destination_kr || review.destination}</td>
-                        <td>${'⭐'.repeat(review.rating)}</td>
-                        <td>${statusBadge}</td>
-                        <td>${createdDate}</td>
-                        <td class="action-buttons">
-                            <button class="btn btn-sm btn-primary" onclick="viewReviewDetail('${review.id}')">상세보기</button>
-                            ${review.status === 'pending' ? `<button class="btn btn-sm btn-success" onclick="approveReview('${review.id}')">승인</button>` : ''}
-                            <button class="btn btn-sm btn-danger" onclick="deleteReview('${review.id}')">삭제</button>
-                        </td>
-                    </tr>
-                `;
-            });
-            
-            html += '</tbody></table>';
-            container.innerHTML = html;
-        }
-
-        function renderInquiriesTable() {
-            const container = document.getElementById('inquiriesTable');
-            
-            if (currentInquiries.length === 0) {
-                container.innerHTML = '<div class="empty-state"><i class="fas fa-inbox"></i><p>문의가 없습니다.</p></div>';
-                return;
-            }
-
-            let html = '<table><thead><tr><th>이름</th><th>이메일</th><th>여행지</th><th>상태</th><th>등록일</th><th>관리</th></tr></thead><tbody>';
-            
-            currentInquiries.forEach(inquiry => {
-                let statusBadge = '';
-                if (inquiry.status === 'completed') {
-                    statusBadge = '<span class="badge badge-success">완료</span>';
-                } else if (inquiry.status === 'processing') {
-                    statusBadge = '<span class="badge badge-warning">처리중</span>';
-                } else {
-                    statusBadge = '<span class="badge badge-danger">대기</span>';
-                }
-                
-                const createdDate = new Date(inquiry.created_at).toLocaleDateString('ko-KR', {
-                    year: 'numeric',
-                    month: '2-digit',
-                    day: '2-digit'
-                });
-                
-                html += `
-                    <tr>
-                        <td>${inquiry.name}</td>
-                        <td>${inquiry.email}</td>
-                        <td>${inquiry.destination}</td>
-                        <td>${statusBadge}</td>
-                        <td>${createdDate}</td>
-                        <td class="action-buttons">
-                            <button class="btn btn-sm btn-primary" onclick="viewInquiryDetail('${inquiry.id}')">상세보기</button>
-                            ${inquiry.status === 'pending' ? `<button class="btn btn-sm btn-success" onclick="updateInquiryStatus('${inquiry.id}', 'processing')">처리중</button>` : ''}
-                            ${inquiry.status === 'processing' ? `<button class="btn btn-sm btn-success" onclick="updateInquiryStatus('${inquiry.id}', 'completed')">완료</button>` : ''}
-                            <button class="btn btn-sm btn-danger" onclick="deleteInquiry('${inquiry.id}')">삭제</button>
-                        </td>
-                    </tr>
-                `;
-            });
-            
-            html += '</tbody></table>';
-            container.innerHTML = html;
-        }
-
-        // Region Modal
-        function openRegionModal(regionId = null) {
-            const modal = document.getElementById('regionModal');
-            const form = document.getElementById('regionForm');
-            const title = document.getElementById('regionModalTitle');
-            
-            form.reset();
-            
-            if (regionId) {
-                title.textContent = '지역 수정';
-                const region = currentRegions.find(r => r.id === regionId);
-                if (region) {
-                    document.getElementById('regionId').value = region.id;
-                    document.getElementById('regionCode').value = region.code;
-                    document.getElementById('regionCountry').value = region.country;
-                    document.getElementById('regionNameKo').value = region.name_ko;
-                    document.getElementById('regionNameEn').value = region.name_en;
-                    document.getElementById('regionDescription').value = region.description || '';
-                    document.getElementById('regionImageUrl').value = region.image_url || '';
-                    document.getElementById('regionDisplayOrder').value = region.display_order || 0;
-                    document.getElementById('regionIsActive').value = region.is_active ? 'true' : 'false';
-                }
-            } else {
-                title.textContent = '지역 추가';
-            }
-            
-            modal.classList.add('active');
-        }
-
-        function closeRegionModal() {
-            document.getElementById('regionModal').classList.remove('active');
-        }
-
-        document.getElementById('regionForm').addEventListener('submit', async (e) => {
-            e.preventDefault();
-            
-            const id = document.getElementById('regionId').value || `region-${Date.now()}`;
-            const data = {
-                id,
-                code: document.getElementById('regionCode').value,
-                country: document.getElementById('regionCountry').value,
-                name_ko: document.getElementById('regionNameKo').value,
-                name_en: document.getElementById('regionNameEn').value,
-                description: document.getElementById('regionDescription').value,
-                image_url: document.getElementById('regionImageUrl').value,
-                display_order: parseInt(document.getElementById('regionDisplayOrder').value),
-                is_active: document.getElementById('regionIsActive').value === 'true'
+            // Show selected tab
+            const tabs = {
+                'reviews': 'reviewsTab',
+                'inquiries': 'inquiriesTab',
+                'resorts': 'resortsTab'
             };
             
-            try {
-                let response;
-                if (document.getElementById('regionId').value) {
-                    // Update
-                    response = await fetch(`${API_BASE}/regions?id=${id}`, {
-                        method: 'PUT',
-                        headers: { 'Content-Type': 'application/json' },
-                        body: JSON.stringify(data)
-                    });
-                } else {
-                    // Create
-                    response = await fetch(`${API_BASE}/regions`, {
-                        method: 'POST',
-                        headers: { 'Content-Type': 'application/json' },
-                        body: JSON.stringify(data)
-                    });
-                }
+            const tabId = tabs[tabName];
+            if (tabId) {
+                document.getElementById(tabId).classList.remove('hidden');
+                event.target.classList.add('active');
                 
-                const result = await response.json();
-                if (result.success) {
-                    alert('저장되었습니다.');
-                    closeRegionModal();
-                    await loadRegions();
-                } else {
-                    alert('저장에 실패했습니다: ' + result.error);
-                }
-            } catch (error) {
-                console.error('Save region error:', error);
-                alert('저장 중 오류가 발생했습니다.');
-            }
-        });
-
-        function editRegion(id) {
-            openRegionModal(id);
-        }
-
-        async function deleteRegion(id) {
-            if (!confirm('정말 삭제하시겠습니까?')) return;
-            
-            try {
-                const response = await fetch(`${API_BASE}/regions?id=${id}`, {
-                    method: 'DELETE'
-                });
-                
-                const result = await response.json();
-                if (result.success) {
-                    alert('삭제되었습니다.');
-                    await loadRegions();
-                } else {
-                    alert('삭제에 실패했습니다: ' + result.error);
-                }
-            } catch (error) {
-                console.error('Delete region error:', error);
-                alert('삭제 중 오류가 발생했습니다.');
+                // Load data for the tab
+                if (tabName === 'reviews') loadReviews();
+                else if (tabName === 'inquiries') loadInquiries();
+                else if (tabName === 'resorts') loadDestinationsAndRegions();
             }
         }
-
-        // Resort Modal
-        async function openResortModal(resortId = null) {
-            const modal = document.getElementById('resortModal');
-            const form = document.getElementById('resortForm');
-            const title = document.getElementById('resortModalTitle');
-            const regionSelect = document.getElementById('resortRegionId');
-            
-            // Load regions for dropdown
-            regionSelect.innerHTML = '<option value="">지역 선택...</option>';
-            currentRegions.forEach(region => {
-                regionSelect.innerHTML += `<option value="${region.id}">${region.name_ko} (${region.country})</option>`;
-            });
-            
-            form.reset();
-            
-            if (resortId) {
-                title.textContent = '리조트 수정';
-                const resort = currentResorts.find(r => r.id === resortId);
-                if (resort) {
-                    document.getElementById('resortId').value = resort.id;
-                    document.getElementById('resortRegionId').value = resort.region_id;
-                    document.getElementById('resortNameKo').value = resort.name_ko;
-                    document.getElementById('resortNameEn').value = resort.name_en;
-                    document.getElementById('resortCategory').value = resort.category || '';
-                    document.getElementById('resortDescription').value = resort.description || '';
-                    document.getElementById('resortMainImageUrl').value = resort.main_image_url || '';
+        
+        // API Functions
+        
+        // ========== REVIEW MANAGEMENT ==========
+        let reviewImages = [];
+        
+        function showReviewForm() {
+            console.log('=== showReviewForm called ===');
+            const modal = document.getElementById('reviewFormModal');
+            console.log('Modal element:', modal);
+            modal.classList.remove('hidden');
+            modal.style.display = 'block'; // Force display
+            console.log('Modal classes after remove:', modal.className);
+            document.getElementById('reviewId').value = '';
+            document.getElementById('reviewForm').reset();
+            reviewImages = [];
+            document.getElementById('reviewImagesPreview').innerHTML = '';
+        }
+        
+        function hideReviewForm() {
+            console.log('=== hideReviewForm called ===');
+            const modal = document.getElementById('reviewFormModal');
+            modal.classList.add('hidden');
+            modal.style.display = 'none'; // Force hide
+            document.getElementById('reviewForm').reset();
+            reviewImages = [];
+        }
+        
+        function previewReviewImage(event, index) {
+            const file = event.target.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    const previewContainer = document.getElementById('reviewImagesPreview');
+                    let imgElement = previewContainer.children[index];
                     
-                    // 갤러리 이미지 로드
-                    const galleryImages = resort.gallery_images || [];
-                    for (let i = 0; i < 6; i++) {
-                        const input = document.getElementById(`resortGalleryImage${i + 1}`);
-                        if (input) {
-                            input.value = galleryImages[i] || '';
-                        }
+                    if (!imgElement) {
+                        imgElement = document.createElement('img');
+                        imgElement.style.width = '100%';
+                        imgElement.style.height = '80px';
+                        imgElement.style.objectFit = 'cover';
+                        imgElement.style.borderRadius = '4px';
+                        previewContainer.appendChild(imgElement);
                     }
                     
-                    document.getElementById('resortDisplayOrder').value = resort.display_order || 0;
-                    document.getElementById('resortIsActive').value = resort.is_active ? 'true' : 'false';
-                }
-            } else {
-                title.textContent = '리조트 추가';
-            }
-            
-            modal.classList.add('active');
-        }
-
-        function closeResortModal() {
-            const modal = document.getElementById('resortModal');
-            modal.classList.remove('active');
-            
-            // Reset file inputs
-            document.getElementById('resortMainImageFile').value = '';
-            for (let i = 1; i <= 6; i++) {
-                document.getElementById(`galleryImageFile${i}`).value = '';
+                    imgElement.src = e.target.result;
+                };
+                reader.readAsDataURL(file);
+                reviewImages[index] = file;
             }
         }
-
-        document.getElementById('resortForm').addEventListener('submit', async (e) => {
-            e.preventDefault();
+        
+        async function saveReview(event) {
+            event.preventDefault();
             
-            const id = document.getElementById('resortId').value || `resort-${Date.now()}`;
-            
-            // Collect gallery images from individual fields
-            const gallery_images = [];
-            for (let i = 1; i <= 6; i++) {
-                const url = document.getElementById(`resortGalleryImage${i}`).value.trim();
-                if (url) {
-                    gallery_images.push(url);
-                }
-            }
-            
-            // Parse features (줄바꿈으로 구분)
-            const featuresText = document.getElementById('resortFeatures').value;
-            const features = featuresText
-                .split('\n')
-                .map(line => line.trim())
-                .filter(line => line.length > 0);
-            
-            const data = {
-                id,
-                region_id: document.getElementById('resortRegionId').value,
-                name_ko: document.getElementById('resortNameKo').value,
-                name_en: document.getElementById('resortNameEn').value,
-                category: document.getElementById('resortCategory').value,
-                description: document.getElementById('resortDescription').value,
-                main_image_url: document.getElementById('resortMainImageUrl').value,
-                gallery_images: gallery_images,
-                features: features,
-                display_order: parseInt(document.getElementById('resortDisplayOrder').value),
-                is_active: document.getElementById('resortIsActive').value === 'true'
+            const reviewData = {
+                destination: document.getElementById('reviewDestination').value,
+                title: document.getElementById('reviewTitle').value,
+                author_name: document.getElementById('reviewAuthor').value,
+                content: document.getElementById('reviewContent').value,
+                rating: parseInt(document.getElementById('reviewRating').value),
+                travel_date: document.getElementById('reviewTravelDate').value || null,
+                status: document.getElementById('reviewIsApproved').checked ? 'approved' : 'pending'
             };
             
-            console.log('💾 Saving resort data:', data);
-            console.log('📸 Gallery images count:', gallery_images.length);
-            
-            try {
-                let response;
-                if (document.getElementById('resortId').value) {
-                    // Update
-                    response = await fetch(`${API_BASE}/resorts?id=${id}`, {
-                        method: 'PUT',
-                        headers: { 'Content-Type': 'application/json' },
-                        body: JSON.stringify(data)
+            // Upload images if present
+            if (reviewImages.length > 0) {
+                try {
+                    const formData = new FormData();
+                    
+                    reviewImages.forEach((file, index) => {
+                        if (file) {
+                            formData.append('files', file);
+                        }
                     });
-                } else {
-                    // Create
-                    response = await fetch(`${API_BASE}/resorts`, {
+                    
+                    const uploadResponse = await fetch('/api/upload', {
                         method: 'POST',
-                        headers: { 'Content-Type': 'application/json' },
-                        body: JSON.stringify(data)
+                        body: formData
                     });
+                    
+                    const uploadResult = await uploadResponse.json();
+                    
+                    if (uploadResult.success && uploadResult.urls) {
+                        reviewData.image_url = uploadResult.urls[0];
+                        if (uploadResult.urls.length > 1) {
+                            reviewData.gallery_images = JSON.stringify(uploadResult.urls);
+                        }
+                    }
+                } catch (uploadError) {
+                    console.error('Image upload error:', uploadError);
+                    alert('이미지 업로드 중 오류가 발생했습니다. 이미지 없이 저장하시겠습니까?');
                 }
-                
-                const result = await response.json();
-                if (result.success) {
-                    alert('저장되었습니다.');
-                    closeResortModal();
-                    await loadResorts();
-                } else {
-                    alert('저장에 실패했습니다: ' + result.error);
-                }
-            } catch (error) {
-                console.error('Save resort error:', error);
-                alert('저장 중 오류가 발생했습니다.');
-            }
-        });
-
-        function editResort(id) {
-            openResortModal(id);
-        }
-
-        async function deleteResort(id) {
-            if (!confirm('정말 삭제하시겠습니까?')) return;
-            
-            try {
-                const response = await fetch(`${API_BASE}/resorts?id=${id}`, {
-                    method: 'DELETE'
-                });
-                
-                const result = await response.json();
-                if (result.success) {
-                    alert('삭제되었습니다.');
-                    await loadResorts();
-                } else {
-                    alert('삭제에 실패했습니다: ' + result.error);
-                }
-            } catch (error) {
-                console.error('Delete resort error:', error);
-                alert('삭제 중 오류가 발생했습니다.');
-            }
-        }
-
-        // Review Actions
-        async function approveReview(id) {
-            try {
-                const response = await fetch(`${API_BASE}/reviews?id=${id}`, {
-                    method: 'PATCH',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({ status: 'approved' })
-                });
-                
-                const result = await response.json();
-                if (result.success) {
-                    alert('후기가 승인되었습니다.');
-                    await loadReviews();
-                } else {
-                    alert('승인에 실패했습니다: ' + result.error);
-                }
-            } catch (error) {
-                console.error('Approve review error:', error);
-                alert('승인 중 오류가 발생했습니다.');
-            }
-        }
-
-        async function deleteReview(id) {
-            if (!confirm('정말 삭제하시겠습니까?')) return;
-            
-            try {
-                const response = await fetch(`${API_BASE}/reviews?id=${id}`, {
-                    method: 'DELETE'
-                });
-                
-                const result = await response.json();
-                if (result.success) {
-                    alert('삭제되었습니다.');
-                    await loadReviews();
-                } else {
-                    alert('삭제에 실패했습니다: ' + result.error);
-                }
-            } catch (error) {
-                console.error('Delete review error:', error);
-                alert('삭제 중 오류가 발생했습니다.');
-            }
-        }
-
-        // Inquiry Actions
-        async function updateInquiryStatus(id, status) {
-            try {
-                const response = await fetch(`${API_BASE}/inquiries?id=${id}`, {
-                    method: 'PUT',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({ status })
-                });
-                
-                const result = await response.json();
-                if (result.success) {
-                    alert('상태가 변경되었습니다.');
-                    await loadInquiries();
-                } else {
-                    alert('변경에 실패했습니다: ' + result.error);
-                }
-            } catch (error) {
-                console.error('Update inquiry error:', error);
-                alert('변경 중 오류가 발생했습니다.');
-            }
-        }
-
-        async function deleteInquiry(id) {
-            if (!confirm('정말 삭제하시겠습니까?')) return;
-            
-            try {
-                const response = await fetch(`${API_BASE}/inquiries?id=${id}`, {
-                    method: 'DELETE'
-                });
-                
-                const result = await response.json();
-                if (result.success) {
-                    alert('삭제되었습니다.');
-                    await loadInquiries();
-                } else {
-                    alert('삭제에 실패했습니다: ' + result.error);
-                }
-            } catch (error) {
-                console.error('Delete inquiry error:', error);
-                alert('삭제 중 오류가 발생했습니다.');
-            }
-        }
-
-        // Image Upload Functions
-        async function uploadMainImage() {
-            const fileInput = document.getElementById('resortMainImageFile');
-            const file = fileInput.files[0];
-            
-            if (!file) {
-                alert('파일을 선택해주세요.');
-                return;
             }
             
-            const urlInput = document.getElementById('resortMainImageUrl');
-            urlInput.value = '업로드 중...';
-            
             try {
-                const formData = new FormData();
-                formData.append('file', file);
+                // For now, store in localStorage (will be replaced with API call)
+                const reviews = JSON.parse(localStorage.getItem('reviews') || '[]');
                 
-                const response = await fetch(`${API_BASE}/upload`, {
-                    method: 'POST',
-                    body: formData
-                });
-                
-                const result = await response.json();
-                
-                if (result.success) {
-                    urlInput.value = result.url;
-                    alert('메인 이미지 업로드 완료!');
+                const reviewId = document.getElementById('reviewId').value;
+                if (reviewId) {
+                    // Update existing review
+                    const index = reviews.findIndex(r => r.id === reviewId);
+                    if (index !== -1) {
+                        reviews[index] = { ...reviews[index], ...reviewData, updated_at: new Date().toISOString() };
+                    }
                 } else {
-                    urlInput.value = '';
-                    alert('업로드 실패: ' + result.error);
+                    // Add new review
+                    reviewData.id = Date.now().toString();
+                    reviewData.created_at = new Date().toISOString();
+                    reviews.push(reviewData);
                 }
+                
+                localStorage.setItem('reviews', JSON.stringify(reviews));
+                
+                alert('✅ 후기가 저장되었습니다!');
+                hideReviewForm();
+                loadReviews();
             } catch (error) {
-                console.error('Upload error:', error);
-                urlInput.value = '';
-                alert('업로드 중 오류가 발생했습니다.');
+                console.error('Error saving review:', error);
+                alert('❌ 후기 저장 중 오류가 발생했습니다: ' + error.message);
             }
         }
         
-        async function uploadGalleryImage(index) {
-            const fileInput = document.getElementById(`galleryImageFile${index}`);
-            const file = fileInput.files[0];
+        function editReview(reviewId) {
+            console.log('=== editReview called ===', reviewId);
+            const reviews = JSON.parse(localStorage.getItem('reviews') || '[]');
+            console.log('Total reviews:', reviews.length);
+            const review = reviews.find(r => r.id === reviewId);
+            console.log('Found review:', review);
             
-            if (!file) {
-                alert('파일을 선택해주세요.');
-                return;
-            }
-            
-            const urlInput = document.getElementById(`resortGalleryImage${index}`);
-            urlInput.value = '업로드 중...';
-            
-            try {
-                const formData = new FormData();
-                formData.append('file', file);
+            if (review) {
+                showReviewForm();
+                document.getElementById('reviewId').value = review.id;
+                document.getElementById('reviewDestination').value = review.destination || '';
+                document.getElementById('reviewTitle').value = review.title || '';
+                document.getElementById('reviewAuthor').value = review.author_name || '';
+                document.getElementById('reviewContent').value = review.content || '';
+                document.getElementById('reviewRating').value = review.rating || '';
+                document.getElementById('reviewTravelDate').value = review.travel_date || '';
+                document.getElementById('reviewIsApproved').checked = review.status === 'approved';
                 
-                const response = await fetch(`${API_BASE}/upload`, {
-                    method: 'POST',
-                    body: formData
-                });
-                
-                const result = await response.json();
-                
-                if (result.success) {
-                    urlInput.value = result.url;
-                    alert(`갤러리 이미지 ${index} 업로드 완료!`);
-                } else {
-                    urlInput.value = '';
-                    alert('업로드 실패: ' + result.error);
+                if (review.image_url) {
+                    document.getElementById('reviewImagesPreview').innerHTML = 
+                        `<img src="${review.image_url}" style="width: 100%; height: 80px; object-fit: cover; border-radius: 4px;">`;
                 }
-            } catch (error) {
-                console.error('Upload error:', error);
-                urlInput.value = '';
-                alert('업로드 중 오류가 발생했습니다.');
-            }
-        }
-
-        // Inquiry Detail Modal
-        function viewInquiryDetail(inquiryId) {
-            const inquiry = currentInquiries.find(i => i.id === inquiryId);
-            if (!inquiry) return;
-            
-            const modal = document.getElementById('inquiryDetailModal');
-            const createdDate = new Date(inquiry.created_at).toLocaleString('ko-KR');
-            
-            document.getElementById('detailName').textContent = inquiry.name;
-            document.getElementById('detailEmail').textContent = inquiry.email;
-            document.getElementById('detailPhone').textContent = inquiry.phone;
-            document.getElementById('detailDestination').textContent = inquiry.destination;
-            document.getElementById('detailBudget').textContent = inquiry.budget || '-';
-            document.getElementById('detailTravelers').textContent = inquiry.travelers || '-';
-            document.getElementById('detailDuration').textContent = inquiry.duration || '-';
-            document.getElementById('detailSubject').textContent = inquiry.subject;
-            document.getElementById('detailMessage').textContent = inquiry.message;
-            document.getElementById('detailCreatedAt').textContent = createdDate;
-            
-            let statusText = '대기';
-            if (inquiry.status === 'completed') statusText = '완료';
-            else if (inquiry.status === 'processing') statusText = '처리중';
-            document.getElementById('detailStatus').textContent = statusText;
-            
-            modal.style.display = 'flex';
-        }
-        
-        function closeInquiryDetailModal() {
-            document.getElementById('inquiryDetailModal').style.display = 'none';
-        }
-
-        // Review Detail Modal
-        function viewReviewDetail(reviewId) {
-            const review = currentReviews.find(r => r.id === reviewId);
-            if (!review) return;
-            
-            const modal = document.getElementById('reviewDetailModal');
-            const createdDate = new Date(review.created_at).toLocaleString('ko-KR');
-            
-            document.getElementById('reviewDetailAuthor').textContent = review.author_name;
-            document.getElementById('reviewDetailTravelDate').textContent = review.travel_date;
-            document.getElementById('reviewDetailDestination').textContent = review.destination_kr || review.destination;
-            document.getElementById('reviewDetailRating').textContent = '⭐'.repeat(review.rating) + ` (${review.rating}/5)`;
-            document.getElementById('reviewDetailTitle').textContent = review.title;
-            document.getElementById('reviewDetailContent').textContent = review.content;
-            document.getElementById('reviewDetailCreatedAt').textContent = createdDate;
-            
-            // 이미지 표시
-            const imageSection = document.getElementById('reviewImageSection');
-            if (review.image_url) {
-                document.getElementById('reviewDetailImage').src = review.image_url;
-                imageSection.style.display = 'block';
+                console.log('Review form populated');
             } else {
-                imageSection.style.display = 'none';
+                alert('후기를 찾을 수 없습니다. ID: ' + reviewId);
             }
-            
-            // 상태 표시
-            let statusText = '대기';
-            if (review.status === 'approved') statusText = '승인';
-            else if (review.status === 'rejected') statusText = '거부';
-            document.getElementById('reviewDetailStatus').textContent = statusText;
-            
-            document.getElementById('reviewDetailFeatured').textContent = review.is_featured ? '예' : '아니오';
-            
-            modal.style.display = 'flex';
         }
         
-        function closeReviewDetailModal() {
-            document.getElementById('reviewDetailModal').style.display = 'none';
+        function deleteReview(reviewId) {
+            if (!confirm('정말로 이 후기를 삭제하시겠습니까?')) {
+                return;
+            }
+            
+            const reviews = JSON.parse(localStorage.getItem('reviews') || '[]');
+            const filtered = reviews.filter(r => r.id !== reviewId);
+            localStorage.setItem('reviews', JSON.stringify(filtered));
+            
+            alert('✅ 후기가 삭제되었습니다.');
+            loadReviews();
         }
-
-        // Initialize
-        checkAuth();
+        
+        async function loadReviews() {
+            const container = document.getElementById('reviewsList');
+            container.innerHTML = '<div class="loading">⏳ 로딩 중...</div>';
+            
+            try {
+                // Load from localStorage for now
+                const reviews = JSON.parse(localStorage.getItem('reviews') || '[]');
+                
+                // Update stats
+                document.getElementById('totalReviews').textContent = reviews.length;
+                
+                if (reviews.length === 0) {
+                    container.innerHTML = '<div class="empty-state"><div style="font-size: 3rem;">📝</div><p>등록된 후기가 없습니다.<br>위의 \"➕ 새 후기 추가\" 버튼을 클릭하여 후기를 추가하세요.</p></div>';
+                    return;
+                }
+                
+                let html = '';
+                reviews.forEach(review => {
+                    const stars = '⭐'.repeat(review.rating || 0);
+                    const statusBadge = review.status === 'approved' ? 
+                        '<span class="badge badge-success">승인됨</span>' : 
+                        '<span class="badge badge-warning">대기중</span>';
+                    
+                    html += `
+                        <div class="item-card">
+                            <div class="item-header">
+                                <h3 class="item-title">${review.title || '제목 없음'}</h3>
+                                ${statusBadge}
+                            </div>
+                            <div class="item-meta">
+                                📍 ${review.destination || '-'} | 
+                                <strong>작성자:</strong> ${review.author_name || '익명'} | 
+                                <strong>작성일:</strong> ${new Date(review.created_at).toLocaleDateString('ko-KR', {year: 'numeric', month: 'long', day: 'numeric'})}
+                            </div>
+                            <div class="stars">${stars} (${review.rating || 0}/5)</div>
+                            <div class="item-content">${review.content || ''}</div>
+                            ${review.image_url ? `<img src="${review.image_url}" class="image-thumbnail" alt="후기 이미지">` : ''}
+                            <div style="margin-top: 1rem; display: flex; gap: 10px;">
+                                <button onclick="editReview('${review.id}')" class="btn btn-small" style="background: #3498db; flex: 1;">✏️ 수정</button>
+                                <button onclick="deleteReview('${review.id}')" class="btn btn-small" style="background: #e74c3c; flex: 1;">🗑️ 삭제</button>
+                            </div>
+                        </div>
+                    `;
+                });
+                container.innerHTML = html;
+            } catch (error) {
+                console.error('Error loading reviews:', error);
+                container.innerHTML = `<div class="error-message">❌ 후기를 불러오는데 실패했습니다: ${error.message}</div>`;
+            }
+        }
+        
+        // ========== INQUIRY MANAGEMENT ==========
+        function showInquiryForm() {
+            console.log('=== showInquiryForm called ===');
+            const modal = document.getElementById('inquiryFormModal');
+            modal.classList.remove('hidden');
+            modal.style.display = 'block';
+            document.getElementById('inquiryId').value = '';
+            document.getElementById('inquiryForm').reset();
+        }
+        
+        function hideInquiryForm() {
+            const modal = document.getElementById('inquiryFormModal');
+            modal.classList.add('hidden');
+            modal.style.display = 'none';
+            document.getElementById('inquiryForm').reset();
+        }
+        
+        async function saveInquiry(event) {
+            event.preventDefault();
+            
+            const inquiryData = {
+                name: document.getElementById('inquiryName').value,
+                email: document.getElementById('inquiryEmail').value,
+                phone: document.getElementById('inquiryPhone').value,
+                message: document.getElementById('inquiryMessage').value,
+                admin_reply: document.getElementById('inquiryReply').value || null,
+                status: document.getElementById('inquiryIsAnswered').checked ? 'answered' : 'pending'
+            };
+            
+            try {
+                // For now, store in localStorage (will be replaced with API call)
+                const inquiries = JSON.parse(localStorage.getItem('inquiries') || '[]');
+                
+                const inquiryId = document.getElementById('inquiryId').value;
+                if (inquiryId) {
+                    // Update existing inquiry
+                    const index = inquiries.findIndex(i => i.id === inquiryId);
+                    if (index !== -1) {
+                        inquiries[index] = { ...inquiries[index], ...inquiryData, updated_at: new Date().toISOString() };
+                    }
+                } else {
+                    // Add new inquiry
+                    inquiryData.id = Date.now().toString();
+                    inquiryData.created_at = new Date().toISOString();
+                    inquiries.push(inquiryData);
+                }
+                
+                localStorage.setItem('inquiries', JSON.stringify(inquiries));
+                
+                alert('✅ 문의가 저장되었습니다!');
+                hideInquiryForm();
+                loadInquiries();
+            } catch (error) {
+                console.error('Error saving inquiry:', error);
+                alert('❌ 문의 저장 중 오류가 발생했습니다: ' + error.message);
+            }
+        }
+        
+        function editInquiry(inquiryId) {
+            console.log('=== editInquiry called ===', inquiryId);
+            const inquiries = JSON.parse(localStorage.getItem('inquiries') || '[]');
+            const inquiry = inquiries.find(i => i.id === inquiryId);
+            console.log('Found inquiry:', inquiry);
+            
+            if (inquiry) {
+                showInquiryForm();
+                document.getElementById('inquiryId').value = inquiry.id;
+                document.getElementById('inquiryName').value = inquiry.name || '';
+                document.getElementById('inquiryEmail').value = inquiry.email || '';
+                document.getElementById('inquiryPhone').value = inquiry.phone || '';
+                document.getElementById('inquiryMessage').value = inquiry.message || '';
+                document.getElementById('inquiryReply').value = inquiry.admin_reply || '';
+                document.getElementById('inquiryIsAnswered').checked = inquiry.status === 'answered';
+                console.log('Inquiry form populated');
+            } else {
+                alert('문의를 찾을 수 없습니다. ID: ' + inquiryId);
+            }
+        }
+        
+        function deleteInquiry(inquiryId) {
+            if (!confirm('정말로 이 문의를 삭제하시겠습니까?')) {
+                return;
+            }
+            
+            const inquiries = JSON.parse(localStorage.getItem('inquiries') || '[]');
+            const filtered = inquiries.filter(i => i.id !== inquiryId);
+            localStorage.setItem('inquiries', JSON.stringify(filtered));
+            
+            alert('✅ 문의가 삭제되었습니다.');
+            loadInquiries();
+        }
+        
+        async function loadInquiries() {
+            const container = document.getElementById('inquiriesList');
+            container.innerHTML = '<div class="loading">⏳ 로딩 중...</div>';
+            
+            try {
+                // Load from localStorage for now
+                const inquiries = JSON.parse(localStorage.getItem('inquiries') || '[]');
+                
+                // Update stats
+                document.getElementById('totalInquiries').textContent = inquiries.length;
+                const pending = inquiries.filter(i => i.status !== 'answered').length;
+                document.getElementById('pendingInquiries').textContent = pending;
+                
+                if (inquiries.length === 0) {
+                    container.innerHTML = '<div class="empty-state"><div style="font-size: 3rem;">💬</div><p>등록된 문의가 없습니다.<br>위의 \"➕ 새 문의 추가\" 버튼을 클릭하여 문의를 추가하세요.</p></div>';
+                    return;
+                }
+                
+                let html = '';
+                inquiries.forEach(inquiry => {
+                    const statusBadge = inquiry.status === 'answered' ? 
+                        '<span class="badge badge-success">답변완료</span>' : 
+                        '<span class="badge badge-warning">답변대기</span>';
+                    
+                    html += `
+                        <div class="item-card">
+                            <div class="item-header">
+                                <h3 class="item-title">${inquiry.name || '이름 없음'}</h3>
+                                ${statusBadge}
+                            </div>
+                            <div class="item-meta">
+                                📧 ${inquiry.email || '-'} | 
+                                📱 ${inquiry.phone || '-'} | 
+                                📅 ${new Date(inquiry.created_at).toLocaleDateString('ko-KR', {year: 'numeric', month: 'long', day: 'numeric'})}
+                            </div>
+                            <div class="item-content">
+                                <strong>문의내용:</strong><br>
+                                ${inquiry.message || ''}
+                            </div>
+                            ${inquiry.admin_reply ? `
+                                <div class="reply-box">
+                                    <strong>✅ 관리자 답변:</strong><br>
+                                    ${inquiry.admin_reply}
+                                </div>
+                            ` : '<p style="color: #e67e22; font-style: italic;">아직 답변이 없습니다.</p>'}
+                            <div style="margin-top: 1rem; display: flex; gap: 10px;">
+                                <button onclick="editInquiry('${inquiry.id}')" class="btn btn-small" style="background: #3498db; flex: 1;">✏️ 답변하기</button>
+                                <button onclick="deleteInquiry('${inquiry.id}')" class="btn btn-small" style="background: #e74c3c; flex: 1;">🗑️ 삭제</button>
+                            </div>
+                        </div>
+                    `;
+                });
+                container.innerHTML = html;
+            } catch (error) {
+                console.error('Error loading inquiries:', error);
+                container.innerHTML = `<div class="error-message">❌ 문의를 불러오는데 실패했습니다: ${error.message}</div>`;
+            }
+        }
+                }
+            } catch (error) {
+                console.error('Error loading inquiries:', error);
+                container.innerHTML = `<div class="error-message">❌ 문의를 불러오는데 실패했습니다: ${error.message}</div>`;
+            }
+        }
+        
+        // Resort Management Functions
+        const DESTINATIONS = {
+            '태국': ['푸켓', '카오락', '끄라비', '코사무이', '파타야', '방콕'],
+            '인도네시아': ['발리', '롬복'],
+            '하와이': ['오아후', '마우이', '빅아일랜드', '카우아이'],
+            '칸쿤': ['칸쿤', '플라야델카르멘', '툴룸'],
+            '필리핀': ['보라카이', '세부', '보홀', '팔라완'],
+            '몰디브': ['북말레', '남말레', '아리', '바'],
+            '남태평양': ['피지', '타히티', '뉴칼레도니아', '사모아'],
+            '다낭': ['다낭', '호이안'],
+            '모리셔스': ['북부', '동부', '서부', '남부']
+        };
+        
+        let uploadedImages = {
+            main: null,
+            additional: []
+        };
+        
+        function showResortForm() {
+            console.log('=== showResortForm called ===');
+            const modal = document.getElementById('resortFormModal');
+            modal.classList.remove('hidden');
+            modal.style.display = 'block';
+            document.getElementById('resortId').value = '';
+            document.getElementById('resortForm').reset();
+            uploadedImages = { main: null, additional: [] };
+            document.getElementById('mainImagePreview').innerHTML = '';
+            document.getElementById('additionalImagesPreview').innerHTML = '';
+        }
+        
+        function hideResortForm() {
+            const modal = document.getElementById('resortFormModal');
+            modal.classList.add('hidden');
+            modal.style.display = 'none';
+            document.getElementById('resortForm').reset();
+            uploadedImages = { main: null, additional: [] };
+        }
+        
+        function loadRegionsByDestination() {
+            const destination = document.getElementById('resortDestination').value;
+            const regionSelect = document.getElementById('resortRegion');
+            
+            regionSelect.innerHTML = '<option value="">-- 지역 선택 --</option>';
+            
+            if (destination && DESTINATIONS[destination]) {
+                DESTINATIONS[destination].forEach(region => {
+                    const option = document.createElement('option');
+                    option.value = region;
+                    option.textContent = region;
+                    regionSelect.appendChild(option);
+                });
+            }
+        }
+        
+        function previewMainImage(event) {
+            const file = event.target.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    document.getElementById('mainImagePreview').innerHTML = 
+                        `<img src="${e.target.result}" style="max-width: 200px; max-height: 200px; border-radius: 8px;">`;
+                };
+                reader.readAsDataURL(file);
+                uploadedImages.main = file;
+            }
+        }
+        
+        function previewAdditionalImage(event, index) {
+            const file = event.target.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    const previewContainer = document.getElementById('additionalImagesPreview');
+                    let imgElement = previewContainer.children[index];
+                    
+                    if (!imgElement) {
+                        imgElement = document.createElement('img');
+                        imgElement.style.width = '100%';
+                        imgElement.style.height = '80px';
+                        imgElement.style.objectFit = 'cover';
+                        imgElement.style.borderRadius = '4px';
+                        previewContainer.appendChild(imgElement);
+                    }
+                    
+                    imgElement.src = e.target.result;
+                };
+                reader.readAsDataURL(file);
+                uploadedImages.additional[index] = file;
+            }
+        }
+        
+        async function saveResort(event) {
+            event.preventDefault();
+            
+            const resortData = {
+                destination: document.getElementById('resortDestination').value,
+                region: document.getElementById('resortRegion').value,
+                name_ko: document.getElementById('resortNameKo').value,
+                name_en: document.getElementById('resortNameEn').value,
+                description: document.getElementById('resortDescription').value,
+                is_active: document.getElementById('resortIsActive').checked
+            };
+            
+            // Upload images if present
+            if (uploadedImages.main || uploadedImages.additional.length > 0) {
+                try {
+                    const formData = new FormData();
+                    
+                    if (uploadedImages.main) {
+                        formData.append('files', uploadedImages.main);
+                    }
+                    
+                    uploadedImages.additional.forEach((file, index) => {
+                        if (file) {
+                            formData.append('files', file);
+                        }
+                    });
+                    
+                    const uploadResponse = await fetch('/api/upload', {
+                        method: 'POST',
+                        body: formData
+                    });
+                    
+                    const uploadResult = await uploadResponse.json();
+                    
+                    if (uploadResult.success && uploadResult.urls) {
+                        resortData.image_url = uploadResult.urls[0];
+                        resortData.gallery_images = JSON.stringify(uploadResult.urls.slice(1));
+                    }
+                } catch (uploadError) {
+                    console.error('Image upload error:', uploadError);
+                    alert('이미지 업로드 중 오류가 발생했습니다. 이미지 없이 저장하시겠습니까?');
+                }
+            }
+            
+            try {
+                // For now, store in localStorage (will be replaced with API call)
+                const resorts = JSON.parse(localStorage.getItem('resorts') || '[]');
+                
+                const resortId = document.getElementById('resortId').value;
+                if (resortId) {
+                    // Update existing resort
+                    const index = resorts.findIndex(r => r.id === resortId);
+                    if (index !== -1) {
+                        resorts[index] = { ...resorts[index], ...resortData };
+                    }
+                } else {
+                    // Add new resort
+                    resortData.id = Date.now().toString();
+                    resortData.created_at = new Date().toISOString();
+                    resorts.push(resortData);
+                }
+                
+                localStorage.setItem('resorts', JSON.stringify(resorts));
+                
+                alert('✅ 리조트가 저장되었습니다!');
+                hideResortForm();
+                loadDestinationsAndRegions();
+            } catch (error) {
+                console.error('Error saving resort:', error);
+                alert('❌ 리조트 저장 중 오류가 발생했습니다: ' + error.message);
+            }
+        }
+        
+        async function loadDestinationsAndRegions() {
+            const container = document.getElementById('resortsList');
+            container.innerHTML = '<div class="loading">⏳ 로딩 중...</div>';
+            
+            try {
+                // Load from localStorage for now
+                const resorts = JSON.parse(localStorage.getItem('resorts') || '[]');
+                
+                // Update stats
+                document.getElementById('totalResorts').textContent = resorts.length;
+                
+                if (resorts.length === 0) {
+                    container.innerHTML = '<div class="empty-state"><div style="font-size: 3rem;">🏨</div><p>등록된 리조트가 없습니다.<br>위의 \"+ 새 리조트 추가\" 버튼을 클릭하여 리조트를 추가하세요.</p></div>';
+                    return;
+                }
+                
+                // Group by destination and region
+                const grouped = {};
+                resorts.forEach(resort => {
+                    if (!grouped[resort.destination]) {
+                        grouped[resort.destination] = {};
+                    }
+                    if (!grouped[resort.destination][resort.region]) {
+                        grouped[resort.destination][resort.region] = [];
+                    }
+                    grouped[resort.destination][resort.region].push(resort);
+                });
+                
+                let html = '';
+                Object.keys(grouped).sort().forEach(destination => {
+                    html += `<div style="margin-bottom: 2rem;">`;
+                    html += `<h3 style="font-size: 1.3rem; margin-bottom: 1rem; color: #2c3e50;">📍 ${destination}</h3>`;
+                    
+                    Object.keys(grouped[destination]).sort().forEach(region => {
+                        html += `<div style="margin-bottom: 1.5rem; margin-left: 1rem;">`;
+                        html += `<h4 style="font-size: 1.1rem; margin-bottom: 0.8rem; color: #34495e;">🌴 ${region}</h4>`;
+                        
+                        grouped[destination][region].forEach(resort => {
+                            const statusBadge = resort.is_active ? 
+                                '<span class="badge badge-success">활성</span>' : 
+                                '<span class="badge badge-info">비활성</span>';
+                            
+                            html += `
+                                <div class="item-card" style="margin-left: 1rem; margin-bottom: 1rem;">
+                                    <div class="item-header">
+                                        <h3 class="item-title">${resort.name_ko || resort.name_en || '이름 없음'}</h3>
+                                        ${statusBadge}
+                                    </div>
+                                    ${resort.name_en ? `<div style="color: #7f8c8d; margin-bottom: 0.5rem;">${resort.name_en}</div>` : ''}
+                                    ${resort.description ? `<div class="item-content">${resort.description}</div>` : ''}
+                                    ${resort.image_url ? `<img src="${resort.image_url}" class="image-thumbnail" alt="${resort.name_ko}">` : ''}
+                                    <div style="margin-top: 1rem; display: flex; gap: 10px;">
+                                        <button onclick="editResort('${resort.id}')" class="btn btn-small" style="background: #3498db; flex: 1;">✏️ 수정</button>
+                                        <button onclick="deleteResort('${resort.id}')" class="btn btn-small" style="background: #e74c3c; flex: 1;">🗑️ 삭제</button>
+                                    </div>
+                                </div>
+                            `;
+                        });
+                        
+                        html += `</div>`;
+                    });
+                    
+                    html += `</div>`;
+                });
+                
+                container.innerHTML = html;
+            } catch (error) {
+                console.error('Error loading resorts:', error);
+                container.innerHTML = `<div class="error-message">❌ 리조트를 불러오는데 실패했습니다: ${error.message}</div>`;
+            }
+        }
+        
+        function editResort(resortId) {
+            console.log('=== editResort called ===', resortId);
+            const resorts = JSON.parse(localStorage.getItem('resorts') || '[]');
+            const resort = resorts.find(r => r.id === resortId);
+            console.log('Found resort:', resort);
+            
+            if (resort) {
+                showResortForm();
+                document.getElementById('resortId').value = resort.id;
+                document.getElementById('resortDestination').value = resort.destination;
+                loadRegionsByDestination();
+                setTimeout(() => {
+                    document.getElementById('resortRegion').value = resort.region;
+                }, 100);
+                document.getElementById('resortNameKo').value = resort.name_ko || '';
+                document.getElementById('resortNameEn').value = resort.name_en || '';
+                document.getElementById('resortDescription').value = resort.description || '';
+                document.getElementById('resortIsActive').checked = resort.is_active !== false;
+                
+                if (resort.image_url) {
+                    document.getElementById('mainImagePreview').innerHTML = 
+                        `<img src="${resort.image_url}" style="max-width: 200px; max-height: 200px; border-radius: 8px;">`;
+                }
+                console.log('Resort form populated');
+            } else {
+                alert('리조트를 찾을 수 없습니다. ID: ' + resortId);
+            }
+        }
+        
+        function deleteResort(resortId) {
+            if (!confirm('정말로 이 리조트를 삭제하시겠습니까?')) {
+                return;
+            }
+            
+            const resorts = JSON.parse(localStorage.getItem('resorts') || '[]');
+            const filtered = resorts.filter(r => r.id !== resortId);
+            localStorage.setItem('resorts', JSON.stringify(filtered));
+            
+            alert('✅ 리조트가 삭제되었습니다.');
+            loadDestinationsAndRegions();
+        }
+        
+        console.log('=== Script initialized ===');
+        
+        // Auto-load data on page load
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('=== Page loaded, loading data ===');
+            loadReviews();
+        });
     </script>
 </body>
 </html>
