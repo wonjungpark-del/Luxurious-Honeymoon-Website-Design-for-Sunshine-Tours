@@ -305,8 +305,96 @@
                 <div id="reviewsTab" class="tab-content">
                     <div class="content-header">
                         <h2>후기 관리</h2>
-                        <button onclick="loadReviews()" class="btn btn-small">🔄 새로고침</button>
+                        <div>
+                            <button onclick="showReviewForm()" class="btn btn-small" style="background: #27ae60; margin-right: 10px;">➕ 새 후기 추가</button>
+                            <button onclick="loadReviews()" class="btn btn-small">🔄 새로고침</button>
+                        </div>
                     </div>
+                    
+                    <!-- Review Form Modal -->
+                    <div id="reviewFormModal" class="hidden" style="background: white; padding: 2rem; border-radius: 8px; margin-bottom: 2rem; box-shadow: 0 2px 8px rgba(0,0,0,0.1);">
+                        <h3 style="margin-bottom: 1.5rem;">후기 정보 입력</h3>
+                        <form id="reviewForm" onsubmit="saveReview(event)">
+                            <input type="hidden" id="reviewId" value="">
+                            
+                            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 1rem;">
+                                <div class="form-group">
+                                    <label class="form-label">목적지 *</label>
+                                    <select id="reviewDestination" class="form-input" required>
+                                        <option value="">-- 목적지 선택 --</option>
+                                        <option value="태국">🇹🇭 태국</option>
+                                        <option value="인도네시아">🇮🇩 인도네시아</option>
+                                        <option value="하와이">🌺 하와이</option>
+                                        <option value="칸쿤">🇲🇽 칸쿤</option>
+                                        <option value="필리핀">🇵🇭 필리핀</option>
+                                        <option value="몰디브">🇲🇻 몰디브</option>
+                                        <option value="남태평양">🌊 남태평양</option>
+                                        <option value="다낭">🇻🇳 다낭</option>
+                                        <option value="모리셔스">🇲🇺 모리셔스</option>
+                                    </select>
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label class="form-label">평점 *</label>
+                                    <select id="reviewRating" class="form-input" required>
+                                        <option value="">-- 평점 선택 --</option>
+                                        <option value="5">⭐⭐⭐⭐⭐ (5점)</option>
+                                        <option value="4">⭐⭐⭐⭐ (4점)</option>
+                                        <option value="3">⭐⭐⭐ (3점)</option>
+                                        <option value="2">⭐⭐ (2점)</option>
+                                        <option value="1">⭐ (1점)</option>
+                                    </select>
+                                </div>
+                            </div>
+                            
+                            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 1rem;">
+                                <div class="form-group">
+                                    <label class="form-label">작성자 이름 *</label>
+                                    <input type="text" id="reviewAuthor" class="form-input" placeholder="예: 홍길동" required>
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label class="form-label">여행 날짜</label>
+                                    <input type="date" id="reviewTravelDate" class="form-input">
+                                </div>
+                            </div>
+                            
+                            <div class="form-group" style="margin-bottom: 1rem;">
+                                <label class="form-label">제목 *</label>
+                                <input type="text" id="reviewTitle" class="form-input" placeholder="예: 최고의 신혼여행지!" required>
+                            </div>
+                            
+                            <div class="form-group" style="margin-bottom: 1rem;">
+                                <label class="form-label">후기 내용 *</label>
+                                <textarea id="reviewContent" class="form-input" rows="6" placeholder="후기 내용을 입력하세요..." required></textarea>
+                            </div>
+                            
+                            <div class="form-group" style="margin-bottom: 1rem;">
+                                <label class="form-label">이미지 (최대 5개)</label>
+                                <div style="display: grid; grid-template-columns: repeat(5, 1fr); gap: 10px;">
+                                    <input type="file" class="form-input" accept="image/*" onchange="previewReviewImage(event, 0)" style="padding: 0.5rem;">
+                                    <input type="file" class="form-input" accept="image/*" onchange="previewReviewImage(event, 1)" style="padding: 0.5rem;">
+                                    <input type="file" class="form-input" accept="image/*" onchange="previewReviewImage(event, 2)" style="padding: 0.5rem;">
+                                    <input type="file" class="form-input" accept="image/*" onchange="previewReviewImage(event, 3)" style="padding: 0.5rem;">
+                                    <input type="file" class="form-input" accept="image/*" onchange="previewReviewImage(event, 4)" style="padding: 0.5rem;">
+                                </div>
+                                <div id="reviewImagesPreview" style="display: grid; grid-template-columns: repeat(5, 1fr); gap: 10px; margin-top: 10px;"></div>
+                            </div>
+                            
+                            <div class="form-group" style="margin-bottom: 1.5rem;">
+                                <label style="display: flex; align-items: center; cursor: pointer;">
+                                    <input type="checkbox" id="reviewIsApproved" checked style="margin-right: 8px; width: 20px; height: 20px;">
+                                    <span class="form-label" style="margin: 0;">승인 상태 (체크 시 승인됨)</span>
+                                </label>
+                            </div>
+                            
+                            <div style="display: flex; gap: 10px;">
+                                <button type="submit" class="btn" style="flex: 1; background: #27ae60;">💾 저장</button>
+                                <button type="button" onclick="hideReviewForm()" class="btn" style="flex: 1; background: #95a5a6;">❌ 취소</button>
+                            </div>
+                        </form>
+                    </div>
+                    
                     <div id="reviewsList"></div>
                 </div>
                 
@@ -314,8 +402,59 @@
                 <div id="inquiriesTab" class="tab-content hidden">
                     <div class="content-header">
                         <h2>문의 관리</h2>
-                        <button onclick="loadInquiries()" class="btn btn-small">🔄 새로고침</button>
+                        <div>
+                            <button onclick="showInquiryForm()" class="btn btn-small" style="background: #27ae60; margin-right: 10px;">➕ 새 문의 추가</button>
+                            <button onclick="loadInquiries()" class="btn btn-small">🔄 새로고침</button>
+                        </div>
                     </div>
+                    
+                    <!-- Inquiry Form Modal -->
+                    <div id="inquiryFormModal" class="hidden" style="background: white; padding: 2rem; border-radius: 8px; margin-bottom: 2rem; box-shadow: 0 2px 8px rgba(0,0,0,0.1);">
+                        <h3 style="margin-bottom: 1.5rem;">문의 정보 입력/수정</h3>
+                        <form id="inquiryForm" onsubmit="saveInquiry(event)">
+                            <input type="hidden" id="inquiryId" value="">
+                            
+                            <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 1rem; margin-bottom: 1rem;">
+                                <div class="form-group">
+                                    <label class="form-label">이름 *</label>
+                                    <input type="text" id="inquiryName" class="form-input" placeholder="예: 홍길동" required>
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label class="form-label">이메일 *</label>
+                                    <input type="email" id="inquiryEmail" class="form-input" placeholder="예: example@email.com" required>
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label class="form-label">연락처 *</label>
+                                    <input type="tel" id="inquiryPhone" class="form-input" placeholder="예: 010-1234-5678" required>
+                                </div>
+                            </div>
+                            
+                            <div class="form-group" style="margin-bottom: 1rem;">
+                                <label class="form-label">문의 내용 *</label>
+                                <textarea id="inquiryMessage" class="form-input" rows="5" placeholder="문의 내용을 입력하세요..." required></textarea>
+                            </div>
+                            
+                            <div class="form-group" style="margin-bottom: 1rem;">
+                                <label class="form-label">관리자 답변</label>
+                                <textarea id="inquiryReply" class="form-input" rows="5" placeholder="답변 내용을 입력하세요..."></textarea>
+                            </div>
+                            
+                            <div class="form-group" style="margin-bottom: 1.5rem;">
+                                <label style="display: flex; align-items: center; cursor: pointer;">
+                                    <input type="checkbox" id="inquiryIsAnswered" style="margin-right: 8px; width: 20px; height: 20px;">
+                                    <span class="form-label" style="margin: 0;">답변 완료 (체크 시 답변완료 상태)</span>
+                                </label>
+                            </div>
+                            
+                            <div style="display: flex; gap: 10px;">
+                                <button type="submit" class="btn" style="flex: 1; background: #27ae60;">💾 저장</button>
+                                <button type="button" onclick="hideInquiryForm()" class="btn" style="flex: 1; background: #95a5a6;">❌ 취소</button>
+                            </div>
+                        </form>
+                    </div>
+                    
                     <div id="inquiriesList"></div>
                 </div>
                 
@@ -503,50 +642,286 @@
         }
         
         // API Functions
+        
+        // ========== REVIEW MANAGEMENT ==========
+        let reviewImages = [];
+        
+        function showReviewForm() {
+            document.getElementById('reviewFormModal').classList.remove('hidden');
+            document.getElementById('reviewId').value = '';
+            document.getElementById('reviewForm').reset();
+            reviewImages = [];
+            document.getElementById('reviewImagesPreview').innerHTML = '';
+        }
+        
+        function hideReviewForm() {
+            document.getElementById('reviewFormModal').classList.add('hidden');
+            document.getElementById('reviewForm').reset();
+            reviewImages = [];
+        }
+        
+        function previewReviewImage(event, index) {
+            const file = event.target.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    const previewContainer = document.getElementById('reviewImagesPreview');
+                    let imgElement = previewContainer.children[index];
+                    
+                    if (!imgElement) {
+                        imgElement = document.createElement('img');
+                        imgElement.style.width = '100%';
+                        imgElement.style.height = '80px';
+                        imgElement.style.objectFit = 'cover';
+                        imgElement.style.borderRadius = '4px';
+                        previewContainer.appendChild(imgElement);
+                    }
+                    
+                    imgElement.src = e.target.result;
+                };
+                reader.readAsDataURL(file);
+                reviewImages[index] = file;
+            }
+        }
+        
+        async function saveReview(event) {
+            event.preventDefault();
+            
+            const reviewData = {
+                destination: document.getElementById('reviewDestination').value,
+                title: document.getElementById('reviewTitle').value,
+                author_name: document.getElementById('reviewAuthor').value,
+                content: document.getElementById('reviewContent').value,
+                rating: parseInt(document.getElementById('reviewRating').value),
+                travel_date: document.getElementById('reviewTravelDate').value || null,
+                status: document.getElementById('reviewIsApproved').checked ? 'approved' : 'pending'
+            };
+            
+            // Upload images if present
+            if (reviewImages.length > 0) {
+                try {
+                    const formData = new FormData();
+                    
+                    reviewImages.forEach((file, index) => {
+                        if (file) {
+                            formData.append('files', file);
+                        }
+                    });
+                    
+                    const uploadResponse = await fetch('/api/upload', {
+                        method: 'POST',
+                        body: formData
+                    });
+                    
+                    const uploadResult = await uploadResponse.json();
+                    
+                    if (uploadResult.success && uploadResult.urls) {
+                        reviewData.image_url = uploadResult.urls[0];
+                        if (uploadResult.urls.length > 1) {
+                            reviewData.gallery_images = JSON.stringify(uploadResult.urls);
+                        }
+                    }
+                } catch (uploadError) {
+                    console.error('Image upload error:', uploadError);
+                    alert('이미지 업로드 중 오류가 발생했습니다. 이미지 없이 저장하시겠습니까?');
+                }
+            }
+            
+            try {
+                // For now, store in localStorage (will be replaced with API call)
+                const reviews = JSON.parse(localStorage.getItem('reviews') || '[]');
+                
+                const reviewId = document.getElementById('reviewId').value;
+                if (reviewId) {
+                    // Update existing review
+                    const index = reviews.findIndex(r => r.id === reviewId);
+                    if (index !== -1) {
+                        reviews[index] = { ...reviews[index], ...reviewData, updated_at: new Date().toISOString() };
+                    }
+                } else {
+                    // Add new review
+                    reviewData.id = Date.now().toString();
+                    reviewData.created_at = new Date().toISOString();
+                    reviews.push(reviewData);
+                }
+                
+                localStorage.setItem('reviews', JSON.stringify(reviews));
+                
+                alert('✅ 후기가 저장되었습니다!');
+                hideReviewForm();
+                loadReviews();
+            } catch (error) {
+                console.error('Error saving review:', error);
+                alert('❌ 후기 저장 중 오류가 발생했습니다: ' + error.message);
+            }
+        }
+        
+        function editReview(reviewId) {
+            const reviews = JSON.parse(localStorage.getItem('reviews') || '[]');
+            const review = reviews.find(r => r.id === reviewId);
+            
+            if (review) {
+                showReviewForm();
+                document.getElementById('reviewId').value = review.id;
+                document.getElementById('reviewDestination').value = review.destination || '';
+                document.getElementById('reviewTitle').value = review.title || '';
+                document.getElementById('reviewAuthor').value = review.author_name || '';
+                document.getElementById('reviewContent').value = review.content || '';
+                document.getElementById('reviewRating').value = review.rating || '';
+                document.getElementById('reviewTravelDate').value = review.travel_date || '';
+                document.getElementById('reviewIsApproved').checked = review.status === 'approved';
+                
+                if (review.image_url) {
+                    document.getElementById('reviewImagesPreview').innerHTML = 
+                        `<img src="${review.image_url}" style="width: 100%; height: 80px; object-fit: cover; border-radius: 4px;">`;
+                }
+            }
+        }
+        
+        function deleteReview(reviewId) {
+            if (!confirm('정말로 이 후기를 삭제하시겠습니까?')) {
+                return;
+            }
+            
+            const reviews = JSON.parse(localStorage.getItem('reviews') || '[]');
+            const filtered = reviews.filter(r => r.id !== reviewId);
+            localStorage.setItem('reviews', JSON.stringify(filtered));
+            
+            alert('✅ 후기가 삭제되었습니다.');
+            loadReviews();
+        }
+        
         async function loadReviews() {
             const container = document.getElementById('reviewsList');
             container.innerHTML = '<div class="loading">⏳ 로딩 중...</div>';
             
             try {
-                const response = await fetch('/api/reviews');
-                const data = await response.json();
+                // Load from localStorage for now
+                const reviews = JSON.parse(localStorage.getItem('reviews') || '[]');
                 
-                if (data.success && data.data && data.data.length > 0) {
-                    // Update stats
-                    document.getElementById('totalReviews').textContent = data.data.length;
-                    
-                    let html = '';
-                    data.data.forEach(review => {
-                        const stars = '⭐'.repeat(review.rating || 0);
-                        const statusBadge = review.status === 'approved' ? 
-                            '<span class="badge badge-success">승인됨</span>' : 
-                            '<span class="badge badge-warning">대기중</span>';
-                        
-                        html += `
-                            <div class="item-card">
-                                <div class="item-header">
-                                    <h3 class="item-title">${review.title || '제목 없음'}</h3>
-                                    ${statusBadge}
-                                </div>
-                                <div class="item-meta">
-                                    <strong>작성자:</strong> ${review.author_name || '익명'} | 
-                                    <strong>작성일:</strong> ${new Date(review.created_at).toLocaleDateString('ko-KR', {year: 'numeric', month: 'long', day: 'numeric'})}
-                                </div>
-                                <div class="stars">${stars} (${review.rating || 0}/5)</div>
-                                <div class="item-content">${review.content || ''}</div>
-                                ${review.image_url ? `<img src="${review.image_url}" class="image-thumbnail" alt="후기 이미지">` : ''}
-                            </div>
-                        `;
-                    });
-                    container.innerHTML = html;
-                } else {
-                    container.innerHTML = '<div class="empty-state"><div style="font-size: 3rem;">📝</div><p>등록된 후기가 없습니다.</p></div>';
-                    document.getElementById('totalReviews').textContent = '0';
+                // Update stats
+                document.getElementById('totalReviews').textContent = reviews.length;
+                
+                if (reviews.length === 0) {
+                    container.innerHTML = '<div class="empty-state"><div style="font-size: 3rem;">📝</div><p>등록된 후기가 없습니다.<br>위의 \"➕ 새 후기 추가\" 버튼을 클릭하여 후기를 추가하세요.</p></div>';
+                    return;
                 }
+                
+                let html = '';
+                reviews.forEach(review => {
+                    const stars = '⭐'.repeat(review.rating || 0);
+                    const statusBadge = review.status === 'approved' ? 
+                        '<span class="badge badge-success">승인됨</span>' : 
+                        '<span class="badge badge-warning">대기중</span>';
+                    
+                    html += `
+                        <div class="item-card">
+                            <div class="item-header">
+                                <h3 class="item-title">${review.title || '제목 없음'}</h3>
+                                ${statusBadge}
+                            </div>
+                            <div class="item-meta">
+                                📍 ${review.destination || '-'} | 
+                                <strong>작성자:</strong> ${review.author_name || '익명'} | 
+                                <strong>작성일:</strong> ${new Date(review.created_at).toLocaleDateString('ko-KR', {year: 'numeric', month: 'long', day: 'numeric'})}
+                            </div>
+                            <div class="stars">${stars} (${review.rating || 0}/5)</div>
+                            <div class="item-content">${review.content || ''}</div>
+                            ${review.image_url ? `<img src="${review.image_url}" class="image-thumbnail" alt="후기 이미지">` : ''}
+                            <div style="margin-top: 1rem; display: flex; gap: 10px;">
+                                <button onclick="editReview('${review.id}')" class="btn btn-small" style="background: #3498db; flex: 1;">✏️ 수정</button>
+                                <button onclick="deleteReview('${review.id}')" class="btn btn-small" style="background: #e74c3c; flex: 1;">🗑️ 삭제</button>
+                            </div>
+                        </div>
+                    `;
+                });
+                container.innerHTML = html;
             } catch (error) {
                 console.error('Error loading reviews:', error);
                 container.innerHTML = `<div class="error-message">❌ 후기를 불러오는데 실패했습니다: ${error.message}</div>`;
             }
+        }
+        
+        // ========== INQUIRY MANAGEMENT ==========
+        function showInquiryForm() {
+            document.getElementById('inquiryFormModal').classList.remove('hidden');
+            document.getElementById('inquiryId').value = '';
+            document.getElementById('inquiryForm').reset();
+        }
+        
+        function hideInquiryForm() {
+            document.getElementById('inquiryFormModal').classList.add('hidden');
+            document.getElementById('inquiryForm').reset();
+        }
+        
+        async function saveInquiry(event) {
+            event.preventDefault();
+            
+            const inquiryData = {
+                name: document.getElementById('inquiryName').value,
+                email: document.getElementById('inquiryEmail').value,
+                phone: document.getElementById('inquiryPhone').value,
+                message: document.getElementById('inquiryMessage').value,
+                admin_reply: document.getElementById('inquiryReply').value || null,
+                status: document.getElementById('inquiryIsAnswered').checked ? 'answered' : 'pending'
+            };
+            
+            try {
+                // For now, store in localStorage (will be replaced with API call)
+                const inquiries = JSON.parse(localStorage.getItem('inquiries') || '[]');
+                
+                const inquiryId = document.getElementById('inquiryId').value;
+                if (inquiryId) {
+                    // Update existing inquiry
+                    const index = inquiries.findIndex(i => i.id === inquiryId);
+                    if (index !== -1) {
+                        inquiries[index] = { ...inquiries[index], ...inquiryData, updated_at: new Date().toISOString() };
+                    }
+                } else {
+                    // Add new inquiry
+                    inquiryData.id = Date.now().toString();
+                    inquiryData.created_at = new Date().toISOString();
+                    inquiries.push(inquiryData);
+                }
+                
+                localStorage.setItem('inquiries', JSON.stringify(inquiries));
+                
+                alert('✅ 문의가 저장되었습니다!');
+                hideInquiryForm();
+                loadInquiries();
+            } catch (error) {
+                console.error('Error saving inquiry:', error);
+                alert('❌ 문의 저장 중 오류가 발생했습니다: ' + error.message);
+            }
+        }
+        
+        function editInquiry(inquiryId) {
+            const inquiries = JSON.parse(localStorage.getItem('inquiries') || '[]');
+            const inquiry = inquiries.find(i => i.id === inquiryId);
+            
+            if (inquiry) {
+                showInquiryForm();
+                document.getElementById('inquiryId').value = inquiry.id;
+                document.getElementById('inquiryName').value = inquiry.name || '';
+                document.getElementById('inquiryEmail').value = inquiry.email || '';
+                document.getElementById('inquiryPhone').value = inquiry.phone || '';
+                document.getElementById('inquiryMessage').value = inquiry.message || '';
+                document.getElementById('inquiryReply').value = inquiry.admin_reply || '';
+                document.getElementById('inquiryIsAnswered').checked = inquiry.status === 'answered';
+            }
+        }
+        
+        function deleteInquiry(inquiryId) {
+            if (!confirm('정말로 이 문의를 삭제하시겠습니까?')) {
+                return;
+            }
+            
+            const inquiries = JSON.parse(localStorage.getItem('inquiries') || '[]');
+            const filtered = inquiries.filter(i => i.id !== inquiryId);
+            localStorage.setItem('inquiries', JSON.stringify(filtered));
+            
+            alert('✅ 문의가 삭제되었습니다.');
+            loadInquiries();
         }
         
         async function loadInquiries() {
@@ -554,50 +929,59 @@
             container.innerHTML = '<div class="loading">⏳ 로딩 중...</div>';
             
             try {
-                const response = await fetch('/api/inquiries');
-                const data = await response.json();
+                // Load from localStorage for now
+                const inquiries = JSON.parse(localStorage.getItem('inquiries') || '[]');
                 
-                if (data.success && data.data && data.data.length > 0) {
-                    // Update stats
-                    document.getElementById('totalInquiries').textContent = data.data.length;
-                    const pending = data.data.filter(i => i.status !== 'answered').length;
-                    document.getElementById('pendingInquiries').textContent = pending;
+                // Update stats
+                document.getElementById('totalInquiries').textContent = inquiries.length;
+                const pending = inquiries.filter(i => i.status !== 'answered').length;
+                document.getElementById('pendingInquiries').textContent = pending;
+                
+                if (inquiries.length === 0) {
+                    container.innerHTML = '<div class="empty-state"><div style="font-size: 3rem;">💬</div><p>등록된 문의가 없습니다.<br>위의 \"➕ 새 문의 추가\" 버튼을 클릭하여 문의를 추가하세요.</p></div>';
+                    return;
+                }
+                
+                let html = '';
+                inquiries.forEach(inquiry => {
+                    const statusBadge = inquiry.status === 'answered' ? 
+                        '<span class="badge badge-success">답변완료</span>' : 
+                        '<span class="badge badge-warning">답변대기</span>';
                     
-                    let html = '';
-                    data.data.forEach(inquiry => {
-                        const statusBadge = inquiry.status === 'answered' ? 
-                            '<span class="badge badge-success">답변완료</span>' : 
-                            '<span class="badge badge-warning">답변대기</span>';
-                        
-                        html += `
-                            <div class="item-card">
-                                <div class="item-header">
-                                    <h3 class="item-title">${inquiry.name || '이름 없음'}</h3>
-                                    ${statusBadge}
-                                </div>
-                                <div class="item-meta">
-                                    📧 ${inquiry.email || '-'} | 
-                                    📱 ${inquiry.phone || '-'} | 
-                                    📅 ${new Date(inquiry.created_at).toLocaleDateString('ko-KR', {year: 'numeric', month: 'long', day: 'numeric'})}
-                                </div>
-                                <div class="item-content">
-                                    <strong>문의내용:</strong><br>
-                                    ${inquiry.message || ''}
-                                </div>
-                                ${inquiry.admin_reply ? `
-                                    <div class="reply-box">
-                                        <strong>✅ 관리자 답변:</strong><br>
-                                        ${inquiry.admin_reply}
-                                    </div>
-                                ` : '<p style="color: #e67e22; font-style: italic;">아직 답변이 없습니다.</p>'}
+                    html += `
+                        <div class="item-card">
+                            <div class="item-header">
+                                <h3 class="item-title">${inquiry.name || '이름 없음'}</h3>
+                                ${statusBadge}
                             </div>
-                        `;
-                    });
-                    container.innerHTML = html;
-                } else {
-                    container.innerHTML = '<div class="empty-state"><div style="font-size: 3rem;">💬</div><p>등록된 문의가 없습니다.</p></div>';
-                    document.getElementById('totalInquiries').textContent = '0';
-                    document.getElementById('pendingInquiries').textContent = '0';
+                            <div class="item-meta">
+                                📧 ${inquiry.email || '-'} | 
+                                📱 ${inquiry.phone || '-'} | 
+                                📅 ${new Date(inquiry.created_at).toLocaleDateString('ko-KR', {year: 'numeric', month: 'long', day: 'numeric'})}
+                            </div>
+                            <div class="item-content">
+                                <strong>문의내용:</strong><br>
+                                ${inquiry.message || ''}
+                            </div>
+                            ${inquiry.admin_reply ? `
+                                <div class="reply-box">
+                                    <strong>✅ 관리자 답변:</strong><br>
+                                    ${inquiry.admin_reply}
+                                </div>
+                            ` : '<p style="color: #e67e22; font-style: italic;">아직 답변이 없습니다.</p>'}
+                            <div style="margin-top: 1rem; display: flex; gap: 10px;">
+                                <button onclick="editInquiry('${inquiry.id}')" class="btn btn-small" style="background: #3498db; flex: 1;">✏️ 답변하기</button>
+                                <button onclick="deleteInquiry('${inquiry.id}')" class="btn btn-small" style="background: #e74c3c; flex: 1;">🗑️ 삭제</button>
+                            </div>
+                        </div>
+                    `;
+                });
+                container.innerHTML = html;
+            } catch (error) {
+                console.error('Error loading inquiries:', error);
+                container.innerHTML = `<div class="error-message">❌ 문의를 불러오는데 실패했습니다: ${error.message}</div>`;
+            }
+        }
                 }
             } catch (error) {
                 console.error('Error loading inquiries:', error);
