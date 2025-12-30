@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>관리자 페이지 - 선샤인투어</title>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Noto Sans KR', sans-serif; background: #f5f7fa; }
+        
+        .login-container { 
+            min-height: 100vh; 
+            display: flex; 
+            align-items: center; 
+            justify-content: center; 
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); 
+        }
+        .login-box { 
+            background: white; 
+            padding: 3rem; 
+            border-radius: 16px; 
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3); 
+            width: 100%; 
+            max-width: 400px; 
+        }
+        .login-title { text-align: center; margin-bottom: 2rem; color: #2c3e50; font-size: 1.8rem; }
+        .form-group { margin-bottom: 1.5rem; }
+        .form-label { display: block; margin-bottom: 0.5rem; font-weight: 600; color: #34495e; }
+        .form-input { 
+            width: 100%; 
+            padding: 0.75rem 1rem; 
+            border: 2px solid #e0e6ed; 
+            border-radius: 8px; 
+            font-size: 1rem; 
+        }
+        .btn { 
+            width: 100%; 
+            padding: 0.75rem; 
+            border: none; 
+            border-radius: 8px; 
+            font-size: 1rem; 
+            font-weight: 600; 
+            cursor: pointer; 
+            background: #667eea; 
+            color: white; 
+        }
+        .btn:hover { background: #5568d3; }
+        .error { 
+            color: #e74c3c; 
+            text-align: center; 
+            margin-top: 1rem; 
+            display: none; 
+        }
+        .error.show { display: block; }
+        .hidden { display: none !important; }
+        
+        .admin-dashboard { 
+            max-width: 1200px; 
+            margin: 2rem auto; 
+            padding: 2rem; 
+            background: white; 
+            border-radius: 8px; 
+        }
+    </style>
+</head>
+<body>
+    <!-- Login Screen -->
+    <div id="loginScreen" class="login-container">
+        <div class="login-box">
+            <h2 class="login-title">🌅 선샤인투어 관리자</h2>
+            <p style="text-align: center; color: #666; margin-bottom: 20px;">비밀번호: sun2026@</p>
+            <form id="loginForm">
+                <div class="form-group">
+                    <label class="form-label">비밀번호</label>
+                    <input type="password" id="passwordInput" class="form-input" placeholder="비밀번호를 입력하세요" required autocomplete="off">
+                </div>
+                <button type="submit" class="btn">로그인</button>
+                <div id="error" class="error">비밀번호가 올바르지 않습니다.</div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Admin Dashboard -->
+    <div id="adminDashboard" class="hidden admin-dashboard">
+        <h1>✅ 로그인 성공!</h1>
+        <p style="margin-top: 20px;">관리자 페이지에 접속하셨습니다.</p>
+        <p style="margin-top: 10px;">비밀번호: <strong>sun2026@</strong></p>
+        <button onclick="logout()" class="btn" style="margin-top: 20px; max-width: 200px;">로그아웃</button>
+        
+        <div style="margin-top: 30px; padding: 20px; background: #f8f9fa; border-radius: 8px;">
+            <h3>📋 관리 기능</h3>
+            <p style="margin-top: 10px;">이 페이지는 간소화된 버전입니다.</p>
+            <p>정상 작동 확인 후 전체 기능을 추가하겠습니다.</p>
+        </div>
+    </div>
+
+    <script>
+        console.log('=== Admin Page Loaded ===');
+        
+        const ADMIN_PASSWORD = 'sun2026@';
+        console.log('Password set:', ADMIN_PASSWORD);
+        
+        // Get elements
+        const loginForm = document.getElementById('loginForm');
+        const loginScreen = document.getElementById('loginScreen');
+        const adminDashboard = document.getElementById('adminDashboard');
+        const passwordInput = document.getElementById('passwordInput');
+        const errorDiv = document.getElementById('error');
+        
+        console.log('Elements found:', {
+            loginForm: !!loginForm,
+            loginScreen: !!loginScreen,
+            adminDashboard: !!adminDashboard,
+            passwordInput: !!passwordInput,
+            errorDiv: !!errorDiv
+        });
+        
+        // Login handler
+        loginForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            console.log('=== Form submitted ===');
+            
+            const password = passwordInput.value;
+            console.log('Entered password:', password);
+            console.log('Correct password:', ADMIN_PASSWORD);
+            console.log('Match:', password === ADMIN_PASSWORD);
+            
+            if (password === ADMIN_PASSWORD) {
+                console.log('✅ LOGIN SUCCESS');
+                errorDiv.classList.remove('show');
+                loginScreen.classList.add('hidden');
+                adminDashboard.classList.remove('hidden');
+                alert('로그인 성공!');
+            } else {
+                console.log('❌ LOGIN FAILED');
+                errorDiv.classList.add('show');
+                alert('비밀번호가 틀렸습니다: "' + password + '"');
+            }
+        });
+        
+        function logout() {
+            loginScreen.classList.remove('hidden');
+            adminDashboard.classList.add('hidden');
+            passwordInput.value = '';
+            errorDiv.classList.remove('show');
+        }
+        
+        console.log('=== Script initialized ===');
+    </script>
+</body>
+</html>
