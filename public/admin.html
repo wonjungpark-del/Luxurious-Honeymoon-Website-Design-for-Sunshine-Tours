@@ -813,6 +813,7 @@
         let currentResorts = [];
         let currentReviews = [];
         let currentInquiries = [];
+        let selectedRegionFilter = ''; // 선택된 지역 필터 저장
 
         // Auth
         function checkAuth() {
@@ -904,9 +905,6 @@
             const filterSelect = document.getElementById('resortRegionFilter');
             if (!filterSelect) return;
             
-            // Keep current selection
-            const currentValue = filterSelect.value;
-            
             // Clear and add "All Regions" option
             filterSelect.innerHTML = '<option value="">전체 지역</option>';
             
@@ -923,14 +921,17 @@
                 filterSelect.appendChild(option);
             });
             
-            // Restore previous selection
-            filterSelect.value = currentValue;
+            // Restore previous selection from global state
+            filterSelect.value = selectedRegionFilter;
         }
         
         // Filter resorts by selected region
         function filterResortsByRegion() {
             const filterSelect = document.getElementById('resortRegionFilter');
             const selectedRegionId = filterSelect.value;
+            
+            // Save selected region to global state
+            selectedRegionFilter = selectedRegionId;
             
             renderResortsTable(selectedRegionId);
         }
@@ -1002,6 +1003,11 @@
         function renderResortsTable(filterRegionId = '') {
             const container = document.getElementById('resortsTable');
             const countBadge = document.getElementById('resortCountBadge');
+            
+            // Use the saved filter if no explicit filter provided
+            if (!filterRegionId && selectedRegionFilter) {
+                filterRegionId = selectedRegionFilter;
+            }
             
             // Filter resorts by region if specified
             let displayResorts = currentResorts;
