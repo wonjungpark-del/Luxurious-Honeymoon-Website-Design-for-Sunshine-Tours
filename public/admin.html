@@ -587,27 +587,15 @@
                             </button>
                         </div>
                         
-                        <!-- View Toggle -->
-                        <div style="margin-bottom: 1.5rem; padding: 1rem; background: #f8f9fa; border-radius: 8px; display: flex; align-items: center; gap: 1rem; justify-content: space-between;">
-                            <div style="display: flex; align-items: center; gap: 1rem;">
-                                <label style="font-weight: 600; color: #2c3e50; white-space: nowrap;">
-                                    <i class="fas fa-eye"></i> 보기 방식:
-                                </label>
-                                <select id="resortViewMode" class="form-input" style="max-width: 200px;" onchange="switchResortView()">
-                                    <option value="hierarchical">국가별 계층 구조</option>
-                                    <option value="table">테이블 뷰</option>
-                                </select>
-                            </div>
+                        <!-- Resort Count Badge -->
+                        <div style="margin-bottom: 1.5rem; padding: 1rem; background: #f8f9fa; border-radius: 8px; display: flex; align-items: center; gap: 1rem; justify-content: flex-end;">
                             <span id="resortCountBadge" style="padding: 0.5rem 1rem; background: #667eea; color: white; border-radius: 20px; font-weight: 600; font-size: 0.9rem;">
                                 총 0개
                             </span>
                         </div>
                         
-                        <!-- Hierarchical View -->
-                        <div id="resortsHierarchical"></div>
-                        
-                        <!-- Table View (hidden by default) -->
-                        <div id="resortsTable" style="display: none;"></div>
+                        <!-- Region-based Resort List -->
+                        <div id="resortsRegionList"></div>
                     </div>
                 </section>
 
@@ -1020,42 +1008,17 @@
                 
                 if (data.success) {
                     currentResorts = data.data;
-                    switchResortView();
+                    renderResortsRegionList();
                 }
             } catch (error) {
                 console.error('Failed to load resorts:', error);
-                document.getElementById('resortsHierarchical').innerHTML = '<div class="empty-state">데이터를 불러오는데 실패했습니다.</div>';
+                document.getElementById('resortsRegionList').innerHTML = '<div class="empty-state">데이터를 불러오는데 실패했습니다.</div>';
             }
         }
         
-        // Switch between hierarchical and table view
-        function switchResortView() {
-            const viewMode = document.getElementById('resortViewMode').value;
-            const hierarchicalView = document.getElementById('resortsHierarchical');
-            const tableView = document.getElementById('resortsTable');
-            
-            if (viewMode === 'hierarchical') {
-                hierarchicalView.style.display = 'block';
-                tableView.style.display = 'none';
-                renderResortsHierarchical();
-            } else {
-                hierarchicalView.style.display = 'none';
-                tableView.style.display = 'block';
-                renderResortsTable();
-            }
-        }
-        
-        // Toggle country group
-        function toggleCountryGroup(country) {
-            const groupElement = document.querySelector(`.country-group[data-country="${country}"]`);
-            if (groupElement) {
-                groupElement.classList.toggle('collapsed');
-            }
-        }
-        
-        // Render hierarchical view
-        function renderResortsHierarchical() {
-            const container = document.getElementById('resortsHierarchical');
+        // Render region-based resort list (flat structure)
+        function renderResortsRegionList() {
+            const container = document.getElementById('resortsRegionList');
             const countBadge = document.getElementById('resortCountBadge');
             
             // Update count
@@ -1066,145 +1029,109 @@
                 return;
             }
             
-            // Group regions by country
-            const countriesMap = new Map();
-            currentRegions.forEach(region => {
-                if (!countriesMap.has(region.country)) {
-                    countriesMap.set(region.country, []);
-                }
-                countriesMap.get(region.country).push(region);
-            });
+            // 지역 순서 정의: 태국 6개 -> 인도네시아 2개 -> 하와이 3개
+            const regionOrder = [
+                // 태국 지역 (6개)
+                'phuket', 'khao-lak', 'krabi', 'samui', 'bangkok', 'pattaya',
+                // 인도네시아 지역 (2개)
+                'bali', 'lombok',
+                // 하와이 지역 (3개)
+                'honolulu', 'maui', 'kauai'
+            ];
             
-            // Country flag emojis
-            const countryFlags = {
-                '태국': '🇹🇭',
-                '몰디브': '🇲🇻',
-                '인도네시아': '🇮🇩',
-                '미국': '🇺🇸',
-                '멕시코': '🇲🇽',
-                '아랍에미리트': '🇦🇪'
+            // 지역 플래그 이모지
+            const regionFlags = {
+                // 태국
+                'phuket': '🇹🇭',
+                'khao-lak': '🇹🇭',
+                'krabi': '🇹🇭',
+                'samui': '🇹🇭',
+                'bangkok': '🇹🇭',
+                'pattaya': '🇹🇭',
+                // 인도네시아
+                'bali': '🇮🇩',
+                'lombok': '🇮🇩',
+                // 하와이
+                'honolulu': '🇺🇸',
+                'maui': '🇺🇸',
+            // 지역별로 정렬 (국가별 계층 구조 제거)
+            // 정렬 순서: 태국 -> 인도네시아 -> 하와이 -> 기타
+            const regionOrder = {
+                '태국': 1,
+                '인도네시아': 2,
+                '미국': 3  // 하와이
             };
+            
+            // 리조트가 있는 지역만 필터링하고 정렬
+            const regionsWithResorts = currentRegions.filter(region => {
+                return currentResorts.some(r => r.region_id === region.id);
+            }).sort((a, b) => {
+                const orderA = regionOrder[a.country] || 999;
+                const orderB = regionOrder[b.country] || 999;
+                
+                if (orderA !== orderB) {
+                    return orderA - orderB;
+                }
+                
+                // 같은 국가 내에서는 한글 이름순 정렬
+                return a.name_ko.localeCompare(b.name_ko, 'ko');
+            });
             
             let html = '';
             
-            // Sort countries
-            const sortedCountries = Array.from(countriesMap.keys()).sort();
-            
-            sortedCountries.forEach(country => {
-                const regions = countriesMap.get(country);
-                const countryResorts = currentResorts.filter(r => {
-                    const region = currentRegions.find(reg => reg.id === r.region_id);
-                    return region && region.country === country;
-                });
+            regionsWithResorts.forEach(region => {
+                const regionResorts = currentResorts.filter(r => r.region_id === region.id);
                 
-                const flag = countryFlags[country] || '🌍';
-                
-                html += `
-                    <div class="country-group" data-country="${country}">
-                        <div class="country-header" onclick="toggleCountryGroup('${country}')">
-                            <h3>
-                                <span class="country-icon">▼</span>
-                                ${flag} ${country}
-                            </h3>
-                            <span class="country-badge">${countryResorts.length}개 리조트</span>
-                        </div>
-                        <div class="country-content">
-                `;
-                
-                // Sort regions by name
-                regions.sort((a, b) => a.name_ko.localeCompare(b.name_ko, 'ko'));
-                
-                regions.forEach(region => {
-                    const regionResorts = currentResorts.filter(r => r.region_id === region.id);
+                if (regionResorts.length > 0) {
+                    html += `
+                        <div class="region-group" style="background: white; margin-bottom: 1.5rem; border-radius: 12px; box-shadow: 0 2px 8px rgba(0,0,0,0.08); overflow: hidden;">
+                            <div class="region-header" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; padding: 1rem 1.5rem; display: flex; justify-content: space-between; align-items: center;">
+                                <span style="font-size: 1.1rem; font-weight: 600;">
+                                    <i class="fas fa-map-marker-alt"></i>
+                                    ${region.name_ko}
+                                </span>
+                                <span class="badge" style="background: rgba(255,255,255,0.3); color: white; padding: 0.4rem 0.8rem; border-radius: 12px; font-size: 0.9rem;">
+                                    ${regionResorts.length}개
+                                </span>
+                            </div>
+                            <div class="region-resorts" style="padding: 0;">
+                    `;
                     
-                    if (regionResorts.length > 0) {
-                        html += `
-                            <div class="region-group">
-                                <div class="region-header">
-                                    <span>
-                                        <i class="fas fa-map-marker-alt"></i>
-                                        ${region.name_ko}
-                                    </span>
-                                    <span class="badge" style="background: rgba(255,255,255,0.3); color: white;">
-                                        ${regionResorts.length}개
-                                    </span>
-                                </div>
-                                <div class="region-resorts">
-                        `;
-                        
-                        regionResorts.forEach(resort => {
-                            const statusBadge = resort.is_active ? 
-                                '<span class="badge badge-success">활성화</span>' : 
-                                '<span class="badge badge-danger">비활성화</span>';
-                            
-                            html += `
-                                <div class="resort-item">
-                                    <div class="resort-info">
-                                        <div class="resort-name">${resort.name_ko}</div>
-                                        <div class="resort-category">${resort.category || '카테고리 없음'}</div>
-                                    </div>
-                                    <div style="display: flex; align-items: center; gap: 0.5rem;">
-                                        ${statusBadge}
-                                        <div class="action-buttons">
-                                            <button class="btn btn-sm btn-primary" onclick="editResort('${resort.id}')">
-                                                <i class="fas fa-edit"></i> 수정
-                                            </button>
-                                            <button class="btn btn-sm btn-danger" onclick="deleteResort('${resort.id}')">
-                                                <i class="fas fa-trash"></i> 삭제
-                                            </button>
-                                        </div>
-                                    </div>
-                                </div>
-                            `;
-                        });
+                    regionResorts.forEach(resort => {
+                        const statusBadge = resort.is_active ? 
+                            '<span class="badge badge-success">활성화</span>' : 
+                            '<span class="badge badge-danger">비활성화</span>';
                         
                         html += `
+                            <div class="resort-item">
+                                <div class="resort-info">
+                                    <div class="resort-name">${resort.name_ko}</div>
+                                    <div class="resort-category">${resort.category || '카테고리 없음'}</div>
+                                </div>
+                                <div style="display: flex; align-items: center; gap: 0.5rem;">
+                                    ${statusBadge}
+                                    <div class="action-buttons">
+                                        <button class="btn btn-sm btn-primary" onclick="editResort('${resort.id}')">
+                                            <i class="fas fa-edit"></i> 수정
+                                        </button>
+                                        <button class="btn btn-sm btn-danger" onclick="deleteResort('${resort.id}')">
+                                            <i class="fas fa-trash"></i> 삭제
+                                        </button>
+                                    </div>
                                 </div>
                             </div>
                         `;
-                    }
-                });
-                
-                html += `
+                    });
+                    
+                    html += `
+                            </div>
                         </div>
-                    </div>
-                `;
+                    `;
+                }
             });
             
             container.innerHTML = html;
         }
-
-        async function loadReviews() {
-            try {
-                const response = await fetch(`${API_BASE}/reviews`);
-                const data = await response.json();
-                
-                if (data.success) {
-                    currentReviews = data.data;
-                    renderReviewsTable();
-                }
-            } catch (error) {
-                console.error('Failed to load reviews:', error);
-                document.getElementById('reviewsTable').innerHTML = '<div class="empty-state">데이터를 불러오는데 실패했습니다.</div>';
-            }
-        }
-
-        async function loadInquiries() {
-            try {
-                const response = await fetch(`${API_BASE}/inquiries`);
-                const data = await response.json();
-                
-                if (data.success) {
-                    currentInquiries = data.data;
-                    renderInquiriesTable();
-                }
-            } catch (error) {
-                console.error('Failed to load inquiries:', error);
-                document.getElementById('inquiriesTable').innerHTML = '<div class="empty-state">데이터를 불러오는데 실패했습니다.</div>';
-            }
-        }
-
-        // Render Tables
         function renderRegionsTable() {
             const container = document.getElementById('regionsTable');
             
@@ -1229,63 +1156,6 @@
                         <td class="action-buttons">
                             <button class="btn btn-sm btn-primary" onclick="editRegion('${region.id}')">수정</button>
                             <button class="btn btn-sm btn-danger" onclick="deleteRegion('${region.id}')">삭제</button>
-                        </td>
-                    </tr>
-                `;
-            });
-            
-            html += '</tbody></table>';
-            container.innerHTML = html;
-        }
-
-        function renderResortsTable(filterRegionId = '') {
-            const container = document.getElementById('resortsTable');
-            const countBadge = document.getElementById('resortCountBadge');
-            
-            // Filter resorts by region if specified
-            let displayResorts = currentResorts;
-            if (filterRegionId) {
-                displayResorts = currentResorts.filter(r => r.region_id === filterRegionId);
-            }
-            
-            // Update count badge
-            if (countBadge) {
-                const selectedRegion = currentRegions.find(r => r.id === filterRegionId);
-                if (filterRegionId && selectedRegion) {
-                    countBadge.textContent = `${selectedRegion.name_ko}: ${displayResorts.length}개`;
-                    countBadge.style.background = '#38c172';
-                } else {
-                    countBadge.textContent = `총 ${displayResorts.length}개`;
-                    countBadge.style.background = '#667eea';
-                }
-            }
-            
-            if (displayResorts.length === 0) {
-                const message = filterRegionId ? '해당 지역에 등록된 리조트가 없습니다.' : '등록된 리조트가 없습니다.';
-                container.innerHTML = `<div class="empty-state"><i class="fas fa-inbox"></i><p>${message}</p></div>`;
-                return;
-            }
-
-            let html = '<table><thead><tr><th>국가</th><th>지역</th><th>이름</th><th>카테고리</th><th>상태</th><th>관리</th></tr></thead><tbody>';
-            
-            displayResorts.forEach(resort => {
-                const region = currentRegions.find(r => r.id === resort.region_id);
-                const countryName = region ? region.country : '-';
-                const regionName = region ? region.name_ko : resort.region_id;
-                const statusBadge = resort.is_active ? 
-                    '<span class="badge badge-success">활성화</span>' : 
-                    '<span class="badge badge-danger">비활성화</span>';
-                
-                html += `
-                    <tr>
-                        <td>${countryName}</td>
-                        <td>${regionName}</td>
-                        <td>${resort.name_ko}</td>
-                        <td>${resort.category || '-'}</td>
-                        <td>${statusBadge}</td>
-                        <td class="action-buttons">
-                            <button class="btn btn-sm btn-primary" onclick="editResort('${resort.id}')">수정</button>
-                            <button class="btn btn-sm btn-danger" onclick="deleteResort('${resort.id}')">삭제</button>
                         </td>
                     </tr>
                 `;

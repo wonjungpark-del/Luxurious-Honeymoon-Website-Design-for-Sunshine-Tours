@@ -1,0 +1,260 @@
+#!/bin/bash
+
+# 이미지 URL 베이스
+BASE="https://atntzsryivyk2c4y.public.blob.vercel-storage.com"
+
+# 스위스 페이지 생성 (간소화 버전)
+cat > switzerland.html << 'SWISSEOF'
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>스위스 여행 가이드 | 알프스의 매력 - 선샤인투어</title>
+    <meta name="description" content="스위스 취리히, 루체른, 인터라켄, 제네바 여행 정보.">
+    <meta name="keywords" content="스위스여행, 취리히, 루체른, 인터라켄, 제네바, 알프스, 허니문">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="/static/css/style.css">
+    <link rel="stylesheet" href="/static/css/destination.css">
+    <style>
+        :root { --primary-gold: #C9A96E; --dark-gold: #B8935E; --light-beige: #F5F1E8; --text-dark: #2C2C2C; --text-gray: #666; }
+        body { font-family: 'Noto Sans KR', sans-serif; background: var(--light-beige); color: var(--text-dark); line-height: 1.7; }
+        .navbar { background: rgba(255, 255, 255, 0.98); backdrop-filter: blur(10px); box-shadow: 0 2px 20px rgba(0,0,0,0.08); padding: 1.2rem 0; position: sticky; top: 0; z-index: 1000; }
+        .nav-container { max-width: 1200px; margin: 0 auto; padding: 0 2rem; display: flex; justify-content: space-between; align-items: center; }
+        .logo { font-size: 1.5rem; font-weight: 700; color: var(--primary-gold); text-decoration: none; letter-spacing: 1px; }
+        .nav-menu { display: flex; gap: 2.5rem; list-style: none; margin: 0; padding: 0; }
+        .nav-menu a { color: var(--text-dark); text-decoration: none; font-weight: 500; transition: color 0.3s; font-size: 0.95rem; }
+        .nav-menu a:hover { color: var(--primary-gold); }
+        .breadcrumb { max-width: 1200px; margin: 2rem auto; padding: 0 2rem; display: flex; align-items: center; gap: 0.5rem; font-size: 0.9rem; color: var(--text-gray); }
+        .breadcrumb a { color: var(--text-gray); text-decoration: none; transition: color 0.3s; }
+        .breadcrumb a:hover { color: var(--primary-gold); }
+        .region-intro { max-width: 1200px; margin: 3rem auto; padding: 0 2rem; text-align: center; }
+        .region-badge { display: inline-flex; align-items: center; gap: 0.5rem; background: white; padding: 0.5rem 1.5rem; border-radius: 50px; margin-bottom: 1rem; font-size: 0.9rem; color: var(--primary-gold); font-weight: 600; }
+        .region-intro h1 { font-size: 3rem; font-weight: 700; margin-bottom: 1rem; color: var(--text-dark); }
+        .region-intro p { font-size: 1.1rem; color: var(--text-gray); max-width: 800px; margin: 0 auto; line-height: 1.8; }
+        .city-section { max-width: 1200px; margin: 4rem auto; padding: 3rem; background: white; border-radius: 20px; box-shadow: 0 4px 20px rgba(0,0,0,0.06); }
+        .city-header { text-align: center; margin-bottom: 2.5rem; }
+        .city-badge { display: inline-block; background: linear-gradient(135deg, var(--primary-gold), var(--dark-gold)); color: white; padding: 0.4rem 1.2rem; border-radius: 50px; font-size: 0.85rem; font-weight: 600; margin-bottom: 1rem; letter-spacing: 1px; }
+        .city-title { font-size: 2.5rem; font-weight: 700; margin-bottom: 0.5rem; color: var(--text-dark); }
+        .city-subtitle { font-size: 1.1rem; color: var(--text-gray); }
+        .city-images { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.5rem; margin: 2.5rem 0; border-radius: 15px; overflow: hidden; }
+        .city-images img { width: 100%; height: 350px; object-fit: cover; transition: transform 0.5s; }
+        .city-images img:hover { transform: scale(1.05); }
+        .city-description { font-size: 1.05rem; line-height: 1.9; color: var(--text-gray); margin: 2rem 0; }
+        .highlights { margin-top: 2.5rem; }
+        .highlights h3 { font-size: 1.3rem; margin-bottom: 1.5rem; color: var(--text-dark); font-weight: 600; }
+        .highlights-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.5rem; }
+        .highlight-item { display: flex; gap: 1rem; padding: 1.2rem; background: var(--light-beige); border-radius: 12px; transition: all 0.3s; }
+        .highlight-item:hover { transform: translateY(-3px); box-shadow: 0 5px 15px rgba(201, 169, 110, 0.2); }
+        .highlight-icon { flex-shrink: 0; width: 40px; height: 40px; background: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: var(--primary-gold); }
+        .highlight-content h4 { margin: 0 0 0.5rem 0; font-size: 1.05rem; color: var(--text-dark); font-weight: 600; }
+        .highlight-content p { margin: 0; font-size: 0.95rem; color: var(--text-gray); }
+        .map-button-container { text-align: center; margin-top: 3rem; padding-top: 2rem; border-top: 1px solid #E8E8E8; }
+        .map-button { display: inline-flex; align-items: center; gap: 0.8rem; padding: 1rem 2.5rem; background: linear-gradient(135deg, var(--primary-gold), var(--dark-gold)); color: white; text-decoration: none; border-radius: 50px; font-weight: 600; font-size: 1.05rem; transition: all 0.3s; box-shadow: 0 4px 15px rgba(201, 169, 110, 0.3); }
+        .map-button:hover { transform: translateY(-3px); box-shadow: 0 6px 20px rgba(201, 169, 110, 0.4); }
+        .cta-section { max-width: 1200px; margin: 5rem auto; padding: 4rem 2rem; text-align: center; background: white; border-radius: 20px; box-shadow: 0 4px 20px rgba(0,0,0,0.06); }
+        .cta-section h2 { font-size: 2.2rem; margin-bottom: 1rem; color: var(--text-dark); }
+        .cta-section p { font-size: 1.1rem; color: var(--text-gray); margin-bottom: 2rem; }
+        .cta-button { display: inline-flex; align-items: center; gap: 0.8rem; padding: 1.2rem 3rem; background: linear-gradient(135deg, var(--primary-gold), var(--dark-gold)); color: white; text-decoration: none; border-radius: 50px; font-weight: 600; font-size: 1.1rem; transition: all 0.3s; box-shadow: 0 4px 15px rgba(201, 169, 110, 0.3); }
+        .cta-button:hover { transform: translateY(-3px); box-shadow: 0 6px 25px rgba(201, 169, 110, 0.4); }
+        .footer { background: #2C2C2C; color: white; padding: 3rem 0 1.5rem; margin-top: 5rem; }
+        .footer-content { max-width: 1200px; margin: 0 auto; padding: 0 2rem; display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 3rem; }
+        .footer-brand h3 { font-size: 1.5rem; margin-bottom: 0.5rem; color: var(--primary-gold); }
+        .footer-brand p { color: #999; margin-bottom: 1.5rem; line-height: 1.8; }
+        .contact-info { color: #999; line-height: 1.9; }
+        .contact-info i { color: var(--primary-gold); margin-right: 0.5rem; width: 20px; }
+        .social-links { display: flex; gap: 1rem; margin-top: 1.5rem; }
+        .social-links a { width: 40px; height: 40px; background: #C9A96E; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; transition: all 0.3s; }
+        .social-links a:hover { background: #B8935E; transform: translateY(-3px); }
+        .footer-bottom { text-align: center; padding-top: 2rem; margin-top: 2rem; border-top: 1px solid #444; color: #999; }
+        @media (max-width: 768px) {
+            .nav-menu { gap: 1.5rem; }
+            .region-intro h1 { font-size: 2rem; }
+            .city-section { padding: 2rem 1.5rem; }
+            .city-title { font-size: 2rem; }
+            .city-images { grid-template-columns: 1fr; }
+            .city-images img { height: 250px; }
+            .highlights-grid { grid-template-columns: 1fr; }
+            .footer-content { grid-template-columns: 1fr; gap: 2rem; }
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="/" class="logo">SUNSHINE TOUR</a>
+            <ul class="nav-menu">
+                <li><a href="/">홈</a></li>
+                <li><a href="/destinations">목적지</a></li>
+                <li><a href="/reviews">리뷰</a></li>
+                <li><a href="/about">소개</a></li>
+                <li><a href="/inquiry">문의</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="breadcrumb">
+        <a href="/">홈</a>
+        <i class="fas fa-chevron-right"></i>
+        <a href="/destinations">유럽</a>
+        <i class="fas fa-chevron-right"></i>
+        <span>스위스</span>
+    </div>
+
+    <section class="region-intro">
+        <div class="region-badge">
+            <span>🇨🇭</span>
+            <span>SWITZERLAND</span>
+        </div>
+        <h1>스위스 여행 가이드</h1>
+        <p>알프스의 웅장한 자연과 평화로운 호수가 어우러진 스위스. 취리히의 세련됨부터 루체른의 낭만, 인터라켄의 모험, 제네바의 국제적인 분위기까지. 스위스는 자연의 아름다움과 완벽한 조화를 이루는 나라입니다.</p>
+    </section>
+
+    <section class="city-section">
+        <div class="city-header">
+            <div class="city-badge">ZURICH & LUCERNE</div>
+            <h2 class="city-title">취리히 & 루체른</h2>
+            <p class="city-subtitle">호수와 알프스가 만나는 곳</p>
+        </div>
+        <div class="city-images">
+            <img src="https://atntzsryivyk2c4y.public.blob.vercel-storage.com/1767082496663-muaugs.jpg" alt="취리히 호수">
+            <img src="https://atntzsryivyk2c4y.public.blob.vercel-storage.com/1767082497334-7hhgoq.jpg" alt="취리히 구시가">
+        </div>
+        <div class="city-description">
+            <p>취리히는 스위스 금융의 중심지이자 세련된 문화 도시입니다. 맑은 취리히 호수와 리마트 강이 도시를 가로지르며, 구시가지의 좁은 골목길은 중세의 분위기를 간직하고 있습니다.</p>
+        </div>
+        <div class="highlights">
+            <h3>주요 명소</h3>
+            <div class="highlights-grid">
+                <div class="highlight-item">
+                    <div class="highlight-icon"><i class="fas fa-water"></i></div>
+                    <div class="highlight-content">
+                        <h4>취리히 호수</h4>
+                        <p>알프스를 배경으로 한 아름다운 호수. 유람선을 타고 호수를 돌며 경치를 감상할 수 있습니다.</p>
+                    </div>
+                </div>
+                <div class="highlight-item">
+                    <div class="highlight-icon"><i class="fas fa-church"></i></div>
+                    <div class="highlight-content">
+                        <h4>그로스뮌스터</h4>
+                        <p>취리히의 상징적인 쌍둥이 탑 교회. 종교개혁의 발상지로 역사적 의미가 깊습니다.</p>
+                    </div>
+                </div>
+                <div class="highlight-item">
+                    <div class="highlight-icon"><i class="fas fa-bridge-water"></i></div>
+                    <div class="highlight-content">
+                        <h4>카펠교</h4>
+                        <p>루체른의 상징. 14세기에 지어진 유럽에서 가장 오래된 목조 다리입니다.</p>
+                    </div>
+                </div>
+                <div class="highlight-item">
+                    <div class="highlight-icon"><i class="fas fa-mountain"></i></div>
+                    <div class="highlight-content">
+                        <h4>필라투스산</h4>
+                        <p>세계에서 가장 가파른 등산철도를 타고 오르는 산. 정상에서 바라보는 알프스 전망이 압권입니다.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="map-button-container">
+            <a href="http://www.sunshinetour.co.kr/maps/index/europe/swiss/swissmain.html" class="map-button" target="_blank">
+                <i class="fas fa-map-marked-alt"></i>
+                <span>스위스 지도 바로가기</span>
+            </a>
+        </div>
+    </section>
+
+    <section class="city-section">
+        <div class="city-header">
+            <div class="city-badge">INTERLAKEN & GENEVA</div>
+            <h2 class="city-title">인터라켄 & 제네바</h2>
+            <p class="city-subtitle">모험과 평화의 도시</p>
+        </div>
+        <div class="city-images">
+            <img src="https://atntzsryivyk2c4y.public.blob.vercel-storage.com/1767082498773-v69efk.jpg" alt="인터라켄 산">
+            <img src="https://atntzsryivyk2c4y.public.blob.vercel-storage.com/1767082500275-e9tash.jpg" alt="제네바 분수">
+        </div>
+        <div class="city-description">
+            <p>인터라켄은 융프라우, 아이거, 묀히 등 알프스 3대 명봉으로 가는 관문입니다. 제네바는 유엔 본부가 있는 국제 도시로, 레만 호수의 아름다움과 함께 세계적인 시계와 초콜릿을 만날 수 있습니다.</p>
+        </div>
+        <div class="highlights">
+            <h3>주요 명소</h3>
+            <div class="highlights-grid">
+                <div class="highlight-item">
+                    <div class="highlight-icon"><i class="fas fa-mountain"></i></div>
+                    <div class="highlight-content">
+                        <h4>융프라우요흐</h4>
+                        <p>'유럽의 지붕'으로 불리는 해발 3,454m의 전망대. 만년설과 알레치 빙하의 장관을 감상할 수 있습니다.</p>
+                    </div>
+                </div>
+                <div class="highlight-item">
+                    <div class="highlight-icon"><i class="fas fa-hiking"></i></div>
+                    <div class="highlight-content">
+                        <h4>하더 쿨름</h4>
+                        <p>인터라켄을 한눈에 내려다볼 수 있는 전망대. 파라글라이딩의 명소로도 유명합니다.</p>
+                    </div>
+                </div>
+                <div class="highlight-item">
+                    <div class="highlight-icon"><i class="fas fa-water"></i></div>
+                    <div class="highlight-content">
+                        <h4>제트 도</h4>
+                        <p>제네바의 상징인 140m 높이의 분수. 레만 호수에서 솟아오르는 물줄기가 장관입니다.</p>
+                    </div>
+                </div>
+                <div class="highlight-item">
+                    <div class="highlight-icon"><i class="fas fa-landmark"></i></div>
+                    <div class="highlight-content">
+                        <h4>유엔 본부</h4>
+                        <p>세계 평화의 중심지. 가이드 투어를 통해 국제기구의 역사와 활동을 알아볼 수 있습니다.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="map-button-container">
+            <a href="http://www.sunshinetour.co.kr/maps/index/europe/swiss/swissmain.html" class="map-button" target="_blank">
+                <i class="fas fa-map-marked-alt"></i>
+                <span>스위스 지도 바로가기</span>
+            </a>
+        </div>
+    </section>
+
+    <section class="cta-section">
+        <h2>스위스에서 특별한 여행을 시작하세요</h2>
+        <p>전문 상담사가 여러분의 완벽한 유럽 여행을 계획해드립니다</p>
+        <a href="/inquiry" class="cta-button">
+            <i class="fas fa-envelope"></i>
+            <span>문의하기</span>
+        </a>
+    </section>
+
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-brand">
+                <h3>SUNSHINE TOUR</h3>
+                <p>프라이빗 허니문 전문 여행사</p>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-youtube"></i></a>
+                </div>
+            </div>
+            <div class="footer-links"></div>
+            <div class="footer-links">
+                <h4>연락처</h4>
+                <div class="contact-info">
+                    <p><i class="fas fa-phone"></i> TEL 02-318-8021</p>
+                    <p><i class="fas fa-envelope"></i> info@sunshinetour.co.kr</p>
+                    <p><i class="fas fa-map-marker-alt"></i> 서울특별시 성북구<br>보문로30길 71, 2층 7호</p>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2024 Sunshine Tour. All rights reserved.</p>
+        </div>
+    </footer>
+</body>
+</html>
+SWISSEOF
+
+echo "Switzerland page created"

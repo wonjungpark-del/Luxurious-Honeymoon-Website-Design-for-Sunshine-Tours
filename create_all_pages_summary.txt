@@ -1,0 +1,39 @@
+# 업로드된 이미지 URL 정리
+
+## Italy (완료)
+- rome-colosseum: 1767082490694-4ciptd.jpg
+- rome-trevi: 1767082491831-g3cn2.jpg  
+- venice-canal: 1767082492546-j19ul.jpg
+- venice-gondola: 1767082493512-i28ue3.jpg
+- florence-duomo: 1767082495356-treoiq.jpg
+- florence-bridge: 1767082530083-w808qp.jpg
+- milan-duomo: 1767082496113-tgt4ei.jpg
+- milan-galleria: 1767082530528-emcrqj.jpg
+
+## Switzerland
+- zurich-lake: 1767082496663-muaugs.jpg
+- zurich-old-town: 1767082497334-7hhgoq.jpg
+- lucerne-bridge: 1767082498330-o564l.jpg
+- lucerne-lake: 1767082531664-7reed.jpg
+- interlaken-mountain: 1767082498773-v69efk.jpg
+- interlaken-lake: 1767082499561-fvu58.jpg
+- geneva-fountain: 1767082500275-e9tash.jpg
+- geneva-lake: 1767082531075-rqhhyt.jpg
+
+## Czech
+- prague-castle: 1767082501198-0w3zbs.jpg
+- prague-bridge: 1767082501810-51zrj.jpg
+
+## Austria
+- vienna-palace: 1767082502500-crgajk.jpg
+- vienna-opera: 1767082504021-lmnmu.jpg
+
+## Croatia
+- dubrovnik-old-town: 1767082504517-697a5.jpg
+- dubrovnik-walls: 1767082532348-fk7ekr.jpg
+
+## Turkey
+- istanbul-mosque: 1767082505212-6fr3v.jpg
+- istanbul-bosphorus: 1767082506225-k1netm.jpg
+- cappadocia-balloons: 1767082507021-to9l2.jpg
+- cappadocia-rocks: 1767082507581-urnes.jpg

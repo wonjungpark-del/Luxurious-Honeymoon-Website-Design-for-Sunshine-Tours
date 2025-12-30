@@ -1,0 +1,546 @@
+{
+  "hua_hin": [
+    {
+      "id": "resort-thailand-huahin-1",
+      "region_id": "region-thailand-hua-hin",
+      "name_ko": "인터컨티넨탈 후아힌",
+      "name_en": "InterContinental Hua Hin Resort",
+      "category": "럭셔리",
+      "description": "후아힌 비치프론트의 5성급 리조트. 우아한 건축과 뛰어난 서비스로 왕실 휴양지의 전통을 이어가는 명성 높은 리조트입니다.",
+      "main_image_url": "https://images.unsplash.com/photo-1582719508461-905c673771fd?w=1200&q=80",
+      "gallery_images": [
+        "https://images.unsplash.com/photo-1582719508461-905c673771fd?w=800&q=80",
+        "https://images.unsplash.com/photo-1566073771259-6a8506099945?w=800&q=80",
+        "https://images.unsplash.com/photo-1520250497591-112f2f40a3f4?w=800&q=80",
+        "https://images.unsplash.com/photo-1571896349842-33c89424de2d?w=800&q=80",
+        "https://images.unsplash.com/photo-1540541338287-41700207dee6?w=800&q=80",
+        "https://images.unsplash.com/photo-1439130490301-25e322d88054?w=800&q=80"
+      ],
+      "features": [
+        "비치프론트 위치",
+        "2개의 수영장",
+        "이스텔 스파",
+        "4개 레스토랑",
+        "골프 코스 근접",
+        "프라이빗 빌라"
+      ],
+      "display_order": 1,
+      "is_active": true
+    },
+    {
+      "id": "resort-thailand-huahin-2",
+      "region_id": "region-thailand-hua-hin",
+      "name_ko": "아난타라 후아힌",
+      "name_en": "Anantara Hua Hin Resort",
+      "category": "럭셔리",
+      "description": "후아힌 비치의 식민지 스타일 리조트. 태국 왕실의 여름 궁전 근처에 위치하며 우아한 분위기를 자랑합니다.",
+      "main_image_url": "https://images.unsplash.com/photo-1566073771259-6a8506099945?w=1200&q=80",
+      "gallery_images": [
+        "https://images.unsplash.com/photo-1566073771259-6a8506099945?w=800&q=80",
+        "https://images.unsplash.com/photo-1520250497591-112f2f40a3f4?w=800&q=80",
+        "https://images.unsplash.com/photo-1571896349842-33c89424de2d?w=800&q=80",
+        "https://images.unsplash.com/photo-1582719508461-905c673771fd?w=800&q=80",
+        "https://images.unsplash.com/photo-1540541338287-41700207dee6?w=800&q=80",
+        "https://images.unsplash.com/photo-1439130490301-25e322d88054?w=800&q=80"
+      ],
+      "features": [
+        "식민지 스타일",
+        "아난타라 스파",
+        "라군 수영장",
+        "태국 요리 교실",
+        "골프 & 테니스",
+        "키즈 클럽"
+      ],
+      "display_order": 2,
+      "is_active": true
+    },
+    {
+      "id": "resort-thailand-huahin-3",
+      "region_id": "region-thailand-hua-hin",
+      "name_ko": "하얏트 리젠시 후아힌",
+      "name_en": "Hyatt Regency Hua Hin",
+      "category": "럭셔리",
+      "description": "후아힌 중심부의 고층 리조트. 현대적인 시설과 뛰어난 전망으로 비즈니스와 레저 모두에 완벽한 리조트입니다.",
+      "main_image_url": "https://images.unsplash.com/photo-1520250497591-112f2f40a3f4?w=1200&q=80",
+      "gallery_images": [
+        "https://images.unsplash.com/photo-1520250497591-112f2f40a3f4?w=800&q=80",
+        "https://images.unsplash.com/photo-1571896349842-33c89424de2d?w=800&q=80",
+        "https://images.unsplash.com/photo-1582719508461-905c673771fd?w=800&q=80",
+        "https://images.unsplash.com/photo-1566073771259-6a8506099945?w=800&q=80",
+        "https://images.unsplash.com/photo-1540541338287-41700207dee6?w=800&q=80",
+        "https://images.unsplash.com/photo-1439130490301-25e322d88054?w=800&q=80"
+      ],
+      "features": [
+        "비치 액세스",
+        "루프탑 바",
+        "바라이 스파",
+        "5개 레스토랑",
+        "컨벤션 센터",
+        "키즈 클럽"
+      ],
+      "display_order": 3,
+      "is_active": true
+    },
+    {
+      "id": "resort-thailand-huahin-4",
+      "region_id": "region-thailand-hua-hin",
+      "name_ko": "V 빌라 후아힌",
+      "name_en": "V Villas Hua Hin MGallery",
+      "category": "럭셔리",
+      "description": "차암 비치의 올 풀빌라 리조트. 프라이버시와 럭셔리를 동시에 추구하는 어른들을 위한 휴양지입니다.",
+      "main_image_url": "https://images.unsplash.com/photo-1571896349842-33c89424de2d?w=1200&q=80",
+      "gallery_images": [
+        "https://images.unsplash.com/photo-1571896349842-33c89424de2d?w=800&q=80",
+        "https://images.unsplash.com/photo-1582719508461-905c673771fd?w=800&q=80",
+        "https://images.unsplash.com/photo-1566073771259-6a8506099945?w=800&q=80",
+        "https://images.unsplash.com/photo-1520250497591-112f2f40a3f4?w=800&q=80",
+        "https://images.unsplash.com/photo-1540541338287-41700207dee6?w=800&q=80",
+        "https://images.unsplash.com/photo-1439130490301-25e322d88054?w=800&q=80"
+      ],
+      "features": [
+        "올 풀빌라",
+        "어덜트 온리",
+        "V 스파",
+        "비치프론트",
+        "프라이빗 다이닝",
+        "버틀러 서비스"
+      ],
+      "display_order": 4,
+      "is_active": true
+    },
+    {
+      "id": "resort-thailand-huahin-5",
+      "region_id": "region-thailand-hua-hin",
+      "name_ko": "치바솜 인터내셔널",
+      "name_en": "Chiva-Som International Health Resort",
+      "category": "럭셔리",
+      "description": "세계적으로 유명한 웰니스 리조트. '생명의 안식처'라는 이름처럼 건강과 웰빙에 특화된 최고급 리조트입니다.",
+      "main_image_url": "https://images.unsplash.com/photo-1582719508461-905c673771fd?w=1200&q=80",
+      "gallery_images": [
+        "https://images.unsplash.com/photo-1582719508461-905c673771fd?w=800&q=80",
+        "https://images.unsplash.com/photo-1566073771259-6a8506099945?w=800&q=80",
+        "https://images.unsplash.com/photo-1520250497591-112f2f40a3f4?w=800&q=80",
+        "https://images.unsplash.com/photo-1571896349842-33c89424de2d?w=800&q=80",
+        "https://images.unsplash.com/photo-1540541338287-41700207dee6?w=800&q=80",
+        "https://images.unsplash.com/photo-1439130490301-25e322d88054?w=800&q=80"
+      ],
+      "features": [
+        "웰니스 전문",
+        "종합 건강 프로그램",
+        "유기농 식단",
+        "스파 & 요가",
+        "개인 건강 상담",
+        "비치프론트"
+      ],
+      "display_order": 5,
+      "is_active": true
+    },
+    {
+      "id": "resort-thailand-huahin-6",
+      "region_id": "region-thailand-hua-hin",
+      "name_ko": "푸타라차 후아힌",
+      "name_en": "Putahracsa Hua Hin",
+      "category": "프리미엄",
+      "description": "후아힌 비치의 부티크 리조트. 현대적 디자인과 친근한 서비스로 커플들에게 인기있는 리조트입니다.",
+      "main_image_url": "https://images.unsplash.com/photo-1566073771259-6a8506099945?w=1200&q=80",
+      "gallery_images": [
+        "https://images.unsplash.com/photo-1566073771259-6a8506099945?w=800&q=80",
+        "https://images.unsplash.com/photo-1520250497591-112f2f40a3f4?w=800&q=80",
+        "https://images.unsplash.com/photo-1571896349842-33c89424de2d?w=800&q=80",
+        "https://images.unsplash.com/photo-1582719508461-905c673771fd?w=800&q=80",
+        "https://images.unsplash.com/photo-1540541338287-41700207dee6?w=800&q=80",
+        "https://images.unsplash.com/photo-1439130490301-25e322d88054?w=800&q=80"
+      ],
+      "features": [
+        "부티크 디자인",
+        "비치프론트 풀",
+        "스파",
+        "레스토랑",
+        "로맨틱 분위기",
+        "합리적 가격"
+      ],
+      "display_order": 6,
+      "is_active": true
+    },
+    {
+      "id": "resort-thailand-huahin-7",
+      "region_id": "region-thailand-hua-hin",
+      "name_ko": "더 스탠다드 후아힌",
+      "name_en": "The Standard Hua Hin",
+      "category": "프리미엄",
+      "description": "차암 비치의 트렌디한 리조트. 젊고 활기찬 분위기로 소셜 라이프를 즐기는 여행객들에게 인기입니다.",
+      "main_image_url": "https://images.unsplash.com/photo-1520250497591-112f2f40a3f4?w=1200&q=80",
+      "gallery_images": [
+        "https://images.unsplash.com/photo-1520250497591-112f2f40a3f4?w=800&q=80",
+        "https://images.unsplash.com/photo-1571896349842-33c89424de2d?w=800&q=80",
+        "https://images.unsplash.com/photo-1582719508461-905c673771fd?w=800&q=80",
+        "https://images.unsplash.com/photo-1566073771259-6a8506099945?w=800&q=80",
+        "https://images.unsplash.com/photo-1540541338287-41700207dee6?w=800&q=80",
+        "https://images.unsplash.com/photo-1439130490301-25e322d88054?w=800&q=80"
+      ],
+      "features": [
+        "트렌디한 디자인",
+        "비치 클럽",
+        "루프탑 바",
+        "스파",
+        "이벤트 공간",
+        "활기찬 분위기"
+      ],
+      "display_order": 7,
+      "is_active": true
+    },
+    {
+      "id": "resort-thailand-huahin-8",
+      "region_id": "region-thailand-hua-hin",
+      "name_ko": "켄타라 그랜드 비치 후아힌",
+      "name_en": "Centara Grand Beach Resort & Villas Hua Hin",
+      "category": "럭셔리",
+      "description": "1920년대 왕실 철도 호텔을 개조한 역사적 리조트. 식민지 시대 건축과 현대적 럭셔리가 조화를 이룹니다.",
+      "main_image_url": "https://images.unsplash.com/photo-1571896349842-33c89424de2d?w=1200&q=80",
+      "gallery_images": [
+        "https://images.unsplash.com/photo-1571896349842-33c89424de2d?w=800&q=80",
+        "https://images.unsplash.com/photo-1582719508461-905c673771fd?w=800&q=80",
+        "https://images.unsplash.com/photo-1566073771259-6a8506099945?w=800&q=80",
+        "https://images.unsplash.com/photo-1520250497591-112f2f40a3f4?w=800&q=80",
+        "https://images.unsplash.com/photo-1540541338287-41700207dee6?w=800&q=80",
+        "https://images.unsplash.com/photo-1439130490301-25e322d88054?w=800&q=80"
+      ],
+      "features": [
+        "역사적 건축물",
+        "비치프론트",
+        "켄타라 스파",
+        "5개 레스토랑",
+        "키즈 클럽",
+        "골프 코스"
+      ],
+      "display_order": 8,
+      "is_active": true
+    },
+    {
+      "id": "resort-thailand-huahin-9",
+      "region_id": "region-thailand-hua-hin",
+      "name_ko": "케이프 니드라",
+      "name_en": "Cape Nidhra Hotel",
+      "category": "프리미엄",
+      "description": "후아힌 중심부의 현대적 부티크 호텔. 루프탑 풀과 스카이 바에서 도심과 바다의 전망을 동시에 즐길 수 있습니다.",
+      "main_image_url": "https://images.unsplash.com/photo-1582719508461-905c673771fd?w=1200&q=80",
+      "gallery_images": [
+        "https://images.unsplash.com/photo-1582719508461-905c673771fd?w=800&q=80",
+        "https://images.unsplash.com/photo-1566073771259-6a8506099945?w=800&q=80",
+        "https://images.unsplash.com/photo-1520250497591-112f2f40a3f4?w=800&q=80",
+        "https://images.unsplash.com/photo-1571896349842-33c89424de2d?w=800&q=80",
+        "https://images.unsplash.com/photo-1540541338287-41700207dee6?w=800&q=80",
+        "https://images.unsplash.com/photo-1439130490301-25e322d88054?w=800&q=80"
+      ],
+      "features": [
+        "도심 위치",
+        "루프탑 인피니티 풀",
+        "스카이 바",
+        "스파",
+        "현대적 디자인",
+        "쇼핑 편의"
+      ],
+      "display_order": 9,
+      "is_active": true
+    },
+    {
+      "id": "resort-thailand-huahin-10",
+      "region_id": "region-thailand-hua-hin",
+      "name_ko": "소피텔 센타라 그랜드",
+      "name_en": "SO Sofitel Hua Hin",
+      "category": "럭셔리",
+      "description": "차암 비치의 독특한 디자인 호텔. 5명의 국제 디자이너가 참여한 아방가르드 디자인이 특징입니다.",
+      "main_image_url": "https://images.unsplash.com/photo-1566073771259-6a8506099945?w=1200&q=80",
+      "gallery_images": [
+        "https://images.unsplash.com/photo-1566073771259-6a8506099945?w=800&q=80",
+        "https://images.unsplash.com/photo-1520250497591-112f2f40a3f4?w=800&q=80",
+        "https://images.unsplash.com/photo-1571896349842-33c89424de2d?w=800&q=80",
+        "https://images.unsplash.com/photo-1582719508461-905c673771fd?w=800&q=80",
+        "https://images.unsplash.com/photo-1540541338287-41700207dee6?w=800&q=80",
+        "https://images.unsplash.com/photo-1439130490301-25e322d88054?w=800&q=80"
+      ],
+      "features": [
+        "아방가르드 디자인",
+        "5명 디자이너 객실",
+        "비치프론트",
+        "SO 스파",
+        "2개 레스토랑",
+        "독특한 경험"
+      ],
+      "display_order": 10,
+      "is_active": true
+    }
+  ],
+  "krabi": [
+    {
+      "id": "resort-thailand-krabi-1",
+      "region_id": "region-thailand-krabi",
+      "name_ko": "라야바디",
+      "name_en": "Rayavadee",
+      "category": "럭셔리",
+      "description": "프라낭 반도의 프라이빗 리조트. 세 개의 비치와 석회암 절벽으로 둘러싸인 최고급 리조트로 보트로만 접근 가능합니다.",
+      "main_image_url": "https://images.unsplash.com/photo-1520250497591-112f2f40a3f4?w=1200&q=80",
+      "gallery_images": [
+        "https://images.unsplash.com/photo-1520250497591-112f2f40a3f4?w=800&q=80",
+        "https://images.unsplash.com/photo-1571896349842-33c89424de2d?w=800&q=80",
+        "https://images.unsplash.com/photo-1582719508461-905c673771fd?w=800&q=80",
+        "https://images.unsplash.com/photo-1566073771259-6a8506099945?w=800&q=80",
+        "https://images.unsplash.com/photo-1540541338287-41700207dee6?w=800&q=80",
+        "https://images.unsplash.com/photo-1439130490301-25e322d88054?w=800&q=80"
+      ],
+      "features": [
+        "보트 전용 접근",
+        "3개 프라이빗 비치",
+        "파빌리온 & 빌라",
+        "라야 스파",
+        "4개 레스토랑",
+        "석회암 절벽"
+      ],
+      "display_order": 1,
+      "is_active": true
+    },
+    {
+      "id": "resort-thailand-krabi-2",
+      "region_id": "region-thailand-krabi",
+      "name_ko": "센타라 그랜드 비치 크라비",
+      "name_en": "Centara Grand Beach Resort & Villas Krabi",
+      "category": "럭셔리",
+      "description": "파이 프롱 케이프의 프라이빗 베이 리조트. 석회암 절벽으로 둘러싸인 한적한 위치에서 완벽한 휴식을 제공합니다.",
+      "main_image_url": "https://images.unsplash.com/photo-1571896349842-33c89424de2d?w=1200&q=80",
+      "gallery_images": [
+        "https://images.unsplash.com/photo-1571896349842-33c89424de2d?w=800&q=80",
+        "https://images.unsplash.com/photo-1582719508461-905c673771fd?w=800&q=80",
+        "https://images.unsplash.com/photo-1566073771259-6a8506099945?w=800&q=80",
+        "https://images.unsplash.com/photo-1520250497591-112f2f40a3f4?w=800&q=80",
+        "https://images.unsplash.com/photo-1540541338287-41700207dee6?w=800&q=80",
+        "https://images.unsplash.com/photo-1439130490301-25e322d88054?w=800&q=80"
+      ],
+      "features": [
+        "프라이빗 베이",
+        "풀 빌라",
+        "켄타라 스파",
+        "5개 레스토랑",
+        "키즈 클럽",
+        "보트 셔틀"
+      ],
+      "display_order": 2,
+      "is_active": true
+    },
+    {
+      "id": "resort-thailand-krabi-3",
+      "region_id": "region-thailand-krabi",
+      "name_ko": "파낭 오차드 비치프론트 빌라",
+      "name_en": "Phulay Bay, a Ritz-Carlton Reserve",
+      "category": "럭셔리",
+      "description": "툼베이 해변의 리츠칼튼 리저브. 프라이빗 빌라와 개인 집사 서비스로 최상급 럭셔리를 경험할 수 있습니다.",
+      "main_image_url": "https://images.unsplash.com/photo-1582719508461-905c673771fd?w=1200&q=80",
+      "gallery_images": [
+        "https://images.unsplash.com/photo-1582719508461-905c673771fd?w=800&q=80",
+        "https://images.unsplash.com/photo-1566073771259-6a8506099945?w=800&q=80",
+        "https://images.unsplash.com/photo-1520250497591-112f2f40a3f4?w=800&q=80",
+        "https://images.unsplash.com/photo-1571896349842-33c89424de2d?w=800&q=80",
+        "https://images.unsplash.com/photo-1540541338287-41700207dee6?w=800&q=80",
+        "https://images.unsplash.com/photo-1439130490301-25e322d88054?w=800&q=80"
+      ],
+      "features": [
+        "리츠칼튼 리저브",
+        "올 풀빌라",
+        "개인 집사",
+        "프라이빗 비치",
+        "스파",
+        "고급 다이닝"
+      ],
+      "display_order": 3,
+      "is_active": true
+    },
+    {
+      "id": "resort-thailand-krabi-4",
+      "region_id": "region-thailand-krabi",
+      "name_ko": "더 쉘씨 클리프 리조트",
+      "name_en": "The ShellSea Krabi",
+      "category": "프리미엄",
+      "description": "아오낭 비치의 현대적 리조트. 편리한 위치와 합리적인 가격으로 가족 단위 여행객에게 인기입니다.",
+      "main_image_url": "https://images.unsplash.com/photo-1566073771259-6a8506099945?w=1200&q=80",
+      "gallery_images": [
+        "https://images.unsplash.com/photo-1566073771259-6a8506099945?w=800&q=80",
+        "https://images.unsplash.com/photo-1520250497591-112f2f40a3f4?w=800&q=80",
+        "https://images.unsplash.com/photo-1571896349842-33c89424de2d?w=800&q=80",
+        "https://images.unsplash.com/photo-1582719508461-905c673771fd?w=800&q=80",
+        "https://images.unsplash.com/photo-1540541338287-41700207dee6?w=800&q=80",
+        "https://images.unsplash.com/photo-1439130490301-25e322d88054?w=800&q=80"
+      ],
+      "features": [
+        "아오낭 중심부",
+        "3개 수영장",
+        "스파",
+        "키즈 클럽",
+        "레스토랑",
+        "비치 근접"
+      ],
+      "display_order": 4,
+      "is_active": true
+    },
+    {
+      "id": "resort-thailand-krabi-5",
+      "region_id": "region-thailand-krabi",
+      "name_ko": "디 씬 아마리 크라비",
+      "name_en": "Deevana Krabi Resort",
+      "category": "프리미엄",
+      "description": "아오낭의 열대 정원 리조트. 조용하고 평화로운 분위기에서 휴식을 즐길 수 있습니다.",
+      "main_image_url": "https://images.unsplash.com/photo-1520250497591-112f2f40a3f4?w=1200&q=80",
+      "gallery_images": [
+        "https://images.unsplash.com/photo-1520250497591-112f2f40a3f4?w=800&q=80",
+        "https://images.unsplash.com/photo-1571896349842-33c89424de2d?w=800&q=80",
+        "https://images.unsplash.com/photo-1582719508461-905c673771fd?w=800&q=80",
+        "https://images.unsplash.com/photo-1566073771259-6a8506099945?w=800&q=80",
+        "https://images.unsplash.com/photo-1540541338287-41700207dee6?w=800&q=80",
+        "https://images.unsplash.com/photo-1439130490301-25e322d88054?w=800&q=80"
+      ],
+      "features": [
+        "열대 정원",
+        "라군 수영장",
+        "스파",
+        "레스토랑",
+        "무료 셔틀",
+        "조용한 위치"
+      ],
+      "display_order": 5,
+      "is_active": true
+    },
+    {
+      "id": "resort-thailand-krabi-6",
+      "region_id": "region-thailand-krabi",
+      "name_ko": "두짓타니 크라비",
+      "name_en": "Dusit Thani Krabi Beach Resort",
+      "category": "럭셔리",
+      "description": "클롱무앙 비치의 5성급 리조트. 태국 전통 건축과 현대적 럭셔리가 조화를 이룬 대형 리조트입니다.",
+      "main_image_url": "https://images.unsplash.com/photo-1571896349842-33c89424de2d?w=1200&q=80",
+      "gallery_images": [
+        "https://images.unsplash.com/photo-1571896349842-33c89424de2d?w=800&q=80",
+        "https://images.unsplash.com/photo-1582719508461-905c673771fd?w=800&q=80",
+        "https://images.unsplash.com/photo-1566073771259-6a8506099945?w=800&q=80",
+        "https://images.unsplash.com/photo-1520250497591-112f2f40a3f4?w=800&q=80",
+        "https://images.unsplash.com/photo-1540541338287-41700207dee6?w=800&q=80",
+        "https://images.unsplash.com/photo-1439130490301-25e322d88054?w=800&q=80"
+      ],
+      "features": [
+        "클롱무앙 비치",
+        "3개 수영장",
+        "데바라나 스파",
+        "5개 레스토랑",
+        "키즈 클럽",
+        "비치프론트"
+      ],
+      "display_order": 6,
+      "is_active": true
+    },
+    {
+      "id": "resort-thailand-krabi-7",
+      "region_id": "region-thailand-krabi",
+      "name_ko": "소피텔 크라비",
+      "name_en": "Sofitel Krabi Phokeethra Golf & Spa Resort",
+      "category": "럭셔리",
+      "description": "클롱무앙 비치의 프렌치 엘레강스 리조트. 18홀 골프 코스와 넓은 객실이 특징입니다.",
+      "main_image_url": "https://images.unsplash.com/photo-1582719508461-905c673771fd?w=1200&q=80",
+      "gallery_images": [
+        "https://images.unsplash.com/photo-1582719508461-905c673771fd?w=800&q=80",
+        "https://images.unsplash.com/photo-1566073771259-6a8506099945?w=800&q=80",
+        "https://images.unsplash.com/photo-1520250497591-112f2f40a3f4?w=800&q=80",
+        "https://images.unsplash.com/photo-1571896349842-33c89424de2d?w=800&q=80",
+        "https://images.unsplash.com/photo-1540541338287-41700207dee6?w=800&q=80",
+        "https://images.unsplash.com/photo-1439130490301-25e322d88054?w=800&q=80"
+      ],
+      "features": [
+        "18홀 골프 코스",
+        "프렌치 엘레강스",
+        "소 스파",
+        "4개 레스토랑",
+        "라군 수영장",
+        "비치프론트"
+      ],
+      "display_order": 7,
+      "is_active": true
+    },
+    {
+      "id": "resort-thailand-krabi-8",
+      "region_id": "region-thailand-krabi",
+      "name_ko": "팜 씨 리조트",
+      "name_en": "Phulay Bay Resort Krabi",
+      "category": "럭셔리",
+      "description": "롱 비치의 부티크 리조트. 한적한 위치와 개인화된 서비스가 특징입니다.",
+      "main_image_url": "https://images.unsplash.com/photo-1566073771259-6a8506099945?w=1200&q=80",
+      "gallery_images": [
+        "https://images.unsplash.com/photo-1566073771259-6a8506099945?w=800&q=80",
+        "https://images.unsplash.com/photo-1520250497591-112f2f40a3f4?w=800&q=80",
+        "https://images.unsplash.com/photo-1571896349842-33c89424de2d?w=800&q=80",
+        "https://images.unsplash.com/photo-1582719508461-905c673771fd?w=800&q=80",
+        "https://images.unsplash.com/photo-1540541338287-41700207dee6?w=800&q=80",
+        "https://images.unsplash.com/photo-1439130490301-25e322d88054?w=800&q=80"
+      ],
+      "features": [
+        "부티크 리조트",
+        "프라이빗 풀",
+        "스파",
+        "레스토랑",
+        "한적한 위치",
+        "개인화 서비스"
+      ],
+      "display_order": 8,
+      "is_active": true
+    },
+    {
+      "id": "resort-thailand-krabi-9",
+      "region_id": "region-thailand-krabi",
+      "name_ko": "켄타라 시사이드 리조트",
+      "name_en": "Centara Ao Nang Beach Resort & Spa Krabi",
+      "category": "프리미엄",
+      "description": "아오낭 비치 중심부의 리조트. 편리한 위치와 가성비 좋은 시설로 인기있는 리조트입니다.",
+      "main_image_url": "https://images.unsplash.com/photo-1520250497591-112f2f40a3f4?w=1200&q=80",
+      "gallery_images": [
+        "https://images.unsplash.com/photo-1520250497591-112f2f40a3f4?w=800&q=80",
+        "https://images.unsplash.com/photo-1571896349842-33c89424de2d?w=800&q=80",
+        "https://images.unsplash.com/photo-1582719508461-905c673771fd?w=800&q=80",
+        "https://images.unsplash.com/photo-1566073771259-6a8506099945?w=800&q=80",
+        "https://images.unsplash.com/photo-1540541338287-41700207dee6?w=800&q=80",
+        "https://images.unsplash.com/photo-1439130490301-25e322d88054?w=800&q=80"
+      ],
+      "features": [
+        "아오낭 중심부",
+        "비치프론트",
+        "스파",
+        "3개 레스토랑",
+        "키즈 클럽",
+        "쇼핑 편의"
+      ],
+      "display_order": 9,
+      "is_active": true
+    },
+    {
+      "id": "resort-thailand-krabi-10",
+      "region_id": "region-thailand-krabi",
+      "name_ko": "하얏트 리젠시 크라비",
+      "name_en": "Hyatt Regency Krabi Resort & Spa",
+      "category": "럭셔리",
+      "description": "레일레이 근처의 현대적 리조트. 석회암 절벽과 안다만 해가 어우러진 아름다운 전망을 자랑합니다.",
+      "main_image_url": "https://images.unsplash.com/photo-1571896349842-33c89424de2d?w=1200&q=80",
+      "gallery_images": [
+        "https://images.unsplash.com/photo-1571896349842-33c89424de2d?w=800&q=80",
+        "https://images.unsplash.com/photo-1582719508461-905c673771fd?w=800&q=80",
+        "https://images.unsplash.com/photo-1566073771259-6a8506099945?w=800&q=80",
+        "https://images.unsplash.com/photo-1520250497591-112f2f40a3f4?w=800&q=80",
+        "https://images.unsplash.com/photo-1540541338287-41700207dee6?w=800&q=80",
+        "https://images.unsplash.com/photo-1439130490301-25e322d88054?w=800&q=80"
+      ],
+      "features": [
+        "석회암 절벽 전망",
+        "3개 수영장",
+        "나히타 스파",
+        "4개 레스토랑",
+        "키즈 클럽",
+        "캠프 하얏트"
+      ],
+      "display_order": 10,
+      "is_active": true
+    }
+  ]
+}
