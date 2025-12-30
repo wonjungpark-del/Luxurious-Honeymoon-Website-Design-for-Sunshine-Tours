@@ -1295,6 +1295,8 @@
         document.getElementById('resortForm').addEventListener('submit', async (e) => {
             e.preventDefault();
             
+            console.log('🚀 Form submitted');
+            
             const id = document.getElementById('resortId').value || `resort-${Date.now()}`;
             
             // Collect gallery images from individual fields
@@ -1317,10 +1319,30 @@
             const mainImageUrl = document.getElementById('resortMainImageUrl').value.trim();
             const validMainImageUrl = (mainImageUrl && mainImageUrl !== '📤 업로드 중...') ? mainImageUrl : '';
             
+            const regionId = document.getElementById('resortRegionId').value;
+            const nameKo = document.getElementById('resortNameKo').value;
+            
+            console.log('📋 Form values:', {
+                regionId,
+                nameKo,
+                mainImageUrl: validMainImageUrl
+            });
+            
+            // 필수 필드 검증
+            if (!regionId) {
+                alert('❌ 지역을 선택해주세요!');
+                return;
+            }
+            
+            if (!nameKo) {
+                alert('❌ 리조트 이름(한글)을 입력해주세요!');
+                return;
+            }
+            
             const data = {
                 id,
-                region_id: document.getElementById('resortRegionId').value,
-                name_ko: document.getElementById('resortNameKo').value,
+                region_id: regionId,
+                name_ko: nameKo,
                 name_en: document.getElementById('resortNameEn').value,
                 category: document.getElementById('resortCategory').value,
                 description: document.getElementById('resortDescription').value,
@@ -1336,8 +1358,11 @@
             
             try {
                 let response;
-                if (document.getElementById('resortId').value) {
+                const isUpdate = document.getElementById('resortId').value;
+                
+                if (isUpdate) {
                     // Update
+                    console.log('📝 Updating resort:', id);
                     response = await fetch(`${API_BASE}/resorts?id=${id}`, {
                         method: 'PUT',
                         headers: { 'Content-Type': 'application/json' },
@@ -1345,6 +1370,7 @@
                     });
                 } else {
                     // Create
+                    console.log('➕ Creating new resort');
                     response = await fetch(`${API_BASE}/resorts`, {
                         method: 'POST',
                         headers: { 'Content-Type': 'application/json' },
@@ -1352,15 +1378,18 @@
                     });
                 }
                 
+                console.log('🌐 Response status:', response.status);
+                
                 const result = await response.json();
                 console.log('✅ Save result:', result);
                 
                 if (result.success) {
-                    alert('✅ 저장되었습니다.');
+                    alert('✅ 저장되었습니다!');
                     closeResortModal();
                     await loadResorts();
                 } else {
                     alert('❌ 저장에 실패했습니다: ' + result.error);
+                    console.error('Save failed:', result);
                 }
             } catch (error) {
                 console.error('❌ Save resort error:', error);
