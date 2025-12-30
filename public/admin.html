@@ -333,6 +333,19 @@
     </div>
 
     <script>
+        // Global error handler
+        window.onerror = function(msg, url, lineNo, columnNo, error) {
+            console.error('Global error caught:', {
+                message: msg,
+                url: url,
+                line: lineNo,
+                column: columnNo,
+                error: error
+            });
+            alert('JavaScript 오류 발생:\n' + msg + '\n라인: ' + lineNo);
+            return false;
+        };
+        
         // Password
         const ADMIN_PASSWORD = 'sun2026@';
         
