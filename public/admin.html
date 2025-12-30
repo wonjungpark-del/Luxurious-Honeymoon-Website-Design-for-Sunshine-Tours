@@ -56,30 +56,193 @@
         .hidden { display: none !important; }
         
         .admin-dashboard { 
-            max-width: 1200px; 
-            margin: 2rem auto; 
-            padding: 2rem; 
-            background: white; 
-            border-radius: 8px; 
+            max-width: 1400px; 
+            margin: 0;
+            padding: 0;
+            min-height: 100vh;
+            background: #f5f7fa; 
+        }
+        .admin-header {
+            background: white;
+            padding: 1.5rem 2rem;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 0;
+        }
+        .admin-header h1 {
+            font-size: 1.5rem;
+            color: #2c3e50;
+        }
+        .admin-content {
+            padding: 2rem;
+        }
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+        .stat-card {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+        .stat-card h3 {
+            color: #7f8c8d;
+            font-size: 0.9rem;
+            margin-bottom: 0.5rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        .stat-card .number {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: #667eea;
+        }
+        .tab-container {
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            overflow: hidden;
+        }
+        .tab-buttons {
+            display: flex;
+            background: #f8f9fa;
+            border-bottom: 2px solid #e9ecef;
         }
         .tab-btn {
-            padding: 10px 20px;
+            flex: 1;
+            padding: 1rem 1.5rem;
             border: none;
-            background: #f0f0f0;
+            background: transparent;
             cursor: pointer;
-            border-radius: 5px 5px 0 0;
             font-size: 1rem;
-            color: #666;
+            font-weight: 600;
+            color: #7f8c8d;
+            transition: all 0.3s;
+            border-bottom: 3px solid transparent;
         }
         .tab-btn:hover {
-            background: #e0e0e0;
+            background: rgba(102, 126, 234, 0.1);
+            color: #667eea;
         }
         .tab-btn.active {
-            background: #667eea;
-            color: white;
+            color: #667eea;
+            border-bottom-color: #667eea;
+            background: white;
         }
         .tab-content {
-            padding: 20px 0;
+            padding: 2rem;
+        }
+        .content-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1.5rem;
+        }
+        .content-header h2 {
+            font-size: 1.5rem;
+            color: #2c3e50;
+        }
+        .btn-small {
+            padding: 0.5rem 1rem;
+            font-size: 0.9rem;
+            width: auto;
+        }
+        .item-card {
+            background: white;
+            border: 1px solid #e9ecef;
+            border-radius: 8px;
+            padding: 1.5rem;
+            margin-bottom: 1rem;
+            transition: all 0.3s;
+        }
+        .item-card:hover {
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            transform: translateY(-2px);
+        }
+        .item-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: start;
+            margin-bottom: 1rem;
+        }
+        .item-title {
+            font-size: 1.2rem;
+            color: #2c3e50;
+            margin: 0;
+        }
+        .badge {
+            padding: 0.35rem 0.75rem;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+        }
+        .badge-success { background: #d4edda; color: #155724; }
+        .badge-warning { background: #fff3cd; color: #856404; }
+        .badge-danger { background: #f8d7da; color: #721c24; }
+        .badge-info { background: #d1ecf1; color: #0c5460; }
+        .item-meta {
+            color: #7f8c8d;
+            font-size: 0.9rem;
+            margin: 0.5rem 0;
+        }
+        .item-content {
+            color: #495057;
+            line-height: 1.6;
+            margin: 1rem 0;
+        }
+        .reply-box {
+            background: #e8f5e9;
+            border-left: 4px solid #4caf50;
+            padding: 1rem;
+            margin-top: 1rem;
+            border-radius: 4px;
+        }
+        .reply-box strong {
+            color: #2e7d32;
+        }
+        .empty-state {
+            text-align: center;
+            padding: 3rem 2rem;
+            color: #7f8c8d;
+        }
+        .empty-state i {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            opacity: 0.5;
+        }
+        .loading {
+            text-align: center;
+            padding: 2rem;
+            color: #7f8c8d;
+        }
+        .error-message {
+            background: #f8d7da;
+            border: 1px solid #f5c6cb;
+            color: #721c24;
+            padding: 1rem;
+            border-radius: 8px;
+            margin: 1rem 0;
+        }
+        .image-thumbnail {
+            width: 100%;
+            max-width: 200px;
+            height: auto;
+            border-radius: 8px;
+            margin-top: 1rem;
+            cursor: pointer;
+            transition: transform 0.3s;
+        }
+        .image-thumbnail:hover {
+            transform: scale(1.05);
+        }
+        .stars {
+            color: #ffc107;
+            font-size: 1.1rem;
         }
     </style>
 </head>
@@ -102,42 +265,68 @@
 
     <!-- Admin Dashboard -->
     <div id="adminDashboard" class="hidden admin-dashboard">
-        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 30px; border-bottom: 2px solid #eee; padding-bottom: 20px;">
+        <!-- Header -->
+        <div class="admin-header">
             <h1>🌅 선샤인투어 관리자</h1>
-            <button onclick="logout()" class="btn" style="max-width: 150px;">로그아웃</button>
+            <button onclick="logout()" class="btn btn-small">로그아웃</button>
         </div>
         
-        <!-- Tabs -->
-        <div style="display: flex; gap: 10px; margin-bottom: 30px; border-bottom: 1px solid #ddd;">
-            <button class="tab-btn active" onclick="showTab('reviews')">후기 관리</button>
-            <button class="tab-btn" onclick="showTab('inquiries')">문의 관리</button>
-            <button class="tab-btn" onclick="showTab('resorts')">리조트 관리</button>
-        </div>
-        
-        <!-- Reviews Tab -->
-        <div id="reviewsTab" class="tab-content">
-            <h2>📝 후기 관리</h2>
-            <button onclick="loadReviews()" class="btn" style="max-width: 200px; margin: 10px 0;">새로고침</button>
-            <div id="reviewsList" style="margin-top: 20px;">
-                <p>로딩 중...</p>
+        <!-- Content -->
+        <div class="admin-content">
+            <!-- Statistics -->
+            <div class="stats-grid" id="statsGrid">
+                <div class="stat-card">
+                    <h3>📝 총 후기</h3>
+                    <div class="number" id="totalReviews">-</div>
+                </div>
+                <div class="stat-card">
+                    <h3>💬 총 문의</h3>
+                    <div class="number" id="totalInquiries">-</div>
+                </div>
+                <div class="stat-card">
+                    <h3>🏨 총 리조트</h3>
+                    <div class="number" id="totalResorts">-</div>
+                </div>
+                <div class="stat-card">
+                    <h3>⏰ 답변 대기</h3>
+                    <div class="number" id="pendingInquiries">-</div>
+                </div>
             </div>
-        </div>
-        
-        <!-- Inquiries Tab -->
-        <div id="inquiriesTab" class="tab-content hidden">
-            <h2>💬 문의 관리</h2>
-            <button onclick="loadInquiries()" class="btn" style="max-width: 200px; margin: 10px 0;">새로고침</button>
-            <div id="inquiriesList" style="margin-top: 20px;">
-                <p>로딩 중...</p>
-            </div>
-        </div>
-        
-        <!-- Resorts Tab -->
-        <div id="resortsTab" class="tab-content hidden">
-            <h2>🏨 리조트 관리</h2>
-            <button onclick="loadResorts()" class="btn" style="max-width: 200px; margin: 10px 0;">새로고침</button>
-            <div id="resortsList" style="margin-top: 20px;">
-                <p>로딩 중...</p>
+            
+            <!-- Tabs Container -->
+            <div class="tab-container">
+                <div class="tab-buttons">
+                    <button class="tab-btn active" onclick="showTab('reviews')">📝 후기 관리</button>
+                    <button class="tab-btn" onclick="showTab('inquiries')">💬 문의 관리</button>
+                    <button class="tab-btn" onclick="showTab('resorts')">🏨 리조트 관리</button>
+                </div>
+                
+                <!-- Reviews Tab -->
+                <div id="reviewsTab" class="tab-content">
+                    <div class="content-header">
+                        <h2>후기 관리</h2>
+                        <button onclick="loadReviews()" class="btn btn-small">🔄 새로고침</button>
+                    </div>
+                    <div id="reviewsList"></div>
+                </div>
+                
+                <!-- Inquiries Tab -->
+                <div id="inquiriesTab" class="tab-content hidden">
+                    <div class="content-header">
+                        <h2>문의 관리</h2>
+                        <button onclick="loadInquiries()" class="btn btn-small">🔄 새로고침</button>
+                    </div>
+                    <div id="inquiriesList"></div>
+                </div>
+                
+                <!-- Resorts Tab -->
+                <div id="resortsTab" class="tab-content hidden">
+                    <div class="content-header">
+                        <h2>리조트 관리</h2>
+                        <button onclick="loadResorts()" class="btn btn-small">🔄 새로고침</button>
+                    </div>
+                    <div id="resortsList"></div>
+                </div>
             </div>
         </div>
     </div>
@@ -230,108 +419,147 @@
         // API Functions
         async function loadReviews() {
             const container = document.getElementById('reviewsList');
-            container.innerHTML = '<p>로딩 중...</p>';
+            container.innerHTML = '<div class="loading">⏳ 로딩 중...</div>';
             
             try {
                 const response = await fetch('/api/reviews');
                 const data = await response.json();
                 
                 if (data.success && data.data && data.data.length > 0) {
-                    let html = '<div style="display: grid; gap: 15px;">';
+                    // Update stats
+                    document.getElementById('totalReviews').textContent = data.data.length;
+                    
+                    let html = '';
                     data.data.forEach(review => {
                         const stars = '⭐'.repeat(review.rating || 0);
+                        const statusBadge = review.status === 'approved' ? 
+                            '<span class="badge badge-success">승인됨</span>' : 
+                            '<span class="badge badge-warning">대기중</span>';
+                        
                         html += `
-                            <div style="padding: 15px; background: white; border: 1px solid #ddd; border-radius: 8px;">
-                                <h3 style="margin: 0 0 10px 0;">${review.title || '제목 없음'}</h3>
-                                <p style="color: #666; margin: 5px 0;"><strong>작성자:</strong> ${review.author_name || '익명'}</p>
-                                <p style="color: #e67e22; margin: 5px 0;">${stars} (${review.rating || 0}점)</p>
-                                <p style="margin: 10px 0; white-space: pre-wrap;">${review.content || ''}</p>
-                                <p style="color: #999; font-size: 0.9rem;">작성일: ${new Date(review.created_at).toLocaleDateString('ko-KR')}</p>
+                            <div class="item-card">
+                                <div class="item-header">
+                                    <h3 class="item-title">${review.title || '제목 없음'}</h3>
+                                    ${statusBadge}
+                                </div>
+                                <div class="item-meta">
+                                    <strong>작성자:</strong> ${review.author_name || '익명'} | 
+                                    <strong>작성일:</strong> ${new Date(review.created_at).toLocaleDateString('ko-KR', {year: 'numeric', month: 'long', day: 'numeric'})}
+                                </div>
+                                <div class="stars">${stars} (${review.rating || 0}/5)</div>
+                                <div class="item-content">${review.content || ''}</div>
+                                ${review.image_url ? `<img src="${review.image_url}" class="image-thumbnail" alt="후기 이미지">` : ''}
                             </div>
                         `;
                     });
-                    html += '</div>';
                     container.innerHTML = html;
                 } else {
-                    container.innerHTML = '<p style="padding: 20px; background: #f8f9fa; border-radius: 8px;">등록된 후기가 없습니다.</p>';
+                    container.innerHTML = '<div class="empty-state"><div style="font-size: 3rem;">📝</div><p>등록된 후기가 없습니다.</p></div>';
+                    document.getElementById('totalReviews').textContent = '0';
                 }
             } catch (error) {
                 console.error('Error loading reviews:', error);
-                container.innerHTML = '<p style="color: red;">후기를 불러오는데 실패했습니다: ' + error.message + '</p>';
+                container.innerHTML = `<div class="error-message">❌ 후기를 불러오는데 실패했습니다: ${error.message}</div>`;
             }
         }
         
         async function loadInquiries() {
             const container = document.getElementById('inquiriesList');
-            container.innerHTML = '<p>로딩 중...</p>';
+            container.innerHTML = '<div class="loading">⏳ 로딩 중...</div>';
             
             try {
                 const response = await fetch('/api/inquiries');
                 const data = await response.json();
                 
                 if (data.success && data.data && data.data.length > 0) {
-                    let html = '<div style="display: grid; gap: 15px;">';
+                    // Update stats
+                    document.getElementById('totalInquiries').textContent = data.data.length;
+                    const pending = data.data.filter(i => i.status !== 'answered').length;
+                    document.getElementById('pendingInquiries').textContent = pending;
+                    
+                    let html = '';
                     data.data.forEach(inquiry => {
-                        const statusColor = inquiry.status === 'answered' ? '#27ae60' : '#e67e22';
-                        const statusText = inquiry.status === 'answered' ? '답변완료' : '대기중';
+                        const statusBadge = inquiry.status === 'answered' ? 
+                            '<span class="badge badge-success">답변완료</span>' : 
+                            '<span class="badge badge-warning">답변대기</span>';
+                        
                         html += `
-                            <div style="padding: 15px; background: white; border: 1px solid #ddd; border-radius: 8px;">
-                                <div style="display: flex; justify-content: space-between; align-items: start;">
-                                    <h3 style="margin: 0;">${inquiry.name || '이름 없음'}</h3>
-                                    <span style="padding: 5px 10px; background: ${statusColor}; color: white; border-radius: 5px; font-size: 0.9rem;">${statusText}</span>
+                            <div class="item-card">
+                                <div class="item-header">
+                                    <h3 class="item-title">${inquiry.name || '이름 없음'}</h3>
+                                    ${statusBadge}
                                 </div>
-                                <p style="color: #666; margin: 5px 0;"><strong>이메일:</strong> ${inquiry.email || ''}</p>
-                                <p style="color: #666; margin: 5px 0;"><strong>연락처:</strong> ${inquiry.phone || ''}</p>
-                                <p style="margin: 10px 0; white-space: pre-wrap;"><strong>문의내용:</strong><br>${inquiry.message || ''}</p>
-                                ${inquiry.admin_reply ? `<p style="margin: 10px 0; padding: 10px; background: #e8f5e9; border-radius: 5px;"><strong>답변:</strong><br>${inquiry.admin_reply}</p>` : ''}
-                                <p style="color: #999; font-size: 0.9rem;">문의일: ${new Date(inquiry.created_at).toLocaleDateString('ko-KR')}</p>
+                                <div class="item-meta">
+                                    📧 ${inquiry.email || '-'} | 
+                                    📱 ${inquiry.phone || '-'} | 
+                                    📅 ${new Date(inquiry.created_at).toLocaleDateString('ko-KR', {year: 'numeric', month: 'long', day: 'numeric'})}
+                                </div>
+                                <div class="item-content">
+                                    <strong>문의내용:</strong><br>
+                                    ${inquiry.message || ''}
+                                </div>
+                                ${inquiry.admin_reply ? `
+                                    <div class="reply-box">
+                                        <strong>✅ 관리자 답변:</strong><br>
+                                        ${inquiry.admin_reply}
+                                    </div>
+                                ` : '<p style="color: #e67e22; font-style: italic;">아직 답변이 없습니다.</p>'}
                             </div>
                         `;
                     });
-                    html += '</div>';
                     container.innerHTML = html;
                 } else {
-                    container.innerHTML = '<p style="padding: 20px; background: #f8f9fa; border-radius: 8px;">등록된 문의가 없습니다.</p>';
+                    container.innerHTML = '<div class="empty-state"><div style="font-size: 3rem;">💬</div><p>등록된 문의가 없습니다.</p></div>';
+                    document.getElementById('totalInquiries').textContent = '0';
+                    document.getElementById('pendingInquiries').textContent = '0';
                 }
             } catch (error) {
                 console.error('Error loading inquiries:', error);
-                container.innerHTML = '<p style="color: red;">문의를 불러오는데 실패했습니다: ' + error.message + '</p>';
+                container.innerHTML = `<div class="error-message">❌ 문의를 불러오는데 실패했습니다: ${error.message}</div>`;
             }
         }
         
         async function loadResorts() {
             const container = document.getElementById('resortsList');
-            container.innerHTML = '<p>로딩 중...</p>';
+            container.innerHTML = '<div class="loading">⏳ 로딩 중...</div>';
             
             try {
                 const response = await fetch('/api/resorts');
                 const data = await response.json();
                 
                 if (data.success && data.data && data.data.length > 0) {
-                    let html = '<div style="display: grid; gap: 15px;">';
+                    // Update stats
+                    document.getElementById('totalResorts').textContent = data.data.length;
+                    
+                    let html = '';
                     data.data.forEach(resort => {
-                        const activeColor = resort.is_active ? '#27ae60' : '#95a5a6';
-                        const activeText = resort.is_active ? '활성' : '비활성';
+                        const statusBadge = resort.is_active ? 
+                            '<span class="badge badge-success">활성</span>' : 
+                            '<span class="badge badge-info">비활성</span>';
+                        
                         html += `
-                            <div style="padding: 15px; background: white; border: 1px solid #ddd; border-radius: 8px;">
-                                <div style="display: flex; justify-content: space-between; align-items: start;">
-                                    <h3 style="margin: 0;">${resort.name_ko || resort.name_en || '이름 없음'}</h3>
-                                    <span style="padding: 5px 10px; background: ${activeColor}; color: white; border-radius: 5px; font-size: 0.9rem;">${activeText}</span>
+                            <div class="item-card">
+                                <div class="item-header">
+                                    <h3 class="item-title">${resort.name_ko || resort.name_en || '이름 없음'}</h3>
+                                    ${statusBadge}
                                 </div>
-                                <p style="color: #666; margin: 5px 0;"><strong>지역:</strong> ${resort.region_id || ''}</p>
-                                ${resort.description ? `<p style="margin: 10px 0;">${resort.description}</p>` : ''}
-                                ${resort.image_url ? `<img src="${resort.image_url}" alt="${resort.name_ko}" style="width: 100%; max-width: 300px; margin-top: 10px; border-radius: 5px;">` : ''}
+                                <div class="item-meta">
+                                    🌍 <strong>지역:</strong> ${resort.region_id || '-'} | 
+                                    🏷️ <strong>코드:</strong> ${resort.code || '-'}
+                                </div>
+                                ${resort.description ? `<div class="item-content">${resort.description}</div>` : ''}
+                                ${resort.image_url ? `<img src="${resort.image_url}" class="image-thumbnail" alt="${resort.name_ko}">` : ''}
                             </div>
                         `;
                     });
-                    html += '</div>';
                     container.innerHTML = html;
                 } else {
-                    container.innerHTML = '<p style="padding: 20px; background: #f8f9fa; border-radius: 8px;">등록된 리조트가 없습니다.</p>';
+                    container.innerHTML = '<div class="empty-state"><div style="font-size: 3rem;">🏨</div><p>등록된 리조트가 없습니다.</p></div>';
+                    document.getElementById('totalResorts').textContent = '0';
                 }
             } catch (error) {
                 console.error('Error loading resorts:', error);
-                container.innerHTML = '<p style="color: red;">리조트를 불러오는데 실패했습니다: ' + error.message + '</p>';
+                container.innerHTML = `<div class="error-message">❌ 리조트를 불러오는데 실패했습니다: ${error.message}</div>`;
             }
         }
         
