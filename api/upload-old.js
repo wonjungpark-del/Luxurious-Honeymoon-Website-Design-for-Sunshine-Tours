@@ -52,13 +52,12 @@ module.exports = async function handler(req, res) {
     // Parse multipart data manually
     const parts = buffer.toString('binary').split(`--${boundary}`);
     
-    const files = [];
+    let fileBuffer = null;
+    let filename = 'upload.jpg';
+    let contentTypeFile = 'image/jpeg';
 
     for (const part of parts) {
-      if (part.includes('Content-Disposition: form-data') && part.includes('filename=')) {
-        let filename = 'upload.jpg';
-        let contentTypeFile = 'image/jpeg';
-
+      if (part.includes('Content-Disposition: form-data')) {
         // Extract filename
         const filenameMatch = part.match(/filename="([^"]+)"/);
         if (filenameMatch) {
@@ -77,45 +76,37 @@ module.exports = async function handler(req, res) {
         
         if (dataStart > 3 && dataEnd > dataStart) {
           const binaryData = part.substring(dataStart, dataEnd);
-          const fileBuffer = Buffer.from(binaryData, 'binary');
-          
-          if (fileBuffer && fileBuffer.length > 0) {
-            files.push({ buffer: fileBuffer, filename, contentType: contentTypeFile });
-          }
+          fileBuffer = Buffer.from(binaryData, 'binary');
         }
       }
     }
 
-    if (files.length === 0) {
+    if (!fileBuffer || fileBuffer.length === 0) {
       return res.status(400).json({ 
         success: false, 
-        error: 'No files found' 
+        error: 'No file data found' 
       });
     }
 
-    // Upload all files to Vercel Blob
-    const uploadedUrls = [];
-    for (const file of files) {
-      // Generate unique filename
-      const timestamp = Date.now();
-      const extension = file.filename.split('.').pop() || 'jpg';
-      const uniqueFilename = `${timestamp}-${Math.random().toString(36).substring(7)}.${extension}`;
+    // Generate unique filename
+    const timestamp = Date.now();
+    const extension = filename.split('.').pop() || 'jpg';
+    const uniqueFilename = `${timestamp}-${Math.random().toString(36).substring(7)}.${extension}`;
 
-      // Upload to Vercel Blob
-      const blob = await put(uniqueFilename, file.buffer, {
-        access: 'public',
-        contentType: file.contentType,
-        addRandomSuffix: false
-      });
-
-      uploadedUrls.push(blob.url);
-    }
+    // Upload to Vercel Blob
+    const blob = await put(uniqueFilename, fileBuffer, {
+      access: 'public',
+      contentType: contentTypeFile,
+      addRandomSuffix: false
+    });
 
     // Return success response
     return res.status(200).json({
       success: true,
-      urls: uploadedUrls,
-      count: uploadedUrls.length
+      url: blob.url,
+      filename: uniqueFilename,
+      size: fileBuffer.length,
+      contentType: contentTypeFile
     });
 
   } catch (error) {
