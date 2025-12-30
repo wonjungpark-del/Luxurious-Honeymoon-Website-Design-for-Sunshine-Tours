@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>로그인 테스트</title>
+    <style>
+        body {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            font-family: sans-serif;
+        }
+        .box {
+            background: white;
+            padding: 2rem;
+            border-radius: 16px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.3);
+        }
+        input {
+            width: 100%;
+            padding: 0.75rem;
+            margin: 1rem 0;
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            font-size: 1rem;
+        }
+        button {
+            width: 100%;
+            padding: 0.75rem;
+            background: #667eea;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 1rem;
+            cursor: pointer;
+        }
+        button:hover { background: #5568d3; }
+        .error { color: red; margin-top: 1rem; display: none; }
+        .success { color: green; margin-top: 1rem; display: none; }
+    </style>
+</head>
+<body>
+    <div class="box">
+        <h1>🌅 로그인 테스트</h1>
+        <p>비밀번호: sun2026@</p>
+        <input type="password" id="pw" placeholder="비밀번호 입력">
+        <button onclick="test()">로그인</button>
+        <div id="error" class="error">비밀번호가 틀렸습니다</div>
+        <div id="success" class="success">✅ 로그인 성공!</div>
+    </div>
+
+    <script>
+        function test() {
+            const pw = document.getElementById('pw').value;
+            const err = document.getElementById('error');
+            const suc = document.getElementById('success');
+            
+            err.style.display = 'none';
+            suc.style.display = 'none';
+            
+            if (pw === 'sun2026@') {
+                suc.style.display = 'block';
+                setTimeout(() => {
+                    window.location.href = '/admin-full.html';
+                }, 1000);
+            } else {
+                err.style.display = 'block';
+            }
+        }
+        
+        document.getElementById('pw').addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') test();
+        });
+    </script>
+</body>
+</html>
