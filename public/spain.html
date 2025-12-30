@@ -3,14 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>스페인 호텔 추천 | 정열의 나라, 가우디 - 선샤인투어</title>
-    <meta name="description" content="스페인 최고의 럭셔리 호텔 추천. 정열의 나라, 가우디">
-    <meta name="keywords" content="스페인, 스페인 리조트, 스페인 호텔, 스페인 허니문, 스페인 신혼여행, 선샤인투어">
+    <title>스페인 여행 가이드 | 바르셀로나 & 그라나다 명소 - 선샤인투어</title>
+    <meta name="description" content="스페인 바르셀로나와 그라나다의 주요 관광 명소. 가우디의 건축물, 알함브라 궁전 등 스페인의 아름다운 문화유산을 경험하세요.">
+    <meta name="keywords" content="스페인, 바르셀로나, 그라나다, 사그라다 파밀리아, 구엘공원, 알함브라 궁전, 유럽여행, 선샤인투어">
     
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@400;700&family=Montserrat:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@300;400;600;700&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
@@ -18,7 +18,163 @@
     <!-- Custom CSS -->
     <link rel="stylesheet" href="/static/css/style.css">
     <link rel="stylesheet" href="/static/css/destination.css">
-    <link rel="stylesheet" href="/static/css/region.css">
+    
+    <style>
+        /* 관광지 전용 스타일 */
+        .attraction-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 3rem;
+            margin: 4rem 0;
+        }
+        
+        .attraction-card {
+            background: white;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        
+        .attraction-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 8px 30px rgba(0,0,0,0.15);
+        }
+        
+        .attraction-image {
+            width: 100%;
+            height: 280px;
+            object-fit: cover;
+            display: block;
+        }
+        
+        .attraction-content {
+            padding: 2rem;
+        }
+        
+        .attraction-badge {
+            display: inline-block;
+            padding: 0.4rem 1rem;
+            background: linear-gradient(135deg, #C9A96E 0%, #B8935E 100%);
+            color: white;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+            margin-bottom: 1rem;
+        }
+        
+        .attraction-title {
+            font-size: 1.8rem;
+            color: #2C2C2C;
+            margin-bottom: 1rem;
+            font-weight: 700;
+        }
+        
+        .attraction-description {
+            color: #666;
+            line-height: 1.8;
+            font-size: 1.05rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .attraction-highlights {
+            list-style: none;
+            padding: 0;
+            margin: 1.5rem 0;
+        }
+        
+        .attraction-highlights li {
+            padding: 0.6rem 0;
+            color: #555;
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+        }
+        
+        .attraction-highlights li i {
+            color: #C9A96E;
+            font-size: 1rem;
+        }
+        
+        .region-intro {
+            background: linear-gradient(135deg, rgba(201, 169, 110, 0.1) 0%, rgba(184, 147, 94, 0.1) 100%);
+            padding: 5rem 0;
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+        
+        .region-intro h1 {
+            font-size: 3.5rem;
+            color: #2C2C2C;
+            margin-bottom: 1.5rem;
+            font-weight: 700;
+        }
+        
+        .region-intro .subtitle {
+            font-size: 1.3rem;
+            color: #666;
+            max-width: 800px;
+            margin: 0 auto 2rem;
+            line-height: 1.8;
+        }
+        
+        .region-flag {
+            font-size: 4rem;
+            margin-bottom: 1rem;
+        }
+        
+        .map-section {
+            margin: 5rem 0;
+            background: #f8f9fa;
+            padding: 4rem 0;
+        }
+        
+        .map-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+        
+        .map-title {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+        
+        .map-title h2 {
+            font-size: 2.5rem;
+            color: #2C2C2C;
+            margin-bottom: 1rem;
+        }
+        
+        .map-title p {
+            color: #666;
+            font-size: 1.1rem;
+        }
+        
+        .map-iframe {
+            width: 100%;
+            height: 700px;
+            border: none;
+            border-radius: 16px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+        }
+        
+        @media (max-width: 768px) {
+            .attraction-grid {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+            
+            .region-intro h1 {
+                font-size: 2.5rem;
+            }
+            
+            .map-iframe {
+                height: 500px;
+            }
+        }
+    </style>
 </head>
 <body>
     <!-- Navigation -->
@@ -56,85 +212,269 @@
             <ul class="breadcrumb-list">
                 <li><a href="/index.html">Home</a></li>
                 <li><i class="fas fa-chevron-right"></i></li>
-                <li><a href="/index.html#destinations">유럽</a></li>
+                <li><a href="#europe">Europe</a></li>
                 <li><i class="fas fa-chevron-right"></i></li>
-                <li class="current">스페인</li>
+                <li class="current">Spain</li>
             </ul>
         </div>
     </section>
 
-    <!-- Page Header -->
-    <section class="destination-intro">
+    <!-- Region Intro -->
+    <section class="region-intro">
         <div class="container">
-            <div class="intro-wrapper">
-                <span class="section-label">SPAIN RESORTS</span>
-                <h1 class="destination-section-title">스페인 호텔</h1>
-                <p class="destination-description">
-                    정열적이고 화려한 스페인은 가우디와 플라멩코의 나라입니다.<br>
-사그라다 파밀리아와 구엘 공원, 타파스가 어우러진<br>
-열정적인 허니문을 경험하세요.
-                </p>
-            </div>
+            <div class="region-flag">🇪🇸</div>
+            <span class="section-label" style="color: #C9A96E; font-weight: 600; letter-spacing: 2px;">SPAIN</span>
+            <h1>스페인 여행 가이드</h1>
+            <p class="subtitle">
+                정열과 예술의 나라 스페인. 가우디의 환상적인 건축물부터 무어 문화의 아름다운 유산까지,<br>
+                스페인의 역사와 문화가 살아 숨 쉬는 명소들을 만나보세요.
+            </p>
         </div>
     </section>
 
-    <!-- Why This Destination Section -->
-    <section class="region-info" style="margin-top: 4rem;">
-        <div class="container" style="max-width: 1200px; margin: 0 auto; padding: 0 2rem;">
-            <div class="section-header" style="text-align: center; margin-bottom: 3rem;">
-                <span class="section-label" style="color: #C9A96E; font-weight: 600; letter-spacing: 2px; font-size: 0.9rem;">WHY SPAIN</span>
-                <h2 class="section-title" style="font-size: 2.5rem; color: #2C2C2C; margin-top: 1rem;">스페인를 선택해야 하는 이유</h2>
-            </div>
+    <!-- Attractions Section -->
+    <section style="padding: 4rem 0;">
+        <div class="container" style="max-width: 1400px; margin: 0 auto; padding: 0 2rem;">
             
-            <div class="region-meta" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2rem; padding: 0;">
-                <div class="meta-card" style="background: white; padding: 2rem; border-radius: 15px; text-align: center; box-shadow: 0 5px 20px rgba(0,0,0,0.08); transition: transform 0.3s;" onmouseover="this.style.transform='translateY(-10px)'" onmouseout="this.style.transform='translateY(0)'">
-                    <div class="icon" style="width: 70px; height: 70px; background: linear-gradient(135deg, #C9A96E, #B8935B); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 1.5rem;">
-                        <i class="fas fa-church" style="font-size: 2rem; color: white;"></i>
-                    </div>
-                    <h3 style="font-size: 1.4rem; color: #2C2C2C; margin-bottom: 0.8rem;">사그라다 파밀리아</h3>
-                    <p style="color: #666; line-height: 1.6;">가우디의 미완성 걸작</p>
+            <!-- Barcelona Section -->
+            <div style="margin-bottom: 5rem;">
+                <div style="text-align: center; margin-bottom: 3rem;">
+                    <span class="section-label" style="color: #C9A96E; font-weight: 600; letter-spacing: 2px;">BARCELONA</span>
+                    <h2 style="font-size: 2.8rem; color: #2C2C2C; margin-top: 1rem; font-weight: 700;">바르셀로나 주요 명소</h2>
+                    <p style="color: #666; font-size: 1.1rem; margin-top: 1rem;">가우디의 도시, 지중해의 진주</p>
                 </div>
-                <div class="meta-card" style="background: white; padding: 2rem; border-radius: 15px; text-align: center; box-shadow: 0 5px 20px rgba(0,0,0,0.08); transition: transform 0.3s;" onmouseover="this.style.transform='translateY(-10px)'" onmouseout="this.style.transform='translateY(0)'">
-                    <div class="icon" style="width: 70px; height: 70px; background: linear-gradient(135deg, #C9A96E, #B8935B); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 1.5rem;">
-                        <i class="fas fa-palette" style="font-size: 2rem; color: white;"></i>
+                
+                <div class="attraction-grid">
+                    <!-- 사그라다 파밀리아 -->
+                    <div class="attraction-card">
+                        <img src="https://images.unsplash.com/photo-1583422409516-2895a77efded?w=800&q=80" 
+                             alt="사그라다 파밀리아" 
+                             class="attraction-image">
+                        <div class="attraction-content">
+                            <span class="attraction-badge">UNESCO 세계문화유산</span>
+                            <h3 class="attraction-title">사그라다 파밀리아 성당</h3>
+                            <p class="attraction-description">
+                                안토니 가우디의 미완성 걸작. 1882년 착공 이래 140년이 넘도록 건축 중인 이 성당은 
+                                자연과 종교의 조화를 표현한 독특한 건축 양식으로 전 세계인의 사랑을 받고 있습니다.
+                            </p>
+                            <ul class="attraction-highlights">
+                                <li><i class="fas fa-check-circle"></i> 가우디의 최고 걸작</li>
+                                <li><i class="fas fa-check-circle"></i> 생명의 탄생 파사드</li>
+                                <li><i class="fas fa-check-circle"></i> 환상적인 스테인드글라스</li>
+                                <li><i class="fas fa-check-circle"></i> 2026년 완공 예정</li>
+                            </ul>
+                        </div>
                     </div>
-                    <h3 style="font-size: 1.4rem; color: #2C2C2C; margin-bottom: 0.8rem;">구엘 공원</h3>
-                    <p style="color: #666; line-height: 1.6;">모자이크 타일의 환상</p>
-                </div>
-                <div class="meta-card" style="background: white; padding: 2rem; border-radius: 15px; text-align: center; box-shadow: 0 5px 20px rgba(0,0,0,0.08); transition: transform 0.3s;" onmouseover="this.style.transform='translateY(-10px)'" onmouseout="this.style.transform='translateY(0)'">
-                    <div class="icon" style="width: 70px; height: 70px; background: linear-gradient(135deg, #C9A96E, #B8935B); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 1.5rem;">
-                        <i class="fas fa-music" style="font-size: 2rem; color: white;"></i>
+
+                    <!-- 구엘 공원 -->
+                    <div class="attraction-card">
+                        <img src="https://images.unsplash.com/photo-1558642084-fd07fae5282e?w=800&q=80" 
+                             alt="구엘 공원" 
+                             class="attraction-image">
+                        <div class="attraction-content">
+                            <span class="attraction-badge">UNESCO 세계문화유산</span>
+                            <h3 class="attraction-title">구엘 공원</h3>
+                            <p class="attraction-description">
+                                동화 속 세계를 닮은 공원. 형형색색의 모자이크 타일로 장식된 벤치와 건축물들이 
+                                환상적인 분위기를 자아냅니다. 바르셀로나 시내 전경을 한눈에 볼 수 있는 최고의 전망 포인트.
+                            </p>
+                            <ul class="attraction-highlights">
+                                <li><i class="fas fa-check-circle"></i> 모자이크 벤치</li>
+                                <li><i class="fas fa-check-circle"></i> 도마뱀 분수</li>
+                                <li><i class="fas fa-check-circle"></i> 바르셀로나 전망대</li>
+                                <li><i class="fas fa-check-circle"></i> 가우디 하우스 박물관</li>
+                            </ul>
+                        </div>
                     </div>
-                    <h3 style="font-size: 1.4rem; color: #2C2C2C; margin-bottom: 0.8rem;">플라멩코</h3>
-                    <p style="color: #666; line-height: 1.6;">스페인 전통 춤과 음악</p>
+
+                    <!-- 카사 밀라 -->
+                    <div class="attraction-card">
+                        <img src="https://images.unsplash.com/photo-1523531294919-4bcd7c65e216?w=800&q=80" 
+                             alt="카사 밀라" 
+                             class="attraction-image">
+                        <div class="attraction-content">
+                            <span class="attraction-badge">UNESCO 세계문화유산</span>
+                            <h3 class="attraction-title">카사 밀라 (라 페드레라)</h3>
+                            <p class="attraction-description">
+                                '석재 채석장'이라는 뜻의 카사 밀라. 물결치는 듯한 외관과 독특한 굴뚝들이 인상적인 
+                                건물로, 가우디의 창의성이 극대화된 주거용 건축물입니다.
+                            </p>
+                            <ul class="attraction-highlights">
+                                <li><i class="fas fa-check-circle"></i> 파도 같은 외관</li>
+                                <li><i class="fas fa-check-circle"></i> 조각 같은 굴뚝들</li>
+                                <li><i class="fas fa-check-circle"></i> 독특한 아트리움</li>
+                                <li><i class="fas fa-check-circle"></i> 옥상 테라스</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- 람블라스 거리 -->
+                    <div class="attraction-card">
+                        <img src="https://images.unsplash.com/photo-1562883676-8c7feb83f09b?w=800&q=80" 
+                             alt="람블라스 거리" 
+                             class="attraction-image">
+                        <div class="attraction-content">
+                            <span class="attraction-badge">거리 문화</span>
+                            <h3 class="attraction-title">람블라스 거리</h3>
+                            <p class="attraction-description">
+                                바르셀로나의 심장부를 관통하는 1.2km의 보행자 거리. 거리 공연, 꽃 가판대, 
+                                카페와 레스토랑이 늘어선 활기찬 거리에서 바르셀로나의 진정한 분위기를 느껴보세요.
+                            </p>
+                            <ul class="attraction-highlights">
+                                <li><i class="fas fa-check-circle"></i> 보케리아 시장</li>
+                                <li><i class="fas fa-check-circle"></i> 거리 공연</li>
+                                <li><i class="fas fa-check-circle"></i> 콜럼버스 기념탑</li>
+                                <li><i class="fas fa-check-circle"></i> 리세우 오페라 극장</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- 카탈루냐 광장 -->
+                    <div class="attraction-card">
+                        <img src="https://images.unsplash.com/photo-1509600110300-21b9d5fedeb7?w=800&q=80" 
+                             alt="카탈루냐 광장" 
+                             class="attraction-image">
+                        <div class="attraction-content">
+                            <span class="attraction-badge">도심 중심지</span>
+                            <h3 class="attraction-title">카탈루냐 광장</h3>
+                            <p class="attraction-description">
+                                바르셀로나 구시가지와 신시가지를 연결하는 중심 광장. 분수와 조각상들로 장식된 
+                                이곳은 시민들의 휴식 공간이자 주요 교통의 허브입니다.
+                            </p>
+                            <ul class="attraction-highlights">
+                                <li><i class="fas fa-check-circle"></i> 중앙 분수</li>
+                                <li><i class="fas fa-check-circle"></i> 카탈루냐 조각상</li>
+                                <li><i class="fas fa-check-circle"></i> 쇼핑 거리 시작점</li>
+                                <li><i class="fas fa-check-circle"></i> 주요 교통 연결점</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- 피카소 미술관 -->
+                    <div class="attraction-card">
+                        <img src="https://images.unsplash.com/photo-1499781350541-7783f6c6a0c8?w=800&q=80" 
+                             alt="피카소 미술관" 
+                             class="attraction-image">
+                        <div class="attraction-content">
+                            <span class="attraction-badge">예술 & 문화</span>
+                            <h3 class="attraction-title">피카소 미술관</h3>
+                            <p class="attraction-description">
+                                20세기 최고의 화가 파블로 피카소의 초기 작품부터 청색 시대, 장미 시대 작품들을 
+                                만나볼 수 있는 미술관. 피카소가 바르셀로나에서 보낸 시절의 작품들이 전시되어 있습니다.
+                            </p>
+                            <ul class="attraction-highlights">
+                                <li><i class="fas fa-check-circle"></i> 4,000여 점의 소장품</li>
+                                <li><i class="fas fa-check-circle"></i> 초기 작품 컬렉션</li>
+                                <li><i class="fas fa-check-circle"></i> 청색 시대 작품</li>
+                                <li><i class="fas fa-check-circle"></i> 라스 메니나스 연작</li>
+                            </ul>
+                        </div>
+                    </div>
                 </div>
             </div>
+
+            <!-- Granada Section -->
+            <div style="margin-bottom: 5rem;">
+                <div style="text-align: center; margin-bottom: 3rem;">
+                    <span class="section-label" style="color: #C9A96E; font-weight: 600; letter-spacing: 2px;">GRANADA</span>
+                    <h2 style="font-size: 2.8rem; color: #2C2C2C; margin-top: 1rem; font-weight: 700;">그라나다 주요 명소</h2>
+                    <p style="color: #666; font-size: 1.1rem; margin-top: 1rem;">이슬람 문화의 보석</p>
+                </div>
+                
+                <div class="attraction-grid">
+                    <!-- 알함브라 궁전 -->
+                    <div class="attraction-card">
+                        <img src="https://images.unsplash.com/photo-1588022274870-c8e30e8d7e39?w=800&q=80" 
+                             alt="알함브라 궁전" 
+                             class="attraction-image">
+                        <div class="attraction-content">
+                            <span class="attraction-badge">UNESCO 세계문화유산</span>
+                            <h3 class="attraction-title">알함브라 궁전</h3>
+                            <p class="attraction-description">
+                                '붉은 성'이라는 뜻의 알함브라. 이슬람 건축의 정수를 보여주는 이 궁전은 
+                                섬세한 아라베스크 장식과 아름다운 정원으로 전 세계 관광객들을 매료시킵니다.
+                            </p>
+                            <ul class="attraction-highlights">
+                                <li><i class="fas fa-check-circle"></i> 나스르 궁전</li>
+                                <li><i class="fas fa-check-circle"></i> 헤네랄리페 정원</li>
+                                <li><i class="fas fa-check-circle"></i> 사자의 중정</li>
+                                <li><i class="fas fa-check-circle"></i> 알카사바 요새</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- 헤네랄리페 -->
+                    <div class="attraction-card">
+                        <img src="https://images.unsplash.com/photo-1585846416120-3a7354ed7d39?w=800&q=80" 
+                             alt="헤네랄리페" 
+                             class="attraction-image">
+                        <div class="attraction-content">
+                            <span class="attraction-badge">왕실 정원</span>
+                            <h3 class="attraction-title">헤네랄리페 정원</h3>
+                            <p class="attraction-description">
+                                알함브라 궁전의 여름 별궁이자 정원. 분수와 수로, 꽃과 나무들이 조화를 이루며 
+                                무어 왕족들의 휴식처였던 이곳은 지금도 평화로운 아름다움을 간직하고 있습니다.
+                            </p>
+                            <ul class="attraction-highlights">
+                                <li><i class="fas fa-check-circle"></i> 물의 정원</li>
+                                <li><i class="fas fa-check-circle"></i> 장미 정원</li>
+                                <li><i class="fas fa-check-circle"></i> 아세키아 중정</li>
+                                <li><i class="fas fa-check-circle"></i> 시에라 네바다 전망</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- 알바이신 지구 -->
+                    <div class="attraction-card">
+                        <img src="https://images.unsplash.com/photo-1590932332253-6f7e0ac8c8a9?w=800&q=80" 
+                             alt="알바이신 지구" 
+                             class="attraction-image">
+                        <div class="attraction-content">
+                            <span class="attraction-badge">UNESCO 세계문화유산</span>
+                            <h3 class="attraction-title">알바이신 지구</h3>
+                            <p class="attraction-description">
+                                좁은 골목길과 하얀 벽의 집들이 미로처럼 얽혀있는 무어인의 옛 거주지. 
+                                산 니콜라스 전망대에서 바라보는 알함브라 궁전의 석양은 그라나다 최고의 절경입니다.
+                            </p>
+                            <ul class="attraction-highlights">
+                                <li><i class="fas fa-check-circle"></i> 산 니콜라스 전망대</li>
+                                <li><i class="fas fa-check-circle"></i> 무어 건축 양식</li>
+                                <li><i class="fas fa-check-circle"></i> 플라멩코 공연</li>
+                                <li><i class="fas fa-check-circle"></i> 전통 찻집 테테리아</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
         </div>
     </section>
 
-    <!-- Resorts Section -->
-    <section id="resorts" style="padding: 4rem 0; background: #fff;">
-        <div class="container" style="max-width: 1200px; margin: 0 auto; padding: 0 2rem;">
-            <div class="section-header" style="text-align: center; margin-bottom: 3rem;">
-                <span class="section-label" style="color: #C9A96E; font-weight: 600; letter-spacing: 2px; font-size: 0.9rem;">SPAIN ACCOMMODATIONS</span>
-                <h2 class="section-title" style="font-size: 2.5rem; color: #2C2C2C; margin-top: 1rem;">스페인 추천 호텔</h2>
+    <!-- Interactive Map Section -->
+    <section class="map-section">
+        <div class="map-container">
+            <div class="map-title">
+                <span class="section-label" style="color: #C9A96E; font-weight: 600; letter-spacing: 2px;">INTERACTIVE MAP</span>
+                <h2>유럽 지도에서 스페인 탐색하기</h2>
+                <p>유럽 전역의 여행지를 인터랙티브 지도에서 확인하세요</p>
             </div>
-            
-            <div id="resorts-container">
-                <div style="text-align: center; padding: 3rem 0;">
-                    <i class="fas fa-spinner fa-spin" style="font-size: 3rem; color: #C9A96E;"></i>
-                    <p style="margin-top: 1rem; color: #666;">리조트 정보를 불러오는 중...</p>
-                </div>
-            </div>
+            <iframe 
+                src="http://www.sunshinetour.co.kr/maps/index/europe/europemain.html" 
+                class="map-iframe"
+                title="유럽 인터랙티브 지도"
+                loading="lazy">
+            </iframe>
         </div>
     </section>
 
     <!-- CTA Section -->
-    <section class="cta-section" style="background: linear-gradient(135deg, #C9A96E 0%, #B8935B 100%); padding: 4rem 0; text-align: center; color: white;">
+    <section class="cta-section">
         <div class="container">
-            <h2 style="font-size: 2.5rem; margin-bottom: 1rem;">지금 바로 스페인 허니문을 계획하세요</h2>
-            <p style="font-size: 1.2rem; margin-bottom: 2rem; opacity: 0.95;">전문 여행 컨설턴트가 맞춤 상담을 제공합니다</p>
-            <a href="/inquiry.html" style="display: inline-block; background: white; color: #C9A96E; padding: 1rem 3rem; border-radius: 50px; text-decoration: none; font-weight: 600; font-size: 1.1rem; transition: all 0.3s;">무료 상담 신청</a>
+            <div class="cta-content">
+                <h2>스페인에서 특별한 여행을 시작하세요</h2>
+                <p>전문 상담사가 여러분의 완벽한 유럽 여행을 계획해드립니다</p>
+                <a href="/inquiry" class="cta-btn">문의하기</a>
+            </div>
         </div>
     </section>
 
@@ -144,163 +484,33 @@
             <div class="footer-content">
                 <div class="footer-brand">
                     <h3>SUNSHINE TOUR</h3>
-                    <p>프라이빗 허니문 전문 여행사</p>
+                    <p>프리미엄 유럽 여행 전문</p>
                 </div>
                 
                 <div class="footer-info">
-                    <p>서울특별시 성북구 보문로30길 71, 2층 7호</p>
-                    <p>TEL: 02-318-8021</p>
-                    <p class="copyright">© 2024 Sunshine Tour. All rights reserved.</p>
+                    <h4>Contact</h4>
+                    <p><i class="fas fa-phone"></i> 02-123-4567</p>
+                    <p><i class="fas fa-envelope"></i> info@sunshinetour.co.kr</p>
+                    <p><i class="fas fa-map-marker-alt"></i> 서울시 강남구</p>
                 </div>
+                
+                <div class="footer-social">
+                    <h4>Follow Us</h4>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2024 Sunshine Tour. All rights reserved.</p>
             </div>
         </div>
     </footer>
 
-    <!-- Lightbox Modal -->
-    <div id="lightboxModal" class="modal" style="display: none; position: fixed; z-index: 9999; left: 0; top: 0; width: 100%; height: 100%; background-color: rgba(0,0,0,0.9);">
-        <span class="close" onclick="closeLightbox()" style="position: absolute; top: 20px; right: 35px; color: #f1f1f1; font-size: 40px; font-weight: bold; cursor: pointer;">&times;</span>
-        <img class="modal-content" id="lightboxImg" style="margin: auto; display: block; max-width: 90%; max-height: 90%; margin-top: 50px;">
-        <div id="caption" style="text-align: center; color: #ccc; padding: 20px; font-size: 1.2rem;"></div>
-    </div>
-
-    <!-- JavaScript -->
-    <script>
-        // Configuration
-        const REGION_ID = 'region-europe-spain';
-        const API_BASE_URL = 'https://luxurious-honeymoon-website-design.vercel.app';
-
-        // Category labels mapping
-        const categoryLabels = {
-            'luxury': '럭셔리',
-            'premium': '프리미엄',
-            'standard': '스탠다드',
-            '럭셔리': '럭셔리',
-            '프리미엄': '프리미엄',
-            '스탠다드': '스탠다드'
-        };
-
-        // Load resorts on page load
-        document.addEventListener('DOMContentLoaded', function() {
-            loadResorts();
-        });
-
-        // Load resorts function
-        async function loadResorts() {
-            const container = document.getElementById('resorts-container');
-            
-            try {
-                const response = await fetch(`${API_BASE_URL}/api/resorts?region_id=${REGION_ID}&is_active=true`);
-                const result = await response.json();
-
-                if (result.success && result.data && result.data.length > 0) {
-                    container.innerHTML = result.data.map(resort => createResortCard(resort)).join('');
-                } else {
-                    container.innerHTML = `
-                        <div style="text-align: center; padding: 3rem 0;">
-                            <i class="fas fa-info-circle" style="font-size: 3rem; color: #C9A96E;"></i>
-                            <p style="margin-top: 1rem; color: #666;">현재 표시할 리조트가 없습니다.</p>
-                        </div>
-                    `;
-                }
-            } catch (error) {
-                console.error('Error loading resorts:', error);
-                container.innerHTML = `
-                    <div style="text-align: center; padding: 3rem 0;">
-                        <i class="fas fa-exclamation-triangle" style="font-size: 3rem; color: #ff6b6b;"></i>
-                        <p style="margin-top: 1rem; color: #666;">리조트 정보를 불러오는데 실패했습니다.</p>
-                    </div>
-                `;
-            }
-        }
-
-        // Create resort card HTML
-        function createResortCard(resort) {
-            const gallery = resort.gallery_images || [];
-            const features = resort.features || [];
-            const mainImage = gallery.length > 0 
-                ? gallery[0] 
-                : (resort.main_image_url || 'https://images.unsplash.com/photo-1571896349842-33c89424de2d?w=800');
-            
-            const categoryLabel = categoryLabels[resort.category] || resort.category;
-
-            return `
-                <div class="resort-card" style="background: white; border-radius: 15px; overflow: hidden; box-shadow: 0 10px 40px rgba(0,0,0,0.1); margin-bottom: 3rem;">
-                    <div class="resort-header" style="display: grid; grid-template-columns: 400px 1fr; gap: 2rem;">
-                        <div class="resort-image" style="position: relative; height: 400px; overflow: hidden;">
-                            <img src="${mainImage}" 
-                                 alt="${resort.name_ko}" 
-                                 style="width: 100%; height: 100%; object-fit: cover;"
-                                 onerror="this.src='https://images.unsplash.com/photo-1571896349842-33c89424de2d?w=800'">
-                            <span class="category-badge" style="position: absolute; top: 20px; right: 20px; background: linear-gradient(135deg, #C9A96E, #B8935B); color: white; padding: 0.5rem 1.5rem; border-radius: 50px; font-weight: 600; font-size: 0.9rem;">${categoryLabel}</span>
-                        </div>
-                        <div class="resort-info" style="padding: 2rem;">
-                            <span style="color: #C9A96E; font-weight: 600; font-size: 0.9rem; letter-spacing: 1px;">${categoryLabel.toUpperCase()}</span>
-                            <h3 style="font-size: 2.2rem; color: #2C2C2C; margin: 0.5rem 0;">${resort.name_ko}</h3>
-                            <p style="color: #666; font-size: 1.05rem; line-height: 1.6; margin-bottom: 1.5rem;">${resort.description}</p>
-                            
-                            ${features.length > 0 ? `
-                                <div class="features" style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 1rem; margin-bottom: 2rem;">
-                                    ${features.slice(0, 4).map(feature => `
-                                        <div style="display: flex; align-items: center; gap: 0.8rem;">
-                                            <i class="fas fa-check-circle" style="color: #C9A96E; font-size: 1.2rem;"></i>
-                                            <span style="color: #555; font-size: 1rem;">${feature}</span>
-                                        </div>
-                                    `).join('')}
-                                </div>
-                            ` : ''}
-                            
-                        </div>
-                    </div>
-                    
-                    ${gallery.length > 0 ? `
-                        <div class="gallery" style="display: grid; grid-template-columns: repeat(6, 1fr); border-top: 1px solid #eee;">
-                            ${gallery.slice(0, 6).map((img, index) => `
-                                <div style="position: relative; height: 180px; overflow: hidden; cursor: pointer; border-right: 1px solid #eee;" onclick="openLightbox('${img}', '${resort.name_ko} - 이미지 ${index + 1}')">
-                                    <img src="${img}" 
-                                         alt="${resort.name_ko} 갤러리 ${index + 1}"
-                                         style="width: 100%; height: 100%; object-fit: cover; transition: transform 0.3s;"
-                                         onmouseover="this.style.transform='scale(1.1)'"
-                                         onmouseout="this.style.transform='scale(1)'"
-                                         onerror="this.src='https://images.unsplash.com/photo-1582719508461-905c673771fd?w=800'">
-                                    <div style="position: absolute; inset: 0; background: rgba(201, 169, 110, 0.8); display: flex; align-items: center; justify-content: center; opacity: 0; transition: opacity 0.3s;" onmouseover="this.style.opacity='1'" onmouseout="this.style.opacity='0'">
-                                        <i class="fas fa-search-plus" style="color: white; font-size: 1.5rem;"></i>
-                                    </div>
-                                </div>
-                            `).join('')}
-                        </div>
-                    ` : ''}
-                </div>
-            `;
-        }
-
-        // Lightbox functions
-        function openLightbox(imgSrc, caption) {
-            const modal = document.getElementById('lightboxModal');
-            const modalImg = document.getElementById('lightboxImg');
-            const captionText = document.getElementById('caption');
-
-            modal.style.display = 'block';
-            modalImg.src = imgSrc;
-            captionText.innerHTML = caption;
-        }
-
-        function closeLightbox() {
-            document.getElementById('lightboxModal').style.display = 'none';
-        }
-
-        // Close lightbox when clicking outside the image
-        document.getElementById('lightboxModal')?.addEventListener('click', function(e) {
-            if (e.target === this) {
-                closeLightbox();
-            }
-        });
-
-        // Close lightbox with ESC key
-        document.addEventListener('keydown', function(e) {
-            if (e.key === 'Escape') {
-                closeLightbox();
-            }
-        });
-    </script>
+    <!-- Scripts -->
+    <script src="/static/js/navbar.js"></script>
 </body>
 </html>
