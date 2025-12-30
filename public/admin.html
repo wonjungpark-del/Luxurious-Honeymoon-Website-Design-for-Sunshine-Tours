@@ -80,9 +80,7 @@
 
         <div id="successBox" style="display: none;" class="success">
             <h2>✅ 로그인 성공!</h2>
-            <p>관리자 페이지 접속이 완료되었습니다.</p>
-            <p style="margin-top: 1rem; color: #666;">실제 관리자 페이지는 개발 중입니다.</p>
-            <button onclick="logout()" style="margin-top: 1.5rem; background: #95a5a6;">로그아웃</button>
+            <p>관리자 페이지로 이동 중...</p>
         </div>
     </div>
 
@@ -105,6 +103,11 @@
                 document.getElementById('loginBox').style.display = 'none';
                 document.getElementById('successBox').style.display = 'block';
                 errorDiv.style.display = 'none';
+                
+                // Redirect to full admin page after 1 second
+                setTimeout(function() {
+                    window.location.href = '/admin-full.html';
+                }, 1000);
             } else {
                 console.log('❌ Login failed');
                 errorDiv.style.display = 'block';
