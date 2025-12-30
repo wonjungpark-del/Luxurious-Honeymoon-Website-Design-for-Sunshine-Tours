@@ -349,6 +349,63 @@
         // Password
         const ADMIN_PASSWORD = 'sun2026@';
         
+        // Login Handler Function - DEFINED FIRST FOR IMMEDIATE AVAILABILITY
+        window.handleLogin = function() {
+            try {
+                console.log('=== LOGIN ATTEMPT ===');
+                const passwordInput = document.getElementById('passwordInput');
+                
+                if (!passwordInput) {
+                    alert('오류: 비밀번호 입력 필드를 찾을 수 없습니다.');
+                    return;
+                }
+                
+                const password = passwordInput.value;
+                console.log('Comparing:', password, '===', ADMIN_PASSWORD, '?', password === ADMIN_PASSWORD);
+                
+                if (password === ADMIN_PASSWORD) {
+                    console.log('✅ PASSWORD CORRECT - LOGGING IN');
+                    
+                    const loginScreen = document.getElementById('loginScreen');
+                    const adminPanel = document.getElementById('adminPanel');
+                    
+                    if (!loginScreen || !adminPanel) {
+                        alert('오류: 화면 요소를 찾을 수 없습니다.');
+                        return;
+                    }
+                    
+                    loginScreen.style.display = 'none';
+                    adminPanel.style.display = 'block';
+                    
+                    // Load data - wrap in try-catch to prevent errors from blocking login
+                    try {
+                        loadAllData().then(() => {
+                            console.log('Data loaded, initializing...');
+                            initializeDestinations();
+                            initializeNotificationSettings();
+                            checkForNewContent();
+                        }).catch(error => {
+                            console.error('Error loading data:', error);
+                            // Don't block login on data loading error
+                        });
+                    } catch (e) {
+                        console.error('Error in loadAllData:', e);
+                        // Continue anyway
+                    }
+                } else {
+                    console.log('❌ PASSWORD INCORRECT');
+                    const loginError = document.getElementById('loginError');
+                    if (loginError) {
+                        loginError.classList.remove('hidden');
+                    }
+                }
+            } catch (error) {
+                console.error('CRITICAL ERROR in handleLogin:', error);
+                alert('로그인 처리 중 오류:\n' + error.message);
+            }
+        };
+        console.log('✅ handleLogin defined at window.handleLogin');
+        
         // Destination and Region Structure
         const DESTINATIONS = {
             '태국': {
@@ -669,72 +726,15 @@
             }
         }
 
-        // Login Handler Function
-        function handleLogin() {
-            try {
-                console.log('Login button clicked');
-                const passwordInput = document.getElementById('passwordInput');
-                
-                if (!passwordInput) {
-                    alert('오류: 비밀번호 입력 필드를 찾을 수 없습니다.');
-                    console.error('passwordInput element not found');
-                    return;
-                }
-                
-                const password = passwordInput.value;
-                console.log('Password entered, checking...', password === ADMIN_PASSWORD);
-                console.log('Password length:', password.length, 'Expected:', ADMIN_PASSWORD.length);
-                
-                if (password === ADMIN_PASSWORD) {
-                    console.log('Password correct, logging in...');
-                    
-                    const loginScreen = document.getElementById('loginScreen');
-                    const adminPanel = document.getElementById('adminPanel');
-                    
-                    if (!loginScreen || !adminPanel) {
-                        alert('오류: 화면 요소를 찾을 수 없습니다.');
-                        console.error('loginScreen or adminPanel not found');
-                        return;
-                    }
-                    
-                    loginScreen.style.display = 'none';
-                    adminPanel.style.display = 'block';
-                    
-                    loadAllData().then(() => {
-                        console.log('Data loaded, initializing...');
-                        initializeDestinations();
-                        initializeNotificationSettings();
-                        checkForNewContent();
-                    }).catch(error => {
-                        console.error('Error during initialization:', error);
-                        alert('초기화 중 오류가 발생했습니다:\n' + error.message);
-                    });
-                } else {
-                    console.log('Password incorrect');
-                    const loginError = document.getElementById('loginError');
-                    if (loginError) {
-                        loginError.classList.remove('hidden');
-                    }
-                }
-            } catch (error) {
-                console.error('Error in handleLogin:', error);
-                alert('로그인 처리 중 오류가 발생했습니다:\n' + error.message);
-            }
-        }
-        
-        // Make handleLogin globally available
-        window.handleLogin = handleLogin;
-        console.log('handleLogin function defined and assigned to window');
-
         // Also support Enter key in password field
         document.addEventListener('DOMContentLoaded', function() {
-            console.log('DOM loaded, attaching login handler');
+            console.log('DOM loaded, attaching Enter key handler');
             const passwordInput = document.getElementById('passwordInput');
             if (passwordInput) {
                 passwordInput.addEventListener('keypress', function(e) {
                     if (e.key === 'Enter') {
                         e.preventDefault();
-                        handleLogin();
+                        window.handleLogin();
                     }
                 });
             }
