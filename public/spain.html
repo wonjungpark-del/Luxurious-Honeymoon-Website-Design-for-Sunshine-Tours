@@ -20,134 +20,135 @@
     <link rel="stylesheet" href="/static/css/destination.css">
     
     <style>
-        /* 관광지 전용 스타일 */
-        .attraction-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 3rem;
-            margin: 4rem 0;
+        body {
+            background: #f8f5f0;
         }
         
-        .attraction-card {
+        /* City Section */
+        .city-section {
             background: white;
-            border-radius: 16px;
-            overflow: hidden;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
-            transition: transform 0.3s, box-shadow 0.3s;
+            margin: 3rem auto;
+            max-width: 1200px;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.08);
         }
         
-        .attraction-card:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 8px 30px rgba(0,0,0,0.15);
+        .city-header {
+            text-align: center;
+            padding: 4rem 2rem 2rem;
+            background: linear-gradient(to bottom, #f8f5f0 0%, white 100%);
         }
         
-        .attraction-image {
+        .city-badge {
+            display: inline-block;
+            padding: 0.5rem 1.5rem;
+            background: #C9A96E;
+            color: white;
+            font-size: 0.9rem;
+            letter-spacing: 2px;
+            margin-bottom: 1rem;
+            font-weight: 600;
+        }
+        
+        .city-title {
+            font-size: 3rem;
+            color: #2C2C2C;
+            margin: 1rem 0;
+            font-weight: 300;
+            letter-spacing: -1px;
+        }
+        
+        .city-subtitle {
+            font-size: 1.1rem;
+            color: #666;
+            margin-top: 0.5rem;
+            font-weight: 300;
+        }
+        
+        .city-images {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 0;
+        }
+        
+        .city-images img {
             width: 100%;
-            height: 280px;
+            height: 350px;
             object-fit: cover;
             display: block;
         }
         
-        .attraction-content {
-            padding: 2rem;
+        .city-description {
+            padding: 3rem;
+            background: white;
         }
         
-        .attraction-badge {
-            display: inline-block;
-            padding: 0.4rem 1rem;
-            background: linear-gradient(135deg, #C9A96E 0%, #B8935E 100%);
-            color: white;
-            border-radius: 20px;
-            font-size: 0.85rem;
-            font-weight: 600;
-            letter-spacing: 0.5px;
-            margin-bottom: 1rem;
-        }
-        
-        .attraction-title {
-            font-size: 1.8rem;
-            color: #2C2C2C;
-            margin-bottom: 1rem;
-            font-weight: 700;
-        }
-        
-        .attraction-description {
-            color: #666;
-            line-height: 1.8;
+        .description-text {
+            line-height: 2;
+            color: #333;
             font-size: 1.05rem;
-            margin-bottom: 1.5rem;
+            margin-bottom: 2rem;
+            text-align: justify;
         }
         
-        .attraction-highlights {
-            list-style: none;
-            padding: 0;
-            margin: 1.5rem 0;
+        .highlights-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1.5rem;
+            margin-top: 2rem;
         }
         
-        .attraction-highlights li {
-            padding: 0.6rem 0;
-            color: #555;
+        .highlight-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
+        }
+        
+        .highlight-icon {
+            width: 40px;
+            height: 40px;
+            background: linear-gradient(135deg, #C9A96E, #B8935E);
+            border-radius: 50%;
             display: flex;
             align-items: center;
-            gap: 0.8rem;
+            justify-content: center;
+            color: white;
+            font-size: 1.2rem;
+            flex-shrink: 0;
         }
         
-        .attraction-highlights li i {
-            color: #C9A96E;
-            font-size: 1rem;
-        }
-        
-        .region-intro {
-            background: linear-gradient(135deg, rgba(201, 169, 110, 0.1) 0%, rgba(184, 147, 94, 0.1) 100%);
-            padding: 5rem 0;
-            text-align: center;
-            margin-bottom: 4rem;
-        }
-        
-        .region-intro h1 {
-            font-size: 3.5rem;
+        .highlight-content h4 {
             color: #2C2C2C;
-            margin-bottom: 1.5rem;
-            font-weight: 700;
+            font-size: 1.1rem;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
         }
         
-        .region-intro .subtitle {
-            font-size: 1.3rem;
+        .highlight-content p {
             color: #666;
-            max-width: 800px;
-            margin: 0 auto 2rem;
-            line-height: 1.8;
+            font-size: 0.95rem;
+            line-height: 1.6;
         }
         
-        .region-flag {
-            font-size: 4rem;
-            margin-bottom: 1rem;
-        }
-        
+        /* Map Section */
         .map-section {
-            margin: 5rem 0;
-            background: #f8f9fa;
-            padding: 4rem 0;
-        }
-        
-        .map-container {
+            margin: 5rem auto;
             max-width: 1400px;
-            margin: 0 auto;
             padding: 0 2rem;
         }
         
-        .map-title {
+        .map-header {
             text-align: center;
-            margin-bottom: 2rem;
+            margin-bottom: 3rem;
         }
         
-        .map-title h2 {
+        .map-header h2 {
             font-size: 2.5rem;
             color: #2C2C2C;
             margin-bottom: 1rem;
+            font-weight: 300;
         }
         
-        .map-title p {
+        .map-header p {
             color: #666;
             font-size: 1.1rem;
         }
@@ -156,18 +157,25 @@
             width: 100%;
             height: 700px;
             border: none;
-            border-radius: 16px;
+            border-radius: 8px;
             box-shadow: 0 4px 20px rgba(0,0,0,0.1);
         }
         
         @media (max-width: 768px) {
-            .attraction-grid {
+            .city-images {
                 grid-template-columns: 1fr;
-                gap: 2rem;
             }
             
-            .region-intro h1 {
-                font-size: 2.5rem;
+            .city-images img {
+                height: 250px;
+            }
+            
+            .highlights-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .city-title {
+                font-size: 2rem;
             }
             
             .map-iframe {
@@ -219,252 +227,281 @@
         </div>
     </section>
 
-    <!-- Region Intro -->
-    <section class="region-intro">
-        <div class="container">
-            <div class="region-flag">🇪🇸</div>
-            <span class="section-label" style="color: #C9A96E; font-weight: 600; letter-spacing: 2px;">SPAIN</span>
-            <h1>스페인 여행 가이드</h1>
-            <p class="subtitle">
-                정열과 예술의 나라 스페인. 가우디의 환상적인 건축물부터 무어 문화의 아름다운 유산까지,<br>
-                스페인의 역사와 문화가 살아 숨 쉬는 명소들을 만나보세요.
-            </p>
-        </div>
-    </section>
-
-    <!-- Attractions Section -->
-    <section style="padding: 4rem 0;">
-        <div class="container" style="max-width: 1400px; margin: 0 auto; padding: 0 2rem;">
+    <!-- Main Content -->
+    <div style="padding: 4rem 0; background: #f8f5f0;">
+        
+        <!-- Barcelona -->
+        <div class="city-section">
+            <div class="city-header">
+                <div class="city-badge">BARCELONA</div>
+                <h1 class="city-title">바르셀로나</h1>
+                <p class="city-subtitle">가우디의 도시, 지중해의 진주</p>
+            </div>
             
-            <!-- Barcelona Section -->
-            <div style="margin-bottom: 5rem;">
-                <div style="text-align: center; margin-bottom: 3rem;">
-                    <span class="section-label" style="color: #C9A96E; font-weight: 600; letter-spacing: 2px;">BARCELONA</span>
-                    <h2 style="font-size: 2.8rem; color: #2C2C2C; margin-top: 1rem; font-weight: 700;">바르셀로나 주요 명소</h2>
-                    <p style="color: #666; font-size: 1.1rem; margin-top: 1rem;">가우디의 도시, 지중해의 진주</p>
-                </div>
+            <div class="city-images">
+                <img src="https://images.unsplash.com/photo-1583422409516-2895a77efded?w=1200&q=80" alt="사그라다 파밀리아">
+                <img src="https://images.unsplash.com/photo-1558642084-fd07fae5282e?w=1200&q=80" alt="구엘 공원">
+            </div>
+            
+            <div class="city-description">
+                <p class="description-text">
+                    바르셀로나는 지중해 연안의 아름다운 도시로, 천재 건축가 안토니 가우디의 환상적인 작품들이 도시 곳곳에 자리잡고 있습니다. 
+                    사그라다 파밀리아 성당은 140년이 넘도록 건축 중인 미완성의 걸작으로, 자연과 종교의 조화를 표현한 독특한 건축 양식을 자랑합니다. 
+                    구엘 공원의 형형색색 모자이크 타일과 카사 밀라의 물결치는 외관은 가우디의 무한한 창의성을 보여줍니다.
+                </p>
                 
-                <div class="attraction-grid">
-                    <!-- 사그라다 파밀리아 -->
-                    <div class="attraction-card">
-                        <img src="https://images.unsplash.com/photo-1583422409516-2895a77efded?w=800&q=80" 
-                             alt="사그라다 파밀리아" 
-                             class="attraction-image">
-                        <div class="attraction-content">
-                            <span class="attraction-badge">UNESCO 세계문화유산</span>
-                            <h3 class="attraction-title">사그라다 파밀리아 성당</h3>
-                            <p class="attraction-description">
-                                안토니 가우디의 미완성 걸작. 1882년 착공 이래 140년이 넘도록 건축 중인 이 성당은 
-                                자연과 종교의 조화를 표현한 독특한 건축 양식으로 전 세계인의 사랑을 받고 있습니다.
-                            </p>
-                            <ul class="attraction-highlights">
-                                <li><i class="fas fa-check-circle"></i> 가우디의 최고 걸작</li>
-                                <li><i class="fas fa-check-circle"></i> 생명의 탄생 파사드</li>
-                                <li><i class="fas fa-check-circle"></i> 환상적인 스테인드글라스</li>
-                                <li><i class="fas fa-check-circle"></i> 2026년 완공 예정</li>
-                            </ul>
+                <div class="highlights-grid">
+                    <div class="highlight-item">
+                        <div class="highlight-icon">
+                            <i class="fas fa-church"></i>
+                        </div>
+                        <div class="highlight-content">
+                            <h4>사그라다 파밀리아</h4>
+                            <p>가우디의 최고 걸작이자 바르셀로나의 상징. 환상적인 스테인드글라스와 독특한 건축 양식이 돋보입니다.</p>
                         </div>
                     </div>
-
-                    <!-- 구엘 공원 -->
-                    <div class="attraction-card">
-                        <img src="https://images.unsplash.com/photo-1558642084-fd07fae5282e?w=800&q=80" 
-                             alt="구엘 공원" 
-                             class="attraction-image">
-                        <div class="attraction-content">
-                            <span class="attraction-badge">UNESCO 세계문화유산</span>
-                            <h3 class="attraction-title">구엘 공원</h3>
-                            <p class="attraction-description">
-                                동화 속 세계를 닮은 공원. 형형색색의 모자이크 타일로 장식된 벤치와 건축물들이 
-                                환상적인 분위기를 자아냅니다. 바르셀로나 시내 전경을 한눈에 볼 수 있는 최고의 전망 포인트.
-                            </p>
-                            <ul class="attraction-highlights">
-                                <li><i class="fas fa-check-circle"></i> 모자이크 벤치</li>
-                                <li><i class="fas fa-check-circle"></i> 도마뱀 분수</li>
-                                <li><i class="fas fa-check-circle"></i> 바르셀로나 전망대</li>
-                                <li><i class="fas fa-check-circle"></i> 가우디 하우스 박물관</li>
-                            </ul>
+                    
+                    <div class="highlight-item">
+                        <div class="highlight-icon">
+                            <i class="fas fa-palette"></i>
+                        </div>
+                        <div class="highlight-content">
+                            <h4>구엘 공원</h4>
+                            <p>동화 속 세계를 닮은 공원. 모자이크 벤치와 도마뱀 분수가 있는 환상적인 공간입니다.</p>
                         </div>
                     </div>
-
-                    <!-- 카사 밀라 -->
-                    <div class="attraction-card">
-                        <img src="https://images.unsplash.com/photo-1523531294919-4bcd7c65e216?w=800&q=80" 
-                             alt="카사 밀라" 
-                             class="attraction-image">
-                        <div class="attraction-content">
-                            <span class="attraction-badge">UNESCO 세계문화유산</span>
-                            <h3 class="attraction-title">카사 밀라 (라 페드레라)</h3>
-                            <p class="attraction-description">
-                                '석재 채석장'이라는 뜻의 카사 밀라. 물결치는 듯한 외관과 독특한 굴뚝들이 인상적인 
-                                건물로, 가우디의 창의성이 극대화된 주거용 건축물입니다.
-                            </p>
-                            <ul class="attraction-highlights">
-                                <li><i class="fas fa-check-circle"></i> 파도 같은 외관</li>
-                                <li><i class="fas fa-check-circle"></i> 조각 같은 굴뚝들</li>
-                                <li><i class="fas fa-check-circle"></i> 독특한 아트리움</li>
-                                <li><i class="fas fa-check-circle"></i> 옥상 테라스</li>
-                            </ul>
+                    
+                    <div class="highlight-item">
+                        <div class="highlight-icon">
+                            <i class="fas fa-building"></i>
+                        </div>
+                        <div class="highlight-content">
+                            <h4>카사 밀라</h4>
+                            <p>물결치는 외관과 독특한 굴뚝들. 가우디의 창의성이 극대화된 주거용 건축물입니다.</p>
                         </div>
                     </div>
-
-                    <!-- 람블라스 거리 -->
-                    <div class="attraction-card">
-                        <img src="https://images.unsplash.com/photo-1562883676-8c7feb83f09b?w=800&q=80" 
-                             alt="람블라스 거리" 
-                             class="attraction-image">
-                        <div class="attraction-content">
-                            <span class="attraction-badge">거리 문화</span>
-                            <h3 class="attraction-title">람블라스 거리</h3>
-                            <p class="attraction-description">
-                                바르셀로나의 심장부를 관통하는 1.2km의 보행자 거리. 거리 공연, 꽃 가판대, 
-                                카페와 레스토랑이 늘어선 활기찬 거리에서 바르셀로나의 진정한 분위기를 느껴보세요.
-                            </p>
-                            <ul class="attraction-highlights">
-                                <li><i class="fas fa-check-circle"></i> 보케리아 시장</li>
-                                <li><i class="fas fa-check-circle"></i> 거리 공연</li>
-                                <li><i class="fas fa-check-circle"></i> 콜럼버스 기념탑</li>
-                                <li><i class="fas fa-check-circle"></i> 리세우 오페라 극장</li>
-                            </ul>
+                    
+                    <div class="highlight-item">
+                        <div class="highlight-icon">
+                            <i class="fas fa-road"></i>
                         </div>
-                    </div>
-
-                    <!-- 카탈루냐 광장 -->
-                    <div class="attraction-card">
-                        <img src="https://images.unsplash.com/photo-1509600110300-21b9d5fedeb7?w=800&q=80" 
-                             alt="카탈루냐 광장" 
-                             class="attraction-image">
-                        <div class="attraction-content">
-                            <span class="attraction-badge">도심 중심지</span>
-                            <h3 class="attraction-title">카탈루냐 광장</h3>
-                            <p class="attraction-description">
-                                바르셀로나 구시가지와 신시가지를 연결하는 중심 광장. 분수와 조각상들로 장식된 
-                                이곳은 시민들의 휴식 공간이자 주요 교통의 허브입니다.
-                            </p>
-                            <ul class="attraction-highlights">
-                                <li><i class="fas fa-check-circle"></i> 중앙 분수</li>
-                                <li><i class="fas fa-check-circle"></i> 카탈루냐 조각상</li>
-                                <li><i class="fas fa-check-circle"></i> 쇼핑 거리 시작점</li>
-                                <li><i class="fas fa-check-circle"></i> 주요 교통 연결점</li>
-                            </ul>
-                        </div>
-                    </div>
-
-                    <!-- 피카소 미술관 -->
-                    <div class="attraction-card">
-                        <img src="https://images.unsplash.com/photo-1499781350541-7783f6c6a0c8?w=800&q=80" 
-                             alt="피카소 미술관" 
-                             class="attraction-image">
-                        <div class="attraction-content">
-                            <span class="attraction-badge">예술 & 문화</span>
-                            <h3 class="attraction-title">피카소 미술관</h3>
-                            <p class="attraction-description">
-                                20세기 최고의 화가 파블로 피카소의 초기 작품부터 청색 시대, 장미 시대 작품들을 
-                                만나볼 수 있는 미술관. 피카소가 바르셀로나에서 보낸 시절의 작품들이 전시되어 있습니다.
-                            </p>
-                            <ul class="attraction-highlights">
-                                <li><i class="fas fa-check-circle"></i> 4,000여 점의 소장품</li>
-                                <li><i class="fas fa-check-circle"></i> 초기 작품 컬렉션</li>
-                                <li><i class="fas fa-check-circle"></i> 청색 시대 작품</li>
-                                <li><i class="fas fa-check-circle"></i> 라스 메니나스 연작</li>
-                            </ul>
+                        <div class="highlight-content">
+                            <h4>람블라스 거리</h4>
+                            <p>바르셀로나의 심장부. 거리 공연, 카페, 보케리아 시장이 있는 활기찬 보행자 거리입니다.</p>
                         </div>
                     </div>
                 </div>
             </div>
-
-            <!-- Granada Section -->
-            <div style="margin-bottom: 5rem;">
-                <div style="text-align: center; margin-bottom: 3rem;">
-                    <span class="section-label" style="color: #C9A96E; font-weight: 600; letter-spacing: 2px;">GRANADA</span>
-                    <h2 style="font-size: 2.8rem; color: #2C2C2C; margin-top: 1rem; font-weight: 700;">그라나다 주요 명소</h2>
-                    <p style="color: #666; font-size: 1.1rem; margin-top: 1rem;">이슬람 문화의 보석</p>
-                </div>
-                
-                <div class="attraction-grid">
-                    <!-- 알함브라 궁전 -->
-                    <div class="attraction-card">
-                        <img src="https://images.unsplash.com/photo-1588022274870-c8e30e8d7e39?w=800&q=80" 
-                             alt="알함브라 궁전" 
-                             class="attraction-image">
-                        <div class="attraction-content">
-                            <span class="attraction-badge">UNESCO 세계문화유산</span>
-                            <h3 class="attraction-title">알함브라 궁전</h3>
-                            <p class="attraction-description">
-                                '붉은 성'이라는 뜻의 알함브라. 이슬람 건축의 정수를 보여주는 이 궁전은 
-                                섬세한 아라베스크 장식과 아름다운 정원으로 전 세계 관광객들을 매료시킵니다.
-                            </p>
-                            <ul class="attraction-highlights">
-                                <li><i class="fas fa-check-circle"></i> 나스르 궁전</li>
-                                <li><i class="fas fa-check-circle"></i> 헤네랄리페 정원</li>
-                                <li><i class="fas fa-check-circle"></i> 사자의 중정</li>
-                                <li><i class="fas fa-check-circle"></i> 알카사바 요새</li>
-                            </ul>
-                        </div>
-                    </div>
-
-                    <!-- 헤네랄리페 -->
-                    <div class="attraction-card">
-                        <img src="https://images.unsplash.com/photo-1585846416120-3a7354ed7d39?w=800&q=80" 
-                             alt="헤네랄리페" 
-                             class="attraction-image">
-                        <div class="attraction-content">
-                            <span class="attraction-badge">왕실 정원</span>
-                            <h3 class="attraction-title">헤네랄리페 정원</h3>
-                            <p class="attraction-description">
-                                알함브라 궁전의 여름 별궁이자 정원. 분수와 수로, 꽃과 나무들이 조화를 이루며 
-                                무어 왕족들의 휴식처였던 이곳은 지금도 평화로운 아름다움을 간직하고 있습니다.
-                            </p>
-                            <ul class="attraction-highlights">
-                                <li><i class="fas fa-check-circle"></i> 물의 정원</li>
-                                <li><i class="fas fa-check-circle"></i> 장미 정원</li>
-                                <li><i class="fas fa-check-circle"></i> 아세키아 중정</li>
-                                <li><i class="fas fa-check-circle"></i> 시에라 네바다 전망</li>
-                            </ul>
-                        </div>
-                    </div>
-
-                    <!-- 알바이신 지구 -->
-                    <div class="attraction-card">
-                        <img src="https://images.unsplash.com/photo-1590932332253-6f7e0ac8c8a9?w=800&q=80" 
-                             alt="알바이신 지구" 
-                             class="attraction-image">
-                        <div class="attraction-content">
-                            <span class="attraction-badge">UNESCO 세계문화유산</span>
-                            <h3 class="attraction-title">알바이신 지구</h3>
-                            <p class="attraction-description">
-                                좁은 골목길과 하얀 벽의 집들이 미로처럼 얽혀있는 무어인의 옛 거주지. 
-                                산 니콜라스 전망대에서 바라보는 알함브라 궁전의 석양은 그라나다 최고의 절경입니다.
-                            </p>
-                            <ul class="attraction-highlights">
-                                <li><i class="fas fa-check-circle"></i> 산 니콜라스 전망대</li>
-                                <li><i class="fas fa-check-circle"></i> 무어 건축 양식</li>
-                                <li><i class="fas fa-check-circle"></i> 플라멩코 공연</li>
-                                <li><i class="fas fa-check-circle"></i> 전통 찻집 테테리아</li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
         </div>
-    </section>
+
+        <!-- Granada -->
+        <div class="city-section">
+            <div class="city-header">
+                <div class="city-badge">GRANADA</div>
+                <h1 class="city-title">그라나다</h1>
+                <p class="city-subtitle">이슬람 문화의 보석</p>
+            </div>
+            
+            <div class="city-images">
+                <img src="https://images.unsplash.com/photo-1588022274870-c8e30e8d7e39?w=1200&q=80" alt="알함브라 궁전">
+                <img src="https://images.unsplash.com/photo-1590932332253-6f7e0ac8c8a9?w=1200&q=80" alt="알바이신 지구">
+            </div>
+            
+            <div class="city-description">
+                <p class="description-text">
+                    그라나다는 스페인 남부 안달루시아 지방의 도시로, 이슬람 문화의 찬란한 유산이 살아있는 곳입니다. 
+                    알함브라 궁전은 '붉은 성'이라는 뜻으로, 섬세한 아라베스크 장식과 아름다운 정원이 조화를 이루는 이슬람 건축의 정수입니다. 
+                    알바이신 지구의 좁은 골목길을 걷다 보면 무어 문화의 흔적을 느낄 수 있으며, 산 니콜라스 전망대에서 바라보는 알함브라 궁전의 석양은 그라나다 최고의 절경입니다.
+                </p>
+                
+                <div class="highlights-grid">
+                    <div class="highlight-item">
+                        <div class="highlight-icon">
+                            <i class="fas fa-mosque"></i>
+                        </div>
+                        <div class="highlight-content">
+                            <h4>알함브라 궁전</h4>
+                            <p>이슬람 건축의 정수. 나스르 궁전, 헤네랄리페 정원, 사자의 중정이 특히 유명합니다.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="highlight-item">
+                        <div class="highlight-icon">
+                            <i class="fas fa-tree"></i>
+                        </div>
+                        <div class="highlight-content">
+                            <h4>헤네랄리페 정원</h4>
+                            <p>알함브라 궁전의 여름 별궁. 분수와 수로, 꽃과 나무가 조화를 이루는 아름다운 정원입니다.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="highlight-item">
+                        <div class="highlight-icon">
+                            <i class="fas fa-city"></i>
+                        </div>
+                        <div class="highlight-content">
+                            <h4>알바이신 지구</h4>
+                            <p>무어인의 옛 거주지. 좁은 골목길과 하얀 벽의 집들이 미로처럼 얽혀있는 독특한 지역입니다.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="highlight-item">
+                        <div class="highlight-icon">
+                            <i class="fas fa-mountain"></i>
+                        </div>
+                        <div class="highlight-content">
+                            <h4>산 니콜라스 전망대</h4>
+                            <p>알함브라 궁전이 한눈에 보이는 최고의 전망 포인트. 석양이 특히 아름답습니다.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Madrid -->
+        <div class="city-section">
+            <div class="city-header">
+                <div class="city-badge">MADRID</div>
+                <h1 class="city-title">마드리드</h1>
+                <p class="city-subtitle">스페인의 수도, 예술과 열정의 도시</p>
+            </div>
+            
+            <div class="city-images">
+                <img src="https://images.unsplash.com/photo-1539037116277-4db20889f2d4?w=1200&q=80" alt="마드리드 왕궁">
+                <img src="https://images.unsplash.com/photo-1543783207-ec64e4d95325?w=1200&q=80" alt="프라도 미술관">
+            </div>
+            
+            <div class="city-description">
+                <p class="description-text">
+                    마드리드는 스페인의 수도이자 유럽 3대 미술관 중 하나인 프라도 미술관이 있는 예술의 도시입니다. 
+                    벨라스케스, 고야, 엘 그레코 등 거장들의 작품을 만날 수 있으며, 웅장한 마드리드 왕궁은 스페인 왕실의 역사를 보여줍니다. 
+                    푸에르타 델 솔 광장과 마요르 광장은 언제나 활기가 넘치며, 레티로 공원에서는 여유로운 산책을 즐길 수 있습니다.
+                </p>
+                
+                <div class="highlights-grid">
+                    <div class="highlight-item">
+                        <div class="highlight-icon">
+                            <i class="fas fa-crown"></i>
+                        </div>
+                        <div class="highlight-content">
+                            <h4>마드리드 왕궁</h4>
+                            <p>유럽에서 가장 큰 왕궁 중 하나. 웅장한 건축과 화려한 내부 장식이 인상적입니다.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="highlight-item">
+                        <div class="highlight-icon">
+                            <i class="fas fa-university"></i>
+                        </div>
+                        <div class="highlight-content">
+                            <h4>프라도 미술관</h4>
+                            <p>유럽 3대 미술관. 벨라스케스, 고야 등 스페인 거장들의 작품을 소장하고 있습니다.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="highlight-item">
+                        <div class="highlight-icon">
+                            <i class="fas fa-monument"></i>
+                        </div>
+                        <div class="highlight-content">
+                            <h4>마요르 광장</h4>
+                            <p>마드리드의 중심 광장. 주변에 카페와 레스토랑이 즐비하며 거리 공연도 볼 수 있습니다.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="highlight-item">
+                        <div class="highlight-icon">
+                            <i class="fas fa-leaf"></i>
+                        </div>
+                        <div class="highlight-content">
+                            <h4>레티로 공원</h4>
+                            <p>마드리드 시민들의 휴식 공간. 넓은 호수와 아름다운 정원이 있는 도심 속 오아시스입니다.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Sevilla -->
+        <div class="city-section">
+            <div class="city-header">
+                <div class="city-badge">SEVILLA</div>
+                <h1 class="city-title">세비야</h1>
+                <p class="city-subtitle">플라멩코와 투우의 고향</p>
+            </div>
+            
+            <div class="city-images">
+                <img src="https://images.unsplash.com/photo-1560969184-10fe8719e047?w=1200&q=80" alt="세비야 대성당">
+                <img src="https://images.unsplash.com/photo-1583924854403-e0b00ece8233?w=1200&q=80" alt="스페인 광장">
+            </div>
+            
+            <div class="city-description">
+                <p class="description-text">
+                    세비야는 안달루시아의 주도로, 플라멩코와 투우의 본고장입니다. 
+                    세비야 대성당은 세계에서 세 번째로 큰 성당이며, 히랄다 탑에서 바라보는 도시 전경이 환상적입니다. 
+                    스페인 광장은 영화 '스타워즈'의 촬영지로도 유명하며, 알카사르 왕궁은 무데하르 양식의 아름다운 건축물입니다. 
+                    저녁이 되면 산타 크루스 지구에서 정통 플라멩코 공연을 감상할 수 있습니다.
+                </p>
+                
+                <div class="highlights-grid">
+                    <div class="highlight-item">
+                        <div class="highlight-icon">
+                            <i class="fas fa-church"></i>
+                        </div>
+                        <div class="highlight-content">
+                            <h4>세비야 대성당</h4>
+                            <p>세계에서 세 번째로 큰 성당. 콜럼버스의 무덤이 있으며 히랄다 탑이 유명합니다.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="highlight-item">
+                        <div class="highlight-icon">
+                            <i class="fas fa-landmark"></i>
+                        </div>
+                        <div class="highlight-content">
+                            <h4>스페인 광장</h4>
+                            <p>반원형의 웅장한 광장. 각 지방을 상징하는 타일 벤치와 아름다운 운하가 있습니다.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="highlight-item">
+                        <div class="highlight-icon">
+                            <i class="fas fa-fort-awesome"></i>
+                        </div>
+                        <div class="highlight-content">
+                            <h4>알카사르 왕궁</h4>
+                            <p>무데하르 양식의 걸작. 아름다운 정원과 섬세한 장식이 돋보이는 왕궁입니다.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="highlight-item">
+                        <div class="highlight-icon">
+                            <i class="fas fa-music"></i>
+                        </div>
+                        <div class="highlight-content">
+                            <h4>플라멩코</h4>
+                            <p>산타 크루스 지구에서 정통 플라멩코 공연 감상. 열정적인 춤과 노래를 경험하세요.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
 
     <!-- Interactive Map Section -->
     <section class="map-section">
-        <div class="map-container">
-            <div class="map-title">
-                <span class="section-label" style="color: #C9A96E; font-weight: 600; letter-spacing: 2px;">INTERACTIVE MAP</span>
-                <h2>유럽 지도에서 스페인 탐색하기</h2>
-                <p>유럽 전역의 여행지를 인터랙티브 지도에서 확인하세요</p>
-            </div>
-            <iframe 
-                src="http://www.sunshinetour.co.kr/maps/index/europe/europemain.html" 
-                class="map-iframe"
-                title="유럽 인터랙티브 지도"
-                loading="lazy">
-            </iframe>
+        <div class="map-header">
+            <div class="city-badge" style="margin-bottom: 1.5rem;">INTERACTIVE MAP</div>
+            <h2>유럽 지도에서 스페인 탐색하기</h2>
+            <p>유럽 전역의 여행지를 인터랙티브 지도에서 확인하세요</p>
         </div>
+        <iframe 
+            src="http://www.sunshinetour.co.kr/maps/index/europe/europemain.html" 
+            class="map-iframe"
+            title="유럽 인터랙티브 지도"
+            loading="lazy">
+        </iframe>
     </section>
 
     <!-- CTA Section -->
