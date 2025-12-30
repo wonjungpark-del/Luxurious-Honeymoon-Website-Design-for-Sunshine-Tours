@@ -20,8 +20,15 @@
     <link rel="stylesheet" href="/static/css/destination.css">
     
     <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
         body {
             background: #f8f5f0;
+            overflow-x: hidden;
         }
         
         /* City Section */
@@ -161,6 +168,115 @@
             box-shadow: 0 4px 20px rgba(0,0,0,0.1);
         }
         
+        /* CTA Section Fix */
+        .cta-section {
+            margin: 4rem 0;
+            padding: 5rem 2rem;
+            background: linear-gradient(135deg, #C9A96E 0%, #B8935E 100%);
+            text-align: center;
+        }
+        
+        .cta-section .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .cta-content h2 {
+            color: white;
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            font-weight: 300;
+        }
+        
+        .cta-content p {
+            color: white;
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+        }
+        
+        .cta-btn {
+            display: inline-block;
+            padding: 1rem 3rem;
+            background: white;
+            color: #C9A96E;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: all 0.3s;
+        }
+        
+        .cta-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+        }
+        
+        /* Footer Fix */
+        .footer {
+            background: #2C2C2C;
+            color: white;
+            padding: 3rem 0 1rem;
+        }
+        
+        .footer .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+        
+        .footer h3, .footer h4 {
+            margin-bottom: 1rem;
+        }
+        
+        .footer p {
+            margin-bottom: 0.5rem;
+            color: #ccc;
+        }
+        
+        .footer i {
+            margin-right: 0.5rem;
+            color: #C9A96E;
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+        
+        .social-links a {
+            width: 40px;
+            height: 40px;
+            background: #C9A96E;
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            text-decoration: none;
+            transition: all 0.3s;
+        }
+        
+        .social-links a:hover {
+            background: #B8935E;
+            transform: translateY(-3px);
+        }
+        
+        .footer-bottom {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid #444;
+            color: #999;
+        }
+        
         @media (max-width: 768px) {
             .city-images {
                 grid-template-columns: 1fr;
@@ -178,8 +294,12 @@
                 font-size: 2rem;
             }
             
-            .map-iframe {
-                height: 500px;
+            .city-description {
+                padding: 2rem 1.5rem;
+            }
+            
+            .footer-content {
+                grid-template-columns: 1fr;
             }
         }
     </style>
@@ -239,8 +359,8 @@
             </div>
             
             <div class="city-images">
-                <img src="https://images.unsplash.com/photo-1583422409516-2895a77efded?w=1200&q=80" alt="사그라다 파밀리아">
-                <img src="https://images.unsplash.com/photo-1558642084-fd07fae5282e?w=1200&q=80" alt="구엘 공원">
+                <img src="https://atntzsryivyk2c4y.public.blob.vercel-storage.com/1767079549493-544pkn.jpg" alt="사그라다 파밀리아">
+                <img src="https://atntzsryivyk2c4y.public.blob.vercel-storage.com/1767079548343-l8cx4w.jpg" alt="구엘 공원">
             </div>
             
             <div class="city-description">
@@ -303,8 +423,8 @@
             </div>
             
             <div class="city-images">
-                <img src="https://images.unsplash.com/photo-1588022274870-c8e30e8d7e39?w=1200&q=80" alt="알함브라 궁전">
-                <img src="https://images.unsplash.com/photo-1590932332253-6f7e0ac8c8a9?w=1200&q=80" alt="알바이신 지구">
+                <img src="https://atntzsryivyk2c4y.public.blob.vercel-storage.com/1767079550069-kod8x.jpg" alt="알함브라 궁전">
+                <img src="https://atntzsryivyk2c4y.public.blob.vercel-storage.com/1767079549761-igfmoo.jpg" alt="알바이신 지구">
             </div>
             
             <div class="city-description">
@@ -367,8 +487,8 @@
             </div>
             
             <div class="city-images">
-                <img src="https://images.unsplash.com/photo-1539037116277-4db20889f2d4?w=1200&q=80" alt="마드리드 왕궁">
-                <img src="https://images.unsplash.com/photo-1543783207-ec64e4d95325?w=1200&q=80" alt="프라도 미술관">
+                <img src="https://atntzsryivyk2c4y.public.blob.vercel-storage.com/1767079550800-xn75q.jpg" alt="마드리드 왕궁">
+                <img src="https://atntzsryivyk2c4y.public.blob.vercel-storage.com/1767079551473-f5fo9d.jpg" alt="프라도 미술관">
             </div>
             
             <div class="city-description">
@@ -431,8 +551,8 @@
             </div>
             
             <div class="city-images">
-                <img src="https://images.unsplash.com/photo-1560969184-10fe8719e047?w=1200&q=80" alt="세비야 대성당">
-                <img src="https://images.unsplash.com/photo-1583924854403-e0b00ece8233?w=1200&q=80" alt="스페인 광장">
+                <img src="https://atntzsryivyk2c4y.public.blob.vercel-storage.com/1767079552016-a19qte.jpg" alt="세비야 대성당">
+                <img src="https://atntzsryivyk2c4y.public.blob.vercel-storage.com/1767079552285-g31z8.jpg" alt="스페인 광장">
             </div>
             
             <div class="city-description">
@@ -488,21 +608,6 @@
         </div>
 
     </div>
-
-    <!-- Interactive Map Section -->
-    <section class="map-section">
-        <div class="map-header">
-            <div class="city-badge" style="margin-bottom: 1.5rem;">INTERACTIVE MAP</div>
-            <h2>유럽 지도에서 스페인 탐색하기</h2>
-            <p>유럽 전역의 여행지를 인터랙티브 지도에서 확인하세요</p>
-        </div>
-        <iframe 
-            src="http://www.sunshinetour.co.kr/maps/index/europe/europemain.html" 
-            class="map-iframe"
-            title="유럽 인터랙티브 지도"
-            loading="lazy">
-        </iframe>
-    </section>
 
     <!-- CTA Section -->
     <section class="cta-section">
