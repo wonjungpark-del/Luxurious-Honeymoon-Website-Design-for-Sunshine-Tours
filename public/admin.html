@@ -252,14 +252,12 @@
         <div class="login-box">
             <h2 class="login-title">🌅 선샤인투어 관리자</h2>
             <p style="text-align: center; color: #666; margin-bottom: 20px;">비밀번호: sun2026@</p>
-            <form id="loginForm">
-                <div class="form-group">
-                    <label class="form-label">비밀번호</label>
-                    <input type="password" id="passwordInput" class="form-input" placeholder="비밀번호를 입력하세요" required autocomplete="off">
-                </div>
-                <button type="submit" class="btn">로그인</button>
-                <div id="error" class="error">비밀번호가 올바르지 않습니다.</div>
-            </form>
+            <div class="form-group">
+                <label class="form-label">비밀번호</label>
+                <input type="password" id="passwordInput" class="form-input" placeholder="비밀번호를 입력하세요" autocomplete="off">
+            </div>
+            <button type="button" onclick="handleLogin()" class="btn">로그인</button>
+            <div id="error" class="error">비밀번호가 올바르지 않습니다.</div>
         </div>
     </div>
 
@@ -563,24 +561,21 @@
         console.log('Password set:', ADMIN_PASSWORD);
         
         // Get elements
-        const loginForm = document.getElementById('loginForm');
         const loginScreen = document.getElementById('loginScreen');
         const adminDashboard = document.getElementById('adminDashboard');
         const passwordInput = document.getElementById('passwordInput');
         const errorDiv = document.getElementById('error');
         
         console.log('Elements found:', {
-            loginForm: !!loginForm,
             loginScreen: !!loginScreen,
             adminDashboard: !!adminDashboard,
             passwordInput: !!passwordInput,
             errorDiv: !!errorDiv
         });
         
-        // Login handler
-        loginForm.addEventListener('submit', function(e) {
-            e.preventDefault();
-            console.log('=== Form submitted ===');
+        // Login handler function
+        function handleLogin() {
+            console.log('=== handleLogin called ===');
             
             const password = passwordInput.value;
             console.log('Entered password:', password);
@@ -591,7 +586,9 @@
                 console.log('✅ LOGIN SUCCESS');
                 errorDiv.classList.remove('show');
                 loginScreen.classList.add('hidden');
+                loginScreen.style.display = 'none';
                 adminDashboard.classList.remove('hidden');
+                adminDashboard.style.display = 'block';
                 
                 // Load initial data
                 loadReviews();
@@ -600,11 +597,22 @@
                 errorDiv.classList.add('show');
                 alert('비밀번호가 틀렸습니다: "' + password + '"');
             }
+        }
+        
+        // Enter key support
+        passwordInput.addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                e.preventDefault();
+                handleLogin();
+            }
         });
         
         function logout() {
+            console.log('=== logout called ===');
             loginScreen.classList.remove('hidden');
+            loginScreen.style.display = 'flex';
             adminDashboard.classList.add('hidden');
+            adminDashboard.style.display = 'none';
             passwordInput.value = '';
             errorDiv.classList.remove('show');
         }
