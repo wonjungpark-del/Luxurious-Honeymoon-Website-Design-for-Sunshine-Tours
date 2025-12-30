@@ -117,27 +117,27 @@
         <!-- Reviews Tab -->
         <div id="reviewsTab" class="tab-content">
             <h2>📝 후기 관리</h2>
-            <div style="margin-top: 20px; padding: 20px; background: #f8f9fa; border-radius: 8px;">
-                <p>후기 목록이 여기에 표시됩니다.</p>
-                <p style="margin-top: 10px; color: #666;">API 연동: GET /api/reviews</p>
+            <button onclick="loadReviews()" class="btn" style="max-width: 200px; margin: 10px 0;">새로고침</button>
+            <div id="reviewsList" style="margin-top: 20px;">
+                <p>로딩 중...</p>
             </div>
         </div>
         
         <!-- Inquiries Tab -->
         <div id="inquiriesTab" class="tab-content hidden">
             <h2>💬 문의 관리</h2>
-            <div style="margin-top: 20px; padding: 20px; background: #f8f9fa; border-radius: 8px;">
-                <p>문의 목록이 여기에 표시됩니다.</p>
-                <p style="margin-top: 10px; color: #666;">API 연동: GET /api/inquiries</p>
+            <button onclick="loadInquiries()" class="btn" style="max-width: 200px; margin: 10px 0;">새로고침</button>
+            <div id="inquiriesList" style="margin-top: 20px;">
+                <p>로딩 중...</p>
             </div>
         </div>
         
         <!-- Resorts Tab -->
         <div id="resortsTab" class="tab-content hidden">
             <h2>🏨 리조트 관리</h2>
-            <div style="margin-top: 20px; padding: 20px; background: #f8f9fa; border-radius: 8px;">
-                <p>리조트 목록이 여기에 표시됩니다.</p>
-                <p style="margin-top: 10px; color: #666;">API 연동: GET /api/resorts</p>
+            <button onclick="loadResorts()" class="btn" style="max-width: 200px; margin: 10px 0;">새로고침</button>
+            <div id="resortsList" style="margin-top: 20px;">
+                <p>로딩 중...</p>
             </div>
         </div>
     </div>
@@ -178,7 +178,9 @@
                 errorDiv.classList.remove('show');
                 loginScreen.classList.add('hidden');
                 adminDashboard.classList.remove('hidden');
-                alert('로그인 성공!');
+                
+                // Load initial data
+                loadReviews();
             } else {
                 console.log('❌ LOGIN FAILED');
                 errorDiv.classList.add('show');
@@ -217,6 +219,119 @@
             if (tabId) {
                 document.getElementById(tabId).classList.remove('hidden');
                 event.target.classList.add('active');
+                
+                // Load data for the tab
+                if (tabName === 'reviews') loadReviews();
+                else if (tabName === 'inquiries') loadInquiries();
+                else if (tabName === 'resorts') loadResorts();
+            }
+        }
+        
+        // API Functions
+        async function loadReviews() {
+            const container = document.getElementById('reviewsList');
+            container.innerHTML = '<p>로딩 중...</p>';
+            
+            try {
+                const response = await fetch('/api/reviews');
+                const data = await response.json();
+                
+                if (data.success && data.data && data.data.length > 0) {
+                    let html = '<div style="display: grid; gap: 15px;">';
+                    data.data.forEach(review => {
+                        const stars = '⭐'.repeat(review.rating || 0);
+                        html += `
+                            <div style="padding: 15px; background: white; border: 1px solid #ddd; border-radius: 8px;">
+                                <h3 style="margin: 0 0 10px 0;">${review.title || '제목 없음'}</h3>
+                                <p style="color: #666; margin: 5px 0;"><strong>작성자:</strong> ${review.author_name || '익명'}</p>
+                                <p style="color: #e67e22; margin: 5px 0;">${stars} (${review.rating || 0}점)</p>
+                                <p style="margin: 10px 0; white-space: pre-wrap;">${review.content || ''}</p>
+                                <p style="color: #999; font-size: 0.9rem;">작성일: ${new Date(review.created_at).toLocaleDateString('ko-KR')}</p>
+                            </div>
+                        `;
+                    });
+                    html += '</div>';
+                    container.innerHTML = html;
+                } else {
+                    container.innerHTML = '<p style="padding: 20px; background: #f8f9fa; border-radius: 8px;">등록된 후기가 없습니다.</p>';
+                }
+            } catch (error) {
+                console.error('Error loading reviews:', error);
+                container.innerHTML = '<p style="color: red;">후기를 불러오는데 실패했습니다: ' + error.message + '</p>';
+            }
+        }
+        
+        async function loadInquiries() {
+            const container = document.getElementById('inquiriesList');
+            container.innerHTML = '<p>로딩 중...</p>';
+            
+            try {
+                const response = await fetch('/api/inquiries');
+                const data = await response.json();
+                
+                if (data.success && data.data && data.data.length > 0) {
+                    let html = '<div style="display: grid; gap: 15px;">';
+                    data.data.forEach(inquiry => {
+                        const statusColor = inquiry.status === 'answered' ? '#27ae60' : '#e67e22';
+                        const statusText = inquiry.status === 'answered' ? '답변완료' : '대기중';
+                        html += `
+                            <div style="padding: 15px; background: white; border: 1px solid #ddd; border-radius: 8px;">
+                                <div style="display: flex; justify-content: space-between; align-items: start;">
+                                    <h3 style="margin: 0;">${inquiry.name || '이름 없음'}</h3>
+                                    <span style="padding: 5px 10px; background: ${statusColor}; color: white; border-radius: 5px; font-size: 0.9rem;">${statusText}</span>
+                                </div>
+                                <p style="color: #666; margin: 5px 0;"><strong>이메일:</strong> ${inquiry.email || ''}</p>
+                                <p style="color: #666; margin: 5px 0;"><strong>연락처:</strong> ${inquiry.phone || ''}</p>
+                                <p style="margin: 10px 0; white-space: pre-wrap;"><strong>문의내용:</strong><br>${inquiry.message || ''}</p>
+                                ${inquiry.admin_reply ? `<p style="margin: 10px 0; padding: 10px; background: #e8f5e9; border-radius: 5px;"><strong>답변:</strong><br>${inquiry.admin_reply}</p>` : ''}
+                                <p style="color: #999; font-size: 0.9rem;">문의일: ${new Date(inquiry.created_at).toLocaleDateString('ko-KR')}</p>
+                            </div>
+                        `;
+                    });
+                    html += '</div>';
+                    container.innerHTML = html;
+                } else {
+                    container.innerHTML = '<p style="padding: 20px; background: #f8f9fa; border-radius: 8px;">등록된 문의가 없습니다.</p>';
+                }
+            } catch (error) {
+                console.error('Error loading inquiries:', error);
+                container.innerHTML = '<p style="color: red;">문의를 불러오는데 실패했습니다: ' + error.message + '</p>';
+            }
+        }
+        
+        async function loadResorts() {
+            const container = document.getElementById('resortsList');
+            container.innerHTML = '<p>로딩 중...</p>';
+            
+            try {
+                const response = await fetch('/api/resorts');
+                const data = await response.json();
+                
+                if (data.success && data.data && data.data.length > 0) {
+                    let html = '<div style="display: grid; gap: 15px;">';
+                    data.data.forEach(resort => {
+                        const activeColor = resort.is_active ? '#27ae60' : '#95a5a6';
+                        const activeText = resort.is_active ? '활성' : '비활성';
+                        html += `
+                            <div style="padding: 15px; background: white; border: 1px solid #ddd; border-radius: 8px;">
+                                <div style="display: flex; justify-content: space-between; align-items: start;">
+                                    <h3 style="margin: 0;">${resort.name_ko || resort.name_en || '이름 없음'}</h3>
+                                    <span style="padding: 5px 10px; background: ${activeColor}; color: white; border-radius: 5px; font-size: 0.9rem;">${activeText}</span>
+                                </div>
+                                <p style="color: #666; margin: 5px 0;"><strong>지역:</strong> ${resort.region_id || ''}</p>
+                                ${resort.description ? `<p style="margin: 10px 0;">${resort.description}</p>` : ''}
+                                ${resort.image_url ? `<img src="${resort.image_url}" alt="${resort.name_ko}" style="width: 100%; max-width: 300px; margin-top: 10px; border-radius: 5px;">` : ''}
+                            </div>
+                        `;
+                    });
+                    html += '</div>';
+                    container.innerHTML = html;
+                } else {
+                    container.innerHTML = '<p style="padding: 20px; background: #f8f9fa; border-radius: 8px;">등록된 리조트가 없습니다.</p>';
+                }
+            } catch (error) {
+                console.error('Error loading resorts:', error);
+                container.innerHTML = '<p style="color: red;">리조트를 불러오는데 실패했습니다: ' + error.message + '</p>';
             }
         }
         
