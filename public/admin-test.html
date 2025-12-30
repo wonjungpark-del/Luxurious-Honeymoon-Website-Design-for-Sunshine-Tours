@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>관리자 로그인 테스트</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 400px;
+            margin: 100px auto;
+            padding: 20px;
+            background: #f5f7fa;
+        }
+        .test-box {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+        h2 {
+            margin-bottom: 20px;
+            color: #2c3e50;
+        }
+        input {
+            width: 100%;
+            padding: 12px;
+            margin-bottom: 15px;
+            border: 2px solid #ddd;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+        button {
+            width: 100%;
+            padding: 12px;
+            background: #667eea;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+        button:hover {
+            background: #5568d3;
+        }
+        #result {
+            margin-top: 20px;
+            padding: 15px;
+            border-radius: 5px;
+            display: none;
+        }
+        .success {
+            background: #d4edda;
+            color: #155724;
+            border: 1px solid #c3e6cb;
+        }
+        .error {
+            background: #f8d7da;
+            color: #721c24;
+            border: 1px solid #f5c6cb;
+        }
+        .log {
+            margin-top: 10px;
+            padding: 10px;
+            background: #f8f9fa;
+            border-left: 3px solid #667eea;
+            font-size: 14px;
+            white-space: pre-wrap;
+        }
+    </style>
+</head>
+<body>
+    <div class="test-box">
+        <h2>🔐 관리자 로그인 테스트</h2>
+        <p style="color: #666; margin-bottom: 20px;">비밀번호: sun2026@</p>
+        
+        <input type="password" id="testPassword" placeholder="비밀번호 입력">
+        <button onclick="testLogin()">로그인 테스트</button>
+        
+        <div id="result"></div>
+        <div id="logs" class="log" style="display: none;"></div>
+    </div>
+
+    <script>
+        const ADMIN_PASSWORD = 'sun2026@';
+        let logs = [];
+        
+        function addLog(msg) {
+            logs.push(msg);
+            const logsDiv = document.getElementById('logs');
+            logsDiv.style.display = 'block';
+            logsDiv.textContent = logs.join('\n');
+        }
+        
+        function testLogin() {
+            logs = [];
+            addLog('=== 로그인 테스트 시작 ===');
+            
+            const password = document.getElementById('testPassword').value;
+            addLog('입력된 비밀번호: "' + password + '"');
+            addLog('입력된 비밀번호 길이: ' + password.length);
+            addLog('정답 비밀번호: "' + ADMIN_PASSWORD + '"');
+            addLog('정답 비밀번호 길이: ' + ADMIN_PASSWORD.length);
+            addLog('비교 결과: ' + (password === ADMIN_PASSWORD));
+            
+            const result = document.getElementById('result');
+            result.style.display = 'block';
+            
+            if (password === ADMIN_PASSWORD) {
+                result.className = 'success';
+                result.innerHTML = '✅ 로그인 성공!<br>비밀번호가 일치합니다.';
+                addLog('✅ 로그인 성공');
+            } else {
+                result.className = 'error';
+                result.innerHTML = '❌ 로그인 실패!<br>비밀번호가 일치하지 않습니다.';
+                addLog('❌ 로그인 실패');
+                
+                // 문자별 비교
+                addLog('\n=== 문자별 비교 ===');
+                for (let i = 0; i < Math.max(password.length, ADMIN_PASSWORD.length); i++) {
+                    const char1 = password[i] || '(없음)';
+                    const char2 = ADMIN_PASSWORD[i] || '(없음)';
+                    const match = char1 === char2 ? '✓' : '✗';
+                    addLog(`위치 ${i}: "${char1}" vs "${char2}" ${match}`);
+                }
+            }
+        }
+        
+        // Enter 키 지원
+        document.getElementById('testPassword').addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                testLogin();
+            }
+        });
+        
+        addLog('페이지 로드 완료');
+        addLog('ADMIN_PASSWORD 설정됨: ' + ADMIN_PASSWORD);
+    </script>
+</body>
+</html>
