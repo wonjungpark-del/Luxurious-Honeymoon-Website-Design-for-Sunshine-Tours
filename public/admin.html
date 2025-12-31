@@ -1263,10 +1263,47 @@
             const title = document.getElementById('resortModalTitle');
             const regionSelect = document.getElementById('resortRegionId');
             
-            // Load regions for dropdown
+            // Load regions for dropdown with grouping by destination
             regionSelect.innerHTML = '<option value="">지역 선택...</option>';
-            currentRegions.forEach(region => {
-                regionSelect.innerHTML += `<option value="${region.id}">${region.name_ko} (${region.country})</option>`;
+            
+            // 목적지별 지역 순서 정의
+            const regionOrder = {
+                'thailand': ['khao-lak', 'phuket', 'koh-samui', 'krabi', 'pattaya', 'hua-hin'],
+                'indonesia': ['bali', 'lombok'],
+                'hawaii': ['oahu', 'maui', 'bigisland'],
+                'cancun': ['cancun'],
+                'philippines': ['boracay', 'cebu', 'palawan'],
+                'maldives': ['maldives'],
+                'southpacific': ['fiji', 'guam', 'saipan', 'australia'],
+                'mauritius': ['mauritius'],
+                'vietnam': ['danang']
+            };
+            
+            const destinationLabels = {
+                'thailand': '🇹🇭 태국',
+                'indonesia': '🇮🇩 인도네시아',
+                'hawaii': '🌺 하와이',
+                'cancun': '🇲🇽 칸쿤',
+                'philippines': '🇵🇭 필리핀',
+                'maldives': '🇲🇻 몰디브',
+                'southpacific': '🌊 남태평양',
+                'mauritius': '🇲🇺 모리셔스',
+                'vietnam': '🇻🇳 베트남'
+            };
+            
+            // 목적지별로 그룹화
+            Object.keys(regionOrder).forEach(country => {
+                // 구분선 추가
+                regionSelect.innerHTML += `<option disabled>━━━━━━━━━━━━━━━━</option>`;
+                
+                // 지역 추가
+                const codes = regionOrder[country];
+                codes.forEach(code => {
+                    const region = currentRegions.find(r => r.code === code && r.country === country);
+                    if (region) {
+                        regionSelect.innerHTML += `<option value="${region.id}">${region.name_ko}</option>`;
+                    }
+                });
             });
             
             form.reset();
@@ -1407,9 +1444,38 @@
                 console.log('✅ Save result:', result);
                 
                 if (result.success) {
-                    alert('✅ 저장되었습니다!');
-                    closeResortModal();
+                    alert('✅ 저장되었습니다!\n\n같은 지역에 계속 추가하시려면 정보를 입력하세요.');
+                    
+                    // 선택된 지역 저장
+                    const selectedRegionId = regionId;
+                    
+                    // 폼 리셋 (지역 선택은 유지)
+                    document.getElementById('resortId').value = '';
+                    document.getElementById('resortNameKo').value = '';
+                    document.getElementById('resortNameEn').value = '';
+                    document.getElementById('resortCategory').value = '';
+                    document.getElementById('resortDescription').value = '';
+                    document.getElementById('resortMainImageUrl').value = '';
+                    document.getElementById('resortMainImageFile').value = '';
+                    document.getElementById('resortFeatures').value = '';
+                    document.getElementById('resortDisplayOrder').value = '0';
+                    
+                    // 갤러리 이미지 필드 초기화
+                    for (let i = 1; i <= 6; i++) {
+                        document.getElementById(`resortGalleryImage${i}`).value = '';
+                        document.getElementById(`galleryImageFile${i}`).value = '';
+                    }
+                    
+                    // 지역 선택 유지
+                    document.getElementById('resortRegionId').value = selectedRegionId;
+                    
+                    // 모달은 열린 상태 유지
+                    // closeResortModal(); // 이 줄 제거
+                    
+                    // 리조트 목록 새로고침
                     await loadResorts();
+                    
+                    console.log('✅ 폼 리셋 완료. 지역 선택 유지:', selectedRegionId);
                 } else {
                     alert('❌ 저장에 실패했습니다: ' + result.error);
                     console.error('Save failed:', result);
