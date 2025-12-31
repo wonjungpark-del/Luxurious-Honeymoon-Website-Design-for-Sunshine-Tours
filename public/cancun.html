@@ -167,6 +167,17 @@
                 if (result.success && result.data.length > 0) {
                     const resorts = result.data;
                     
+                    // Collect all gallery images for navigation
+                    allGalleryImages = [];
+                    resorts.forEach(resort => {
+                        const gallery = Array.isArray(resort.gallery_images) ? resort.gallery_images : [];
+                        gallery.forEach((img, index) => {
+                            allGalleryImages.push({
+                                src: img,
+                                caption: `${resort.name_ko} - 이미지 ${index + 1}`
+                            });
+                        });
+                    });
                     
                     container.innerHTML = resorts.map(resort => {
                         const features = Array.isArray(resort.features) ? resort.features : [];
@@ -190,22 +201,12 @@
                                                 ${resort.name_ko}은(는) 칸쿤의 프리미엄 허니문 리조트입니다.<br>카리브해의 터키색 바다와 마야 문명이 공존하는 열대 낙원에서<br>럭셔리한 올인클루시브 리조트와 월드클래스 스파를 경험하실 수 있습니다.<br>환상적이고 로맨틱한 분위기 속에서 특별한 허니문을 만들어보세요.
                                             </p>
                                             <div class="resort-features">
-                                                <div class="feature-item">
-                                                    <i class="fas fa-check-circle" style="color: #C9A96E;"></i>
-                                                    <span>프라이빗 비치</span>
-                                                </div>
-                                                <div class="feature-item">
-                                                    <i class="fas fa-check-circle" style="color: #C9A96E;"></i>
-                                                    <span>인피니티 풀</span>
-                                                </div>
-                                                <div class="feature-item">
-                                                    <i class="fas fa-check-circle" style="color: #C9A96E;"></i>
-                                                    <span>럭셔리 스파</span>
-                                                </div>
-                                                <div class="feature-item">
-                                                    <i class="fas fa-check-circle" style="color: #C9A96E;"></i>
-                                                    <span>키즈클럽</span>
-                                                </div>
+                                                ${features.slice(0, 4).map(feature => `
+                                                    <div class="feature-item">
+                                                        <i class="fas fa-check-circle" style="color: #C9A96E;"></i>
+                                                        <span>${feature}</span>
+                                                    </div>
+                                                `).join('')}
                                             </div>
                                         </div>
                                     </div>
@@ -246,14 +247,43 @@
             }
         }
         
+        // Store gallery images globally
+        let allGalleryImages = [];
+        let currentImageIndex = 0;
+        
+        // Lightbox functionality
         function openLightbox(imgSrc, caption) {
             const modal = document.getElementById('lightbox-modal');
             const img = document.getElementById('lightbox-img');
             const captionText = document.getElementById('lightbox-caption');
+            
             modal.classList.add('active');
             img.src = imgSrc;
             captionText.textContent = caption;
-            window.currentLightboxImg = imgSrc;
+            
+            // Store current image index for navigation
+            currentImageIndex = allGalleryImages.findIndex(item => item.src === imgSrc);
+            if (currentImageIndex === -1) currentImageIndex = 0;
+        }
+        
+        function navigateLightbox(direction) {
+            if (allGalleryImages.length === 0) return;
+            
+            currentImageIndex += direction;
+            
+            // Loop around
+            if (currentImageIndex < 0) {
+                currentImageIndex = allGalleryImages.length - 1;
+            } else if (currentImageIndex >= allGalleryImages.length) {
+                currentImageIndex = 0;
+            }
+            
+            const currentImage = allGalleryImages[currentImageIndex];
+            const img = document.getElementById('lightbox-img');
+            const captionText = document.getElementById('lightbox-caption');
+            
+            img.src = currentImage.src;
+            captionText.textContent = currentImage.caption;
         }
         
         function closeLightbox() {
@@ -261,18 +291,42 @@
             modal.classList.remove('active');
         }
         
+        // Event listeners
         document.addEventListener('DOMContentLoaded', () => {
+            // Load resorts
             loadResorts();
+            
+            // Lightbox close button
             const closeBtn = document.querySelector('.lightbox-close');
-            if (closeBtn) closeBtn.addEventListener('click', closeLightbox);
+            if (closeBtn) {
+                closeBtn.addEventListener('click', closeLightbox);
+            }
+            
+            // Lightbox navigation
+            const prevBtn = document.querySelector('.lightbox-prev');
+            const nextBtn = document.querySelector('.lightbox-next');
+            if (prevBtn) prevBtn.addEventListener('click', () => navigateLightbox(-1));
+            if (nextBtn) nextBtn.addEventListener('click', () => navigateLightbox(1));
+            
+            // Close on background click
             const modal = document.getElementById('lightbox-modal');
             if (modal) {
                 modal.addEventListener('click', (e) => {
-                    if (e.target === modal) closeLightbox();
+                    if (e.target === modal) {
+                        closeLightbox();
+                    }
                 });
             }
+            
+            // ESC key to close, Arrow keys to navigate
             document.addEventListener('keydown', (e) => {
-                if (e.key === 'Escape') closeLightbox();
+                if (e.key === 'Escape') {
+                    closeLightbox();
+                } else if (e.key === 'ArrowLeft') {
+                    navigateLightbox(-1);
+                } else if (e.key === 'ArrowRight') {
+                    navigateLightbox(1);
+                }
             });
         });
     </script>
