@@ -814,6 +814,7 @@
         let currentResorts = [];
         let currentReviews = [];
         let currentInquiries = [];
+        let currentSelectedRegionId = ''; // 현재 선택된 지역 ID 추적
 
         // Auth
         function checkAuth() {
@@ -932,6 +933,9 @@
         function filterResortsByRegion() {
             const filterSelect = document.getElementById('resortRegionFilter');
             const selectedRegionId = filterSelect.value;
+            
+            // 현재 선택된 지역 ID 저장
+            currentSelectedRegionId = selectedRegionId;
             
             renderResortsTable(selectedRegionId);
         }
@@ -1505,7 +1509,19 @@
                 const result = await response.json();
                 if (result.success) {
                     alert('삭제되었습니다.');
+                    
+                    // 리조트 목록을 다시 로드
                     await loadResorts();
+                    
+                    // 현재 선택된 지역이 있으면 해당 지역으로 다시 필터링
+                    if (currentSelectedRegionId) {
+                        renderResortsTable(currentSelectedRegionId);
+                        // 드롭다운도 선택된 상태로 유지
+                        const filterSelect = document.getElementById('resortRegionFilter');
+                        if (filterSelect) {
+                            filterSelect.value = currentSelectedRegionId;
+                        }
+                    }
                 } else {
                     alert('삭제에 실패했습니다: ' + result.error);
                 }
