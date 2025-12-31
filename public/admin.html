@@ -1329,6 +1329,10 @@
                         }
                     }
                     
+                    // 특징(features) 로드 - 배열을 줄바꿈으로 구분된 텍스트로 변환
+                    const features = resort.features || [];
+                    document.getElementById('resortFeatures').value = features.join('\n');
+                    
                     document.getElementById('resortDisplayOrder').value = resort.display_order || 0;
                     document.getElementById('resortIsActive').value = resort.is_active ? 'true' : 'false';
                 }
