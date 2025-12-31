@@ -202,6 +202,7 @@
                             });
                         });
                     });
+                    console.log('✅ 발리 갤러리 이미지 수집 완료:', allGalleryImages.length, '개');
                     
                     container.innerHTML = resorts.map(resort => {
                         // Features and gallery are already arrays from API
@@ -280,6 +281,9 @@
         
         // Lightbox functionality
         function openLightbox(imgSrc, caption) {
+            console.log('🖼️ openLightbox 호출:', imgSrc, caption);
+            console.log('📊 전체 이미지 개수:', allGalleryImages.length);
+            
             const modal = document.getElementById('lightbox-modal');
             const img = document.getElementById('lightbox-img');
             const captionText = document.getElementById('lightbox-caption');
@@ -290,11 +294,18 @@
             
             // Store current image index for navigation
             currentImageIndex = allGalleryImages.findIndex(item => item.src === imgSrc);
+            console.log('🔢 현재 이미지 인덱스:', currentImageIndex);
             if (currentImageIndex === -1) currentImageIndex = 0;
         }
         
         function navigateLightbox(direction) {
-            if (allGalleryImages.length === 0) return;
+            console.log('⬅️➡️ navigateLightbox 호출:', direction);
+            console.log('📊 현재 인덱스:', currentImageIndex, '/ 전체:', allGalleryImages.length);
+            
+            if (allGalleryImages.length === 0) {
+                console.log('❌ 이미지 배열이 비어있습니다!');
+                return;
+            }
             
             currentImageIndex += direction;
             
@@ -305,7 +316,10 @@
                 currentImageIndex = 0;
             }
             
+            console.log('🔢 새 인덱스:', currentImageIndex);
             const currentImage = allGalleryImages[currentImageIndex];
+            console.log('🖼️ 새 이미지:', currentImage);
+            
             const img = document.getElementById('lightbox-img');
             const captionText = document.getElementById('lightbox-caption');
             
