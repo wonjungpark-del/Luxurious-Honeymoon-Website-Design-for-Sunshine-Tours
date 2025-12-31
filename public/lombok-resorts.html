@@ -230,7 +230,7 @@
                                     ${gallery.length > 0 ? `
                                         <div class="resort-gallery">
                                             ${gallery.slice(0, 6).map((img, index) => `
-                                                <div class="gallery-item" onclick="openLightbox('${img}', '${resort.name_ko}')">
+                                                <div class="gallery-item" onclick="openLightbox(${index}, '${resort.id}')">
                                                     <img src="${img}" alt="${resort.name_ko} - 이미지 ${index + 1}">
                                                     <div class="gallery-overlay">
                                                         <i class="fas fa-search-plus"></i>
@@ -329,10 +329,14 @@
                 });
             }
             
-            // ESC key to close
+            // ESC key to close, Arrow keys to navigate
             document.addEventListener('keydown', (e) => {
                 if (e.key === 'Escape') {
                     closeLightbox();
+                } else if (e.key === 'ArrowLeft') {
+                    navigateLightbox(-1);
+                } else if (e.key === 'ArrowRight') {
+                    navigateLightbox(1);
                 }
             });
         });
