@@ -1452,36 +1452,67 @@
                 console.log('✅ Save result:', result);
                 
                 if (result.success) {
-                    alert('✅ 저장되었습니다!\n\n같은 지역에 계속 추가하시려면 정보를 입력하세요.');
+                    const isUpdate = document.getElementById('resortId').value;
                     
-                    // 선택된 지역 저장
-                    const selectedRegionId = regionId;
-                    
-                    // 폼 리셋 (지역 선택은 유지)
-                    document.getElementById('resortId').value = '';
-                    document.getElementById('resortNameKo').value = '';
-                    document.getElementById('resortNameEn').value = '';
-                    document.getElementById('resortCategory').value = '';
-                    document.getElementById('resortDescription').value = '';
-                    document.getElementById('resortMainImageUrl').value = '';
-                    document.getElementById('resortMainImageFile').value = '';
-                    document.getElementById('resortFeatures').value = '';
-                    document.getElementById('resortDisplayOrder').value = '0';
-                    
-                    // 갤러리 이미지 필드 초기화
-                    for (let i = 1; i <= 6; i++) {
-                        document.getElementById(`resortGalleryImage${i}`).value = '';
-                        document.getElementById(`galleryImageFile${i}`).value = '';
+                    if (isUpdate) {
+                        // 수정 모드: 모달 닫고 지역 필터 유지하며 리스트 새로고침
+                        alert('✅ 리조트가 수정되었습니다!');
+                        closeResortModal();
+                        
+                        // 리조트 목록 새로고침
+                        await loadResorts();
+                        
+                        // 현재 선택된 지역 필터 유지
+                        if (currentSelectedRegionId) {
+                            renderResortsTable(currentSelectedRegionId);
+                            const filterSelect = document.getElementById('resortRegionFilter');
+                            if (filterSelect) {
+                                filterSelect.value = currentSelectedRegionId;
+                            }
+                        }
+                    } else {
+                        // 추가 모드: 모달 유지하고 폼만 리셋
+                        alert('✅ 저장되었습니다!\n\n같은 지역에 계속 추가하시려면 정보를 입력하세요.');
+                        
+                        // 선택된 지역 저장
+                        const selectedRegionId = regionId;
+                        
+                        // 폼 리셋 (지역 선택은 유지)
+                        document.getElementById('resortId').value = '';
+                        document.getElementById('resortNameKo').value = '';
+                        document.getElementById('resortNameEn').value = '';
+                        document.getElementById('resortCategory').value = '';
+                        document.getElementById('resortDescription').value = '';
+                        document.getElementById('resortMainImageUrl').value = '';
+                        document.getElementById('resortMainImageFile').value = '';
+                        document.getElementById('resortFeatures').value = '';
+                        document.getElementById('resortDisplayOrder').value = '0';
+                        
+                        // 갤러리 이미지 필드 초기화
+                        for (let i = 1; i <= 6; i++) {
+                            document.getElementById(`resortGalleryImage${i}`).value = '';
+                            document.getElementById(`galleryImageFile${i}`).value = '';
+                        }
+                        
+                        // 지역 선택 유지
+                        document.getElementById('resortRegionId').value = selectedRegionId;
+                        
+                        // 모달은 열린 상태 유지
+                        // closeResortModal(); // 이 줄 제거
+                        
+                        // 리조트 목록 새로고침
+                        await loadResorts();
+                        
+                        // 지역 필터도 유지
+                        if (selectedRegionId) {
+                            currentSelectedRegionId = selectedRegionId;
+                            renderResortsTable(selectedRegionId);
+                            const filterSelect = document.getElementById('resortRegionFilter');
+                            if (filterSelect) {
+                                filterSelect.value = selectedRegionId;
+                            }
+                        }
                     }
-                    
-                    // 지역 선택 유지
-                    document.getElementById('resortRegionId').value = selectedRegionId;
-                    
-                    // 모달은 열린 상태 유지
-                    // closeResortModal(); // 이 줄 제거
-                    
-                    // 리조트 목록 새로고침
-                    await loadResorts();
                     
                     console.log('✅ 폼 리셋 완료. 지역 선택 유지:', selectedRegionId);
                 } else {
