@@ -1456,7 +1456,6 @@
                     
                     if (isUpdate) {
                         // 수정 모드: 모달 닫고 지역 필터 유지하며 리스트 새로고침
-                        alert('✅ 리조트가 수정되었습니다!');
                         closeResortModal();
                         
                         // 리조트 목록 새로고침
@@ -1469,6 +1468,29 @@
                             if (filterSelect) {
                                 filterSelect.value = currentSelectedRegionId;
                             }
+                        }
+                        
+                        // 수정된 리조트의 지역 페이지 URL 생성
+                        const updatedResort = result.data;
+                        const region = currentRegions.find(r => r.id === updatedResort.region_id);
+                        
+                        if (region) {
+                            const regionPageUrl = `https://luxurious-honeymoon-website-design.vercel.app/${region.code}`;
+                            
+                            // 커스텀 확인 다이얼로그 표시
+                            const viewPage = confirm(
+                                `✅ 리조트가 수정되었습니다!\n\n` +
+                                `📍 지역: ${region.name_ko}\n` +
+                                `🏨 리조트: ${updatedResort.name_ko}\n\n` +
+                                `수정된 내용을 확인하시겠습니까?\n` +
+                                `(새 탭에서 ${region.name_ko} 페이지가 열립니다)`
+                            );
+                            
+                            if (viewPage) {
+                                window.open(regionPageUrl, '_blank');
+                            }
+                        } else {
+                            alert('✅ 리조트가 수정되었습니다!');
                         }
                     } else {
                         // 추가 모드: 모달 유지하고 폼만 리셋
