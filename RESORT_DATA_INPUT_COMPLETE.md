@@ -1,7 +1,7 @@
 # 8개 지역 리조트 데이터 입력 완료 보고서
 
 ## 📋 작업 요청사항
-- 필리핀 3개 지역, 남태평양 4개 지역, 모리셔스 1개 지역
+- 필리핀 3개 지역, 남태평양 4개 지역, 모리셔스 1개 지역, 베트남 다낭
 - 각 지역마다 인기 리조트 7개씩 (사진 제외)
 - 인기 순위: 1위~7위
 
@@ -94,13 +94,25 @@
 6. 더 레지던스 모리셔스 (The Residence Mauritius)
 7. 헤리티지 르 텔팩 (Heritage Le Telfair)
 
+#### 베트남 (Vietnam) - 총 7개 리조트
+
+**다낭 (Da Nang)** - 7개
+1. 인터컨티넨탈 다낭 선 페닌슐라 리조트 (InterContinental Danang Sun Peninsula Resort)
+2. 반얀트리 랑코 (Banyan Tree Lang Co)
+3. 포 시즌스 리조트 더 남 하이 (Four Seasons Resort The Nam Hai)
+4. 프리미어 빌리지 다낭 리조트 (Premier Village Danang Resort)
+5. 퓨전 마이아 다낭 (Fusion Maia Da Nang)
+6. 빈펄 리조트 & 골프 남 호이안 (Vinpearl Resort & Golf Nam Hoi An)
+7. 하얏트 리젠시 다낭 리조트 & 스파 (Hyatt Regency Danang Resort & Spa)
+
 ## 📊 최종 통계
 
-- **총 지역**: 8개
-- **총 리조트**: 56개
+- **총 지역**: 9개
+- **총 리조트**: 63개
   - 필리핀: 21개 (보라카이 7 + 세부/보홀 7 + 팔라완 7)
   - 남태평양: 28개 (괌 7 + 피지 7 + 사이판 7 + 호주 7)
   - 모리셔스: 7개
+  - 베트남: 7개 (다낭 7)
 - **카테고리**: 모두 luxury
 - **특징**: 각 리조트마다 3-4개 핵심 특징 포함
 - **이미지**: 추후 추가 예정
@@ -126,6 +138,9 @@
 
 - **모리셔스**
   - 모리셔스: https://luxurious-honeymoon-website-design.vercel.app/mauritius
+
+- **베트남**
+  - 다낭: https://luxurious-honeymoon-website-design.vercel.app/danang
 
 ## 🔄 다음 단계 제안
 
@@ -162,6 +177,7 @@ async function createResort(data) {
 ### 입력 스크립트
 - `/tmp/insert_resorts.sh`: 필리핀 3개 + 괌
 - `/tmp/insert_resorts_final.sh`: 호주 나머지 + 모리셔스
+- `/tmp/insert_danang_resorts.sh`: 베트남 다낭
 
 ### 배포 정보
 - **Repository**: https://github.com/wonjungpark-del/Luxurious-Honeymoon-Website-Design-for-Sunshine-Tours
@@ -177,10 +193,11 @@ async function createResort(data) {
 - ✅ 필리핀 3개 지역 리조트 입력 (각 7개)
 - ✅ 남태평양 4개 지역 리조트 입력 (각 7개)
 - ✅ 모리셔스 리조트 입력 (7개)
+- ✅ 베트남 다낭 리조트 입력 (7개)
 - ✅ API 수정 및 배포
 - ✅ 데이터베이스 저장 완료
 
-총 56개 리조트가 성공적으로 추가되었습니다!
+총 63개 리조트가 성공적으로 추가되었습니다!
 
 ---
 
