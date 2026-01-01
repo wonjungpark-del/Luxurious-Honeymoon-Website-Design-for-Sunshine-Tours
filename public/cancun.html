@@ -198,7 +198,7 @@
                                             <div class="resort-category">${categoryLabels[resort.category] || 'RESORT'}</div>
                                             <h2 class="resort-name">${resort.name_ko}</h2>
                                             <p class="resort-description" style="line-height: 1.8; margin-bottom: 1.5rem; color: #666;">
-                                                ${resort.name_ko}은(는) 칸쿤의 프리미엄 허니문 리조트입니다.<br>카리브해의 터키색 바다와 마야 문명이 공존하는 열대 낙원에서<br>럭셔리한 올인클루시브 리조트와 월드클래스 스파를 경험하실 수 있습니다.<br>환상적이고 로맨틱한 분위기 속에서 특별한 허니문을 만들어보세요.
+                                                ${resort.description || `${resort.name_ko}은(는) 칸쿤의 프리미엄 허니문 리조트입니다.`}
                                             </p>
                                             <div class="resort-features">
                                                 ${features.slice(0, 4).map(feature => `
