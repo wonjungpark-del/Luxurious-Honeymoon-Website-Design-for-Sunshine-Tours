@@ -114,12 +114,15 @@ async function getResortById(id) {
 }
 
 async function createResort(data) {
+  // Generate ID if not provided
+  const resortId = data.id || `resort-${data.region_id}-${Date.now()}-${Math.random().toString(36).substr(2, 9)}`;
+  
   const gallery_images_json = JSON.stringify(data.gallery_images || []);
   const features_json = JSON.stringify(data.features || []);
   
   const result = await sql`
     INSERT INTO resorts (id, region_id, name_ko, name_en, category, description, main_image_url, gallery_images, features, display_order, is_active, created_at, updated_at)
-    VALUES (${data.id}, ${data.region_id}, ${data.name_ko}, ${data.name_en}, ${data.category || ''}, ${data.description || ''}, ${data.main_image_url || ''}, ${gallery_images_json}::jsonb, ${features_json}::jsonb, ${data.display_order || 0}, ${data.is_active !== false}, NOW(), NOW())
+    VALUES (${resortId}, ${data.region_id}, ${data.name_ko}, ${data.name_en}, ${data.category || ''}, ${data.description || ''}, ${data.main_image_url || ''}, ${gallery_images_json}::jsonb, ${features_json}::jsonb, ${data.display_order || 0}, ${data.is_active !== false}, NOW(), NOW())
     RETURNING *
   `;
   return result.rows[0];
