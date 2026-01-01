@@ -183,3 +183,28 @@ curl -s "https://luxurious-honeymoon-website-design.vercel.app/api/regions" | \
 - 몰디브
 - 모리셔스
 - 베트남: 다낭
+
+## 중요: 페이지 URL 중복 문제
+
+### 발견된 문제
+일부 지역에 **2개의 페이지**가 존재:
+- `/bali` (짧은 URL) ← 오래된 버전
+- `/bali-resorts` (긴 URL) ← 새로운 버전
+
+### 해결 방법
+두 페이지 모두 동일한 내용으로 동기화:
+```bash
+cd /home/user/webapp/public
+cp bali-resorts.html bali.html
+cp lombok-resorts.html lombok.html
+```
+
+### 확인된 중복 페이지
+- 발리: `bali.html` + `bali-resorts.html`
+- 롬복: `lombok.html` + `lombok-resorts.html`
+
+### 수정 완료 (2025-01-01)
+- ✅ bali.html (20KB) - 정상
+- ✅ bali-resorts.html (20KB) - 정상
+- ✅ lombok.html (20KB) - 정상
+- ✅ lombok-resorts.html (20KB) - 정상
