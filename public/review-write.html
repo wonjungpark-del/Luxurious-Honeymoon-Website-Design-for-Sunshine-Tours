@@ -426,6 +426,13 @@
                         body: formData
                     });
                     
+                    // Check if response is OK before parsing JSON
+                    if (!response.ok) {
+                        const errorText = await response.text();
+                        console.error('Upload failed:', response.status, errorText);
+                        throw new Error(`이미지 업로드 실패 (${response.status}): ${errorText.substring(0, 100)}`);
+                    }
+                    
                     const result = await response.json();
                     
                     if (result.success && result.url) {
@@ -496,6 +503,13 @@
                     },
                     body: JSON.stringify(formData)
                 });
+                
+                // Check if response is OK before parsing JSON
+                if (!response.ok) {
+                    const errorText = await response.text();
+                    console.error('Review submission failed:', response.status, errorText);
+                    throw new Error(`후기 등록 실패 (${response.status}): ${errorText.substring(0, 200)}`);
+                }
                 
                 const result = await response.json();
                 const messageDiv = document.getElementById('form-message');
