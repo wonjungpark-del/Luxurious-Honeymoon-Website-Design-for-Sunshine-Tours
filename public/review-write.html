@@ -133,7 +133,7 @@
                             <i class="fas fa-cloud-upload-alt" style="font-size: 3rem; color: #C9A96E; margin-bottom: 1rem;"></i>
                             <p style="color: #2C2C2C; font-weight: 600; margin-bottom: 0.5rem;">클릭하여 사진 선택</p>
                             <p style="color: #7A7A7A; font-size: 0.85rem;">또는 사진을 이곳으로 드래그하세요 (최대 5장)</p>
-                            <p style="color: #7A7A7A; font-size: 0.75rem; margin-top: 0.5rem;">JPG, PNG, WEBP (각 최대 10MB)</p>
+                            <p style="color: #7A7A7A; font-size: 0.75rem; margin-top: 0.5rem;">JPG, PNG, WEBP (각 최대 4MB)</p>
                         </div>
                         <div id="images-preview" style="margin-top: 1rem; display: none;">
                             <div id="preview-grid" style="display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 1rem;"></div>
@@ -318,7 +318,7 @@
         });
         
         // Handle multiple files
-        function handleFiles(files) {
+        async function handleFiles(files) {
             // Check total count (max 5)
             const totalCount = selectedFiles.length + files.length;
             if (totalCount > 5) {
@@ -326,24 +326,102 @@
                 files = files.slice(0, 5 - selectedFiles.length);
             }
             
-            files.forEach(file => {
-                // File size check (10MB)
-                if (file.size > 10 * 1024 * 1024) {
-                    alert(`${file.name}의 크기는 10MB 이하여야 합니다.`);
-                    return;
-                }
-                
-                // Image type check
+            for (const file of files) {
+                // Image type check first
                 if (!file.type.startsWith('image/')) {
                     alert(`${file.name}는 이미지 파일이 아닙니다.`);
-                    return;
+                    continue;
+                }
+                
+                // File size check (4MB - Vercel limit is 4.5MB, using 4MB for safety)
+                if (file.size > 4 * 1024 * 1024) {
+                    // Auto-compress if too large
+                    uploadStatus.textContent = `${file.name} 압축 중...`;
+                    uploadStatus.style.color = '#C9A96E';
+                    
+                    const compressedFile = await compressImage(file, 4 * 1024 * 1024);
+                    if (compressedFile) {
+                        selectedFiles.push(compressedFile);
+                        addPreviewImage(compressedFile);
+                        uploadStatus.textContent = `${file.name} 압축 완료! (${(file.size / 1024 / 1024).toFixed(2)}MB → ${(compressedFile.size / 1024 / 1024).toFixed(2)}MB)`;
+                        uploadStatus.style.color = '#4CAF50';
+                    } else {
+                        alert(`${file.name}의 크기가 너무 큽니다.\n\n파일 크기: ${(file.size / 1024 / 1024).toFixed(2)}MB\n최대 허용: 4MB\n\n💡 이미지 압축에 실패했습니다. 다른 이미지를 선택하거나 직접 압축해주세요.`);
+                    }
+                    continue;
                 }
                 
                 selectedFiles.push(file);
                 addPreviewImage(file);
-            });
+            }
             
             updateUploadUI();
+        }
+        
+        // Compress image if too large
+        async function compressImage(file, maxSize) {
+            return new Promise((resolve) => {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    const img = new Image();
+                    img.onload = function() {
+                        // Calculate new dimensions (max 1920px width)
+                        let width = img.width;
+                        let height = img.height;
+                        const maxWidth = 1920;
+                        const maxHeight = 1920;
+                        
+                        if (width > maxWidth) {
+                            height = (height * maxWidth) / width;
+                            width = maxWidth;
+                        }
+                        if (height > maxHeight) {
+                            width = (width * maxHeight) / height;
+                            height = maxHeight;
+                        }
+                        
+                        // Create canvas and compress
+                        const canvas = document.createElement('canvas');
+                        canvas.width = width;
+                        canvas.height = height;
+                        const ctx = canvas.getContext('2d');
+                        ctx.drawImage(img, 0, 0, width, height);
+                        
+                        // Try different quality levels
+                        let quality = 0.9;
+                        const tryCompress = () => {
+                            canvas.toBlob(
+                                (blob) => {
+                                    if (blob && blob.size <= maxSize) {
+                                        // Success! Create new file
+                                        const compressedFile = new File([blob], file.name, {
+                                            type: 'image/jpeg',
+                                            lastModified: Date.now()
+                                        });
+                                        console.log(`Image compressed: ${(file.size / 1024 / 1024).toFixed(2)}MB → ${(compressedFile.size / 1024 / 1024).toFixed(2)}MB`);
+                                        resolve(compressedFile);
+                                    } else if (quality > 0.3) {
+                                        // Try lower quality
+                                        quality -= 0.1;
+                                        tryCompress();
+                                    } else {
+                                        // Failed to compress enough
+                                        resolve(null);
+                                    }
+                                },
+                                'image/jpeg',
+                                quality
+                            );
+                        };
+                        
+                        tryCompress();
+                    };
+                    img.onerror = () => resolve(null);
+                    img.src = e.target.result;
+                };
+                reader.onerror = () => resolve(null);
+                reader.readAsDataURL(file);
+            });
         }
         
         // Add preview image
