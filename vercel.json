@@ -4,6 +4,14 @@
   "github": {
     "silent": false
   },
+  "rewrites": [
+    { "source": "/about", "destination": "/about.html" },
+    { "source": "/location", "destination": "/location.html" },
+    { "source": "/insurance", "destination": "/insurance.html" },
+    { "source": "/travel-terms", "destination": "/travel-terms.html" },
+    { "source": "/terms", "destination": "/terms.html" },
+    { "source": "/privacy", "destination": "/privacy.html" }
+  ],
   "headers": [
     {
       "source": "/cebu-bohol",
