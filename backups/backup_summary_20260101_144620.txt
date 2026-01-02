@@ -1,0 +1,28 @@
+=== 데이터베이스 백업 요약 ===
+
+백업 일시: 2026-01-01 14:46:23
+백업 위치: /home/user/webapp/backups
+
+백업 데이터:
+- Regions: 22개
+- Resorts: 143개
+- Reviews: 14개
+
+백업 파일:
+- regions_20260101_144620.json
+- resorts_20260101_144620.json
+- reviews_20260101_144620.json
+
+복원 방법:
+각 JSON 파일의 데이터를 해당 API 엔드포인트로 POST 요청하여 복원할 수 있습니다.
+
+프로젝트 정보:
+- 이름: Luxurious Honeymoon Website Design for Sunshine Tours
+- URL: https://luxurious-honeymoon-website-design.vercel.app
+- 도메인: sunshinetour.co.kr (연결 대기)
+- GitHub: https://github.com/wonjungpark-del/Luxurious-Honeymoon-Website-Design-for-Sunshine-Tours
+
+마지막 업데이트:
+- 2026-01-01: 전체 페이지 갤러리 네비게이션 수정 완료
+- 2026-01-01: 전체 리조트 특징 4개 이상으로 업데이트 완료 (26개 리조트)
+- 2026-01-01: 도메인 연결 가이드 작성 완료
