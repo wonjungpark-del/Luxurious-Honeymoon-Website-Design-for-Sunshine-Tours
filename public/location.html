@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>오시는길 - 선샤인투어</title>
+    <meta name="description" content="선샤인투어 오시는 길 안내">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@300;400;600;700&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/static/css/style.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <a href="/index.html">
+                    <div class="text-logo" style="display: flex; align-items: center; gap: 10px;">
+                        <i class="fas fa-sun" style="font-size: 32px; color: #C9A96E;"></i>
+                        <div style="display: flex; flex-direction: column; line-height: 1.2;">
+                            <span style="font-family: 'Montserrat', sans-serif; font-size: 20px; font-weight: 700; color: #C9A96E; letter-spacing: 1px;">SUNSHINE</span>
+                            <span style="font-family: 'Montserrat', sans-serif; font-size: 10px; font-weight: 400; color: #7A7A7A; letter-spacing: 2px;">TOUR</span>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            <ul class="nav-menu" id="nav-menu">
+                <li><a href="/index.html#home" class="nav-link">Home</a></li>
+                <li><a href="/index.html#destinations" class="nav-link">Destinations</a></li>
+                <li><a href="/reviews" class="nav-link">Reviews</a></li>
+                <li><a href="/index.html#about" class="nav-link">About</a></li>
+                <li><a href="/index.html#contact" class="nav-link">Contact</a></li>
+            </ul>
+            <div class="nav-toggle" id="nav-toggle">
+                <i class="fas fa-bars"></i>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Page Header -->
+    <section class="page-hero" style="background: linear-gradient(135deg, rgba(201, 169, 110, 0.9), rgba(212, 175, 55, 0.9)), url('https://images.unsplash.com/photo-1569336415962-a4bd9f69cd83?w=2000&q=80') center/cover; padding: 8rem 0 6rem; color: white; text-align: center;">
+        <div class="container">
+            <h1 style="font-size: 3rem; font-weight: 700; margin-bottom: 1rem;">오시는길</h1>
+            <p style="font-size: 1.3rem; opacity: 0.95;">선샤인투어를 찾아오시는 방법을 안내해드립니다</p>
+        </div>
+    </section>
+
+    <!-- Location Info -->
+    <section style="padding: 5rem 0; background: white;">
+        <div class="container" style="max-width: 1200px; margin: 0 auto;">
+            <!-- Address -->
+            <div style="text-align: center; margin-bottom: 3rem;">
+                <h2 style="font-size: 2.5rem; color: #2C2C2C; margin-bottom: 2rem;">찾아오시는 길</h2>
+                <div style="background: linear-gradient(135deg, rgba(201, 169, 110, 0.05), rgba(212, 175, 55, 0.05)); padding: 2rem; border-radius: 20px; display: inline-block;">
+                    <p style="font-size: 1.3rem; color: #C9A96E; font-weight: 600; margin-bottom: 0.5rem;">
+                        <i class="fas fa-map-marker-alt" style="margin-right: 10px;"></i>서울특별시 성북구 보문로30길 71, 2층 7호
+                    </p>
+                    <p style="font-size: 1.1rem; color: #666;">
+                        <i class="fas fa-phone" style="margin-right: 10px; color: #C9A96E;"></i>02-318-8021
+                    </p>
+                </div>
+            </div>
+
+            <!-- Map -->
+            <div style="margin-bottom: 3rem; border-radius: 20px; overflow: hidden; box-shadow: 0 10px 40px rgba(0,0,0,0.1);">
+                <iframe 
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3161.8707428989566!2d127.01876731531592!3d37.589156979796586!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x357cbcd3c3f5e5e5%3A0x5e5e5e5e5e5e5e5e!2z7ISc7Jq47Yq567OE7IucIOyEseuytOq1rCDrs7Drrrjrorc!5e0!3m2!1sko!2skr!4v1234567890123!5m2!1sko!2skr"
+                    width="100%" 
+                    height="450" 
+                    style="border:0;" 
+                    allowfullscreen="" 
+                    loading="lazy" 
+                    referrerpolicy="no-referrer-when-downgrade">
+                </iframe>
+            </div>
+
+            <!-- Transportation -->
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem;">
+                <!-- Subway -->
+                <div style="background: #F8F9FA; padding: 2.5rem; border-radius: 15px;">
+                    <div style="width: 80px; height: 80px; margin: 0 auto 1.5rem; background: linear-gradient(135deg, #C9A96E, #D4AF37); border-radius: 50%; display: flex; align-items: center; justify-content: center;">
+                        <i class="fas fa-subway" style="font-size: 2rem; color: white;"></i>
+                    </div>
+                    <h3 style="font-size: 1.5rem; color: #2C2C2C; margin-bottom: 1rem; text-align: center;">지하철</h3>
+                    <ul style="list-style: none; padding: 0; color: #666; line-height: 2;">
+                        <li style="margin-bottom: 0.5rem;">
+                            <i class="fas fa-circle" style="font-size: 0.5rem; color: #C9A96E; margin-right: 10px;"></i>
+                            <strong>6호선 안암역</strong> 3번 출구 도보 10분
+                        </li>
+                        <li style="margin-bottom: 0.5rem;">
+                            <i class="fas fa-circle" style="font-size: 0.5rem; color: #C9A96E; margin-right: 10px;"></i>
+                            <strong>6호선 보문역</strong> 1번 출구 도보 12분
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Bus -->
+                <div style="background: #F8F9FA; padding: 2.5rem; border-radius: 15px;">
+                    <div style="width: 80px; height: 80px; margin: 0 auto 1.5rem; background: linear-gradient(135deg, #C9A96E, #D4AF37); border-radius: 50%; display: flex; align-items: center; justify-content: center;">
+                        <i class="fas fa-bus" style="font-size: 2rem; color: white;"></i>
+                    </div>
+                    <h3 style="font-size: 1.5rem; color: #2C2C2C; margin-bottom: 1rem; text-align: center;">버스</h3>
+                    <ul style="list-style: none; padding: 0; color: #666; line-height: 2;">
+                        <li style="margin-bottom: 0.5rem;">
+                            <i class="fas fa-circle" style="font-size: 0.5rem; color: #C9A96E; margin-right: 10px;"></i>
+                            <strong>간선</strong>: 101, 143, 273
+                        </li>
+                        <li style="margin-bottom: 0.5rem;">
+                            <i class="fas fa-circle" style="font-size: 0.5rem; color: #C9A96E; margin-right: 10px;"></i>
+                            <strong>지선</strong>: 2112, 1111
+                        </li>
+                        <li style="margin-bottom: 0.5rem;">
+                            <i class="fas fa-circle" style="font-size: 0.5rem; color: #C9A96E; margin-right: 10px;"></i>
+                            보문사거리 하차
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Car -->
+                <div style="background: #F8F9FA; padding: 2.5rem; border-radius: 15px;">
+                    <div style="width: 80px; height: 80px; margin: 0 auto 1.5rem; background: linear-gradient(135deg, #C9A96E, #D4AF37); border-radius: 50%; display: flex; align-items: center; justify-content: center;">
+                        <i class="fas fa-car" style="font-size: 2rem; color: white;"></i>
+                    </div>
+                    <h3 style="font-size: 1.5rem; color: #2C2C2C; margin-bottom: 1rem; text-align: center;">자가용</h3>
+                    <ul style="list-style: none; padding: 0; color: #666; line-height: 2;">
+                        <li style="margin-bottom: 0.5rem;">
+                            <i class="fas fa-circle" style="font-size: 0.5rem; color: #C9A96E; margin-right: 10px;"></i>
+                            내비게이션: 보문로30길 71
+                        </li>
+                        <li style="margin-bottom: 0.5rem;">
+                            <i class="fas fa-circle" style="font-size: 0.5rem; color: #C9A96E; margin-right: 10px;"></i>
+                            주차: 건물 내 주차 가능
+                        </li>
+                        <li style="margin-bottom: 0.5rem;">
+                            <i class="fas fa-circle" style="font-size: 0.5rem; color: #C9A96E; margin-right: 10px;"></i>
+                            방문 전 연락 부탁드립니다
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Contact CTA -->
+            <div style="margin-top: 4rem; text-align: center; background: linear-gradient(135deg, rgba(201, 169, 110, 0.05), rgba(212, 175, 55, 0.05)); padding: 3rem; border-radius: 20px;">
+                <h3 style="font-size: 1.8rem; color: #2C2C2C; margin-bottom: 1rem;">찾아오시기 전에 연락주세요</h3>
+                <p style="font-size: 1.1rem; color: #666; margin-bottom: 2rem;">상담 예약을 통해 더욱 편리하게 방문하실 수 있습니다</p>
+                <a href="tel:02-318-8021" style="display: inline-flex; align-items: center; gap: 10px; padding: 1rem 2.5rem; background: linear-gradient(135deg, #C9A96E, #D4AF37); color: white; font-weight: 700; border-radius: 50px; text-decoration: none; transition: all 0.3s ease; box-shadow: 0 4px 15px rgba(201, 169, 110, 0.3); font-size: 1.1rem;">
+                    <i class="fas fa-phone"></i>
+                    02-318-8021
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <h3>SUNSHINE TOUR</h3>
+                    <p>프라이빗 허니문 전문 여행사</p>
+                </div>
+                
+                <div class="footer-info">
+                    <p>서울특별시 성북구 보문로30길 71, 2층 7호</p>
+                    <p>TEL: 02-318-8021</p>
+                    <p class="copyright">© 2024 Sunshine Tour. All rights reserved.</p>
+                </div>
+            </div>
+            
+            <!-- Footer Links -->
+            <div class="footer-links" style="margin-top: 2rem; padding-top: 2rem; border-top: 1px solid rgba(255,255,255,0.1); text-align: center;">
+                <p style="margin-bottom: 1rem; color: rgba(255,255,255,0.8); font-size: 0.9rem;">
+                    <a href="/about" style="color: inherit; text-decoration: none; margin: 0 0.8rem;">회사소개</a> |
+                    <a href="/location" style="color: inherit; text-decoration: none; margin: 0 0.8rem;">오시는길</a> |
+                    <a href="/insurance" style="color: inherit; text-decoration: none; margin: 0 0.8rem;">보험증권</a> |
+                    <a href="/travel-terms" style="color: inherit; text-decoration: none; margin: 0 0.8rem;">여행약관</a> |
+                    <a href="/terms" style="color: inherit; text-decoration: none; margin: 0 0.8rem;">이용약관</a> |
+                    <a href="/privacy" style="color: inherit; text-decoration: none; margin: 0 0.8rem;">개인정보취급방침</a>
+                </p>
+                <p style="color: rgba(255,255,255,0.7); font-size: 0.85rem; line-height: 1.6;">
+                    <strong>대표이사:</strong> 박은정 | <strong>업체명:</strong> (주)선샤인투어 | <strong>사업자등록번호:</strong> 154-87-01160<br>
+                    <strong>기획보증보험:</strong> 2억원 | <strong>국외보증보험:</strong> 3천만원
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script src="/static/js/main.js"></script>
+</body>
+</html>
