@@ -183,6 +183,12 @@
                 if (result.success && result.data.length > 0) {
                     const resorts = result.data;
                     
+                    // Store resort data for independent gallery navigation
+                    allResortsData = resorts.map(resort => ({
+                        name_ko: resort.name_ko,
+                        gallery_images: Array.isArray(resort.gallery_images) ? resort.gallery_images : []
+                    }));
+                    
                     container.innerHTML = resorts.map(resort => {
                         // Parse features and gallery
                         // API already returns arrays, no need to parse
@@ -225,8 +231,8 @@
                                     ${gallery.length > 0 ? `
                                         <div class="resort-gallery">
                                             ${gallery.slice(0, 6).map((img, index) => `
-                                                <div class="gallery-item" onclick="openLightbox(${index}, '${resort.id}')">
-                                                    <img src="${img}" alt="${resort.name_ko}">
+                                                <div class="gallery-item" onclick="openLightbox('${img}', '${resort.name_ko} - 이미지 ${index + 1}', ${resorts.indexOf(resort)})">
+                                                    <img src="${img}" alt="${resort.name_ko} - 이미지 ${index + 1}">
                                                     <div class="gallery-overlay">
                                                         <i class="fas fa-search-plus"></i>
                                                     </div>
