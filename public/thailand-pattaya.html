@@ -183,17 +183,11 @@
                 if (result.success && result.data.length > 0) {
                     const resorts = result.data;
                     
-                    // Collect all gallery images for navigation
-                    allGalleryImages = [];
-                    resorts.forEach(resort => {
-                        const gallery = Array.isArray(resort.gallery_images) ? resort.gallery_images : [];
-                        gallery.forEach((img, index) => {
-                            allGalleryImages.push({
-                                src: img,
-                                caption: `${resort.name_ko} - 이미지 ${index + 1}`
-                            });
-                        });
-                    });
+                    // Store resort data for independent gallery navigation
+                    allResortsData = resorts.map(resort => ({
+                        name_ko: resort.name_ko,
+                        gallery_images: Array.isArray(resort.gallery_images) ? resort.gallery_images : []
+                    }));
                     
                     container.innerHTML = resorts.map(resort => {
                         // Parse features and gallery
@@ -247,7 +241,7 @@
                                     ${gallery.length > 0 ? `
                                         <div class="resort-gallery">
                                             ${gallery.slice(0, 6).map((img, index) => `
-                                                <div class="gallery-item" onclick="openLightbox('${img}', '${resort.name_ko} - 이미지 ${index + 1}')">
+                                                <div class="gallery-item" onclick="openLightbox(\'${img}\', \'${resort.name_ko} - 이미지 ${index + 1}\', ${resorts.indexOf(resort)})">
                                                     <img src="${img}" alt="${resort.name_ko} - 이미지 ${index + 1}">
                                                     <div class="gallery-overlay">
                                                         <i class="fas fa-search-plus"></i>
@@ -281,10 +275,11 @@
         
         // Lightbox functionality
         // Global variables for lightbox navigation
-        let allGalleryImages = [];
+        let allResortsData = [];
+        let currentResortIndex = 0;
         let currentImageIndex = 0;
 
-        function openLightbox(imgSrc, caption) {
+        function openLightbox(imgSrc, caption, resortIndex) {
             const modal = document.getElementById('lightbox-modal');
             const img = document.getElementById('lightbox-img');
             const captionText = document.getElementById('lightbox-caption');
@@ -293,29 +288,31 @@
             img.src = imgSrc;
             captionText.textContent = caption;
             
-            // Store current image index for navigation
-            currentImageIndex = allGalleryImages.findIndex(item => item.src === imgSrc);
+            // Store current resort and image index for navigation
+            currentResortIndex = resortIndex;
+            const currentResort = allResortsData[resortIndex];
+            currentImageIndex = currentResort.gallery_images.findIndex(src => src === imgSrc);
             if (currentImageIndex === -1) currentImageIndex = 0;
         }
         
         function navigateLightbox(direction) {
-            if (allGalleryImages.length === 0) return;
+            const currentResort = allResortsData[currentResortIndex];
+            if (!currentResort || currentResort.gallery_images.length === 0) return;
             
             currentImageIndex += direction;
             
-            // Loop around
+            // Loop around within current resort's gallery
             if (currentImageIndex < 0) {
-                currentImageIndex = allGalleryImages.length - 1;
-            } else if (currentImageIndex >= allGalleryImages.length) {
+                currentImageIndex = currentResort.gallery_images.length - 1;
+            } else if (currentImageIndex >= currentResort.gallery_images.length) {
                 currentImageIndex = 0;
             }
             
-            const currentImage = allGalleryImages[currentImageIndex];
             const img = document.getElementById('lightbox-img');
             const captionText = document.getElementById('lightbox-caption');
             
-            img.src = currentImage.src;
-            captionText.textContent = currentImage.caption;
+            img.src = currentResort.gallery_images[currentImageIndex];
+            captionText.textContent = `${currentResort.name_ko} - 이미지 ${currentImageIndex + 1}`;
         }
         
         function closeLightbox() {
